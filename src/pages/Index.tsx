@@ -68,8 +68,12 @@ const Index = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           ABOUT PREVIEW — 100% WIDTH GRID
           ═══════════════════════════════════════════════════════════════════ */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 border-b border-editorial">
-        <div className="p-8 md:p-16 lg:p-24 border-b lg:border-b-0 lg:border-r border-editorial flex flex-col justify-between aspect-square lg:aspect-auto">
+      <section className="grid grid-cols-1 lg:grid-cols-2 border-b border-editorial relative">
+        <div className="absolute inset-0 z-0 opacity-20 mix-blend-luminosity pointer-events-none">
+          <img src="/placeholder.svg" alt="Texture sfondo" className="w-full h-full object-cover" />
+        </div>
+
+        <div className="p-8 md:p-16 lg:p-24 border-b lg:border-b-0 lg:border-r border-editorial flex flex-col justify-between aspect-square lg:aspect-auto relative z-10">
           <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-foreground">About</span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mt-12">
             Unire la <span className="text-primary italic">precisione</span> del pixel alla <span className="text-stroke">scalabilità</span> del cloud.
@@ -82,7 +86,7 @@ const Index = () => {
           </Link>
         </div>
         
-        <div className="p-8 md:p-16 lg:p-24 flex flex-col justify-center bg-foreground text-background">
+        <div className="p-8 md:p-16 lg:p-24 flex flex-col justify-center bg-foreground text-background relative z-10">
           <p className="font-body text-lg md:text-xl leading-relaxed opacity-90 max-w-lg">
             Da una formazione accademica in Belle Arti alla progettazione di architetture AWS complesse. Il mio approccio al digitale è olistico: non c'è buon design senza una solida infrastruttura, e non c'è codice brillante senza una chiara visione utente.
           </p>

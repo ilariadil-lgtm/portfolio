@@ -12,7 +12,8 @@ const projects = [
     vision: "Una piattaforma coesa che unifica l'intero workflow creativo: dalla showcase al pagamento.",
     approach: "Partendo da interviste con 15 fotografi professionisti, ho mappato i pain points e progettato un sistema modulare. L'architettura Django + React permette scalabilità, mentre l'integrazione con Stripe semplifica la monetizzazione.",
     tech: ["Django", "React", "AWS S3", "Stripe"],
-    year: "2023"
+    year: "2023",
+    image: "/placeholder.svg"
   },
   {
     num: "II",
@@ -22,7 +23,8 @@ const projects = [
     vision: "Dashboard collaborativa con annotazioni live, versionamento automatico e notifiche intelligenti.",
     approach: "Ho implementato un sistema di annotazioni basato su coordinate, con WebSocket per la sincronizzazione in tempo reale. Il versionamento automatico elimina il rischio di sovrascritture accidentali.",
     tech: ["React", "Node.js", "WebSocket", "AWS"],
-    year: "2023"
+    year: "2023",
+    image: "/placeholder.svg"
   },
   {
     num: "III",
@@ -32,7 +34,8 @@ const projects = [
     vision: "Sistema di prenotazione intelligente con percorsi adattivi e insight per i terapeuti.",
     approach: "Ho progettato un algoritmo di matching terapeuta-paziente e un sistema di reminder multi-canale. L'uso di Lambda garantisce costi contenuti anche con picchi di utilizzo.",
     tech: ["Django", "React", "PostgreSQL", "Lambda"],
-    year: "2022"
+    year: "2022",
+    image: "/placeholder.svg"
   }
 ];
 
@@ -107,43 +110,53 @@ const Progetti = () => {
 
                     {/* Right: Content */}
                     <div className="lg:col-span-8 space-y-8">
-                      <div>
-                        <span className={`font-body text-[10px] uppercase tracking-[0.3em] ${
-                          i % 2 === 0 ? "text-muted-foreground" : "text-muted-foreground"
-                        }`}>
-                          La Sfida
-                        </span>
-                        <p className={`font-body leading-relaxed mt-3 ${
-                          i % 2 === 0 ? "text-foreground" : "text-background"
-                        }`}>
-                          {project.challenge}
-                        </p>
+                      <div className="aspect-[16/9] w-full overflow-hidden mb-8 bg-muted/10">
+                        <img 
+                          src={project.image} 
+                          alt={project.title} 
+                          className="w-full h-full object-cover transition-all duration-700 grayscale hover:grayscale-0 hover:scale-105"
+                        />
                       </div>
                       
-                      <div>
-                        <span className={`font-body text-[10px] uppercase tracking-[0.3em] ${
-                          i % 2 === 0 ? "text-muted-foreground" : "text-muted-foreground"
-                        }`}>
-                          La Visione
-                        </span>
-                        <p className={`font-body leading-relaxed mt-3 ${
-                          i % 2 === 0 ? "text-foreground" : "text-background"
-                        }`}>
-                          {project.vision}
-                        </p>
-                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                          <span className={`font-body text-[10px] uppercase tracking-[0.3em] ${
+                            i % 2 === 0 ? "text-muted-foreground" : "text-muted-foreground"
+                          }`}>
+                            La Sfida
+                          </span>
+                          <p className={`font-body leading-relaxed mt-3 ${
+                            i % 2 === 0 ? "text-foreground" : "text-background"
+                          }`}>
+                            {project.challenge}
+                          </p>
+                        </div>
+                        
+                        <div>
+                          <span className={`font-body text-[10px] uppercase tracking-[0.3em] ${
+                            i % 2 === 0 ? "text-muted-foreground" : "text-muted-foreground"
+                          }`}>
+                            La Visione
+                          </span>
+                          <p className={`font-body leading-relaxed mt-3 ${
+                            i % 2 === 0 ? "text-foreground" : "text-background"
+                          }`}>
+                            {project.vision}
+                          </p>
+                        </div>
 
-                      <div>
-                        <span className={`font-body text-[10px] uppercase tracking-[0.3em] ${
-                          i % 2 === 0 ? "text-muted-foreground" : "text-muted-foreground"
-                        }`}>
-                          L'Approccio
-                        </span>
-                        <p className={`font-body leading-relaxed mt-3 ${
-                          i % 2 === 0 ? "text-foreground" : "text-background"
-                        }`}>
-                          {project.approach}
-                        </p>
+                        <div className="md:col-span-2">
+                          <span className={`font-body text-[10px] uppercase tracking-[0.3em] ${
+                            i % 2 === 0 ? "text-muted-foreground" : "text-muted-foreground"
+                          }`}>
+                            L'Approccio
+                          </span>
+                          <p className={`font-body leading-relaxed mt-3 ${
+                            i % 2 === 0 ? "text-foreground" : "text-background"
+                          }`}>
+                            {project.approach}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
