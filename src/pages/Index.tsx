@@ -1,179 +1,150 @@
-import { Reveal, KineticLine, useParallax } from "@/components/Reveal";
-import { ArrowRight } from "lucide-react";
+import { useParallax } from "@/components/Reveal";
+import { ArrowRight, ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 
 const Index = () => {
-  const { ref: heroRef, offset: heroOffset } = useParallax(0.3);
+  const { ref: heroRef, offset: heroOffset } = useParallax(0.4);
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-hidden">
       <Navigation />
       
       {/* ═══════════════════════════════════════════════════════════════════
-          HERO — IMMERSIVE TYPOGRAPHY
+          HERO — EDITORIAL & BRUTALIST
           ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex items-center overflow-hidden pt-24">
-        {/* Abstract geometric element */}
-        <div 
-          className="absolute right-0 top-1/2 -translate-y-1/2 w-[45vw] h-[70vh] bg-gradient-to-br from-primary/8 to-secondary/15 rounded-l-[100px]"
-          style={{ transform: `translateY(calc(-50% + ${heroOffset}px))` }}
-        />
-        
-        {/* Kinetic accent lines */}
-        <div className="absolute top-32 left-[15%] w-px h-32 bg-gradient-to-b from-primary/60 to-transparent" />
-        <div className="absolute bottom-40 right-[20%] w-24 h-px bg-gradient-to-r from-transparent to-primary/60" />
-        
-        <div ref={heroRef} className="relative z-10 w-full px-8 md:px-16 lg:px-24">
-          {/* Small intro */}
-          <div className="animate-fade-up mb-8" style={{ animationDelay: "0.2s", animationFillMode: "both" }}>
-            <span className="font-body text-[10px] md:text-xs uppercase tracking-[0.4em] text-muted-foreground">
-              UX Engineer · Cloud Specialist · Product Strategist
-            </span>
-          </div>
-
-          {/* Giant Name */}
-          <div className="relative">
-            <h1 
-              className="font-display text-[15vw] md:text-[12vw] lg:text-[10vw] font-bold leading-[0.85] tracking-tight animate-fade-up"
-              style={{ animationDelay: "0.4s", animationFillMode: "both" }}
-            >
-              <span className="block">Ilaria</span>
-              <span className="block text-stroke">Diliberto</span>
-            </h1>
-            
-            {/* Overlapping accent */}
-            <div 
-              className="absolute -right-4 top-1/2 -translate-y-1/2 font-display text-[20vw] md:text-[15vw] font-bold text-primary/5 pointer-events-none select-none"
-              style={{ transform: `translateY(calc(-50% + ${heroOffset * 0.5}px))` }}
-            >
-              D
+      <section className="relative min-h-[90vh] flex flex-col justify-end pb-12 px-6 md:px-12 border-b border-editorial mt-24">
+        <div ref={heroRef} className="relative z-10 w-full" style={{ transform: `translateY(${heroOffset}px)` }}>
+          
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end mb-8">
+            <div className="md:col-span-8">
+              <p className="font-body text-xs md:text-sm uppercase tracking-widest text-primary mb-4 animate-fade-up">
+                Piacere,
+              </p>
+              <h1 className="font-display text-[16vw] md:text-[14vw] font-bold leading-[0.75] tracking-tighter text-primary">
+                ilaria
+              </h1>
+              <h1 className="font-display text-[16vw] md:text-[14vw] font-bold leading-[0.75] tracking-tighter text-foreground">
+                diliberto
+              </h1>
             </div>
-          </div>
-
-          {/* Subtitle positioned asymmetrically */}
-          <div 
-            className="mt-16 md:mt-20 ml-auto max-w-md text-right animate-fade-up"
-            style={{ animationDelay: "0.6s", animationFillMode: "both" }}
-          >
-            <div className="w-16 h-px bg-primary ml-auto mb-6" />
-            <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed">
-              Progetto esperienze digitali che uniscono<br />
-              <span className="text-foreground font-medium">rigore estetico</span> e <span className="text-foreground font-medium">architettura scalabile</span>.
-            </p>
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <span className="font-body text-[9px] uppercase tracking-[0.3em] text-muted-foreground">Scroll</span>
-          <div className="w-px h-12 bg-gradient-to-b from-primary to-transparent animate-pulse" />
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════
-          QUICK INTRO SECTION
-          ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative py-32 md:py-48 px-8 md:px-16 lg:px-24">
-        <div className="max-w-4xl">
-          <Reveal>
-            <span className="font-display text-8xl md:text-9xl font-bold text-primary/10">01</span>
-            <h2 className="font-display text-3xl md:text-5xl font-bold mt-4 leading-tight">
-              Dall'Accademia di Belle Arti all'architettura cloud.
-            </h2>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="font-body text-muted-foreground leading-relaxed mt-8 max-w-2xl">
-              Un percorso che unisce la sensibilità estetica alla precisione ingegneristica. 
-              Ogni progetto è un'opportunità per trasformare visioni in esperienze digitali scalabili.
-            </p>
-            <Link 
-              to="/percorso" 
-              className="inline-flex items-center gap-3 mt-8 font-body text-sm uppercase tracking-[0.2em] text-foreground hover:text-primary transition-colors group"
-            >
-              <span className="w-8 h-px bg-foreground group-hover:bg-primary group-hover:w-16 transition-all" />
-              Scopri il percorso
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════
-          FEATURED PROJECTS PREVIEW
-          ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative py-32 md:py-48 bg-foreground text-background">
-        <div className="px-8 md:px-16 lg:px-24">
-          <Reveal>
-            <div className="flex items-baseline gap-6 mb-16">
-              <span className="font-display text-8xl md:text-9xl font-bold text-primary/30">02</span>
-              <div>
-                <span className="font-body text-[10px] uppercase tracking-[0.4em] text-primary">I Capitoli</span>
-                <h2 className="font-display text-4xl md:text-6xl font-bold mt-1 text-background">Progetti Selezionati</h2>
+            
+            <div className="md:col-span-4 flex flex-col justify-end animate-fade-up" style={{ animationDelay: "0.3s" }}>
+              <div className="flex gap-4 items-start border-t border-editorial pt-4">
+                <span className="font-body text-[10px] uppercase tracking-[0.2em] text-muted-foreground shrink-0">Status</span>
+                <div>
+                  <p className="font-body text-sm font-medium">Freelance / Studio</p>
+                  <p className="font-body text-xs text-muted-foreground mt-1">Disponibile per nuovi progetti digitali</p>
+                </div>
               </div>
             </div>
-          </Reveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {["FreeLens", "Visio", "Sophia"].map((project, i) => (
-              <Reveal key={project} delay={i * 150}>
-                <Link 
-                  to="/progetti"
-                  className="group block p-8 border border-background/10 rounded-lg hover:bg-background/5 transition-colors"
-                >
-                  <span className="font-display text-6xl font-bold text-primary/30">{["I", "II", "III"][i]}</span>
-                  <h3 className="font-display text-2xl md:text-3xl font-bold mt-4">{project}</h3>
-                  <div className="flex items-center gap-2 mt-6 font-body text-sm text-primary group-hover:gap-4 transition-all">
-                    <span>Esplora</span>
-                    <ArrowRight size={14} />
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
           </div>
+        </div>
+      </section>
 
-          <Reveal delay={500}>
-            <div className="mt-16 text-center">
-              <Link 
-                to="/progetti"
-                className="inline-flex items-center gap-3 font-body text-sm uppercase tracking-[0.2em] text-background hover:text-primary transition-colors group"
-              >
-                <span className="w-8 h-px bg-background group-hover:bg-primary group-hover:w-16 transition-all" />
-                Tutti i progetti
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          </Reveal>
+      {/* MARQUEE */}
+      <div className="py-4 border-b border-editorial bg-primary text-primary-foreground overflow-hidden flex whitespace-nowrap">
+        <div className="animate-marquee flex gap-12 font-body text-xs uppercase tracking-[0.2em]">
+          <span>UX/UI Designer</span>
+          <span className="opacity-50">✦</span>
+          <span>Cloud Architect</span>
+          <span className="opacity-50">✦</span>
+          <span>Product Strategist</span>
+          <span className="opacity-50">✦</span>
+          <span>Creative Developer</span>
+          <span className="opacity-50">✦</span>
+          <span>UX/UI Designer</span>
+          <span className="opacity-50">✦</span>
+          <span>Cloud Architect</span>
+          <span className="opacity-50">✦</span>
+          <span>Product Strategist</span>
+          <span className="opacity-50">✦</span>
+          <span>Creative Developer</span>
+          <span className="opacity-50">✦</span>
+        </div>
+      </div>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          ABOUT PREVIEW — 100% WIDTH GRID
+          ═══════════════════════════════════════════════════════════════════ */}
+      <section className="grid grid-cols-1 lg:grid-cols-2 border-b border-editorial">
+        <div className="p-8 md:p-16 lg:p-24 border-b lg:border-b-0 lg:border-r border-editorial flex flex-col justify-between aspect-square lg:aspect-auto">
+          <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-foreground">About</span>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mt-12">
+            Unire la <span className="text-primary italic">precisione</span> del pixel alla <span className="text-stroke">scalabilità</span> del cloud.
+          </h2>
+          <Link 
+            to="/percorso" 
+            className="link-brutalist self-start mt-12 font-body text-xs uppercase tracking-widest flex items-center gap-2"
+          >
+            Esplora il percorso <ArrowRight size={14} />
+          </Link>
+        </div>
+        
+        <div className="p-8 md:p-16 lg:p-24 flex flex-col justify-center bg-foreground text-background">
+          <p className="font-body text-lg md:text-xl leading-relaxed opacity-90 max-w-lg">
+            Da una formazione accademica in Belle Arti alla progettazione di architetture AWS complesse. Il mio approccio al digitale è olistico: non c'è buon design senza una solida infrastruttura, e non c'è codice brillante senza una chiara visione utente.
+          </p>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          VALUE PROPOSITION — SIGNATURE
+          SELECTED WORK
           ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative py-32 md:py-48 px-8 md:px-16 lg:px-24">
-        <Reveal>
-          <div className="max-w-4xl">
-            <span className="font-display text-8xl md:text-9xl font-bold text-primary/10">03</span>
-            <blockquote className="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mt-8">
-              "Progetto e guido l'evoluzione digitale delle imprese locali, integrando{" "}
-              <span className="text-primary">strategia di prodotto</span>,{" "}
-              <span className="text-stroke-primary">design d'impatto</span> e un{" "}
-              <span className="text-primary">supporto costante</span>."
-            </blockquote>
-            
-            <div className="mt-16 flex flex-col sm:flex-row items-start sm:items-center gap-6">
-              <Link
-                to="/contatti"
-                className="group inline-flex items-center gap-4 font-body text-sm uppercase tracking-[0.2em] text-foreground hover:text-primary transition-colors"
-              >
-                <span className="w-12 h-px bg-foreground group-hover:bg-primary group-hover:w-20 transition-all" />
-                Costruiamo insieme
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
+      <section className="py-24 md:py-32 px-6 md:px-12 border-b border-editorial">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+          <div>
+            <span className="font-body text-[10px] uppercase tracking-[0.3em] text-primary">I Capitoli</span>
+            <h2 className="font-display text-5xl md:text-7xl font-bold mt-2">Progetti Selezionati</h2>
           </div>
-        </Reveal>
+          <Link 
+            to="/progetti" 
+            className="link-brutalist font-body text-xs uppercase tracking-widest flex items-center gap-2 shrink-0"
+          >
+            Vedi tutti i lavori <ArrowRight size={14} />
+          </Link>
+        </div>
+
+        <div className="space-y-0 border-t border-editorial">
+          {[
+            { id: "01", name: "FreeLens", type: "Web App / AWS", url: "/progetti" },
+            { id: "02", name: "Visio", type: "Real-time Dashboard", url: "/progetti" },
+            { id: "03", name: "Sophia", type: "Healthcare Platform", url: "/progetti" },
+          ].map((item) => (
+            <Link 
+              key={item.id} 
+              to={item.url}
+              className="group flex flex-col md:flex-row md:items-center py-8 border-b border-editorial hover:bg-primary hover:text-primary-foreground transition-colors duration-300 px-4 -mx-4"
+            >
+              <span className="font-body text-xs md:text-sm text-muted-foreground group-hover:text-primary-foreground/50 transition-colors w-12">
+                {item.id}
+              </span>
+              <h3 className="font-display text-4xl md:text-6xl font-bold flex-1 my-4 md:my-0 group-hover:translate-x-4 transition-transform duration-300">
+                {item.name}
+              </h3>
+              <span className="font-body text-xs uppercase tracking-widest md:text-right group-hover:text-primary-foreground/80 transition-colors">
+                {item.type}
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          CTA
+          ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-32 md:py-48 px-6 md:px-12 text-center bg-primary text-primary-foreground">
+        <h2 className="font-display text-[10vw] md:text-[8vw] font-bold leading-none tracking-tight">
+          FEEL LIKE <br/>
+          <span className="text-stroke-primary opacity-50">COLLABORATING?</span>
+        </h2>
+        <a 
+          href="mailto:ilaria@example.com"
+          className="inline-flex items-center gap-4 mt-16 text-xl md:text-3xl font-display font-medium link-brutalist hover:opacity-80 transition-opacity"
+        >
+          hello@ilariadiliberto.com <ArrowRight size={24} />
+        </a>
       </section>
 
       <Footer />
