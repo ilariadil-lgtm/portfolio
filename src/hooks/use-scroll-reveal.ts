@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 export function useScrollReveal(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
@@ -23,4 +23,23 @@ export function useScrollReveal(threshold = 0.15) {
   }, [threshold]);
 
   return { ref, isVisible };
+}
+
+export function useParallax(speed = 0.5) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [offset, setOffset] = useState(0);
+
+  const handleScroll = useCallback(() => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const scrolled = window.innerHeight - rect.top;
+    setOffset(scrolled * speed * 0.1);
+  }, [speed]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
+  return { ref, offset };
 }
