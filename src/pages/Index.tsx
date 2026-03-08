@@ -66,14 +66,10 @@ const Index = () => {
       </div>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          ABOUT PREVIEW — 100% WIDTH GRID
+          ABOUT PREVIEW — WITH IMAGE
           ═══════════════════════════════════════════════════════════════════ */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 border-b border-editorial relative">
-        <div className="absolute inset-0 z-0 opacity-20 mix-blend-luminosity pointer-events-none">
-          <img src="/placeholder.svg" alt="Texture sfondo" className="w-full h-full object-cover" />
-        </div>
-
-        <div className="p-8 md:p-16 lg:p-24 border-b lg:border-b-0 lg:border-r border-editorial flex flex-col justify-between aspect-square lg:aspect-auto relative z-10">
+      <section className="grid grid-cols-1 lg:grid-cols-2 border-b border-editorial">
+        <div className="p-8 md:p-16 lg:p-24 border-b lg:border-b-0 lg:border-r border-editorial flex flex-col justify-between aspect-square lg:aspect-auto">
           <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-foreground">About</span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mt-12">
             Unire la <span className="text-primary italic">precisione</span> del pixel alla <span className="text-stroke">scalabilità</span> del cloud.
@@ -86,15 +82,23 @@ const Index = () => {
           </Link>
         </div>
         
-        <div className="p-8 md:p-16 lg:p-24 flex flex-col justify-center bg-foreground text-background relative z-10">
-          <p className="font-body text-lg md:text-xl leading-relaxed opacity-90 max-w-lg">
-            Da una formazione accademica in Belle Arti alla progettazione di architetture AWS complesse. Il mio approccio al digitale è olistico: non c'è buon design senza una solida infrastruttura, e non c'è codice brillante senza una chiara visione utente.
-          </p>
+        <div className="relative overflow-hidden">
+          <img 
+            src="/placeholder.svg" 
+            alt="Ilaria Diliberto al lavoro" 
+            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-foreground/60 mix-blend-multiply" />
+          <div className="absolute bottom-8 left-8 right-8 z-10">
+            <p className="font-body text-lg md:text-xl leading-relaxed text-background/90 max-w-lg">
+              Da una formazione accademica in Belle Arti alla progettazione di architetture AWS complesse. Un approccio olistico al digitale.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SELECTED WORK
+          SELECTED WORK — WITH IMAGES
           ═══════════════════════════════════════════════════════════════════ */}
       <section className="py-24 md:py-32 px-6 md:px-12 border-b border-editorial">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
@@ -110,26 +114,40 @@ const Index = () => {
           </Link>
         </div>
 
-        <div className="space-y-0 border-t border-editorial">
+        <div className="space-y-16">
           {[
-            { id: "01", name: "FreeLens", type: "Web App / AWS", url: "/progetti" },
-            { id: "02", name: "Visio", type: "Real-time Dashboard", url: "/progetti" },
-            { id: "03", name: "Sophia", type: "Healthcare Platform", url: "/progetti" },
-          ].map((item) => (
+            { id: "01", name: "FreeLens", type: "Web App / AWS", url: "/progetti", image: "/placeholder.svg" },
+            { id: "02", name: "Visio", type: "Real-time Dashboard", url: "/progetti", image: "/placeholder.svg" },
+            { id: "03", name: "Sophia", type: "Healthcare Platform", url: "/progetti", image: "/placeholder.svg" },
+          ].map((item, i) => (
             <Link 
               key={item.id} 
               to={item.url}
-              className="group flex flex-col md:flex-row md:items-center py-8 border-b border-editorial hover:bg-primary hover:text-primary-foreground transition-colors duration-300 px-4 -mx-4"
+              className="group block border-b border-editorial pb-16"
             >
-              <span className="font-body text-xs md:text-sm text-muted-foreground group-hover:text-primary-foreground/50 transition-colors w-12">
-                {item.id}
-              </span>
-              <h3 className="font-display text-4xl md:text-6xl font-bold flex-1 my-4 md:my-0 group-hover:translate-x-4 transition-transform duration-300">
-                {item.name}
-              </h3>
-              <span className="font-body text-xs uppercase tracking-widest md:text-right group-hover:text-primary-foreground/80 transition-colors">
-                {item.type}
-              </span>
+              <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-center ${i % 2 !== 0 ? 'lg:direction-rtl' : ''}`}>
+                <div className="aspect-[4/3] overflow-hidden bg-muted/10">
+                  <img 
+                    src={item.image} 
+                    alt={item.name} 
+                    className="w-full h-full object-cover transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105"
+                  />
+                </div>
+                <div className={`flex flex-col justify-center ${i % 2 !== 0 ? 'lg:order-first' : ''}`}>
+                  <span className="font-body text-xs text-muted-foreground">
+                    {item.id}
+                  </span>
+                  <h3 className="font-display text-5xl md:text-7xl font-bold my-4 group-hover:text-primary transition-colors duration-300">
+                    {item.name}
+                  </h3>
+                  <span className="font-body text-xs uppercase tracking-widest text-muted-foreground">
+                    {item.type}
+                  </span>
+                  <span className="inline-flex items-center gap-2 mt-6 font-body text-xs uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Scopri il progetto <ArrowRight size={14} />
+                  </span>
+                </div>
+              </div>
             </Link>
           ))}
         </div>
