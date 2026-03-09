@@ -47,14 +47,14 @@ const Progetti = () => {
       {/* Hero */}
       <section className="pt-32 md:pt-48 pb-16 px-8 md:px-16 lg:px-24">
         <Reveal>
-          <span className="font-body text-[10px] uppercase tracking-[0.4em] text-primary">I Capitoli</span>
+          <span className="font-body text-[10px] uppercase tracking-[0.2em] text-primary opacity-60">I Capitoli</span>
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mt-4 leading-[0.9]">
             Progetti<br />
             <span className="text-stroke">Selezionati</span>
           </h1>
         </Reveal>
         <Reveal delay={200}>
-          <p className="font-body text-muted-foreground leading-relaxed mt-8 max-w-xl">
+          <p className="font-body text-muted-foreground leading-relaxed mt-8 max-w-xl opacity-80">
             Ogni progetto è un capitolo: una sfida tecnica affrontata con visione 
             di prodotto e cura per i dettagli. Ecco i lavori che raccontano meglio 
             il mio approccio.
@@ -68,11 +68,20 @@ const Progetti = () => {
           {projects.map((project, i) => (
             <article 
               key={project.title} 
-              className={`${i % 2 === 0 ? "bg-background" : "bg-foreground text-background"} py-32 md:py-48`}
+              className={`${i % 2 === 0 ? "bg-background" : "bg-foreground text-background"} py-32 md:py-48 relative overflow-hidden`}
             >
-              <div className="px-8 md:px-16 lg:px-24">
+              <div className="px-8 md:px-16 lg:px-24 relative">
+                {/* Giant serial number background */}
+                <div className="absolute -left-12 top-1/2 -translate-y-1/2 z-0 pointer-events-none">
+                  <span className={`font-display text-[18rem] md:text-[24rem] lg:text-[28rem] font-bold leading-none ${
+                    i % 2 === 0 ? "text-foreground opacity-[0.02]" : "text-background opacity-[0.03]"
+                  }`}>
+                    {project.num}
+                  </span>
+                </div>
+
                 <Reveal>
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 relative z-10">
                     {/* Left: Identity */}
                     <div className="lg:col-span-4">
                       <span className={`font-display text-[10rem] md:text-[14rem] font-bold leading-none ${
@@ -81,14 +90,14 @@ const Progetti = () => {
                         {project.num}
                       </span>
                       <h2 className="font-display text-4xl md:text-6xl font-bold -mt-8">{project.title}</h2>
-                      <p className={`font-body text-sm mt-4 ${
+                      <p className={`font-body text-[10px] uppercase tracking-[0.2em] mt-4 opacity-60 ${
                         i % 2 === 0 ? "text-primary" : "text-primary"
                       }`}>
                         {project.tagline}
                       </p>
-                      <p className={`font-body text-xs uppercase tracking-[0.2em] mt-4 ${
+                      <p className={`font-body text-[10px] uppercase tracking-[0.2em] mt-4 ${
                         i % 2 === 0 ? "text-muted-foreground" : "text-muted-foreground"
-                      }`}>
+                      } opacity-60`}>
                         {project.year}
                       </p>
                       
