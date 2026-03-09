@@ -133,4 +133,35 @@
     transform: scaleX(1);
     transform-origin: left;
   }
+
+  /* Subtle gradient overlay for depth */
+  .gradient-overlay {
+    background: linear-gradient(135deg, 
+      hsla(var(--primary), 0.03) 0%, 
+      transparent 50%, 
+      hsla(var(--foreground), 0.02) 100%);
+  }
+
+  /* Elevated shadow system */
+  .shadow-editorial {
+    box-shadow: 
+      0 1px 3px hsla(var(--foreground), 0.05),
+      0 4px 16px hsla(var(--foreground), 0.08);
+  }
+
+  .shadow-editorial-lg {
+    box-shadow: 
+      0 2px 8px hsla(var(--foreground), 0.06),
+      0 12px 40px hsla(var(--foreground), 0.12);
+  }
+
+  /* Image hover effects */
+  .img-editorial {
+    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .img-editorial:hover {
+    transform: scale(1.05);
+    filter: grayscale(0) brightness(1.05);
+  }
 }
