@@ -87,6 +87,10 @@
     font-family: 'Hind Siliguri', sans-serif;
   }
 
+  .font-typewriter {
+    font-family: 'Courier Prime', monospace;
+  }
+
   .text-stroke {
     -webkit-text-stroke: 1px hsl(var(--foreground));
     color: transparent;

@@ -3,33 +3,82 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import Percorso from "./pages/Percorso";
-import Progetti from "./pages/Progetti";
-import Contatti from "./pages/Contatti";
-import Blog from "./pages/Blog";
-import FAQ from "./pages/FAQ";
+import { AnimatePresence } from "framer-motion";
+import EditorialIndex from "./pages/editorial/Index";
+import EditorialPercorso from "./pages/editorial/Percorso";
+import EditorialProgetti from "./pages/editorial/Progetti";
+import EditorialContatti from "./pages/editorial/Contatti";
+import EditorialBlog from "./pages/editorial/Blog";
+import EditorialFAQ from "./pages/editorial/FAQ";
+import { EditorialProjectDetail } from "./pages/editorial/ProjectDetail";
+
+import NebulaIndex from "./pages/nebula/Index";
+import NebulaProgetti from "./pages/nebula/Progetti";
+import { NebulaProjectDetail } from "./pages/nebula/ProjectDetail";
+
 import NotFound from "./pages/NotFound";
+
+import { DesignProvider, useDesign } from "./context/DesignContext";
+import { DesignSwitcher } from "./components/DesignSwitcher";
+import { Preloader } from "./components/Preloader";
+import { CustomCursor } from "./components/CustomCursor";
+import { useState, useEffect } from "react";
 
 const queryClient = new QueryClient();
 
+const AppContent = () => {
+  const { design } = useDesign();
+  const [isLoading, setIsLoading] = useState(true);
+  const isEditorial = design === 'editorial';
+
+  useEffect(() => {
+    if (isLoading) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isLoading]);
+
+  return (
+    <BrowserRouter>
+      <CustomCursor />
+      <AnimatePresence>
+        {isLoading && (
+          <Preloader onComplete={() => setIsLoading(false)} />
+        )}
+      </AnimatePresence>
+      
+      <Routes>
+        {/* DESIGN SWITCHER LOGIC - All paths respond to theme */}
+        <Route path="/" element={isEditorial ? <EditorialIndex /> : <NebulaIndex />} />
+        <Route path="/progetti" element={isEditorial ? <EditorialProgetti /> : <NebulaProgetti />} />
+        <Route path="/progetti/:id" element={isEditorial ? <EditorialProjectDetail /> : <NebulaProjectDetail />} />
+        
+        {/* Shared or placeholder paths - You can create glass versions for these too! */}
+        <Route path="/percorso" element={isEditorial ? <EditorialPercorso /> : <EditorialPercorso />} />
+        <Route path="/contatti" element={isEditorial ? <EditorialContatti /> : <EditorialContatti />} />
+        <Route path="/blog" element={isEditorial ? <EditorialBlog /> : <EditorialBlog />} />
+        <Route path="/faq" element={isEditorial ? <EditorialFAQ /> : <EditorialFAQ />} />
+        
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <DesignSwitcher />
+    </BrowserRouter>
+  );
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Toaster as={Sonner} />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/percorso" element={<Percorso />} />
-          <Route path="/progetti" element={<Progetti />} />
-          <Route path="/contatti" element={<Contatti />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <DesignProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <AppContent />
+      </TooltipProvider>
+    </DesignProvider>
   </QueryClientProvider>
 );
 

@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
-  { label: "Chi sono", path: "/percorso" },
-  { label: "Servizi", path: "/blog" }, // Temporaneamente al blog in mancanza di una pagina dedicata
-  { label: "Progetti", path: "/progetti" },
-  { label: "Contatti", path: "/contatti" },
+  { label: "HOME", path: "/" },
+  { label: "PERCORSO", path: "/percorso" },
+  { label: "PROGETTI", path: "/progetti" },
 ];
 
 export const Navigation = () => {
@@ -17,7 +16,7 @@ export const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -25,100 +24,113 @@ export const Navigation = () => {
 
   useEffect(() => {
     setIsOpen(false);
-    // Scroll to top on route change
-    window.scrollTo(0, 0);
   }, [location]);
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled 
-          ? "py-3 bg-background/80 backdrop-blur-2xl border-b border-white/5 shadow-sm" 
-          : "py-6 bg-transparent"
-      }`}
-    >
-      <div className="w-full px-8 md:px-16 lg:px-24 flex items-center justify-between">
-        {/* Logo (Left) */}
-        <Link to="/" className="relative z-50 flex items-center group">
-          <img 
-            src="/logo.png" 
-            alt="Ilaria Diliberto Logo" 
-            className="h-8 md:h-10 lg:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-          />
-        </Link>
-
-        {/* Desktop Menu + CTA (Right) */}
-        <div className="hidden md:flex items-center gap-10">
-          <nav className="flex items-center gap-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`relative font-body text-[13px] uppercase tracking-[0.2em] transition-all duration-300 group ${
-                  location.pathname === item.path 
-                    ? "text-primary" 
-                    : "text-foreground/70 hover:text-foreground"
-                }`}
-              >
-                {item.label}
-                <span className={`absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full ${
-                  location.pathname === item.path ? "w-full" : "w-0"
-                }`} />
-              </Link>
-            ))}
-          </nav>
-
-          <Button 
-            asChild
-            variant="default" 
-            className="rounded-none px-8 py-6 font-body text-[10px] uppercase tracking-[0.2em] h-auto bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300 group"
-          >
-            <Link to="/contatti" className="flex items-center gap-2">
-              Scrivimi
-            </Link>
-          </Button>
-        </div>
-
-        {/* Mobile Toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden relative z-50 p-2 text-foreground transition-transform duration-300 active:scale-90"
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={24} className="animate-in fade-in zoom-in duration-300" /> : <Menu size={24} className="animate-in fade-in zoom-in duration-300" />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        className={`fixed inset-0 z-40 bg-background/95 backdrop-blur-2xl transition-all duration-500 ease-in-out md:hidden flex flex-col items-center justify-center ${
-          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none translate-y-4"
+    <>
+      <header 
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
+          scrolled ? "py-3" : "py-5"
         }`}
       >
-        <div className="flex flex-col items-center gap-12 text-center w-full px-12">
-          {navItems.map((item, i) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={`font-display text-4xl font-bold tracking-tighter transition-all duration-300 ${
-                location.pathname === item.path 
-                  ? "text-primary scale-110" 
-                  : "text-foreground hover:text-primary"
-              }`}
-              style={{ transitionDelay: `${i * 50}ms` }}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <Button 
-            asChild
-            size="lg"
-            className="rounded-none w-full max-w-xs mt-8 font-body text-[11px] uppercase tracking-[0.2em] py-8"
+        <motion.div 
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className={`mx-auto px-6 py-3 flex items-center justify-between transition-all duration-500 ${
+            scrolled 
+              ? "max-w-[1200px] bg-[#f5f2ed]/80 backdrop-blur-xl border border-primary/5 shadow-2xl rounded-full" 
+              : "max-w-full px-8 md:px-16 lg:px-24"
+          }`}
+        >
+          <Link 
+            to="/" 
+            className="hover:opacity-80 transition-opacity"
           >
-            <Link to="/contatti">Scrivimi</Link>
-          </Button>
-        </div>
-      </div>
-    </header>
+            <img 
+              src="/logo.png" 
+              alt="Ilaria Diliberto" 
+              className="h-7 md:h-9 w-auto"
+            />
+          </Link>
+
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-10">
+            <nav className="flex items-center gap-8">
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`relative font-body text-[9px] uppercase tracking-[0.4em] transition-all duration-300 group ${
+                    location.pathname === item.path 
+                      ? "text-primary" 
+                      : "text-foreground/60 hover:text-primary"
+                  }`}
+                >
+                  {item.label}
+                  <motion.span 
+                    className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary"
+                    animate={{ width: location.pathname === item.path ? "100%" : "0%" }}
+                    whileHover={{ width: "100%" }}
+                  />
+                </Link>
+              ))}
+            </nav>
+
+            <Link 
+              to="/contatti"
+              className={`px-7 py-2.5 font-body text-[9px] uppercase tracking-[0.3em] transition-all duration-500 rounded-full border border-primary/20 hover:bg-primary hover:text-white ${
+                scrolled ? "bg-primary/5" : "bg-transparent"
+              }`}
+            >
+              Contatti
+            </Link>
+          </div>
+
+          {/* Mobile Toggle */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 text-primary"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </motion.div>
+      </header>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: "-100%" }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-40 bg-[#f5f2ed] flex flex-col items-center justify-center"
+          >
+            <div className="flex flex-col items-center gap-10 text-center">
+              {navItems.map((item, i) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`font-display text-4xl font-bold tracking-tighter ${
+                    location.pathname === item.path 
+                      ? "text-primary" 
+                      : "text-[#3d0f1a]"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <Link 
+                to="/contatti"
+                className="mt-6 px-10 py-4 bg-primary text-white font-body text-[11px] uppercase tracking-[0.3em] rounded-full"
+              >
+                CONTATTI
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
