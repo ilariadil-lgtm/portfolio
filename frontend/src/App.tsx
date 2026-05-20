@@ -5,11 +5,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import EditorialIndex from "./pages/editorial/Index";
-import EditorialPercorso from "./pages/editorial/Percorso";
+import EditorialChisono from "./pages/editorial/Chisono";
 import EditorialProgetti from "./pages/editorial/Progetti";
 import EditorialContatti from "./pages/editorial/Contatti";
 import EditorialBlog from "./pages/editorial/Blog";
 import EditorialFAQ from "./pages/editorial/FAQ";
+import EditorialServizi from "./pages/editorial/Servizi";
 import { EditorialProjectDetail } from "./pages/editorial/ProjectDetail";
 
 import NebulaIndex from "./pages/nebula/Index";
@@ -58,7 +59,8 @@ const AppContent = () => {
         <Route path="/progetti/:id" element={isEditorial ? <EditorialProjectDetail /> : <NebulaProjectDetail />} />
         
         {/* Shared or placeholder paths - You can create glass versions for these too! */}
-        <Route path="/percorso" element={isEditorial ? <EditorialPercorso /> : <EditorialPercorso />} />
+        <Route path="/chisono" element={isEditorial ? <EditorialChisono /> : <EditorialChisono />} />
+        <Route path="/servizi" element={isEditorial ? <EditorialServizi /> : <EditorialServizi />} />
         <Route path="/contatti" element={isEditorial ? <EditorialContatti /> : <EditorialContatti />} />
         <Route path="/blog" element={isEditorial ? <EditorialBlog /> : <EditorialBlog />} />
         <Route path="/faq" element={isEditorial ? <EditorialFAQ /> : <EditorialFAQ />} />

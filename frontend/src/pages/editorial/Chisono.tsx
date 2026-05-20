@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import { ArrowRight, Box, Cpu, Globe, Layers } from "lucide-react";
 
-const Percorso = () => {
+const Chisono = () => {
   const [about, setAbout] = useState<any>(null);
   const [services, setServices] = useState<any[]>([]);
 
@@ -28,29 +28,29 @@ const Percorso = () => {
   const evolution = [
     {
       num: "01",
-      period: "2014 — 2018",
-      title: "Belle Arti",
+      period: "2013 — 2020",
+      title: "Accademia di Belle Arti",
       subtitle: "ESTETICA_FONDAMENTI",
-      description: "Formazione classica in composizione visiva e teoria del colore. L'occhio estetico che ancora guida ogni decisione progettuale. Quattro anni tra schizzi, tipografia e storia dell'arte.",
-      tech: ["Composizione", "Tipografia", "Teoria Colore"],
+      description: "Formazione classica in Graphic Design e Comunicazione visiva. L'occhio estetico che ancora oggi guida ogni decisione progettuale. Sette anni tra percezione visiva, branding avanzato e visual storytelling.",
+      tech: ["Composizione visiva", "Typography & Branding", "Teoria Colore"],
       icon: <Layers size={22} />
     },
     {
       num: "02",
-      period: "2019 — 2021",
-      title: "UX Engineering",
-      subtitle: "LOGICA_SISTEMICA",
+      period: "2021 — 2025",
+      title: "Web & UI Development",
+      subtitle: "Dalla grafica al codice",
       description: "Il passaggio dalla superficie all'architettura: React, design systems, accessibilità. Interfacce che funzionano, non solo belle. Il codice diventa materiale creativo.",
-      tech: ["React", "TypeScript", "Design Systems"],
+      tech: ["UI/UX DESIGN", "Sviluppo Front-end", "CMS WORDPRESS & prestashop"],
       icon: <Cpu size={22} />
     },
     {
       num: "03",
-      period: "2022 — oggi",
-      title: "Cloud Architecture",
-      subtitle: "SCALABILITÀ_PRODOTTO",
-      description: "Infrastrutture scalabili, serverless, CI/CD. Dalla concezione al mercato, unendo visione strategica e padronanza tecnica. Guida di prodotti digitali end-to-end.",
-      tech: ["AWS", "Serverless", "DevOps"],
+      period: "2025 — oggi",
+      title: "Strategia & Prodotto Digitale",
+      subtitle: "Dall'idea al rilascio",
+      description: "L'evoluzione verso un profilo ibrido che fonde design, codice e visione d'insieme. Coordino l'intero ciclo di vita del progetto, trasformando le tue necessità aziendali in ecosistemi web completi, fluidi e pronti per il mercato.",
+      tech: ["PRODUCT MANAGEMEN", "SVILUPPO FULL-STACK", "AI WORKFLOWS"],
       icon: <Globe size={22} />
     }
   ];
@@ -65,7 +65,7 @@ const Percorso = () => {
       <section className="pt-32 md:pt-44 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden">
         {/* Background Monumental Text */}
         <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center opacity-[0.02] pointer-events-none">
-          <span className="font-display text-[22vw] font-black uppercase tracking-tighter">ABOUT</span>
+          <span className="font-display text-[22vw] font-black uppercase tracking-tighter">PERCORSO</span>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -112,7 +112,7 @@ const Percorso = () => {
                     { label: "Ruolo", val: "Tech Product Manager & Full-stack Developer" },
                     { label: "Specializzazione", val: "Sviluppo Web, E-commerce, UI/UX" },
                     { label: "Sede", val: "Italia // Remote" },
-                    { label: "Codice_Stato", val: "Esperienza: +6 Anni nel settore digitale", highlight: true }
+                    { label: "Esperienza", val: " +6 Anni nel settore digitale", highlight: true }
                   ].map((item, idx) => (
                     <div key={idx} className="flex justify-between items-center px-6 py-4">
                       <span className="font-typewriter text-[11px] uppercase tracking-widest text-[#3d0f1a]/60 font-medium">{item.label}</span>
@@ -157,12 +157,12 @@ const Percorso = () => {
                   {/* Top Ledger Telemetry */}
                   <div className="flex justify-between items-start border-b border-primary/15 pb-4 relative z-10">
                     <div className="flex flex-col">
-                      <span className="font-typewriter text-[9px] uppercase tracking-[0.25em] text-primary font-medium">Core_Principles</span>
-                      <span className="font-typewriter text-[7px] uppercase tracking-[0.2em] text-[#3d0f1a]/50 font-medium">ID_MANIFESTO // v1.0</span>
+                      <span className="font-typewriter text-[9px] uppercase tracking-[0.25em] text-primary font-medium">Il mio metodo</span>
+                      <span className="font-typewriter text-[7px] uppercase tracking-[0.2em] text-[#3d0f1a]/50 font-medium">Visione operativa </span>
                     </div>
                     <div className="flex gap-1.5 items-center">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                      <span className="font-mono text-[8px] text-primary/80">ACTIVE</span>
+                      <span className="font-mono text-[8px] text-primary/80">ILARIA D.</span>
                     </div>
                   </div>
 
@@ -188,17 +188,17 @@ const Percorso = () => {
                   {/* Bottom Specs */}
                   <div className="border-t border-primary/15 pt-4 flex justify-between items-end relative z-10">
                     <div className="flex flex-col">
-                      <span className="font-typewriter text-[7px] uppercase tracking-[0.2em] text-[#3d0f1a]/50 font-medium">SYSTEM_ENVELOPE</span>
-                      <span className="font-mono text-[9px] text-[#3d0f1a]/70">[ SECURED_INTEGRITY ]</span>
+                      <span className="font-typewriter text-[7px] uppercase tracking-[0.2em] text-[#3d0f1a]/50 font-medium">Processo</span>
+                      <span className="font-mono text-[9px] text-[#3d0f1a]/70">[ PROGETTAZIONE SU MISURA]</span>
                     </div>
-                    <span className="font-typewriter text-[8px] text-primary font-medium">L_38.1 / R_13.3</span>
+                    <span className="font-typewriter text-[8px] text-primary font-medium">EST / 2020</span>
                   </div>
                 </div>
 
                 {/* Status indicator typewriter label */}
                 <div className="flex justify-between items-center mt-3 px-1">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.2em] text-primary/60 font-medium">[ CORE_MANIFESTO // v1.0 ]</span>
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.2em] text-primary/60 font-medium">SYS_OK</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.2em] text-primary/60 font-medium"></span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.2em] text-primary/60 font-medium"></span>
                 </div>
               </motion.div>
             </div>
@@ -218,9 +218,9 @@ const Percorso = () => {
             transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
             className="flex gap-20 font-typewriter text-[12px] uppercase tracking-[0.4em] text-primary font-medium"
           >
-            <span>ESTETICA E LOGICA // PROGETTAZIONE E SVILUPPO // STRATEGIA E TECNOLOGIA // [ SYSTEM_CORE: STABLE ] // ENV_2026 //</span>
-            <span>ESTETICA E LOGICA // PROGETTAZIONE E SVILUPPO // STRATEGIA E TECNOLOGIA // [ SYSTEM_CORE: STABLE ] // ENV_2026 //</span>
-            <span>ESTETICA E LOGICA // PROGETTAZIONE E SVILUPPO // STRATEGIA E TECNOLOGIA // [ SYSTEM_CORE: STABLE ] // ENV_2026 //</span>
+            <span>ESTETICA E LOGICA // TECH PRODUCT MANAGEMENT // VIBE CODING & AI WORKFLOWS // SVILUPPO FULL-STACK // PROGETTAZIONE UI/UX //</span>
+            <span>ESTETICA E LOGICA // TECH PRODUCT MANAGEMENT // VIBE CODING & AI WORKFLOWS // SVILUPPO FULL-STACK // PROGETTAZIONE UI/UX //</span>
+            <span>ESTETICA E LOGICA // TECH PRODUCT MANAGEMENT // VIBE CODING & AI WORKFLOWS // SVILUPPO FULL-STACK // PROGETTAZIONE UI/UX //</span>
           </motion.div>
         </div>
       </section>
@@ -296,10 +296,10 @@ const Percorso = () => {
 
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
-            <span className="font-typewriter text-[12px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">03 — SYSTEM DEPLOYMENT</span>
+            <span className="font-typewriter text-[12px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">03 — LE MIE COMPETENZE</span>
             <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tighter">
-              CORE <br />
-              <span className="text-primary italic">COMPETENZE.</span>
+              Aree
+              <span className="text-primary italic"> di sviluppo.</span>
             </h2>
           </div>
 
@@ -317,14 +317,14 @@ const Percorso = () => {
                   <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform bg-[#3d0f1a]">
                     <Box size={20} />
                   </div>
-                  <span className="font-typewriter text-[9px] text-white/30 font-medium">MODULE_0{i + 1}</span>
+                  <span className="font-typewriter text-[9px] text-white/30 font-medium">0{i + 1}</span>
                 </div>
                 <h3 className="font-display text-3xl font-bold mb-4">{tech.title}</h3>
                 <p className="font-body text-[14px] text-white/60 leading-relaxed">
                   {tech.description || "Integrazione ad alta performance di soluzioni digitali scalabili e ottimizzate."}
                 </p>
                 <div className="mt-8 pt-8 border-t border-white/5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="font-typewriter text-[9px] tracking-[0.4em] text-primary font-medium">INIT_AUDIT</span>
+                  <span className="font-typewriter text-[9px] tracking-[0.4em] text-primary font-medium">Scopri di più</span>
                   <ArrowRight size={14} className="text-primary" />
                 </div>
               </motion.div>
@@ -332,8 +332,8 @@ const Percorso = () => {
               // Styled static fallbacks matching the exact grid cards
               [
                 { title: "UI & UX Design", desc: "Creazione di interfacce web e mobile memorabili, focalizzate sull'esperienza utente e sulla coerenza visiva del brand." },
-                { title: "Sviluppo Frontend", desc: "Codice pulito, accessibile e ad alte prestazioni utilizzando React, Next.js, TailwindCSS e le tecnologie web più moderne." },
-                { title: "Tech PM & Strategia", desc: "Pianificazione strategica e gestione end-to-end dei flussi lavorativi per un rilascio fluido, chiaro e senza intoppi tecnici." }
+                { title: "Sviluppo Front-end", desc: "Codice pulito, accessibile e ad alte prestazioni utilizzando React, Next.js, TailwindCSS e le tecnologie web più moderne." },
+                { title: "Sviluppo Full-Stack", desc: "Codice pulito, architetture solide e alte prestazioni. Sviluppo interfacce dinamiche, sistemi back-end su misura in Python/Django e temi per CMS avanzati, creando ecosistemi web completi e performanti." }
               ].map((tech, i) => (
                 <motion.div
                   key={i}
@@ -347,14 +347,14 @@ const Percorso = () => {
                     <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform bg-[#3d0f1a]">
                       <Box size={20} />
                     </div>
-                    <span className="font-typewriter text-[9px] text-white/30 font-medium">MODULE_0{i + 1}</span>
+                    <span className="font-typewriter text-[9px] text-white/30 font-medium">0{i + 1}</span>
                   </div>
                   <h3 className="font-display text-3xl font-bold mb-4">{tech.title}</h3>
                   <p className="font-body text-[14px] text-white/60 leading-relaxed">
                     {tech.desc}
                   </p>
                   <div className="mt-8 pt-8 border-t border-white/5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="font-typewriter text-[9px] tracking-[0.4em] text-primary font-medium">INIT_AUDIT</span>
+                    <span className="font-typewriter text-[9px] tracking-[0.4em] text-primary font-medium">SCOPRI DI PIÙ</span>
                     <ArrowRight size={14} className="text-primary" />
                   </div>
                 </motion.div>
@@ -369,4 +369,4 @@ const Percorso = () => {
   );
 };
 
-export default Percorso;
+export default Chisono;

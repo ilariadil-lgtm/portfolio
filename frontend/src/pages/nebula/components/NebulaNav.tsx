@@ -17,7 +17,7 @@ export const NebulaNav = () => {
 
   const links = [
     { name: "Orbit", path: "/progetti", icon: <Rocket size={16} /> },
-    { name: "Logbook", path: "/percorso", icon: <Terminal size={16} /> },
+    { name: "Logbook", path: "/chisono", icon: <Terminal size={16} /> },
     { name: "Archive", path: "/blog", icon: <Layers size={16} /> },
     { name: "Signal", path: "/contatti", icon: <ExternalLink size={16} /> }
   ];

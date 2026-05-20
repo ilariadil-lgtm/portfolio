@@ -3,8 +3,8 @@ import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, anima
 import { Link } from "react-router-dom";
 
 interface NavPointProps {
-  left: string;
-  top: string;
+  angle: number;
+  radiusSpring: MotionValue<number>;
   label: string;
   detail: string;
   to: string;
@@ -13,28 +13,35 @@ interface NavPointProps {
   onHover: (index: number | null) => void;
 }
 
-const NavPoint: React.FC<NavPointProps> = ({ left, top, label, detail, to, index, counterRotation, onHover }) => {
+const NavPoint: React.FC<NavPointProps> = ({ angle, radiusSpring, label, detail, to, index, counterRotation, onHover }) => {
   const [isLocalHover, setIsLocalHover] = useState(false);
   const [coords, setCoords] = useState({ x: "0.00", y: "0.00" });
 
   useEffect(() => {
     if (isLocalHover) {
-      const interval = setInterval(() => {
-        setCoords({
-          x: (Math.random() * 100).toFixed(2),
-          y: (Math.random() * 100).toFixed(2)
-        });
-      }, 50);
-      return () => clearInterval(interval);
+      setCoords({
+        x: (Math.random() * 100).toFixed(2),
+        y: (Math.random() * 100).toFixed(2)
+      });
     }
   }, [isLocalHover]);
+
+  const xTransform = useTransform(radiusSpring, (r) => {
+    const angleRad = angle * (Math.PI / 180);
+    return 50 + (r / 2) * Math.cos(angleRad);
+  });
+  const yTransform = useTransform(radiusSpring, (r) => {
+    const angleRad = angle * (Math.PI / 180);
+    return 50 + (r / 2) * Math.sin(angleRad);
+  });
+
+  const left = useTransform(xTransform, (x) => `${x}%`);
+  const top = useTransform(yTransform, (y) => `${y}%`);
 
   return (
     <motion.div
       className="absolute z-30 pointer-events-auto cursor-none interactive"
-      animate={{ left, top }}
-      transition={{ type: "spring", stiffness: 80, damping: 20, mass: 1 }}
-      style={{ x: "-50%", y: "-50%" }}
+      style={{ left, top, x: "-50%", y: "-50%" }}
       onMouseEnter={() => {
         setIsLocalHover(true);
         onHover(index);
@@ -55,9 +62,9 @@ const NavPoint: React.FC<NavPointProps> = ({ left, top, label, detail, to, index
                 className="absolute -top-12 -left-12 font-typewriter text-[7px] text-primary/40 pointer-events-none"
               >
                 <div className="flex flex-col gap-1">
-                  <span>LOC_X: {coords.x}</span>
-                  <span>LOC_Y: {coords.y}</span>
-                  <span>SYNC: ACTIVE</span>
+                  <span> {coords.x}</span>
+                  <span> {coords.y}</span>
+                  <span></span>
                 </div>
               </motion.div>
             )}
@@ -83,7 +90,7 @@ const NavPoint: React.FC<NavPointProps> = ({ left, top, label, detail, to, index
               >
                 <div className="flex items-center gap-4 mb-3">
                   <span className="w-8 h-[1px] bg-primary/30" />
-                  <span className="block font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary opacity-60">
+                  <span className="block font-typewriter text-[12px] uppercase tracking-[0.5em] text-primary font-medium">
                     {label}
                   </span>
                 </div>
@@ -91,7 +98,7 @@ const NavPoint: React.FC<NavPointProps> = ({ left, top, label, detail, to, index
                   {detail}
                 </span>
                 <div className="mt-4 flex items-center justify-between opacity-30">
-                  <span className="font-typewriter text-[7px]">v2.4 // PRO</span>
+                  <span className="font-typewriter text-[7px]"></span>
                   <span className="font-typewriter text-[7px]">0{index + 1}</span>
                 </div>
               </motion.div>
@@ -105,6 +112,7 @@ const NavPoint: React.FC<NavPointProps> = ({ left, top, label, detail, to, index
 
 export const CreativeHero: React.FC = () => {
   const [hoveredPoint, setHoveredPoint] = useState<number | null>(null);
+  const [isGraphicHovered, setIsGraphicHovered] = useState(false);
   const rotationValue = useMotionValue(0);
   const counterRotation = useTransform(rotationValue, (v) => -v);
 
@@ -121,16 +129,16 @@ export const CreativeHero: React.FC = () => {
   const y2 = useTransform(scrollY, [0, 500], [0, -80]);
   const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
-  // SMOOTH POLYGON ANIMATION
-  const radius1 = useSpring(hoveredPoint === 0 ? 115 : 85, { stiffness: 80, damping: 20 });
-  const radius2 = useSpring(hoveredPoint === 1 ? 115 : 85, { stiffness: 80, damping: 20 });
-  const radius3 = useSpring(hoveredPoint === 2 ? 115 : 85, { stiffness: 80, damping: 20 });
+  // SMOOTH POLYGON ANIMATION (Static radius on hover to prevent chase behavior)
+  const radius1 = useSpring(85, { stiffness: 80, damping: 20 });
+  const radius2 = useSpring(85, { stiffness: 80, damping: 20 });
+  const radius3 = useSpring(85, { stiffness: 80, damping: 20 });
 
   useEffect(() => {
-    radius1.set(hoveredPoint === 0 ? 115 : 85);
-    radius2.set(hoveredPoint === 1 ? 115 : 85);
-    radius3.set(hoveredPoint === 2 ? 115 : 85);
-  }, [hoveredPoint, radius1, radius2, radius3]);
+    radius1.set(85);
+    radius2.set(85);
+    radius3.set(85);
+  }, [radius1, radius2, radius3]);
 
   const rotationControls = useRef<any>(null);
 
@@ -141,7 +149,7 @@ export const CreativeHero: React.FC = () => {
     };
     window.addEventListener("mousemove", handleMouseMove);
 
-    if (hoveredPoint === null) {
+    if (hoveredPoint === null && !isGraphicHovered) {
       rotationControls.current = animate(rotationValue, rotationValue.get() + 360, {
         duration: 100,
         ease: "linear",
@@ -155,7 +163,7 @@ export const CreativeHero: React.FC = () => {
       window.removeEventListener("mousemove", handleMouseMove);
       if (rotationControls.current) rotationControls.current.stop();
     };
-  }, [hoveredPoint, rotationValue]);
+  }, [hoveredPoint, isGraphicHovered, rotationValue]);
 
   // Points calculation for the polygon
   const [points, setPoints] = useState("100,15 173.6,142.5 26.4,142.5");
@@ -184,14 +192,7 @@ export const CreativeHero: React.FC = () => {
     };
   }, [radius1, radius2, radius3]);
 
-  const getNavPointStyle = (index: number) => {
-    const v = [-90, 30, 150];
-    const r = [radius1.get() / 2, radius2.get() / 2, radius3.get() / 2];
-    const angleRad = v[index] * (Math.PI / 180);
-    const x = 50 + r[index] * Math.cos(angleRad);
-    const y = 50 + r[index] * Math.sin(angleRad);
-    return { left: `${x}%`, top: `${y}%` };
-  };
+
 
   return (
     <section className="relative min-h-[100vh] flex items-center px-6 md:px-12 lg:px-20 overflow-hidden bg-[#f5f2ed]">
@@ -222,9 +223,9 @@ export const CreativeHero: React.FC = () => {
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary block"
+                className="font-typewriter text-[14px] uppercase text-primary font-medium tracking-[0.3em] block"
               >
-                Visione // Esecuzione
+                BRANDING • WEB DESIGN • SVILUPPO
               </motion.span>
             </div>
 
@@ -257,10 +258,14 @@ export const CreativeHero: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 1 }}
-              className="mt-8 lg:mt-12 max-w-sm"
+              className="mt-8 lg:mt-12 max-w-[34rem]"
             >
-              <p className="font-body text-sm md:text-base text-[#3d0f1a]/60 leading-relaxed border-l-2 border-primary/10 pl-6 lg:pl-8 py-2 italic">
-                "Allineo design, sviluppo e obiettivi di business. Guido la creazione di prodotti digitali complessi, trasformando la visione creativa in una roadmap concreta e scalabile."
+              <p className="font-body text-sm md:text-base text-[#3d0f1a]/60 leading-relaxed border-l-2 border-primary/10 pl-6 lg:pl-8 py-2">
+                "Do forma alla tua identità visiva e la trasformo in un ecosistema digitale completo.
+                Le mie radici nel graphic design mi permettono di curare ogni dettaglio del tuo brand
+                - dal logo ai materiali editoriali -, ma non mi fermo all'estetica:
+                gestisco il progetto a 360 gradi, arrivando fino allo sviluppo pratico e
+                intuitivo di siti web, e-commerce e web app."
               </p>
             </motion.div>
           </motion.div>
@@ -269,6 +274,8 @@ export const CreativeHero: React.FC = () => {
         <div className="lg:col-span-7 relative flex justify-center items-center h-[500px] lg:h-[700px] perspective-1000">
           <motion.div
             className="relative aspect-square w-full max-w-[580px]"
+            onMouseEnter={() => setIsGraphicHovered(true)}
+            onMouseLeave={() => setIsGraphicHovered(false)}
             style={{
               y: y2,
               opacity,
@@ -281,7 +288,7 @@ export const CreativeHero: React.FC = () => {
               className="absolute inset-0 w-full h-full"
               style={{ rotate: rotationValue, transformStyle: "preserve-3d" }}
             >
-              <svg viewBox="0 0 200 200" className="absolute inset-0 w-full h-full overflow-visible translate-z-[-20px]">
+              <svg viewBox="0 0 200 200" className="absolute inset-0 w-full h-full overflow-visible">
                 <circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" strokeWidth="0.1" strokeDasharray="3 3" className="text-primary/20" />
                 <line x1="100" y1="5" x2="100" y2="195" stroke="currentColor" strokeWidth="0.05" className="text-primary/10" />
                 <line x1="5" y1="100" x2="195" y2="100" stroke="currentColor" strokeWidth="0.05" className="text-primary/10" />
@@ -306,19 +313,20 @@ export const CreativeHero: React.FC = () => {
                 <defs>
                   <path id="textCircle" d="M 100, 100 m -78, 0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0" />
                 </defs>
-                <text className="font-typewriter text-[3.5px] uppercase tracking-[0.8em] fill-primary/20">
-                  <textPath xlinkHref="#textCircle">PROGETTAZIONE • SVILUPPO • ORCHESTRAZIONE</textPath>
+                <text className="font-typewriter text-[4px] uppercase tracking-[0.8em] fill-primary/20">
+                  <textPath xlinkHref="#textCircle">BRANDING • SVILUPPO • GESTIONE</textPath>
                 </text>
               </svg>
 
               {[0, 1, 2].map((i) => {
-                const style = getNavPointStyle(i);
-                const labels = ["01 — Portfolio", "02 — Percorso", "03 — Contatti"];
-                const details = ["Selected Missions", "Vision & Strategy", "Join the Network"];
+                const angles = [-90, 30, 150];
+                const springs = [radius1, radius2, radius3];
+                const labels = ["01 — Identità visiva", "02 — Sviluppo", "03 — Gestione"];
+                const details = ["Scopri il design", "Esplora i servizi web", "Scopri come lavoro"];
                 return (
                   <NavPoint
                     key={i}
-                    left={style.left} top={style.top}
+                    angle={angles[i]} radiusSpring={springs[i]}
                     label={labels[i]} detail={details[i]} to="/progetti" index={i}
                     counterRotation={counterRotation}
                     onHover={setHoveredPoint}
@@ -341,10 +349,10 @@ export const CreativeHero: React.FC = () => {
       </div>
 
       <motion.div
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-20"
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
         style={{ opacity }}
       >
-        <span className="font-typewriter text-[8px] uppercase tracking-[0.5em]">VAI GIÙ</span>
+        <span className="font-typewriter text-[12px] uppercase tracking-[0.5em] text-primary font-medium">Esplora</span>
         <div className="w-[1px] h-16 bg-primary/20 relative overflow-hidden">
           <motion.div
             className="absolute top-0 left-0 w-full h-1/2 bg-primary/60"

@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
   { label: "HOME", path: "/" },
-  { label: "PERCORSO", path: "/percorso" },
+  { label: "CHI SONO", path: "/chisono" },
+  { label: "SERVIZI", path: "/servizi" },
   { label: "PROGETTI", path: "/progetti" },
 ];
 
@@ -82,7 +83,7 @@ export const Navigation = () => {
                 scrolled ? "bg-primary/5" : "bg-transparent"
               }`}
             >
-              Contatti
+              Parliamo
             </Link>
           </div>
 
@@ -125,7 +126,7 @@ export const Navigation = () => {
                 to="/contatti"
                 className="mt-6 px-10 py-4 bg-primary text-white font-body text-[11px] uppercase tracking-[0.3em] rounded-full"
               >
-                CONTATTI
+                PARLIAMO
               </Link>
             </div>
           </motion.div>

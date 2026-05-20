@@ -113,7 +113,7 @@ export const EditorialProjectDetail = () => {
                  <div className="space-y-6 relative z-10">
                     <div className="flex flex-col gap-1">
                        <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] opacity-40">System_Status</span>
-                       <span className="font-typewriter text-[10px] text-green-600 font-bold tracking-widest uppercase">Live_Deployment</span>
+                       <span className="font-typewriter text-[10px] text-green-600 font-medium tracking-widest uppercase">Live_Deployment</span>
                     </div>
                     <div className="flex flex-col gap-1">
                        <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] opacity-40">Release_Date</span>
