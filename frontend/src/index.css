@@ -47,6 +47,13 @@
     scroll-behavior: smooth;
   }
 
+  /* Accessibility: Keyboard focus state */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 4px;
+  }
+
+
   body {
     @apply bg-background text-foreground;
     font-family: 'Hind Siliguri', sans-serif;
@@ -85,6 +92,10 @@
 
   .font-body {
     font-family: 'Hind Siliguri', sans-serif;
+  }
+
+  .font-typewriter {
+    font-family: 'Courier Prime', monospace;
   }
 
   .text-stroke {
