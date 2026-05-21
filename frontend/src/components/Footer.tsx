@@ -97,17 +97,17 @@ export const Footer = () => {
 
           <div className="mt-12 p-8 bg-white/40 border border-primary/20 backdrop-blur-sm">
             <span className="font-typewriter text-[12px] uppercase tracking-[0.4em] text-primary font-medium block mb-2">Lavoriamo insieme?</span>
-            <p className="font-body text-[14px] text-primary mb-5 leading-relaxed">Lascia la tua mail e ti ricontatterò per fissare una chiacchierata.</p>
-            <div className="flex gap-2">
-              <input
-                type="email"
-                placeholder="inserisci la tua e-mail.."
-                className="bg-transparent border-b border-primary/30 font-typewriter text-[13px] text-primary py-2 flex-1 focus:outline-none focus:border-primary transition-colors placeholder:text-primary/60"
-              />
-              <button className="text-primary hover:scale-110 transition-transform">
-                <ArrowUpRight size={22} />
-              </button>
-            </div>
+            <p className="font-body text-[14px] text-primary mb-5 leading-relaxed">Hai un progetto in mente? Scrivimi, rispondo entro 24 ore.</p>
+            <Link
+              to="/contatti"
+              className="group inline-flex items-center gap-3 font-typewriter text-[11px] uppercase tracking-[0.35em] text-primary font-semibold"
+            >
+              <span className="relative overflow-hidden">
+                Contattami
+                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-primary transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-400" />
+              </span>
+              <ArrowUpRight size={15} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </Link>
           </div>
         </div>
       </div>

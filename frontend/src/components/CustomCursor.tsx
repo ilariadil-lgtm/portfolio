@@ -78,20 +78,7 @@ export const CustomCursor = () => {
         )}
       </AnimatePresence>
 
-      {/* Data strings */}
-      <motion.div
-        className="absolute font-typewriter text-[6px] text-primary/40 whitespace-nowrap"
-        style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
-          translateX: "20px",
-          translateY: "20px",
-        }}
-      >
-        <motion.span animate={{ opacity: [0.2, 0.5, 0.2] }} transition={{ duration: 2, repeat: Infinity }}>
-          X: {Math.round(cursorX.get())} / Y: {Math.round(cursorY.get())}
-        </motion.span>
-      </motion.div>
+
     </div>
   );
 };

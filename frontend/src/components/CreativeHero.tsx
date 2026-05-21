@@ -15,16 +15,8 @@ interface NavPointProps {
 
 const NavPoint: React.FC<NavPointProps> = ({ angle, radiusSpring, label, detail, to, index, counterRotation, onHover }) => {
   const [isLocalHover, setIsLocalHover] = useState(false);
-  const [coords, setCoords] = useState({ x: "0.00", y: "0.00" });
 
-  useEffect(() => {
-    if (isLocalHover) {
-      setCoords({
-        x: (Math.random() * 100).toFixed(2),
-        y: (Math.random() * 100).toFixed(2)
-      });
-    }
-  }, [isLocalHover]);
+
 
   const xTransform = useTransform(radiusSpring, (r) => {
     const angleRad = angle * (Math.PI / 180);
@@ -53,23 +45,6 @@ const NavPoint: React.FC<NavPointProps> = ({ angle, radiusSpring, label, detail,
     >
       <Link to={to}>
         <div className="relative flex items-center justify-center w-24 h-24 group">
-          <AnimatePresence>
-            {isLocalHover && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                className="absolute -top-12 -left-12 font-typewriter text-[7px] text-primary/40 pointer-events-none"
-              >
-                <div className="flex flex-col gap-1">
-                  <span> {coords.x}</span>
-                  <span> {coords.y}</span>
-                  <span></span>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
           <motion.div
             className="w-3 h-3 rounded-full bg-[#C0392B]"
             animate={{
@@ -97,10 +72,6 @@ const NavPoint: React.FC<NavPointProps> = ({ angle, radiusSpring, label, detail,
                 <span className="block font-display text-lg font-bold text-[#3d0f1a] tracking-tight">
                   {detail}
                 </span>
-                <div className="mt-4 flex items-center justify-between opacity-30">
-                  <span className="font-typewriter text-[7px]"></span>
-                  <span className="font-typewriter text-[7px]">0{index + 1}</span>
-                </div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -109,6 +80,7 @@ const NavPoint: React.FC<NavPointProps> = ({ angle, radiusSpring, label, detail,
     </motion.div>
   );
 };
+
 
 export const CreativeHero: React.FC = () => {
   const [hoveredPoint, setHoveredPoint] = useState<number | null>(null);
@@ -196,23 +168,9 @@ export const CreativeHero: React.FC = () => {
 
   return (
     <section className="relative min-h-[100vh] flex items-center px-6 md:px-12 lg:px-20 overflow-hidden bg-[#f5f2ed]">
-      {/* BACKGROUND INFRASTRUCTURE — CINEMATIC HUD */}
+      {/* BACKGROUND INFRASTRUCTURE */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#3d0f1a 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
-        <motion.div
-          animate={{ y: ["0%", "100%", "0%"] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 w-full h-[200px] bg-gradient-to-b from-primary/5 to-transparent opacity-20"
-        />
-        <motion.div
-          style={{ x: springX, y: springY, translateX: "-50%", translateY: "-50%" }}
-          className="absolute z-50 w-24 h-24 hidden lg:block"
-        >
-          <div className="absolute inset-0 border border-primary/10 rounded-full scale-50" />
-          <div className="absolute top-1/2 left-0 w-full h-[1px] bg-primary/5" />
-          <div className="absolute left-1/2 top-0 w-[1px] h-full bg-primary/5" />
-          <div className="absolute -top-6 left-1/2 -translate-x-1/2 font-typewriter text-[6px] tracking-widest text-primary/40 uppercase">Target_Lock</div>
-        </motion.div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-8 lg:gap-12 items-center relative z-10 max-w-screen-2xl mx-auto">
@@ -271,9 +229,10 @@ export const CreativeHero: React.FC = () => {
           </motion.div>
         </div>
 
-        <div className="lg:col-span-7 relative flex justify-center items-center h-[500px] lg:h-[700px] perspective-1000">
+        {/* ── SVG Graphic column ── */}
+        <div className="lg:col-span-7 relative flex justify-center items-center h-[300px] sm:h-[400px] lg:h-[700px] perspective-1000">
           <motion.div
-            className="relative aspect-square w-full max-w-[580px]"
+            className="relative aspect-square w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[580px]"
             onMouseEnter={() => setIsGraphicHovered(true)}
             onMouseLeave={() => setIsGraphicHovered(false)}
             style={{
@@ -318,21 +277,42 @@ export const CreativeHero: React.FC = () => {
                 </text>
               </svg>
 
-              {[0, 1, 2].map((i) => {
-                const angles = [-90, 30, 150];
-                const springs = [radius1, radius2, radius3];
-                const labels = ["01 — Identità visiva", "02 — Sviluppo", "03 — Gestione"];
-                const details = ["Scopri il design", "Esplora i servizi web", "Scopri come lavoro"];
-                return (
-                  <NavPoint
+              {/* NavPoints: solo su desktop (lg+) dove c'è spazio per i tooltip */}
+              <div className="hidden lg:block">
+                {[0, 1, 2].map((i) => {
+                  const angles = [-90, 30, 150];
+                  const springs = [radius1, radius2, radius3];
+                  const labels = ["01 — Chi sono", "02 — Servizi", "03 — Progetti"];
+                  const details = ["Scopri il mio percorso", "Esplora i servizi", "Guarda i lavori"];
+                  const links = ["/chisono", "/servizi", "/progetti"];
+                  return (
+                    <NavPoint
+                      key={i}
+                      angle={angles[i]} radiusSpring={springs[i]}
+                      label={labels[i]} detail={details[i]} to={links[i]} index={i}
+                      counterRotation={counterRotation}
+                      onHover={setHoveredPoint}
+                    />
+                  );
+                })}
+              </div>
+
+              {/* Mobile: 3 link testuali sotto il grafico al posto dei NavPoint */}
+              <div className="lg:hidden absolute -bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-6 whitespace-nowrap">
+                {[
+                  { label: "Chi sono", to: "/chisono" },
+                  { label: "Servizi", to: "/servizi" },
+                  { label: "Progetti", to: "/progetti" },
+                ].map((link, i) => (
+                  <a
                     key={i}
-                    angle={angles[i]} radiusSpring={springs[i]}
-                    label={labels[i]} detail={details[i]} to="/progetti" index={i}
-                    counterRotation={counterRotation}
-                    onHover={setHoveredPoint}
-                  />
-                );
-              })}
+                    href={link.to}
+                    className="font-typewriter text-[9px] uppercase tracking-[0.35em] text-primary/60 hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
             </motion.div>
 
             {/* CENTRAL BLOOM CORE */}

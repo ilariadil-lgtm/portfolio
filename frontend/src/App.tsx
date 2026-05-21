@@ -2,8 +2,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+
 import EditorialIndex from "./pages/editorial/Index";
 import EditorialChisono from "./pages/editorial/Chisono";
 import EditorialProgetti from "./pages/editorial/Progetti";
@@ -23,24 +25,65 @@ import { DesignProvider, useDesign } from "./context/DesignContext";
 import { DesignSwitcher } from "./components/DesignSwitcher";
 import { Preloader } from "./components/Preloader";
 import { CustomCursor } from "./components/CustomCursor";
-import { useState, useEffect } from "react";
+import { PageTransition } from "./components/PageTransition";
 
 const queryClient = new QueryClient();
 
-const AppContent = () => {
+// ─────────────────────────────────────────────────────────────────────────────
+// AnimatedRoutes: usa useLocation dentro BrowserRouter per le page transitions
+// ─────────────────────────────────────────────────────────────────────────────
+const AnimatedRoutes = () => {
+  const location = useLocation();
   const { design } = useDesign();
+  const isEditorial = design === "editorial";
+
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <Routes location={location} key={location.pathname}>
+        <Route
+          path="/"
+          element={
+            <PageTransition>
+              {isEditorial ? <EditorialIndex /> : <NebulaIndex />}
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/progetti"
+          element={
+            <PageTransition>
+              {isEditorial ? <EditorialProgetti /> : <NebulaProgetti />}
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/progetti/:id"
+          element={
+            <PageTransition>
+              {isEditorial ? <EditorialProjectDetail /> : <NebulaProjectDetail />}
+            </PageTransition>
+          }
+        />
+        <Route path="/chisono"  element={<PageTransition><EditorialChisono /></PageTransition>} />
+        <Route path="/servizi"  element={<PageTransition><EditorialServizi /></PageTransition>} />
+        <Route path="/contatti" element={<PageTransition><EditorialContatti /></PageTransition>} />
+        <Route path="/blog"     element={<PageTransition><EditorialBlog /></PageTransition>} />
+        <Route path="/faq"      element={<PageTransition><EditorialFAQ /></PageTransition>} />
+        <Route path="*"         element={<PageTransition><NotFound /></PageTransition>} />
+      </Routes>
+    </AnimatePresence>
+  );
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// AppContent: gestisce preloader e layout root
+// ─────────────────────────────────────────────────────────────────────────────
+const AppContent = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const isEditorial = design === 'editorial';
 
   useEffect(() => {
-    if (isLoading) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
+    document.body.style.overflow = isLoading ? "hidden" : "unset";
+    return () => { document.body.style.overflow = "unset"; };
   }, [isLoading]);
 
   return (
@@ -51,27 +94,15 @@ const AppContent = () => {
           <Preloader onComplete={() => setIsLoading(false)} />
         )}
       </AnimatePresence>
-      
-      <Routes>
-        {/* DESIGN SWITCHER LOGIC - All paths respond to theme */}
-        <Route path="/" element={isEditorial ? <EditorialIndex /> : <NebulaIndex />} />
-        <Route path="/progetti" element={isEditorial ? <EditorialProgetti /> : <NebulaProgetti />} />
-        <Route path="/progetti/:id" element={isEditorial ? <EditorialProjectDetail /> : <NebulaProjectDetail />} />
-        
-        {/* Shared or placeholder paths - You can create glass versions for these too! */}
-        <Route path="/chisono" element={isEditorial ? <EditorialChisono /> : <EditorialChisono />} />
-        <Route path="/servizi" element={isEditorial ? <EditorialServizi /> : <EditorialServizi />} />
-        <Route path="/contatti" element={isEditorial ? <EditorialContatti /> : <EditorialContatti />} />
-        <Route path="/blog" element={isEditorial ? <EditorialBlog /> : <EditorialBlog />} />
-        <Route path="/faq" element={isEditorial ? <EditorialFAQ /> : <EditorialFAQ />} />
-        
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <AnimatedRoutes />
       <DesignSwitcher />
     </BrowserRouter>
   );
 };
 
+// ─────────────────────────────────────────────────────────────────────────────
+// App root
+// ─────────────────────────────────────────────────────────────────────────────
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <DesignProvider>

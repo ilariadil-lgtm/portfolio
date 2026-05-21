@@ -5,29 +5,30 @@ import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import { ArrowRight, Box, Cpu, Eye, Globe, Layout, Server, Sparkles, Terminal, Activity, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 // Standard static framework specifications for each service card
 const serviceSpecs: Record<number, any> = {
   1: {
     core: "Figma & Creative Suite",
-    workflow: "Iterative Prototyping",
-    kpi: "Accessibility (a11y) & UX flow integrity",
-    load: "OPTIMAL // FAST",
-    tools: ["Figma", "Adobe CC", "Penpot", "UI Audit Suite"]
+    workflow: "User Research e Prototipazione Iterativa",
+    kpi: "Accessibilità visiva e flussi utente intuitivi",
+    load: "USER - CENTRIC",
+    tools: ["Figma", "Adobe CC", "Responsive design", "Branding"]
   },
   2: {
-    core: "React / Vite / Tailwind",
-    workflow: "Component-Driven Sviluppo",
-    kpi: "INP < 100ms / LCP < 1.8s",
-    load: "STABLE // HIGHSPEED",
-    tools: ["React", "TypeScript", "TailwindCSS", "Next.js", "WordPress API"]
+    core: "React, Vite, Tailwind, Python, Django, PHP, Javascript",
+    workflow: "Sviluppo Modulare (Front-end & Back-end",
+    kpi: "Prestazioni, sicurezza e codice scalabiles",
+    load: "LOGICA SOLIDA & VELOCE",
+    tools: ["React", "TypeScript", "TailwindCSS", "Next.js", "WordPress", "Prestashop", "HTML / CSS / JS", "PYTHON / DJANGO"]
   },
   3: {
-    core: "AWS Cloud Architecture",
-    workflow: "Infrastructure as Code",
-    kpi: "99.9% Uptime SLA compliance",
-    load: "SECURE // SHIELDED",
-    tools: ["AWS Serverless", "Terraform", "GitHub Actions", "Docker", "Sentry"]
+    core: "Git, Supabase, AI Tools (Gemini / GPT)",
+    workflow: "Vibe Coding & Gestione Agile End-to-End",
+    kpi: "Rilascio del prodotto fluido e zero-stress",
+    load: "STRATEGICO // PROBLEMSOLVING",
+    tools: ["PRODUCT MNGMT", "VIBE CODING", "AI WORKFLOWS", "STRATEGIA", "PROBLEM SOLVING"]
   }
 };
 
@@ -58,7 +59,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
         setIsHovered(false);
         setShowSpecs(false);
       }}
-      className="relative border border-primary/15 p-8 bg-white/20 backdrop-blur-md shadow-sm hover:shadow-xl hover:border-primary/30 transition-all duration-500 flex flex-col justify-between group overflow-hidden"
+      className="h-full relative border border-primary/15 p-8 bg-white/20 backdrop-blur-md shadow-sm hover:shadow-xl hover:border-primary/30 transition-all duration-500 flex flex-col justify-between group overflow-hidden"
     >
       {/* Interactive Hover Radial Glow Backdrop */}
       {isHovered && (
@@ -92,7 +93,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
               {service.subtitle || `SYSTEM_MODULE_0${idx + 1}`}
             </span>
             <span className="font-typewriter text-[7px] uppercase tracking-[0.2em] text-[#3d0f1a]/40 font-medium">
-              CAPABILITY // DEPLOYED
+              FOCUS VISIVO
             </span>
           </div>
           <div className="w-10 h-10 rounded-full border border-primary/15 flex items-center justify-center text-primary/70 bg-white/40 group-hover:scale-110 group-hover:text-primary group-hover:border-primary/30 transition-all duration-500">
@@ -102,7 +103,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
 
         {/* Central Title & Description */}
         <div className="space-y-6 mb-8">
-          <div className="flex items-baseline gap-4">
+          <div className="flex items-baseline gap-4 min-h-[90px] lg:min-h-[120px]">
             <span className="font-display text-4xl md:text-5xl font-black text-primary/10 select-none">
               0{idx + 1}
             </span>
@@ -121,12 +122,12 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
             onClick={() => setShowSpecs(!showSpecs)}
             className="font-typewriter text-[9px] uppercase tracking-widest text-primary border border-primary/25 hover:bg-primary/5 hover:border-primary/50 px-3 py-1.5 transition-all duration-300 relative z-20 font-medium cursor-pointer"
           >
-            {showSpecs ? "[ CHIUDI_SPECIFICHE ]" : "[ APRI_SPECIFICHE_HUD ]"}
+            {showSpecs ? "[ CHIUDI DETTAGLI ]" : "[ APRI DETTAGLI ]"}
           </button>
-          
+
           <div className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-primary/75 animate-ping" />
-            <span className="font-mono text-[7px] text-[#3d0f1a]/40">CORE_SYNCED</span>
+            <span className="font-mono text-[7px] text-[#3d0f1a]/40">Allineato</span>
           </div>
         </div>
 
@@ -142,23 +143,23 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
             >
               <div className="font-mono text-[10px] divide-y divide-primary/10 bg-[#3d0f1a]/5 p-5 border border-primary/15 space-y-3">
                 <div className="flex justify-between pb-2">
-                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">CORE_ENGINE:</span>
+                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">Tools:</span>
                   <span className="text-[#3d0f1a] font-semibold text-right">{specs.core}</span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">PIPELINE:</span>
+                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">Metodologia:</span>
                   <span className="text-[#3d0f1a] font-semibold text-right">{specs.workflow}</span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">SYS_BENCHMARK:</span>
+                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">Obiettivo chiave:</span>
                   <span className="text-primary font-bold text-right">{specs.kpi}</span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">LOAD_INDEX:</span>
+                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">Approccio:</span>
                   <span className="text-green-600 font-black text-right">{specs.load}</span>
                 </div>
                 <div className="pt-2">
-                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px] block mb-2">DEV_STACK:</span>
+                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px] block mb-2">Skills:</span>
                   <div className="flex flex-wrap gap-1.5">
                     {specs.tools.map((t: string, i: number) => (
                       <span key={i} className="bg-primary/10 text-primary border border-primary/5 px-2 py-0.5 rounded-sm text-[8px] uppercase tracking-wider font-semibold">
@@ -176,7 +177,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
       {/* Deliverables List */}
       <div className="space-y-4 pt-6 border-t border-primary/10 relative z-10 mt-auto">
         <span className="font-typewriter text-[8px] uppercase tracking-[0.3em] text-primary/50 block font-medium">
-          KEY_DELIVERABLES // OUTPUT
+          SERVIZI CHIAVE
         </span>
         <ul className="space-y-2.5">
           {(service.deliverables || ["Strategia Digitale", "Deployment", "Ottimizzazioni"]).map((del: string, dIdx: number) => (
@@ -194,6 +195,11 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
 };
 
 const Servizi = () => {
+  usePageMeta({
+    title: "Servizi",
+    description: "UI/UX Design, sviluppo web su misura e tech product management. Scopri come posso trasformare la tua idea in un prodotto digitale di qualità.",
+  });
+
   const [services, setServices] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -217,23 +223,23 @@ const Servizi = () => {
       title: "UI & UX Design",
       subtitle: "ESTETICA & INTERAZIONE",
       description: "Creazione di interfacce digitali memorabili. Curo la progettazione visiva dall'architettura dell'informazione fino all'alta fedeltà visiva, garantendo un'esperienza fluida, intuitiva e focalizzata sugli obiettivi utente.",
-      deliverables: ["Progettazione Wireframe", "User Flows & Prototipi", "Visual Identity", "Design Systems"],
+      deliverables: ["Progettazione UI/UX design", "Wireframe & Prototipi", "Visual Identity", "Design Systems"],
       icon: <Layout size={24} />
     },
     {
       id: 2,
-      title: "Frontend Development",
-      subtitle: "LOGICA & PRESTAZIONI",
-      description: "Traduzione dell'estetica in codice pulito, accessibile e ad alte prestazioni. Sviluppo applicazioni web reattive usando React, TypeScript e TailwindCSS, o temi WordPress/Prestashop completamente sartoriali.",
-      deliverables: ["React / TypeScript App", "WordPress Custom Themes", "Web Performance (LCP/INP)", "Accessibilità (a11y)"],
+      title: "Sviluppo Full-Stack",
+      subtitle: "LOGICA & CODICE",
+      description: "Dall'interfaccia al database. Sviluppo applicazioni web robuste e performanti (utilizzando Python, Django e JS), affiancate alla creazione di ecosistemi completi e temi sartoriali su WordPress o Prestashop. Codice pulito e architetture su misura.",
+      deliverables: ["Web App", "Sviluppo Front-end", "Temi custom", "OTTIMIZZAZIONE PERFORMANCE"],
       icon: <Cpu size={24} />
     },
     {
       id: 3,
-      title: "Tech PM & Cloud Strategy",
+      title: "Tech PM & Gestione Prodotto",
       subtitle: "STRATEGIA & SCALABILITÀ",
-      description: "Gestione tecnica di progetti complessi e infrastrutture cloud. Ti aiuto a strutturare roadmap chiare, coordinare flussi lavorativi ed effettuare il deploy di soluzioni scalabili e sicure.",
-      deliverables: ["Gestione Prodotto (Agile)", "Architetture Serverless", "Ottimizzazioni Cloud", "Infrastruttura CI/CD"],
+      description: "Il ponte tra visione e sviluppo. Prendo in carico la complessità tecnica del tuo progetto, strutturando roadmap chiare e coordinando l'intero ciclo di vita del prodotto per garantirti un rilascio fluido, rapido e senza stress.",
+      deliverables: ["PRODUCT MANAGEMENT", "ANALISI DEI REQUISITI", "INTEGRAZIONE AI WORKFLOWS", "COORDINAMENTO AGILE"],
       icon: <Globe size={24} />
     }
   ];
@@ -244,26 +250,26 @@ const Servizi = () => {
     {
       num: "01",
       title: "Analisi & Strategia",
-      subtitle: "DISCOVERY_&_PLANNING",
+      subtitle: "Obiettivi e scope",
       description: "Definizione degli obiettivi di business e delle esigenze degli utenti. Strutturo una roadmap chiara per definire lo scope e i requisiti tecnici dell'intero ecosistema."
     },
     {
       num: "02",
       title: "UX & UI Design",
-      subtitle: "VISUAL_&_PROTOTYPE",
+      subtitle: "Empatia e visione",
       description: "Progettazione e prototipazione iterativa ad alta fedeltà. Definisco le linee guida visive per un brand solido, bilanciando sempre usabilità, pulizia ed estetica d'avanguardia."
     },
     {
       num: "03",
-      title: "Sviluppo Frontend",
-      subtitle: "ENGINEERING_&_CODE",
-      description: "Implementazione del frontend con codice modulare e accessibile. Massimo focus sulla velocità di caricamento, animazioni calibrate e robustezza delle integrazioni."
+      title: "Sviluppo Full-Stack",
+      subtitle: "Codice e logica",
+      description: "Costruzione dell'ecosistema digitale. Scrivo codice pulito e modulare, affiancando interfacce reattive a solide architetture back-end (Python/Django) o CMS avanzati. Massimo focus sulle performance e sulla scalabilità."
     },
     {
       num: "04",
       title: "Collaudo & Deploy",
-      subtitle: "QUALITY_ASSURANCE",
-      description: "Audit di performance, SEO e accessibilità prima del rilascio ufficiale. Configurazione delle pipeline di automazione per garantire un lancio fluido e sicuro."
+      subtitle: "Test e rilascio",
+      description: "Audit di performance, accessibilità e SEO prima del rilascio ufficiale. Configuro il lancio in modo fluido e sicuro, assicurandomi che il prodotto sia impeccabile, stabile e pronto per il mercato."
     }
   ];
 
@@ -278,12 +284,12 @@ const Servizi = () => {
       <section className="pt-32 md:pt-48 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden">
         {/* Background Watermark */}
         <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center opacity-[0.02] pointer-events-none">
-          <span className="font-display text-[20vw] font-black uppercase tracking-tighter">SERVICES</span>
+          <span className="font-display text-[20vw] font-black uppercase tracking-tighter">SERVIZI</span>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            
+
             {/* Left Column: Title & Subtitle */}
             <div className="lg:col-span-7 space-y-8">
               <motion.div
@@ -293,12 +299,12 @@ const Servizi = () => {
                 className="space-y-6"
               >
                 <div className="flex items-center gap-4">
-                  <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium">01 — CAPABILITIES GATEWAY</span>
+                  <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium">01 — COSA OFFRO</span>
                   <div className="w-12 h-[1px] bg-primary/20" />
                 </div>
                 <h1 className="font-display text-[9vw] md:text-[6vw] font-black leading-[0.85] tracking-tighter text-[#3d0f1a]">
-                  I MIEI <br />
-                  <span className="text-primary italic">SERVIZI.</span>
+                  I miei <br />
+                  <span className="text-primary italic">servizi.</span>
                 </h1>
               </motion.div>
             </div>
@@ -311,9 +317,9 @@ const Servizi = () => {
                 transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                 className="font-body text-xl text-[#3d0f1a]/80 leading-relaxed pl-8 border-l border-primary/25"
               >
-                Non credo nei silos operativi. Progetto interfacce fondendo sensibilità artistica, rigore ingegneristico e visione strategica. Questo schema illustra le mie aree di operatività per il tuo prodotto digitale.
+                Un buon prodotto digitale non nasce separando il design dallo sviluppo. Creo soluzioni partendo da una forte sensibilità visiva, traducendole in codice solido e guidando l'intero percorso con una strategia chiara. Questa mappa delinea come posso affiancarti in ogni fase.
               </motion.p>
-              
+
               {/* Telemetry Tag */}
               <motion.div
                 initial={{ opacity: 0 }}
@@ -322,7 +328,7 @@ const Servizi = () => {
                 className="flex items-center gap-3 pl-8 text-[#3d0f1a]/60"
               >
                 <Terminal size={14} />
-                <span className="font-typewriter text-[10px] uppercase tracking-widest font-medium">[ SERVICES_DEP_REGISTRY // v2.6 ]</span>
+                <span className="font-typewriter text-[10px] uppercase tracking-widest font-medium"></span>
               </motion.div>
             </div>
 
@@ -361,11 +367,11 @@ const Servizi = () => {
       <section className="py-24 md:py-36 px-6 md:px-12 lg:px-24 bg-white/20 border-y border-primary/10 relative">
         {/* Grid Background */}
         <div className="absolute inset-0 opacity-[0.015] pointer-events-none bg-[radial-gradient(#3d0f1a_1px,transparent_1px)] [background-size:24px_24px]" />
-        
+
         <div className="max-w-7xl mx-auto relative">
           {/* Header section */}
           <div className="mb-16 relative z-10">
-            <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium mb-4 block">02 — WORKFLOW BLUEPRINT</span>
+            <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium mb-4 block">02 — FLUSSO DI LAVORO</span>
             <div className="w-12 h-[1px] bg-primary/20 mb-8" />
             <h2 className="font-display text-5xl md:text-7xl font-bold leading-none tracking-tighter text-[#3d0f1a]">
               Come lavoro: <br />
@@ -373,45 +379,8 @@ const Servizi = () => {
             </h2>
           </div>
 
-          {/* Connecting SVG Flow Line with Node indicators (Widescreen Only, no text overlap) */}
-          <div className="relative h-12 mb-10 hidden lg:block z-10 pointer-events-none">
-            <svg className="w-full h-full overflow-visible">
-              <line 
-                x1="12.5%" 
-                y1="50%" 
-                x2="87.5%" 
-                y2="50%" 
-                stroke="#3d0f1a" 
-                strokeWidth="1.5" 
-                strokeDasharray="6 6" 
-                className="opacity-20"
-              />
-              <motion.circle
-                r="4.5"
-                fill="#c0392b"
-                animate={{ cx: ["12.5%", "87.5%", "12.5%"] }}
-                transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-                cy="50%"
-                className="shadow-[0_0_8px_#c0392b]"
-              />
-              {/* Perfectly centered node dots matching column centers */}
-              {[12.5, 37.5, 62.5, 87.5].map((percent, idx) => (
-                <circle 
-                  key={idx}
-                  cx={`${percent}%`}
-                  cy="50%"
-                  r="5"
-                  fill="#f5f2ed"
-                  stroke="#3d0f1a"
-                  strokeWidth="2"
-                  className="opacity-85"
-                />
-              ))}
-            </svg>
-          </div>
-
           {/* Workflow Sequence Blocks */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10 mt-12">
             {steps.map((step, i) => (
               <motion.div
                 key={i}
@@ -421,9 +390,31 @@ const Servizi = () => {
                 transition={{ duration: 1, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
                 className="group relative p-8 border border-primary/5 bg-white/50 hover:bg-white/90 hover:border-primary/20 transition-all duration-500 shadow-sm"
               >
+                {/* Connecting horizontal dashed arrow between columns (Desktop Only, no text overlap) */}
+                {i < 3 && (
+                  <div className="hidden lg:flex absolute top-[56px] left-full w-8 h-[2px] -translate-y-1/2 items-center justify-center z-10 pointer-events-none">
+                    <svg className="w-full h-2 overflow-visible" fill="none">
+                      <line
+                        x1="0"
+                        y1="4"
+                        x2="32"
+                        y2="4"
+                        stroke="#3d0f1a"
+                        strokeWidth="1.5"
+                        strokeDasharray="4 4"
+                        className="opacity-30"
+                      />
+                      <polygon
+                        points="28,1 32,4 28,7"
+                        fill="#3d0f1a"
+                        className="opacity-45"
+                      />
+                    </svg>
+                  </div>
+                )}
                 {/* Visual Blueprint Step Line */}
                 <div className="absolute top-0 left-0 w-full h-[2px] bg-primary/10 group-hover:bg-primary/40 transition-colors duration-500" />
-                
+
                 {/* Big Step Number */}
                 <div className="flex justify-between items-baseline mb-8">
                   <span className="font-display text-5xl font-black text-primary/15 group-hover:text-primary/30 transition-colors select-none leading-none">
@@ -453,32 +444,35 @@ const Servizi = () => {
       <section className="py-24 md:py-36 px-6 md:px-12 lg:px-24 bg-[#3d0f1a] text-white relative overflow-hidden">
         {/* Background Visual Grid */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#c0392b_1px,transparent_1px)] [background-size:40px_40px]" />
-        
-        <div className="max-w-7xl mx-auto text-center space-y-12 relative z-10">
-          <div className="space-y-4 max-w-2xl mx-auto">
-            <span className="font-typewriter text-[12px] uppercase tracking-[0.4em] text-primary font-medium block">
-              03 — SYSTEM OPERATION
-            </span>
-            <h2 className="font-display text-5xl md:text-7xl font-black leading-none tracking-tighter">
-              COSTRUIAMO <br />
-              <span className="text-primary italic">QUALCOSA DI UNICO.</span>
-            </h2>
-          </div>
 
-          <p className="font-body text-lg text-white/60 max-w-xl mx-auto leading-relaxed">
-            Hai un'idea per una web app, un design system sartoriale o un e-commerce ad alte prestazioni? Colleghiamo le nostre stazioni per concretizzare la tua visione digitale.
-          </p>
-
-          <div className="pt-6">
-            <Link
-              to="/contatti"
-              className="group inline-flex items-center gap-8 p-8 border border-white/10 hover:border-primary/40 bg-white/[0.02] backdrop-blur-sm transition-all duration-700 max-w-md w-full mx-auto justify-between"
-            >
-              <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-white font-medium group-hover:text-primary transition-colors">
-                AVVIA_PROTOCOLLO_INVIO
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+            {/* Left Column: Text block containing title & narrative */}
+            <div className="lg:col-span-7 space-y-6 text-left">
+              <span className="font-typewriter text-[12px] uppercase tracking-[0.4em] text-white font-bold block">
+                03 — SYSTEM OPERATION
               </span>
-              <ArrowRight size={18} className="text-white group-hover:text-primary group-hover:translate-x-4 transition-all duration-700" />
-            </Link>
+              <h2 className="font-display text-5xl md:text-7xl font-black leading-none tracking-tighter">
+                COSTRUIAMO <br />
+                <span className="text-primary italic">QUALCOSA DI UNICO.</span>
+              </h2>
+              <p className="font-body text-lg text-white/80 leading-relaxed max-w-xl">
+                Hai un'idea per una web app, un design system sartoriale o un e-commerce ad alte prestazioni? Colleghiamo le nostre stazioni per concretizzare la tua visione digitale.
+              </p>
+            </div>
+
+            {/* Right Column: CTA Button trigger */}
+            <div className="lg:col-span-5 flex lg:justify-end justify-start items-center">
+              <Link
+                to="/contatti"
+                className="group inline-flex items-center gap-8 p-8 border border-white/10 hover:border-primary/40 bg-white/[0.02] backdrop-blur-sm transition-all duration-700 w-full max-w-md justify-between"
+              >
+                <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-white font-medium group-hover:text-primary transition-colors">
+                  PARLIAMONE
+                </span>
+                <ArrowRight size={18} className="text-white group-hover:text-primary group-hover:translate-x-4 transition-all duration-700" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

@@ -7,10 +7,16 @@ import { Footer } from "@/components/Footer";
 import { CreativeHero } from "@/components/CreativeHero";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 const BASE_URL = 'http://localhost:8000';
 
 const Index = () => {
+  usePageMeta({
+    title: "Home",
+    description: "Ilaria Diliberto — UX Designer e Web Developer. Progetto e costruisco ecosistemi digitali su misura: siti web, e-commerce e web app con un approccio sartoriale.",
+  });
+
   const [projects, setProjects] = useState<any[]>([]);
   const [about, setAbout] = useState<any>(null);
   const [services, setServices] = useState<any[]>([]);
@@ -203,6 +209,8 @@ const Index = () => {
             transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
             src={about?.profile_image ? (about.profile_image.startsWith('http') ? about.profile_image : `${BASE_URL}${about.profile_image}`) : "/assets/about-portrait.jpg"}
             alt="Portrait"
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover absolute inset-0 mix-blend-luminosity group-hover:scale-105 transition-transform duration-2000"
           />
           <div className="absolute top-12 right-12 w-24 h-24 border border-white/5 backdrop-blur-md flex items-center justify-center">
@@ -403,7 +411,7 @@ const Index = () => {
                   </div>
                   <Link to={item.url} className="block relative overflow-hidden group/box perspective-1000">
                     <motion.div whileHover={{ rotateX: 2, rotateY: -2, scale: 1.01 }} className="relative aspect-[16/9] overflow-hidden bg-muted/10 border border-editorial shadow-xl">
-                      <motion.img src={item.image?.startsWith('http') ? item.image : `${BASE_URL}${item.image}`} alt={item.title} className="w-full h-full object-cover grayscale opacity-80 group-hover/box:grayscale-0 group-hover/box:opacity-100 transition-all duration-1000" />
+                      <motion.img src={item.image?.startsWith('http') ? item.image : `${BASE_URL}${item.image}`} alt={item.title} loading="lazy" decoding="async" className="w-full h-full object-cover grayscale opacity-80 group-hover/box:grayscale-0 group-hover/box:opacity-100 transition-all duration-1000" />
                       <div className="absolute inset-0 pointer-events-none">
                         <motion.div className="absolute top-0 left-0 w-full h-[1px] bg-primary/40 z-20" initial={{ top: "-10%" }} whileHover={{ top: ["0%", "100%", "0%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} />
                       </div>
