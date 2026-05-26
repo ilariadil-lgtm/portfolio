@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, Globe, ArrowUpRight } from "lucide-react";
+import { Mail, Linkedin, Github, Globe, Instagram, ArrowUpRight } from "lucide-react";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -76,7 +76,7 @@ export const Footer = () => {
               { label: "LinkedIn", icon: <Linkedin size={18} />, href: "https://www.linkedin.com/in/ilaria-diliberto/" },
               { label: "GitHub", icon: <Github size={18} />, href: "https://github.com/ilariadil-lgtm" },
               { label: "Email", icon: <Mail size={18} />, href: "mailto:ilaria.dil@gmail.com" },
-              { label: "Instagram", icon: <Globe size={18} />, href: "https://www.instagram.com/ilaryvision/" }
+              { label: "Instagram", icon: <Instagram size={18} />, href: "https://www.instagram.com/ilaryvision/" }
             ].map((social, i) => (
               <a
                 key={i}

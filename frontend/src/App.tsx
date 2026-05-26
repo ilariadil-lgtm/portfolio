@@ -14,6 +14,17 @@ import EditorialBlog from "./pages/editorial/Blog";
 import EditorialFAQ from "./pages/editorial/FAQ";
 import EditorialServizi from "./pages/editorial/Servizi";
 import { EditorialProjectDetail } from "./pages/editorial/ProjectDetail";
+import { EditorialCharioHifi } from "./pages/editorial/CharioHifi";
+import { EditorialSophiaTheme } from "./pages/editorial/SophiaTheme";
+import { EditorialStorageHub } from "./pages/editorial/StorageHub";
+import { EditorialFreelens } from "./pages/editorial/Freelens";
+import { EditorialVillaMasami } from "./pages/editorial/VillaMasami";
+import { EditorialPattiForniture } from "./pages/editorial/PattiForniture";
+import { EditorialSicilCosmetic } from "./pages/editorial/SicilCosmetic";
+import { EditorialNewpop } from "./pages/editorial/Newpop";
+import { EditorialViniGambino } from "./pages/editorial/ViniGambino";
+import { EditorialBaglioLauria } from "./pages/editorial/BaglioLauria";
+import { EditorialVillaMima } from "./pages/editorial/VillaMima";
 
 import NebulaIndex from "./pages/nebula/Index";
 import NebulaProgetti from "./pages/nebula/Progetti";
@@ -26,6 +37,7 @@ import { DesignSwitcher } from "./components/DesignSwitcher";
 import { Preloader } from "./components/Preloader";
 import { CustomCursor } from "./components/CustomCursor";
 import { PageTransition } from "./components/PageTransition";
+import { LenisScroller } from "./components/LenisScroller";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +65,94 @@ const AnimatedRoutes = () => {
           element={
             <PageTransition>
               {isEditorial ? <EditorialProgetti /> : <NebulaProgetti />}
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/progetti/chariohifi"
+          element={
+            <PageTransition>
+              {isEditorial ? <EditorialCharioHifi /> : <NotFound />}
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/progetti/sophiatheme"
+          element={
+            <PageTransition>
+              {isEditorial ? <EditorialSophiaTheme /> : <NotFound />}
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/progetti/storagehub"
+          element={
+            <PageTransition>
+              {isEditorial ? <EditorialStorageHub /> : <NotFound />}
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/progetti/freelens"
+          element={
+            <PageTransition>
+              {isEditorial ? <EditorialFreelens /> : <NotFound />}
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/progetti/villamasami"
+          element={
+            <PageTransition>
+              {isEditorial ? <EditorialVillaMasami /> : <NotFound />}
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/progetti/pattiforniture"
+          element={
+            <PageTransition>
+              {isEditorial ? <EditorialPattiForniture /> : <NotFound />}
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/progetti/sicilcosmetic"
+          element={
+            <PageTransition>
+              {isEditorial ? <EditorialSicilCosmetic /> : <NotFound />}
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/progetti/newpop"
+          element={
+            <PageTransition>
+              {isEditorial ? <EditorialNewpop /> : <NotFound />}
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/progetti/vinigambino"
+          element={
+            <PageTransition>
+              {isEditorial ? <EditorialViniGambino /> : <NotFound />}
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/progetti/bagliolauria"
+          element={
+            <PageTransition>
+              {isEditorial ? <EditorialBaglioLauria /> : <NotFound />}
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/progetti/villamima"
+          element={
+            <PageTransition>
+              {isEditorial ? <EditorialVillaMima /> : <NotFound />}
             </PageTransition>
           }
         />
@@ -88,14 +188,16 @@ const AppContent = () => {
 
   return (
     <BrowserRouter>
-      <CustomCursor />
-      <AnimatePresence>
-        {isLoading && (
-          <Preloader onComplete={() => setIsLoading(false)} />
-        )}
-      </AnimatePresence>
-      <AnimatedRoutes />
-      <DesignSwitcher />
+      <LenisScroller>
+        <CustomCursor />
+        <AnimatePresence>
+          {isLoading && (
+            <Preloader onComplete={() => setIsLoading(false)} />
+          )}
+        </AnimatePresence>
+        <AnimatedRoutes />
+        <DesignSwitcher />
+      </LenisScroller>
     </BrowserRouter>
   );
 };

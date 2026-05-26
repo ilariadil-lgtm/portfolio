@@ -16,10 +16,10 @@ const fallbackProjects = [
     type: "UI/UX Design • Frontend custom",
     technologies: "Sophia Theme, React, TailwindCSS, UX Design",
     year: "2025",
-    image: "/assets/project-nebula.png",
     project_url: "https://chariohifi.it",
     github_url: "",
-    description: "L'alta fedeltà digitale. Sito premium creato col mio tema proprietario Sophia per offrire un'esperienza acustica e visiva senza compromessi."
+    description: "L'alta fedeltà digitale. Sito premium creato col mio tema proprietario Sophia per offrire un'esperienza acustica e visiva senza compromessi.",
+    image: "/assets/chario-hero.png"
   },
   {
     id: 2,
@@ -422,7 +422,7 @@ export const EditorialProjectDetail = () => {
               <span className="text-primary italic">QUALCOSA DI UNICO.</span>
             </h2>
             <p className="font-body text-lg text-white/80 leading-relaxed max-w-xl">
-              Hai un'idea per una web app, un design system sartoriale o un e-commerce ad alte prestazioni?
+              Hai un'idea per una web app, un design system personalizzato o un e-commerce ad alte prestazioni?
               Colleghiamo le nostre stazioni per concretizzare la tua visione digitale.
             </p>
           </div>

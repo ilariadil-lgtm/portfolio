@@ -1,44 +1,47 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Mail, Linkedin, Github, ArrowRight, MapPin, CheckCircle } from "lucide-react";
+import { Mail, Linkedin, Github, Instagram, ArrowRight, MapPin, CheckCircle } from "lucide-react";
 import { useState } from "react";
 import { api } from "@/lib/api";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { RevealText } from "@/components/RevealText";
+import { MagneticWrapper } from "@/components/MagneticWrapper";
 
 const CONTACTS = [
   {
     label: "Email",
-    detail: "hello@ilariavision.com",
+    detail: "ilaria.dil@gmail.com",
     sub: "Rispondo entro 24h",
     icon: <Mail size={17} />,
-    href: "mailto:hello@ilariavision.com",
+    href: "mailto:ilaria.dil@gmail.com",
   },
   {
     label: "LinkedIn",
     detail: "Ilaria Diliberto",
     sub: "Connettiti sulla piattaforma",
     icon: <Linkedin size={17} />,
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/in/ilaria-diliberto/",
   },
   {
     label: "GitHub",
-    detail: "@ilariavision",
+    detail: "@ilariadil-lgtm",
     sub: "Esplora il codice",
     icon: <Github size={17} />,
-    href: "https://github.com",
+    href: "https://github.com/ilariadil-lgtm",
+  },
+  {
+    label: "Instagram",
+    detail: "#",
+    sub: "Scopri i miei lavori",
+    icon: <Instagram size={17} />,
+    href: "https://www.instagram.com/ilaryvision/",
   },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
-const InputField = ({
-  label,
-  name,
-  type = "text",
-  required = true,
-  value,
-  onChange,
-  placeholder,
+function InputField({
+  label, name, type = "text", required = true, value, onChange, placeholder,
 }: {
   label: string;
   name: string;
@@ -47,23 +50,25 @@ const InputField = ({
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
-}) => (
-  <div className="group relative">
-    <label htmlFor={name} className="font-typewriter text-[8px] uppercase tracking-[0.45em] text-white/35 block mb-3 cursor-pointer">
-      {label}
-    </label>
-    <input
-      id={name}
-      type={type}
-      name={name}
-      required={required}
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-      className="w-full bg-transparent border-b border-white/12 py-3.5 text-white placeholder:text-white/20 font-body text-base outline-none focus:border-primary transition-colors duration-300"
-    />
-  </div>
-);
+}) {
+  return (
+    <div className="group relative">
+      <label htmlFor={name} className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/60 block mb-3 font-bold cursor-pointer">
+        {label}
+      </label>
+      <input
+        id={name}
+        type={type}
+        name={name}
+        required={required}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className="w-full bg-transparent border-b border-[#3d0f1a]/20 py-3.5 text-[#3d0f1a] placeholder:text-[#3d0f1a]/30 font-body text-base outline-none focus:border-primary transition-colors duration-300" 
+      />
+    </div>
+  );
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 const Contatti = () => {
@@ -104,8 +109,13 @@ const Contatti = () => {
            HERO
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="relative pt-32 md:pt-48 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden">
+        {/* Background Grid Pattern */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#3d0f1a 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+        </div>
+
         {/* Watermark */}
-        <div className="absolute inset-0 flex items-center justify-end overflow-hidden pointer-events-none select-none">
+        <div className="absolute inset-0 flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
           <span
             className="font-display font-black text-[#3d0f1a]/[0.025] pr-4"
             style={{ fontSize: "clamp(80px, 18vw, 240px)", lineHeight: 1 }}
@@ -124,8 +134,8 @@ const Contatti = () => {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center gap-4 mb-8">
-                <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-primary font-semibold">
-                  05 — CONTATTI
+                <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-primary font-bold">
+                  CONTATTI E COLLABORAZIONI
                 </span>
                 <div className="w-10 h-[1px] bg-primary/25" />
               </div>
@@ -133,8 +143,8 @@ const Contatti = () => {
                 className="font-display font-black leading-[0.85] tracking-tighter text-[#3d0f1a]"
                 style={{ fontSize: "clamp(3.5rem, 9vw, 8rem)" }}
               >
-                Parliamoci <br />
-                <span className="text-primary italic">liberamente.</span>
+                <RevealText text="Parlami del" delay={0.1} />
+                <RevealText text="tuo progetto." delay={0.2} className="text-primary italic" />
               </h1>
             </motion.div>
 
@@ -150,7 +160,7 @@ const Contatti = () => {
               </p>
               <div className="mt-6 pl-8 flex items-center gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-600 animate-pulse" />
-                <span className="font-typewriter text-[9px] uppercase tracking-[0.35em] text-[#3d0f1a]/40">
+                <span className="font-typewriter text-[9px] uppercase tracking-[0.35em] text-[#3d0f1a]/50 font-bold">
                   Disponibile per nuovi progetti
                 </span>
               </div>
@@ -176,7 +186,7 @@ const Contatti = () => {
           >
             {/* Canali diretti */}
             <div>
-              <span className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-primary font-semibold block mb-7">
+              <span className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-primary font-bold block mb-7">
                 Canali diretti
               </span>
               <div className="space-y-3">
@@ -186,17 +196,18 @@ const Contatti = () => {
                     href={c.href}
                     target={c.href.startsWith("http") ? "_blank" : undefined}
                     rel="noopener noreferrer"
+                    data-cursor="pointer"
                     initial={{ opacity: 0, x: -15 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1, duration: 0.7 }}
-                    className="group flex items-center gap-5 p-5 border border-primary/10 bg-white/30 hover:bg-white/70 hover:border-primary/25 transition-all duration-400"
+                    className="group flex items-center gap-5 p-5 border border-[#3d0f1a]/10 bg-white shadow-[6px_6px_0px_rgba(61,15,26,0.05)] hover:shadow-[6px_6px_0px_#c0392b] hover:border-primary/20 hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all duration-400"
                   >
-                    <div className="w-10 h-10 border border-primary/15 flex items-center justify-center text-primary/50 group-hover:text-primary group-hover:border-primary/40 transition-all duration-400 shrink-0">
+                    <div className="w-10 h-10 border border-[#3d0f1a]/10 flex items-center justify-center text-[#3d0f1a]/40 bg-primary/5 group-hover:text-primary group-hover:border-primary/30 transition-all duration-400 shrink-0">
                       {c.icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <span className="font-typewriter text-[8px] uppercase tracking-[0.35em] text-[#3d0f1a]/35 block mb-1">
+                      <span className="font-typewriter text-[8px] uppercase tracking-[0.35em] text-[#3d0f1a]/40 block mb-1 font-bold">
                         {c.label}
                       </span>
                       <span className="font-display text-base font-black text-[#3d0f1a] group-hover:text-primary transition-colors truncate block">
@@ -205,7 +216,7 @@ const Contatti = () => {
                     </div>
                     <ArrowRight
                       size={13}
-                      className="text-primary/25 group-hover:text-primary group-hover:translate-x-1 transition-all duration-400 shrink-0"
+                      className="text-primary/0 group-hover:text-primary group-hover:translate-x-1 transition-all duration-400 shrink-0"
                     />
                   </motion.a>
                 ))}
@@ -213,16 +224,16 @@ const Contatti = () => {
             </div>
 
             {/* Sede */}
-            <div className="p-6 border border-primary/10 bg-white/30 flex items-start gap-4">
+            <div className="p-6 border border-[#3d0f1a]/10 bg-white flex items-start gap-4">
               <MapPin size={16} className="text-primary mt-0.5 shrink-0" />
               <div>
-                <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-primary font-semibold block mb-2">
+                <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-primary font-bold block mb-2">
                   Sede operativa
                 </span>
-                <p className="font-body text-[15px] text-[#3d0f1a]/65">
-                  Roma, Italia
+                <p className="font-body text-[15px] text-[#3d0f1a]/70">
+                  Sicilia, Italia
                 </p>
-                <p className="font-body text-[13px] text-[#3d0f1a]/40 mt-1">
+                <p className="font-body text-[13px] text-[#3d0f1a]/50 mt-1">
                   Lavoro da remoto su tutto il territorio nazionale e internazionale.
                 </p>
               </div>
@@ -237,25 +248,15 @@ const Contatti = () => {
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="bg-[#3d0f1a] text-white p-10 md:p-14 relative overflow-hidden shadow-2xl">
-              {/* top accent */}
-              <div className="absolute top-0 left-0 w-full h-[3px] bg-primary" />
-              {/* dot grid */}
-              <div
-                className="absolute inset-0 opacity-[0.03] pointer-events-none"
-                style={{
-                  backgroundImage: "radial-gradient(#c0392b 1px, transparent 1px)",
-                  backgroundSize: "28px 28px",
-                }}
-              />
-
+            <div className="bg-white border border-[#3d0f1a] p-10 md:p-14 relative overflow-hidden shadow-[15px_15px_0px_#c0392b]">
+              
               <div className="relative z-10">
                 <div className="mb-10">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary/60 block mb-4">
+                  <span className="font-typewriter text-[10px] uppercase tracking-[0.5em] text-primary block mb-4 font-bold">
                     Invia un messaggio
                   </span>
                   <h2
-                    className="font-display font-black leading-[0.9] tracking-tighter"
+                    className="font-display font-black leading-[0.9] tracking-tighter text-[#3d0f1a]"
                     style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
                   >
                     Raccontami il <br />
@@ -274,14 +275,14 @@ const Contatti = () => {
                     >
                       <CheckCircle size={48} className="text-primary" strokeWidth={1.5} />
                       <div>
-                        <p className="font-display text-3xl font-black mb-3">Messaggio inviato!</p>
-                        <p className="font-body text-white/60 text-lg leading-relaxed">
+                        <p className="font-display text-3xl font-black mb-3 text-[#3d0f1a]">Messaggio inviato!</p>
+                        <p className="font-body text-[#3d0f1a]/70 text-lg leading-relaxed">
                           Perfetto. Ti rispondo entro 24 ore — a presto.
                         </p>
                       </div>
                       <button
                         onClick={() => setStatus("idle")}
-                        className="font-typewriter text-[9px] uppercase tracking-[0.4em] text-white/40 hover:text-white transition-colors mt-4"
+                        className="font-typewriter text-[9px] uppercase tracking-[0.4em] text-[#3d0f1a]/40 hover:text-primary transition-colors mt-4 font-bold"
                       >
                         Invia un altro messaggio
                       </button>
@@ -322,7 +323,7 @@ const Contatti = () => {
                       />
 
                       <div className="group">
-                        <label htmlFor="message" className="font-typewriter text-[8px] uppercase tracking-[0.45em] text-white/35 block mb-3 cursor-pointer">
+                        <label htmlFor="message" className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/60 block mb-3 font-bold cursor-pointer">
                           Messaggio
                         </label>
                         <textarea
@@ -333,7 +334,7 @@ const Contatti = () => {
                           value={formData.message}
                           onChange={handleChange}
                           placeholder="Raccontami la tua idea, il tuo progetto o la tua necessità..."
-                          className="w-full bg-transparent border-b border-white/12 py-3.5 text-white placeholder:text-white/20 font-body text-base outline-none focus:border-primary transition-colors duration-300 resize-none"
+                          className="w-full bg-transparent border-b border-[#3d0f1a]/20 py-3.5 text-[#3d0f1a] placeholder:text-[#3d0f1a]/30 font-body text-base outline-none focus:border-primary transition-colors duration-300 resize-none"
                         />
                       </div>
 
@@ -341,27 +342,28 @@ const Contatti = () => {
                         <motion.p
                           initial={{ opacity: 0, y: 5 }}
                           animate={{ opacity: 1, y: 0 }}
-                          className="font-typewriter text-[9px] uppercase tracking-[0.35em] text-red-400"
+                          className="font-typewriter text-[9px] uppercase tracking-[0.35em] text-red-500 font-bold"
                         >
                           Qualcosa è andato storto. Prova di nuovo o scrivimi via email.
                         </motion.p>
                       )}
 
-                      <button
-                        type="submit"
-                        disabled={status === "loading"}
-                        className="group relative flex items-center justify-between w-full p-7 border border-white/10 hover:border-primary/50 overflow-hidden transition-all duration-500 disabled:opacity-50"
-                      >
-                        {/* fill on hover */}
-                        <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                        <span className="relative z-10 font-typewriter text-[11px] uppercase tracking-[0.4em] text-white font-semibold">
-                          {status === "loading" ? "Invio in corso..." : "Invia messaggio"}
-                        </span>
-                        <ArrowRight
-                          size={18}
-                          className="relative z-10 text-white group-hover:translate-x-3 transition-transform duration-500"
-                        />
-                      </button>
+                      <MagneticWrapper strength={20} className="w-full">
+                        <button
+                          type="submit"
+                          disabled={status === "loading"}
+                          data-cursor="pointer"
+                          className="group relative flex items-center justify-between w-full p-7 border border-[#3d0f1a] bg-[#f5f2ed] hover:bg-primary overflow-hidden transition-all duration-500 disabled:opacity-50 mt-4"
+                        >
+                          <span className="relative z-10 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white font-bold transition-colors">
+                            {status === "loading" ? "Invio in corso..." : "Invia messaggio"}
+                          </span>
+                          <ArrowRight
+                            size={18}
+                            className="relative z-10 text-[#3d0f1a] group-hover:text-white group-hover:translate-x-3 transition-transform duration-500"
+                          />
+                        </button>
+                      </MagneticWrapper>
                     </motion.form>
                   )}
                 </AnimatePresence>

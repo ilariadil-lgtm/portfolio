@@ -8,7 +8,7 @@ export const DesignSwitcher = () => {
   return (
     <button
       onClick={toggleDesign}
-      className={`fixed bottom-8 right-8 z-[100] flex items-center gap-3 px-4 py-2 rounded-full border transition-all duration-500 shadow-2xl group ${
+      className={`fixed bottom-6 left-6 md:bottom-8 md:left-8 z-[100] flex items-center gap-3 px-4 py-2 rounded-full border transition-all duration-500 shadow-2xl group ${
         design === "editorial"
           ? "bg-primary text-primary-foreground border-primary/20 hover:scale-105"
           : "bg-white/10 text-white border-white/20 backdrop-blur-xl hover:bg-white/20 hover:scale-105"
