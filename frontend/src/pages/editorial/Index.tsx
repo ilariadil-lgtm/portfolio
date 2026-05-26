@@ -14,7 +14,7 @@ const BASE_URL = 'http://localhost:8000';
 const Index = () => {
   usePageMeta({
     title: "Home",
-    description: "Ilaria Diliberto — UX Designer e Web Developer. Progetto e costruisco ecosistemi digitali su misura: siti web, e-commerce e web app con un approccio sartoriale.",
+    description: "Ilaria Diliberto — UX Designer e Web Developer. Progetto e costruisco ecosistemi digitali su misura: siti web, e-commerce e web app con estrema cura e precisione.",
   });
 
   const [projects, setProjects] = useState<any[]>([]);
@@ -44,25 +44,25 @@ const Index = () => {
       id: 1,
       title: "Chario Hifi",
       type: "Sviluppo Web • Tema Proprietario • UI/UX Design",
-      image: "/assets/project-nebula.png",
-      url: "/progetti/1",
+      image: "/assets/chario-hero.png",
+      url: "/progetti/chariohifi",
       description: "L'alta fedeltà digitale. Sito premium creato col mio tema proprietario Sophia."
     },
     {
       id: 2,
-      title: "StorageHub",
-      type: "Web app gestionale",
-      image: "/assets/project-zenith.png",
-      url: "/progetti/2",
-      description: "Una web app intelligente che semplifica e automatizza la gestione dell'inventario."
+      title: "Sophia Theme",
+      type: "Framework Front-End • Tema Parent Custom",
+      image: "/assets/project-sophia.png",
+      url: "/progetti/sophiatheme",
+      description: "Il motore invisibile dei progetti editoriali di lusso. Core modulare in React ad alte prestazioni."
     },
     {
       id: 3,
-      title: "Freelens",
-      type: "Project Management",
+      title: "StorageHub",
+      type: "Sviluppo Web Full-Stack • Cloud Management",
       image: "/assets/project-zenith.png",
-      url: "/progetti/3",
-      description: "Spazio digitale per gestire progetti e task riprendendo il controllo del tuo tempo."
+      url: "/progetti/storagehub",
+      description: "Una web app intelligente di storage e inventory management su scala enterprise."
     }
   ];
 
