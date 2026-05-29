@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /nebula/
+Sitemap: https://ilariadiliberto.com/sitemap.xml

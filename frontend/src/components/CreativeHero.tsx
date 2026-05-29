@@ -16,8 +16,6 @@ interface NavPointProps {
 const NavPoint: React.FC<NavPointProps> = ({ angle, radiusSpring, label, detail, to, index, counterRotation, onHover }) => {
   const [isLocalHover, setIsLocalHover] = useState(false);
 
-
-
   const xTransform = useTransform(radiusSpring, (r) => {
     const angleRad = angle * (Math.PI / 180);
     return 50 + (r / 2) * Math.cos(angleRad);
@@ -29,6 +27,48 @@ const NavPoint: React.FC<NavPointProps> = ({ angle, radiusSpring, label, detail,
 
   const left = useTransform(xTransform, (x) => `${x}%`);
   const top = useTransform(yTransform, (y) => `${y}%`);
+
+  // Dynamically align tooltips away from the center of the rotating triangle:
+  // - Index 0: Top vertex (above) -> bottom-full, horizontally centered
+  // - Index 1: Bottom-right vertex (right) -> left-full, vertically centered
+  // - Index 2: Bottom-left vertex (left) -> right-full, vertically centered
+  const wrapperClass =
+    index === 0
+      ? "absolute bottom-full left-1/2 -translate-x-1/2 pb-6 flex flex-col items-center pointer-events-auto z-[100]"
+      : index === 1
+      ? "absolute left-full top-1/2 -translate-y-1/2 pl-6 flex items-center pointer-events-auto z-[100]"
+      : "absolute right-full top-1/2 -translate-y-1/2 pr-6 flex items-center pointer-events-auto z-[100]";
+
+  const getAnimationProps = () => {
+    switch (index) {
+      case 0: // Top
+        return {
+          initial: { opacity: 0, y: -20 },
+          animate: { opacity: 1, y: 0 },
+          exit: { opacity: 0, y: -20 }
+        };
+      case 1: // Right
+        return {
+          initial: { opacity: 0, x: 20 },
+          animate: { opacity: 1, x: 0 },
+          exit: { opacity: 0, x: 20 }
+        };
+      case 2: // Left
+        return {
+          initial: { opacity: 0, x: -20 },
+          animate: { opacity: 1, x: 0 },
+          exit: { opacity: 0, x: -20 }
+        };
+      default:
+        return {
+          initial: { opacity: 0, scale: 0.95 },
+          animate: { opacity: 1, scale: 1 },
+          exit: { opacity: 0, scale: 0.95 }
+        };
+    }
+  };
+
+  const anim = getAnimationProps();
 
   return (
     <motion.div
@@ -55,24 +95,24 @@ const NavPoint: React.FC<NavPointProps> = ({ angle, radiusSpring, label, detail,
 
           <AnimatePresence>
             {isLocalHover && (
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                style={{ rotate: counterRotation }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute left-full ml-12 whitespace-nowrap bg-[#f5f2ed]/98 backdrop-blur-3xl p-6 border border-primary/10 shadow-[0_20px_50px_rgba(0,0,0,0.1)] z-[100]"
-              >
-                <div className="flex items-center gap-4 mb-3">
-                  <span className="w-8 h-[1px] bg-primary/30" />
-                  <span className="block font-typewriter text-[12px] uppercase tracking-[0.5em] text-primary font-medium">
-                    {label}
+              <div className={wrapperClass}>
+                <motion.div
+                  {...anim}
+                  style={{ rotate: counterRotation }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="whitespace-nowrap bg-[#f5f2ed]/98 backdrop-blur-3xl p-4 md:p-6 border border-primary/10 shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
+                >
+                  <div className="flex items-center gap-4 mb-3">
+                    <span className="w-8 h-[1px] bg-primary/30" />
+                    <span className="block font-typewriter text-[12px] uppercase tracking-[0.5em] text-primary font-medium">
+                      {label}
+                    </span>
+                  </div>
+                  <span className="block font-display text-lg font-bold text-[#3d0f1a] tracking-tight">
+                    {detail}
                   </span>
-                </div>
-                <span className="block font-display text-lg font-bold text-[#3d0f1a] tracking-tight">
-                  {detail}
-                </span>
-              </motion.div>
+                </motion.div>
+              </div>
             )}
           </AnimatePresence>
         </div>
@@ -298,19 +338,19 @@ export const CreativeHero: React.FC = () => {
               </div>
 
               {/* Mobile: 3 link testuali sotto il grafico al posto dei NavPoint */}
-              <div className="lg:hidden absolute -bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-6 whitespace-nowrap">
+              <div className="lg:hidden absolute -bottom-10 sm:-bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-5 sm:gap-6 whitespace-nowrap z-20">
                 {[
                   { label: "Chi sono", to: "/chisono" },
                   { label: "Servizi", to: "/servizi" },
                   { label: "Progetti", to: "/progetti" },
                 ].map((link, i) => (
-                  <a
+                  <Link
                     key={i}
-                    href={link.to}
+                    to={link.to}
                     className="font-typewriter text-[9px] uppercase tracking-[0.35em] text-primary/60 hover:text-primary transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </motion.div>

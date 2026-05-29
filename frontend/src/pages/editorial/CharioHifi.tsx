@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { FloatingCTA } from "@/components/FloatingCTA";
+import { BriefingCTA } from "@/components/BriefingCTA";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight, Github, Globe, ExternalLink } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -66,7 +67,7 @@ export const EditorialCharioHifi = () => {
               </div>
 
               <h1 className="relative font-display leading-[0.85] tracking-tighter">
-                <div className="overflow-hidden py-2">
+                <div className="overflow-hidden pt-4 pb-24 -mb-20">
                   <motion.span
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
@@ -222,8 +223,7 @@ export const EditorialCharioHifi = () => {
               <img
                 src="/assets/chario-process.png"
                 alt="UX Wireframing phase"
-                loading="lazy"
-                className="w-full h-full object-cover"
+                  className="w-full h-full object-cover"
               />
               <div className="absolute bottom-4 left-4 z-20">
                 <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-white bg-[#3d0f1a] px-3 py-1.5">
@@ -386,7 +386,7 @@ export const EditorialCharioHifi = () => {
           <motion.div
             className="flex gap-8 absolute top-8 bottom-8 left-0 items-stretch"
             animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
           >
             {[...Array(2)].map((_, i) => (
               <div key={i} className="flex gap-8 shrink-0">
@@ -400,8 +400,7 @@ export const EditorialCharioHifi = () => {
                     <img
                       src={src}
                       alt={`Chario Slide ${j}`}
-                      loading="lazy"
-                      className="h-full w-auto object-contain max-w-[80vw] lg:max-w-[40vw] group-hover:opacity-90 transition-opacity"
+                              className="h-full w-auto object-contain max-w-[80vw] lg:max-w-[40vw] group-hover:opacity-90 transition-opacity"
                     />
                   </div>
                 ))}
@@ -410,6 +409,7 @@ export const EditorialCharioHifi = () => {
           </motion.div>
         </div>
       </section >
+      <BriefingCTA />
 
       {/* ═══════════════════════════════════════════════════════════════════
            NAVIGATION
@@ -434,3 +434,5 @@ export const EditorialCharioHifi = () => {
     </div >
   );
 };
+
+export default EditorialCharioHifi;

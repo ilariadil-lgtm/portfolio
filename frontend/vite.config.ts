@@ -18,4 +18,39 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    // Aumenta il warning threshold — chunks separati sono già sotto i 500KB
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      output: {
+        // Separa le vendor libraries heavy in chunk dedicati
+        manualChunks(id) {
+          // React core
+          if (id.includes("node_modules/react") || id.includes("node_modules/react-dom")) {
+            return "react-vendor";
+          }
+          // Framer Motion (heavy — ~150KB gzip)
+          if (id.includes("node_modules/framer-motion")) {
+            return "framer-motion";
+          }
+          // React Router
+          if (id.includes("node_modules/react-router")) {
+            return "react-router";
+          }
+          // Lenis smooth scroll
+          if (id.includes("node_modules/@studio-freight")) {
+            return "lenis";
+          }
+          // Radix UI components (shadcn/ui base)
+          if (id.includes("node_modules/@radix-ui")) {
+            return "radix-ui";
+          }
+          // Lucide icons
+          if (id.includes("node_modules/lucide-react")) {
+            return "lucide-icons";
+          }
+        },
+      },
+    },
+  },
 }));

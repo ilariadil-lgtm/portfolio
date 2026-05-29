@@ -1,0 +1,402 @@
+import { motion, AnimatePresence } from "framer-motion";
+import { NebulaNav } from "./components/NebulaNav";
+import { NebulaFooter } from "./components/NebulaFooter";
+import { Mail, Linkedin, Github, Instagram, ArrowRight, MapPin, CheckCircle } from "lucide-react";
+import { useState } from "react";
+import { api } from "@/lib/api";
+import { usePageMeta } from "@/hooks/usePageMeta";
+import { RevealText } from "@/components/RevealText";
+import { MagneticWrapper } from "@/components/MagneticWrapper";
+
+const CONTACTS = [
+  {
+    label: "Email",
+    detail: "ilaria.dil@gmail.com",
+    sub: "Rispondo entro 24h",
+    icon: <Mail size={17} />,
+    href: "mailto:ilaria.dil@gmail.com",
+  },
+  {
+    label: "LinkedIn",
+    detail: "Ilaria Diliberto",
+    sub: "Connettiti sulla piattaforma",
+    icon: <Linkedin size={17} />,
+    href: "https://www.linkedin.com/in/ilaria-diliberto/",
+  },
+  {
+    label: "GitHub",
+    detail: "@ilariadil-lgtm",
+    sub: "Esplora il codice",
+    icon: <Github size={17} />,
+    href: "https://github.com/ilariadil-lgtm",
+  },
+  {
+    label: "Instagram",
+    detail: "@ilaryvision",
+    sub: "Scopri i miei lavori",
+    icon: <Instagram size={17} />,
+    href: "https://www.instagram.com/ilaryvision/",
+  },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+function InputField({
+  label, name, type = "text", required = true, value, onChange, placeholder,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+}) {
+  return (
+    <div className="group relative">
+      <label htmlFor={name} className="font-mono tracking-widest text-[9px] uppercase tracking-[0.45em] text-slate-100/60 block mb-3 font-bold cursor-pointer">
+        {label}
+      </label>
+      <input
+        id={name}
+        type={type}
+        name={name}
+        required={required}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className="w-full bg-transparent border-b border-white/10 py-3.5 text-slate-100 placeholder:text-slate-100/30 font-sans font-light text-slate-300 text-base outline-none focus:border-cyan-500 transition-colors duration-300"
+      />
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+const Contatti = () => {
+  usePageMeta({
+    title: "Contatti",
+    description: "Hai un progetto in mente? Scrivimi. Rispondo entro 24 ore per discutere la tua idea e trovare insieme la soluzione giusta.",
+  });
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+    website: "", // Honeypot
+  });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (formData.website) {
+      // Honeypot tripped (bot)
+      setStatus("success"); 
+      return;
+    }
+    
+    setStatus("loading");
+    try {
+      await api.sendContactMessage(formData);
+      setStatus("success");
+      setFormData({ name: "", email: "", subject: "", message: "", website: "" });
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  return (
+    <div className="min-h-screen pl-0 md:pl-32 bg-[#030712] text-slate-100 overflow-hidden selection:bg-cyan-500/30">
+      <NebulaNav />
+
+      {/* ═══════════════════════════════════════════════════════════════════
+           HERO
+           ═══════════════════════════════════════════════════════════════════ */}
+      <section className="relative pt-32 md:pt-48 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden">
+        {/* Background Grid Pattern */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+        </div>
+
+        {/* Watermark */}
+        <div className="absolute inset-0 flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
+          <span
+            className="font-sans font-black tracking-tighter font-black text-slate-100/[0.025] pr-4"
+            style={{ fontSize: "clamp(80px, 18vw, 240px)", lineHeight: 1 }}
+          >
+            CONTATTI
+          </span>
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+
+            <motion.div
+              className="lg:col-span-7"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="flex items-center gap-4 mb-8">
+                <span className="font-mono tracking-widest text-[11px] uppercase tracking-[0.4em] text-cyan-400 font-bold">
+                  CONTATTI E COLLABORAZIONI
+                </span>
+                <div className="w-10 h-[1px] bg-cyan-500/25" />
+              </div>
+              <h1
+                className="font-sans font-black tracking-tighter font-bold leading-[0.85] tracking-tighter text-slate-100"
+                style={{ fontSize: "clamp(3rem, 7vw, 5.8rem)" }}
+              >
+                <RevealText text="Parlami del" delay={0.1} />
+                <RevealText text="tuo progetto." delay={0.2} className="text-cyan-400 " />
+              </h1>
+            </motion.div>
+
+            <motion.div
+              className="lg:col-span-5"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <p className="font-sans font-light text-slate-300 text-xl text-slate-100/70 leading-relaxed border-l border-cyan-500/25 pl-8">
+                Hai un progetto in mente, vuoi un preventivo o semplicemente vuoi
+                capire se posso aiutarti? Scrivimi — rispondo entro 24 ore.
+              </p>
+              <div className="mt-6 pl-8 flex items-center gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-600 animate-pulse" />
+                <span className="font-mono tracking-widest text-[9px] uppercase tracking-[0.35em] text-slate-100/50 font-bold">
+                  Disponibile per nuovi progetti
+                </span>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+           MAIN SPLIT — canali + form
+           ═══════════════════════════════════════════════════════════════════ */}
+      <section className="px-6 md:px-12 lg:px-24 pb-32">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+
+          {/* ── Left: info + canali ── */}
+          <motion.div
+            className="lg:col-span-4 space-y-12 lg:pt-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {/* Canali diretti */}
+            <div>
+              <span className="font-mono tracking-widest text-[9px] uppercase tracking-[0.45em] text-cyan-400 font-bold block mb-7">
+                Canali diretti
+              </span>
+              <div className="space-y-3">
+                {CONTACTS.map((c, i) => (
+                  <motion.a
+                    key={i}
+                    href={c.href}
+                    target={c.href.startsWith("http") ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                    data-cursor="pointer"
+                    initial={{ opacity: 0, x: -15 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1, duration: 0.7 }}
+                    className="group flex items-center gap-5 p-5 border border-white/10 bg-white/[0.02] backdrop-blur-xl hover:border-cyan-500/30 hover:shadow-[0_0_20px_rgba(34,211,238,0.1)] hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all duration-400 rounded-2xl"
+                  >
+                    <div className="w-10 h-10 border border-white/10 flex items-center justify-center text-slate-100/40 bg-cyan-500/5 group-hover:text-cyan-400 group-hover:border-cyan-500/30 transition-all duration-400 shrink-0">
+                      {c.icon}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <span className="font-mono tracking-widest text-[8px] uppercase tracking-[0.35em] text-slate-100/40 block mb-1 font-bold">
+                        {c.label}
+                      </span>
+                      <span className="font-sans font-black tracking-tighter text-base font-black text-slate-100 group-hover:text-cyan-400 transition-colors truncate block">
+                        {c.detail}
+                      </span>
+                    </div>
+                    <ArrowRight
+                      size={13}
+                      className="text-cyan-400/0 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all duration-400 shrink-0"
+                    />
+                  </motion.a>
+                ))}
+
+                {/* Honeypot field (hidden from real users) */}
+                <input
+                  type="text"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  style={{ display: "none" }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
+
+            {/* Sede */}
+            <div className="p-6 border border-white/10 bg-white/[0.02] backdrop-blur-xl rounded-2xl flex items-start gap-4">
+              <MapPin size={16} className="text-cyan-400 mt-0.5 shrink-0" />
+              <div>
+                <span className="font-mono tracking-widest text-[8px] uppercase tracking-[0.4em] text-cyan-400 font-bold block mb-2">
+                  Sede operativa
+                </span>
+                <p className="font-sans font-light text-slate-300 text-[15px] text-slate-100/70">
+                  Sicilia, Italia
+                </p>
+                <p className="font-sans font-light text-slate-300 text-[13px] text-slate-100/50 mt-1">
+                  Lavoro da remoto su tutto il territorio nazionale e internazionale.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* ── Right: form ── */}
+          <motion.div
+            className="lg:col-span-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="bg-white/[0.02] backdrop-blur-xl border border-white/10 p-10 md:p-14 rounded-[2rem] relative overflow-hidden shadow-[0_0_40px_rgba(34,211,238,0.05)]">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-100 pointer-events-none" />
+
+              <div className="relative z-10">
+                <div className="mb-10">
+                  <span className="font-mono tracking-widest text-[10px] uppercase tracking-[0.5em] text-cyan-400 block mb-4 font-bold">
+                    Invia un messaggio
+                  </span>
+                  <h2
+                    className="font-sans font-black tracking-tighter font-black leading-[0.9] tracking-tighter text-slate-100"
+                    style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
+                  >
+                    Raccontami il <br />
+                    <span className="text-cyan-400 ">tuo progetto.</span>
+                  </h2>
+                </div>
+
+                <AnimatePresence mode="wait">
+                  {status === "success" ? (
+                    <motion.div
+                      key="success"
+                      initial={{ opacity: 0, scale: 0.97 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="flex flex-col items-center justify-center py-24 gap-6 text-center"
+                    >
+                      <CheckCircle size={48} className="text-cyan-400" strokeWidth={1.5} />
+                      <div>
+                        <p className="font-sans font-black tracking-tighter text-3xl font-black mb-3 text-slate-100">Messaggio inviato!</p>
+                        <p className="font-sans font-light text-slate-300 text-slate-100/70 text-lg leading-relaxed">
+                          Perfetto. Ti rispondo entro 24 ore — a presto.
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => setStatus("idle")}
+                        className="font-mono tracking-widest text-[9px] uppercase tracking-[0.4em] text-slate-100/40 hover:text-cyan-400 transition-colors mt-4 font-bold"
+                      >
+                        Invia un altro messaggio
+                      </button>
+                    </motion.div>
+                  ) : (
+                    <motion.form
+                      key="form"
+                      onSubmit={handleSubmit}
+                      className="space-y-10"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                        <InputField
+                          label="Il tuo nome"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          placeholder="Mario Rossi"
+                        />
+                        <InputField
+                          label="Email"
+                          name="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="mario@esempio.com"
+                        />
+                      </div>
+
+                      <InputField
+                        label="Oggetto"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        placeholder="Di cosa vuoi parlare?"
+                      />
+
+                      <div className="group">
+                        <label htmlFor="message" className="font-mono tracking-widest text-[9px] uppercase tracking-[0.45em] text-slate-100/60 block mb-3 font-bold cursor-pointer">
+                          Messaggio
+                        </label>
+                        <textarea
+                          id="message"
+                          name="message"
+                          required
+                          rows={5}
+                          value={formData.message}
+                          onChange={handleChange}
+                          placeholder="Raccontami la tua idea, il tuo progetto o la tua necessità..."
+                          className="w-full bg-transparent border-b border-white/10 py-3.5 text-slate-100 placeholder:text-slate-100/30 font-sans font-light text-slate-300 text-base outline-none focus:border-cyan-500 transition-colors duration-300 resize-none"
+                        />
+                      </div>
+
+                      {status === "error" && (
+                        <motion.p
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="font-mono tracking-widest text-[9px] uppercase tracking-[0.35em] text-red-500 font-bold"
+                        >
+                          Qualcosa è andato storto. Prova di nuovo o scrivimi via email.
+                        </motion.p>
+                      )}
+
+                      <MagneticWrapper strength={20} className="w-full">
+                        <button
+                          type="submit"
+                          disabled={status === "loading"}
+                          data-cursor="pointer"
+                          className="group relative flex items-center justify-between w-full p-7 border border-white/10 bg-white/[0.02] backdrop-blur-xl rounded-[1.5rem] hover:bg-cyan-500 hover:border-cyan-500 overflow-hidden transition-all duration-500 disabled:opacity-50 mt-4 shadow-[0_0_20px_rgba(34,211,238,0.05)]"
+                        >
+                          <span className="relative z-10 font-mono tracking-widest text-[11px] uppercase tracking-[0.4em] text-slate-100 group-hover:text-white font-bold transition-colors">
+                            {status === "loading" ? "Invio in corso..." : "Invia messaggio"}
+                          </span>
+                          <ArrowRight
+                            size={18}
+                            className="relative z-10 text-slate-100 group-hover:text-white group-hover:translate-x-3 transition-transform duration-500"
+                          />
+                        </button>
+                      </MagneticWrapper>
+                    </motion.form>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
+      </section>
+
+      <NebulaFooter />
+    </div>
+  );
+};
+
+export default Contatti;

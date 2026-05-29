@@ -1,0 +1,398 @@
+import { motion, Variants } from "framer-motion";
+import { NebulaNav } from "./components/NebulaNav";
+import { NebulaFooter } from "./components/NebulaFooter";
+import { useEffect, useState } from "react";
+import { api } from "@/lib/api";
+import { ArrowRight, Box, Cpu, Globe, Layers } from "lucide-react";
+import { RevealText } from "@/components/RevealText";
+import { Link } from "react-router-dom";
+import { BriefingCTA } from "@/components/BriefingCTA";
+import { usePageMeta } from "@/hooks/usePageMeta";
+
+const wordVariants: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: [0.16, 1, 0.3, 1],
+    }
+  }
+};
+
+const Chisono = () => {
+  usePageMeta({
+    title: "Chi Sono",
+    description: "Ilaria Diliberto — Designer e sviluppatrice full-stack. Dalla Accademia di Belle Arti al prodotto digitale: il percorso che unisce estetica, codice e strategia.",
+  });
+  const [about, setAbout] = useState<any>(null);
+  const [services, setServices] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [aboutData, servData] = await Promise.all([
+          api.getAbout(),
+          api.getServices()
+        ]);
+        setAbout(aboutData);
+        setServices(servData.results || servData);
+      } catch (error) {
+        console.error("Errore nel caricamento dei dati:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const evolution = [
+    {
+      num: "01",
+      period: "2013 — 2020",
+      title: "Accademia di Belle Arti",
+      subtitle: "Estetica e fondamenti",
+      description: "Formazione classica in Graphic Design e Comunicazione visiva. L'occhio estetico che ancora oggi guida ogni decisione progettuale. Sette anni tra percezione visiva, branding avanzato e visual storytelling.",
+      tech: ["Composizione visiva", "Typography & Branding", "Teoria Colore"],
+      icon: <Layers size={22} />
+    },
+    {
+      num: "02",
+      period: "2021 — 2025",
+      title: "Web & UI Development",
+      subtitle: "Dalla grafica al codice",
+      description: "Il passaggio dalla superficie all'architettura: React, design systems, accessibilità. Interfacce che funzionano, non solo belle. Il codice diventa materiale creativo.",
+      tech: ["UI/UX DESIGN", "Sviluppo Front-end", "CMS WORDPRESS & prestashop"],
+      icon: <Cpu size={22} />
+    },
+    {
+      num: "03",
+      period: "2025 — oggi",
+      title: "Strategia & Prodotto Digitale",
+      subtitle: "Dall'idea al rilascio",
+      description: "L'evoluzione verso un profilo ibrido che fonde design, codice e visione d'insieme. Coordino l'intero ciclo di vita del progetto, trasformando le tue necessità aziendali in ecosistemi web completi, fluidi e pronti per il mercato.",
+      tech: ["PRODUCT MANAGEMEN", "SVILUPPO FULL-STACK", "AI WORKFLOWS"],
+      icon: <Globe size={22} />
+    }
+  ];
+
+  return (
+    <div className="min-h-screen pl-0 md:pl-32 bg-[#030712] text-slate-100 overflow-hidden selection:bg-cyan-500/30">
+      <NebulaNav />
+
+      {/* ═══════════════════════════════════════════════════════════════════
+           HERO SECTION — CHI SONO
+           ═══════════════════════════════════════════════════════════════════ */}
+      <section className="pt-32 md:pt-44 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden">
+        {/* Background Grid Pattern */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+
+            {/* Left Column: Typography & Bio Info */}
+            <div className="lg:col-span-7 space-y-12">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                className="space-y-6"
+              >
+                <div className="flex items-center gap-4 mb-2">
+                  <span className="font-mono tracking-widest text-[11px] uppercase tracking-[0.5em] text-cyan-400 font-medium block">
+                    BIOGRAFIA E PROFILO
+                  </span>
+                  <div className="w-12 h-[1px] bg-cyan-500/20" />
+                </div>
+
+                {/* Reveal Text Animations for Title */}
+                <motion.h1 
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="font-sans font-black tracking-tighter text-[12vw] lg:text-[6.5vw] font-bold leading-[0.85] tracking-tighter text-slate-100 mb-8"
+                >
+                  <span className="overflow-hidden inline-block py-3 -my-3">
+                    <motion.span variants={wordVariants} className="inline-block origin-bottom-left">
+                      Chi
+                    </motion.span>
+                  </span>
+                  <span className="overflow-hidden inline-block py-3 -my-3">
+                    <motion.span variants={wordVariants} transition={{ delay: 0.15 }} className="inline-block origin-bottom-left text-cyan-400 ">
+                      &nbsp;Sono.
+                    </motion.span>
+                  </span>
+                </motion.h1>
+
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.6 }}
+                  className="font-sans font-light text-slate-300 text-l text-slate-100/80 leading-relaxed pl-8 border-l border-cyan-500/25 max-w-xl"
+                >
+                  {about?.bio || "Un viaggio che inizia tra i corridoi dell'Accademia di Belle Arti e arriva alla gestione tecnica di prodotti digitali. La stessa ossessione per i dettagli, applicata a scale sempre più ampie."}
+                </motion.p>
+              </motion.div>
+
+              {/* Technical Specifications Ledger */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-[2rem] max-w-xl overflow-hidden relative group shadow-[0_0_40px_rgba(34,211,238,0.05)]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="px-6 py-5 border-b border-white/10 flex items-center justify-between relative z-10">
+                  <span className="font-mono tracking-widest text-[10px] uppercase text-slate-100/60 font-medium">Profilo Professionale</span>
+                  <div className="flex gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10/10" />
+                    <span className="w-2 h-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10/10" />
+                  </div>
+                </div>
+                <div className="divide-y divide-white/5 relative z-10">
+                  {[
+                    { label: "Ruolo", val: "Tech Product Manager & Full-stack Developer" },
+                    { label: "Specializzazione", val: "Sviluppo Web, E-commerce, UI/UX" },
+                    { label: "Sede", val: "Italia // Remote" },
+                    { label: "Esperienza", val: " +6 Anni nel settore digitale", highlight: true }
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex justify-between items-center px-6 py-4">
+                      <span className="font-mono tracking-widest text-[11px] uppercase tracking-widest text-slate-100/60 font-medium">{item.label}</span>
+                      <span className={`font-mono text-[12px] ${item.highlight ? 'text-cyan-400 font-semibold' : 'text-slate-100 font-medium'}`}>{item.val}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right Column: Premium Blueprint Manifesto */}
+            <div className="lg:col-span-5 flex flex-col justify-center items-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                className="relative w-full max-w-[400px] aspect-[4/5] rounded-[2rem] bg-gradient-to-br from-cyan-500/10 to-purple-500/10 p-px overflow-hidden group"
+                data-cursor="view"
+              >
+                {/* Content Container with scanner animation */}
+                <div className="relative w-full h-full p-8 flex flex-col justify-between rounded-[2rem] bg-[#030712]/90 backdrop-blur-2xl border border-white/5 select-none overflow-hidden">
+                  {/* Animated Scanline Laser Beam */}
+                  <motion.div
+                    animate={{ top: ["0%", "100%", "0%"] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent z-10 pointer-events-none"
+                  />
+                  
+                  {/* Glowing background blob */}
+                  <div className="absolute -top-24 -right-24 w-48 h-48 bg-cyan-500/20 blur-[60px] rounded-full group-hover:bg-cyan-500/30 transition-colors duration-700" />
+
+                  {/* Top Ledger Telemetry */}
+                  <div className="flex justify-between items-start border-b border-white/10 pb-4 relative z-10">
+                    <div className="flex flex-col">
+                      <span className="font-mono tracking-widest text-[9px] uppercase text-cyan-400 font-bold">Il mio metodo</span>
+                      <span className="font-mono tracking-widest text-[7px] uppercase text-slate-100/50 font-medium mt-1">Visione operativa </span>
+                    </div>
+                    <div className="flex gap-1.5 items-center">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_10px_#22d3ee]" />
+                      <span className="font-mono text-[8px] text-cyan-400">ILARIA D.</span>
+                    </div>
+                  </div>
+
+                  {/* Main Rules Text Block */}
+                  <div className="space-y-6 my-auto pt-4 relative z-10">
+                    {[
+                      { num: "I.", label: "ESTETICA", desc: "L'armonia visiva non è opzionale, è la porta d'ingresso per la fiducia." },
+                      { num: "II.", label: "LOGICA", desc: "La bellezza senza funzionalità è un'occasione sprecata. Il codice rispecchia il design." },
+                      { num: "III.", label: "FLUIDITÀ", desc: "L'esperienza utente deve fluire senza attrito o complessità tecniche." }
+                    ].map((rule, idx) => (
+                      <div key={idx} className="space-y-1">
+                        <div className="flex items-center gap-2">
+                          <span className="font-sans font-black tracking-tighter text-sm font-bold text-cyan-400">{rule.num}</span>
+                          <span className="font-mono tracking-widest text-[10px] uppercase text-slate-100 font-bold">{rule.label}</span>
+                        </div>
+                        <p className="font-sans font-light text-slate-300 text-[13px] text-slate-100/70 leading-relaxed pl-4">
+                          {rule.desc}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+           TIMELINE — ARCHITECTURAL PHASES
+           ═══════════════════════════════════════════════════════════════════ */}
+      <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-24 border-y border-white/5 relative overflow-hidden">
+        {/* Subtle background glow for timeline */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] bg-purple-500/5 blur-[120px] pointer-events-none rounded-full" />
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-20">
+            <span className="font-mono tracking-widest text-[11px] uppercase tracking-[0.5em] text-cyan-400 font-medium mb-4 block">EVOLUZIONE PROFESSIONALE</span>
+            <motion.h2 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              className="font-sans font-black tracking-tighter text-5xl md:text-7xl font-bold leading-none tracking-tighter"
+            >
+              <span className="overflow-hidden inline-block py-3 -my-3">
+                <motion.span variants={wordVariants} className="inline-block origin-bottom-left">
+                  Il mio percorso
+                </motion.span>
+              </span>
+              <span className="overflow-hidden inline-block py-3 -my-3">
+                <motion.span variants={wordVariants} transition={{ delay: 0.15 }} className="inline-block origin-bottom-left text-cyan-400 ">
+                  &nbsp;evolutivo.
+                </motion.span>
+              </span>
+            </motion.h2>
+          </div>
+
+          <div className="space-y-24 relative before:absolute before:left-4 lg:before:left-12 before:top-2 before:bottom-2 before:w-[1px] before:bg-dashed before:border-l before:border-cyan-500/20">
+            {evolution.map((step, i) => (
+              <motion.div
+                key={step.num}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1, delay: 0.1 }}
+                className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start relative pl-12 lg:pl-24"
+              >
+                {/* Timeline dot inside connector */}
+                <div className="absolute left-4 lg:left-12 -translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-white z-10 shadow-sm" />
+
+                {/* Display Number */}
+                <div className="lg:col-span-2 flex lg:flex-col items-baseline lg:items-start gap-4">
+                  <div className="font-sans font-black tracking-tighter text-7xl md:text-8xl font-black text-slate-100/10 select-none leading-none">
+                    {step.num}
+                  </div>
+                  <span className="font-mono tracking-widest text-[10px] uppercase tracking-[0.3em] text-cyan-400/60 font-medium whitespace-nowrap">{step.period}</span>
+                </div>
+
+                {/* Title & Narrative Description */}
+                <div className="lg:col-span-6 space-y-4 pt-2">
+                  <h3 className="font-sans font-black tracking-tighter text-4xl font-bold text-slate-100">{step.title}</h3>
+                  <span className="font-mono tracking-widest text-[9px] uppercase tracking-[0.4em] text-slate-100/50 font-bold mb-4 block">{step.subtitle}</span>
+                  <p className="font-sans font-light text-slate-300 text-lg text-slate-100/70 leading-relaxed max-w-xl">
+                    {step.description}
+                  </p>
+                </div>
+
+                {/* Technical Spec HUD Card */}
+                <div
+                  className="lg:col-span-4 bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-[24px] p-8 hover:border-cyan-500/30 transition-all duration-500 relative overflow-hidden group cursor-pointer"
+                  data-cursor="pointer"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <div className="absolute top-6 right-6 text-slate-100/20 group-hover:text-cyan-400 transition-all duration-300 relative z-10">
+                    {step.icon}
+                  </div>
+                  <span className="font-mono tracking-widest text-[8px] uppercase tracking-[0.3em] text-slate-100/40 mb-6 block font-medium">Phase_Inventory</span>
+                  <ul className="space-y-3.5">
+                    {step.tech.map((t, idx) => (
+                      <li key={idx} className="flex items-center gap-3">
+                        <div className="w-1 h-1 rounded-full bg-cyan-500/70" />
+                        <span className="font-mono tracking-widest text-[10px] uppercase tracking-widest text-slate-100 font-medium">{t}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+           CAPABILITIES MATRIX — TECHNICAL GRID (Rivisitata)
+           ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-24 md:py-36 px-6 md:px-12 lg:px-24 bg-[#030712] text-slate-100 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-20">
+            <span className="font-mono tracking-widest text-[11px] uppercase tracking-[0.5em] text-cyan-400 font-medium mb-4 block">LE MIE COMPETENZE</span>
+            <motion.h2 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              className="font-sans font-black tracking-tighter text-5xl md:text-7xl font-black leading-none tracking-tighter"
+            >
+              <span className="overflow-hidden inline-block py-3 -my-3">
+                <motion.span variants={wordVariants} className="inline-block origin-bottom-left">
+                  Aree
+                </motion.span>
+              </span>
+              <span className="overflow-hidden inline-block py-3 -my-3">
+                <motion.span variants={wordVariants} transition={{ delay: 0.15 }} className="inline-block origin-bottom-left text-cyan-400 ">
+                  &nbsp;di sviluppo.
+                </motion.span>
+              </span>
+            </motion.h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.length > 0 ? services.map((tech, i) => (
+              <motion.div
+                key={tech.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group relative p-10 bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-[32px] overflow-hidden hover:border-cyan-500/50 transition-all duration-700"
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="flex justify-between items-start mb-12 relative z-10">
+                  <div className="w-12 h-12 rounded-full border border-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-500/10 transition-colors">
+                    <Box size={20} />
+                  </div>
+                  <span className="font-mono tracking-widest text-[9px] text-slate-100/30 font-medium">0{i + 1}</span>
+                </div>
+                <h3 className="font-sans font-black tracking-tighter text-3xl font-bold mb-4">{tech.title}</h3>
+                <p className="font-sans font-light text-slate-300 text-[14px] text-slate-100/70 leading-relaxed">
+                  {tech.description || "Integrazione ad alta performance di soluzioni digitali scalabili e ottimizzate."}
+                </p>
+              </motion.div>
+            )) : (
+              // Fallback cards
+              [
+                { title: "UI & UX Design", desc: "Creazione di interfacce web e mobile memorabili, focalizzate sull'esperienza utente e sulla coerenza visiva del brand." },
+                { title: "Sviluppo Front-end", desc: "Codice pulito, accessibile e ad alte prestazioni utilizzando React, Next.js, TailwindCSS e le tecnologie web più moderne." },
+                { title: "Sviluppo Full-Stack", desc: "Sviluppo interfacce dinamiche e sistemi back-end su misura creando ecosistemi web completi e performanti." }
+              ].map((tech, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="group relative p-10 bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-[32px] overflow-hidden hover:border-cyan-500/50 transition-all duration-700 min-h-[320px]"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <div className="flex justify-between items-start mb-12 relative z-10">
+                    <div className="w-12 h-12 rounded-full border border-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-500/10 transition-colors">
+                      <Box size={20} />
+                    </div>
+                    <span className="font-mono tracking-widest text-[9px] text-slate-100/30 font-medium">0{i + 1}</span>
+                  </div>
+                  <h3 className="font-sans font-black tracking-tighter text-3xl font-bold mb-4">{tech.title}</h3>
+                  <p className="font-sans font-light text-slate-300 text-[14px] text-slate-100/70 leading-relaxed">
+                    {tech.desc}
+                  </p>
+                </motion.div>
+              ))
+            )}
+          </div>
+        </div>
+      </section>
+
+      <BriefingCTA />
+      <NebulaFooter />
+    </div>
+  );
+};
+
+export default Chisono;

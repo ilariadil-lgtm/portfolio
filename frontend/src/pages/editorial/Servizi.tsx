@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { RevealText } from "@/components/RevealText";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
+import { BriefingCTA } from "@/components/BriefingCTA";
 
 // Standard static framework specifications for each service card
 const serviceSpecs: Record<number, any> = {
@@ -20,7 +21,7 @@ const serviceSpecs: Record<number, any> = {
   },
   2: {
     core: "React, Vite, Tailwind, Python, Django, PHP, Javascript",
-    workflow: "Sviluppo Modulare (Front-end & Back-end",
+    workflow: "Sviluppo Modulare (Front-end & Back-end)",
     kpi: "Prestazioni, sicurezza e codice scalabiles",
     load: "LOGICA SOLIDA & VELOCE",
     tools: ["React", "TypeScript", "TailwindCSS", "Next.js", "WordPress", "Prestashop", "HTML / CSS / JS", "PYTHON / DJANGO"]
@@ -52,7 +53,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
         setShowSpecs(false);
       }}
       data-cursor="view"
-      className="h-full relative border border-[#3d0f1a] p-8 bg-white shadow-[10px_10px_0px_rgba(61,15,26,0.05)] hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-500 flex flex-col justify-between group overflow-hidden"
+      className="h-full relative border border-[#3d0f1a] p-6 md:p-8 bg-white shadow-[6px_6px_0px_rgba(61,15,26,0.05)] md:shadow-[10px_10px_0px_rgba(61,15,26,0.05)] hover:shadow-[6px_6px_0px_#c0392b] md:hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-500 flex flex-col justify-between group overflow-hidden"
     >
       {/* Dynamic Scrolling Scanning laser beam */}
       <div className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#c0392b]/50 to-transparent top-0 group-hover:top-[100%] transition-all duration-[3s] ease-in-out z-10 pointer-events-none opacity-0 group-hover:opacity-100" />
@@ -76,7 +77,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
 
         {/* Central Title & Description */}
         <div className="space-y-6 mb-8">
-          <div className="flex items-baseline gap-4 min-h-[90px] lg:min-h-[120px]">
+          <div className="flex items-baseline gap-4 min-h-[80px] lg:min-h-[120px]">
             <span className="font-display text-4xl md:text-5xl font-black text-[#3d0f1a]/10 select-none">
               0{idx + 1}
             </span>
@@ -84,7 +85,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
               {service.title}
             </h3>
           </div>
-          <p className="font-body text-[15px] text-[#3d0f1a]/70 leading-relaxed min-h-[110px]">
+          <p className="font-body text-[15px] text-[#3d0f1a]/70 leading-relaxed">
             {service.description}
           </p>
         </div>
@@ -262,7 +263,7 @@ const Servizi = () => {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:items-center items-start">
 
             {/* Left Column: Title & Subtitle */}
             <div className="lg:col-span-7 space-y-8">
@@ -276,7 +277,7 @@ const Servizi = () => {
                   <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium">COSA OFFRO</span>
                   <div className="w-12 h-[1px] bg-primary/20" />
                 </div>
-                <h1 className="font-display text-[10vw] md:text-[7vw] font-black leading-[0.85] tracking-tighter text-[#3d0f1a]">
+                <h1 className="font-display text-[9.5vw] lg:text-[6.2vw] font-bold leading-[0.85] tracking-tighter text-[#3d0f1a]">
                   <RevealText text="I miei" delay={0.1} />
                   <RevealText text="servizi." delay={0.2} className="text-primary italic" />
                 </h1>
@@ -284,12 +285,12 @@ const Servizi = () => {
             </div>
 
             {/* Right Column: Narrative Block */}
-            <div className="lg:col-span-5 space-y-6 lg:pt-20">
+            <div className="lg:col-span-5 space-y-6">
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="font-body text-xl text-[#3d0f1a]/80 leading-relaxed pl-8 border-l border-primary/25"
+                className="font-body text-lg text-[#3d0f1a]/80 leading-relaxed pl-8 border-l border-primary/25"
               >
                 Un buon prodotto digitale non nasce separando il design dallo sviluppo. Creo soluzioni partendo da una forte sensibilità visiva, traducendole in codice solido e guidando l'intero percorso con una strategia chiara. Questa mappa delinea come posso affiancarti in ogni fase.
               </motion.p>
@@ -380,44 +381,7 @@ const Servizi = () => {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════
-           PROJECT BRIEFING DOCK — CTA SEGMENT (Refactored to Light Mode)
-           ═══════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-36 px-6 md:px-12 lg:px-24 bg-[#f5f2ed] text-[#3d0f1a] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
-            {/* Left Column: Text block containing title & narrative */}
-            <div className="lg:col-span-7 space-y-6 text-left">
-              <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-[#3d0f1a] font-bold block">
-                SYSTEM OPERATION
-              </span>
-              <h2 className="font-display text-5xl md:text-7xl font-black leading-none tracking-tighter">
-                <RevealText text="COSTRUIAMO" delay={0.1} />
-                <RevealText text="QUALCOSA DI UNICO." delay={0.3} className="text-primary italic" />
-              </h2>
-              <p className="font-body text-lg text-[#3d0f1a]/80 leading-relaxed max-w-xl">
-                Hai un'idea per una web app, un design system personalizzato o un e-commerce ad alte prestazioni? Colleghiamo le nostre stazioni per concretizzare la tua visione digitale.
-              </p>
-            </div>
-
-            {/* Right Column: CTA Button trigger */}
-            <div className="lg:col-span-5 flex lg:justify-end justify-start items-center">
-              <MagneticWrapper strength={20} className="w-full max-w-md">
-                <Link
-                  to="/contatti"
-                  data-cursor="pointer"
-                  className="group inline-flex items-center gap-8 p-8 border border-[#3d0f1a] bg-white shadow-[10px_10px_0px_#c0392b] hover:translate-x-1 hover:-translate-y-1 hover:shadow-[15px_15px_0px_#c0392b] transition-all duration-300 w-full justify-between"
-                >
-                  <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] font-bold group-hover:text-primary transition-colors">
-                    PARLIAMONE
-                  </span>
-                  <ArrowRight size={18} className="text-[#3d0f1a] group-hover:text-primary group-hover:translate-x-4 transition-all duration-500" />
-                </Link>
-              </MagneticWrapper>
-            </div>
-          </div>
-        </div>
-      </section>
+      <BriefingCTA />
 
       <Footer />
     </div>

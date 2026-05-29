@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { useEffect, useState } from "react";
@@ -6,8 +6,26 @@ import { api } from "@/lib/api";
 import { ArrowRight, Box, Cpu, Globe, Layers } from "lucide-react";
 import { RevealText } from "@/components/RevealText";
 import { Link } from "react-router-dom";
+import { BriefingCTA } from "@/components/BriefingCTA";
+import { usePageMeta } from "@/hooks/usePageMeta";
+
+const wordVariants: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: [0.16, 1, 0.3, 1],
+    }
+  }
+};
 
 const Chisono = () => {
+  usePageMeta({
+    title: "Chi Sono",
+    description: "Ilaria Diliberto — Designer e sviluppatrice full-stack. Dalla Accademia di Belle Arti al prodotto digitale: il percorso che unisce estetica, codice e strategia.",
+  });
   const [about, setAbout] = useState<any>(null);
   const [services, setServices] = useState<any[]>([]);
 
@@ -32,7 +50,7 @@ const Chisono = () => {
       num: "01",
       period: "2013 — 2020",
       title: "Accademia di Belle Arti",
-      subtitle: "ESTETICA_FONDAMENTI",
+      subtitle: "Estetica e fondamenti",
       description: "Formazione classica in Graphic Design e Comunicazione visiva. L'occhio estetico che ancora oggi guida ogni decisione progettuale. Sette anni tra percezione visiva, branding avanzato e visual storytelling.",
       tech: ["Composizione visiva", "Typography & Branding", "Teoria Colore"],
       icon: <Layers size={22} />
@@ -87,18 +105,31 @@ const Chisono = () => {
                   </span>
                   <div className="w-12 h-[1px] bg-primary/20" />
                 </div>
-                
-                {/* Reveal Text Animations for Title */}
-                <h1 className="font-display text-[11vw] md:text-[8vw] font-black leading-[0.85] tracking-tighter text-[#3d0f1a] mb-8">
-                  <RevealText text="CHI" delay={0.1} />
-                  <RevealText text="SONO." delay={0.2} className="text-primary italic" />
-                </h1>
 
-                <motion.p 
+                {/* Reveal Text Animations for Title */}
+                <motion.h1 
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="font-display text-[12vw] lg:text-[6.5vw] font-bold leading-[0.85] tracking-tighter text-[#3d0f1a] mb-8"
+                >
+                  <span className="overflow-hidden inline-block py-3 -my-3">
+                    <motion.span variants={wordVariants} className="inline-block origin-bottom-left">
+                      Chi
+                    </motion.span>
+                  </span>
+                  <span className="overflow-hidden inline-block py-3 -my-3">
+                    <motion.span variants={wordVariants} transition={{ delay: 0.15 }} className="inline-block origin-bottom-left text-primary italic">
+                      &nbsp;Sono.
+                    </motion.span>
+                  </span>
+                </motion.h1>
+
+                <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.6 }}
-                  className="font-body text-xl text-[#3d0f1a]/80 leading-relaxed pl-8 border-l border-primary/25 max-w-xl"
+                  className="font-body text-l text-[#3d0f1a]/80 leading-relaxed pl-8 border-l border-primary/25 max-w-xl"
                 >
                   {about?.bio || "Un viaggio che inizia tra i corridoi dell'Accademia di Belle Arti e arriva alla gestione tecnica di prodotti digitali. La stessa ossessione per i dettagli, applicata a scale sempre più ampie."}
                 </motion.p>
@@ -197,10 +228,23 @@ const Chisono = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
             <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">EVOLUZIONE PROFESSIONALE</span>
-            <h2 className="font-display text-5xl md:text-7xl font-bold leading-none tracking-tighter">
-              <RevealText text="Il mio percorso" delay={0.1} />
-              <RevealText text="evolutivo." delay={0.3} className="text-primary italic" />
-            </h2>
+            <motion.h2 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              className="font-display text-5xl md:text-7xl font-bold leading-none tracking-tighter"
+            >
+              <span className="overflow-hidden inline-block py-3 -my-3">
+                <motion.span variants={wordVariants} className="inline-block origin-bottom-left">
+                  Il mio percorso
+                </motion.span>
+              </span>
+              <span className="overflow-hidden inline-block py-3 -my-3">
+                <motion.span variants={wordVariants} transition={{ delay: 0.15 }} className="inline-block origin-bottom-left text-primary italic">
+                  &nbsp;evolutivo.
+                </motion.span>
+              </span>
+            </motion.h2>
           </div>
 
           <div className="space-y-24 relative before:absolute before:left-4 lg:before:left-12 before:top-2 before:bottom-2 before:w-[1px] before:bg-dashed before:border-l before:border-primary/20">
@@ -234,7 +278,7 @@ const Chisono = () => {
                 </div>
 
                 {/* Technical Spec HUD Card */}
-                <div 
+                <div
                   className="lg:col-span-4 bg-[#f5f2ed] border border-[#3d0f1a]/10 p-8 shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b] hover:border-[#3d0f1a]/30 transition-all duration-300 relative group cursor-pointer"
                   data-cursor="pointer"
                 >
@@ -264,10 +308,23 @@ const Chisono = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
             <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">LE MIE COMPETENZE</span>
-            <h2 className="font-display text-5xl md:text-7xl font-black leading-none tracking-tighter">
-              <RevealText text="Aree" delay={0.1} />
-              <RevealText text="di sviluppo." delay={0.3} className="text-primary italic" />
-            </h2>
+            <motion.h2 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              className="font-display text-5xl md:text-7xl font-black leading-none tracking-tighter"
+            >
+              <span className="overflow-hidden inline-block py-3 -my-3">
+                <motion.span variants={wordVariants} className="inline-block origin-bottom-left">
+                  Aree
+                </motion.span>
+              </span>
+              <span className="overflow-hidden inline-block py-3 -my-3">
+                <motion.span variants={wordVariants} transition={{ delay: 0.15 }} className="inline-block origin-bottom-left text-primary italic">
+                  &nbsp;di sviluppo.
+                </motion.span>
+              </span>
+            </motion.h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -278,28 +335,18 @@ const Chisono = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                data-cursor="pointer"
-                className="group p-8 border border-[#3d0f1a] bg-white shadow-[10px_10px_0px_rgba(61,15,26,0.1)] hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-300 flex flex-col justify-between"
+                className="group p-8 border border-[#3d0f1a] bg-white shadow-[10px_10px_0px_rgba(61,15,26,0.1)] hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-300"
               >
-                <div>
-                  <div className="flex justify-between items-start mb-12">
-                    <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform bg-primary/5">
-                      <Box size={20} />
-                    </div>
-                    <span className="font-typewriter text-[9px] text-[#3d0f1a]/30 font-medium">0{i + 1}</span>
+                <div className="flex justify-between items-start mb-12">
+                  <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform bg-primary/5">
+                    <Box size={20} />
                   </div>
-                  <h3 className="font-display text-3xl font-bold mb-4">{tech.title}</h3>
-                  <p className="font-body text-[14px] text-[#3d0f1a]/70 leading-relaxed">
-                    {tech.description || "Integrazione ad alta performance di soluzioni digitali scalabili e ottimizzate."}
-                  </p>
+                  <span className="font-typewriter text-[9px] text-[#3d0f1a]/30 font-medium">0{i + 1}</span>
                 </div>
-                
-                <div className="mt-12 pt-6 border-t border-[#3d0f1a]/10 flex items-center justify-between overflow-hidden">
-                  <span className="font-typewriter text-[9px] tracking-[0.4em] text-primary font-medium translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                    <Link to="/servizi">SCOPRI DI PIÙ</Link>
-                  </span>
-                  <ArrowRight size={14} className="text-primary translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-75" />
-                </div>
+                <h3 className="font-display text-3xl font-bold mb-4">{tech.title}</h3>
+                <p className="font-body text-[14px] text-[#3d0f1a]/70 leading-relaxed">
+                  {tech.description || "Integrazione ad alta performance di soluzioni digitali scalabili e ottimizzate."}
+                </p>
               </motion.div>
             )) : (
               // Fallback cards
@@ -314,28 +361,18 @@ const Chisono = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  data-cursor="pointer"
-                  className="group p-8 border border-[#3d0f1a] bg-white shadow-[10px_10px_0px_rgba(61,15,26,0.1)] hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-300 flex flex-col justify-between min-h-[350px]"
+                  className="group p-8 border border-[#3d0f1a] bg-white shadow-[10px_10px_0px_rgba(61,15,26,0.1)] hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-300 min-h-[320px]"
                 >
-                  <div>
-                    <div className="flex justify-between items-start mb-12">
-                      <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform bg-primary/5">
-                        <Box size={20} />
-                      </div>
-                      <span className="font-typewriter text-[9px] text-[#3d0f1a]/30 font-medium">0{i + 1}</span>
+                  <div className="flex justify-between items-start mb-12">
+                    <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform bg-primary/5">
+                      <Box size={20} />
                     </div>
-                    <h3 className="font-display text-3xl font-bold mb-4">{tech.title}</h3>
-                    <p className="font-body text-[14px] text-[#3d0f1a]/70 leading-relaxed">
-                      {tech.desc}
-                    </p>
+                    <span className="font-typewriter text-[9px] text-[#3d0f1a]/30 font-medium">0{i + 1}</span>
                   </div>
-                  
-                  <div className="mt-12 pt-6 border-t border-[#3d0f1a]/10 flex items-center justify-between">
-                    <span className="font-typewriter text-[9px] tracking-[0.4em] text-primary font-medium opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                      <Link to="/servizi">SCOPRI DI PIÙ</Link>
-                    </span>
-                    <ArrowRight size={14} className="text-primary opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-75" />
-                  </div>
+                  <h3 className="font-display text-3xl font-bold mb-4">{tech.title}</h3>
+                  <p className="font-body text-[14px] text-[#3d0f1a]/70 leading-relaxed">
+                    {tech.desc}
+                  </p>
                 </motion.div>
               ))
             )}
@@ -343,6 +380,7 @@ const Chisono = () => {
         </div>
       </section>
 
+      <BriefingCTA />
       <Footer />
     </div>
   );

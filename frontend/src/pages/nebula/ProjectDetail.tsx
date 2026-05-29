@@ -6,7 +6,7 @@ import { NebulaNav } from "./components/NebulaNav";
 
 const BASE_URL = 'http://localhost:8000';
 
-export const NebulaProjectDetail = () => {
+const NebulaProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [project, setProject] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -30,7 +30,7 @@ export const NebulaProjectDetail = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#030712] flex items-center justify-center font-mono text-cyan-400 animate-pulse">
+      <div className="min-h-screen pl-0 md:pl-32 bg-[#030712] flex items-center justify-center font-mono text-cyan-400 animate-pulse">
         SYNCHRONIZING CASE STUDY...
       </div>
     );
@@ -38,9 +38,9 @@ export const NebulaProjectDetail = () => {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-[#030712] flex flex-col items-center justify-center space-y-6">
+      <div className="min-h-screen pl-0 md:pl-32 bg-[#030712] flex flex-col items-center justify-center space-y-6">
         <h1 className="text-4xl font-black tracking-tighter">DATA LOSS / 404</h1>
-        <Link to="/progetti" className="px-6 py-2 bg-white text-slate-950 rounded-xl font-bold uppercase text-xs tracking-widest">
+        <Link to="/progetti" className="px-6 py-2 bg-[#030712] text-slate-950 rounded-xl font-bold uppercase text-xs tracking-widest">
           Return to Hub
         </Link>
       </div>
@@ -52,7 +52,7 @@ export const NebulaProjectDetail = () => {
     : project.technologies;
 
   return (
-    <div className="min-h-screen bg-[#030712] text-slate-100 font-sans selection:bg-cyan-500/30 overflow-x-hidden pt-32 pb-20">
+    <div className="min-h-screen pl-0 md:pl-32 bg-[#030712] text-slate-100 font-sans selection:bg-cyan-500/30 overflow-x-hidden pt-32 pb-20">
       <NebulaNav />
 
       {/* Hero Background */}
@@ -155,7 +155,7 @@ export const NebulaProjectDetail = () => {
         {/* CTA: Next Mission */}
         <section className="py-32 border-t border-white/5 text-center">
            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-12">READY FOR <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">NEW ORIGINS?</span></h2>
-           <Link to="/progetti" className="group inline-flex items-center gap-8 px-12 py-6 rounded-full bg-white text-slate-950 font-bold hover:scale-105 transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)]">
+           <Link to="/progetti" className="group inline-flex items-center gap-8 px-12 py-6 rounded-full bg-[#030712] text-slate-950 font-bold hover:scale-105 transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)]">
               <span className="uppercase text-sm tracking-widest">Return to Base</span>
               <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
            </Link>
@@ -170,3 +170,5 @@ export const NebulaProjectDetail = () => {
     </div>
   );
 };
+
+export default NebulaProjectDetail;

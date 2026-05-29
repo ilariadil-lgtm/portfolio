@@ -8,51 +8,56 @@ interface RevealTextProps {
   as?: keyof JSX.IntrinsicElements;
 }
 
-export const RevealText: React.FC<RevealTextProps> = ({ text, className = "", delay = 0, as: Component = "div" }) => {
-  // Dividiamo il testo per parole
+export const RevealText: React.FC<RevealTextProps> = ({
+  text,
+  className = "",
+  delay = 0,
+}) => {
   const words = text.split(" ");
 
   const container = {
-    hidden: { opacity: 0 },
-    visible: (i = 1) => ({
-      opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: delay * i },
-    }),
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: delay,
+      },
+    },
   };
 
+  // Animazione pulita: opacity + y fisso in pixel.
+  // Niente blur (causa clipping nei container overflow:hidden).
+  // Niente y in percentuale (causa problemi di clip verticale).
+  // Niente overflow:hidden sui wrapper parola.
   const child: Variants = {
+    hidden: { opacity: 0, y: 16 },
     visible: {
       opacity: 1,
       y: 0,
-      rotate: 0,
       transition: {
-        type: "spring",
-        damping: 20,
-        stiffness: 100,
-        duration: 0.8,
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1],
       },
-    },
-    hidden: {
-      opacity: 0,
-      y: "120%",
-      rotate: 2,
     },
   };
 
   return (
     <motion.div
       className={`flex flex-wrap ${className}`}
+      style={{ columnGap: "0.22em", rowGap: 0 }}
       variants={container}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
     >
       {words.map((word, index) => (
-        <span key={index} className="overflow-hidden inline-block mr-[0.25em]">
-          <motion.span variants={child} className="inline-block origin-bottom-left">
-            {word}
-          </motion.span>
-        </span>
+        <motion.span
+          key={index}
+          variants={child}
+          style={{ display: "inline-block" }}
+        >
+          {word}
+        </motion.span>
       ))}
     </motion.div>
   );

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { FloatingCTA } from "@/components/FloatingCTA";
+import { BriefingCTA } from "@/components/BriefingCTA";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -14,13 +15,13 @@ export const EditorialVillaMima = () => {
 
   usePageMeta({
     title: "Villa Mima",
-    description: "Un'esclusiva boutique guesthouse immersa nel barocco della Val di Noto. Brand identity, copywriting d'autore e sito WordPress custom con booking engine integrato realizzato in collaborazione con l'agenzia Carnova.",
+    description: "Un progetto digitale raffinato realizzato in collaborazione con l'agenzia Carnova. Cura dell'interfaccia utente, della narrazione visiva e dello sviluppo su WordPress per una location d'eccellenza dedicata a matrimoni e ricevimenti in Sicilia.",
   });
 
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 60]);
 
-  const techList = ["Brand & Logo Design", "UI/UX & Art Direction", "Copywriting Emozionale", "WordPress Core & Custom Booking"];
+  const techList = ["UI/UX Design", "WordPress Environment", "Copywriting & Storytelling", "Wedding & Event Industry"];
 
   return (
     <div className="min-h-screen bg-[#f5f2ed] text-[#3d0f1a] selection:bg-primary/30 font-body">
@@ -60,12 +61,12 @@ export const EditorialVillaMima = () => {
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium block whitespace-nowrap"
                 >
-                  BRAND IDENTITY • UI/UX • CUSTOM BOOKING
+                  UI/UX DESIGN • WEB & CONTENT • WEDDING & EVENTS
                 </motion.span>
               </div>
 
               <h1 className="relative font-display leading-[0.85] tracking-tighter">
-                <div className="overflow-hidden pt-2 pb-6">
+                <div className="overflow-hidden pt-4 pb-24 -mb-20">
                   <motion.span
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
@@ -85,7 +86,7 @@ export const EditorialVillaMima = () => {
                 className="mt-8 lg:mt-12 max-w-[34rem]"
               >
                 <p className="font-body text-sm md:text-base text-[#3d0f1a]/70 leading-relaxed border-l-2 border-primary/20 pl-6 lg:pl-8 py-2">
-                  Un'esclusiva boutique guesthouse immersa nel barocco della Val di Noto. Realizzato in collaborazione con l'agenzia Carnova, il progetto comprende il restyling dell'identità visiva, lo storytelling emozionale e lo sviluppo di un portale WordPress custom dotato di un motore di prenotazione suite integrato ad altissime prestazioni.
+                  Un progetto digitale raffinato realizzato in collaborazione con l'agenzia Carnova. Cura dell'interfaccia utente, della narrazione visiva e dello sviluppo su WordPress per una location d'eccellenza dedicata a matrimoni e ricevimenti in Sicilia.
                 </p>
               </motion.div>
             </motion.div>
@@ -117,7 +118,7 @@ export const EditorialVillaMima = () => {
                 {/* Image */}
                 <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
                   <img
-                    src="/assets/projects/villa-mima/homepage.webp"
+                    src="/assets/projects/villa-mima/home.webp"
                     alt="Villa Mima Homepage Screenshot"
                     onError={(e) => {
                       // Fallback visual in case files aren't uploaded yet
@@ -157,14 +158,14 @@ export const EditorialVillaMima = () => {
             transition={{ delay: 0.2 }}
           >
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              Pietra, luce e silenzio <span className="italic text-primary">siciliano.</span>
+              Eventi sotto <span className="italic text-primary">le stelle.</span>
             </h2>
             <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed max-w-2xl">
               <p>
-                Immersa nelle campagne incontaminate che circondano Noto, patrimonio dell'UNESCO, Villa Mima è una gemma di ospitalità esclusiva. La struttura nasce dal restauro conservativo di un antico caseggiato in pietra locale, arricchito da inserti di architettura minimalista contemporanea.
+                Immersa tra uliveti e vigneti a due passi dalla Valle dei Templi, Villa Mima è molto più di una sala ricevimenti: è un'esperienza sensoriale completa. In collaborazione con Carnova, la sfida era trasmettere online questa forte identità e la cura maniacale per i dettagli.
               </p>
               <p>
-                La richiesta avanzata dall'agenzia Carnova era di progettare una presenza digitale premium e di grandissimo impatto sensoriale: un sito web di lusso capace di agire da vetrina emozionale e, contemporaneamente, da motore di conversione per la prenotazione diretta delle suite, abbattendo la dipendenza dalle grandi OTA.
+                Serviva una piattaforma capace di esaltare non solo la bellezza paesaggistica e architettonica della struttura, ma anche l'alta cucina e il 'food design', elementi decisivi per chi è alla ricerca della location perfetta per un evento esclusivo.
               </p>
             </div>
           </motion.div>
@@ -187,7 +188,7 @@ export const EditorialVillaMima = () => {
               02 — L'Obiettivo
             </span>
             <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]">
-              "Catturare la purezza materica della pietra, la luce dorata del tramonto e l'esclusività dei servizi per tradurli in una navigazione <span className="text-primary italic">sofisticata, poetica</span> e priva di attriti."
+              "L'eleganza si nasconde nei dettagli: un'interfaccia progettata per far pregustare l'atmosfera magica di un evento indimenticabile, <span className="text-primary italic">ancor prima del primo assaggio.</span>"
             </h3>
           </motion.div>
         </div>
@@ -210,18 +211,18 @@ export const EditorialVillaMima = () => {
             <div className="relative w-full aspect-[3/2] max-w-[720px] lg:max-w-none">
               {/* Geometria astratta sul fondo */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] rounded-full bg-primary/5 blur-3xl pointer-events-none" />
-              
+
               {/* Box Frame Brutalista (Senza Padding) */}
               <div className="relative z-10 w-full h-full bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] flex flex-col overflow-hidden p-0 group">
                 {/* Image */}
                 <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
                   <img
-                    src="/assets/projects/villa-mima/struttura.webp"
+                    src="/assets/projects/villa-mima/la-villa.webp"
                     alt="Villa Mima Structure and Materials"
                     onError={(e) => {
                       e.currentTarget.src = "/assets/project-visio.png";
                     }}
-                    className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000"
+                    className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                   />
                 </div>
               </div>
@@ -240,14 +241,14 @@ export const EditorialVillaMima = () => {
                 03 — Il Processo
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter mb-8 text-[#3d0f1a]">
-                Direzione Visiva e Storytelling.
+                UI/UX e Food Design.
               </h2>
               <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed">
                 <p>
-                  Il lavoro ha richiesto una profonda simbiosi tra brand design, copywriting d'autore e progettazione delle interfacce. Ho impostato una palette cromatica estremamente naturale e calda, basata sui toni del beige sabbioso e della pietra calcarea, alternati a dettagli bordeaux profondi.
+                  Ho sviluppato un'architettura visiva che mette in primo piano le emozioni e i sensi. Il layout lascia ampio respiro alle fotografie della location e alle creazioni culinarie artistiche dello chef, trattando ogni piatto come un'opera di design.
                 </p>
                 <p>
-                  Ho sviluppato una griglia editoriale pulita e flessibile che lascia parlare le splendide immagini della struttura. L'esperienza di navigazione (UX) è studiata per immergere il potenziale ospite nell'esperienza silenziosa del soggiorno, guidandolo organicamente alla scoperta dei servizi esclusivi e alla prenotazione diretta.
+                  L'uso di tipografie graziate ed eleganti, unito a spazi negativi generosi, crea un'atmosfera di lusso sussurrato, guidando l'utente attraverso i servizi: dai matrimoni da favola agli show cooking, fino all'intrattenimento a bordo piscina.
                 </p>
               </div>
             </div>
@@ -271,14 +272,14 @@ export const EditorialVillaMima = () => {
               04 — Sviluppo
             </span>
             <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              Sito Custom & booking Engine.
+              WordPress e Narrazione Emozionale.
             </h2>
             <div className="font-body text-[#3d0f1a]/70 text-lg leading-relaxed space-y-6">
               <p>
-                L'infrastruttura web è stata ingegnerizzata su piattaforma WordPress, curando con estrema precisione il codice per garantire caricamenti istantanei. Ho implementato un sistema di booking engine customizzato, consentendo agli utenti di verificare la disponibilità delle suite in tempo reale ed effettuare pagamenti in sicurezza.
+                A livello tecnico, l'intero ecosistema è stato ingegnerizzato su piattaforma WordPress, garantendo fluidità e velocità di caricamento nonostante l'alta densità di contenuti fotografici. L'esperienza utente è stata studiata per abbattere ogni attrito nel percorso di conversione.
               </p>
               <p>
-                Il sito è nativamente responsive e bilingue, ottimizzato lato SEO per posizionarsi sul mercato dell'ospitalità di lusso internazionale. Un pannello di controllo WordPress semplificato permette al gestore di aggiornare prezzi, camere e pacchetti in totale autonomia.
+                I moduli di contatto e le call to action sono posizionati in modo organico e non invasivo, invitando i futuri sposi o i planner a mettersi in contatto con la struttura in modo semplice, empatico e diretto.
               </p>
             </div>
           </motion.div>
@@ -315,7 +316,7 @@ export const EditorialVillaMima = () => {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">Lancio</span>
-                  <span className="font-display text-md font-black">2026</span>
+                  <span className="font-display text-md font-black">2023</span>
                 </div>
               </div>
             </div>
@@ -343,10 +344,10 @@ export const EditorialVillaMima = () => {
 
           <div className="mb-12 max-w-2xl">
             <h2 className="font-display text-3xl md:text-5xl font-black tracking-tighter mb-6 text-[#3d0f1a]">
-              L'ospitalità d'autore.
+              La magia dei dettagli.
             </h2>
             <p className="font-body text-lg text-[#3d0f1a]/70">
-              Il risultato finale è un portale di altissimo livello editoriale e prestazionale. Attraverso lo studio dei flussi e l'eleganza stilistica della presentazione, la vetrina digitale di Villa Mima racconta fedelmente l'esperienza fisica, offrendo al cliente un aumento immediato della brand authority e delle conversioni dirette.
+              Il risultato è un sito web che cattura perfettamente l'essenza dell'ospitalità e dell'alta cucina. Un progetto che dimostra come il giusto equilibrio tra design minimale, immagini d'impatto e un copy accurato possa trasformare una vetrina digitale nel primo, fondamentale passo verso l'organizzazione di un evento perfetto.
             </p>
           </div>
         </motion.div>
@@ -359,26 +360,25 @@ export const EditorialVillaMima = () => {
           <motion.div
             className="flex gap-8 absolute top-8 bottom-8 left-0 items-stretch"
             animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
           >
             {[...Array(2)].map((_, i) => (
               <div key={i} className="flex gap-8 shrink-0">
                 {[
-                  "/assets/projects/villa-mima/homepage.webp",
-                  "/assets/projects/villa-mima/camere.webp",
-                  "/assets/projects/villa-mima/struttura.webp",
-                  "/assets/projects/villa-mima/servizi.webp",
-                  "/assets/projects/villa-mima/giardino.webp",
-                  "/assets/projects/villa-mima/piscina.webp",
-                  "/assets/projects/villa-mima/dettagli.webp",
+                  "/assets/projects/villa-mima/home.webp",
+                  "/assets/projects/villa-mima/la-villa.webp",
+                  "/assets/projects/villa-mima/menu.webp",
+                  "/assets/projects/villa-mima/contatti.webp",
+                  "/assets/projects/villa-mima/home.webp",
+                  "/assets/projects/villa-mima/la-villa.webp",
+                  "/assets/projects/villa-mima/menu.webp",
                   "/assets/projects/villa-mima/contatti.webp",
                 ].map((src, j) => (
                   <div key={j} className="h-full shrink-0 border border-[#3d0f1a] shadow-[10px_10px_0px_#c0392b] bg-[#f5f2ed] p-0 group overflow-hidden">
                     <img
                       src={src}
                       alt={`Villa Mima Slide ${j}`}
-                      loading="lazy"
-                      onError={(e) => {
+                              onError={(e) => {
                         // Fallback image array to make page beautiful even without physical files
                         const fallbacks = [
                           "/assets/projects/villa-masami/homepage.webp",
@@ -400,7 +400,8 @@ export const EditorialVillaMima = () => {
             ))}
           </motion.div>
         </div>
-      </section >
+      </section>
+      <BriefingCTA />
 
       {/* ═══════════════════════════════════════════════════════════════════
            NAVIGATION

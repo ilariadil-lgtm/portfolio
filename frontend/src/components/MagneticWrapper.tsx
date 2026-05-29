@@ -14,6 +14,8 @@ export const MagneticWrapper: React.FC<MagneticWrapperProps> = ({
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  // Su touch device l'effetto magnetico non ha senso — skip tutto
+  const isTouchDevice = typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
   
   const springConfig = { damping: 15, stiffness: 150, mass: 0.1 };
   
@@ -51,6 +53,11 @@ export const MagneticWrapper: React.FC<MagneticWrapperProps> = ({
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, [isHovered, x, y, strength]);
+
+  // Su mobile: restituisce children senza wrapping spring
+  if (isTouchDevice) {
+    return <div className={`inline-block ${className}`}>{children}</div>;
+  }
 
   return (
     <motion.div
