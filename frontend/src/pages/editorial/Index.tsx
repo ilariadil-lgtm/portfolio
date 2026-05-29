@@ -1,4 +1,3 @@
-import { useParallax } from "@/components/Reveal";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -6,10 +5,11 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { CreativeHero } from "@/components/CreativeHero";
 import { useEffect, useState } from "react";
+import { BriefingCTA } from "@/components/BriefingCTA";
 import { api } from "@/lib/api";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 const Index = () => {
   usePageMeta({
@@ -18,19 +18,16 @@ const Index = () => {
   });
 
   const [projects, setProjects] = useState<any[]>([]);
-  const [about, setAbout] = useState<any>(null);
   const [services, setServices] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [projData, aboutData, servData] = await Promise.all([
+        const [projData, servData] = await Promise.all([
           api.getProjects(),
-          api.getAbout(),
           api.getServices()
         ]);
         setProjects(projData.results || projData);
-        setAbout(aboutData);
         setServices(servData.results || servData);
       } catch (error) {
         console.error("Errore nel caricamento dei dati:", error);
@@ -42,25 +39,25 @@ const Index = () => {
   const fallbackProjects = [
     {
       id: 1,
-      title: "Chario Hifi",
-      type: "Sviluppo Web • Tema Proprietario • UI/UX Design",
-      image: "/assets/chario-hero.png",
-      url: "/progetti/chariohifi",
-      description: "L'alta fedeltà digitale. Sito premium creato col mio tema proprietario Sophia."
+      title: "Villa Masami",
+      type: "Brand Identity • UI/UX Design • Web",
+      image: "/assets/projects/villa-masami/homepage.webp",
+      url: "/progetti/villamasami",
+      description: "Un progetto digitale completo. Cura integrale dell'identità della struttura, dal logo allo sviluppo WordPress."
     },
     {
       id: 2,
-      title: "Sophia Theme",
-      type: "Framework Front-End • Tema Parent Custom",
-      image: "/assets/project-sophia.png",
-      url: "/progetti/sophiatheme",
-      description: "Il motore invisibile dei progetti editoriali di lusso. Core modulare in React ad alte prestazioni."
+      title: "Freelens",
+      type: "SaaS Management • UI/UX Design",
+      image: "/assets/projects/freelens/home.webp",
+      url: "/progetti/freelens",
+      description: "Spazio digitale di project management per gestire progetti e task, riprendendo il controllo del proprio tempo con un'interfaccia focalizzata."
     },
     {
       id: 3,
       title: "StorageHub",
       type: "Sviluppo Web Full-Stack • Cloud Management",
-      image: "/assets/project-zenith.png",
+      image: "/assets/projects/storage-hub/dashboard.webp",
       url: "/progetti/storagehub",
       description: "Una web app intelligente di storage e inventory management su scala enterprise."
     }
@@ -92,32 +89,32 @@ const Index = () => {
 
         <div className="flex whitespace-nowrap overflow-hidden -rotate-2 opacity-5 pointer-events-none">
           <motion.div
-            animate={{ x: [0, -1500] }}
-            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-            className="flex gap-16 font-display text-[12vw] font-black text-stroke-primary text-transparent"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear", repeatType: "loop" }}
+            className="flex gap-16 font-display text-[12vw] font-black text-stroke-primary text-transparent whitespace-nowrap"
           >
-            <span>UX ARCHITECTURE • DIGITAL STRATEGY • CLOUD DESIGN •</span>
-            <span>UX ARCHITECTURE • DIGITAL STRATEGY • CLOUD DESIGN •</span>
+            <span>UX ARCHITECTURE • DIGITAL STRATEGY • CLOUD DESIGN •&nbsp;</span>
+            <span>UX ARCHITECTURE • DIGITAL STRATEGY • CLOUD DESIGN •&nbsp;</span>
           </motion.div>
         </div>
         <div className="relative z-10 flex whitespace-nowrap overflow-hidden rotate-1 scale-110 -mt-24 md:-mt-32">
           <motion.div
-            animate={{ x: [-1500, 0] }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            className="flex gap-12 font-display text-[6vw] font-bold text-primary mix-blend-multiply opacity-90"
+            animate={{ x: ["-50%", "0%"] }}
+            transition={{ duration: 18, repeat: Infinity, ease: "linear", repeatType: "loop" }}
+            className="flex gap-12 font-display text-[6vw] font-bold text-primary mix-blend-multiply opacity-90 whitespace-nowrap"
           >
-            <span>IDENTITÀ VISIVA • ECOSISTEMI DIGITALI • GESTIONE FLUIDA </span>
-            <span>IDENTITÀ VISIVA • ECOSISTEMI DIGITALI • GESTIONE FLUIDA</span>
+            <span>IDENTITÀ VISIVA • ECOSISTEMI DIGITALI • GESTIONE FLUIDA •&nbsp;</span>
+            <span>IDENTITÀ VISIVA • ECOSISTEMI DIGITALI • GESTIONE FLUIDA •&nbsp;</span>
           </motion.div>
         </div>
         <div className="relative z-20 flex whitespace-nowrap overflow-hidden -rotate-1 scale-105 mt-2 md:mt-4">
             <motion.div
-              animate={{ x: [0, -1000] }}
-              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-              className="flex gap-20 font-typewriter text-[13px] uppercase tracking-[0.5em] text-primary font-medium"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ duration: 12, repeat: Infinity, ease: "linear", repeatType: "loop" }}
+              className="flex gap-20 font-typewriter text-[13px] uppercase tracking-[0.5em] text-primary font-medium whitespace-nowrap"
             >
-              <span>[ PROCESSO: FLUIDO ] // VISIONE: EMPATICA // LAT_38.1 // LONG_13.3 //</span>
-              <span>[ PROCESSO: FLUIDO ] // VISIONE: EMPATICA // LAT_38.1 // LONG_13.3 //</span>
+              <span>[ PROCESSO: FLUIDO ] // VISIONE: EMPATICA // LAT_38.1 // LONG_13.3 //&nbsp;</span>
+              <span>[ PROCESSO: FLUIDO ] // VISIONE: EMPATICA // LAT_38.1 // LONG_13.3 //&nbsp;</span>
             </motion.div>
         </div>
       </section>
@@ -155,18 +152,21 @@ const Index = () => {
               <div className="w-12 h-[1px] bg-primary/20" />
             </motion.div>
             <div className="mb-16">
-              {["Do forma alle tue idee,", "dal design al prodotto digitale completo"].map((line, i) => (
-                <div key={i} className="overflow-hidden">
-                  <motion.h2
-                    initial={{ y: "100%" }}
-                    whileInView={{ y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                    className={`font-display text-4xl md:text-6xl lg:text-[4vw] font-bold leading-[0.95] tracking-tighter ${i === 1 ? 'text-primary italic' : 'text-[#3d0f1a]'}`}
-                  >
-                    {line}
-                  </motion.h2>
-                </div>
+              {[
+                "Do forma alle tue idee,",
+                "dal design al prodotto",
+                "digitale completo."
+              ].map((line, i) => (
+                <motion.h2
+                  key={i}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.1, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                  className={`font-display text-4xl md:text-6xl lg:text-[4vw] font-bold leading-[0.95] tracking-tight ${i === 2 ? 'text-primary italic' : 'text-[#3d0f1a]'}`}
+                >
+                  {line}
+                </motion.h2>
               ))}
             </div>
             <motion.p
@@ -207,7 +207,7 @@ const Index = () => {
             initial={{ scale: 1.2, opacity: 0, filter: "blur(10px)" }}
             whileInView={{ scale: 1, opacity: 0.4, filter: "blur(0px)" }}
             transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-            src={about?.profile_image ? (about.profile_image.startsWith('http') ? about.profile_image : `${BASE_URL}${about.profile_image}`) : "/assets/about-portrait.jpg"}
+            src="/assets/about-portrait.jpg"
             alt="Portrait"
             loading="lazy"
             decoding="async"
@@ -263,7 +263,7 @@ const Index = () => {
               className="mt-12 pt-8 border-t border-background/10"
             >
               <p className="font-body text-[15px] italic leading-relaxed text-background/60 max-w-sm">
-                "{about?.bio || "Ilaria Diliberto — Tech Product Manager"}"
+                "Ilaria Diliberto — Tech Product Manager"
               </p>
             </motion.div>
           </div>
@@ -411,7 +411,17 @@ const Index = () => {
                   </div>
                   <Link to={item.url} className="block relative overflow-hidden group/box perspective-1000">
                     <motion.div whileHover={{ rotateX: 2, rotateY: -2, scale: 1.01 }} className="relative aspect-[16/9] overflow-hidden bg-muted/10 border border-editorial shadow-xl">
-                      <motion.img src={item.image?.startsWith('http') ? item.image : `${BASE_URL}${item.image}`} alt={item.title} loading="lazy" decoding="async" className="w-full h-full object-cover grayscale opacity-80 group-hover/box:grayscale-0 group-hover/box:opacity-100 transition-all duration-1000" />
+                      <motion.img 
+                        src={
+                          item.image?.startsWith('http') || item.image?.startsWith('/')
+                            ? item.image
+                            : `${BASE_URL}${item.image}`
+                        } 
+                        alt={item.title} 
+                        loading="lazy" 
+                        decoding="async" 
+                        className="w-full h-full object-cover object-top transition-all duration-1000" 
+                      />
                       <div className="absolute inset-0 pointer-events-none">
                         <motion.div className="absolute top-0 left-0 w-full h-[1px] bg-primary/40 z-20" initial={{ top: "-10%" }} whileHover={{ top: ["0%", "100%", "0%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} />
                       </div>
@@ -446,42 +456,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════
-          CTA — MINIMALIST EDITORIAL STRIP
-          ═══════════════════════════════════════════════════════════════════ */}
-      <section className="py-20 md:py-24 px-6 md:px-12 bg-[#3d0f1a] text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(#C0392B 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
-          <div className="max-w-2xl text-center md:text-left">
-            <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-white font-medium mb-4 block">Ora tocca a te</span>
-            <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-none tracking-tighter">
-              Costruiamo <br />
-              <span className="text-primary italic">qualcosa di unico?</span>
-            </h2>
-          </div>
-
-          <div className="flex flex-col items-center md:items-end gap-6">
-            <Link
-              to="/contatti"
-              className="group relative flex items-center gap-8 py-6 px-12 border border-white/10 hover:border-primary transition-colors duration-500 overflow-hidden"
-            >
-              {/* Hover Fill */}
-              <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-
-              <div className="relative z-10 flex items-center gap-6">
-                <span className="font-typewriter text-xl uppercase tracking-[0.4em] font-medium">PARLIAMONE</span>
-                <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white transition-all">
-                  <ArrowRight size={16} />
-                </div>
-              </div>
-            </Link>
-            <span className="font-typewriter text-[11px] uppercase tracking-[0.3em] text-white/70 font-medium">Rispondo entro 24h</span>
-          </div>
-        </div>
-      </section>
+      <BriefingCTA />
 
       <Footer />
     </div>

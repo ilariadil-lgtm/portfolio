@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { BriefingCTA } from "@/components/BriefingCTA";
 
 export const EditorialStorageHub = () => {
   useEffect(() => {
@@ -64,7 +65,7 @@ export const EditorialStorageHub = () => {
               </div>
 
               <h1 className="relative font-display leading-[0.85] tracking-tighter">
-                <div className="overflow-hidden py-2">
+                <div className="overflow-hidden pt-4 pb-24 -mb-20">
                   <motion.span
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
@@ -96,7 +97,7 @@ export const EditorialStorageHub = () => {
           {/* RIGHT: Device Preview Brutalista */}
           <div className="lg:col-span-6 lg:col-start-7 flex items-center justify-center w-full">
             <motion.div
-              className="relative w-full aspect-[4/3] max-w-[580px] lg:max-w-none"
+              className="relative w-full aspect-[16/9] max-w-[580px] lg:max-w-none"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
@@ -109,26 +110,19 @@ export const EditorialStorageHub = () => {
                 className="absolute -top-10 -right-10 w-64 h-64 border-[1px] border-primary/20 rounded-full border-dashed"
               />
 
-              {/* Device Frame Brutalista */}
+              {/* Box Frame Brutalista (Senza Padding, l'immagine tocca i bordi) */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative z-10 w-full h-full bg-[#f5f2ed] border border-[#3d0f1a] shadow-[15px_15px_0px_#c0392b] flex flex-col overflow-hidden group"
+                className="relative z-10 w-full h-full bg-[#f5f2ed] border border-[#3d0f1a] shadow-[15px_15px_0px_#c0392b] flex flex-col overflow-hidden p-0 group"
               >
-                {/* Browser bar top */}
-                <div className="h-8 border-b border-[#3d0f1a] flex items-center px-4 gap-2 bg-white/50">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#3d0f1a]/20" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#3d0f1a]/20" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#3d0f1a]/20" />
-                  <div className="mx-auto font-typewriter text-[8px] text-[#3d0f1a]/50">storagehub.com</div>
-                </div>
                 {/* Image */}
-                <div className="flex-1 relative overflow-hidden bg-black">
+                <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
                   <img
-                    src="/assets/project-zenith.png"
-                    alt="StorageHub Interface"
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                    src="/assets/projects/storage-hub/dashboard.webp"
+                    alt="StorageHub Dashboard Interface"
+                    className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                   />
                 </div>
               </motion.div>
@@ -206,24 +200,27 @@ export const EditorialStorageHub = () => {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
 
           <motion.div
-            className="lg:col-span-5 order-2 lg:order-1"
+            className="lg:col-span-6 order-2 lg:order-1"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1 }}
           >
-            {/* Process Image con Shadow Brutalista */}
-            <div className="aspect-[3/4] relative border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] group">
-              <img
-                src="/assets/project-freelens.png"
-                alt="UX wireframe and flow"
-                loading="lazy"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute bottom-4 left-4 z-20">
-                <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-white bg-[#3d0f1a] px-3 py-1.5">
-                  Fig. 1 — Analisi UX
-                </span>
+            {/* Process Image con Anteprima Brutalista (Senza Padding, Più Rettangolare e Grande) */}
+            <div className="relative w-full aspect-[16/9] max-w-[720px] lg:max-w-none">
+              {/* Geometria astratta sul fondo */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] rounded-full bg-primary/5 blur-3xl pointer-events-none" />
+
+              {/* Box Frame Brutalista (Senza Padding, l'immagine tocca i bordi) */}
+              <div className="relative z-10 w-full h-full bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] flex flex-col overflow-hidden p-0 group">
+                {/* Image */}
+                <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
+                  <img
+                    src="/assets/projects/storage-hub/magazziniere.webp"
+                    alt="StorageHub Warehouse Management Interface"
+                    className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000"
+                  />
+                </div>
               </div>
             </div>
           </motion.div>
@@ -367,22 +364,26 @@ export const EditorialStorageHub = () => {
           <motion.div
             className="flex gap-8 absolute top-8 bottom-8 left-0 items-stretch"
             animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
           >
             {[...Array(2)].map((_, i) => (
               <div key={i} className="flex gap-8 shrink-0">
                 {[
-                  "/assets/project-zenith.png",
-                  "/assets/project-zenith.jpg",
-                  "/assets/project-freelens.png",
-                  "/assets/chario-process.png",
+                  "/assets/projects/storage-hub/dashboard.webp",
+                  "/assets/projects/storage-hub/catalogo.webp",
+                  "/assets/projects/storage-hub/categorie.webp",
+                  "/assets/projects/storage-hub/movimenti.webp",
+                  "/assets/projects/storage-hub/prodotto.webp",
+                  "/assets/projects/storage-hub/registro.webp",
+                  "/assets/projects/storage-hub/stat.webp",
+                  "/assets/projects/storage-hub/fornitori.webp",
+                  "/assets/projects/storage-hub/magazziniere.webp",
                 ].map((src, j) => (
-                  <div key={j} className="h-full shrink-0 border border-[#3d0f1a] shadow-[10px_10px_0px_#c0392b] bg-[#f5f2ed] p-3 md:p-5 group">
+                  <div key={j} className="h-full shrink-0 border border-[#3d0f1a] shadow-[10px_10px_0px_#c0392b] bg-[#f5f2ed] p-0 group overflow-hidden">
                     <img
                       src={src}
                       alt={`StorageHub Slide ${j}`}
-                      loading="lazy"
-                      className="h-full w-auto object-contain max-w-[80vw] lg:max-w-[40vw] group-hover:opacity-90 transition-opacity"
+                              className="h-full w-auto object-contain max-w-[80vw] lg:max-w-[40vw] group-hover:opacity-90 transition-opacity"
                     />
                   </div>
                 ))}
@@ -390,7 +391,8 @@ export const EditorialStorageHub = () => {
             ))}
           </motion.div>
         </div>
-      </section >
+      </section>
+      <BriefingCTA />
 
       {/* ═══════════════════════════════════════════════════════════════════
            NAVIGATION
@@ -414,3 +416,5 @@ export const EditorialStorageHub = () => {
     </div >
   );
 };
+
+export default EditorialStorageHub;

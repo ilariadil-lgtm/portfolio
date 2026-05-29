@@ -27,6 +27,12 @@ export const Navigation = () => {
     setIsOpen(false);
   }, [location]);
 
+  // Blocca lo scroll del body quando il menu mobile è aperto
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [isOpen]);
+
   return (
     <>
       <header 
@@ -46,17 +52,20 @@ export const Navigation = () => {
           <Link 
             to="/" 
             className="hover:opacity-80 transition-opacity"
+            aria-label="Torna alla Home"
           >
             <img 
-              src="/logo.png" 
+              src="/logo.webp" 
               alt="Ilaria Diliberto" 
-              className="h-7 md:h-9 w-auto"
+              width="140"
+              height="28"
+              className="h-5 md:h-7 w-auto object-contain shrink-0"
             />
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-10">
-            <nav className="flex items-center gap-8">
+            <nav className="flex items-center gap-8" aria-label="Navigazione principale">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
@@ -90,8 +99,10 @@ export const Navigation = () => {
           {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-primary"
-            aria-label="Toggle menu"
+            className="md:hidden p-3 text-primary"
+            aria-label={isOpen ? "Chiudi menu" : "Apri menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-nav"
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -102,6 +113,9 @@ export const Navigation = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="mobile-nav"
+            role="dialog"
+            aria-label="Menu di navigazione"
             initial={{ opacity: 0, y: "-100%" }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%" }}
@@ -110,24 +124,36 @@ export const Navigation = () => {
           >
             <div className="flex flex-col items-center gap-10 text-center">
               {navItems.map((item, i) => (
-                <Link
+                <motion.div
                   key={item.path}
-                  to={item.path}
-                  className={`font-display text-4xl font-bold tracking-tighter ${
-                    location.pathname === item.path 
-                      ? "text-primary" 
-                      : "text-[#3d0f1a]"
-                  }`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + i * 0.07, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  {item.label}
-                </Link>
+                  <Link
+                    to={item.path}
+                    className={`font-display text-4xl font-bold tracking-tighter ${
+                      location.pathname === item.path 
+                        ? "text-primary" 
+                        : "text-[#3d0f1a]"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
               ))}
-              <Link 
-                to="/contatti"
-                className="mt-6 px-10 py-4 bg-primary text-white font-body text-[11px] uppercase tracking-[0.3em] rounded-full"
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 + navItems.length * 0.07, duration: 0.5 }}
               >
-                PARLIAMO
-              </Link>
+                <Link 
+                  to="/contatti"
+                  className="mt-6 px-10 py-4 bg-primary text-white font-body text-[11px] uppercase tracking-[0.3em] rounded-full inline-block"
+                >
+                  PARLIAMO
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         )}

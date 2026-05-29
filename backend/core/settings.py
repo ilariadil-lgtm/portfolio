@@ -108,3 +108,21 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
+
+# Email Configuration
+# ─────────────────────────────────────────────────────────────────────────────
+# In sviluppo: stampa le email nella console invece di inviarle
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_NOTIFICATIONS_ENABLED = False  # ← imposta True quando l'SMTP è configurato
+
+# In produzione (da compilare al go-live con email di dominio):
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.tuoprovider.it'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
+# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
+# DEFAULT_FROM_EMAIL = 'noreply@ilaria.diliberto.it'
+# ADMIN_EMAIL = os.getenv('ADMIN_EMAIL', 'ilaria.dil@gmail.com')
+# EMAIL_NOTIFICATIONS_ENABLED = True
+

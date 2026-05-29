@@ -32,7 +32,7 @@ const CONTACTS = [
   },
   {
     label: "Instagram",
-    detail: "#",
+    detail: "@ilaryvision",
     sub: "Scopri i miei lavori",
     icon: <Instagram size={17} />,
     href: "https://www.instagram.com/ilaryvision/",
@@ -64,7 +64,7 @@ function InputField({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full bg-transparent border-b border-[#3d0f1a]/20 py-3.5 text-[#3d0f1a] placeholder:text-[#3d0f1a]/30 font-body text-base outline-none focus:border-primary transition-colors duration-300" 
+        className="w-full bg-transparent border-b border-[#3d0f1a]/20 py-3.5 text-[#3d0f1a] placeholder:text-[#3d0f1a]/30 font-body text-base outline-none focus:border-primary transition-colors duration-300"
       />
     </div>
   );
@@ -82,6 +82,7 @@ const Contatti = () => {
     email: "",
     subject: "",
     message: "",
+    website: "", // Honeypot
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
@@ -91,11 +92,17 @@ const Contatti = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (formData.website) {
+      // Honeypot tripped (bot)
+      setStatus("success"); 
+      return;
+    }
+    
     setStatus("loading");
     try {
       await api.sendContactMessage(formData);
       setStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      setFormData({ name: "", email: "", subject: "", message: "", website: "" });
     } catch {
       setStatus("error");
     }
@@ -140,8 +147,8 @@ const Contatti = () => {
                 <div className="w-10 h-[1px] bg-primary/25" />
               </div>
               <h1
-                className="font-display font-black leading-[0.85] tracking-tighter text-[#3d0f1a]"
-                style={{ fontSize: "clamp(3.5rem, 9vw, 8rem)" }}
+                className="font-display font-bold leading-[0.85] tracking-tighter text-[#3d0f1a]"
+                style={{ fontSize: "clamp(3rem, 7vw, 5.8rem)" }}
               >
                 <RevealText text="Parlami del" delay={0.1} />
                 <RevealText text="tuo progetto." delay={0.2} className="text-primary italic" />
@@ -220,6 +227,18 @@ const Contatti = () => {
                     />
                   </motion.a>
                 ))}
+
+                {/* Honeypot field (hidden from real users) */}
+                <input
+                  type="text"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  style={{ display: "none" }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
               </div>
             </div>
 
@@ -249,7 +268,7 @@ const Contatti = () => {
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="bg-white border border-[#3d0f1a] p-10 md:p-14 relative overflow-hidden shadow-[15px_15px_0px_#c0392b]">
-              
+
               <div className="relative z-10">
                 <div className="mb-10">
                   <span className="font-typewriter text-[10px] uppercase tracking-[0.5em] text-primary block mb-4 font-bold">

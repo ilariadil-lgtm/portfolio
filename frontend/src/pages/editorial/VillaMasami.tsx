@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { FloatingCTA } from "@/components/FloatingCTA";
+import { BriefingCTA } from "@/components/BriefingCTA";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -65,7 +66,7 @@ export const EditorialVillaMasami = () => {
               </div>
 
               <h1 className="relative font-display leading-[0.85] tracking-tighter">
-                <div className="overflow-hidden py-2">
+                <div className="overflow-hidden pt-4 pb-24 -mb-20">
                   <motion.span
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
@@ -214,7 +215,7 @@ export const EditorialVillaMasami = () => {
                   <img
                     src="/assets/projects/villa-masami/struttura.webp"
                     alt="Villa Masami Structure UI"
-                    className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000"
+                    className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                   />
                 </div>
               </div>
@@ -352,7 +353,7 @@ export const EditorialVillaMasami = () => {
           <motion.div
             className="flex gap-8 absolute top-8 bottom-8 left-0 items-stretch"
             animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
           >
             {[...Array(2)].map((_, i) => (
               <div key={i} className="flex gap-8 shrink-0">
@@ -370,8 +371,7 @@ export const EditorialVillaMasami = () => {
                     <img
                       src={src}
                       alt={`Villa Masami Slide ${j}`}
-                      loading="lazy"
-                      className="h-full w-auto object-contain max-w-[80vw] lg:max-w-[40vw] group-hover:opacity-90 transition-opacity"
+                              className="h-full w-auto object-contain max-w-[80vw] lg:max-w-[40vw] group-hover:opacity-90 transition-opacity"
                     />
                   </div>
                 ))}
@@ -379,7 +379,8 @@ export const EditorialVillaMasami = () => {
             ))}
           </motion.div>
         </div>
-      </section >
+      </section>
+      <BriefingCTA />
 
       {/* ═══════════════════════════════════════════════════════════════════
            NAVIGATION

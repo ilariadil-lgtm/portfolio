@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { api } from "@/lib/api";
-import { ArrowRight, Search, Filter, Rocket, Terminal, Layers, Layout, HardDrive, Cpu, ExternalLink } from "lucide-react";
+import { ArrowRight, Box, Circle, Hexagon, Triangle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { NebulaNav } from "./components/NebulaNav";
+import { motion, useScroll, useTransform } from "framer-motion";
 
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 const NebulaProgetti = () => {
   const [projects, setProjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -24,105 +26,165 @@ const NebulaProgetti = () => {
     fetchProjects();
   }, []);
 
+  // For horizontal scroll effect if using mouse wheel
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    
+    const handleWheel = (e: WheelEvent) => {
+      if (e.deltaY !== 0 && !e.shiftKey) {
+        // Only override if the user is scrolling vertically without shift
+        // This makes vertical mouse scroll move the horizontal container
+        e.preventDefault();
+        el.scrollBy({ left: e.deltaY * 1.5, behavior: 'smooth' });
+      }
+    };
+    
+    el.addEventListener('wheel', handleWheel, { passive: false });
+    return () => el.removeEventListener('wheel', handleWheel);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-[#030712] text-slate-100 font-sans selection:bg-cyan-500/30 overflow-x-hidden pt-32 pb-20">
+    <div className="h-screen w-full bg-[#030712] text-slate-100 font-sans selection:bg-cyan-500/30 overflow-hidden relative flex flex-col">
       <NebulaNav />
 
       {/* ───────────────────────────────────────────────────────────────────
-          BACKGROUND ELEMENTS
+          AMBIENT EFFECTS
           ─────────────────────────────────────────────────────────────────── */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-         <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-cyan-500/5 blur-[120px]" />
-         <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-purple-500/5 blur-[120px]" />
-      </div>
+      <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.03] bg-[linear-gradient(transparent_50%,rgba(0,0,0,1)_50%)] bg-[length:100%_4px]" />
+      
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-50 z-10" />
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-50 z-10" />
 
-      <main className="relative z-10 max-w-7xl mx-auto px-6">
-        <header className="mb-20">
-           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[10px] font-mono mb-6 uppercase tracking-widest">
-              / / Central Archive
+      {/* ───────────────────────────────────────────────────────────────────
+          HEADER / TOP BAR
+          ─────────────────────────────────────────────────────────────────── */}
+      <header className="relative z-10 pl-0 md:pl-32 pt-8 pr-8 flex justify-between items-end pb-4 border-b border-white/5">
+        <div>
+           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[9px] font-mono mb-4 uppercase tracking-widest">
+              / / DATA CORE ARCHIVE
            </div>
-           <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-tight mb-8">
-              ORBITAL <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">MANIFEST</span>
+           <h1 className="text-4xl md:text-5xl font-black tracking-tighter uppercase leading-none">
+              Project <span className="text-cyan-400">Database</span>
            </h1>
-           <p className="max-w-xl text-slate-500 leading-relaxed">
-              Esplora i sistemi digitali e le infrastrutture che ho costruito. 
-              Ogni progetto rappresenta una missione verso l'eccellenza tecnica e visiva.
-           </p>
-        </header>
+        </div>
+        <div className="hidden md:flex items-center gap-4 text-cyan-400/50 font-mono text-[9px] uppercase tracking-widest">
+          <span>Scroll Horizontal</span>
+          <ArrowRight size={14} />
+        </div>
+      </header>
 
-        {/* Project Grid */}
-        {loading ? (
-          <div className="h-96 flex items-center justify-center font-mono text-cyan-400 animate-pulse">
-             SYNCHRONIZING DATA...
+      {/* ───────────────────────────────────────────────────────────────────
+          HORIZONTAL SCROLL GALLERY
+          ─────────────────────────────────────────────────────────────────── */}
+      <main 
+        ref={scrollRef}
+        className="flex-1 relative z-10 w-full overflow-x-auto overflow-y-hidden flex snap-x snap-mandatory hide-scrollbar pl-0 md:pl-24"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        <div className="flex h-full py-12 px-6 md:px-12 gap-8 md:gap-16 items-center min-w-max">
+          
+          {/* Intro Slide */}
+          <div className="w-[85vw] md:w-[400px] shrink-0 snap-center h-[60vh] flex flex-col justify-center">
+            <Hexagon size={48} className="text-cyan-400 mb-8 opacity-20" />
+            <h2 className="text-3xl font-bold font-sans tracking-tight mb-4">
+              Esplora i sistemi digitali costruiti.
+            </h2>
+            <p className="text-slate-500 font-light text-sm leading-relaxed max-w-sm">
+              Ogni progetto rappresenta una missione verso l'eccellenza tecnica e visiva. Trascina o usa la rotellina del mouse per navigare il database.
+            </p>
           </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
-            {projects.map((project, i) => (
-               <article 
+
+          {loading ? (
+            <div className="w-[300px] h-full flex items-center justify-center font-mono text-[10px] text-cyan-400 animate-pulse uppercase tracking-widest">
+               Synchronizing Data...
+            </div>
+          ) : (
+            projects.map((project, i) => (
+              <motion.article 
                 key={project.id}
-                className="group relative rounded-[40px] overflow-hidden border border-white/5 bg-white/[0.02] backdrop-blur-md transition-all duration-700 hover:border-cyan-500/30 hover:shadow-[0_0_50px_rgba(34,211,238,0.1)]"
-               >
-                  <Link to={`/progetti/${project.id}`} className="block">
-                    <div className="aspect-[16/10] overflow-hidden relative">
-                       <img 
-                        src={project.image?.startsWith('http') ? project.image : `${BASE_URL}${project.image}`} 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.1 }}
+                className="w-[85vw] md:w-[600px] lg:w-[800px] shrink-0 snap-center h-[70vh] group relative"
+              >
+                <Link to={`/progetti/${project.slug || project.id}`} className="block w-full h-full">
+                  <div className="w-full h-full bg-[#030712]/80 backdrop-blur-md border border-white/10 rounded-[2rem] overflow-hidden flex flex-col md:flex-row relative hover:border-cyan-500/50 hover:shadow-[0_0_50px_rgba(34,211,238,0.1)] transition-all duration-700">
+                    
+                    {/* Background Overlay */}
+                    <div className="absolute inset-0 bg-cyan-500/20 mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+                    {/* Image Area */}
+                    <div className="w-full md:w-[60%] h-[50%] md:h-full relative overflow-hidden bg-black border-b md:border-b-0 md:border-r border-white/10">
+                      <img 
+                        src={project.image?.startsWith('http') || project.image?.startsWith('/') ? project.image : `${BASE_URL}${project.image}`} 
                         alt={project.title} 
-                        className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-1000 grayscale hover:grayscale-0"
-                       />
-                       {/* Glass Overlay on Hover */}
-                       <div className="absolute top-6 right-6 px-4 py-2 rounded-xl bg-slate-950/80 backdrop-blur-xl border border-white/10 text-[10px] font-bold uppercase tracking-widest text-cyan-400">
-                          {project.type || "Digital Mission"}
-                       </div>
+                        className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0"
+                      />
                     </div>
 
-                    <div className="p-10 space-y-6">
-                       <div className="flex items-center justify-between">
-                          <h2 className="text-3xl font-black tracking-tight group-hover:text-cyan-400 transition-colors uppercase">
-                             {project.title}
-                          </h2>
-                          <span className="text-slate-700 font-black text-5xl opacity-0 group-hover:opacity-10 transition-opacity">
-                             0{i + 1}
+                    {/* Content Area */}
+                    <div className="w-full md:w-[40%] h-[50%] md:h-full p-8 md:p-10 flex flex-col justify-between relative z-20 bg-[#030712]/50">
+                      <div>
+                        <div className="flex justify-between items-start mb-6">
+                          <span className="font-mono text-[9px] uppercase tracking-widest text-cyan-400 font-bold">
+                            {project.project_type || project.type || "FILE.DAT"}
                           </span>
-                       </div>
-                       
-                       <p className="text-slate-500 text-sm leading-relaxed line-clamp-2">
+                          <span className="font-mono text-xl text-white/10 font-black">
+                            {String(i + 1).padStart(2, '0')}
+                          </span>
+                        </div>
+                        <h2 className="text-3xl lg:text-4xl font-black tracking-tighter uppercase mb-4 text-white">
+                          {project.title}
+                        </h2>
+                        <p className="text-slate-400 text-sm leading-relaxed line-clamp-3 md:line-clamp-4">
                           {project.description}
-                       </p>
+                        </p>
+                      </div>
 
-                       <div className="flex flex-wrap gap-2 pt-4">
+                      <div>
+                        <div className="flex flex-wrap gap-2 mb-8">
                           {typeof project.technologies === 'string' 
-                            ? project.technologies.split(',').map((t: string) => (
-                               <span key={t} className="px-3 py-1 rounded-lg bg-white/5 border border-white/5 text-[9px] uppercase tracking-widest text-slate-400 font-bold">
+                            ? project.technologies.split(',').slice(0, 3).map((t: string) => (
+                               <span key={t} className="px-2 py-1 rounded border border-white/10 bg-white/5 text-[8px] uppercase tracking-widest text-slate-400">
                                   {t.trim()}
                                </span>
                             ))
-                            : project.technologies?.map((t: string) => (
-                               <span key={t} className="px-3 py-1 rounded-lg bg-white/5 border border-white/5 text-[9px] uppercase tracking-widest text-slate-400 font-bold">
+                            : project.technologies?.slice(0, 3).map((t: string) => (
+                               <span key={t} className="px-2 py-1 rounded border border-white/10 bg-white/5 text-[8px] uppercase tracking-widest text-slate-400">
                                   {t}
                                </span>
                             ))
                           }
-                       </div>
-
-                       <div className="pt-8 flex items-center gap-4 text-sm font-bold opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0">
-                          <span className="text-cyan-400">INITIATE LINK</span>
-                          <ArrowRight size={18} className="text-cyan-400" />
-                       </div>
+                        </div>
+                        
+                        <div className="flex items-center gap-4 text-cyan-400 font-mono text-[10px] uppercase tracking-widest font-bold opacity-50 group-hover:opacity-100 transition-opacity">
+                          <span>Inizializza Profilo</span>
+                          <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
+                        </div>
+                      </div>
                     </div>
-                  </Link>
-               </article>
-            ))}
+
+                  </div>
+                </Link>
+              </motion.article>
+            ))
+          )}
+
+          {/* End Slide */}
+          <div className="w-[85vw] md:w-[300px] shrink-0 snap-center h-[60vh] flex flex-col items-center justify-center border-l border-white/5">
+            <Circle size={32} className="text-slate-600 mb-6" />
+            <span className="font-mono text-[9px] uppercase tracking-widest text-slate-500">END OF DATABASE</span>
           </div>
-        )}
+
+        </div>
       </main>
 
-      <footer className="py-20 text-center border-t border-white/5 relative z-10 mt-32">
-         <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-2xl font-bold tracking-tighter mb-4 text-slate-200">ILARIALAB<span className="text-cyan-400">.</span></h2>
-            <p className="text-slate-600 text-[10px] font-mono uppercase tracking-[0.4em]">Archived Data Systems // Project List Update 4.2</p>
-         </div>
-      </footer>
+      <style>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </div>
   );
 };

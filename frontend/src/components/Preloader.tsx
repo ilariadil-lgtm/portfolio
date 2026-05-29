@@ -6,16 +6,16 @@ interface PreloaderProps {
 }
 
 // ── costanti ────────────────────────────────────────────────────────────────
-const PHRASE_1      = "ogni pixel conta.";
-const PHRASE_2      = "ilariavision.";
-const BG_COLOR      = "#f5f2ed";
-const TEXT_COLOR    = "#3d0f1a";
-const STAIN_COLOR   = "hsl(345, 50%, 25%)";
+const PHRASE_1 = "ogni pixel conta.";
+const PHRASE_2 = "ilaria diliberto.";
+const BG_COLOR = "#f5f2ed";
+const TEXT_COLOR = "#3d0f1a";
+const STAIN_COLOR = "hsl(345, 50%, 25%)";
 
-const CHAR_DELAY    = 60;
-const DELETE_DELAY  = 35;
-const PAUSE_WRITE   = 1000;
-const PAUSE_STAIN   = 400;
+const CHAR_DELAY = 60;
+const DELETE_DELAY = 35;
+const PAUSE_WRITE = 1000;
+const PAUSE_STAIN = 400;
 
 // ── componente Typewriter Avanzato ──────────────────────────────────────────
 const TypewriterSequence: React.FC<{ onFinished: () => void }> = ({ onFinished }) => {
@@ -28,7 +28,7 @@ const TypewriterSequence: React.FC<{ onFinished: () => void }> = ({ onFinished }
 
     const tick = () => {
       const fullText = step === 1 ? PHRASE_1 : PHRASE_2;
-      
+
       if (step === 2) {
         // Cancellazione
         if (text.length > 0) {
@@ -80,6 +80,14 @@ const TypewriterSequence: React.FC<{ onFinished: () => void }> = ({ onFinished }
 export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const [phase, setPhase] = useState<"typewriter" | "stain" | "exit">("typewriter");
 
+  useEffect(() => {
+    const isReducedMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (isReducedMotion) {
+      setPhase("exit");
+      onComplete();
+    }
+  }, [onComplete]);
+
   const handleSequenceFinished = useCallback(() => {
     setPhase("stain");
   }, []);
@@ -96,7 +104,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   return (
     <AnimatePresence onExitComplete={onComplete}>
       {phase !== "exit" && (
-        <motion.div 
+        <motion.div
           key="preloader-main"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -136,13 +144,13 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
             className="absolute top-10 left-12 font-sans text-[10px] font-medium uppercase tracking-[0.2em] text-[#c8bfb5]"
             animate={{ opacity: phase === "stain" ? 0 : 1 }}
           >
-            portfolio — 2025
+            portfolio — 2026
           </motion.span>
           <motion.span
             className="absolute bottom-9 right-12 font-sans text-[10px] tracking-[0.14em] text-[#c8bfb5]"
             animate={{ opacity: phase === "stain" ? 0 : 1 }}
           >
-            ilariavision
+            ilaria diliberto
           </motion.span>
         </motion.div>
       )}

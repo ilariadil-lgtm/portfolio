@@ -6,6 +6,10 @@ export const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [cursorType, setCursorType] = useState<"default" | "pointer" | "view" | "drag">("default");
   const [hidden, setHidden] = useState(false);
+  // Controlla il device al momento del primo render — evita flash su mobile
+  const [isTouch] = useState(() =>
+    typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches
+  );
   const location = useLocation();
 
   const springConfig = { damping: 25, stiffness: 200, mass: 0.5 };
@@ -18,6 +22,8 @@ export const CustomCursor = () => {
   }, [location.pathname]);
 
   useEffect(() => {
+    if (isTouch) return; // Nessun listener su touch device
+
     const onMouseMove = (e: MouseEvent) => {
       cursorX.set(e.clientX - 16);
       cursorY.set(e.clientY - 16);
@@ -50,12 +56,10 @@ export const CustomCursor = () => {
       document.removeEventListener("mouseleave", onMouseLeave);
       document.removeEventListener("mouseenter", onMouseEnter);
     };
-  }, [cursorX, cursorY]);
+  }, [cursorX, cursorY, isTouch]);
 
-  // If on mobile (touch device), don't render cursor
-  if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) {
-    return null;
-  }
+  // Non renderizzare su touch device
+  if (isTouch) return null;
 
   const variants = {
     default: {

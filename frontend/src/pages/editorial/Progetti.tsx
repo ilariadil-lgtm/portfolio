@@ -8,37 +8,18 @@ import { Link } from "react-router-dom";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { RevealText } from "@/components/RevealText";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
+import { BriefingCTA } from "@/components/BriefingCTA";
 
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 const fallbackProjects = [
-  {
-    id: "chariohifi",
-    title: "Chario Hifi",
-    type: "WEB_ECOMMERCE",
-    technologies: "Sophia Theme, Custom WordPress, PHP Modulare, GSAP & SWIPER, API Realtime, UI/UX DESIGN",
-    year: "2026",
-    image: "/assets/chario-hero.png",
-    project_url: "https://chariohifi.it",
-    description: "L'alta fedeltà digitale. Sito premium creato col mio tema proprietario Sophia per offrire un'esperienza acustica e visiva senza compromessi."
-  },
-  {
-    id: "sophiatheme",
-    title: "Sophia Theme",
-    type: "SOPHIA_THEME",
-    technologies: "React, PHP Modulare, WordPress Core, GSAP, CSS Custom Properties, Manifest-Driven Layouts",
-    year: "2026",
-    image: "/assets/project-sophia.png",
-    project_url: "https://sophiatheme.dev",
-    description: "Il motore invisibile dei progetti editoriali di lusso. Un framework React modulare ad alte prestazioni progettato per caricamenti istantanei."
-  },
   {
     id: "storagehub",
     title: "StorageHub",
     type: "WEBAPP_SAAS",
     technologies: "React.js, Node.js (Express), AWS S3 / CloudFront, PostgreSQL, REST API, UX Strategy",
     year: "2024",
-    image: "/assets/project-zenith.png",
+    image: "/assets/projects/storage-hub/dashboard.webp",
     project_url: "https://storagehub.com",
     description: "Una web app intelligente di storage e inventory management che semplifica e automatizza la gestione dell'inventario su scala enterprise."
   },
@@ -48,7 +29,7 @@ const fallbackProjects = [
     type: "WEBAPP_SAAS",
     technologies: "Figma, React, Framer Motion, Product Strategy",
     year: "2024",
-    image: "/assets/project-freelens.png",
+    image: "/assets/projects/freelens/home.webp",
     project_url: "https://freelens.app",
     description: "Spazio digitale di project management per gestire progetti e task, riprendendo il controllo del proprio tempo con un'interfaccia focalizzata."
   },
@@ -58,7 +39,7 @@ const fallbackProjects = [
     type: "WEB_ECOMMERCE BRAND_IDENTITY",
     technologies: "Brand & Logo Design, UI/UX Design, Copywriting, WordPress (Bilingual)",
     year: "2026",
-    image: "/assets/project-visio.png",
+    image: "/assets/projects/villa-masami/homepage.webp",
     project_url: "",
     description: "Un progetto digitale completo realizzato in collaborazione con l'agenzia Carnova. Cura integrale dell'identità della struttura, dal logo allo sviluppo WordPress."
   },
@@ -68,7 +49,7 @@ const fallbackProjects = [
     type: "WEB_ECOMMERCE",
     technologies: "UI/UX Design, Information Architecture, Copywriting, WordPress Corporate",
     year: "2026",
-    image: "/assets/project-nebula.png",
+    image: "/assets/projects/patti-forniture/homepage.webp",
     project_url: "",
     description: "Un restyling web corporate realizzato in collaborazione con l'agenzia Carnova per una storica azienda leader nel Sud Italia di forniture industriali."
   },
@@ -78,7 +59,7 @@ const fallbackProjects = [
     type: "WEB_ECOMMERCE",
     technologies: "PrestaShop Configuration, E-commerce UI/UX, Catalog Management, Copywriting & Layout",
     year: "2026",
-    image: "/assets/project-freelens.png",
+    image: "/assets/projects/sicil-cosmetic/homepage.webp",
     project_url: "",
     description: "Un progetto e-commerce end-to-end realizzato su piattaforma PrestaShop per l'agenzia Carnova. Gestione ed organizzazione dell'intero catalogo beauty."
   },
@@ -88,7 +69,7 @@ const fallbackProjects = [
     type: "WEB_ECOMMERCE",
     technologies: "PrestaShop Integration, UI/UX Design, Visual Merchandising, Information Architecture",
     year: "2026",
-    image: "/assets/project-sophia.png",
+    image: "/assets/projects/newpop/homepage.webp",
     project_url: "",
     description: "Boutique digitale per il design e l'arredamento d'interni, realizzata per l'agenzia Carnova. UI/UX curata e configurazione PrestaShop."
   },
@@ -98,7 +79,7 @@ const fallbackProjects = [
     type: "WEB_ECOMMERCE",
     technologies: "UI/UX & Graphic Layout, WordPress Environment, Hospitality & E-commerce, Visual Storytelling",
     year: "2026",
-    image: "/assets/project-visio.png",
+    image: "/assets/projects/vini-gambino/homepage.webp",
     project_url: "",
     description: "L'essenza del terroir vulcanico tradotta in un'esperienza digitale immersiva. Progetto realizzato in collaborazione con l'agenzia Carnova."
   },
@@ -108,7 +89,7 @@ const fallbackProjects = [
     type: "WEB_ECOMMERCE",
     technologies: "UI/UX Design, Copywriting & Content, WordPress Layout, Hospitality Design",
     year: "2026",
-    image: "/assets/project-freelens.png",
+    image: "/assets/projects/baglio-lauria/homepage.webp",
     project_url: "",
     description: "Un progetto digitale realizzato in collaborazione con l'agenzia Carnova, dedicato a un incantevole agriturismo e location per eventi in Sicilia."
   },
@@ -116,11 +97,21 @@ const fallbackProjects = [
     id: "villamima",
     title: "Villa Mima",
     type: "WEB_ECOMMERCE",
-    technologies: "Brand & Logo Design, UI/UX & Art Direction, Copywriting Emozionale, WordPress Core & Custom Booking",
+    technologies: "UI/UX Design, WordPress Environment, Copywriting & Storytelling, Wedding & Event Industry",
     year: "2026",
-    image: "/assets/project-visio.png",
+    image: "/assets/projects/villa-mima/home.webp",
     project_url: "",
-    description: "Un'esclusiva boutique guesthouse immersa nel barocco della Val di Noto. Identità visiva, storytelling e sviluppo WordPress con booking engine suite custom integrato."
+    description: "Un progetto digitale raffinato realizzato in collaborazione con l'agenzia Carnova. Cura dell'interfaccia utente, della narrazione visiva e dello sviluppo su WordPress per una location d'eccellenza dedicata a matrimoni e ricevimenti in Sicilia."
+  },
+  {
+    id: "loghi",
+    title: "Branding & Loghi",
+    type: "BRAND_IDENTITY",
+    technologies: "Logo Design, Brand Identity, Visual Guidelines, Art Direction",
+    year: "2025-2026",
+    image: "/assets/loghi/sicef/logo_1.webp",
+    project_url: "",
+    description: "Una selezione curata di identità visive, marchi e loghi d'autore disegnati per dare forma, coerenza e valore a storie ed aziende leader."
   }
 ];
 
@@ -177,8 +168,8 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
       onMouseLeave={() => setHovered(false)}
     >
       {/* ── Image block ── */}
-      <Link 
-        to={`/progetti/${project.id}`} 
+      <Link
+        to={project.id === "loghi" ? "/progetti/loghi" : `/progetti/${project.id}`}
         className="block relative overflow-hidden bg-[#f5f2ed] aspect-[4/3] border-b border-[#3d0f1a]/10"
         data-cursor="view"
       >
@@ -197,7 +188,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
           alt={project.title}
           loading="lazy"
           decoding="async"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover object-top"
           animate={{ scale: hovered ? 1.05 : 1 }}
           transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
         />
@@ -226,7 +217,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
         </p>
 
         <Link
-          to={`/progetti/${project.id}`}
+          to={project.id === "loghi" ? "/progetti/loghi" : `/progetti/${project.id}`}
           data-cursor="pointer"
           className="inline-flex items-center justify-between font-typewriter text-[9px] uppercase tracking-[0.35em] text-[#3d0f1a] font-bold group/link border-t border-[#3d0f1a]/10 pt-4"
         >
@@ -304,7 +295,7 @@ const Progetti = () => {
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#3d0f1a 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
         </div>
-        
+
         {/* Watermark */}
         <div className="absolute inset-0 flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
           <span
@@ -412,41 +403,41 @@ const Progetti = () => {
                 </p>
               </motion.div>
             ) : (
-                <motion.div
-                  key={activeCategory}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16"
-                >
-                  {filtered.slice(0, visibleCount).map((project, idx) => (
-                    <ProjectCard key={project.id} project={project} idx={idx} />
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {filtered.length > visibleCount && (
-              <motion.div 
+              <motion.div
+                key={activeCategory}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="mt-20 flex justify-center"
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16"
               >
-                <button
-                  onClick={() => setVisibleCount(prev => prev + 6)}
-                  data-cursor="pointer"
-                  className="group relative flex items-center justify-center px-12 py-5 border border-[#3d0f1a] bg-white hover:shadow-[8px_8px_0px_#c0392b] overflow-hidden transition-all duration-300"
-                >
-                  <span className="relative z-10 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a] transition-colors font-bold group-hover:text-primary">
-                    MOSTRA ALTRI PROGETTI
-                  </span>
-                </button>
+                {filtered.slice(0, visibleCount).map((project, idx) => (
+                  <ProjectCard key={project.id} project={project} idx={idx} />
+                ))}
               </motion.div>
             )}
+          </AnimatePresence>
 
-          </div>
-        </section>
+          {filtered.length > visibleCount && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="mt-20 flex justify-center"
+            >
+              <button
+                onClick={() => setVisibleCount(prev => prev + 6)}
+                data-cursor="pointer"
+                className="group relative flex items-center justify-center px-12 py-5 border border-[#3d0f1a] bg-white hover:shadow-[8px_8px_0px_#c0392b] overflow-hidden transition-all duration-300"
+              >
+                <span className="relative z-10 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a] transition-colors font-bold group-hover:text-primary">
+                  MOSTRA ALTRI PROGETTI
+                </span>
+              </button>
+            </motion.div>
+          )}
+
+        </div>
+      </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
            MANIFESTO — PHILOSOPHY BREAK (Refactored Light Mode)
@@ -491,7 +482,7 @@ const Progetti = () => {
               <div className="space-y-8">
                 {[
                   { label: "Progetti completati", value: "12+" },
-                  { label: "Google Lighthouse", value: "100%" },
+                  { label: "Performance", value: "100%" },
                   { label: "Approccio", value: "Su Misura" },
                 ].map((stat, i) => (
                   <div key={i} className="flex items-baseline justify-between border-b border-[#3d0f1a]/5 pb-5">
@@ -510,44 +501,7 @@ const Progetti = () => {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════
-           PROJECT BRIEFING DOCK — CTA SEGMENT (Refactored to Light Mode)
-           ═══════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-36 px-6 md:px-12 lg:px-24 bg-[#f5f2ed] text-[#3d0f1a] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
-            {/* Left Column: Text block containing title & narrative */}
-            <div className="lg:col-span-7 space-y-6 text-left">
-              <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-[#3d0f1a] font-bold block">
-                SYSTEM OPERATION
-              </span>
-              <h2 className="font-display text-5xl md:text-7xl font-black leading-none tracking-tighter">
-                <RevealText text="COSTRUIAMO" delay={0.1} />
-                <RevealText text="QUALCOSA DI UNICO." delay={0.3} className="text-primary italic" />
-              </h2>
-              <p className="font-body text-lg text-[#3d0f1a]/80 leading-relaxed max-w-xl">
-                Hai un'idea per una web app, un design system personalizzato o un e-commerce ad alte prestazioni? Colleghiamo le nostre stazioni per concretizzare la tua visione digitale.
-              </p>
-            </div>
-
-            {/* Right Column: CTA Button trigger */}
-            <div className="lg:col-span-5 flex lg:justify-end justify-start items-center">
-              <MagneticWrapper strength={20} className="w-full max-w-md">
-                <Link
-                  to="/contatti"
-                  data-cursor="pointer"
-                  className="group inline-flex items-center gap-8 p-8 border border-[#3d0f1a] bg-white shadow-[10px_10px_0px_#c0392b] hover:translate-x-1 hover:-translate-y-1 hover:shadow-[15px_15px_0px_#c0392b] transition-all duration-300 w-full justify-between"
-                >
-                  <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] font-bold group-hover:text-primary transition-colors">
-                    PARLIAMONE
-                  </span>
-                  <ArrowRight size={18} className="text-[#3d0f1a] group-hover:text-primary group-hover:translate-x-4 transition-all duration-500" />
-                </Link>
-              </MagneticWrapper>
-            </div>
-          </div>
-        </div>
-      </section>
+      <BriefingCTA />
 
       <Footer />
     </div>

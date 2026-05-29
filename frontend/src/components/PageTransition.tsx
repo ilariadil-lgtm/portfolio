@@ -8,23 +8,25 @@ interface PageTransitionProps {
 export const PageTransition = ({ children }: PageTransitionProps) => {
   return (
     <>
-      {/* 
-        Sipario di Entrata (In) - Copre lo schermo scendendo dall'alto
-        Appare all'inizio della rotta e scorre verso il basso
+      {/*
+        Sipario di Entrata — blocco bordeaux che copre lo schermo e poi
+        si ritrae (scaleY 1→0 da bottom). Si vede solo all'entrata.
       */}
       <motion.div
+        aria-hidden="true"
         className="fixed inset-0 z-[100] bg-[#3d0f1a] transform-gpu pointer-events-none origin-bottom"
         initial={{ scaleY: 1 }}
         animate={{ scaleY: 0 }}
         exit={{ scaleY: 0 }}
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
       />
-      
-      {/* 
-        Sipario di Uscita (Out) - Sale dal basso per coprire
-        Viene triggerato al momento del cambio pagina
+
+      {/*
+        Sipario di Uscita — blocco che sale dal basso quando si cambia
+        pagina (exit di AnimatePresence, scaleY 0→1 da top).
       */}
       <motion.div
+        aria-hidden="true"
         className="fixed inset-0 z-[100] bg-[#3d0f1a] transform-gpu pointer-events-none origin-top"
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 0 }}
@@ -32,15 +34,13 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
       />
 
-      {/* Contenuto di pagina */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -40, filter: "blur(10px)", scale: 0.98 }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-      >
-        {children}
-      </motion.div>
+      {/*
+        Il contenuto di pagina NON viene wrappato in motion.div con opacity
+        perché blocca l'avvio delle animazioni `animate` (marquee, etc.)
+        sui figli durante la transizione di entrata.
+        Il curtain scaleY sopra è sufficiente come transizione visiva.
+      */}
+      {children}
     </>
   );
 };
