@@ -7,15 +7,17 @@ import { BriefingCTA } from "@/components/BriefingCTA";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useTranslation } from "react-i18next";
 
 export const EditorialVillaMima = () => {
+  const { t } = useTranslation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   usePageMeta({
     title: "Villa Mima",
-    description: "Un progetto digitale raffinato realizzato in collaborazione con l'agenzia Carnova. Cura dell'interfaccia utente, della narrazione visiva e dello sviluppo su WordPress per una location d'eccellenza dedicata a matrimoni e ricevimenti in Sicilia.",
+    description: t('villamima.meta_desc'),
   });
 
   const { scrollY } = useScroll();
@@ -44,7 +46,7 @@ export const EditorialVillaMima = () => {
               className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a]/60 hover:text-primary transition-colors font-semibold"
             >
               <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
-              Archivio progetti
+              {t('project_detail.back_to_archive')}
             </Link>
           </motion.div>
         </div>
@@ -61,7 +63,7 @@ export const EditorialVillaMima = () => {
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium block whitespace-nowrap"
                 >
-                  UI/UX DESIGN • WEB & CONTENT • WEDDING & EVENTS
+                  {t('villamima.hero_label')}
                 </motion.span>
               </div>
 
@@ -86,7 +88,7 @@ export const EditorialVillaMima = () => {
                 className="mt-8 lg:mt-12 max-w-[34rem]"
               >
                 <p className="font-body text-sm md:text-base text-[#3d0f1a]/70 leading-relaxed border-l-2 border-primary/20 pl-6 lg:pl-8 py-2">
-                  Un progetto digitale raffinato realizzato in collaborazione con l'agenzia Carnova. Cura dell'interfaccia utente, della narrazione visiva e dello sviluppo su WordPress per una location d'eccellenza dedicata a matrimoni e ricevimenti in Sicilia.
+                  {t('villamima.hero_desc')}
                 </p>
               </motion.div>
             </motion.div>
@@ -147,7 +149,7 @@ export const EditorialVillaMima = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block lg:sticky lg:top-32">
-              01 — Il Contesto
+              {t('villamima.ch1_label')}
             </span>
           </motion.div>
           <motion.div
@@ -157,15 +159,13 @@ export const EditorialVillaMima = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ delay: 0.2 }}
           >
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              Eventi sotto <span className="italic text-primary">le stelle.</span>
-            </h2>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]" dangerouslySetInnerHTML={{ __html: t('villamima.ch1_title1') }} />
             <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed max-w-2xl">
               <p>
-                Immersa tra uliveti e vigneti a due passi dalla Valle dei Templi, Villa Mima è molto più di una sala ricevimenti: è un'esperienza sensoriale completa. In collaborazione con Carnova, la sfida era trasmettere online questa forte identità e la cura maniacale per i dettagli.
+                {t('villamima.ch1_p1')}
               </p>
               <p>
-                Serviva una piattaforma capace di esaltare non solo la bellezza paesaggistica e architettonica della struttura, ma anche l'alta cucina e il 'food design', elementi decisivi per chi è alla ricerca della location perfetta per un evento esclusivo.
+                {t('villamima.ch1_p2')}
               </p>
             </div>
           </motion.div>
@@ -185,11 +185,9 @@ export const EditorialVillaMima = () => {
             transition={{ duration: 1 }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-12">
-              02 — L'Obiettivo
+              {t('villamima.ch2_label')}
             </span>
-            <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]">
-              "L'eleganza si nasconde nei dettagli: un'interfaccia progettata per far pregustare l'atmosfera magica di un evento indimenticabile, <span className="text-primary italic">ancor prima del primo assaggio.</span>"
-            </h3>
+            <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]" dangerouslySetInnerHTML={{ __html: t('villamima.ch2_title1') }} />
           </motion.div>
         </div>
       </section >
@@ -238,17 +236,17 @@ export const EditorialVillaMima = () => {
           >
             <div>
               <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-8">
-                03 — Il Processo
+                {t('villamima.ch3_label')}
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter mb-8 text-[#3d0f1a]">
-                UI/UX e Food Design.
+                {t('villamima.ch3_title')}
               </h2>
               <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed">
                 <p>
-                  Ho sviluppato un'architettura visiva che mette in primo piano le emozioni e i sensi. Il layout lascia ampio respiro alle fotografie della location e alle creazioni culinarie artistiche dello chef, trattando ogni piatto come un'opera di design.
+                  {t('villamima.ch3_p1')}
                 </p>
                 <p>
-                  L'uso di tipografie graziate ed eleganti, unito a spazi negativi generosi, crea un'atmosfera di lusso sussurrato, guidando l'utente attraverso i servizi: dai matrimoni da favola agli show cooking, fino all'intrattenimento a bordo piscina.
+                  {t('villamima.ch3_p2')}
                 </p>
               </div>
             </div>
@@ -269,17 +267,17 @@ export const EditorialVillaMima = () => {
             viewport={{ once: true }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-2">
-              04 — Sviluppo
+              {t('villamima.ch4_label')}
             </span>
             <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              WordPress e Narrazione Emozionale.
+              {t('villamima.ch4_title')}
             </h2>
             <div className="font-body text-[#3d0f1a]/70 text-lg leading-relaxed space-y-6">
               <p>
-                A livello tecnico, l'intero ecosistema è stato ingegnerizzato su piattaforma WordPress, garantendo fluidità e velocità di caricamento nonostante l'alta densità di contenuti fotografici. L'esperienza utente è stata studiata per abbattere ogni attrito nel percorso di conversione.
+                {t('villamima.ch4_p1')}
               </p>
               <p>
-                I moduli di contatto e le call to action sono posizionati in modo organico e non invasivo, invitando i futuri sposi o i planner a mettersi in contatto con la struttura in modo semplice, empatico e diretto.
+                {t('villamima.ch4_p2')}
               </p>
             </div>
           </motion.div>
@@ -295,7 +293,7 @@ export const EditorialVillaMima = () => {
             <div className="bg-white border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] p-10 h-full flex flex-col justify-between">
               <div>
                 <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-8">
-                  Stack tecnologico
+                  {t('chario.tech_stack')}
                 </span>
                 <div className="flex flex-wrap gap-2.5 mb-10">
                   {techList.map(tech => (
@@ -311,11 +309,11 @@ export const EditorialVillaMima = () => {
 
               <div className="border-t border-[#3d0f1a]/10 pt-6 mt-12 space-y-4 text-[#3d0f1a]">
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">Ruolo</span>
-                  <span className="font-display text-md font-black italic">UI/UX & Web Developer</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.role_label')}</span>
+                  <span className="font-display text-md font-black italic">{t('villamima.role_val')}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">Lancio</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.launch_label')}</span>
                   <span className="font-display text-md font-black">2023</span>
                 </div>
               </div>
@@ -337,17 +335,17 @@ export const EditorialVillaMima = () => {
         >
           <div className="flex items-center gap-4 mb-16">
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
-              05 — Visual Showcase
+              {t('villamima.ch5_label')}
             </span>
             <div className="flex-1 h-[1px] bg-primary/10" />
           </div>
 
           <div className="mb-12 max-w-2xl">
             <h2 className="font-display text-3xl md:text-5xl font-black tracking-tighter mb-6 text-[#3d0f1a]">
-              La magia dei dettagli.
+              {t('villamima.ch5_title')}
             </h2>
             <p className="font-body text-lg text-[#3d0f1a]/70">
-              Il risultato è un sito web che cattura perfettamente l'essenza dell'ospitalità e dell'alta cucina. Un progetto che dimostra come il giusto equilibrio tra design minimale, immagini d'impatto e un copy accurato possa trasformare una vetrina digitale nel primo, fondamentale passo verso l'organizzazione di un evento perfetto.
+              {t('villamima.ch5_p1')}
             </p>
           </div>
         </motion.div>
@@ -415,7 +413,7 @@ export const EditorialVillaMima = () => {
             <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             <span className="relative z-10 flex items-center gap-4 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white transition-colors font-semibold">
               <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-500" />
-              Torna all'archivio
+              {t('project_detail.back_to_archive')}
             </span>
           </Link>
         </div>

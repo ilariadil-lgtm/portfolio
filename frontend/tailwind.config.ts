@@ -60,8 +60,14 @@ export default {
         },
       },
       fontFamily: {
-        display: ["EB Garamond", "serif"],
-        body: ["Hind Siliguri", "sans-serif"],
+        display: ["Fraunces", "serif"],
+        body: ["Inter", "sans-serif"],
+        bricolage: ["Bricolage Grotesque", "sans-serif"],
+        fraunces: ["Fraunces", "serif"],
+        outfit: ["Bricolage Grotesque", "sans-serif"], // legacy alias → punta su bricolage
+        space: ["Bricolage Grotesque", "sans-serif"],  // legacy alias
+        inter: ["Inter", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",

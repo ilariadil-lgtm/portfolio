@@ -6,15 +6,17 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { BriefingCTA } from "@/components/BriefingCTA";
+import { useTranslation } from "react-i18next";
 
 export const EditorialFreelens = () => {
+  const { t } = useTranslation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   usePageMeta({
     title: "Freelens",
-    description: "Una piattaforma di Project Management per freelancer e piccoli team. Progettata per ridurre il rumore visivo e favorire la concentrazione.",
+    description: t('freelens.meta_desc'),
   });
 
   const { scrollY } = useScroll();
@@ -43,7 +45,7 @@ export const EditorialFreelens = () => {
               className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a]/60 hover:text-primary transition-colors font-semibold"
             >
               <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
-              Archivio progetti
+              {t('project_detail.back_to_archive')}
             </Link>
           </motion.div>
         </div>
@@ -60,7 +62,7 @@ export const EditorialFreelens = () => {
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium block"
                 >
-                  SAAS DEVELOPMENT • UI/UX
+                  {t('freelens.hero_label')}
                 </motion.span>
               </div>
 
@@ -85,9 +87,7 @@ export const EditorialFreelens = () => {
                 className="mt-8 lg:mt-12 max-w-[34rem]"
               >
                 <p className="font-body text-sm md:text-base text-[#3d0f1a]/70 leading-relaxed border-l-2 border-primary/20 pl-6 lg:pl-8 py-2">
-                  Una piattaforma gestionale SaaS creata appositamente per professionisti autonomi.
-                  Un ecosistema completo per il tracciamento finanziario, il controllo dei margini e
-                  l'ottimizzazione del business tramite Intelligenza Artificiale integrata.
+                  {t('freelens.hero_desc')}
                 </p>
               </motion.div>
             </motion.div>
@@ -144,7 +144,7 @@ export const EditorialFreelens = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block lg:sticky lg:top-32">
-              01 — Il Contesto
+              {t('freelens.ch1_label')}
             </span>
           </motion.div>
           <motion.div
@@ -154,17 +154,10 @@ export const EditorialFreelens = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ delay: 0.2 }}
           >
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              L'antidoto alla <span className="italic text-primary">bancarotta tecnica.</span>
-            </h2>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]" dangerouslySetInnerHTML={{ __html: t('freelens.ch1_title1') }} />
             <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed max-w-2xl">
               <p>
-                Lavorare molto non significa sempre lavorare in attivo.
-                Freelense nasce per risolvere un problema endemico tra i professionisti:
-                la perdita di controllo sulla reale redditività dei progetti.
-                L'obiettivo era creare una piattaforma che trasformasse il tracciamento delle ore,
-                la preventivazione e la gestione delle scadenze in un processo visivo e immediato,
-                scongiurando il rischio di lavorare in perdita e offrendo una chiarezza finanziaria assoluta.
+                {t('freelens.ch1_p1')}
               </p>
             </div>
           </motion.div>
@@ -184,13 +177,9 @@ export const EditorialFreelens = () => {
             transition={{ duration: 1 }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-12">
-              02 — L'Obiettivo
+              {t('freelens.ch2_label')}
             </span>
-            <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]">
-              "Riprendere il controllo del proprio tempo. <span className="text-primary italic">
-                Un ecosistema dove la salute finanziaria diventa finalmente chiara</span>,
-              misurabile e assistita dall'intelligenza artificiale."
-            </h3>
+            <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]" dangerouslySetInnerHTML={{ __html: t('freelens.ch2_title1') }} />
           </motion.div>
         </div>
       </section >
@@ -236,20 +225,14 @@ export const EditorialFreelens = () => {
           >
             <div>
               <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-8">
-                03 — Il Processo
+                {t('freelens.ch3_label')}
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter mb-8 text-[#3d0f1a]">
-                L'esperienza utente al centro.
+                {t('freelens.ch3_title')}
               </h2>
               <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed">
                 <p>
-                  L'interfaccia è concepita come una Single Page Application fluida e reattiva,
-                  ingegnerizzata con React 18 e TypeScript. Ho adottato un'estetica premium—con
-                  richiami al glassmorphism, gradienti dinamici e micro-interazioni—per rendere
-                  piacevole un'attività solitamente noiosa come l'amministrazione.
-                  Grazie a TanStack Query per il caching e Recharts per la data visualization,
-                  ogni KPI finanziario è istantaneamente disponibile sulla dashboard, azzerando
-                  i tempi di caricamento percepiti.
+                  {t('freelens.ch3_p1')}
                 </p>
               </div>
             </div>
@@ -270,21 +253,14 @@ export const EditorialFreelens = () => {
             viewport={{ once: true }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-2">
-              04 — Sviluppo
+              {t('freelens.ch4_label')}
             </span>
             <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              Supabase, Serverless & AI.
+              {t('freelens.ch4_title')}
             </h2>
             <div className="font-body text-[#3d0f1a]/70 text-lg leading-relaxed space-y-6">
               <p>
-                L'infrastruttura backend poggia interamente su PostgreSQL, garantendo la massima sicurezza
-                tramite policy RLS (Row Level Security) rigorose: ogni utente ha accesso esclusivo ai
-                propri dati.
-                Il vero valore aggiunto risiede però nelle Edge Functions: un microservizio serverless
-                alimenta l'assistente virtuale integrato, capace di leggere il contesto finanziario del
-                professionista (pagamenti, progetti, scadenze) e fornire suggerimenti strategici in tempo
-                reale. Il sistema è completato dall'integrazione di Stripe per la gestione sicura degli
-                abbonamenti premium.
+                {t('freelens.ch4_p1')}
               </p>
             </div>
           </motion.div>
@@ -300,7 +276,7 @@ export const EditorialFreelens = () => {
             <div className="bg-white border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] p-10 h-full flex flex-col justify-between">
               <div>
                 <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-8">
-                  Stack tecnologico
+                  {t('chario.tech_stack')}
                 </span>
                 <div className="flex flex-wrap gap-2.5 mb-10">
                   {techList.map(tech => (
@@ -316,11 +292,11 @@ export const EditorialFreelens = () => {
 
               <div className="border-t border-[#3d0f1a]/10 pt-6 mt-12 space-y-4 text-[#3d0f1a]">
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">Ruolo</span>
-                  <span className="font-display text-md font-black italic">Lead Product Designer & Dev</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.role_label')}</span>
+                  <span className="font-display text-md font-black italic">{t('freelens.role_val')}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">Lancio</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.launch_label')}</span>
                   <span className="font-display text-md font-black">2026</span>
                 </div>
               </div>
@@ -342,20 +318,17 @@ export const EditorialFreelens = () => {
         >
           <div className="flex items-center gap-4 mb-16">
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
-              05 — Visual Showcase
+              {t('freelens.ch5_label')}
             </span>
             <div className="flex-1 h-[1px] bg-primary/10" />
           </div>
 
           <div className="mb-12 max-w-2xl">
             <h2 className="font-display text-3xl md:text-5xl font-black tracking-tighter mb-6 text-[#3d0f1a]">
-              Intelligenza Finanziaria.
+              {t('freelens.ch5_title')}
             </h2>
             <p className="font-body text-lg text-[#3d0f1a]/70">
-              Il risultato è un prodotto SaaS end-to-end completo e scalabile.
-              Unendo un'interfaccia utente d'impatto a un'architettura dati complessa e serverless,
-              la piattaforma non si limita a organizzare il lavoro, ma agisce come un vero e proprio
-              partner strategico per la crescita del professionista.
+              {t('freelens.ch5_p1')}
             </p>
           </div>
         </motion.div>
@@ -410,7 +383,7 @@ export const EditorialFreelens = () => {
             <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             <span className="relative z-10 flex items-center gap-4 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white transition-colors font-semibold">
               <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-500" />
-              Torna all'archivio
+              {t('project_detail.back_to_archive')}
             </span>
           </Link>
         </div>

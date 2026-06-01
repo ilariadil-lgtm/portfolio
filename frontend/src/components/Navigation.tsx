@@ -2,18 +2,24 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const navItems = [
-  { label: "HOME", path: "/" },
-  { label: "CHI SONO", path: "/chisono" },
-  { label: "SERVIZI", path: "/servizi" },
-  { label: "PROGETTI", path: "/progetti" },
+  { key: "home", path: "/" },
+  { key: "about", path: "/chisono" },
+  { key: "services", path: "/servizi" },
+  { key: "projects", path: "/progetti" },
 ];
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,7 +82,7 @@ export const Navigation = () => {
                       : "text-foreground/60 hover:text-primary"
                   }`}
                 >
-                  {item.label}
+                  {t(`nav.${item.key}`)}
                   <motion.span 
                     className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary"
                     animate={{ width: location.pathname === item.path ? "100%" : "0%" }}
@@ -86,26 +92,58 @@ export const Navigation = () => {
               ))}
             </nav>
 
+            <div className="flex items-center gap-4 border-l border-primary/20 pl-4">
+              <button 
+                onClick={() => changeLanguage('it')} 
+                className={`font-body text-[9px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'it' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
+              >
+                IT
+              </button>
+              <span className="text-primary/20 text-[9px]">|</span>
+              <button 
+                onClick={() => changeLanguage('en')} 
+                className={`font-body text-[9px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'en' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
+              >
+                EN
+              </button>
+            </div>
+
             <Link 
               to="/contatti"
               className={`px-7 py-2.5 font-body text-[9px] uppercase tracking-[0.3em] transition-all duration-500 rounded-full border border-primary/20 hover:bg-primary hover:text-white ${
                 scrolled ? "bg-primary/5" : "bg-transparent"
               }`}
             >
-              Parliamo
+              {t('nav.contact')}
             </Link>
           </div>
 
           {/* Mobile Toggle */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-3 text-primary"
-            aria-label={isOpen ? "Chiudi menu" : "Apri menu"}
-            aria-expanded={isOpen}
-            aria-controls="mobile-nav"
-          >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          <div className="md:hidden flex items-center gap-4">
+            <div className="flex items-center gap-3 border-r border-primary/20 pr-4 mr-2">
+              <button 
+                onClick={() => changeLanguage('it')} 
+                className={`font-body text-[9px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'it' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
+              >
+                IT
+              </button>
+              <button 
+                onClick={() => changeLanguage('en')} 
+                className={`font-body text-[9px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'en' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
+              >
+                EN
+              </button>
+            </div>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-3 text-primary"
+              aria-label={isOpen ? "Chiudi menu" : "Apri menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-nav"
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </motion.div>
       </header>
 
@@ -138,7 +176,7 @@ export const Navigation = () => {
                         : "text-[#3d0f1a]"
                     }`}
                   >
-                    {item.label}
+                    {t(`nav.${item.key}`)}
                   </Link>
                 </motion.div>
               ))}
@@ -151,7 +189,7 @@ export const Navigation = () => {
                   to="/contatti"
                   className="mt-6 px-10 py-4 bg-primary text-white font-body text-[11px] uppercase tracking-[0.3em] rounded-full inline-block"
                 >
-                  PARLIAMO
+                  {t('nav.contact')}
                 </Link>
               </motion.div>
             </div>

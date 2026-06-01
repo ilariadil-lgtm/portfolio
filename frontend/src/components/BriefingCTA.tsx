@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { RevealText } from "@/components/RevealText";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
+import { useTranslation } from "react-i18next";
 
 export const BriefingCTA: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <section className="py-24 md:py-36 px-6 md:px-12 lg:px-24 bg-[#3d0f1a] text-[#f5f2ed] relative overflow-hidden border-t border-[#f5f2ed]/5">
       {/* Background Subtle Grid/Dots or Radials */}
@@ -20,14 +22,14 @@ export const BriefingCTA: React.FC = () => {
           {/* Left Column: Text block containing title & narrative */}
           <div className="lg:col-span-7 space-y-6 text-left">
             <span className="font-typewriter text-[11px] uppercase tracking-[0.3em] md:tracking-[0.5em] text-[#f5f2ed]/50 font-bold block">
-              ORA TOCCA A TE
+              {t('cta.subtitle')}
             </span>
             <h2 className="font-display text-5xl md:text-7xl font-black leading-none tracking-tighter text-[#f5f2ed]">
-              <RevealText text="Costruiamo" delay={0.1} />
-              <RevealText text="qualcosa di unico." delay={0.3} className="text-primary italic" />
+              <RevealText text={t('cta.title_1')} delay={0.1} />
+              <RevealText text={t('cta.title_2')} delay={0.3} className="text-primary italic" />
             </h2>
             <p className="font-body text-lg text-[#f5f2ed]/70 leading-relaxed max-w-xl">
-              Hai un'idea per una web app, un design system personalizzato o un e-commerce ad alte prestazioni? Colleghiamo le nostre stazioni per concretizzare la tua visione digitale.
+              {t('cta.description')}
             </p>
           </div>
 
@@ -40,7 +42,7 @@ export const BriefingCTA: React.FC = () => {
                 className="group inline-flex items-center gap-8 p-8 border border-white/10 bg-[#f5f2ed] shadow-[6px_6px_0px_#c0392b] md:shadow-[10px_10px_0px_#c0392b] hover:translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0px_#c0392b] md:hover:shadow-[15px_15px_0px_#c0392b] transition-all duration-300 w-full justify-between"
               >
                 <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] font-bold group-hover:text-primary transition-colors">
-                  PARLIAMONE
+                  {t('cta.button')}
                 </span>
                 <ArrowRight size={18} className="text-[#3d0f1a] group-hover:text-primary group-hover:translate-x-4 transition-all duration-500" />
               </Link>

@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Mail, Linkedin, Github, Instagram, ArrowUpRight } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   // Orologio in tempo reale
@@ -34,43 +36,42 @@ export const Footer = () => {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <div className="w-2.5 h-2.5 rounded-full bg-primary" />
-              <span className="font-typewriter text-[14px] uppercase tracking-[0.3em] text-primary font-medium">Design e sviluppo</span>
+              <span className="font-typewriter text-[14px] uppercase tracking-[0.3em] text-primary font-medium">{t('footer.subtitle')}</span>
             </div>
             <h3 className="font-display text-4xl md:text-5xl font-black text-[#3d0f1a] leading-none mb-8">
               Ilaria <br />
               <span className="text-primary italic">Diliberto.</span>
             </h3>
             <p className="font-body text-sm text-[#3d0f1a]/60 leading-relaxed max-w-sm">
-              Design editoriale, sviluppo web e gestione progetti fusi in un'unica visione.
-              Costruisco ecosistemi digitali curati in ogni dettaglio, dal primo bozzetto grafico all'ultima riga di codice.
+              {t('footer.description')}
             </p>
           </div>
 
           <div className="mt-10 lg:mt-0 flex flex-wrap items-center gap-6">
             <div className="flex flex-col gap-1.5">
-              <span className="font-typewriter text-[11px] uppercase tracking-[0.25em] text-primary font-medium">Base</span>
+              <span className="font-typewriter text-[11px] uppercase tracking-[0.25em] text-primary font-medium">{t('footer.base_label')}</span>
               <span className="font-typewriter text-[14px] font-medium text-primary">
-                Italia // <time dateTime={currentTime}>{currentTime}</time>
+                {t('footer.italy')} // <time dateTime={currentTime}>{currentTime}</time>
               </span>
             </div>
             <div className="w-[1px] h-10 bg-primary/20 hidden sm:block" />
             <div className="flex flex-col gap-1.5">
-              <span className="font-typewriter text-[11px] uppercase tracking-[0.25em] text-primary font-medium">Stato</span>
-              <span className="font-typewriter text-[13px] font-medium text-green-600 tracking-widest">Disponibile ✓</span>
+              <span className="font-typewriter text-[11px] uppercase tracking-[0.25em] text-primary font-medium">{t('footer.status_label')}</span>
+              <span className="font-typewriter text-[13px] font-medium text-green-600 tracking-widest">{t('footer.available')}</span>
             </div>
           </div>
         </div>
 
         {/* NAVIGATION LINKS */}
         <div className="lg:col-span-3">
-          <span className="font-typewriter text-[14px] uppercase tracking-[0.4em] text-primary font-medium block mb-8 md:mb-10">Esplora</span>
+          <span className="font-typewriter text-[14px] uppercase tracking-[0.4em] text-primary font-medium block mb-8 md:mb-10">{t('footer.explore')}</span>
           <ul className="space-y-3 md:space-y-4">
             {[
-              { label: "Home", to: "/" },
-              { label: "Progetti", to: "/progetti" },
-              { label: "Chi sono", to: "/chisono" },
-              { label: "Servizi", to: "/servizi" },
-              { label: "Contatti", to: "/contatti" }
+              { label: t('nav.home'), to: "/" },
+              { label: t('nav.projects'), to: "/progetti" },
+              { label: t('nav.about'), to: "/chisono" },
+              { label: t('nav.services'), to: "/servizi" },
+              { label: t('nav.contact'), to: "/contatti" }
             ].map((link, i) => (
               <li key={i}>
                 <Link
@@ -87,7 +88,7 @@ export const Footer = () => {
 
         {/* SOCIAL & CONNECT */}
         <div className="lg:col-span-4">
-          <span className="font-typewriter text-[14px] uppercase tracking-[0.4em] text-primary font-medium block mb-8 md:mb-10">Network</span>
+          <span className="font-typewriter text-[14px] uppercase tracking-[0.4em] text-primary font-medium block mb-8 md:mb-10">{t('footer.network')}</span>
           <div className="grid grid-cols-2 gap-3 md:gap-4">
             {[
               { label: "LinkedIn", icon: <Linkedin size={18} />, href: "https://www.linkedin.com/in/ilaria-diliberto/" },
@@ -114,14 +115,14 @@ export const Footer = () => {
           </div>
 
           <div className="mt-10 md:mt-12 p-6 md:p-8 bg-white/40 border border-primary/20 backdrop-blur-sm">
-            <span className="font-typewriter text-[12px] uppercase tracking-[0.4em] text-primary font-medium block mb-2">Lavoriamo insieme?</span>
-            <p className="font-body text-[14px] text-primary mb-5 leading-relaxed">Hai un progetto in mente? Scrivimi, rispondo entro 24 ore.</p>
+            <span className="font-typewriter text-[12px] uppercase tracking-[0.4em] text-primary font-medium block mb-2">{t('footer.work_together')}</span>
+            <p className="font-body text-[14px] text-primary mb-5 leading-relaxed">{t('footer.work_together_desc')}</p>
             <Link
               to="/contatti"
               className="group inline-flex items-center gap-3 font-typewriter text-[11px] uppercase tracking-[0.35em] text-primary font-semibold"
             >
               <span className="relative overflow-hidden">
-                Contattami
+                {t('footer.contact_me')}
                 <span className="absolute bottom-0 left-0 w-full h-[1px] bg-primary transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
               </span>
               <ArrowUpRight size={15} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -135,9 +136,9 @@ export const Footer = () => {
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-typewriter text-[11px] uppercase tracking-[0.25em] text-primary font-medium">
           <span>© {currentYear} Ilaria Diliberto</span>
           <div className="w-1.5 h-1.5 rounded-full bg-primary hidden sm:block" />
-          <span>Tutti i diritti riservati</span>
+          <span>{t('footer.all_rights')}</span>
           <div className="w-1.5 h-1.5 rounded-full bg-primary hidden md:block" />
-          <span className="hidden md:inline">Design e codice su misura</span>
+          <span className="hidden md:inline">{t('footer.tailored')}</span>
         </div>
 
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-typewriter text-[11px] uppercase tracking-[0.25em] text-primary font-medium">

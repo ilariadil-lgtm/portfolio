@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useTranslation } from "react-i18next";
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="border-t border-[#3d0f1a]/10 pt-10 pb-4">
@@ -13,9 +14,10 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 );
 
 const Privacy = () => {
+  const { t, i18n } = useTranslation();
   usePageMeta({
-    title: "Privacy Policy",
-    description: "Informativa sulla privacy di Ilaria Diliberto. Come vengono raccolti e trattati i dati personali.",
+    title: t('legal.privacy_title'),
+    description: t('legal.privacy_desc'),
   });
 
   return (
@@ -32,7 +34,7 @@ const Privacy = () => {
           >
             <div className="flex items-center gap-4 mb-8">
               <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-primary font-bold">
-                LEGALE
+                {t('legal.privacy_label')}
               </span>
               <div className="w-10 h-[1px] bg-primary/25" />
             </div>
@@ -40,11 +42,11 @@ const Privacy = () => {
               className="font-display font-bold leading-[0.85] tracking-tighter text-[#3d0f1a]"
               style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
             >
-              Privacy<br />
-              <span className="text-primary italic">Policy.</span>
+              {t('legal.privacy_h1_1')}<br />
+              <span className="text-primary italic">{t('legal.privacy_h1_2')}</span>
             </h1>
             <p className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-[#3d0f1a]/40 mt-6">
-              Ultimo aggiornamento: {new Date().toLocaleDateString('it-IT', { year: 'numeric', month: 'long' })}
+              {t('legal.last_updated')} {new Date().toLocaleDateString(i18n.language === 'en' ? 'en-US' : 'it-IT', { year: 'numeric', month: 'long' })}
             </p>
           </motion.div>
         </div>
@@ -58,50 +60,40 @@ const Privacy = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          <Section title="Titolare del trattamento">
+          <Section title={t('legal.privacy_sec1_title')}>
+            <p dangerouslySetInnerHTML={{ __html: t('legal.privacy_sec1_content') }} />
+          </Section>
+
+          <Section title={t('legal.privacy_sec2_title')}>
             <p>
-              Ilaria Diliberto — P.IVA 03065860847<br />
-              Sicilia, Italia<br />
-              Email: <a href="mailto:ilaria.dil@gmail.com" className="text-primary hover:underline">ilaria.dil@gmail.com</a>
+              {t('legal.privacy_sec2_p1')}
+            </p>
+            <p>
+              {t('legal.privacy_sec2_p2')}
             </p>
           </Section>
 
-          <Section title="Dati raccolti">
+          <Section title={t('legal.privacy_sec3_title')}>
             <p>
-              Questo sito raccoglie i dati che gli utenti forniscono volontariamente attraverso il modulo di contatto:
-              nome, indirizzo email, e contenuto del messaggio.
-            </p>
-            <p>
-              Non vengono raccolti dati di navigazione, non vengono utilizzati cookie di profilazione,
-              e non vengono ceduti dati a terze parti.
+              {t('legal.privacy_sec3_p1')}
             </p>
           </Section>
 
-          <Section title="Finalità del trattamento">
+          <Section title={t('legal.privacy_sec4_title')}>
             <p>
-              I dati personali raccolti tramite il form di contatto vengono utilizzati esclusivamente
-              per rispondere alle richieste degli utenti e non per scopi commerciali o di marketing.
+              {t('legal.privacy_sec4_p1')}
             </p>
           </Section>
 
-          <Section title="Base giuridica">
+          <Section title={t('legal.privacy_sec5_title')}>
             <p>
-              Il trattamento si basa sul consenso espresso dell'utente al momento dell'invio del modulo
-              di contatto (art. 6, par. 1, lett. a) del GDPR).
+              {t('legal.privacy_sec5_p1')}
             </p>
           </Section>
 
-          <Section title="Conservazione dei dati">
+          <Section title={t('legal.privacy_sec6_title')}>
             <p>
-              I messaggi ricevuti vengono conservati per il tempo strettamente necessario a evadere
-              la richiesta, e comunque non oltre 12 mesi dalla ricezione.
-            </p>
-          </Section>
-
-          <Section title="Diritti dell'interessato">
-            <p>
-              Puoi esercitare i diritti previsti dagli artt. 15-22 del GDPR (accesso, rettifica,
-              cancellazione, limitazione, portabilità e opposizione) scrivendo a{" "}
+              {t('legal.privacy_sec6_p1')}
               <a href="mailto:ilaria.dil@gmail.com" className="text-primary hover:underline">
                 ilaria.dil@gmail.com
               </a>.
@@ -110,8 +102,7 @@ const Privacy = () => {
 
           <div className="border-t border-[#3d0f1a]/10 pt-10">
             <p className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-[#3d0f1a]/40">
-              Questa informativa verrà aggiornata al momento della messa online del dominio ufficiale
-              con eventuali strumenti di analisi e cookie tecnici.
+              {t('legal.privacy_footer')}
             </p>
           </div>
         </motion.div>

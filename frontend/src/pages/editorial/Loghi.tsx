@@ -7,13 +7,12 @@ import { BriefingCTA } from "@/components/BriefingCTA";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useTranslation } from "react-i18next";
 
 interface BrandItem {
   id: string;
   title: string;
-  role: string;
   year: string;
-  description: string;
   images: string[];
   portfolioUrl: string;
   liveUrl?: string;
@@ -23,9 +22,7 @@ const BRAND_DATA: BrandItem[] = [
   {
     id: "villamasami",
     title: "Villa Masami",
-    role: "Brand & Logo Design • UI/UX Design • Web",
     year: "2025",
-    description: "L'identità di Villa Masami nasce dalla sintesi tra l'eleganza classica del barocco siciliano e una sensibilità minimale contemporanea. Dal design del logo, basato su linee armoniche e proporzioni perfette, fino alle linee guida di stile, ai materiali fisici e alla presenza digitale multilingua.",
     images: [
       "/assets/loghi/villamasami/insegna.webp",
       "/assets/loghi/villamasami/asciugamano.webp",
@@ -44,20 +41,7 @@ const BRAND_DATA: BrandItem[] = [
   {
     id: "sicef",
     title: "Sicef",
-    role: "Brand Identity • Corporate & Logo Design",
     year: "2022",
-    description: `Il logo Sicef è caratterizzato da un design pulito che lo rende facilmente riconoscibile.  La scelta di 
-utilizzare il carattere Lato conferisce al logo 
-un’immagine forte e decisa. 
-In particolare, la “s” con il taglio diagonale 
-permette a quest’ultima di poter essere utilizzata 
-come icona rappresentativa dell’azienda, grazie 
-alla sua forma semplice. 
-
-La presenza della dicitura “ingegneria e 
-architettura” sottolinea l’attività dell’azienda, 
-mentre il colore predominante, il nero, trasmette 
-un senso di affidabilità e professionalità.`,
     images: [
       "/assets/loghi/sicef/logo_1.webp",
       "/assets/loghi/sicef/logo_2.webp",
@@ -71,11 +55,7 @@ un senso di affidabilità e professionalità.`,
   {
     id: "mapicreazioni",
     title: "Mapi Creazioni",
-    role: "Visual Identity • Branding & Design",
     year: "2022",
-    description: `Il logo presenta un design moderno, con un tratto sottile ed elegante. Il font utilizzato, Sacramento, conferisce un aspetto minimalista ed essenziale. 
-
-La presenza del pittogramma, l’ago e il filo, rappresentano il valore dell’azienda stessa nel creare i propri prodotti totalmente a mano. Inoltre,  il pittogramma diventa parte integrante del logo creando così un senso di armonia e continuità. `,
     images: [
       "/assets/loghi/mapicreazioni/logo_1.webp",
       "/assets/loghi/mapicreazioni/logo_2.webp",
@@ -191,13 +171,14 @@ const BrandMockupCarousel = ({ images, brandTitle }: { images: string[]; brandTi
 };
 
 export const EditorialLoghi = () => {
+  const { t } = useTranslation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   usePageMeta({
     title: "Branding & Loghi",
-    description: "Galleria di marchi, loghi ed elementi di identità visiva progettati per trasmettere storie ed eccellenze territoriali con precisione geometrica ed estetica d'avanguardia.",
+    description: t('loghi.meta_desc'),
   });
 
   return (
@@ -221,7 +202,7 @@ export const EditorialLoghi = () => {
               className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a]/60 hover:text-primary transition-colors font-semibold"
             >
               <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
-              Archivio progetti
+              {t('project_detail.back_to_archive')}
             </Link>
           </motion.div>
         </div>
@@ -235,7 +216,7 @@ export const EditorialLoghi = () => {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium block whitespace-nowrap"
               >
-                BRAND GUIDELINES • LOGO DESIGN • VISUAL IDENTITY
+                {t('loghi.hero_label')}
               </motion.span>
             </div>
 
@@ -258,7 +239,7 @@ export const EditorialLoghi = () => {
               transition={{ delay: 0.6, duration: 1 }}
               className="mt-6 font-body text-base md:text-lg text-[#3d0f1a]/70 leading-relaxed border-l-2 border-primary/20 pl-6 lg:pl-8 py-2 max-w-2xl"
             >
-              Una selezione curata di marchi ed elementi di identità visiva. Non una serie di semplici segni grafici, ma veri e propri ecosistemi visivi progettati per dare forma, coerenza e valore unico a storie d'eccellenza.
+              {t('loghi.hero_desc')}
             </motion.p>
           </div>
         </div>
@@ -310,11 +291,11 @@ export const EditorialLoghi = () => {
                     </h2>
 
                     <span className="font-typewriter text-[9px] uppercase tracking-[0.25em] text-primary font-bold block pt-1">
-                      {brand.role}
+                      {t(`loghi.brands.${brand.id}.role`)}
                     </span>
 
-                    <p className="font-body text-base md:text-lg text-[#3d0f1a]/70 leading-relaxed pt-2">
-                      {brand.description}
+                    <p className="font-body text-base md:text-lg text-[#3d0f1a]/70 leading-relaxed pt-2 whitespace-pre-line">
+                      {t(`loghi.brands.${brand.id}.description`)}
                     </p>
 
                     {/* Links row */}
@@ -325,7 +306,7 @@ export const EditorialLoghi = () => {
                           to={brand.portfolioUrl}
                           className="group inline-flex items-center gap-2.5 font-typewriter text-[10px] uppercase tracking-[0.3em] text-[#3d0f1a] font-bold hover:text-primary transition-colors border border-[#3d0f1a]/20 hover:border-primary px-5 py-2.5 bg-[#f5f2ed]"
                         >
-                          Sito Portfolio
+                          {t('loghi.portfolio_site')}
                           <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                       )}
@@ -338,7 +319,7 @@ export const EditorialLoghi = () => {
                           rel="noopener noreferrer"
                           className="group inline-flex items-center gap-2.5 font-typewriter text-[10px] uppercase tracking-[0.3em] text-white font-bold bg-[#3d0f1a] hover:bg-primary transition-colors px-5 py-2.5 shadow-[4px_4px_0px_rgba(61,15,26,0.15)] hover:shadow-none active:translate-x-1 active:translate-y-1"
                         >
-                          Visita Sito
+                          {t('loghi.visit_site')}
                           <ArrowUpRight size={13} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
                         </a>
                       )}
@@ -364,7 +345,7 @@ export const EditorialLoghi = () => {
             <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             <span className="relative z-10 flex items-center gap-4 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white transition-colors font-semibold">
               <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-500" />
-              Torna all'archivio
+              {t('project_detail.back_to_archive')}
             </span>
           </Link>
         </div>

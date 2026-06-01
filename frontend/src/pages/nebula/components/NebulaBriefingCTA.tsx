@@ -2,6 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Terminal } from "lucide-react";
+import { RevealText } from "@/components/RevealText";
+import { MagneticWrapper } from "@/components/MagneticWrapper";
 
 export const NebulaBriefingCTA = () => {
   return (
@@ -14,33 +16,36 @@ export const NebulaBriefingCTA = () => {
         className="w-full max-w-6xl relative"
       >
         {/* Glow effect behind the card */}
-        <div className="absolute -inset-4 bg-gradient-to-r from-white/10 via-neutral-500/5 to-white/10 blur-2xl opacity-50 rounded-[3rem]" />
+        <div className="absolute -inset-4 bg-gradient-to-r from-[#d4af37]/5 via-white/5 to-[#d4af37]/5 blur-2xl opacity-50 rounded-none" />
         
-        {/* Superhuman Glass Card */}
-        <div className="relative rounded-[2.5rem] bg-white/[0.04] border border-white/[0.12] backdrop-blur-3xl shadow-[0_24px_40px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.2)] p-12 md:p-20 overflow-hidden flex flex-col items-center text-center">
+        {/* Editorial Glass Card */}
+        <div className="relative rounded-none bg-[#020202]/80 border-t border-[#d4af37]/20 p-12 md:p-20 flex flex-col items-center text-center">
           
           <div className="flex items-center gap-4 mb-8">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-slate-400">ORA TOCCA A TE</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#d4af37]">ORA TOCCA A TE</span>
           </div>
 
-          <h2 className="font-sans text-5xl md:text-7xl font-black leading-[0.9] tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-200 to-slate-500 mb-8 max-w-3xl">
-            Costruiamo qualcosa <br /> di <span className="font-light italic text-white">unico.</span>
-          </h2>
+          <RevealText 
+            text="Costruiamo qualcosa di unico." 
+            className="font-space text-5xl md:text-7xl font-black leading-[0.9] tracking-tighter text-white mb-8 max-w-3xl uppercase" 
+          />
           
-          <p className="font-sans text-lg md:text-xl text-slate-400 leading-relaxed font-light max-w-2xl mb-12">
+          <p className="font-inter text-lg md:text-xl text-white/50 leading-relaxed font-light max-w-2xl mb-12">
             Hai un'idea per una web app, un design system personalizzato o un e-commerce ad alte prestazioni? Inizializza il protocollo per concretizzare la tua visione digitale.
           </p>
           
-          <Link 
-            to="/contatti" 
-            className="px-8 py-4 rounded-full border border-white/10 bg-gradient-to-b from-white/[0.08] to-white/[0.02] backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),_0_10px_20px_rgba(0,0,0,0.4)] text-white font-sans font-bold text-sm hover:bg-white/10 transition-colors flex items-center gap-2"
-          >
-            <span className="relative z-10 flex items-center gap-3">
-              <Terminal size={18} />
-              INIZIALIZZA PROTOCOLLO
-            </span>
-            <ArrowRight size={18} className="relative z-10 group-hover:translate-x-1 transition-transform" />
-          </Link>
+          <MagneticWrapper>
+            <Link 
+              to="/contatti" 
+              className="group px-8 py-4 border border-[#d4af37]/30 bg-transparent text-[#d4af37] font-mono uppercase tracking-widest font-bold text-xs hover:bg-[#d4af37]/10 transition-colors flex items-center gap-2"
+            >
+              <span className="relative z-10 flex items-center gap-3">
+                <Terminal size={18} />
+                INIZIALIZZA PROTOCOLLO
+              </span>
+              <ArrowRight size={18} className="relative z-10 group-hover:translate-x-2 transition-transform" />
+            </Link>
+          </MagneticWrapper>
 
         </div>
       </motion.div>

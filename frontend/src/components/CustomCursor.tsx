@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, useSpring } from "framer-motion";
 import { useLocation } from "react-router-dom";
+import { useDesign } from "../context/DesignContext";
 
 export const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -11,6 +12,8 @@ export const CustomCursor = () => {
     typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches
   );
   const location = useLocation();
+  const { design } = useDesign();
+  const isEditorial = design === "editorial";
 
   const springConfig = { damping: 25, stiffness: 200, mass: 0.5 };
   const cursorX = useSpring(0, springConfig);
@@ -61,54 +64,28 @@ export const CustomCursor = () => {
   // Non renderizzare su touch device
   if (isTouch) return null;
 
-  const variants = {
-    default: {
-      scale: 1,
-      backgroundColor: "rgba(192, 57, 43, 0.4)", // Primary color with opacity
-      border: "1px solid rgba(192, 57, 43, 0.1)",
-      width: 32,
-      height: 32,
-      x: "-50%",
-      y: "-50%"
-    },
-    pointer: {
-      scale: 1.5,
-      backgroundColor: "rgba(192, 57, 43, 0)", // Transparent inside
-      border: "2px solid rgba(192, 57, 43, 1)",
-      width: 32,
-      height: 32,
-      x: "-50%",
-      y: "-50%"
-    },
-    view: {
-      scale: 2.5,
-      backgroundColor: "rgba(192, 57, 43, 0.9)",
-      border: "0px solid transparent",
-      width: 32,
-      height: 32,
-      x: "-50%",
-      y: "-50%"
-    },
-    drag: {
-      scale: 2.5,
-      backgroundColor: "rgba(61, 15, 26, 0.9)", // Dark color
-      border: "0px solid transparent",
-      width: 32,
-      height: 32,
-      x: "-50%",
-      y: "-50%"
-    }
+  const variants = isEditorial ? {
+    default: { scale: 1, backgroundColor: "rgba(192, 57, 43, 0.4)", border: "1px solid rgba(192, 57, 43, 0.1)", width: 32, height: 32, x: "-50%", y: "-50%" },
+    pointer: { scale: 1.5, backgroundColor: "rgba(192, 57, 43, 0)", border: "2px solid rgba(192, 57, 43, 1)", width: 32, height: 32, x: "-50%", y: "-50%" },
+    view: { scale: 2.5, backgroundColor: "rgba(192, 57, 43, 0.9)", border: "0px solid transparent", width: 32, height: 32, x: "-50%", y: "-50%" },
+    drag: { scale: 2.5, backgroundColor: "rgba(61, 15, 26, 0.9)", border: "0px solid transparent", width: 32, height: 32, x: "-50%", y: "-50%" }
+  } : {
+    // Nebula Awwwards Cursor: Bianco pieno con mix-blend-mode difference, oppure cerchio che si espande
+    default: { scale: 1, backgroundColor: "rgba(255, 255, 255, 1)", border: "0px solid rgba(255, 255, 255, 0)", width: 12, height: 12, x: "-50%", y: "-50%" },
+    pointer: { scale: 1, backgroundColor: "rgba(255, 255, 255, 0)", border: "1px solid rgba(255, 255, 255, 1)", width: 48, height: 48, x: "-50%", y: "-50%" },
+    view: { scale: 1, backgroundColor: "rgba(255, 255, 255, 1)", border: "0px solid transparent", width: 80, height: 80, x: "-50%", y: "-50%" },
+    drag: { scale: 1, backgroundColor: "rgba(255, 255, 255, 1)", border: "0px solid transparent", width: 80, height: 80, x: "-50%", y: "-50%" }
   };
 
   return (
     <>
       {/* Outer Spring Cursor */}
       <motion.div
-        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9999] flex justify-center items-center overflow-hidden"
+        className={`fixed top-0 left-0 rounded-full pointer-events-none z-[9999] flex justify-center items-center overflow-hidden ${!isEditorial ? 'mix-blend-difference' : ''}`}
         style={{ x: cursorX, y: cursorY }}
         variants={variants}
         animate={hidden ? { opacity: 0 } : cursorType}
-        transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.5 }}
+        transition={{ type: "spring", stiffness: isEditorial ? 150 : 250, damping: isEditorial ? 15 : 25, mass: 0.5 }}
       >
         <motion.span
           className="text-white font-typewriter text-[3px] uppercase tracking-widest font-bold"
@@ -119,14 +96,16 @@ export const CustomCursor = () => {
         </motion.span>
       </motion.div>
 
-      {/* Inner Dot Cursor */}
-      <div 
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-[#c0392b] pointer-events-none z-[10000] transition-opacity duration-200"
-        style={{
-          transform: `translate3d(${position.x - 4}px, ${position.y - 4}px, 0)`,
-          opacity: (hidden || cursorType !== "default") ? 0 : 1
-        }}
-      />
+      {/* Inner Dot Cursor (Solo per Editorial, in Nebula il dot è l'outer stesso che fa difference) */}
+      {isEditorial && (
+        <div 
+          className="fixed top-0 left-0 w-2 h-2 rounded-full bg-[#c0392b] pointer-events-none z-[10000] transition-opacity duration-200"
+          style={{
+            transform: `translate3d(${position.x - 4}px, ${position.y - 4}px, 0)`,
+            opacity: (hidden || cursorType !== "default") ? 0 : 1
+          }}
+        />
+      )}
     </>
   );
 };

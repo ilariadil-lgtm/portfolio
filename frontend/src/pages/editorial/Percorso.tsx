@@ -4,8 +4,10 @@ import { Footer } from "@/components/Footer";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import { ArrowRight, Box, Cpu, Globe, Layers } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Percorso = () => {
+  const { t } = useTranslation();
   const [about, setAbout] = useState<any>(null);
   const [services, setServices] = useState<any[]>([]);
 
@@ -29,27 +31,27 @@ const Percorso = () => {
     {
       num: "01",
       period: "2014 — 2018",
-      title: "Belle Arti",
-      subtitle: "ESTETICA_FONDAMENTI",
-      description: "Formazione classica in composizione visiva e teoria del colore. L'occhio estetico che ancora guida ogni decisione progettuale. Quattro anni tra schizzi, tipografia e storia dell'arte.",
-      tech: ["Composizione", "Tipografia", "Teoria Colore"],
+      title: t('percorso.evo_title1'),
+      subtitle: t('percorso.evo_sub1'),
+      description: t('percorso.evo_desc1'),
+      tech: [t('percorso.evo_tech1_1'), t('percorso.evo_tech1_2'), t('percorso.evo_tech1_3')],
       icon: <Layers size={22} />
     },
     {
       num: "02",
       period: "2019 — 2021",
-      title: "UX Engineering",
-      subtitle: "LOGICA_SISTEMICA",
-      description: "Il passaggio dalla superficie all'architettura: React, design systems, accessibilità. Interfacce che funzionano, non solo belle. Il codice diventa materiale creativo.",
+      title: t('percorso.evo_title2'),
+      subtitle: t('percorso.evo_sub2'),
+      description: t('percorso.evo_desc2'),
       tech: ["React", "TypeScript", "Design Systems"],
       icon: <Cpu size={22} />
     },
     {
       num: "03",
       period: "2022 — oggi",
-      title: "Cloud Architecture",
-      subtitle: "SCALABILITÀ_PRODOTTO",
-      description: "Infrastrutture scalabili, serverless, CI/CD. Dalla concezione al mercato, unendo visione strategica e padronanza tecnica. Guida di prodotti digitali end-to-end.",
+      title: t('percorso.evo_title3'),
+      subtitle: t('percorso.evo_sub3'),
+      description: t('percorso.evo_desc3'),
       tech: ["AWS", "Serverless", "DevOps"],
       icon: <Globe size={22} />
     }
@@ -80,16 +82,16 @@ const Percorso = () => {
                 className="space-y-6"
               >
                 <div className="flex items-center gap-4 mb-2">
-                  <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium">01 — BIOGRAFIA & PROFILO</span>
+                  <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium">{t('percorso.hero_label')}</span>
                   <div className="w-12 h-[1px] bg-primary/20" />
                 </div>
                 <h1 className="font-display text-[9vw] md:text-[6vw] font-black leading-[0.85] tracking-tighter text-[#3d0f1a] mb-8">
-                  CHI <br />
-                  <span className="text-primary italic">SONO.</span>
+                  {t('percorso.hero_h1_1')} <br />
+                  <span className="text-primary italic">{t('percorso.hero_h1_2')}</span>
                 </h1>
 
                 <p className="font-body text-xl text-[#3d0f1a]/80 leading-relaxed pl-8 border-l border-primary/25 max-w-xl">
-                  {about?.bio || "Un viaggio che inizia tra i corridoi dell'Accademia di Belle Arti e arriva alla gestione tecnica di prodotti digitali. La stessa ossessione per i dettagli, applicata a scale sempre più ampie."}
+                  {about?.bio || t('percorso.hero_bio_default')}
                 </p>
               </motion.div>
 
@@ -101,7 +103,7 @@ const Percorso = () => {
                 className="border border-primary/10 bg-white/20 backdrop-blur-md shadow-sm max-w-xl"
               >
                 <div className="bg-primary/5 px-6 py-3 border-b border-primary/10 flex items-center justify-between">
-                  <span className="font-typewriter text-[10px] uppercase tracking-[0.2em] text-primary font-medium">Profilo Professionale</span>
+                  <span className="font-typewriter text-[10px] uppercase tracking-[0.2em] text-primary font-medium">{t('percorso.profile_title')}</span>
                   <div className="flex gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary/40" />
                     <span className="w-1.5 h-1.5 rounded-full bg-primary/20" />
@@ -109,10 +111,10 @@ const Percorso = () => {
                 </div>
                 <div className="divide-y divide-primary/5">
                   {[
-                    { label: "Ruolo", val: "Tech Product Manager & Full-stack Developer" },
-                    { label: "Specializzazione", val: "Sviluppo Web, E-commerce, UI/UX" },
-                    { label: "Sede", val: "Italia // Remote" },
-                    { label: "Codice_Stato", val: "Esperienza: +6 Anni nel settore digitale", highlight: true }
+                    { label: t('percorso.prof_l1'), val: t('percorso.prof_v1') },
+                    { label: t('percorso.prof_l2'), val: t('percorso.prof_v2') },
+                    { label: t('percorso.prof_l3'), val: t('percorso.prof_v3') },
+                    { label: t('percorso.prof_l4'), val: t('percorso.prof_v4'), highlight: true }
                   ].map((item, idx) => (
                     <div key={idx} className="flex justify-between items-center px-6 py-4">
                       <span className="font-typewriter text-[11px] uppercase tracking-widest text-[#3d0f1a]/60 font-medium">{item.label}</span>
@@ -169,9 +171,9 @@ const Percorso = () => {
                   {/* Main Rules Text Block */}
                   <div className="space-y-6 my-auto pt-4 relative z-10">
                     {[
-                      { num: "I.", label: "ESTETICA", desc: "L'armonia visiva non è opzionale, è la porta d'ingresso per la fiducia." },
-                      { num: "II.", label: "LOGICA", desc: "La bellezza senza funzionalità è un'occasione sprecata. Il codice rispecchia il design." },
-                      { num: "III.", label: "FLUIDITÀ", desc: "L'esperienza utente deve fluire senza attrito o complessità tecniche." }
+                      { num: "I.", label: t('percorso.manifesto_label1'), desc: t('percorso.manifesto_desc1') },
+                      { num: "II.", label: t('percorso.manifesto_label2'), desc: t('percorso.manifesto_desc2') },
+                      { num: "III.", label: t('percorso.manifesto_label3'), desc: t('percorso.manifesto_desc3') }
                     ].map((rule, idx) => (
                       <div key={idx} className="space-y-1">
                         <div className="flex items-center gap-2">
@@ -218,9 +220,9 @@ const Percorso = () => {
             transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
             className="flex gap-20 font-typewriter text-[12px] uppercase tracking-[0.4em] text-primary font-medium"
           >
-            <span>ESTETICA E LOGICA // PROGETTAZIONE E SVILUPPO // STRATEGIA E TECNOLOGIA // [ SYSTEM_CORE: STABLE ] // ENV_2026 //</span>
-            <span>ESTETICA E LOGICA // PROGETTAZIONE E SVILUPPO // STRATEGIA E TECNOLOGIA // [ SYSTEM_CORE: STABLE ] // ENV_2026 //</span>
-            <span>ESTETICA E LOGICA // PROGETTAZIONE E SVILUPPO // STRATEGIA E TECNOLOGIA // [ SYSTEM_CORE: STABLE ] // ENV_2026 //</span>
+            <span>{t('percorso.marquee')}</span>
+            <span>{t('percorso.marquee')}</span>
+            <span>{t('percorso.marquee')}</span>
           </motion.div>
         </div>
       </section>
@@ -230,11 +232,11 @@ const Percorso = () => {
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
         <div className="mb-20">
-          <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium mb-4 block">02 — EVOLUZIONE PROFESSIONALE</span>
+          <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium mb-4 block">{t('percorso.timeline_label')}</span>
           <div className="w-12 h-[1px] bg-primary/20 mb-8" />
           <h2 className="font-display text-5xl md:text-7xl font-bold leading-none tracking-tighter">
-            Il mio <br />
-            <span className="text-primary italic">percorso evolutivo.</span>
+            {t('percorso.timeline_h1_1')} <br />
+            <span className="text-primary italic">{t('percorso.timeline_h1_2')}</span>
           </h2>
         </div>
 
@@ -296,10 +298,10 @@ const Percorso = () => {
 
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
-            <span className="font-typewriter text-[12px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">03 — SYSTEM DEPLOYMENT</span>
+            <span className="font-typewriter text-[12px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">{t('percorso.skills_label')}</span>
             <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tighter">
-              CORE <br />
-              <span className="text-primary italic">COMPETENZE.</span>
+              {t('percorso.skills_h1_1')} <br />
+              <span className="text-primary italic">{t('percorso.skills_h1_2')}</span>
             </h2>
           </div>
 
@@ -321,7 +323,7 @@ const Percorso = () => {
                 </div>
                 <h3 className="font-display text-3xl font-bold mb-4">{tech.title}</h3>
                 <p className="font-body text-[14px] text-white/60 leading-relaxed">
-                  {tech.description || "Integrazione ad alta performance di soluzioni digitali scalabili e ottimizzate."}
+                  {tech.description || t('percorso.skills_default_desc')}
                 </p>
                 <div className="mt-8 pt-8 border-t border-white/5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
                   <span className="font-typewriter text-[9px] tracking-[0.4em] text-primary font-medium">INIT_AUDIT</span>
@@ -331,9 +333,9 @@ const Percorso = () => {
             )) : (
               // Styled static fallbacks matching the exact grid cards
               [
-                { title: "UI & UX Design", desc: "Creazione di interfacce web e mobile memorabili, focalizzate sull'esperienza utente e sulla coerenza visiva del brand." },
-                { title: "Sviluppo Frontend", desc: "Codice pulito, accessibile e ad alte prestazioni utilizzando React, Next.js, TailwindCSS e le tecnologie web più moderne." },
-                { title: "Tech PM & Strategia", desc: "Pianificazione strategica e gestione end-to-end dei flussi lavorativi per un rilascio fluido, chiaro e senza intoppi tecnici." }
+                { title: t('percorso.fb_skill1_t'), desc: t('percorso.fb_skill1_d') },
+                { title: t('percorso.fb_skill2_t'), desc: t('percorso.fb_skill2_d') },
+                { title: t('percorso.fb_skill3_t'), desc: t('percorso.fb_skill3_d') }
               ].map((tech, i) => (
                 <motion.div
                   key={i}

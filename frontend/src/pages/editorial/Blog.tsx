@@ -6,10 +6,12 @@ import { api } from "@/lib/api";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { BriefingCTA } from "@/components/BriefingCTA";
 import { ArrowRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 const Blog = () => {
+  const { t, i18n } = useTranslation();
   usePageMeta({
     title: "Blog",
     description: "Riflessioni su design, sviluppo web e strategia digitale. Articoli tecnici e pensieri sul mestiere di costruire prodotti digitali.",
@@ -45,7 +47,7 @@ const Blog = () => {
             className="font-display font-black text-[#3d0f1a]/[0.025] pr-4"
             style={{ fontSize: "clamp(80px, 18vw, 240px)", lineHeight: 1 }}
           >
-            JOURNAL
+            {t('blog.watermark')}
           </span>
         </div>
 
@@ -57,7 +59,7 @@ const Blog = () => {
           >
             <div className="flex items-center gap-4 mb-8">
               <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-primary font-bold">
-                TECHNICAL JOURNAL
+                {t('blog.subtitle')}
               </span>
               <div className="w-10 h-[1px] bg-primary/25" />
             </div>
@@ -65,8 +67,8 @@ const Blog = () => {
               className="font-display font-bold leading-[0.85] tracking-tighter text-[#3d0f1a]"
               style={{ fontSize: "clamp(3rem, 7vw, 5.8rem)" }}
             >
-              Pensieri e<br />
-              <span className="text-primary italic">riflessioni.</span>
+              {t('blog.title_1')}<br />
+              <span className="text-primary italic">{t('blog.title_2')}</span>
             </h1>
           </motion.div>
         </div>
@@ -97,7 +99,7 @@ const Blog = () => {
                     </div>
                   )}
                   <div className="flex items-center gap-4 mb-4 font-typewriter text-[9px] uppercase tracking-[0.35em] text-[#3d0f1a]/40 font-bold">
-                    <span>{new Date(post.created_at).toLocaleDateString('it-IT', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                    <span>{new Date(post.created_at).toLocaleDateString(i18n.language === 'en' ? 'en-US' : 'it-IT', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                     {post.tags && <><span>·</span><span>{post.tags}</span></>}
                   </div>
                   <h2 className="font-display text-2xl md:text-3xl font-bold text-[#3d0f1a] mb-4 group-hover:text-primary transition-colors duration-300">
@@ -107,7 +109,7 @@ const Blog = () => {
                     {post.content}
                   </p>
                   <span className="group/link inline-flex items-center gap-2 font-typewriter text-[9px] uppercase tracking-[0.35em] text-primary font-bold">
-                    Leggi
+                    {t('blog.read_more')}
                     <ArrowRight size={12} className="group-hover/link:translate-x-1 transition-transform" />
                   </span>
                 </motion.article>
@@ -120,13 +122,13 @@ const Blog = () => {
               className="py-24 text-center border-t border-[#3d0f1a]/10"
             >
               <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-primary font-bold block mb-6">
-                IN ARRIVO
+                {t('blog.coming_soon_label')}
               </span>
               <p className="font-display text-3xl md:text-4xl font-bold text-[#3d0f1a] italic">
-                Presto nuovi articoli.
+                {t('blog.coming_soon_title')}
               </p>
               <p className="font-body text-[#3d0f1a]/50 mt-4">
-                Sto preparando riflessioni su design, codice e strategia digitale.
+                {t('blog.coming_soon_desc')}
               </p>
             </motion.div>
           )}

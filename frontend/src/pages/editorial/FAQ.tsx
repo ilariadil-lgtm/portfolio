@@ -6,32 +6,33 @@ import { api } from "@/lib/api";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { BriefingCTA } from "@/components/BriefingCTA";
 import { Plus, Minus } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-const staticFaqs = [
+const getStaticFaqs = (t: any) => [
   {
     id: 1,
-    question: "Come funziona il processo di lavoro?",
-    answer: "Iniziamo con una call conoscitiva per capire il tuo progetto, i tuoi obiettivi e il contesto. Poi preparo una proposta dettagliata con tempi, costi e fasi. Lavoro in modo iterativo, con checkpoint regolari per tenerti sempre aggiornato."
+    question: t('faq.q1'),
+    answer: t('faq.a1')
   },
   {
     id: 2,
-    question: "Quanto tempo ci vuole per realizzare un sito web?",
-    answer: "Dipende dalla complessità. Un sito istituzionale richiede 3-6 settimane, un e-commerce 6-10 settimane, una web app personalizzata 2-4 mesi. Ti darò sempre una stima precisa dopo aver capito i requisiti del tuo progetto."
+    question: t('faq.q2'),
+    answer: t('faq.a2')
   },
   {
     id: 3,
-    question: "Lavori da remoto o solo in Sicilia?",
-    answer: "Lavoro principalmente da remoto e collaboro con clienti in tutta Italia e all'estero. La comunicazione avviene via email, call video e strumenti di project management condivisi."
+    question: t('faq.q3'),
+    answer: t('faq.a3')
   },
   {
     id: 4,
-    question: "Offri assistenza dopo il lancio?",
-    answer: "Sì. Ogni progetto include un periodo di supporto post-lancio. Possiamo poi definire un piano di manutenzione continuativa in base alle tue esigenze."
+    question: t('faq.q4'),
+    answer: t('faq.a4')
   },
   {
     id: 5,
-    question: "Posso gestire il sito in autonomia dopo la consegna?",
-    answer: "Assolutamente. Per i progetti WordPress e CMS prevedo sempre una sessione di formazione. Per le web app React ti fornisco documentazione e accesso completo al codice."
+    question: t('faq.q5'),
+    answer: t('faq.a5')
   },
 ];
 
@@ -84,6 +85,7 @@ const FaqItem = ({ faq, index }: { faq: any; index: number }) => {
 };
 
 const FAQ = () => {
+  const { t } = useTranslation();
   usePageMeta({
     title: "FAQ",
     description: "Domande frequenti su come lavoro, i miei processi, tempi e costi. Tutto quello che devi sapere prima di iniziare un progetto insieme.",
@@ -96,9 +98,9 @@ const FAQ = () => {
       try {
         const data = await api.getFaqs();
         const fetched = data.results || data;
-        setFaqs(fetched.length > 0 ? fetched : staticFaqs);
+        setFaqs(fetched.length > 0 ? fetched : getStaticFaqs(t));
       } catch (error) {
-        setFaqs(staticFaqs);
+        setFaqs(getStaticFaqs(t));
       }
     };
     fetchFaqs();
@@ -115,7 +117,7 @@ const FAQ = () => {
             className="font-display font-black text-[#3d0f1a]/[0.025] pr-4"
             style={{ fontSize: "clamp(80px, 18vw, 240px)", lineHeight: 1 }}
           >
-            FAQ
+            {t('faq.watermark')}
           </span>
         </div>
 
@@ -127,7 +129,7 @@ const FAQ = () => {
           >
             <div className="flex items-center gap-4 mb-8">
               <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-primary font-bold">
-                DOMANDE FREQUENTI
+                {t('faq.subtitle')}
               </span>
               <div className="w-10 h-[1px] bg-primary/25" />
             </div>
@@ -135,8 +137,8 @@ const FAQ = () => {
               className="font-display font-bold leading-[0.85] tracking-tighter text-[#3d0f1a]"
               style={{ fontSize: "clamp(3rem, 7vw, 5.8rem)" }}
             >
-              Hai una<br />
-              <span className="text-primary italic">domanda?</span>
+              {t('faq.title_1')}<br />
+              <span className="text-primary italic">{t('faq.title_2')}</span>
             </h1>
           </motion.div>
         </div>

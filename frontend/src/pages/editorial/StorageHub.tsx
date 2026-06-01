@@ -6,15 +6,17 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { BriefingCTA } from "@/components/BriefingCTA";
+import { useTranslation } from "react-i18next";
 
 export const EditorialStorageHub = () => {
+  const { t } = useTranslation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   usePageMeta({
     title: "StorageHub",
-    description: "Semplificare la complessità dello storage aziendale. Un'applicazione web intelligente progettata per ottimizzare la gestione dell'inventario enterprise.",
+    description: t('storagehub.meta_desc'),
   });
 
   const { scrollY } = useScroll();
@@ -43,7 +45,7 @@ export const EditorialStorageHub = () => {
               className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a]/60 hover:text-primary transition-colors font-semibold"
             >
               <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
-              Archivio progetti
+              {t('project_detail.back_to_archive')}
             </Link>
           </motion.div>
         </div>
@@ -60,7 +62,7 @@ export const EditorialStorageHub = () => {
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium block"
                 >
-                  SOFTWARE ENGINEERING • UI/UX
+                  {t('storagehub.hero_label')}
                 </motion.span>
               </div>
 
@@ -85,10 +87,7 @@ export const EditorialStorageHub = () => {
                 className="mt-8 lg:mt-12 max-w-[34rem]"
               >
                 <p className="font-body text-sm md:text-base text-[#3d0f1a]/70 leading-relaxed border-l-2 border-primary/20 pl-6 lg:pl-8 py-2">
-                  Un Sistema Intelligente di Gestione Inventario e Magazzino.
-                  Un'applicazione web progettata per eliminare gli errori umani,
-                  automatizzare il tracciamento delle giacenze e integrare
-                  l'Intelligenza Artificiale nel supporto decisionale.
+                  {t('storagehub.hero_desc')}
                 </p>
               </motion.div>
             </motion.div>
@@ -145,7 +144,7 @@ export const EditorialStorageHub = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block lg:sticky lg:top-32">
-              01 — Il Contesto
+              {t('storagehub.ch1_label')}
             </span>
           </motion.div>
           <motion.div
@@ -156,15 +155,11 @@ export const EditorialStorageHub = () => {
             transition={{ delay: 0.2 }}
           >
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              Quando i fogli Excel non bastano più.
+              {t('storagehub.ch1_title1')}
             </h2>
             <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed max-w-2xl">
               <p>
-                La gestione dell'inventario tradizionale è frammentata e propensa all'errore umano.
-                Fogli di calcolo disallineati, rotture di stock improvvise e la mancanza di comunicazione
-                in tempo reale tra la direzione e i magazzinieri causano enormi perdite di tempo e denaro.
-                StorageHub nasce per risolvere questa esigenza cruciale: fornire una visibilità esatta e
-                istantanea delle giacenze per prendere decisioni rapide ed evitare sprechi.
+                {t('storagehub.ch1_p1')}
               </p>
             </div>
           </motion.div>
@@ -184,10 +179,10 @@ export const EditorialStorageHub = () => {
             transition={{ duration: 1 }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-12">
-              02 — L'Obiettivo
+              {t('storagehub.ch2_label')}
             </span>
             <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]">
-              "Un'unica fonte di verità: dall'operatività in magazzino al <span className="text-primary italic">controllo direzionale</span>, in tempo reale."
+              {t('storagehub.ch2_title1')}<span className="text-primary italic">{t('storagehub.ch2_title2')}</span>{t('storagehub.ch2_title3')}
             </h3>
           </motion.div>
         </div>
@@ -234,19 +229,14 @@ export const EditorialStorageHub = () => {
           >
             <div>
               <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-8">
-                03 — Il Processo
+                {t('storagehub.ch3_label')}
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter mb-8 text-[#3d0f1a]">
-                Ecosistemi su misura.
+                {t('storagehub.ch3_title')}
               </h2>
               <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed">
                 <p>
-                  Il sistema si basa su un'architettura Role-Based Access Control (RBAC).
-                  Ho progettato due interfacce distinte partendo da un singolo punto di accesso:
-                  un pannello strategico globale per l'Admin (finanze, fornitori, report AI) e una
-                  dashboard operativa priva di distrazioni per il Magazziniere. Ogni movimento registrato
-                  aggiorna istantaneamente il database centralizzato, attivando allarmi preventivi quando
-                  un prodotto scende sotto la soglia minima.
+                  {t('storagehub.ch3_p1')}
                 </p>
               </div>
             </div>
@@ -267,20 +257,14 @@ export const EditorialStorageHub = () => {
             viewport={{ once: true }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-2">
-              04 — Sviluppo
+              {t('storagehub.ch4_label')}
             </span>
             <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              Backend Django & Integrazione AI.
+              {t('storagehub.ch4_title')}
             </h2>
             <div className="font-body text-[#3d0f1a]/70 text-lg leading-relaxed space-y-6">
               <p>
-                StorageHub è costruito su un'architettura disaccoppiata e solida.
-                Il backend è sviluppato in Django (REST Framework), interfacciato con un
-                database relazionale PostgreSQL. Il frontend è una Single Page Application
-                in React 18, strutturata per essere fluida e responsiva. Il cuore innovativo
-                del sistema è l'integrazione multi-provider (OpenAI GPT-4 e Google Gemini),
-                capace di analizzare i log immutabili dell'inventario e generare report in linguaggio
-                naturale per supportare le decisioni di riordino.
+                {t('storagehub.ch4_p1')}
               </p>
             </div>
           </motion.div>
@@ -296,7 +280,7 @@ export const EditorialStorageHub = () => {
             <div className="bg-white border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] p-10 h-full flex flex-col justify-between">
               <div>
                 <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-8">
-                  Stack tecnologico
+                  {t('chario.tech_stack')}
                 </span>
                 <div className="flex flex-wrap gap-2.5 mb-10">
                   {techList.map(tech => (
@@ -312,11 +296,11 @@ export const EditorialStorageHub = () => {
 
               <div className="border-t border-[#3d0f1a]/10 pt-6 mt-12 space-y-4 text-[#3d0f1a]">
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">Ruolo</span>
-                  <span className="font-display text-md font-black italic">Full-Stack Lead Developer</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.role_label')}</span>
+                  <span className="font-display text-md font-black italic">{t('storagehub.role_val')}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">Lancio</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.launch_label')}</span>
                   <span className="font-display text-md font-black">2026</span>
                 </div>
               </div>
@@ -338,20 +322,17 @@ export const EditorialStorageHub = () => {
         >
           <div className="flex items-center gap-4 mb-16">
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
-              05 — Visual Showcase
+              {t('storagehub.ch5_label')}
             </span>
             <div className="flex-1 h-[1px] bg-primary/10" />
           </div>
 
           <div className="mb-12 max-w-2xl">
             <h2 className="font-display text-3xl md:text-5xl font-black tracking-tighter mb-6 text-[#3d0f1a]">
-              Logica e Controllo.
+              {t('storagehub.ch5_title')}
             </h2>
             <p className="font-body text-lg text-[#3d0f1a]/70">
-              Il risultato è un gestionale che non si limita a registrare dati, ma partecipa attivamente
-              alla vita aziendale. Sostituendo flussi di lavoro obsoleti con un'infrastruttura sicura,
-              veloce e assistita dall'intelligenza artificiale, StorageHub trasforma il magazzino da centro
-              di costo a motore di efficienza.
+              {t('storagehub.ch5_p1')}
             </p>
           </div>
         </motion.div>
@@ -406,7 +387,7 @@ export const EditorialStorageHub = () => {
             <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             <span className="relative z-10 flex items-center gap-4 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white transition-colors font-semibold">
               <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-500" />
-              Torna all'archivio
+              {t('project_detail.back_to_archive')}
             </span>
           </Link>
         </div>

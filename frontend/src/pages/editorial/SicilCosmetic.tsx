@@ -7,15 +7,17 @@ import { BriefingCTA } from "@/components/BriefingCTA";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useTranslation } from "react-i18next";
 
 export const EditorialSicilCosmetic = () => {
+  const { t } = useTranslation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   usePageMeta({
     title: "SicilCosmetic",
-    description: "Un e-commerce PrestaShop end-to-end per SicilCosmetic. Gestione catalogo, UI/UX design, copywriting e configurazione di vendita completa.",
+    description: t('sicilcosmetic.meta_desc'),
   });
 
   const { scrollY } = useScroll();
@@ -44,7 +46,7 @@ export const EditorialSicilCosmetic = () => {
               className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a]/60 hover:text-primary transition-colors font-semibold"
             >
               <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
-              Archivio progetti
+              {t('project_detail.back_to_archive')}
             </Link>
           </motion.div>
         </div>
@@ -61,7 +63,7 @@ export const EditorialSicilCosmetic = () => {
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium block whitespace-nowrap"
                 >
-                  E-COMMERCE • UI/UX • WEB DESIGN
+                  {t('sicilcosmetic.hero_label')}
                 </motion.span>
               </div>
 
@@ -86,7 +88,7 @@ export const EditorialSicilCosmetic = () => {
                 className="mt-8 lg:mt-12 max-w-[34rem]"
               >
                 <p className="font-body text-sm md:text-base text-[#3d0f1a]/70 leading-relaxed border-l-2 border-primary/20 pl-6 lg:pl-8 py-2">
-                  Un progetto e-commerce end-to-end realizzato su piattaforma PrestaShop per l'agenzia Carnova. Cura integrale dell'ecosistema digitale: dal design dell'interfaccia utente alla stesura dei contenuti, fino alla configurazione tecnica e gestione dell'intero catalogo.
+                  {t('sicilcosmetic.hero_desc')}
                 </p>
               </motion.div>
             </motion.div>
@@ -143,7 +145,7 @@ export const EditorialSicilCosmetic = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block lg:sticky lg:top-32">
-              01 — Il Contesto
+              {t('sicilcosmetic.ch1_label')}
             </span>
           </motion.div>
           <motion.div
@@ -153,12 +155,10 @@ export const EditorialSicilCosmetic = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ delay: 0.2 }}
           >
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              La cosmetica professionale <span className="italic text-primary">online.</span>
-            </h2>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]" dangerouslySetInnerHTML={{ __html: t('sicilcosmetic.ch1_title1') }} />
             <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed max-w-2xl">
               <p>
-                SicilCosmetic si rivolge sia ai professionisti del settore beauty (barbieri e parrucchieri) sia al mercato consumer, offrendo un vastissimo assortimento di prodotti e attrezzature tecniche. La sfida principale del progetto era gestire la mole e la frammentazione di questo inventario: serviva una piattaforma capace di categorizzare centinaia di referenze in modo logico, mantenendo un'estetica pulita e rassicurante, capace di ispirare fiducia al momento dell'acquisto.
+                {t('sicilcosmetic.ch1_p1')}
               </p>
             </div>
           </motion.div>
@@ -178,11 +178,9 @@ export const EditorialSicilCosmetic = () => {
             transition={{ duration: 1 }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-12">
-              02 — L'Obiettivo
+              {t('sicilcosmetic.ch2_label')}
             </span>
-            <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]">
-              "Organizzare la bellezza: trasformare un catalogo complesso in un'esperienza d'acquisto fluida, <span className="text-primary italic">intuitiva e orientata</span> alla conversione."
-            </h3>
+            <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]" dangerouslySetInnerHTML={{ __html: t('sicilcosmetic.ch2_title1') }} />
           </motion.div>
         </div>
       </section >
@@ -228,17 +226,17 @@ export const EditorialSicilCosmetic = () => {
           >
             <div>
               <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-8">
-                03 — Il Processo
+                {t('sicilcosmetic.ch3_label')}
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter mb-8 text-[#3d0f1a]">
-                UI/UX e Architettura del Catalogo.
+                {t('sicilcosmetic.ch3_title')}
               </h2>
               <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed">
                 <p>
-                  Ho curato interamente l'assetto grafico e l'architettura dell'informazione, progettando un sistema di navigazione diviso per macro-target (Uomo, Donna) e per esigenze specifiche (Styling, Cura del capello, Barba, Attrezzature). Il design è stato pensato per far risaltare i prodotti, utilizzando ampi spazi bianchi e una struttura a griglia rigorosa.
+                  {t('sicilcosmetic.ch3_p1')}
                 </p>
                 <p>
-                  A livello contenutistico, ho organizzato e impaginato le informazioni affinché rispondessero sia alle logiche di posizionamento SEO sia alla necessità di chiarezza dell'acquirente finale.
+                  {t('sicilcosmetic.ch3_p2')}
                 </p>
               </div>
             </div>
@@ -259,17 +257,17 @@ export const EditorialSicilCosmetic = () => {
             viewport={{ once: true }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-2">
-              04 — Sviluppo
+              {t('sicilcosmetic.ch4_label')}
             </span>
             <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              Configurazione Tecnica PrestaShop.
+              {t('sicilcosmetic.ch4_title')}
             </h2>
             <div className="font-body text-[#3d0f1a]/70 text-lg leading-relaxed space-y-6">
               <p>
-                L'infrastruttura di vendita poggia interamente su PrestaShop. Oltre all'aspetto visivo, mi sono occupata in prima persona di tutta la configurazione tecnica "sotto il cofano": dall'impostazione dei metodi di pagamento e delle regole di spedizione, fino all'ottimizzazione del processo di checkout.
+                {t('sicilcosmetic.ch4_p1')}
               </p>
               <p>
-                Ogni pagina è stata strutturata per garantire velocità di caricamento e perfetta responsività mobile, abbattendo gli ostacoli tecnologici tra l'utente e il carrello.
+                {t('sicilcosmetic.ch4_p2')}
               </p>
             </div>
           </motion.div>
@@ -285,7 +283,7 @@ export const EditorialSicilCosmetic = () => {
             <div className="bg-white border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] p-10 h-full flex flex-col justify-between">
               <div>
                 <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-8">
-                  Stack tecnologico
+                  {t('chario.tech_stack')}
                 </span>
                 <div className="flex flex-wrap gap-2.5 mb-10">
                   {techList.map(tech => (
@@ -301,11 +299,11 @@ export const EditorialSicilCosmetic = () => {
 
               <div className="border-t border-[#3d0f1a]/10 pt-6 mt-12 space-y-4 text-[#3d0f1a]">
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">Ruolo</span>
-                  <span className="font-display text-md font-black italic">PrestaShop & UI/UX Developer</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.role_label')}</span>
+                  <span className="font-display text-md font-black italic">{t('sicilcosmetic.role_val')}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">Lancio</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.launch_label')}</span>
                   <span className="font-display text-md font-black">2025</span>
                 </div>
               </div>
@@ -327,17 +325,17 @@ export const EditorialSicilCosmetic = () => {
         >
           <div className="flex items-center gap-4 mb-16">
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
-              05 — Visual Showcase
+              {t('sicilcosmetic.ch5_label')}
             </span>
             <div className="flex-1 h-[1px] bg-primary/10" />
           </div>
 
           <div className="mb-12 max-w-2xl">
             <h2 className="font-display text-3xl md:text-5xl font-black tracking-tighter mb-6 text-[#3d0f1a]">
-              Estetica e Conversione.
+              {t('sicilcosmetic.ch5_title')}
             </h2>
             <p className="font-body text-lg text-[#3d0f1a]/70">
-              Il risultato è un negozio online che unisce l'eleganza del mondo beauty all'efficienza di una vera macchina di vendita. Un progetto che dimostra la capacità di orchestrare in totale autonomia la creazione di un e-commerce complesso, curando con la stessa precisione metodica sia l'estetica del front-end visivo, sia il motore tecnico necessario a generare fatturato.
+              {t('sicilcosmetic.ch5_p1')}
             </p>
           </div>
         </motion.div>
@@ -393,7 +391,7 @@ export const EditorialSicilCosmetic = () => {
             <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             <span className="relative z-10 flex items-center gap-4 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white transition-colors font-semibold">
               <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-500" />
-              Torna all'archivio
+              {t('project_detail.back_to_archive')}
             </span>
           </Link>
         </div>

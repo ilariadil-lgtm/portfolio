@@ -8,6 +8,7 @@ import { RevealText } from "@/components/RevealText";
 import { Link } from "react-router-dom";
 import { BriefingCTA } from "@/components/BriefingCTA";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useTranslation } from "react-i18next";
 
 const wordVariants: Variants = {
   hidden: { opacity: 0, y: 16 },
@@ -22,6 +23,7 @@ const wordVariants: Variants = {
 };
 
 const Chisono = () => {
+  const { t } = useTranslation();
   usePageMeta({
     title: "Chi Sono",
     description: "Ilaria Diliberto — Designer e sviluppatrice full-stack. Dalla Accademia di Belle Arti al prodotto digitale: il percorso che unisce estetica, codice e strategia.",
@@ -49,28 +51,28 @@ const Chisono = () => {
     {
       num: "01",
       period: "2013 — 2020",
-      title: "Accademia di Belle Arti",
-      subtitle: "Estetica e fondamenti",
-      description: "Formazione classica in Graphic Design e Comunicazione visiva. L'occhio estetico che ancora oggi guida ogni decisione progettuale. Sette anni tra percezione visiva, branding avanzato e visual storytelling.",
-      tech: ["Composizione visiva", "Typography & Branding", "Teoria Colore"],
+      title: t('about.evo1_title'),
+      subtitle: t('about.evo1_sub'),
+      description: t('about.evo1_desc'),
+      tech: [t('about.evo1_tech1'), t('about.evo1_tech2'), t('about.evo1_tech3')],
       icon: <Layers size={22} />
     },
     {
       num: "02",
       period: "2021 — 2025",
-      title: "Web & UI Development",
-      subtitle: "Dalla grafica al codice",
-      description: "Il passaggio dalla superficie all'architettura: React, design systems, accessibilità. Interfacce che funzionano, non solo belle. Il codice diventa materiale creativo.",
-      tech: ["UI/UX DESIGN", "Sviluppo Front-end", "CMS WORDPRESS & prestashop"],
+      title: t('about.evo2_title'),
+      subtitle: t('about.evo2_sub'),
+      description: t('about.evo2_desc'),
+      tech: [t('about.evo2_tech1'), t('about.evo2_tech2'), t('about.evo2_tech3')],
       icon: <Cpu size={22} />
     },
     {
       num: "03",
       period: "2025 — oggi",
-      title: "Strategia & Prodotto Digitale",
-      subtitle: "Dall'idea al rilascio",
-      description: "L'evoluzione verso un profilo ibrido che fonde design, codice e visione d'insieme. Coordino l'intero ciclo di vita del progetto, trasformando le tue necessità aziendali in ecosistemi web completi, fluidi e pronti per il mercato.",
-      tech: ["PRODUCT MANAGEMEN", "SVILUPPO FULL-STACK", "AI WORKFLOWS"],
+      title: t('about.evo3_title'),
+      subtitle: t('about.evo3_sub'),
+      description: t('about.evo3_desc'),
+      tech: [t('about.evo3_tech1'), t('about.evo3_tech2'), t('about.evo3_tech3')],
       icon: <Globe size={22} />
     }
   ];
@@ -101,7 +103,7 @@ const Chisono = () => {
               >
                 <div className="flex items-center gap-4 mb-2">
                   <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium block">
-                    BIOGRAFIA E PROFILO
+                    {t('about.bio_profile')}
                   </span>
                   <div className="w-12 h-[1px] bg-primary/20" />
                 </div>
@@ -115,12 +117,12 @@ const Chisono = () => {
                 >
                   <span className="overflow-hidden inline-block py-3 -my-3">
                     <motion.span variants={wordVariants} className="inline-block origin-bottom-left">
-                      Chi
+                      {t('about.title_1')}
                     </motion.span>
                   </span>
                   <span className="overflow-hidden inline-block py-3 -my-3">
                     <motion.span variants={wordVariants} transition={{ delay: 0.15 }} className="inline-block origin-bottom-left text-primary italic">
-                      &nbsp;Sono.
+                      &nbsp;{t('about.title_2')}
                     </motion.span>
                   </span>
                 </motion.h1>
@@ -131,7 +133,7 @@ const Chisono = () => {
                   transition={{ delay: 0.6 }}
                   className="font-body text-l text-[#3d0f1a]/80 leading-relaxed pl-8 border-l border-primary/25 max-w-xl"
                 >
-                  {about?.bio || "Un viaggio che inizia tra i corridoi dell'Accademia di Belle Arti e arriva alla gestione tecnica di prodotti digitali. La stessa ossessione per i dettagli, applicata a scale sempre più ampie."}
+                  {about?.bio || t('about.bio_default')}
                 </motion.p>
               </motion.div>
 
@@ -143,7 +145,7 @@ const Chisono = () => {
                 className="bg-white border border-[#3d0f1a] shadow-[10px_10px_0px_#c0392b] max-w-xl"
               >
                 <div className="px-6 py-4 border-b border-[#3d0f1a]/10 flex items-center justify-between">
-                  <span className="font-typewriter text-[10px] uppercase tracking-[0.2em] text-[#3d0f1a]/60 font-medium">Profilo Professionale</span>
+                  <span className="font-typewriter text-[10px] uppercase tracking-[0.2em] text-[#3d0f1a]/60 font-medium">{t('about.professional_profile')}</span>
                   <div className="flex gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-[#3d0f1a]/10" />
                     <span className="w-2 h-2 rounded-full bg-[#3d0f1a]/10" />
@@ -151,10 +153,10 @@ const Chisono = () => {
                 </div>
                 <div className="divide-y divide-[#3d0f1a]/5">
                   {[
-                    { label: "Ruolo", val: "Tech Product Manager & Full-stack Developer" },
-                    { label: "Specializzazione", val: "Sviluppo Web, E-commerce, UI/UX" },
-                    { label: "Sede", val: "Italia // Remote" },
-                    { label: "Esperienza", val: " +6 Anni nel settore digitale", highlight: true }
+                    { label: t('about.role_label'), val: t('about.role_val') },
+                    { label: t('about.spec_label'), val: t('about.spec_val') },
+                    { label: t('about.loc_label'), val: t('about.loc_val') },
+                    { label: t('about.exp_label'), val: t('about.exp_val'), highlight: true }
                   ].map((item, idx) => (
                     <div key={idx} className="flex justify-between items-center px-6 py-4">
                       <span className="font-typewriter text-[11px] uppercase tracking-widest text-[#3d0f1a]/60 font-medium">{item.label}</span>
@@ -186,21 +188,21 @@ const Chisono = () => {
                   {/* Top Ledger Telemetry */}
                   <div className="flex justify-between items-start border-b border-[#3d0f1a]/10 pb-4 relative z-10">
                     <div className="flex flex-col">
-                      <span className="font-typewriter text-[9px] uppercase tracking-[0.25em] text-[#3d0f1a] font-bold">Il mio metodo</span>
-                      <span className="font-typewriter text-[7px] uppercase tracking-[0.2em] text-[#3d0f1a]/50 font-medium mt-1">Visione operativa </span>
+                      <span className="font-typewriter text-[9px] uppercase tracking-[0.25em] text-[#3d0f1a] font-bold">{t('about.method_label')}</span>
+                      <span className="font-typewriter text-[7px] uppercase tracking-[0.2em] text-[#3d0f1a]/50 font-medium mt-1">{t('about.vision_label')}</span>
                     </div>
                     <div className="flex gap-1.5 items-center">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#c0392b] animate-pulse" />
-                      <span className="font-mono text-[8px] text-[#c0392b]">ILARIA D.</span>
+                      <span className="font-mono text-[8px] text-[#c0392b]">{t('about.name_label')}</span>
                     </div>
                   </div>
 
                   {/* Main Rules Text Block */}
                   <div className="space-y-6 my-auto pt-4 relative z-10">
                     {[
-                      { num: "I.", label: "ESTETICA", desc: "L'armonia visiva non è opzionale, è la porta d'ingresso per la fiducia." },
-                      { num: "II.", label: "LOGICA", desc: "La bellezza senza funzionalità è un'occasione sprecata. Il codice rispecchia il design." },
-                      { num: "III.", label: "FLUIDITÀ", desc: "L'esperienza utente deve fluire senza attrito o complessità tecniche." }
+                      { num: "I.", label: t('about.rule1_label'), desc: t('about.rule1_desc') },
+                      { num: "II.", label: t('about.rule2_label'), desc: t('about.rule2_desc') },
+                      { num: "III.", label: t('about.rule3_label'), desc: t('about.rule3_desc') }
                     ].map((rule, idx) => (
                       <div key={idx} className="space-y-1">
                         <div className="flex items-center gap-2">
@@ -227,7 +229,7 @@ const Chisono = () => {
       <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-24 bg-white border-y border-[#3d0f1a]/5">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
-            <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">EVOLUZIONE PROFESSIONALE</span>
+            <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">{t('about.evo_label')}</span>
             <motion.h2 
               initial="hidden"
               whileInView="visible"
@@ -236,12 +238,12 @@ const Chisono = () => {
             >
               <span className="overflow-hidden inline-block py-3 -my-3">
                 <motion.span variants={wordVariants} className="inline-block origin-bottom-left">
-                  Il mio percorso
+                  {t('about.evo_title_1')}
                 </motion.span>
               </span>
               <span className="overflow-hidden inline-block py-3 -my-3">
                 <motion.span variants={wordVariants} transition={{ delay: 0.15 }} className="inline-block origin-bottom-left text-primary italic">
-                  &nbsp;evolutivo.
+                  &nbsp;{t('about.evo_title_2')}
                 </motion.span>
               </span>
             </motion.h2>
@@ -285,7 +287,7 @@ const Chisono = () => {
                   <div className="absolute top-6 right-6 text-[#3d0f1a]/20 group-hover:text-primary transition-all duration-300">
                     {step.icon}
                   </div>
-                  <span className="font-typewriter text-[8px] uppercase tracking-[0.3em] text-[#3d0f1a]/40 mb-6 block font-medium">Phase_Inventory</span>
+                  <span className="font-typewriter text-[8px] uppercase tracking-[0.3em] text-[#3d0f1a]/40 mb-6 block font-medium">{t('about.phase_inventory')}</span>
                   <ul className="space-y-3.5">
                     {step.tech.map((t, idx) => (
                       <li key={idx} className="flex items-center gap-3">
@@ -307,7 +309,7 @@ const Chisono = () => {
       <section className="py-24 md:py-36 px-6 md:px-12 lg:px-24 bg-[#f5f2ed] text-[#3d0f1a] relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
-            <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">LE MIE COMPETENZE</span>
+            <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">{t('about.skills_label')}</span>
             <motion.h2 
               initial="hidden"
               whileInView="visible"
@@ -316,12 +318,12 @@ const Chisono = () => {
             >
               <span className="overflow-hidden inline-block py-3 -my-3">
                 <motion.span variants={wordVariants} className="inline-block origin-bottom-left">
-                  Aree
+                  {t('about.skills_title_1')}
                 </motion.span>
               </span>
               <span className="overflow-hidden inline-block py-3 -my-3">
                 <motion.span variants={wordVariants} transition={{ delay: 0.15 }} className="inline-block origin-bottom-left text-primary italic">
-                  &nbsp;di sviluppo.
+                  &nbsp;{t('about.skills_title_2')}
                 </motion.span>
               </span>
             </motion.h2>
@@ -345,15 +347,15 @@ const Chisono = () => {
                 </div>
                 <h3 className="font-display text-3xl font-bold mb-4">{tech.title}</h3>
                 <p className="font-body text-[14px] text-[#3d0f1a]/70 leading-relaxed">
-                  {tech.description || "Integrazione ad alta performance di soluzioni digitali scalabili e ottimizzate."}
+                  {tech.description || t('about.tech_default')}
                 </p>
               </motion.div>
             )) : (
               // Fallback cards
               [
-                { title: "UI & UX Design", desc: "Creazione di interfacce web e mobile memorabili, focalizzate sull'esperienza utente e sulla coerenza visiva del brand." },
-                { title: "Sviluppo Front-end", desc: "Codice pulito, accessibile e ad alte prestazioni utilizzando React, Next.js, TailwindCSS e le tecnologie web più moderne." },
-                { title: "Sviluppo Full-Stack", desc: "Sviluppo interfacce dinamiche e sistemi back-end su misura creando ecosistemi web completi e performanti." }
+                { title: t('about.fallback1_title'), desc: t('about.fallback1_desc') },
+                { title: t('about.fallback2_title'), desc: t('about.fallback2_desc') },
+                { title: t('about.fallback3_title'), desc: t('about.fallback3_desc') }
               ].map((tech, i) => (
                 <motion.div
                   key={i}

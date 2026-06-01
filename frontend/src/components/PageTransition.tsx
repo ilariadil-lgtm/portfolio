@@ -1,20 +1,25 @@
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
+import { useDesign } from "../context/DesignContext";
 
 interface PageTransitionProps {
   children: ReactNode;
 }
 
 export const PageTransition = ({ children }: PageTransitionProps) => {
+  const { design } = useDesign();
+  const isEditorial = design === "editorial";
+  const transitionColor = isEditorial ? "#3d0f1a" : "#050505"; // Bordeaux per Editorial, Deep Black per Nebula
+
   return (
     <>
       {/*
-        Sipario di Entrata — blocco bordeaux che copre lo schermo e poi
-        si ritrae (scaleY 1→0 da bottom). Si vede solo all'entrata.
+        Sipario di Entrata
       */}
       <motion.div
         aria-hidden="true"
-        className="fixed inset-0 z-[100] bg-[#3d0f1a] transform-gpu pointer-events-none origin-bottom"
+        className="fixed inset-0 z-[100] transform-gpu pointer-events-none origin-bottom"
+        style={{ backgroundColor: transitionColor }}
         initial={{ scaleY: 1 }}
         animate={{ scaleY: 0 }}
         exit={{ scaleY: 0 }}
@@ -22,12 +27,12 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
       />
 
       {/*
-        Sipario di Uscita — blocco che sale dal basso quando si cambia
-        pagina (exit di AnimatePresence, scaleY 0→1 da top).
+        Sipario di Uscita
       */}
       <motion.div
         aria-hidden="true"
-        className="fixed inset-0 z-[100] bg-[#3d0f1a] transform-gpu pointer-events-none origin-top"
+        className="fixed inset-0 z-[100] transform-gpu pointer-events-none origin-top"
+        style={{ backgroundColor: transitionColor }}
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 0 }}
         exit={{ scaleY: 1 }}

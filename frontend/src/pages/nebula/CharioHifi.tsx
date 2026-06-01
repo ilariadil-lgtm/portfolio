@@ -22,7 +22,7 @@ export const NebulaCharioHifi = () => {
           </p>
 
           <h3>02 — L'Obiettivo</h3>
-          <p className="border-l-2 border-cyan-500/50 pl-4 py-2 italic text-cyan-100">
+          <p className="border-l-2 border-[#d4af37]/30 pl-4 py-2 italic text-white/80">
             "Tradurre la purezza del suono analogico e l'eccellenza materica in un'esperienza digitale senza compromessi."
           </p>
 
@@ -51,14 +51,12 @@ export const NebulaCharioHifi = () => {
     >
       
       {/* Immagine Principale */}
-      <div className="w-full rounded-[2rem] overflow-hidden border border-white/10 bg-[#030712] relative group mb-12">
-        <div className="absolute top-4 left-4 z-10 px-3 py-1 rounded bg-[#030712]/80 backdrop-blur-md border border-white/10 font-mono text-[8px] uppercase tracking-widest text-cyan-400">
-          MAIN_VIEW.DAT
-        </div>
+      <div className="w-full rounded-none overflow-hidden  bg-[#050505] relative group mb-12">
+        
         <img 
           src="/assets/projects/chario-hifi/homepage.webp" 
           alt="Chario Hifi View"
-          className="w-full h-auto opacity-70 group-hover:opacity-100 transition-opacity duration-700"
+          className="w-full h-auto transition-transform duration-700 hover:scale-[1.02]"
         />
       </div>
 
@@ -70,14 +68,12 @@ export const NebulaCharioHifi = () => {
           "rivenditori.webp",
           "su-misura.webp"
         ].map((img, i) => (
-          <div key={i} className="w-full rounded-3xl overflow-hidden border border-white/10 bg-[#030712] relative group">
-            <div className="absolute top-4 left-4 z-10 px-3 py-1 rounded bg-[#030712]/80 backdrop-blur-md border border-white/10 font-mono text-[8px] uppercase tracking-widest text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">
-              MODULE_{i}.SYS
-            </div>
+          <div key={i} className="w-full rounded-none overflow-hidden  bg-[#050505] relative group">
+            
             <img 
               src={`/assets/projects/chario-hifi/${img}`} 
               alt={`Chario Hifi UI ${i}`}
-              className="w-full h-auto opacity-50 group-hover:opacity-100 transition-opacity duration-700"
+              className="w-full h-auto transition-transform duration-700 hover:scale-[1.02]"
             />
           </div>
         ))}
