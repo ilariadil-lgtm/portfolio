@@ -12,8 +12,9 @@ const DesignContext = createContext<DesignContextType | undefined>(undefined);
 
 export const DesignProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [design, setDesignInternal] = useState<DesignType>(() => {
+    // Forziamo 'nebula' di default per farti vedere subito il lavoro SOTD!
     const saved = localStorage.getItem("portfolio-design");
-    return (saved as DesignType) || "editorial";
+    return "nebula"; 
   });
 
   const setDesign = (newDesign: DesignType) => {

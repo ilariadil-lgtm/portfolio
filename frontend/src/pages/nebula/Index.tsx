@@ -1,243 +1,392 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { api } from "@/lib/api";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { NebulaNav } from "./components/NebulaNav";
 import { NebulaFooter } from "./components/NebulaFooter";
 import { NebulaBriefingCTA } from "./components/NebulaBriefingCTA";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
+import { RevealText } from "@/components/RevealText";
 import { HeroCanvas } from "./components/HeroCanvas";
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
-const skills = [
-  "React & Next.js", "WebGL & Three.js", "Framer Motion", "Tailwind CSS",
-  "UI/UX Design", "Typography", "Art Direction", "Interaction Design",
-  "Django REST", "PostgreSQL", "System Architecture", "Performance Optimization"
-];
-
 const NebulaIndex = () => {
-  const [featuredProjects, setFeaturedProjects] = useState<any[]>([]);
+  const [projects, setProjects] = useState<any[]>([]);
+  const [services, setServices] = useState<any[]>([]);
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+
   const { scrollY } = useScroll();
-  const yParallax = useTransform(scrollY, [0, 1000], [0, 200]);
+  const yParallax = useTransform(scrollY, [0, 1000], [0, 300]);
+  const opacityParallax = useTransform(scrollY, [0, 500], [1, 0]);
+  
+  // Parallax Values per Awwwards Scroll
+  const parallaxSlow = useTransform(scrollY, [0, 3000], [0, -100]);
+  const parallaxFast = useTransform(scrollY, [0, 3000], [0, -250]);
 
-  // Mouse Trail Logic for Projects
-  const [hoveredProject, setHoveredProject] = useState<any | null>(null);
+  // Interactive Glow
+  const [mousePosGlow, setMousePosGlow] = useState({ x: 0, y: 0 });
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const springX = useSpring(0, { stiffness: 100, damping: 20 });
-  const springY = useSpring(0, { stiffness: 100, damping: 20 });
 
   useEffect(() => {
-    springX.set(mousePos.x);
-    springY.set(mousePos.y);
-  }, [mousePos, springX, springY]);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
+    window.scrollTo(0, 0);
+    const fetchData = async () => {
+      try {
+        const [projData, servData] = await Promise.all([
+          api.getProjects(),
+          api.getServices()
+        ]);
+        setProjects(projData.results || projData);
+        setServices(servData.results || servData);
+      } catch (error) {
+        console.error("Errore nel caricamento dei dati:", error);
+      }
     };
+    fetchData();
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const x = (clientX / window.innerWidth - 0.5) * 100;
+      const y = (clientY / window.innerHeight - 0.5) * 100;
+      setMousePosGlow({ x, y });
+      setMousePos({ x: clientX, y: clientY });
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const data = await api.getProjects();
-        setFeaturedProjects((data.results || data).slice(0, 4));
-      } catch (error) {
-        console.error("Errore:", error);
-      }
-    };
-    fetchProjects();
-  }, []);
+  const displayProjects = projects.slice(0, 4);
 
   return (
     <div className="min-h-screen w-full bg-[#050505] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative">
       <NebulaNav />
 
-      {/* AMBIENT EFFECTS & WEBGL BACKGROUND */}
-      <HeroCanvas />
-
-      <main className="relative z-10 w-full min-h-screen flex flex-col pointer-events-none">
-        
+      <main className="relative z-10 w-full min-h-screen flex flex-col">
         {/* HERO SECTION */}
-        <section className="pt-40 pb-20 md:pt-52 md:pb-32 px-6 md:px-12 lg:px-24 pointer-events-auto">
-          <motion.div style={{ y: yParallax }} className="max-w-7xl mx-auto flex flex-col items-center text-center">
-            <motion.span 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="font-mono text-xs md:text-sm uppercase tracking-[0.3em] text-[#d4af37] mb-8"
+        <motion.section 
+          style={{ y: yParallax, opacity: opacityParallax }}
+          className="relative min-h-[90vh] flex items-center pt-32 pb-20 overflow-hidden"
+        >
+          <div className="w-full px-6 md:px-12 lg:px-24 flex flex-col lg:flex-row relative z-20">
+            {/* Left Content Column */}
+            <div className="flex-1 flex flex-col justify-center max-w-4xl pt-10 md:pt-0">
+              <div className="flex flex-col relative z-20">
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.3em] text-[#d4af37] flex items-center gap-2">
+                    <span className="text-[10px]">✦</span> CREATIVE TECH PARTNER
+                  </span>
+                </div>
+                
+                <div className="flex flex-col pb-4">
+                  <RevealText 
+                    text="DESIGNING" 
+                    delay={0.1} 
+                    className="font-bricolage font-extrabold uppercase tracking-tighter text-6xl md:text-8xl lg:text-[8vw] leading-[0.9] text-white whitespace-nowrap" 
+                  />
+                  <div className="flex items-center gap-3">
+                    <RevealText 
+                      text="DIGITAL" 
+                      delay={0.2} 
+                      className="font-bricolage font-extrabold uppercase tracking-tighter text-6xl md:text-8xl lg:text-[8vw] leading-[0.9] text-[#d4af37] whitespace-nowrap" 
+                    />
+                    <RevealText 
+                      text="FUTURES." 
+                      delay={0.3} 
+                      className="font-bricolage font-extrabold uppercase tracking-tighter text-6xl md:text-8xl lg:text-[8vw] leading-[0.9] text-white/40 whitespace-nowrap" 
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <motion.p 
+                className="text-neutral-400 font-inter font-light text-base md:text-lg max-w-md leading-relaxed mt-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.6 }}
+              >
+                Costruiamo interfacce audaci e infrastrutture solide per farti scalare senza limiti. Dalla brand identity allo sviluppo web avanzato.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.8 }}
+                className="mt-12"
+              >
+                <MagneticWrapper>
+                  <Link to="/contatti" className="group relative inline-flex items-center gap-4 px-8 py-4 rounded-full border border-white/20 hover:border-white/50 bg-transparent text-white font-inter text-sm tracking-widest uppercase transition-all duration-500 overflow-hidden">
+                    <span className="relative z-10">Inizia un progetto</span>
+                    <ArrowUpRight size={16} className="relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </Link>
+                </MagneticWrapper>
+              </motion.div>
+            </div>
+
+            {/* Right Content Column (WebGL Fluid Sphere) */}
+            <motion.div 
+              className="absolute right-[-10%] lg:right-[-5vw] top-[20%] lg:top-[15%] h-[60vh] w-[90vw] lg:w-[45vw] flex items-center justify-center pointer-events-auto z-10"
+              animate={{ x: mousePosGlow.x * -0.5, y: mousePosGlow.y * -0.5 }}
+              transition={{ type: "spring", bounce: 0, duration: 2 }}
             >
-              Creative Developer & Product Designer
-            </motion.span>
+              <Suspense fallback={
+                <div className="w-[80%] aspect-square rounded-full border-[1px] border-[#d4af37]/20 bg-black/40 flex items-center justify-center backdrop-blur-3xl animate-pulse">
+                  <div className="font-mono text-xs text-[#d4af37] tracking-[0.3em] uppercase">Loading WebGL...</div>
+                </div>
+              }>
+                <HeroCanvas />
+              </Suspense>
+            </motion.div>
             
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="font-bricolage font-bold text-6xl md:text-8xl lg:text-[11vw] leading-[0.85] tracking-tight uppercase max-w-5xl mx-auto"
-            >
-              DIGITAL <br/><span className="font-fraunces italic text-[#d4af37] font-light">ARTISAN</span>
-            </motion.h1>
+          </div>
+        </motion.section>
 
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-              className="mt-12 md:mt-16 text-lg md:text-2xl font-light text-white/60 max-w-3xl font-inter leading-[1.6]"
+        {/* ───────────────────────────────────────────────────────────────────
+             ABOUT — DRAMATIC QUOTE
+             ─────────────────────────────────────────────────────────────────── */}
+        <motion.section 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="relative z-20 py-32 md:py-48 overflow-hidden"
+        >
+          {/* Decorative huge number */}
+          <motion.span 
+            style={{ y: parallaxFast }}
+            className="absolute right-0 top-0 font-bricolage font-black text-[30vw] leading-none text-white/[0.03] select-none pointer-events-none pr-8"
+          >
+            02
+          </motion.span>
+
+          <div className="px-6 md:px-12 lg:px-24 relative z-10">
+            <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#d4af37] mb-12 block">02 — L'Approccio</span>
+
+            {/* Massive editorial quote */}
+            <motion.h2
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="font-bricolage font-bold text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white max-w-5xl mb-16"
             >
-              Fondo logica architetturale ed estetica editoriale per creare ecosistemi digitali che si distinguono. Niente compromessi, solo eccellenza visiva e codice solido.
-            </motion.p>
+              Costruisco identità visive e prodotti{" "}
+              <span className="font-fraunces italic font-light text-[#d4af37]">digitali completi.</span>
+              {" "}Dalla visione creativa allo{" "}
+              <span className="font-fraunces italic font-light text-white/70">sviluppo tecnico.</span>
+            </motion.h2>
+
+            <div className="flex flex-col md:flex-row md:items-start gap-12 max-w-5xl">
+              <div className="md:w-1/2 h-[1px] bg-white/10 mt-4 hidden md:block" />
+              <div className="md:w-1/2">
+                <p className="font-inter text-base text-white/60 leading-[1.9] font-light mb-8">
+                  Non credo nei confini rigidi tra chi disegna e chi programma. Il mio background nel graphic design mi garantisce la cura per il dettaglio estetico, mentre la competenza tecnica mi permette di trasformare l'estetica in interfacce web, e-commerce e app perfettamente funzionanti.
+                </p>
+                <MagneticWrapper>
+                  <Link to="/chisono" className="group inline-flex items-center gap-4 font-mono text-[10px] uppercase tracking-[0.3em] text-white hover:text-[#d4af37] transition-colors duration-300">
+                    <span className="relative">
+                      Esplora il profilo
+                      <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-[#d4af37] group-hover:w-full transition-all duration-700 ease-out" />
+                    </span>
+                    <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform duration-500" />
+                  </Link>
+                </MagneticWrapper>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* ───────────────────────────────────────────────────────────────────
+             TECHNICAL SKILLS (AWWWARDS MINIMAL) 
+             ─────────────────────────────────────────────────────────────────── */}
+        <motion.section 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="px-6 md:px-12 lg:px-24 py-32 relative z-20"
+        >
+          <div className="max-w-7xl mx-auto">
+            
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8 border-b border-white/10 pb-10">
+              <div>
+                <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#d4af37] mb-6 block">03 — Le Competenze</span>
+                <RevealText text="Design. Code. Product." className="font-bricolage text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white" />
+              </div>
+              <p className="font-inter text-sm text-white/60 max-w-xs font-light leading-relaxed">
+                Un approccio ibrido che unisce sensibilità estetica e rigore tecnico.
+              </p>
+            </div>
+
+            {/* PILL / TAG GRID */}
+            <div className="space-y-12">
+
+              {/* Cluster 1: Design */}
+              <div className="flex flex-col gap-4">
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/20">— Design</span>
+                <div className="flex flex-wrap gap-3">
+                  {["UI Design", "UX Research", "Design Systems", "Wireframing", "Prototipazione", "Brand Identity", "Typography"].map((tag) => (
+                    <span key={tag} className="group px-5 py-3 border border-white/10 text-white/50 font-inter text-sm font-medium tracking-wide rounded-none hover:border-[#d4af37]/60 hover:text-[#d4af37] hover:bg-[#d4af37]/5 transition-all duration-300 cursor-default">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Cluster 2: Dev */}
+              <div className="flex flex-col gap-4">
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/20">— Sviluppo</span>
+                <div className="flex flex-wrap gap-3">
+                  {["React", "Next.js", "TypeScript", "TailwindCSS", "Framer Motion", "WebGL / Three.js", "Django REST", "WordPress", "WooCommerce"].map((tag) => (
+                    <span key={tag} className="group px-5 py-3 border border-white/10 text-white/50 font-inter text-sm font-medium tracking-wide rounded-none hover:border-[#d4af37]/60 hover:text-[#d4af37] hover:bg-[#d4af37]/5 transition-all duration-300 cursor-default">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Cluster 3: Strategy */}
+              <div className="flex flex-col gap-4">
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/20">— Strategia & Prodotto</span>
+                <div className="flex flex-wrap gap-3">
+                  {["Product Management", "Sprint Planning", "E-commerce Strategy", "SEO Tecnico", "Analytics", "CRO"].map((tag) => (
+                    <span key={tag} className="group px-5 py-3 border border-white/10 text-white/50 font-inter text-sm font-medium tracking-wide rounded-none hover:border-[#d4af37]/60 hover:text-[#d4af37] hover:bg-[#d4af37]/5 transition-all duration-300 cursor-default">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </motion.section>
+
+        {/* MARQUEE STRIP — tra Skills e Progetti */}
+        <div className="w-full overflow-hidden border-y border-white/5 py-5 relative z-20">
+          <motion.div
+            className="flex gap-12 whitespace-nowrap"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 28, ease: "linear", repeat: Infinity }}
+          >
+            {[...Array(4)].map((_, i) => (
+              <span key={i} className="inline-flex items-center gap-12 flex-shrink-0">
+                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/20">UI Design</span>
+                <span className="text-[#d4af37]/40 text-xs">✦</span>
+                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/20">Web Development</span>
+                <span className="text-[#d4af37]/40 text-xs">✦</span>
+                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/20">Brand Identity</span>
+                <span className="text-[#d4af37]/40 text-xs">✦</span>
+                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/20">Product Strategy</span>
+                <span className="text-[#d4af37]/40 text-xs">✦</span>
+                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/20">Framer Motion</span>
+                <span className="text-[#d4af37]/40 text-xs">✦</span>
+                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/20">WebGL</span>
+                <span className="text-[#d4af37]/40 text-xs">✦</span>
+                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/20">E-commerce</span>
+                <span className="text-[#d4af37]/40 text-xs">✦</span>
+              </span>
+            ))}
           </motion.div>
-        </section>
-
-        {/* MARQUEE */}
-        <div className="py-16 md:py-24 border-y border-white/5 bg-[#050505]/30 backdrop-blur-md overflow-hidden flex whitespace-nowrap pointer-events-auto">
-           <motion.div 
-             animate={{ x: ["0%", "-50%"] }} 
-             transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
-             className="flex gap-16 items-center"
-           >
-             {[...Array(6)].map((_, i) => (
-                <h2 key={i} className="text-5xl md:text-8xl font-bricolage font-black uppercase tracking-tighter text-transparent" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.1)" }}>
-                   ARCHITETTURA DELL'INFORMAZIONE <span className="text-[#d4af37] px-8">✦</span>
-                </h2>
-             ))}
-           </motion.div>
         </div>
 
-        {/* ABOUT & SKILLS A PILL */}
-        <section className="py-32 px-6 md:px-12 lg:px-24 bg-[#050505] pointer-events-auto">
-           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-              <div className="lg:col-span-5 relative">
-                 <div className="aspect-[3/4] overflow-hidden bg-[#0a0a0a]">
-                    <img src="/assets/profile/portrait.webp" alt="Ilaria Diliberto" className="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700" />
-                 </div>
-              </div>
-              <div className="lg:col-span-7 flex flex-col items-start gap-12">
-                 <div className="flex flex-col gap-6">
-                   <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#d4af37]">01. L'Approccio</span>
-                   <h2 className="font-bricolage text-4xl md:text-5xl font-bold leading-tight">L'ESTETICA INCONTRA LA LOGICA STRUTTURALE.</h2>
-                   <p className="font-inter text-lg text-white/60 leading-[1.8] max-w-2xl">
-                      Ogni pixel, ogni transizione e ogni riga di codice è pensata per creare un'esperienza immersiva. Costruisco ecosistemi digitali che combinano le più moderne tecnologie frontend con una direzione artistica di stampo editoriale.
-                   </p>
-                 </div>
-                 
-                 <div className="w-full">
-                    <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#d4af37] mb-6 block">02. Stack & Skills</span>
-                    <div className="flex flex-wrap gap-3">
-                       {skills.map((skill, idx) => (
-                          <div key={idx} className="px-5 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-[#d4af37]/20 hover:border-[#d4af37]/50 hover:text-[#d4af37] transition-all cursor-default font-inter text-sm">
-                             {skill}
-                          </div>
-                       ))}
-                    </div>
-                 </div>
-
-                 <MagneticWrapper>
-                   <Link to="/chisono" className="mt-4 px-8 py-4 border border-white/20 rounded-full font-mono text-xs uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-colors duration-300">
-                      Scopri il Profilo Completo
-                   </Link>
-                 </MagneticWrapper>
-              </div>
-           </div>
-        </section>
-
-        {/* INTERACTIVE SELECTED WORKS (BRUTALIST GRID & MOUSE TRAIL) */}
-        <section className="relative py-32 border-t border-white/10 bg-[#020202] pointer-events-auto overflow-hidden">
-          
-          {/* Subtle Radial Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full bg-[#d4af37] opacity-[0.03] blur-[120px] pointer-events-none" />
-
-          {/* Architectural Background Grid */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="h-full w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-24 grid grid-cols-4 md:grid-cols-12 gap-0">
-              {[...Array(12)].map((_, i) => (
-                <div key={i} className="border-r border-white/[0.02] h-full hidden md:block" />
-              ))}
-            </div>
+        {/* ───────────────────────────────────────────────────────────────────
+             PROJECTS — DRAMATIC LIST
+             ─────────────────────────────────────────────────────────────────── */}
+        <motion.section 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="py-32 relative z-20"
+        >
+          <div className="px-6 md:px-12 lg:px-24 mb-16">
+            <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#d4af37] mb-6 block">04 — Lavori Selezionati</span>
+            <RevealText text="SELECTED WORKS" className="font-bricolage text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white" />
           </div>
 
-          <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-24 z-10">
-            {/* Header */}
-            <div className="mb-24 md:mb-32">
-              <span className="font-mono text-xs md:text-sm uppercase tracking-[0.3em] text-[#d4af37] mb-6 block">04 — Lavori Selezionati</span>
-              <h2 className="font-bricolage text-6xl md:text-[8vw] font-black uppercase tracking-tighter leading-none text-white">
-                Selected Works
-              </h2>
-            </div>
+          <div className="w-full border-t border-white/10">
+            <div className="relative">
+              
+              {/* Mouse Trail Image */}
+              <motion.div 
+                className="hidden lg:block fixed pointer-events-none z-50 w-[380px] aspect-[16/10] overflow-hidden shadow-[0_32px_64px_rgba(0,0,0,0.9)] border border-white/10"
+                animate={{ 
+                  x: mousePos.x, 
+                  y: mousePos.y,
+                  opacity: hoveredProject !== null ? 1 : 0,
+                  scale: hoveredProject !== null ? 1 : 0.85
+                }}
+                transition={{ type: "spring", damping: 28, stiffness: 140, mass: 0.4 }}
+                style={{ translateX: "-50%", translateY: "-60%", left: 0, top: 0 }}
+              >
+                {displayProjects.map((p: any) => (
+                  <img 
+                    key={p.id}
+                    src={p.image?.startsWith('http') || p.image?.startsWith('/') ? p.image : `${BASE_URL}${p.image}`} 
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-400 ${hoveredProject === p.id ? 'opacity-100' : 'opacity-0'}`} 
+                    alt={p.title}
+                  />
+                ))}
+              </motion.div>
 
-            {/* Project List */}
-            <div className="flex flex-col border-t border-white/10">
-              {featuredProjects.map((project, index) => (
+              {displayProjects.map((item, i) => (
                 <Link 
-                  key={project.id || index} 
-                  to={`/progetti/${project.slug}`}
-                  onMouseEnter={() => setHoveredProject(project)}
+                  key={item.id} 
+                  to={item.url} 
+                  className="group relative flex items-center border-b border-white/5 hover:border-white/20 transition-all duration-500 cursor-crosshair overflow-hidden"
+                  onMouseEnter={() => setHoveredProject(item.id)}
                   onMouseLeave={() => setHoveredProject(null)}
-                  className="group relative flex flex-col md:flex-row md:items-center py-12 md:py-16 border-b border-white/10 hover:bg-white/[0.02] transition-colors duration-500"
                 >
-                  {/* Left Number */}
-                  <div className="md:w-1/4 mb-4 md:mb-0">
-                    <span className="font-bricolage font-black text-6xl md:text-8xl text-white/5 group-hover:text-white/10 transition-colors duration-500">
-                      {String(index + 1).padStart(2, '0')}
+                  {/* Subtle hover background */}
+                  <div className="absolute inset-0 bg-white/[0.015] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  <div className="relative z-10 w-full flex items-center gap-6 md:gap-12 px-6 md:px-12 lg:px-24 py-10 md:py-14">
+                    {/* Progressive number */}
+                    <span className="font-bricolage font-black text-4xl md:text-6xl lg:text-8xl text-white/10 group-hover:text-white/20 transition-colors duration-500 tabular-nums flex-shrink-0 leading-none">
+                      {String(i + 1).padStart(2, '0')}
                     </span>
-                  </div>
-                  
-                  {/* Title & Tags */}
-                  <div className="md:w-3/4 flex flex-col justify-center gap-3">
-                    <h3 className="font-bricolage text-4xl md:text-6xl font-bold tracking-tight text-white/90 group-hover:text-white transition-colors duration-500">
-                      {project.title}
-                    </h3>
-                    <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-[#d4af37]">
-                      {project.type || "BRAND IDENTITY • UI/UX DESIGN • WEB"}
-                    </span>
+
+                    {/* Title + type */}
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bricolage font-bold text-3xl md:text-5xl lg:text-6xl tracking-tight leading-tight text-white/60 group-hover:text-white transition-colors duration-500 truncate">
+                        {item.title}
+                      </h3>
+                      <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]/70 group-hover:text-[#d4af37] transition-colors mt-3 block">
+                        {item.type}
+                      </span>
+                    </div>
+
+                    {/* Arrow */}
+                    <div className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-6 group-hover:translate-x-0">
+                      <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-white/20 flex items-center justify-center">
+                        <ArrowUpRight size={20} strokeWidth={1.5} className="text-white" />
+                      </div>
+                    </div>
                   </div>
                 </Link>
               ))}
             </div>
-            
-            {/* View All Button */}
-            <div className="mt-20 text-center">
-              <MagneticWrapper>
-                <Link to="/progetti" className="inline-flex items-center gap-4 text-white/50 font-mono text-xs uppercase tracking-[0.3em] hover:text-[#d4af37] transition-colors pb-4 border-b border-white/10 hover:border-[#d4af37]">
-                  Tutto l'Archivio <ArrowUpRight size={16} />
-                </Link>
-              </MagneticWrapper>
-            </div>
           </div>
+          
+          <div className="flex justify-center mt-20 px-6">
+            <MagneticWrapper>
+              <Link to="/progetti" className="group flex items-center gap-4 font-mono text-[10px] uppercase tracking-[0.3em] text-white/50 hover:text-white transition-colors p-4">
+                <span className="relative">
+                  Visualizza tutti i progetti
+                  <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-white group-hover:w-full transition-all duration-700 ease-out" />
+                </span>
+                <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform duration-500 ease-out" />
+              </Link>
+            </MagneticWrapper>
+          </div>
+        </motion.section>
 
-          {/* Mouse Trail Image */}
-          <motion.div 
-             className="pointer-events-none fixed top-0 left-0 w-[320px] h-[420px] z-50 overflow-hidden shadow-2xl mix-blend-exclusion"
-             style={{ 
-               x: springX, 
-               y: springY,
-               translateX: "-50%",
-               translateY: "-50%",
-               opacity: hoveredProject ? 1 : 0,
-               scale: hoveredProject ? 1 : 0.8,
-             }}
-          >
-             {hoveredProject && (
-                <img 
-                  src={hoveredProject.main_image?.startsWith('/') ? hoveredProject.main_image : (hoveredProject.main_image ? `${BASE_URL}${hoveredProject.main_image}` : 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop')} 
-                  alt={hoveredProject.title}
-                  className="w-full h-full object-cover grayscale opacity-90"
-                />
-             )}
-          </motion.div>
-        </section>
+        <NebulaBriefingCTA />
 
+        <NebulaFooter />
       </main>
-
-      <div className="pointer-events-auto">
-         <NebulaBriefingCTA />
-         <NebulaFooter />
-      </div>
     </div>
   );
 };
