@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useTranslation } from "react-i18next";
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="border-t border-[#3d0f1a]/10 pt-10 pb-4">
@@ -13,9 +14,10 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 );
 
 const Cookies = () => {
+  const { t, i18n } = useTranslation();
   usePageMeta({
-    title: "Cookie Policy",
-    description: "Informativa sull'uso dei cookie di questo sito web.",
+    title: t('legal.cookies_title'),
+    description: t('legal.cookies_desc'),
   });
 
   return (
@@ -32,7 +34,7 @@ const Cookies = () => {
           >
             <div className="flex items-center gap-4 mb-8">
               <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-primary font-bold">
-                LEGALE
+                {t('legal.privacy_label')}
               </span>
               <div className="w-10 h-[1px] bg-primary/25" />
             </div>
@@ -40,11 +42,11 @@ const Cookies = () => {
               className="font-display font-bold leading-[0.85] tracking-tighter text-[#3d0f1a]"
               style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
             >
-              Cookie<br />
-              <span className="text-primary italic">Policy.</span>
+              {t('legal.cookies_h1_1')}<br />
+              <span className="text-primary italic">{t('legal.cookies_h1_2')}</span>
             </h1>
             <p className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-[#3d0f1a]/40 mt-6">
-              Ultimo aggiornamento: {new Date().toLocaleDateString('it-IT', { year: 'numeric', month: 'long' })}
+              {t('legal.last_updated')} {new Date().toLocaleDateString(i18n.language === 'en' ? 'en-US' : 'it-IT', { year: 'numeric', month: 'long' })}
             </p>
           </motion.div>
         </div>
@@ -58,65 +60,55 @@ const Cookies = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          <Section title="Cosa sono i cookie">
+          <Section title={t('legal.cookies_sec1_title')}>
             <p>
-              I cookie sono piccoli file di testo salvati sul dispositivo dell'utente durante la
-              navigazione su un sito web. Permettono al sito di ricordare le preferenze e alcune
-              informazioni sull'utente tra una visita e l'altra.
+              {t('legal.cookies_sec1_p1')}
             </p>
           </Section>
 
-          <Section title="Cookie utilizzati da questo sito">
+          <Section title={t('legal.cookies_sec2_title')}>
             <p>
-              Questo sito utilizza esclusivamente cookie tecnici strettamente necessari al
-              funzionamento del sito, come la memorizzazione della preferenza di tema (editorial/nebula).
+              {t('legal.cookies_sec2_p1')}
             </p>
-            <p>
-              <strong className="text-[#3d0f1a]">Non vengono utilizzati:</strong> cookie di profilazione,
-              cookie di terze parti, strumenti di analisi (Google Analytics o simili), pixel di tracking
-              o cookie pubblicitari.
-            </p>
+            <p dangerouslySetInnerHTML={{ __html: t('legal.cookies_sec2_p2') }} />
           </Section>
 
-          <Section title="Cookie tecnici presenti">
+          <Section title={t('legal.cookies_sec3_title')}>
             <div className="border border-[#3d0f1a]/10 overflow-hidden">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="bg-primary/5 border-b border-[#3d0f1a]/10">
-                    <th className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-primary font-bold p-4 text-left">Nome</th>
-                    <th className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-primary font-bold p-4 text-left">Scopo</th>
-                    <th className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-primary font-bold p-4 text-left">Durata</th>
+                    <th className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-primary font-bold p-4 text-left">{t('legal.cookies_table_h1')}</th>
+                    <th className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-primary font-bold p-4 text-left">{t('legal.cookies_table_h2')}</th>
+                    <th className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-primary font-bold p-4 text-left">{t('legal.cookies_table_h3')}</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b border-[#3d0f1a]/5">
-                    <td className="p-4 font-typewriter text-[12px] text-[#3d0f1a]">portfolio-design</td>
-                    <td className="p-4 text-[#3d0f1a]/60">Memorizza la preferenza del tema (localStorage)</td>
-                    <td className="p-4 text-[#3d0f1a]/60">Persistente</td>
+                    <td className="p-4 font-typewriter text-[12px] text-[#3d0f1a]">{t('legal.cookies_table_d1_1')}</td>
+                    <td className="p-4 text-[#3d0f1a]/60">{t('legal.cookies_table_d1_2')}</td>
+                    <td className="p-4 text-[#3d0f1a]/60">{t('legal.cookies_table_d1_3')}</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </Section>
 
-          <Section title="Come disabilitare i cookie">
+          <Section title={t('legal.cookies_sec4_title')}>
             <p>
-              Puoi disabilitare i cookie direttamente dalle impostazioni del tuo browser.
-              Tieni presente che disabilitare i cookie tecnici potrebbe compromettere il corretto
-              funzionamento del sito.
+              {t('legal.cookies_sec4_p1')}
             </p>
           </Section>
 
-          <Section title="Aggiornamenti">
+          <Section title={t('legal.cookies_sec5_title')}>
             <p>
-              Questa policy verrà aggiornata al momento della messa online del dominio ufficiale,
-              qualora venissero introdotti strumenti di analisi o altri cookie non tecnici.
+              {t('legal.cookies_sec5_p1')}
             </p>
           </Section>
 
           <div className="border-t border-[#3d0f1a]/10 pt-10">
             <p className="font-body text-[15px] text-[#3d0f1a]/60">
-              Per qualsiasi domanda:{" "}
+              {t('legal.cookies_footer')}
               <a href="mailto:ilaria.dil@gmail.com" className="text-primary hover:underline">
                 ilaria.dil@gmail.com
               </a>

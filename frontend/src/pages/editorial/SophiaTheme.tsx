@@ -6,15 +6,17 @@ import { BriefingCTA } from "@/components/BriefingCTA";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight, Globe } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useTranslation } from "react-i18next";
 
 export const EditorialSophiaTheme = () => {
+  const { t } = useTranslation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   usePageMeta({
     title: "Sophia Theme",
-    description: "Il motore invisibile dei progetti editoriali di lusso. Sophia Theme ridefinisce gli standard di velocità e pulizia del codice, portando le prestazioni a un livello superiore.",
+    description: t('sophia.meta_desc'),
   });
 
   const { scrollY } = useScroll();
@@ -43,7 +45,7 @@ export const EditorialSophiaTheme = () => {
               className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a]/60 hover:text-primary transition-colors font-semibold"
             >
               <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
-              Archivio progetti
+              {t('project_detail.back_to_archive')}
             </Link>
           </motion.div>
         </div>
@@ -60,7 +62,7 @@ export const EditorialSophiaTheme = () => {
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium block"
                 >
-                  FULL-STACK ARCHITECTURE
+                  {t('sophia.hero_label')}
                 </motion.span>
               </div>
 
@@ -85,9 +87,8 @@ export const EditorialSophiaTheme = () => {
                 className="mt-8 lg:mt-12 max-w-[34rem]"
               >
                 <p className="font-body text-sm md:text-base text-[#3d0f1a]/70 leading-relaxed border-l-2 border-primary/20 pl-6 lg:pl-8 py-2">
-                  Un framework WordPress proprietario, modulare e orientato alle performance.
-                  Sviluppato per sostituire i pesanti page builder tradizionali e restituire ai progetti
-                  web un codice puro, istantaneo e totalmente scalabile.</p>
+                  {t('sophia.hero_desc')}
+                </p>
               </motion.div>
             </motion.div>
           </div>
@@ -150,7 +151,7 @@ export const EditorialSophiaTheme = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block lg:sticky lg:top-32">
-              01 — Il Contesto
+              {t('sophia.ch1_label')}
             </span>
           </motion.div>
           <motion.div
@@ -161,15 +162,11 @@ export const EditorialSophiaTheme = () => {
             transition={{ delay: 0.2 }}
           >
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              Quando il design ha bisogno di <span className="italic text-primary">velocità pura.</span>
+              {t('sophia.ch1_title1')}<span className="italic text-primary">{t('sophia.ch1_title2')}</span>
             </h2>
             <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed max-w-2xl">
               <p>
-                La maggior parte dei temi premium in commercio si porta dietro un debito tecnico enorme,
-                sacrificando le prestazioni (i Core Web Vitals) in nome di una finta versatilità.
-                Il risultato sono siti web lenti, sovraccarichi di script inutilizzati e impossibili da scalare.
-                Sophia nasce per risolvere questa equazione: fornire fondamenta tecniche robuste che permettano
-                di sviluppare interfacce luxury senza alcun compromesso sulle performance di caricamento.
+                {t('sophia.ch1_p1')}
               </p>
             </div>
           </motion.div>
@@ -189,10 +186,10 @@ export const EditorialSophiaTheme = () => {
             transition={{ duration: 1 }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-12">
-              02 — L'Obiettivo
+              {t('sophia.ch2_label')}
             </span>
             <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]">
-              "Costruire una struttura leggera, <span className="text-primary italic">robusta e modulare</span> per liberare la potenza del design d'eccellenza."
+              {t('sophia.ch2_title1')}<span className="text-primary italic">{t('sophia.ch2_title2')}</span>{t('sophia.ch2_title3')}
             </h3>
           </motion.div>
         </div>
@@ -220,7 +217,7 @@ export const EditorialSophiaTheme = () => {
               />
               <div className="absolute bottom-4 left-4 z-20">
                 <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-white bg-[#3d0f1a] px-3 py-1.5">
-                  Fig. 1 — Ingegnerizzazione
+                  {t('sophia.fig1')}
                 </span>
               </div>
             </div>
@@ -235,20 +232,14 @@ export const EditorialSophiaTheme = () => {
           >
             <div>
               <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-8">
-                03 — Il Processo
+                {t('sophia.ch3_label')}
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter mb-8 text-[#3d0f1a]">
-                Architettura Modulare in PHP.
+                {t('sophia.ch3_title')}
               </h2>
               <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed">
                 <p>
-                  Sophia non si limita a usare il classico file functions.php monolitico.
-                  Il suo codice è organizzato in logiche isolate: dal setup del tema alla gestione
-                  delle estensioni. Questa architettura modulare sfrutta un Design System basato su
-                  variabili CSS globali, rendendo infinitamente scalabile l'aspetto estetico.
-                  Inoltre, ho integrato nativamente librerie di movimento premium come GSAP e ScrollTrigger,
-                  permettendo di gestire scorrimenti cinematici e animazioni complesse senza intaccare
-                  le performance.
+                  {t('sophia.ch3_p1')}
                 </p>
               </div>
             </div>
@@ -269,20 +260,14 @@ export const EditorialSophiaTheme = () => {
             viewport={{ once: true }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-2">
-              04 — Sviluppo
+              {t('sophia.ch4_label')}
             </span>
             <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              Sophia Builder & Zenith Engine.
+              {t('sophia.ch4_title')}
             </h2>
             <div className="font-body text-[#3d0f1a]/70 text-lg leading-relaxed space-y-6">
               <p>
-                Il vero cuore del sistema è il Sophia Builder: un page builder visuale proprietario
-                manifest-driven. Anziché salvare layout complessi nel database, decodifica file JSON per
-                generare istantaneamente l'interfaccia amministrativa. Grazie alla PostMessage API,
-                le modifiche si sincronizzano in tempo reale nell'iframe di preview.
-                Per garantire massima stabilità multilingua, Sophia è inoltre equipaggiato con lo
-                Zenith Recovery Engine, un sistema di fallback proprietario che mappa e traduce le
-                stringhe a livello di codice.
+                {t('sophia.ch4_p1')}
               </p>
 
             </div>
@@ -299,7 +284,7 @@ export const EditorialSophiaTheme = () => {
             <div className="bg-white border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] p-10 h-full flex flex-col justify-between">
               <div>
                 <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-8">
-                  Stack tecnologico
+                  {t('chario.tech_stack')}
                 </span>
                 <div className="flex flex-wrap gap-2.5 mb-10">
                   {techList.map(tech => (
@@ -315,11 +300,11 @@ export const EditorialSophiaTheme = () => {
 
               <div className="border-t border-[#3d0f1a]/10 pt-6 mt-12 space-y-4 text-[#3d0f1a]">
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">Ruolo</span>
-                  <span className="font-display text-md font-black italic">Creator & Architect</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.role_label')}</span>
+                  <span className="font-display text-md font-black italic">{t('sophia.role_val')}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">Lancio</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.launch_label')}</span>
                   <span className="font-display text-md font-black">2026</span>
                 </div>
               </div>
@@ -341,21 +326,17 @@ export const EditorialSophiaTheme = () => {
         >
           <div className="flex items-center gap-4 mb-16">
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
-              05 — Visual Showcase
+              {t('sophia.ch5_label')}
             </span>
             <div className="flex-1 h-[1px] bg-primary/10" />
           </div>
 
           <div className="mb-12 max-w-2xl">
             <h2 className="font-display text-3xl md:text-5xl font-black tracking-tighter mb-6 text-[#3d0f1a]">
-              L'Ingegneria del Layout
+              {t('sophia.ch5_title')}
             </h2>
             <p className="font-body text-lg text-[#3d0f1a]/70">
-              Sophia non è semplicemente un tema, è un framework altamente personalizzato e meticoloso.
-              Garantisce un controllo editoriale totale sui contenuti con prestazioni
-              fulminee sul frontend, poiché l'output finale rimane sempre e solo puro
-              codice PHP e HTML5 con caricamento asincrono. Un ecosistema progettato
-              per durare e scalare.
+              {t('sophia.ch5_p1')}
             </p>
           </div>
         </motion.div>
@@ -405,7 +386,7 @@ export const EditorialSophiaTheme = () => {
             <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             <span className="relative z-10 flex items-center gap-4 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white transition-colors font-semibold">
               <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-500" />
-              Torna all'archivio
+              {t('project_detail.back_to_archive')}
             </span>
           </Link>
         </div>

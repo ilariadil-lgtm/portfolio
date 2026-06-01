@@ -7,15 +7,17 @@ import { BriefingCTA } from "@/components/BriefingCTA";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useTranslation } from "react-i18next";
 
 export const EditorialViniGambino = () => {
+  const { t } = useTranslation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   usePageMeta({
     title: "Vini Gambino",
-    description: "L'essenza del terroir vulcanico dell'Etna tradotta in un'esperienza digitale immersiva. Progetto realizzato per Cantina Gambino in collaborazione con l'agenzia Carnova.",
+    description: t('vinigambino.meta_desc'),
   });
 
   const { scrollY } = useScroll();
@@ -44,7 +46,7 @@ export const EditorialViniGambino = () => {
               className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a]/60 hover:text-primary transition-colors font-semibold"
             >
               <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
-              Archivio progetti
+              {t('project_detail.back_to_archive')}
             </Link>
           </motion.div>
         </div>
@@ -61,7 +63,7 @@ export const EditorialViniGambino = () => {
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium block whitespace-nowrap"
                 >
-                  UI/UX DESIGN • WEB LAYOUT
+                  {t('vinigambino.hero_label')}
                 </motion.span>
               </div>
 
@@ -86,7 +88,7 @@ export const EditorialViniGambino = () => {
                 className="mt-8 lg:mt-12 max-w-[34rem]"
               >
                 <p className="font-body text-sm md:text-base text-[#3d0f1a]/70 leading-relaxed border-l-2 border-primary/20 pl-6 lg:pl-8 py-2">
-                  L'essenza del terroir vulcanico tradotta in un'esperienza digitale immersiva. Progetto realizzato in collaborazione con l'agenzia Carnova per una storica cantina alle pendici dell'Etna, curando integralmente l'assetto grafico, l'interfaccia utente (UI/UX) e il layout su piattaforma WordPress.
+                  {t('vinigambino.hero_desc')}
                 </p>
               </motion.div>
             </motion.div>
@@ -143,7 +145,7 @@ export const EditorialViniGambino = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block lg:sticky lg:top-32">
-              01 — Il Contesto
+              {t('vinigambino.ch1_label')}
             </span>
           </motion.div>
           <motion.div
@@ -153,12 +155,10 @@ export const EditorialViniGambino = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ delay: 0.2 }}
           >
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              Un sorso di Etna <span className="italic text-primary">online.</span>
-            </h2>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]" dangerouslySetInnerHTML={{ __html: t('vinigambino.ch1_title1') }} />
             <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed max-w-2xl">
               <p>
-                Situata sul versante nord-orientale dell'Etna, la Cantina Gambino è un'eccellenza che unisce la tradizione vinicola a una location mozzafiato con vista sul Golfo di Taormina. La sfida posta dall'agenzia Carnova era duplice: da un lato, creare uno spazio e-commerce elegante per la vendita dei vini vulcanici; dall'altro, trasmettere il calore dell'ospitalità siciliana, invitando gli utenti di tutto il mondo a prenotare le rinomate esperienze di degustazione in cantina. Serviva una vetrina digitale che fosse al contempo pragmatica ed emozionale.
+                {t('vinigambino.ch1_p1')}
               </p>
             </div>
           </motion.div>
@@ -178,11 +178,9 @@ export const EditorialViniGambino = () => {
             transition={{ duration: 1 }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-12">
-              02 — L'Obiettivo
+              {t('vinigambino.ch2_label')}
             </span>
-            <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]">
-              "Tradurre la potenza del vulcano e l'eleganza del vino in un percorso visivo che invita all'assaggio, <span className="text-primary italic">prima ancora di stappare</span> la bottiglia."
-            </h3>
+            <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]" dangerouslySetInnerHTML={{ __html: t('vinigambino.ch2_title1') }} />
           </motion.div>
         </div>
       </section >
@@ -228,17 +226,17 @@ export const EditorialViniGambino = () => {
           >
             <div>
               <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-8">
-                03 — Il Processo
+                {t('vinigambino.ch3_label')}
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter mb-8 text-[#3d0f1a]">
-                Estetica e Architettura dell'Ospitalità.
+                {t('vinigambino.ch3_title')}
               </h2>
               <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed">
                 <p>
-                  Ho assunto la direzione totale dell'assetto grafico, disegnando un'interfaccia utente (UI) che lasciasse respirare la bellezza dei vigneti e della roccia vulcanica. L'uso di palette cromatiche calde e terrose, abbinate a una tipografia editoriale, accompagna l'utente in un vero e proprio tour virtuale.
+                  {t('vinigambino.ch3_p1')}
                 </p>
                 <p>
-                  Particolare attenzione è stata dedicata all'architettura dell'esperienza (UX) per le prenotazioni delle degustazioni: ho strutturato i flussi visivi in modo che la scoperta dei pacchetti enogastronomici risultasse tanto fluida e naturale quanto il racconto della famiglia Gambino.
+                  {t('vinigambino.ch3_p2')}
                 </p>
               </div>
             </div>
@@ -259,17 +257,17 @@ export const EditorialViniGambino = () => {
             viewport={{ once: true }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-2">
-              04 — Sviluppo
+              {t('vinigambino.ch4_label')}
             </span>
             <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              Layout e Integrazione WordPress.
+              {t('vinigambino.ch4_title')}
             </h2>
             <div className="font-body text-[#3d0f1a]/70 text-lg leading-relaxed space-y-6">
               <p>
-                Tutto il design è stato declinato e ingegnerizzato su piattaforma WordPress. Il mio lavoro si è concentrato sulla costruzione di layout dinamici e performanti, capaci di ospitare fotografie ad alta risoluzione senza compromettere la velocità di caricamento.
+                {t('vinigambino.ch4_p1')}
               </p>
               <p>
-                Ho impaginato con cura ogni sezione — dallo shop delle bottiglie alle pagine di presentazione della tenuta — garantendo un'esperienza visiva impeccabile e reattiva su ogni dispositivo, permettendo all'azienda di comunicare il proprio prestigio su scala globale.
+                {t('vinigambino.ch4_p2')}
               </p>
             </div>
           </motion.div>
@@ -285,7 +283,7 @@ export const EditorialViniGambino = () => {
             <div className="bg-white border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] p-10 h-full flex flex-col justify-between">
               <div>
                 <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-8">
-                  Stack tecnologico
+                  {t('chario.tech_stack')}
                 </span>
                 <div className="flex flex-wrap gap-2.5 mb-10">
                   {techList.map(tech => (
@@ -301,11 +299,11 @@ export const EditorialViniGambino = () => {
 
               <div className="border-t border-[#3d0f1a]/10 pt-6 mt-12 space-y-4 text-[#3d0f1a]">
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">Ruolo</span>
-                  <span className="font-display text-md font-black italic">UI/UX & Web Developer</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.role_label')}</span>
+                  <span className="font-display text-md font-black italic">{t('vinigambino.role_val')}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">Lancio</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.launch_label')}</span>
                   <span className="font-display text-md font-black">2024</span>
                 </div>
               </div>
@@ -327,17 +325,17 @@ export const EditorialViniGambino = () => {
         >
           <div className="flex items-center gap-4 mb-16">
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
-              05 — Visual Showcase
+              {t('vinigambino.ch5_label')}
             </span>
             <div className="flex-1 h-[1px] bg-primary/10" />
           </div>
 
           <div className="mb-12 max-w-2xl">
             <h2 className="font-display text-3xl md:text-5xl font-black tracking-tighter mb-6 text-[#3d0f1a]">
-              Il sapore dell'altitudine.
+              {t('vinigambino.ch5_title')}
             </h2>
             <p className="font-body text-lg text-[#3d0f1a]/70">
-              Il risultato è un sito web che cattura l'anima di un terroir unico al mondo. Un progetto che dimostra la capacità di progettare interfacce in cui the graphic design non è un semplice abbellimento, ma lo strumento principale per generare emozioni, fidelizzare il cliente e guidare con eleganza le conversioni nel settore dell'enoturismo d'alta gamma.
+              {t('vinigambino.ch5_p1')}
             </p>
           </div>
         </motion.div>
@@ -393,7 +391,7 @@ export const EditorialViniGambino = () => {
             <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             <span className="relative z-10 flex items-center gap-4 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white transition-colors font-semibold">
               <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-500" />
-              Torna all'archivio
+              {t('project_detail.back_to_archive')}
             </span>
           </Link>
         </div>

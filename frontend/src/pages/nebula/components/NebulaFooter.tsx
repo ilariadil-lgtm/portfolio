@@ -5,7 +5,13 @@ import { motion } from "framer-motion";
 
 export const NebulaFooter = () => {
   return (
-    <footer className="relative bg-black text-slate-400 py-16 md:py-24 px-6 md:px-12 lg:px-24 overflow-hidden border-t border-white/5">
+    <motion.footer 
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+      className="relative bg-black text-white/50 py-16 md:py-24 px-6 md:px-12 lg:px-24 overflow-hidden border-t border-[#d4af37]/20"
+    >
       {/* Background glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-white/5 blur-[150px] rounded-t-full pointer-events-none" />
       
@@ -15,20 +21,20 @@ export const NebulaFooter = () => {
         <div className="md:col-span-5 space-y-8">
           <Link to="/" className="inline-block group">
             <div className="flex items-center gap-3 mb-2">
-              <span className="font-sans text-lg tracking-tight font-black text-white group-hover:text-neutral-300 transition-colors">
+              <span className="font-outfit text-xl tracking-tighter font-black text-white group-hover:text-[#d4af37] transition-colors">
                 ILARIA DILIBERTO.
               </span>
             </div>
-            <p className="font-sans text-xs tracking-widest text-slate-500 uppercase font-bold">System Architect // Lead Designer</p>
+            <p className="font-mono text-xs tracking-[0.2em] text-[#d4af37] uppercase font-bold">System Architect // Lead Designer</p>
           </Link>
-          <p className="font-sans font-light text-sm text-slate-400 leading-relaxed max-w-sm">
+          <p className="font-outfit font-light text-sm text-white/50 leading-relaxed max-w-sm">
             Costruisco infrastrutture digitali scalabili, interfacce neurali e piattaforme ad alta efficienza. L'anello di congiunzione tra codice puro ed estetica funzionale.
           </p>
         </div>
 
         {/* Links Column */}
         <div className="md:col-span-3 space-y-6">
-          <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-slate-500 font-bold">Directory</span>
+          <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 font-bold">Directory</span>
           <ul className="space-y-4">
             {[
               { path: "/chisono", label: "Profilo" },
@@ -36,8 +42,8 @@ export const NebulaFooter = () => {
               { path: "/progetti", label: "Archivio" },
             ].map((link) => (
               <li key={link.path}>
-                <Link to={link.path} className="font-sans text-sm tracking-wide hover:text-white transition-colors flex items-center gap-2 group text-slate-300">
-                  <span className="w-2 h-[1px] bg-white/0 group-hover:bg-white transition-all duration-300" />
+                <Link to={link.path} className="font-outfit text-sm tracking-wide hover:text-[#d4af37] transition-colors flex items-center gap-2 group text-white/60">
+                  <span className="w-2 h-[1px] bg-transparent group-hover:bg-[#d4af37] transition-all duration-300" />
                   {link.label}
                 </Link>
               </li>
@@ -47,18 +53,18 @@ export const NebulaFooter = () => {
 
         {/* Contact Column */}
         <div className="md:col-span-4 space-y-8">
-          <div className="relative p-8 border border-white/[0.12] bg-white/[0.04] backdrop-blur-3xl rounded-[2rem] hover:bg-white/[0.06] transition-all duration-500 overflow-hidden shadow-[0_16px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.2)]">
-            <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-slate-500 font-bold block mb-4">Uplink Station</span>
-            <a href="mailto:hello@ilariadiliberto.com" className="flex items-center gap-4 text-white hover:text-neutral-300 transition-colors font-sans tracking-wide font-bold text-sm mb-6">
+          <div className="relative p-8 border border-[#d4af37]/20 bg-[#020202] rounded-none hover:bg-white/[0.02] transition-all duration-500 overflow-hidden shadow-[0_16px_32px_rgba(0,0,0,0.5)]">
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 font-bold block mb-4">Uplink Station</span>
+            <a href="mailto:hello@ilariadiliberto.com" className="flex items-center gap-4 text-white hover:text-[#d4af37] transition-colors font-mono tracking-widest font-bold text-xs mb-6">
               <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-white/80"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4af37] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-[#d4af37]/80"></span>
               </span>
               HELLO@ILARIADILIBERTO.COM
             </a>
             <div className="flex items-center gap-4">
               {[Github, Linkedin, Twitter].map((Icon, idx) => (
-                <a key={idx} href="#" className="p-3 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-all">
+                <a key={idx} href="#" className="p-3 rounded-none bg-white/5 hover:bg-[#d4af37]/10 text-white/50 hover:text-[#d4af37] transition-all">
                   <Icon size={18} />
                 </a>
               ))}
@@ -69,14 +75,14 @@ export const NebulaFooter = () => {
       </div>
 
       <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
-        <p className="font-sans text-[11px] tracking-wider text-slate-500">
+        <p className="font-mono text-[10px] tracking-wider text-white/30">
           © {new Date().getFullYear()} Ilaria Diliberto. All rights reserved.
         </p>
         <div className="flex items-center gap-6">
-          <Link to="/privacy" className="font-sans text-[11px] tracking-wider text-slate-500 hover:text-white transition-colors">Privacy Policy</Link>
-          <Link to="/cookies" className="font-sans text-[11px] tracking-wider text-slate-500 hover:text-white transition-colors">Cookie Policy</Link>
+          <Link to="/privacy" className="font-mono text-[10px] tracking-wider text-white/30 hover:text-white transition-colors">Privacy Policy</Link>
+          <Link to="/cookies" className="font-mono text-[10px] tracking-wider text-white/30 hover:text-white transition-colors">Cookie Policy</Link>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };

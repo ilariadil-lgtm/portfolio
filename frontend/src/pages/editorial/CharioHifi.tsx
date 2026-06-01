@@ -7,15 +7,17 @@ import { BriefingCTA } from "@/components/BriefingCTA";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight, Github, Globe, ExternalLink } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useTranslation } from "react-i18next";
 
 export const EditorialCharioHifi = () => {
+  const { t } = useTranslation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   usePageMeta({
     title: "Chario Hifi",
-    description: "L'alta fedeltà digitale. Sito premium creato col tema proprietario Sophia per un'esperienza acustica e visiva senza compromessi.",
+    description: t('chario.meta_desc'),
   });
 
   const { scrollY } = useScroll();
@@ -45,7 +47,7 @@ export const EditorialCharioHifi = () => {
               className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a]/60 hover:text-primary transition-colors font-semibold"
             >
               <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
-              Archivio progetti
+              {t('project_detail.back_to_archive')}
             </Link>
           </motion.div>
         </div>
@@ -62,7 +64,7 @@ export const EditorialCharioHifi = () => {
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium block"
                 >
-                  PROGETTAZIONE VISIVA & SVILUPPO FULL-STACK
+                  {t('chario.hero_label')}
                 </motion.span>
               </div>
 
@@ -87,9 +89,7 @@ export const EditorialCharioHifi = () => {
                 className="mt-8 lg:mt-12 max-w-[34rem]"
               >
                 <p className="font-body text-sm md:text-base text-[#3d0f1a]/70 leading-relaxed border-l-2 border-primary/20 pl-6 lg:pl-8 py-2">
-                  Tradurre 50 anni di eccellenza artigianale in un'esperienza web senza compromessi.
-                  Progettazione UI/UX minimale e sviluppo full-stack di un'architettura su misura,
-                  per un ecosistema digitale elegante e ultra-performante.
+                  {t('chario.hero_desc')}
                 </p>
               </motion.div>
             </motion.div>
@@ -151,7 +151,7 @@ export const EditorialCharioHifi = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block lg:sticky lg:top-32">
-              01 — Il Contesto
+              {t('chario.ch1_label')}
             </span>
           </motion.div>
           <motion.div
@@ -162,21 +162,11 @@ export const EditorialCharioHifi = () => {
             transition={{ delay: 0.2 }}
           >
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              Quando il prodotto è analogico, ma <span className="italic text-primary">l'esperienza è digitale.</span>
+              {t('chario.ch1_title1')}<span className="italic text-primary">{t('chario.ch1_title2')}</span>
             </h2>
             <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed max-w-2xl">
-              <p>
-                Chario Hifi è uno storico marchio italiano che produce speaker audio dal 1975,
-                celebre in tutto il mondo per i suoi cabinet in legno massello scolpiti a mano. Eppure,
-                nonostante il pregio assoluto dei prodotti fisici, la loro presenza online non rispecchiava più
-                <i> il prestigio e l'alta gamma dei loro prodotti.</i></p>
-              <p>
-                Il sito precedente risultava lento, frammentato e — paradossalmente per un'eccellenza del
-                Made in Italy — disponibile esclusivamente in lingua inglese. Serviva un'operazione di
-                riposizionamento radicale: un redesign visivo per esaltare i dettagli materici dei diffusori
-                e una nuova architettura multilingua, partendo finalmente dall'italiano, per restituire
-                all'azienda la sua vera voce.
-              </p>
+              <p dangerouslySetInnerHTML={{ __html: t('chario.ch1_p1') }} />
+              <p>{t('chario.ch1_p2')}</p>
             </div>
           </motion.div>
         </div>
@@ -195,11 +185,10 @@ export const EditorialCharioHifi = () => {
             transition={{ duration: 1 }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-12">
-              02 — L'Obiettivo
+              {t('chario.ch2_label')}
             </span>
             <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]">
-              "Tradurre la purezza del <span className="text-primary italic">suono analogico e
-                l'eccellenza materica</span> in un'esperienza digitale senza compromessi."
+              {t('chario.ch2_title1')}<span className="text-primary italic">{t('chario.ch2_title2')}</span>{t('chario.ch2_title3')}
             </h3>
           </motion.div>
         </div>
@@ -227,7 +216,7 @@ export const EditorialCharioHifi = () => {
               />
               <div className="absolute bottom-4 left-4 z-20">
                 <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-white bg-[#3d0f1a] px-3 py-1.5">
-                  Fig. 1 — Wireframing
+                  {t('chario.fig1')}
                 </span>
               </div>
             </div>
@@ -242,25 +231,14 @@ export const EditorialCharioHifi = () => {
           >
             <div>
               <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-8">
-                03 — Il Processo
+                {t('chario.ch3_label')}
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter mb-8 text-[#3d0f1a]">
-                Design invisibile.
+                {t('chario.ch3_title')}
               </h2>
               <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed">
-                <p>x
-                  Per l'interfaccia utente, la regola fondamentale è stata "sottrarre".
-                  Ho adottato un approccio essenziale ma profondamente editoriale:
-                  l'utilizzo di font aggraziati estremamente sottili per i titoli, abbinati a un
-                  grottesco solido per garantire la massima leggibilità nei paragrafi descrittivi.
-                </p>
-                <p>
-                  I colori dominanti rispecchiano fedelmente la palette naturale dei diffusori:
-                  il bordeaux profondo, le sfumature del legno scuro e un crema polveroso per il background.
-                  Nessun bottone arrotondato, nessuna ombra superflua. Lo spazio bianco (o negativo)
-                  è stato massimizzato strategicamente per dare a ogni singola fotografia il respiro
-                  che merita, permettendo all'utente di perdersi nei dettagli del prodotto senza alcuna
-                  distrazione visiva.</p>
+                <p>{t('chario.ch3_p1')}</p>
+                <p>{t('chario.ch3_p2')}</p>
               </div>
             </div>
           </motion.div>
@@ -280,29 +258,14 @@ export const EditorialCharioHifi = () => {
             viewport={{ once: true }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-2">
-              04 — Sviluppo
+              {t('chario.ch4_label')}
             </span>
             <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              L'Ecosistema Sophia & Chario Builder
+              {t('chario.ch4_title')}
             </h2>
             <div className="font-body text-[#3d0f1a]/70 text-lg leading-relaxed space-y-6">
-              <p>
-                Dal punto di vista tecnico, il progetto si poggia su un'architettura WordPress completamente
-                custom. Ho abbandonato i classici (e pesanti) costruttori visuali per sviluppare Sophia,
-                un tema parent modulare in PHP, accoppiato a un tema child specifico per Chario.
-                Tutta la logica di stile, le animazioni fluide (gestite tramite GSAP e ScrollTrigger) e le
-                interazioni sono state incapsulate e isolate.
-                Il risultato è un rendering front-end istantaneo e un codice purissimo,
-                capace di sostenere senza esitazioni (jank) i render 3D e le fotografie ad alta risoluzione
-                necessarie per il mercato luxury.</p>
-              <p>
-                Il vero fiore all'occhiello è il Chario HiFi Builder: un page builder proprietario
-                manifest-driven. Attraverso una connessione JavaScript in tempo reale (PostMessage API),
-                il cliente può modificare i contenuti e vedere i risultati istantaneamente nell'iframe di
-                preview, mantenendo il layout blindato. Infine, per garantire solidità globale,
-                ho ingegnerizzato lo Zenith Recovery Engine: un sistema di fallback proprietario che mappa
-                le traduzioni e i percorsi URL direttamente a livello di codice, garantendo che il sito non
-                si "rompa" mai durante il cambio lingua.</p>
+              <p>{t('chario.ch4_p1')}</p>
+              <p>{t('chario.ch4_p2')}</p>
             </div>
           </motion.div>
 
@@ -317,7 +280,7 @@ export const EditorialCharioHifi = () => {
             <div className="bg-white border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] p-10 h-full flex flex-col justify-between">
               <div>
                 <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-8">
-                  Stack tecnologico
+                  {t('chario.tech_stack')}
                 </span>
                 <div className="flex flex-wrap gap-2.5 mb-10">
                   {techList.map(tech => (
@@ -333,11 +296,11 @@ export const EditorialCharioHifi = () => {
 
               <div className="border-t border-[#3d0f1a]/10 pt-6 mt-12 space-y-4 text-[#3d0f1a]">
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">Ruolo</span>
-                  <span className="font-display text-md font-black italic">Full-Stack Developer & UI/UX Designer</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.role_label')}</span>
+                  <span className="font-display text-md font-black italic">{t('chario.role_val')}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">Lancio</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.launch_label')}</span>
                   <span className="font-display text-md font-black">2026</span>
                 </div>
               </div>
@@ -359,21 +322,17 @@ export const EditorialCharioHifi = () => {
         >
           <div className="flex items-center gap-4 mb-16">
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
-              05 — Visual Showcase
+              {t('chario.ch5_label')}
             </span>
             <div className="flex-1 h-[1px] bg-primary/10" />
           </div>
 
           <div className="mb-12 max-w-2xl">
             <h2 className="font-display text-3xl md:text-5xl font-black tracking-tighter mb-6 text-[#3d0f1a]">
-              L'Estetica Sonora
+              {t('chario.ch5_title')}
             </h2>
             <p className="font-body text-lg text-[#3d0f1a]/70">
-              Il risultato è un ecosistema web che converte non attraverso l'aggressività
-              delle Call to Action, ma tramite un vero e proprio innamoramento estetico.
-              Dalla homepage fino alla complessità del backend multilingua, ogni singolo
-              componente è stato ingegnerizzato e disegnato con un unico scopo: mettersi al
-              servizio del suono e rendere omaggio all'eccellenza del brand.
+              {t('chario.ch5_p1')}
             </p>
           </div>
         </motion.div>
@@ -423,7 +382,7 @@ export const EditorialCharioHifi = () => {
             <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             <span className="relative z-10 flex items-center gap-4 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white transition-colors font-semibold">
               <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-500" />
-              Torna all'archivio
+              {t('project_detail.back_to_archive')}
             </span>
           </Link>
         </div>

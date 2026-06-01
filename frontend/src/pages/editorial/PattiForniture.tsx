@@ -7,15 +7,17 @@ import { BriefingCTA } from "@/components/BriefingCTA";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useTranslation } from "react-i18next";
 
 export const EditorialPattiForniture = () => {
+  const { t } = useTranslation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   usePageMeta({
     title: "Patti Forniture",
-    description: "Restyling digitale di Patti Forniture, storica azienda leader nel Sud Italia per le forniture industriali, termoidraulica ed edilizia. Realizzato con WordPress.",
+    description: t('pattiforniture.meta_desc'),
   });
 
   const { scrollY } = useScroll();
@@ -44,7 +46,7 @@ export const EditorialPattiForniture = () => {
               className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a]/60 hover:text-primary transition-colors font-semibold"
             >
               <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
-              Archivio progetti
+              {t('project_detail.back_to_archive')}
             </Link>
           </motion.div>
         </div>
@@ -61,7 +63,7 @@ export const EditorialPattiForniture = () => {
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium block whitespace-nowrap"
                 >
-                  UI/UX DESIGN • WEB & CONTENT
+                  {t('pattiforniture.hero_label')}
                 </motion.span>
               </div>
 
@@ -86,7 +88,7 @@ export const EditorialPattiForniture = () => {
                 className="mt-8 lg:mt-12 max-w-[34rem]"
               >
                 <p className="font-body text-sm md:text-base text-[#3d0f1a]/70 leading-relaxed border-l-2 border-primary/20 pl-6 lg:pl-8 py-2">
-                  Un progetto web corporate realizzato in collaborazione con l'agenzia Carnova. Il restyling digitale di una storica azienda leader nel Sud Italia per le forniture industriali, termoidraulica ed edilizia. Cura dell'interfaccia utente, stesura dei testi strategici e sviluppo completo su WordPress.
+                  {t('pattiforniture.hero_desc')}
                 </p>
               </motion.div>
             </motion.div>
@@ -143,7 +145,7 @@ export const EditorialPattiForniture = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block lg:sticky lg:top-32">
-              01 — Il Contesto
+              {t('pattiforniture.ch1_label')}
             </span>
           </motion.div>
           <motion.div
@@ -153,15 +155,13 @@ export const EditorialPattiForniture = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ delay: 0.2 }}
           >
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              Digitalizzare 30 anni di <span className="italic text-primary">esperienza.</span>
-            </h2>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]" dangerouslySetInnerHTML={{ __html: t('pattiforniture.ch1_title1') }} />
             <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed max-w-2xl">
               <p>
-                Da oltre tre decenni, F.lli Patti è un punto di riferimento per rivenditori, installatori e privati. L'azienda aveva bisogno di una vetrina digitale che mettesse in ordine la sua vasta offerta commerciale — termoidraulica, edilizia, ferramenta e climatizzazione — senza perdere il senso di affidabilità e competenza che la contraddistingue.
+                {t('pattiforniture.ch1_p1')}
               </p>
               <p>
-                Lavorando in sinergia con l'agenzia Carnova, la sfida è stata trasformare un'offerta aziendale complessa in un'esperienza di navigazione chiara, autorevole e accessibile.
+                {t('pattiforniture.ch1_p2')}
               </p>
             </div>
           </motion.div>
@@ -181,11 +181,9 @@ export const EditorialPattiForniture = () => {
             transition={{ duration: 1 }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-12">
-              02 — L'Obiettivo
+              {t('pattiforniture.ch2_label')}
             </span>
-            <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]">
-              "Trasferire la solidità e l'assortimento del punto vendita fisico in un'infrastruttura digitale <span className="text-primary italic">orientata alla chiarezza</span> e alla conversione."
-            </h3>
+            <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]" dangerouslySetInnerHTML={{ __html: t('pattiforniture.ch2_title1') }} />
           </motion.div>
         </div>
       </section >
@@ -231,17 +229,17 @@ export const EditorialPattiForniture = () => {
           >
             <div>
               <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-8">
-                03 — Il Processo
+                {t('pattiforniture.ch3_label')}
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter mb-8 text-[#3d0f1a]">
-                UI/UX e Architettura dell'Informazione.
+                {t('pattiforniture.ch3_title')}
               </h2>
               <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed">
                 <p>
-                  In questo progetto, la parola d'ordine è stata "chiarezza". Lavorando con un'identità visiva preesistente, mi sono concentrata interamente sull'architettura dell'informazione e sull'interfaccia utente (UI).
+                  {t('pattiforniture.ch3_p1')}
                 </p>
                 <p>
-                  Ho progettato un layout capace di far respirare i diversi macro-settori dell'azienda, organizzando servizi, attrezzature e marchi trattati in sezioni logiche. Il copywriting è stato studiato per adottare un tono di voce professionale, rassicurante e orientato al servizio, parlando efficacemente sia al target B2B che a quello consumer.
+                  {t('pattiforniture.ch3_p2')}
                 </p>
               </div>
             </div>
@@ -262,17 +260,17 @@ export const EditorialPattiForniture = () => {
             viewport={{ once: true }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-2">
-              04 — Sviluppo
+              {t('pattiforniture.ch4_label')}
             </span>
             <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              Ecosistema WordPress Corporate.
+              {t('pattiforniture.ch4_title')}
             </h2>
             <div className="font-body text-[#3d0f1a]/70 text-lg leading-relaxed space-y-6">
               <p>
-                L'infrastruttura è stata sviluppata interamente su piattaforma WordPress, ottimizzando la gestione dei contenuti per permettere all'azienda di esporre la propria offerta in modo strutturato.
+                {t('pattiforniture.ch4_p1')}
               </p>
               <p>
-                Oltre a curare l'impaginazione di ogni singola vista e la perfetta responsività mobile, ho focalizzato l'attenzione sui percorsi di conversione: chiamate rapide, pulsanti WhatsApp e moduli per la richiesta di preventivi sono posizionati strategicamente per trasformare il traffico in contatti commerciali reali.
+                {t('pattiforniture.ch4_p2')}
               </p>
             </div>
           </motion.div>
@@ -288,7 +286,7 @@ export const EditorialPattiForniture = () => {
             <div className="bg-white border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] p-10 h-full flex flex-col justify-between">
               <div>
                 <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-8">
-                  Stack tecnologico
+                  {t('chario.tech_stack')}
                 </span>
                 <div className="flex flex-wrap gap-2.5 mb-10">
                   {techList.map(tech => (
@@ -304,11 +302,11 @@ export const EditorialPattiForniture = () => {
 
               <div className="border-t border-[#3d0f1a]/10 pt-6 mt-12 space-y-4 text-[#3d0f1a]">
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">Ruolo</span>
-                  <span className="font-display text-md font-black italic">UI/UX & Web Developer</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.role_label')}</span>
+                  <span className="font-display text-md font-black italic">{t('pattiforniture.role_val')}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">Lancio</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.launch_label')}</span>
                   <span className="font-display text-md font-black">2024</span>
                 </div>
               </div>
@@ -330,17 +328,17 @@ export const EditorialPattiForniture = () => {
         >
           <div className="flex items-center gap-4 mb-16">
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
-              05 — Visual Showcase
+              {t('pattiforniture.ch5_label')}
             </span>
             <div className="flex-1 h-[1px] bg-primary/10" />
           </div>
 
           <div className="mb-12 max-w-2xl">
             <h2 className="font-display text-3xl md:text-5xl font-black tracking-tighter mb-6 text-[#3d0f1a]">
-              Solidità Commerciale.
+              {t('pattiforniture.ch5_title')}
             </h2>
             <p className="font-body text-lg text-[#3d0f1a]/70">
-              Il risultato finale è una piattaforma web che rispecchia esattamente la solidità e la grandezza dell'azienda. Un progetto che dimostra la capacità di prendere in carico la complessità di un business strutturato (con decine di categorie merceologiche e target differenti), organizzandone i contenuti per consegnare all'agenzia partner e al cliente uno strumento commerciale efficiente, veloce e moderno.
+              {t('pattiforniture.ch5_p1')}
             </p>
           </div>
         </motion.div>
@@ -393,7 +391,7 @@ export const EditorialPattiForniture = () => {
             <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             <span className="relative z-10 flex items-center gap-4 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white transition-colors font-semibold">
               <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-500" />
-              Torna all'archivio
+              {t('project_detail.back_to_archive')}
             </span>
           </Link>
         </div>

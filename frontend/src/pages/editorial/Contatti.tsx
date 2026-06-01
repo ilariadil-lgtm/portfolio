@@ -7,33 +7,34 @@ import { api } from "@/lib/api";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { RevealText } from "@/components/RevealText";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
+import { useTranslation } from "react-i18next";
 
-const CONTACTS = [
+const getContacts = (t: any) => [
   {
     label: "Email",
     detail: "ilaria.dil@gmail.com",
-    sub: "Rispondo entro 24h",
+    sub: t('contact.sub_email'),
     icon: <Mail size={17} />,
     href: "mailto:ilaria.dil@gmail.com",
   },
   {
     label: "LinkedIn",
     detail: "Ilaria Diliberto",
-    sub: "Connettiti sulla piattaforma",
+    sub: t('contact.sub_linkedin'),
     icon: <Linkedin size={17} />,
     href: "https://www.linkedin.com/in/ilaria-diliberto/",
   },
   {
     label: "GitHub",
     detail: "@ilariadil-lgtm",
-    sub: "Esplora il codice",
+    sub: t('contact.sub_github'),
     icon: <Github size={17} />,
     href: "https://github.com/ilariadil-lgtm",
   },
   {
     label: "Instagram",
     detail: "@ilaryvision",
-    sub: "Scopri i miei lavori",
+    sub: t('contact.sub_instagram'),
     icon: <Instagram size={17} />,
     href: "https://www.instagram.com/ilaryvision/",
   },
@@ -72,6 +73,7 @@ function InputField({
 
 // ─────────────────────────────────────────────────────────────────────────────
 const Contatti = () => {
+  const { t } = useTranslation();
   usePageMeta({
     title: "Contatti",
     description: "Hai un progetto in mente? Scrivimi. Rispondo entro 24 ore per discutere la tua idea e trovare insieme la soluzione giusta.",
@@ -127,7 +129,7 @@ const Contatti = () => {
             className="font-display font-black text-[#3d0f1a]/[0.025] pr-4"
             style={{ fontSize: "clamp(80px, 18vw, 240px)", lineHeight: 1 }}
           >
-            CONTATTI
+            {t('contact.watermark')}
           </span>
         </div>
 
@@ -142,7 +144,7 @@ const Contatti = () => {
             >
               <div className="flex items-center gap-4 mb-8">
                 <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-primary font-bold">
-                  CONTATTI E COLLABORAZIONI
+                  {t('contact.subtitle')}
                 </span>
                 <div className="w-10 h-[1px] bg-primary/25" />
               </div>
@@ -150,8 +152,8 @@ const Contatti = () => {
                 className="font-display font-bold leading-[0.85] tracking-tighter text-[#3d0f1a]"
                 style={{ fontSize: "clamp(3rem, 7vw, 5.8rem)" }}
               >
-                <RevealText text="Parlami del" delay={0.1} />
-                <RevealText text="tuo progetto." delay={0.2} className="text-primary italic" />
+                <RevealText text={t('contact.title_1')} delay={0.1} />
+                <RevealText text={t('contact.title_2')} delay={0.2} className="text-primary italic" />
               </h1>
             </motion.div>
 
@@ -162,13 +164,12 @@ const Contatti = () => {
               transition={{ duration: 1.2, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
             >
               <p className="font-body text-xl text-[#3d0f1a]/70 leading-relaxed border-l border-primary/25 pl-8">
-                Hai un progetto in mente, vuoi un preventivo o semplicemente vuoi
-                capire se posso aiutarti? Scrivimi — rispondo entro 24 ore.
+                {t('contact.description')}
               </p>
               <div className="mt-6 pl-8 flex items-center gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-600 animate-pulse" />
                 <span className="font-typewriter text-[9px] uppercase tracking-[0.35em] text-[#3d0f1a]/50 font-bold">
-                  Disponibile per nuovi progetti
+                  {t('contact.available')}
                 </span>
               </div>
             </motion.div>
@@ -194,10 +195,10 @@ const Contatti = () => {
             {/* Canali diretti */}
             <div>
               <span className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-primary font-bold block mb-7">
-                Canali diretti
+                {t('contact.channels')}
               </span>
               <div className="space-y-3">
-                {CONTACTS.map((c, i) => (
+                {getContacts(t).map((c, i) => (
                   <motion.a
                     key={i}
                     href={c.href}
@@ -247,13 +248,13 @@ const Contatti = () => {
               <MapPin size={16} className="text-primary mt-0.5 shrink-0" />
               <div>
                 <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-primary font-bold block mb-2">
-                  Sede operativa
+                  {t('contact.hq_label')}
                 </span>
                 <p className="font-body text-[15px] text-[#3d0f1a]/70">
-                  Sicilia, Italia
+                  {t('contact.hq_val')}
                 </p>
                 <p className="font-body text-[13px] text-[#3d0f1a]/50 mt-1">
-                  Lavoro da remoto su tutto il territorio nazionale e internazionale.
+                  {t('contact.hq_desc')}
                 </p>
               </div>
             </div>
@@ -272,14 +273,14 @@ const Contatti = () => {
               <div className="relative z-10">
                 <div className="mb-10">
                   <span className="font-typewriter text-[10px] uppercase tracking-[0.5em] text-primary block mb-4 font-bold">
-                    Invia un messaggio
+                    {t('contact.send_msg_label')}
                   </span>
                   <h2
                     className="font-display font-black leading-[0.9] tracking-tighter text-[#3d0f1a]"
                     style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
                   >
-                    Raccontami il <br />
-                    <span className="text-primary italic">tuo progetto.</span>
+                    {t('contact.form_title_1')} <br />
+                    <span className="text-primary italic">{t('contact.form_title_2')}</span>
                   </h2>
                 </div>
 
@@ -294,16 +295,16 @@ const Contatti = () => {
                     >
                       <CheckCircle size={48} className="text-primary" strokeWidth={1.5} />
                       <div>
-                        <p className="font-display text-3xl font-black mb-3 text-[#3d0f1a]">Messaggio inviato!</p>
+                        <p className="font-display text-3xl font-black mb-3 text-[#3d0f1a]">{t('contact.msg_sent_title')}</p>
                         <p className="font-body text-[#3d0f1a]/70 text-lg leading-relaxed">
-                          Perfetto. Ti rispondo entro 24 ore — a presto.
+                          {t('contact.msg_sent_desc')}
                         </p>
                       </div>
                       <button
                         onClick={() => setStatus("idle")}
                         className="font-typewriter text-[9px] uppercase tracking-[0.4em] text-[#3d0f1a]/40 hover:text-primary transition-colors mt-4 font-bold"
                       >
-                        Invia un altro messaggio
+                        {t('contact.send_another')}
                       </button>
                     </motion.div>
                   ) : (
@@ -317,33 +318,33 @@ const Contatti = () => {
                     >
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
                         <InputField
-                          label="Il tuo nome"
+                          label={t('contact.form_name')}
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          placeholder="Mario Rossi"
+                          placeholder={t('contact.form_name_ph')}
                         />
                         <InputField
-                          label="Email"
+                          label={t('contact.form_email')}
                           name="email"
                           type="email"
                           value={formData.email}
                           onChange={handleChange}
-                          placeholder="mario@esempio.com"
+                          placeholder={t('contact.form_email_ph')}
                         />
                       </div>
 
                       <InputField
-                        label="Oggetto"
+                        label={t('contact.form_subject')}
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        placeholder="Di cosa vuoi parlare?"
+                        placeholder={t('contact.form_subject_ph')}
                       />
 
                       <div className="group">
                         <label htmlFor="message" className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/60 block mb-3 font-bold cursor-pointer">
-                          Messaggio
+                          {t('contact.form_message')}
                         </label>
                         <textarea
                           id="message"
@@ -352,7 +353,7 @@ const Contatti = () => {
                           rows={5}
                           value={formData.message}
                           onChange={handleChange}
-                          placeholder="Raccontami la tua idea, il tuo progetto o la tua necessità..."
+                          placeholder={t('contact.form_message_ph')}
                           className="w-full bg-transparent border-b border-[#3d0f1a]/20 py-3.5 text-[#3d0f1a] placeholder:text-[#3d0f1a]/30 font-body text-base outline-none focus:border-primary transition-colors duration-300 resize-none"
                         />
                       </div>
@@ -363,7 +364,7 @@ const Contatti = () => {
                           animate={{ opacity: 1, y: 0 }}
                           className="font-typewriter text-[9px] uppercase tracking-[0.35em] text-red-500 font-bold"
                         >
-                          Qualcosa è andato storto. Prova di nuovo o scrivimi via email.
+                          {t('contact.form_error')}
                         </motion.p>
                       )}
 
@@ -375,7 +376,7 @@ const Contatti = () => {
                           className="group relative flex items-center justify-between w-full p-7 border border-[#3d0f1a] bg-[#f5f2ed] hover:bg-primary overflow-hidden transition-all duration-500 disabled:opacity-50 mt-4"
                         >
                           <span className="relative z-10 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white font-bold transition-colors">
-                            {status === "loading" ? "Invio in corso..." : "Invia messaggio"}
+                            {status === "loading" ? t('contact.btn_sending') : t('contact.btn_send')}
                           </span>
                           <ArrowRight
                             size={18}

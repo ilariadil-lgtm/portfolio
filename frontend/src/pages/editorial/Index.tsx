@@ -8,10 +8,12 @@ import { useEffect, useState } from "react";
 import { BriefingCTA } from "@/components/BriefingCTA";
 import { api } from "@/lib/api";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useTranslation } from "react-i18next";
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 const Index = () => {
+  const { t } = useTranslation();
   usePageMeta({
     title: "Home",
     description: "Ilaria Diliberto — UX Designer e Web Developer. Progetto e costruisco ecosistemi digitali su misura: siti web, e-commerce e web app con estrema cura e precisione.",
@@ -93,8 +95,8 @@ const Index = () => {
             transition={{ duration: 25, repeat: Infinity, ease: "linear", repeatType: "loop" }}
             className="flex gap-16 font-display text-[12vw] font-black text-stroke-primary text-transparent whitespace-nowrap"
           >
-            <span>UX ARCHITECTURE • DIGITAL STRATEGY • CLOUD DESIGN •&nbsp;</span>
-            <span>UX ARCHITECTURE • DIGITAL STRATEGY • CLOUD DESIGN •&nbsp;</span>
+            <span>{t('index.marquee_1')}</span>
+            <span>{t('index.marquee_1')}</span>
           </motion.div>
         </div>
         <div className="relative z-10 flex whitespace-nowrap overflow-hidden rotate-1 scale-110 -mt-24 md:-mt-32">
@@ -103,8 +105,8 @@ const Index = () => {
             transition={{ duration: 18, repeat: Infinity, ease: "linear", repeatType: "loop" }}
             className="flex gap-12 font-display text-[6vw] font-bold text-primary mix-blend-multiply opacity-90 whitespace-nowrap"
           >
-            <span>IDENTITÀ VISIVA • ECOSISTEMI DIGITALI • GESTIONE FLUIDA •&nbsp;</span>
-            <span>IDENTITÀ VISIVA • ECOSISTEMI DIGITALI • GESTIONE FLUIDA •&nbsp;</span>
+            <span>{t('index.marquee_2')}</span>
+            <span>{t('index.marquee_2')}</span>
           </motion.div>
         </div>
         <div className="relative z-20 flex whitespace-nowrap overflow-hidden -rotate-1 scale-105 mt-2 md:mt-4">
@@ -113,8 +115,8 @@ const Index = () => {
               transition={{ duration: 12, repeat: Infinity, ease: "linear", repeatType: "loop" }}
               className="flex gap-20 font-typewriter text-[13px] uppercase tracking-[0.5em] text-primary font-medium whitespace-nowrap"
             >
-              <span>[ PROCESSO: FLUIDO ] // VISIONE: EMPATICA // LAT_38.1 // LONG_13.3 //&nbsp;</span>
-              <span>[ PROCESSO: FLUIDO ] // VISIONE: EMPATICA // LAT_38.1 // LONG_13.3 //&nbsp;</span>
+              <span>{t('index.marquee_3')}</span>
+              <span>{t('index.marquee_3')}</span>
             </motion.div>
         </div>
       </section>
@@ -129,7 +131,7 @@ const Index = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="font-typewriter text-[11px] text-primary font-medium rotate-90 whitespace-nowrap tracking-[0.5em]"
           >
-            ARCHITETTURA DIGITALE / ENV_2026
+            {t('index.arch_env')}
           </motion.span>
           <div className="w-[1px] flex-1 bg-primary/20 my-12" />
           <span className="font-typewriter text-[11px] text-primary font-medium rotate-90 whitespace-nowrap tracking-[0.5em]">© 2026</span>
@@ -148,14 +150,14 @@ const Index = () => {
               whileInView={{ opacity: 1, x: 0 }}
               className="flex items-center gap-4 mb-12"
             >
-              <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">02 — IL MIO APPROCCIO</span>
+              <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">{t('index.approach_label')}</span>
               <div className="w-12 h-[1px] bg-primary/20" />
             </motion.div>
             <div className="mb-16">
               {[
-                "Do forma alle tue idee,",
-                "dal design al prodotto",
-                "digitale completo."
+                t('index.approach_title_1'),
+                t('index.approach_title_2'),
+                t('index.approach_title_3')
               ].map((line, i) => (
                 <motion.h2
                   key={i}
@@ -176,13 +178,7 @@ const Index = () => {
               transition={{ duration: 1, delay: 0.6 }}
               className="font-body text-xl text-[#3d0f1a]/70 leading-relaxed max-w-xl mb-16"
             >
-              "Il mio percorso parte dal graphic design: la cura per l'identità visiva e per i dettagli è da sempre la mia base.
-              Ma per dare davvero vita a un progetto ho capito che non basta fermarsi all'estetica.
-
-              Oggi creo siti web, e-commerce e app gestendo il processo a 360 gradi come Tech Product Manager.
-              Ascolto le tue necessità, curo la grafica e mi occupo dello sviluppo pratico.
-              Il mio obiettivo non è solo consegnarti un prodotto che funzioni alla perfezione,
-              ma rendere tutto il lavoro fluido, umano e privo di intoppi tecnici."
+              {t('index.approach_desc')}
             </motion.p>
             <motion.div
               initial={{ opacity: 0 }}
@@ -191,7 +187,7 @@ const Index = () => {
             >
               <Link to="/chisono" className="group inline-flex items-center gap-6 font-typewriter text-[13px] uppercase tracking-[0.25em] text-primary font-medium">
                 <span className="relative overflow-hidden">
-                  Scopri i servizi
+                  {t('index.discover_services')}
                   <span className="absolute bottom-0 left-0 w-full h-[1px] bg-primary transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                 </span>
                 <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-500 transform group-hover:scale-110">
@@ -214,7 +210,7 @@ const Index = () => {
             className="w-full h-full object-cover absolute inset-0 mix-blend-luminosity group-hover:scale-105 transition-transform duration-2000"
           />
           <div className="absolute top-12 right-12 w-24 h-24 border border-white/5 backdrop-blur-md flex items-center justify-center">
-            <span className="font-typewriter text-[11px] text-white rotate-90 uppercase tracking-[0.3em] font-medium">Tech PM</span>
+            <span className="font-typewriter text-[11px] text-white rotate-90 uppercase tracking-[0.3em] font-medium">{t('index.tech_pm')}</span>
           </div>
           <div className="relative z-10 p-8 md:p-16 lg:p-24 flex flex-col justify-between h-full min-h-[600px]">
             <motion.div
@@ -224,7 +220,7 @@ const Index = () => {
             >
               <div className="flex items-center gap-3 mb-10">
                 <div className="w-1.5 h-1.5 rounded-full bg-background" />
-                <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-background font-medium">COSA FACCIO</span>
+                <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-background font-medium">{t('index.what_i_do')}</span>
               </div>
               <ul className="font-mono text-[13px] text-background space-y-6 leading-relaxed font-medium">
                 {services.length > 0 ? services.map((s: any, idx: number) => (
@@ -263,7 +259,7 @@ const Index = () => {
               className="mt-12 pt-8 border-t border-background/10"
             >
               <p className="font-body text-[15px] italic leading-relaxed text-background/60 max-w-sm">
-                "Ilaria Diliberto — Tech Product Manager"
+                {t('index.signature')}
               </p>
             </motion.div>
           </div>
@@ -277,26 +273,22 @@ const Index = () => {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
           <div className="lg:col-span-5">
             <div className="flex items-center gap-4 mb-8">
-              <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">03 — LE MIE COMPETENZE</span>
+              <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">{t('index.skills_label')}</span>
               <div className="w-12 h-[1px] bg-primary/20" />
             </div>
             <h2 className="font-display text-6xl md:text-8xl lg:text-[6vw] font-bold leading-[0.85] tracking-tighter text-[#3d0f1a] mb-12">
-              Le mie <br />
-              <span className="text-primary italic">aree di competenza.</span>
+              {t('index.skills_title_1')} <br />
+              <span className="text-primary italic">{t('index.skills_title_2')}</span>
             </h2>
             <p className="font-body text-lg text-[#3d0f1a]/60 leading-relaxed max-w-md mb-12 border-l border-primary/20 pl-8">
-              Non credo nei confini rigidi tra chi disegna e chi programma.
-              Questo schema riassume il mio bagaglio tecnico e creativo:
-              un mix di competenze nato per curare ogni aspetto del tuo progetto.
-              Dalla creazione di un'identità visiva forte allo sviluppo di siti web ed e-commerce,
-              fino alla gestione di tutte le fasi di lavoro.
+              {t('index.skills_desc')}
             </p>
             <div className="space-y-4">
               {[
-                { label: "UI & UX DESIGN", value: "95%" },
-                { label: "SVILUPPO WEB", value: "90%" },
-                { label: "WORDPRESS & PRESTASHOP", value: "85%" },
-                { label: "TECH PRODUCT MANAGEMENT", value: "80%" }
+                { label: t('index.skill_1'), value: "95%" },
+                { label: t('index.skill_2'), value: "90%" },
+                { label: t('index.skill_3'), value: "85%" },
+                { label: t('index.skill_4'), value: "80%" }
               ].map((skill, i) => (
                 <div key={i} className="flex items-center justify-between border-b border-primary/5 pb-2 group cursor-default">
                   <span className="font-typewriter text-[13px] uppercase tracking-widest text-primary font-medium transition-colors">{skill.label}</span>
@@ -331,12 +323,12 @@ const Index = () => {
                 />
               </svg>
               {[
-                { label: "Branding & Loghi", top: "0%", left: "50%", type: "vertical" },
-                { label: "Materiali Editoriali", top: "25%", left: "93.3%", type: "right" },
-                { label: "Web Design", top: "75%", left: "93.3%", type: "right" },
-                { label: "Sviluppo Frontend", top: "100%", left: "50%", type: "vertical" },
-                { label: "E-commerce", top: "75%", left: "6.7%", type: "left" },
-                { label: "Gestione Progetti", top: "25%", left: "6.7%", type: "left" }
+                { label: t('index.radar_1'), top: "0%", left: "50%", type: "vertical" },
+                { label: t('index.radar_2'), top: "25%", left: "93.3%", type: "right" },
+                { label: t('index.radar_3'), top: "75%", left: "93.3%", type: "right" },
+                { label: t('index.radar_4'), top: "100%", left: "50%", type: "vertical" },
+                { label: t('index.radar_5'), top: "75%", left: "6.7%", type: "left" },
+                { label: t('index.radar_6'), top: "25%", left: "6.7%", type: "left" }
               ].map((l, i) => {
                 let layoutClass = "";
                 let transformStr = "";
@@ -379,22 +371,22 @@ const Index = () => {
         <div className="px-6 md:px-12 flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
           <div className="relative">
             <div className="flex items-center gap-4 mb-6">
-              <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">04 — PROGETTI</span>
+              <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">{t('index.projects_label')}</span>
               <div className="w-12 h-[1px] bg-primary/20" />
             </div>
             <h2 className="font-display text-6xl md:text-8xl lg:text-[7vw] font-bold leading-none tracking-tighter">
-              Dal problema <br />
-              <span className="text-primary italic">al prodotto.</span>
+              {t('index.projects_title_1')} <br />
+              <span className="text-primary italic">{t('index.projects_title_2')}</span>
             </h2>
           </div>
           <div className="flex flex-col items-end gap-4">
             <Link to="/progetti" className="group flex items-center gap-6 font-typewriter text-[13px] uppercase tracking-[0.25em] text-primary font-medium">
-              <span>Tutti i progetti</span>
+              <span>{t('index.all_projects')}</span>
               <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-500">
                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>
-            <div className="font-typewriter text-[11px] uppercase tracking-[0.3em] text-primary font-medium">Scorri per scoprire —&gt;</div>
+            <div className="font-typewriter text-[11px] uppercase tracking-[0.3em] text-primary font-medium">{t('index.scroll_discover')}</div>
           </div>
         </div>
 
@@ -407,7 +399,7 @@ const Index = () => {
                     <svg className="w-full h-full text-primary/20" viewBox="0 0 100 100" preserveAspectRatio="none">
                       <path d="M0,5 L0,0 L5,0 M95,0 L100,0 L100,5 M100,95 L100,100 L95,100 M5,100 L0,100 L0,95" fill="none" stroke="currentColor" strokeWidth="0.2" />
                     </svg>
-                    <span className="absolute -top-10 left-0 font-typewriter text-[10px] tracking-widest text-primary font-medium">LOC_ID: 00{item.id}</span>
+                    <span className="absolute -top-10 left-0 font-typewriter text-[10px] tracking-widest text-primary font-medium">{t('index.loc_id')}: 00{item.id}</span>
                   </div>
                   <Link to={item.url} className="block relative overflow-hidden group/box perspective-1000">
                     <motion.div whileHover={{ rotateX: 2, rotateY: -2, scale: 1.01 }} className="relative aspect-[16/9] overflow-hidden bg-muted/10 border border-editorial shadow-xl">
@@ -428,8 +420,10 @@ const Index = () => {
                       <div className="absolute inset-0 p-8 flex flex-col justify-between opacity-0 group-hover/box:opacity-100 transition-all duration-700">
                         <div className="flex justify-between items-start">
                           <div className="flex flex-col gap-1">
-                            <span className="font-typewriter text-[7px] text-white/60 uppercase tracking-[0.4em]">Tipologia</span>
-                            <span className="font-display text-xs text-white font-bold">{item.type}</span>
+                            <span className="font-typewriter text-[7px] text-white/60 uppercase tracking-[0.4em]">{t('index.type')}</span>
+                            <span className="font-display text-xs text-white font-bold">
+                              {t(`index_fallback.${item.id}.type`, { defaultValue: item.type })}
+                            </span>
                           </div>
                           <ArrowRight size={14} className="text-white" />
                         </div>
@@ -441,11 +435,15 @@ const Index = () => {
                     </motion.div>
                   </Link>
                   <div className="mt-8 p-6 bg-white/[0.03] backdrop-blur-3xl border border-editorial shadow-sm">
-                    <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium block mb-3">Progetto_0{i + 1}</span>
-                    <h3 className="font-display text-2xl md:text-3xl font-black text-[#3d0f1a] mb-4">{item.title}</h3>
-                    <p className="font-body text-[14px] text-[#3d0f1a]/60 leading-relaxed line-clamp-2 max-w-md">{item.description}</p>
+                    <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium block mb-3">{t('index.project')}_0{i + 1}</span>
+                    <h3 className="font-display text-2xl md:text-3xl font-black text-[#3d0f1a] mb-4">
+                      {t(`index_fallback.${item.id}.title`, { defaultValue: item.title })}
+                    </h3>
+                    <p className="font-body text-[14px] text-[#3d0f1a]/60 leading-relaxed line-clamp-2 max-w-md">
+                      {t(`index_fallback.${item.id}.description`, { defaultValue: item.description })}
+                    </p>
                     <div className="flex items-center gap-4 mt-6">
-                      <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium">Esplora il progetto</span>
+                      <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium">{t('index.explore_project')}</span>
                       <div className="w-8 h-[1px] bg-primary/20" />
                     </div>
                   </div>

@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useMemo } from "react";
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, animate, MotionValue, useSpring } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface NavPointProps {
   angle: number;
@@ -123,6 +124,7 @@ const NavPoint: React.FC<NavPointProps> = ({ angle, radiusSpring, label, detail,
 
 
 export const CreativeHero: React.FC = () => {
+  const { t } = useTranslation();
   const [hoveredPoint, setHoveredPoint] = useState<number | null>(null);
   const [isGraphicHovered, setIsGraphicHovered] = useState(false);
   const rotationValue = useMotionValue(0);
@@ -223,7 +225,7 @@ export const CreativeHero: React.FC = () => {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="font-typewriter text-[14px] uppercase text-primary font-medium tracking-[0.3em] block"
               >
-                BRANDING • WEB DESIGN • SVILUPPO
+                {t('hero.tags')}
               </motion.span>
             </div>
 
@@ -259,11 +261,7 @@ export const CreativeHero: React.FC = () => {
               className="mt-8 lg:mt-12 max-w-[34rem]"
             >
               <p className="font-body text-sm md:text-base text-[#3d0f1a]/60 leading-relaxed border-l-2 border-primary/10 pl-6 lg:pl-8 py-2">
-                "Do forma alla tua identità visiva e la trasformo in un ecosistema digitale completo.
-                Le mie radici nel graphic design mi permettono di curare ogni dettaglio del tuo brand
-                - dal logo ai materiali editoriali -, ma non mi fermo all'estetica:
-                gestisco il progetto a 360 gradi, arrivando fino allo sviluppo pratico e
-                intuitivo di siti web, e-commerce e web app."
+                "{t('hero.description')}"
               </p>
             </motion.div>
           </motion.div>
@@ -313,7 +311,7 @@ export const CreativeHero: React.FC = () => {
                   <path id="textCircle" d="M 100, 100 m -78, 0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0" />
                 </defs>
                 <text className="font-typewriter text-[4px] uppercase tracking-[0.8em] fill-primary/20">
-                  <textPath xlinkHref="#textCircle">BRANDING • SVILUPPO • GESTIONE</textPath>
+                  <textPath xlinkHref="#textCircle">{t('hero.circle_text')}</textPath>
                 </text>
               </svg>
 
@@ -322,8 +320,8 @@ export const CreativeHero: React.FC = () => {
                 {[0, 1, 2].map((i) => {
                   const angles = [-90, 30, 150];
                   const springs = [radius1, radius2, radius3];
-                  const labels = ["01 — Chi sono", "02 — Servizi", "03 — Progetti"];
-                  const details = ["Scopri il mio percorso", "Esplora i servizi", "Guarda i lavori"];
+                  const labels = [t('hero.point1_label'), t('hero.point2_label'), t('hero.point3_label')];
+                  const details = [t('hero.point1_desc'), t('hero.point2_desc'), t('hero.point3_desc')];
                   const links = ["/chisono", "/servizi", "/progetti"];
                   return (
                     <NavPoint
@@ -340,9 +338,9 @@ export const CreativeHero: React.FC = () => {
               {/* Mobile: 3 link testuali sotto il grafico al posto dei NavPoint */}
               <div className="lg:hidden absolute -bottom-10 sm:-bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-5 sm:gap-6 whitespace-nowrap z-20">
                 {[
-                  { label: "Chi sono", to: "/chisono" },
-                  { label: "Servizi", to: "/servizi" },
-                  { label: "Progetti", to: "/progetti" },
+                  { label: t('nav.about'), to: "/chisono" },
+                  { label: t('nav.services'), to: "/servizi" },
+                  { label: t('nav.projects'), to: "/progetti" },
                 ].map((link, i) => (
                   <Link
                     key={i}
@@ -372,7 +370,7 @@ export const CreativeHero: React.FC = () => {
         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
         style={{ opacity }}
       >
-        <span className="font-typewriter text-[12px] uppercase tracking-[0.5em] text-primary font-medium">Esplora</span>
+        <span className="font-typewriter text-[12px] uppercase tracking-[0.5em] text-primary font-medium">{t('hero.explore')}</span>
         <div className="w-[1px] h-16 bg-primary/20 relative overflow-hidden">
           <motion.div
             className="absolute top-0 left-0 w-full h-1/2 bg-primary/60"

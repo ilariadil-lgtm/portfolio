@@ -6,10 +6,11 @@ import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Github, Globe, ExternalLink } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useTranslation } from "react-i18next";
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
-const fallbackProjects = [
+const getFallbackProjects = (t: any) => [
   {
     id: 1,
     title: "Chario Hifi",
@@ -18,7 +19,7 @@ const fallbackProjects = [
     year: "2025",
     project_url: "https://chariohifi.it",
     github_url: "",
-    description: "L'alta fedeltà digitale. Sito premium creato col mio tema proprietario Sophia per offrire un'esperienza acustica e visiva senza compromessi.",
+    description: t('project_detail.fallback_desc1'),
     image: "/assets/chario-hero.png"
   },
   {
@@ -30,7 +31,7 @@ const fallbackProjects = [
     image: "/assets/project-zenith.png",
     project_url: "https://storagehub.com",
     github_url: "https://github.com",
-    description: "Una web app intelligente di storage e inventory management che semplifica e automatizza la gestione dell'inventario su scala enterprise."
+    description: t('project_detail.fallback_desc2')
   },
   {
     id: 3,
@@ -41,12 +42,13 @@ const fallbackProjects = [
     image: "/assets/project-zenith.png",
     project_url: "https://freelens.app",
     github_url: "https://github.com",
-    description: "Spazio digitale di project management per gestire progetti e task, riprendendo il controllo del proprio tempo con un'interfaccia focalizzata."
+    description: t('project_detail.fallback_desc3')
   }
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
 export const EditorialProjectDetail = () => {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const [project, setProject] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -58,7 +60,7 @@ export const EditorialProjectDetail = () => {
           let data: any = null;
           try { data = await api.getProject(id); } catch {}
           if (!data || data.detail === "Not found." || data.error) {
-            data = fallbackProjects.find(p => p.id.toString() === id) ?? null;
+            data = getFallbackProjects(t).find(p => p.id.toString() === id) ?? null;
           }
           setProject(data);
         }
@@ -81,7 +83,7 @@ export const EditorialProjectDetail = () => {
           transition={{ duration: 1.4, repeat: Infinity }}
           className="font-typewriter text-[10px] uppercase tracking-[0.5em] text-primary"
         >
-          CARICAMENTO...
+          {t('project_detail.loading')}
         </motion.span>
       </div>
     );
@@ -91,10 +93,10 @@ export const EditorialProjectDetail = () => {
   if (!project) {
     return (
       <div className="min-h-screen bg-[#f5f2ed] flex flex-col items-center justify-center gap-8 text-[#3d0f1a]">
-        <h1 className="font-display text-5xl font-black">Progetto non trovato.</h1>
+        <h1 className="font-display text-5xl font-black">{t('project_detail.not_found')}</h1>
         <Link to="/progetti" className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-primary font-semibold">
           <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
-          Torna all'archivio
+          {t('project_detail.back_to_archive')}
         </Link>
       </div>
     );
@@ -160,7 +162,7 @@ export const EditorialProjectDetail = () => {
               className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-white/60 hover:text-white transition-colors font-semibold"
             >
               <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
-              Archivio progetti
+              {t('project_detail.archive')}
             </Link>
           </motion.div>
         </div>
@@ -184,7 +186,7 @@ export const EditorialProjectDetail = () => {
           >
             <div className="flex items-center gap-4 mb-5">
               <span className="font-typewriter text-[10px] uppercase tracking-[0.5em] text-white/50 font-semibold">
-                {project.type || "Progetto"}
+                {project.type || t('project_detail.default_type')}
               </span>
               <div className="w-8 h-[1px] bg-white/25" />
             </div>
@@ -207,21 +209,21 @@ export const EditorialProjectDetail = () => {
 
           <div className="flex flex-wrap items-center gap-8">
             <div className="flex flex-col gap-1">
-              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35">Categoria</span>
+              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35">{t('project_detail.category')}</span>
               <span className="font-typewriter text-[11px] uppercase tracking-[0.2em] text-[#3d0f1a] font-bold">
                 {project.type || "—"}
               </span>
             </div>
             <div className="w-px h-8 bg-primary/10 hidden sm:block" />
             <div className="flex flex-col gap-1">
-              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35">Anno</span>
+              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35">{t('project_detail.year')}</span>
               <span className="font-display text-xl font-black">{project.year || "—"}</span>
             </div>
             <div className="w-px h-8 bg-primary/10 hidden sm:block" />
             <div className="flex flex-col gap-1">
-              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35">Stato</span>
+              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35">{t('project_detail.status')}</span>
               <span className="font-typewriter text-[11px] text-green-700 font-bold tracking-widest">
-                ● ONLINE
+                {t('project_detail.online')}
               </span>
             </div>
           </div>
@@ -236,7 +238,7 @@ export const EditorialProjectDetail = () => {
               >
                 <ExternalLink size={13} className="text-primary group-hover:text-white transition-colors" />
                 <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-primary group-hover:text-white transition-colors font-semibold">
-                  Vedi live
+                  {t('project_detail.view_live')}
                 </span>
               </a>
             )}
@@ -249,7 +251,7 @@ export const EditorialProjectDetail = () => {
               >
                 <Github size={13} className="text-[#3d0f1a]/50 group-hover:text-[#3d0f1a] transition-colors" />
                 <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-[#3d0f1a]/50 group-hover:text-[#3d0f1a] transition-colors font-semibold">
-                  GitHub
+                  {t('project_detail.github')}
                 </span>
               </a>
             )}
@@ -274,7 +276,7 @@ export const EditorialProjectDetail = () => {
           >
             <div>
               <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-6">
-                Il progetto
+                {t('project_detail.the_project')}
               </span>
               <p
                 className="font-body text-[#3d0f1a]/80 leading-relaxed"
@@ -287,18 +289,18 @@ export const EditorialProjectDetail = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 pt-10 border-t border-primary/8">
               <div>
                 <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35 block mb-3">
-                  Sfida progettuale
+                  {t('project_detail.challenge_title')}
                 </span>
                 <p className="font-body text-[15px] text-[#3d0f1a]/65 leading-relaxed italic">
-                  "Tradurre un'identità visiva complessa in un'esperienza web rapida, pulita e immediatamente riconoscibile."
+                  {t('project_detail.challenge_desc')}
                 </p>
               </div>
               <div>
                 <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35 block mb-3">
-                  Risultato
+                  {t('project_detail.result_title')}
                 </span>
                 <p className="font-body text-[15px] text-[#3d0f1a]/65 leading-relaxed italic">
-                  "Un prodotto finale coerente, performante e pronto per scalare — consegnato nei tempi stabiliti."
+                  {t('project_detail.result_desc')}
                 </p>
               </div>
             </div>
@@ -317,7 +319,7 @@ export const EditorialProjectDetail = () => {
               <div className="absolute top-0 left-0 w-full h-[3px] bg-primary" />
 
               <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-white/40 block mb-8">
-                Stack tecnologico
+                {t('project_detail.tech_stack')}
               </span>
 
               <div className="flex flex-wrap gap-2.5 mb-10">
@@ -333,11 +335,11 @@ export const EditorialProjectDetail = () => {
 
               <div className="border-t border-white/10 pt-8 space-y-5">
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-white/35">Ruolo</span>
-                  <span className="font-display text-lg font-black italic">Lead Designer & Dev</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-white/35">{t('project_detail.role_label')}</span>
+                  <span className="font-display text-lg font-black italic">{t('project_detail.role_val')}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-white/35">Anno</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-white/35">{t('project_detail.year')}</span>
                   <span className="font-display text-lg font-black">{project.year || "2025"}</span>
                 </div>
               </div>
@@ -356,7 +358,7 @@ export const EditorialProjectDetail = () => {
                     <div className="flex items-center gap-3">
                       <Globe size={14} className="text-primary" />
                       <span className="font-typewriter text-[10px] uppercase tracking-[0.35em] font-semibold">
-                        Sito live
+                        {t('project_detail.site_live')}
                       </span>
                     </div>
                     <ArrowRight size={14} className="text-primary/40 group-hover:text-primary group-hover:translate-x-1.5 transition-all duration-400" />
@@ -372,7 +374,7 @@ export const EditorialProjectDetail = () => {
                     <div className="flex items-center gap-3">
                       <Github size={14} className="text-primary" />
                       <span className="font-typewriter text-[10px] uppercase tracking-[0.35em] font-semibold">
-                        Repository GitHub
+                        {t('project_detail.repo_github')}
                       </span>
                     </div>
                     <ArrowRight size={14} className="text-primary/40 group-hover:text-primary group-hover:translate-x-1.5 transition-all duration-400" />
@@ -397,7 +399,7 @@ export const EditorialProjectDetail = () => {
             <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             <span className="relative z-10 flex items-center gap-4 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white transition-colors font-semibold">
               <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-500" />
-              Torna all'archivio
+              {t('project_detail.back_to_archive')}
             </span>
           </Link>
         </div>
@@ -412,18 +414,17 @@ export const EditorialProjectDetail = () => {
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
           <div className="lg:col-span-7 space-y-6">
             <span className="font-typewriter text-[12px] uppercase tracking-[0.4em] text-white font-bold block">
-              06 — SYSTEM OPERATION
+              {t('project_detail.cta_label')}
             </span>
             <h2
               className="font-display font-black leading-none tracking-tighter"
               style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)' }}
             >
-              COSTRUIAMO <br />
-              <span className="text-primary italic">QUALCOSA DI UNICO.</span>
+              {t('project_detail.cta_title_1')} <br />
+              <span className="text-primary italic">{t('project_detail.cta_title_2')}</span>
             </h2>
             <p className="font-body text-lg text-white/80 leading-relaxed max-w-xl">
-              Hai un'idea per una web app, un design system personalizzato o un e-commerce ad alte prestazioni?
-              Colleghiamo le nostre stazioni per concretizzare la tua visione digitale.
+              {t('project_detail.cta_desc')}
             </p>
           </div>
 
@@ -433,7 +434,7 @@ export const EditorialProjectDetail = () => {
               className="group inline-flex items-center gap-8 p-8 border border-white/10 hover:border-primary/40 bg-white/[0.02] backdrop-blur-sm transition-all duration-700 w-full max-w-md justify-between"
             >
               <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-white font-medium group-hover:text-primary transition-colors">
-                PARLIAMONE
+                {t('project_detail.cta_btn')}
               </span>
               <ArrowRight size={18} className="text-white group-hover:text-primary group-hover:translate-x-4 transition-all duration-700" />
             </Link>

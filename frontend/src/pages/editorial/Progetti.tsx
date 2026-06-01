@@ -9,6 +9,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { RevealText } from "@/components/RevealText";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
 import { BriefingCTA } from "@/components/BriefingCTA";
+import { useTranslation } from "react-i18next";
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
@@ -131,11 +132,11 @@ const TYPE_LABELS: Record<string, string> = {
   BRAND_IDENTITY: "Brand Identity",
 };
 
-const getProjectLabel = (typeStr: string): string => {
-  if (!typeStr) return "Progetto";
+const getProjectLabel = (typeStr: string, t: any): string => {
+  if (!typeStr) return t('projects.default_label');
   return typeStr
     .split(" ")
-    .map(t => TYPE_LABELS[t] || t.replace(/_/g, ' '))
+    .map(t_str => TYPE_LABELS[t_str] || t_str.replace(/_/g, ' '))
     .join(" • ");
 };
 
@@ -154,6 +155,7 @@ const projectMatchesCategory = (project: any, categoryId: string): boolean => {
 //  PROJECT CARD — editorial, compact, scalable
 // ─────────────────────────────────────────────────────────────────────────────
 const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
+  const { t } = useTranslation();
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -202,18 +204,18 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
       <div className="flex flex-col flex-1 p-6 transition-colors duration-500">
         <div className="flex items-start justify-between gap-4 mb-3">
           <span className="font-typewriter text-[9px] uppercase tracking-[0.35em] text-primary font-bold leading-relaxed">
-            {getProjectLabel(project.type)}
+            {getProjectLabel(project.type, t)}
           </span>
           <span className="font-typewriter text-[9px] text-[#3d0f1a]/50 shrink-0 font-bold">{project.year || "2025"}</span>
         </div>
 
         <h2 className="font-display font-black text-[#3d0f1a] tracking-tight leading-[0.9] mb-4"
           style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)' }}>
-          {project.title}
+          {t(`projects_data.${project.id}.title`, { defaultValue: project.title })}
         </h2>
 
         <p className="font-body text-[14px] text-[#3d0f1a]/70 leading-relaxed line-clamp-2 mb-8 flex-1">
-          {project.description}
+          {t(`projects_data.${project.id}.description`, { defaultValue: project.description })}
         </p>
 
         <Link
@@ -222,7 +224,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
           className="inline-flex items-center justify-between font-typewriter text-[9px] uppercase tracking-[0.35em] text-[#3d0f1a] font-bold group/link border-t border-[#3d0f1a]/10 pt-4"
         >
           <span className="relative overflow-hidden group-hover/link:text-primary transition-colors">
-            ESPLORA
+            {t('projects.explore')}
           </span>
           <ArrowRight size={14} className="group-hover/link:text-primary group-hover/link:translate-x-1 transition-all duration-400" />
         </Link>
@@ -235,6 +237,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
 //  MAIN PAGE COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 const Progetti = () => {
+  const { t } = useTranslation();
   usePageMeta({
     title: "Progetti",
     description: "Archivio dei progetti di Ilaria Diliberto: siti web, e-commerce, web app e design system realizzati con estrema precisione e attenzione al dettaglio.",
@@ -262,6 +265,7 @@ const Progetti = () => {
 
   const categoriesWithCount = CATEGORIES.map(cat => ({
     ...cat,
+    label: cat.id === "ALL" ? t('projects.cat_all') : cat.label,
     count: cat.id === "ALL"
       ? projects.length
       : projects.filter(p => projectMatchesCategory(p, cat.id)).length,
@@ -277,7 +281,7 @@ const Progetti = () => {
           transition={{ duration: 1.5, repeat: Infinity }}
           className="font-typewriter text-[10px] uppercase tracking-[0.5em] text-primary"
         >
-          CARICAMENTO ARCHIVIO...
+          {t('projects.loading')}
         </motion.div>
       </div>
     );
@@ -301,7 +305,7 @@ const Progetti = () => {
           <span
             className="font-display font-black text-[#3d0f1a]/[0.025] pr-4"
             style={{ fontSize: 'clamp(80px, 18vw, 240px)', lineHeight: 1 }}>
-            ARCHIVIO
+            {t('projects.watermark')}
           </span>
         </div>
 
@@ -316,7 +320,7 @@ const Progetti = () => {
             >
               <div className="flex items-center gap-4 mb-8">
                 <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-primary font-bold">
-                  I PROGETTI
+                  {t('projects.subtitle')}
                 </span>
                 <div className="w-10 h-[1px] bg-primary/25" />
               </div>
@@ -324,8 +328,8 @@ const Progetti = () => {
                 className="font-display font-black leading-[0.85] tracking-tighter text-[#3d0f1a]"
                 style={{ fontSize: 'clamp(3.5rem, 9vw, 8rem)' }}
               >
-                <RevealText text="Casi" delay={0.1} />
-                <RevealText text="Studio." delay={0.2} className="text-primary italic" />
+                <RevealText text={t('projects.title_1')} delay={0.1} />
+                <RevealText text={t('projects.title_2')} delay={0.2} className="text-primary italic" />
               </h1>
             </motion.div>
 
@@ -336,9 +340,7 @@ const Progetti = () => {
               transition={{ duration: 1.2, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
             >
               <p className="font-body text-xl text-[#3d0f1a]/70 leading-relaxed border-l border-primary/25 pl-8">
-                Dall'analisi del problema al rilascio sul mercato.
-                Una raccolta di progetti in cui la logica dello sviluppo full-stack e
-                l'empatia del design si uniscono per superare ostacoli complessi.
+                {t('projects.description')}
               </p>
             </motion.div>
           </div>
@@ -375,7 +377,7 @@ const Progetti = () => {
             {/* Count */}
             <div className="shrink-0 flex items-center gap-2 opacity-50">
               <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] font-bold">
-                {filtered.length} {filtered.length === 1 ? "progetto" : "progetti"}
+                {filtered.length} {filtered.length === 1 ? t('projects.count_singular') : t('projects.count_plural')}
               </span>
             </div>
 
@@ -399,7 +401,7 @@ const Progetti = () => {
                 className="py-32 text-center"
               >
                 <p className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-primary/40 font-bold">
-                  Nessun progetto in questa categoria
+                  {t('projects.no_projects')}
                 </p>
               </motion.div>
             ) : (
@@ -430,7 +432,7 @@ const Progetti = () => {
                 className="group relative flex items-center justify-center px-12 py-5 border border-[#3d0f1a] bg-white hover:shadow-[8px_8px_0px_#c0392b] overflow-hidden transition-all duration-300"
               >
                 <span className="relative z-10 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a] transition-colors font-bold group-hover:text-primary">
-                  MOSTRA ALTRI PROGETTI
+                  {t('projects.load_more')}
                 </span>
               </button>
             </motion.div>
@@ -457,18 +459,17 @@ const Progetti = () => {
               transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
             >
               <span className="font-typewriter text-[10px] uppercase tracking-[0.4em] text-primary font-bold block mb-8">
-                IL MANIFESTO
+                {t('projects.manifesto_label')}
               </span>
               <blockquote
                 className="font-display font-black leading-[0.9] tracking-tighter text-[#3d0f1a]"
                 style={{ fontSize: 'clamp(2rem, 4.5vw, 4rem)' }}
               >
-                "Forma e funzione. <br />
-                <span className="text-primary italic">L'estetica incontra il codice."</span>
+                "{t('projects.manifesto_title_1')} <br />
+                <span className="text-primary italic">{t('projects.manifesto_title_2')}"</span>
               </blockquote>
               <p className="font-body text-lg text-[#3d0f1a]/70 leading-relaxed mt-8 max-w-xl">
-                Ogni progetto in questo archivio è il risultato di una ricerca rigorosa del connubio tra
-                estetica raffinata e ingegneria web, volta a massimizzare le prestazioni e semplificare la complessità digitale.
+                {t('projects.manifesto_desc')}
               </p>
             </motion.div>
 
@@ -481,9 +482,9 @@ const Progetti = () => {
             >
               <div className="space-y-8">
                 {[
-                  { label: "Progetti completati", value: "12+" },
-                  { label: "Performance", value: "100%" },
-                  { label: "Approccio", value: "Su Misura" },
+                  { label: t('projects.stat1_label'), value: "12+" },
+                  { label: t('projects.stat2_label'), value: "100%" },
+                  { label: t('projects.stat3_label'), value: t('projects.stat3_val') },
                 ].map((stat, i) => (
                   <div key={i} className="flex items-baseline justify-between border-b border-[#3d0f1a]/5 pb-5">
                     <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-[#3d0f1a]/50 font-bold">
