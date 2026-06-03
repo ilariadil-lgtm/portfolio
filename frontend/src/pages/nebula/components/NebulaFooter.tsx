@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Github, Linkedin, Twitter, Terminal } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Twitter, Terminal, Mail, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export const NebulaFooter = () => {
+  const { t } = useTranslation();
+  const currentYear = new Date().getFullYear();
+
+  // Orologio in tempo reale
+  const [currentTime, setCurrentTime] = useState(
+    new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit", hour12: false })
+  );
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(
+        new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit", hour12: false })
+      );
+    }, 60000); // aggiornamento ogni minuto
+    return () => clearInterval(interval);
+  }, []);
   return (
     <motion.footer 
       initial={{ opacity: 0, y: 50 }}
@@ -25,21 +42,34 @@ export const NebulaFooter = () => {
                 ILARIA DILIBERTO.
               </span>
             </div>
-            <p className="font-mono text-xs tracking-[0.2em] text-[#d4af37] uppercase font-bold">System Architect // Lead Designer</p>
+            <p className="font-mono text-xs tracking-[0.2em] text-[#d4af37] uppercase font-bold">DESIGN E SVILUPPO</p>
           </Link>
-          <p className="font-outfit font-light text-sm text-white/50 leading-relaxed max-w-sm">
-            Costruisco infrastrutture digitali scalabili, interfacce neurali e piattaforme ad alta efficienza. L'anello di congiunzione tra codice puro ed estetica funzionale.
+          <p className="font-outfit font-light text-sm text-white/50 leading-relaxed max-w-sm whitespace-pre-wrap">
+            Design editoriale, sviluppo web e gestione progetti fusi in un'unica visione. Costruisco ecosistemi digitali curati in ogni dettaglio, dal primo bozzetto grafico all'ultima riga di codice.
           </p>
+
+          <div className="relative p-8 border border-[#d4af37]/20 bg-white/5 rounded-none hover:bg-white/10 transition-all duration-500 overflow-hidden backdrop-blur-sm mt-4">
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 font-bold block mb-4">LAVORIAMO INSIEME?</span>
+            <p className="font-outfit text-sm text-white/60 mb-6">
+              Hai un progetto in mente? Scrivimi, rispondo entro 24 ore.
+            </p>
+            <Link to="/contatti" className="flex items-center gap-3 text-white hover:text-[#d4af37] transition-colors font-mono tracking-widest font-bold text-xs">
+              CONTATTAMI
+              <ArrowRight size={14} />
+            </Link>
+          </div>
         </div>
 
         {/* Links Column */}
         <div className="md:col-span-3 space-y-6">
-          <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 font-bold">Directory</span>
+          <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 font-bold">ESPLORA</span>
           <ul className="space-y-4">
             {[
-              { path: "/chisono", label: "Profilo" },
+              { path: "/", label: "Home" },
+              { path: "/progetti", label: "Progetti" },
+              { path: "/chisono", label: "Chi sono" },
               { path: "/servizi", label: "Servizi" },
-              { path: "/progetti", label: "Archivio" },
+              { path: "/contatti", label: "Parliamo" },
             ].map((link) => (
               <li key={link.path}>
                 <Link to={link.path} className="font-outfit text-sm tracking-wide hover:text-[#d4af37] transition-colors flex items-center gap-2 group text-white/60">
@@ -51,23 +81,35 @@ export const NebulaFooter = () => {
           </ul>
         </div>
 
-        {/* Contact Column */}
+        {/* Contact & Network Column */}
         <div className="md:col-span-4 space-y-8">
-          <div className="relative p-8 border border-[#d4af37]/20 bg-[#020202] rounded-none hover:bg-white/[0.02] transition-all duration-500 overflow-hidden shadow-[0_16px_32px_rgba(0,0,0,0.5)]">
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 font-bold block mb-4">Uplink Station</span>
-            <a href="mailto:hello@ilariadiliberto.com" className="flex items-center gap-4 text-white hover:text-[#d4af37] transition-colors font-mono tracking-widest font-bold text-xs mb-6">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4af37] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-[#d4af37]/80"></span>
-              </span>
-              HELLO@ILARIADILIBERTO.COM
-            </a>
-            <div className="flex items-center gap-4">
-              {[Github, Linkedin, Twitter].map((Icon, idx) => (
-                <a key={idx} href="#" className="p-3 rounded-none bg-white/5 hover:bg-[#d4af37]/10 text-white/50 hover:text-[#d4af37] transition-all">
-                  <Icon size={18} />
+          <div>
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 font-bold block mb-4">NETWORK</span>
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              {[
+                { label: "LINKEDIN", icon: Linkedin, href: "https://www.linkedin.com/in/ilaria-diliberto/" },
+                { label: "GITHUB", icon: Github, href: "https://github.com/ilariadil-lgtm" },
+                { label: "EMAIL", icon: Mail, href: "mailto:ilaria.dil@gmail.com" },
+                { label: "INSTAGRAM", icon: Instagram, href: "https://www.instagram.com/ilaryvision/" },
+              ].map((social, idx) => (
+                <a key={idx} href={social.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 border border-white/10 bg-white/5 hover:bg-[#d4af37]/10 hover:border-[#d4af37]/30 text-white/50 hover:text-[#d4af37] transition-all">
+                  <social.icon size={14} />
+                  <span className="font-mono text-[10px] tracking-wider">{social.label}</span>
                 </a>
               ))}
+            </div>
+          </div>
+
+          <div className="pt-6 flex justify-between items-center mt-auto">
+            <div className="flex flex-col gap-1">
+              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/50">BASE</span>
+              <span className="font-mono text-xs text-white tracking-widest">Italia // <time dateTime={currentTime}>{currentTime}</time></span>
+            </div>
+            <div className="flex flex-col gap-1 text-right">
+              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/50">STATO</span>
+              <span className="font-mono text-xs text-green-500 tracking-widest flex items-center gap-2">
+                Disponibile <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+              </span>
             </div>
           </div>
         </div>
@@ -75,12 +117,21 @@ export const NebulaFooter = () => {
       </div>
 
       <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
-        <p className="font-mono text-[10px] tracking-wider text-white/30">
-          © {new Date().getFullYear()} Ilaria Diliberto. All rights reserved.
-        </p>
-        <div className="flex items-center gap-6">
-          <Link to="/privacy" className="font-mono text-[10px] tracking-wider text-white/30 hover:text-white transition-colors">Privacy Policy</Link>
-          <Link to="/cookies" className="font-mono text-[10px] tracking-wider text-white/30 hover:text-white transition-colors">Cookie Policy</Link>
+        <div className="flex flex-wrap items-center gap-4">
+          <p className="font-mono text-[10px] tracking-wider text-white/30">
+            © {currentYear} ILARIA DILIBERTO
+          </p>
+          <span className="hidden md:inline font-mono text-[10px] tracking-wider text-white/30 border-l border-white/10 pl-4">
+            TUTTI I DIRITTI RISERVATI
+          </span>
+          <span className="hidden md:inline font-mono text-[10px] tracking-wider text-white/30 border-l border-white/10 pl-4">
+            DESIGN E CODICE SU MISURA
+          </span>
+        </div>
+        <div className="flex flex-wrap items-center gap-6">
+          <Link to="/privacy" className="font-mono text-[10px] tracking-wider text-white/30 hover:text-white transition-colors uppercase">PRIVACY POLICY</Link>
+          <Link to="/cookies" className="font-mono text-[10px] tracking-wider text-white/30 hover:text-white transition-colors uppercase">COOKIE POLICY</Link>
+          <span className="font-mono text-[10px] tracking-wider text-[#d4af37]/50 uppercase">P.IVA: 03065860847</span>
         </div>
       </div>
     </motion.footer>

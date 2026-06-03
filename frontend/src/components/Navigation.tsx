@@ -43,13 +43,13 @@ export const Navigation = () => {
     <>
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
-          scrolled ? "py-3" : "py-5"
+          scrolled ? "py-4" : "py-6"
         }`}
       >
         <motion.div 
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className={`mx-auto px-6 py-3 flex items-center justify-between transition-all duration-500 ${
+          className={`mx-auto px-6 py-4 flex items-center justify-between transition-all duration-500 ${
             scrolled 
               ? "max-w-[1200px] bg-[#f5f2ed]/80 backdrop-blur-xl border border-primary/5 shadow-2xl rounded-full" 
               : "max-w-full px-8 md:px-16 lg:px-24"
@@ -76,7 +76,7 @@ export const Navigation = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`relative font-body text-[9px] uppercase tracking-[0.4em] transition-all duration-300 group ${
+                  className={`relative font-body text-[11px] uppercase tracking-[0.3em] transition-all duration-300 group ${
                     location.pathname === item.path 
                       ? "text-primary" 
                       : "text-foreground/60 hover:text-primary"
@@ -95,14 +95,14 @@ export const Navigation = () => {
             <div className="flex items-center gap-4 border-l border-primary/20 pl-4">
               <button 
                 onClick={() => changeLanguage('it')} 
-                className={`font-body text-[9px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'it' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
+                className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'it' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
               >
                 IT
               </button>
-              <span className="text-primary/20 text-[9px]">|</span>
+              <span className="text-primary/20 text-[11px]">|</span>
               <button 
                 onClick={() => changeLanguage('en')} 
-                className={`font-body text-[9px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'en' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
+                className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'en' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
               >
                 EN
               </button>
@@ -110,7 +110,7 @@ export const Navigation = () => {
 
             <Link 
               to="/contatti"
-              className={`px-7 py-2.5 font-body text-[9px] uppercase tracking-[0.3em] transition-all duration-500 rounded-full border border-primary/20 hover:bg-primary hover:text-white ${
+              className={`px-7 py-3 font-body text-[11px] uppercase tracking-[0.3em] transition-all duration-500 rounded-full border border-primary/20 hover:bg-primary hover:text-white ${
                 scrolled ? "bg-primary/5" : "bg-transparent"
               }`}
             >
@@ -123,13 +123,13 @@ export const Navigation = () => {
             <div className="flex items-center gap-3 border-r border-primary/20 pr-4 mr-2">
               <button 
                 onClick={() => changeLanguage('it')} 
-                className={`font-body text-[9px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'it' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
+                className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'it' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
               >
                 IT
               </button>
               <button 
                 onClick={() => changeLanguage('en')} 
-                className={`font-body text-[9px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'en' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
+                className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'en' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
               >
                 EN
               </button>
