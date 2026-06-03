@@ -60,6 +60,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 import { DesignProvider, useDesign } from "./context/DesignContext";
 import { DesignSwitcher } from "./components/DesignSwitcher";
 import { Preloader } from "./components/Preloader";
+import { NebulaPreloader } from "./pages/nebula/components/NebulaPreloader";
 import { CustomCursor } from "./components/CustomCursor";
 import { PageTransition } from "./components/PageTransition";
 import { LenisScroller } from "./components/LenisScroller";
@@ -122,6 +123,8 @@ const AnimatedRoutes = () => {
 // ─────────────────────────────────────────────────────────────────────────────
 const AppContent = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const { design } = useDesign();
+  const isEditorial = design === "editorial";
 
   useEffect(() => {
     document.body.style.overflow = isLoading ? "hidden" : "unset";
@@ -134,7 +137,9 @@ const AppContent = () => {
         <CustomCursor />
         <AnimatePresence>
           {isLoading && (
-            <Preloader onComplete={() => setIsLoading(false)} />
+            isEditorial 
+              ? <Preloader onComplete={() => setIsLoading(false)} />
+              : <NebulaPreloader onComplete={() => setIsLoading(false)} />
           )}
         </AnimatePresence>
         <AnimatedRoutes />
