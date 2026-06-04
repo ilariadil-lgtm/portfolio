@@ -9,6 +9,8 @@ import { NebulaBriefingCTA } from "./components/NebulaBriefingCTA";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
 import { RevealText } from "@/components/RevealText";
+import { ScrollIndicator } from "./components/ScrollIndicator";
+import { SkewWrapper } from "./components/SkewWrapper";
 
 const HeroCanvas = React.lazy(() => import("./components/HeroCanvas").then(module => ({ default: module.HeroCanvas })));
 
@@ -92,6 +94,7 @@ const NebulaIndex = () => {
   return (
     <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative">
       <NebulaNav />
+      <ScrollIndicator />
 
       <main className="relative z-10 w-full min-h-screen flex flex-col">
         
@@ -359,7 +362,6 @@ const NebulaIndex = () => {
           <div className="w-full border-t border-white/10">
             <div className="relative">
               
-              {/* Mouse Trail Image */}
               <motion.div 
                 className="hidden lg:block fixed pointer-events-none z-50 w-[380px] aspect-[16/10] overflow-hidden shadow-[0_32px_64px_rgba(0,0,0,0.9)] border border-white/10"
                 animate={{ 
@@ -371,14 +373,16 @@ const NebulaIndex = () => {
                 transition={{ type: "spring", damping: 28, stiffness: 140, mass: 0.4 }}
                 style={{ translateX: "-50%", translateY: "-60%", left: 0, top: 0 }}
               >
-                {displayProjects.map((p: any) => (
-                  <img 
-                    key={p.id}
-                    src={p.image?.startsWith('http') || p.image?.startsWith('/') ? p.image : `${BASE_URL}${p.image}`} 
-                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-400 ${hoveredProject === p.id ? 'opacity-100' : 'opacity-0'}`} 
-                    alt={p.title}
-                  />
-                ))}
+                <SkewWrapper intensity={15} className="w-full h-full">
+                  {displayProjects.map((p: any) => (
+                    <img 
+                      key={p.id}
+                      src={p.image?.startsWith('http') || p.image?.startsWith('/') ? p.image : `${BASE_URL}${p.image}`} 
+                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-400 ${hoveredProject === p.id ? 'opacity-100' : 'opacity-0'}`} 
+                      alt={p.title}
+                    />
+                  ))}
+                </SkewWrapper>
               </motion.div>
 
               {displayProjects.map((item, i) => (

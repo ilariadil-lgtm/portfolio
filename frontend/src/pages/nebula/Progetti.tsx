@@ -1,18 +1,27 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { api } from "@/lib/api";
-import { ArrowRight, Box, Circle, Hexagon, Triangle } from "lucide-react";
+import { ArrowRight, Hexagon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { NebulaNav } from "./components/NebulaNav";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
+import { usePageMeta } from "@/hooks/usePageMeta";
+import { RevealText } from "@/components/RevealText";
+import { NebulaBriefingCTA } from "./components/NebulaBriefingCTA";
+import { NebulaFooter } from "./components/NebulaFooter";
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 const NebulaProgetti = () => {
+  usePageMeta({
+    title: "Progetti",
+    description: "Esplora i sistemi digitali costruiti. Web app, design systems ed e-commerce ad alte prestazioni.",
+  });
+
   const [projects, setProjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchProjects = async () => {
       try {
         const data = await api.getProjects();
@@ -26,96 +35,66 @@ const NebulaProgetti = () => {
     fetchProjects();
   }, []);
 
-  // For horizontal scroll effect if using mouse wheel
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    
-    const handleWheel = (e: WheelEvent) => {
-      if (e.deltaY !== 0 && !e.shiftKey) {
-        // Only override if the user is scrolling vertically without shift
-        // This makes vertical mouse scroll move the horizontal container
-        e.preventDefault();
-        el.scrollBy({ left: e.deltaY * 1.5, behavior: 'smooth' });
-      }
-    };
-    
-    el.addEventListener('wheel', handleWheel, { passive: false });
-    return () => el.removeEventListener('wheel', handleWheel);
-  }, []);
-
   return (
-    <div className="h-screen w-full bg-[#030712] text-slate-100 font-sans selection:bg-cyan-500/30 overflow-hidden relative flex flex-col">
+    <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative">
       <NebulaNav />
 
-      {/* ───────────────────────────────────────────────────────────────────
-          AMBIENT EFFECTS
-          ─────────────────────────────────────────────────────────────────── */}
-      <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.03] bg-[linear-gradient(transparent_50%,rgba(0,0,0,1)_50%)] bg-[length:100%_4px]" />
-      
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-50 z-10" />
-      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-50 z-10" />
+      {/* Background Noise */}
+      <div className="fixed inset-0 pointer-events-none z-[0] opacity-[0.2] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
 
       {/* ───────────────────────────────────────────────────────────────────
-          HEADER / TOP BAR
+          HERO SECTION
           ─────────────────────────────────────────────────────────────────── */}
-      <header className="relative z-10 pl-0 md:pl-32 pt-8 pr-8 flex justify-between items-end pb-4 border-b border-white/5">
-        <div>
-           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[9px] font-mono mb-4 uppercase tracking-widest">
-              / / DATA CORE ARCHIVE
-           </div>
-           <h1 className="text-4xl md:text-5xl font-black tracking-tighter uppercase leading-none">
-              Project <span className="text-cyan-400">Database</span>
-           </h1>
-        </div>
-        <div className="hidden md:flex items-center gap-4 text-cyan-400/50 font-mono text-[9px] uppercase tracking-widest">
-          <span>Scroll Horizontal</span>
-          <ArrowRight size={14} />
-        </div>
-      </header>
-
-      {/* ───────────────────────────────────────────────────────────────────
-          HORIZONTAL SCROLL GALLERY
-          ─────────────────────────────────────────────────────────────────── */}
-      <main 
-        ref={scrollRef}
-        className="flex-1 relative z-10 w-full overflow-x-auto overflow-y-hidden flex snap-x snap-mandatory hide-scrollbar pl-0 md:pl-24"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-      >
-        <div className="flex h-full py-12 px-6 md:px-12 gap-8 md:gap-16 items-center min-w-max">
-          
-          {/* Intro Slide */}
-          <div className="w-[85vw] md:w-[400px] shrink-0 snap-center h-[60vh] flex flex-col justify-center">
-            <Hexagon size={48} className="text-cyan-400 mb-8 opacity-20" />
-            <h2 className="text-3xl font-bold font-sans tracking-tight mb-4">
-              Esplora i sistemi digitali costruiti.
-            </h2>
-            <p className="text-slate-500 font-light text-sm leading-relaxed max-w-sm">
-              Ogni progetto rappresenta una missione verso l'eccellenza tecnica e visiva. Trascina o usa la rotellina del mouse per navigare il database.
-            </p>
+      <section className="pt-40 md:pt-56 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden z-10">
+        <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-12">
+          <div>
+             <div className="inline-flex items-center gap-3 mb-8">
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]">SELECTED WORKS</span>
+                <div className="w-12 h-[1px] bg-[#d4af37]/30" />
+             </div>
+             <h1 className="font-fraunces italic font-light text-[11vw] lg:text-[7vw] leading-[0.9] tracking-tight text-white mb-6">
+                <RevealText text="Esplora" delay={0.1} />
+                <RevealText text="i progetti." delay={0.2} className="text-[#d4af37]" />
+             </h1>
           </div>
+          <div className="max-w-xs md:pb-4">
+             <motion.p 
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ delay: 0.4, duration: 1 }}
+               className="font-outfit font-light text-white/50 text-lg leading-relaxed border-l border-[#d4af37]/30 pl-6"
+             >
+               Ogni progetto rappresenta una missione verso l'eccellenza tecnica e l'armonia visiva. Esplora le soluzioni digitali sviluppate.
+             </motion.p>
+          </div>
+        </div>
+      </section>
 
+      {/* ───────────────────────────────────────────────────────────────────
+          VERTICAL GALLERY
+          ─────────────────────────────────────────────────────────────────── */}
+      <main className="relative z-10 w-full flex-1 flex flex-col items-center pb-32">
+        <div className="w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-16 md:gap-32">
           {loading ? (
-            <div className="w-[300px] h-full flex items-center justify-center font-mono text-[10px] text-cyan-400 animate-pulse uppercase tracking-widest">
-               Synchronizing Data...
+            <div className="w-full py-32 flex flex-col items-center justify-center font-mono text-[10px] text-[#d4af37] animate-pulse uppercase tracking-[0.2em] gap-4">
+               <Hexagon size={24} className="animate-spin-slow opacity-50" />
+               Retrieving data...
             </div>
           ) : (
             projects.map((project, i) => (
               <motion.article 
                 key={project.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.1 }}
-                className="w-[85vw] md:w-[600px] lg:w-[800px] shrink-0 snap-center h-[70vh] group relative"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full group relative"
               >
-                <Link to={`/progetti/${project.slug || project.id}`} className="block w-full h-full">
-                  <div className="w-full h-full bg-[#030712]/80 backdrop-blur-md border border-white/10 rounded-[2rem] overflow-hidden flex flex-col md:flex-row relative hover:border-cyan-500/50 hover:shadow-[0_0_50px_rgba(34,211,238,0.1)] transition-all duration-700">
+                <Link to={`/progetti/${project.slug || project.id}`} className="block w-full">
+                  <div className={`flex flex-col ${i % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 md:gap-16 items-center`}>
                     
-                    {/* Background Overlay */}
-                    <div className="absolute inset-0 bg-cyan-500/20 mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
                     {/* Image Area */}
-                    <div className="w-full md:w-[60%] h-[50%] md:h-full relative overflow-hidden bg-black border-b md:border-b-0 md:border-r border-white/10">
+                    <div className="w-full md:w-3/5 aspect-[4/3] md:aspect-[16/10] relative overflow-hidden bg-white/5 group-hover:border-[#d4af37]/30 transition-all duration-700">
                       <img 
                         src={project.image?.startsWith('http') || project.image?.startsWith('/') ? project.image : `${BASE_URL}${project.image}`} 
                         alt={project.title} 
@@ -124,67 +103,52 @@ const NebulaProgetti = () => {
                     </div>
 
                     {/* Content Area */}
-                    <div className="w-full md:w-[40%] h-[50%] md:h-full p-8 md:p-10 flex flex-col justify-between relative z-20 bg-[#030712]/50">
-                      <div>
-                        <div className="flex justify-between items-start mb-6">
-                          <span className="font-mono text-[9px] uppercase tracking-widest text-cyan-400 font-bold">
-                            {project.project_type || project.type || "FILE.DAT"}
-                          </span>
-                          <span className="font-mono text-xl text-white/10 font-black">
-                            {String(i + 1).padStart(2, '0')}
-                          </span>
-                        </div>
-                        <h2 className="text-3xl lg:text-4xl font-black tracking-tighter uppercase mb-4 text-white">
-                          {project.title}
-                        </h2>
-                        <p className="text-slate-400 text-sm leading-relaxed line-clamp-3 md:line-clamp-4">
-                          {project.description}
-                        </p>
+                    <div className="w-full md:w-2/5 flex flex-col">
+                      <div className="flex justify-between items-start mb-6">
+                        <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37]">
+                          {project.project_type || project.type || "CASE STUDY"}
+                        </span>
+                        <span className="font-fraunces italic font-light text-2xl text-white/20">
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
                       </div>
+                      <h2 className="font-bricolage font-black tracking-tight text-4xl lg:text-5xl mb-6 text-white group-hover:text-[#d4af37] transition-colors duration-500">
+                        {project.title}
+                      </h2>
+                      <p className="font-outfit font-light text-white/50 text-base leading-relaxed mb-8">
+                        {project.description}
+                      </p>
 
-                      <div>
-                        <div className="flex flex-wrap gap-2 mb-8">
-                          {typeof project.technologies === 'string' 
-                            ? project.technologies.split(',').slice(0, 3).map((t: string) => (
-                               <span key={t} className="px-2 py-1 rounded border border-white/10 bg-white/5 text-[8px] uppercase tracking-widest text-slate-400">
-                                  {t.trim()}
-                               </span>
-                            ))
-                            : project.technologies?.slice(0, 3).map((t: string) => (
-                               <span key={t} className="px-2 py-1 rounded border border-white/10 bg-white/5 text-[8px] uppercase tracking-widest text-slate-400">
-                                  {t}
-                               </span>
-                            ))
-                          }
-                        </div>
-                        
-                        <div className="flex items-center gap-4 text-cyan-400 font-mono text-[10px] uppercase tracking-widest font-bold opacity-50 group-hover:opacity-100 transition-opacity">
-                          <span>Inizializza Profilo</span>
-                          <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
-                        </div>
+                      <div className="flex flex-wrap gap-2 mb-12">
+                        {typeof project.technologies === 'string' 
+                          ? project.technologies.split(',').slice(0, 3).map((t: string) => (
+                             <span key={t} className="px-3 py-1.5 border border-white/10 text-white/70 text-[8px] uppercase tracking-[0.1em] font-mono">
+                                {t.trim()}
+                             </span>
+                          ))
+                          : project.technologies?.slice(0, 3).map((t: string) => (
+                             <span key={t} className="px-3 py-1.5 border border-white/10 text-white/70 text-[8px] uppercase tracking-[0.1em] font-mono">
+                                {t}
+                             </span>
+                          ))
+                        }
+                      </div>
+                      
+                      <div className="flex items-center gap-4 text-[#d4af37] font-mono text-[10px] uppercase tracking-[0.2em] opacity-50 group-hover:opacity-100 transition-opacity">
+                        <span>EXPLORE PROJECT</span>
+                        <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
                       </div>
                     </div>
-
                   </div>
                 </Link>
               </motion.article>
             ))
           )}
-
-          {/* End Slide */}
-          <div className="w-[85vw] md:w-[300px] shrink-0 snap-center h-[60vh] flex flex-col items-center justify-center border-l border-white/5">
-            <Circle size={32} className="text-slate-600 mb-6" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-slate-500">END OF DATABASE</span>
-          </div>
-
         </div>
       </main>
 
-      <style>{`
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
+      <NebulaBriefingCTA />
+      <NebulaFooter />
     </div>
   );
 };

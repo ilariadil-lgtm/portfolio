@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight, Code2, Calendar, Fingerprint, Activity } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { NebulaNav } from "./NebulaNav";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { NebulaFooter } from "./NebulaFooter";
+import { NebulaBriefingCTA } from "./NebulaBriefingCTA";
 
 interface NebulaProjectLayoutProps {
   title: string;
@@ -18,7 +20,7 @@ interface NebulaProjectLayoutProps {
 
 export const NebulaProjectLayout = ({
   title,
-  type = "CLASSIFIED_FILE",
+  type = "PROJECT",
   description,
   techList,
   role,
@@ -32,127 +34,101 @@ export const NebulaProjectLayout = ({
 
   usePageMeta({
     title: title,
-    description: typeof description === 'string' ? description : `Dossier: ${title}`,
+    description: typeof description === 'string' ? description : `Project overview: ${title}`,
   });
 
+  const { scrollYProgress } = useScroll();
+  const yParallax = useTransform(scrollYProgress, [0, 1], [0, 300]);
+
   return (
-    <div className="h-screen w-full bg-[#030712] text-slate-100 font-sans selection:bg-cyan-500/30 overflow-hidden flex">
+    <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 flex flex-col relative">
       <NebulaNav />
 
-      {/* ───────────────────────────────────────────────────────────────────
-          AMBIENT EFFECTS
-          ─────────────────────────────────────────────────────────────────── */}
-      <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.03] bg-[linear-gradient(transparent_50%,rgba(0,0,0,1)_50%)] bg-[length:100%_4px]" />
-      <div className="fixed top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-50 z-[90]" />
-      <div className="fixed bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-50 z-[90]" />
+      {/* Background Noise */}
+      <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.2] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
 
-      <main className="flex-1 flex flex-col lg:flex-row pl-0 md:pl-24 w-full h-full relative z-10">
-        
-        {/* ───────────────────────────────────────────────────────────────────
-            LEFT PANEL: FIXED TELEMETRY DOSSIER
-            ─────────────────────────────────────────────────────────────────── */}
-        <div className="w-full lg:w-[45%] h-full flex flex-col p-6 md:p-12 border-r border-white/5 relative bg-[#030712]">
-          {/* Top Back Link & Status */}
-          <div className="flex justify-between items-center mb-12">
-            <Link to="/progetti" className="group flex items-center gap-3 font-mono text-[9px] uppercase tracking-widest text-slate-500 hover:text-cyan-400 transition-colors">
-              <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-              Chiudi Dossier
-            </Link>
-            <div className="flex items-center gap-2 font-mono text-[9px] text-cyan-400 uppercase tracking-widest">
-              <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse" />
-              Access Granted
+      {/* Hero Section */}
+      <section className="relative pt-40 md:pt-56 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden min-h-[70vh] flex flex-col justify-end border-b border-white/5">
+        <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col items-start">
+          
+          <Link to="/progetti" className="group flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-white/50 hover:text-[#d4af37] transition-colors mb-12">
+            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+            ALL PROJECTS
+          </Link>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#d4af37] mb-6 block">
+              {type}
+            </span>
+            <h1 className="font-fraunces italic font-light text-6xl md:text-8xl lg:text-[8vw] text-white tracking-tight leading-[0.9] mb-12">
+              {title}
+            </h1>
+          </motion.div>
+
+          {/* Specs Grid */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 pt-12 border-t border-white/10"
+          >
+            <div>
+              <span className="block font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 mb-2">ROLE</span>
+              <span className="font-sans font-light text-sm text-white/80">{role}</span>
             </div>
-          </div>
-
-          <div className="flex-1 overflow-y-auto hide-scrollbar pr-4">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              
-              {/* Title & Type */}
-              <div className="mb-8">
-                <span className="inline-block px-3 py-1 rounded border border-cyan-500/20 bg-cyan-500/10 text-cyan-400 font-mono text-[9px] uppercase tracking-widest mb-6">
-                  TYPE: {type}
-                </span>
-                <h1 className="text-5xl md:text-6xl font-black tracking-tighter uppercase text-slate-100 leading-[0.9]">
-                  {title}
-                </h1>
+            <div>
+              <span className="block font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 mb-2">YEAR</span>
+              <span className="font-mono text-sm text-white/80">{year}</span>
+            </div>
+            <div className="col-span-2">
+              <span className="block font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 mb-3">TECH STACK</span>
+              <div className="flex flex-wrap gap-2">
+                {techList.map(t => (
+                  <span key={t} className="px-3 py-1.5 rounded-full border border-white/10 text-white/70 font-mono text-[9px] uppercase tracking-[0.1em]">
+                    {t}
+                  </span>
+                ))}
               </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-              {/* Description */}
-              <div className="font-sans font-light text-slate-400 text-sm md:text-base leading-relaxed mb-12 border-l-2 border-cyan-500/30 pl-6 py-2 [&>p]:mb-6 [&>p:last-child]:mb-0 [&>h3]:font-mono [&>h3]:text-[10px] [&>h3]:uppercase [&>h3]:tracking-[0.4em] [&>h3]:text-cyan-400 [&>h3]:mb-3 [&>h3]:mt-8 [&>h3:first-child]:mt-0 [&>h2]:font-sans [&>h2]:font-bold [&>h2]:text-2xl [&>h2]:text-slate-100 [&>h2]:mb-4">
-                {description}
-              </div>
+      {/* Main Content Section */}
+      <main className="relative z-10 w-full flex-1 flex flex-col items-center pb-32">
+        <div className="max-w-4xl mx-auto w-full px-6 md:px-12 py-24">
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            whileInView={{ opacity: 1 }} 
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1 }}
+            className="font-sans font-light text-white/60 text-lg md:text-xl leading-relaxed mb-20 [&>p]:mb-8 [&>p:last-child]:mb-0 [&>h3]:font-mono [&>h3]:text-xs [&>h3]:uppercase [&>h3]:tracking-[0.2em] [&>h3]:text-[#d4af37] [&>h3]:mb-4 [&>h3]:mt-12 [&>h2]:font-fraunces [&>h2]:italic [&>h2]:text-3xl [&>h2]:text-white [&>h2]:mb-6"
+          >
+            {description}
+          </motion.div>
 
-              {/* Tech Specs Terminal */}
-              <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6 mb-8">
-                <div className="flex items-center gap-2 mb-6 border-b border-white/5 pb-4">
-                  <Activity size={14} className="text-cyan-400" />
-                  <span className="font-mono text-[10px] uppercase tracking-widest font-bold text-slate-300">Technical Data</span>
-                </div>
-                
-                <div className="grid grid-cols-2 gap-y-6 gap-x-4">
-                  <div>
-                    <span className="block font-mono text-[8px] uppercase tracking-widest text-slate-500 mb-1">Role</span>
-                    <span className="font-sans font-bold text-sm text-slate-200">{role}</span>
-                  </div>
-                  <div>
-                    <span className="block font-mono text-[8px] uppercase tracking-widest text-slate-500 mb-1">Year</span>
-                    <span className="font-mono font-bold text-sm text-slate-200">{year}</span>
-                  </div>
-                  <div className="col-span-2">
-                    <span className="block font-mono text-[8px] uppercase tracking-widest text-slate-500 mb-3">Tech Stack</span>
-                    <div className="flex flex-wrap gap-2">
-                      {techList.map(t => (
-                        <span key={t} className="px-2 py-1 rounded bg-[#030712] border border-white/10 text-cyan-400 font-mono text-[9px] uppercase tracking-widest">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Live Link */}
-              {liveUrl && (
-                <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between w-full p-5 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 hover:bg-cyan-500 hover:border-cyan-400 transition-colors">
-                  <span className="font-mono text-[10px] uppercase tracking-widest font-bold text-cyan-400 group-hover:text-[#030712]">Inizializza Protocollo Esterno</span>
-                  <ArrowUpRight size={16} className="text-cyan-400 group-hover:text-[#030712]" />
-                </a>
-              )}
-            </motion.div>
-          </div>
+          {liveUrl && (
+            <div className="flex justify-center mb-24">
+              <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between gap-6 px-8 py-4 rounded-full border border-white/10 hover:border-[#d4af37]/50 hover:bg-white/5 transition-all duration-300">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-bold text-white group-hover:text-[#d4af37] transition-colors">VISIT LIVE SITE</span>
+                <ArrowUpRight size={16} className="text-[#d4af37] group-hover:scale-110 transition-transform" />
+              </a>
+            </div>
+          )}
         </div>
 
-        {/* ───────────────────────────────────────────────────────────────────
-            RIGHT PANEL: SCROLLABLE VISUAL DATABASE
-            ─────────────────────────────────────────────────────────────────── */}
-        <div className="w-full lg:w-[55%] h-full overflow-y-auto hide-scrollbar bg-[#030712] relative">
-          <div className="p-6 md:p-12 min-h-full flex flex-col gap-12">
-            
-            {/* Top right HUD marker */}
-            <div className="hidden lg:flex justify-end sticky top-0 z-20 mb-8 pointer-events-none">
-              <span className="font-mono text-[9px] uppercase tracking-widest text-slate-600 bg-[#030712] px-2">VISUAL.LOG</span>
-            </div>
-
-            {/* Media Content passed as children */}
-            <motion.div 
-              initial={{ opacity: 0 }} 
-              animate={{ opacity: 1 }} 
-              transition={{ delay: 0.4, duration: 1 }}
-              className="flex flex-col gap-12 pb-24"
-            >
-              {children}
-            </motion.div>
-            
-          </div>
+        {/* Visual Gallery */}
+        <div className="w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-12 md:gap-24">
+          {children}
         </div>
-
       </main>
 
-      <style>{`
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
+      <NebulaBriefingCTA />
+      <NebulaFooter />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { NebulaNav } from "./components/NebulaNav";
 import { NebulaFooter } from "./components/NebulaFooter";
 import { Mail, Linkedin, Github, Instagram, ArrowRight, MapPin, CheckCircle } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { RevealText } from "@/components/RevealText";
@@ -53,7 +53,7 @@ function InputField({
 }) {
   return (
     <div className="group relative">
-      <label htmlFor={name} className="font-mono tracking-widest text-[9px] uppercase tracking-[0.45em] text-slate-100/60 block mb-3 font-bold cursor-pointer">
+      <label htmlFor={name} className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/50 block mb-3 cursor-pointer">
         {label}
       </label>
       <input
@@ -64,7 +64,7 @@ function InputField({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full bg-transparent border-b border-white/10 py-3.5 text-slate-100 placeholder:text-slate-100/30 font-sans font-light text-slate-300 text-base outline-none focus:border-cyan-500 transition-colors duration-300"
+        className="w-full bg-transparent border-b border-white/10 py-3.5 text-white placeholder:text-white/20 font-outfit font-light text-base outline-none focus:border-[#d4af37] transition-colors duration-300"
       />
     </div>
   );
@@ -85,6 +85,10 @@ const Contatti = () => {
     website: "", // Honeypot
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -109,31 +113,18 @@ const Contatti = () => {
   };
 
   return (
-    <div className="min-h-screen pl-0 md:pl-32 bg-[#030712] text-slate-100 overflow-hidden selection:bg-cyan-500/30">
+    <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative">
       <NebulaNav />
+
+      {/* Background Noise */}
+      <div className="fixed inset-0 pointer-events-none z-[0] opacity-[0.2] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
 
       {/* ═══════════════════════════════════════════════════════════════════
            HERO
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative pt-32 md:pt-48 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden">
-        {/* Background Grid Pattern */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
-        </div>
-
-        {/* Watermark */}
-        <div className="absolute inset-0 flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
-          <span
-            className="font-sans font-black tracking-tighter font-black text-slate-100/[0.025] pr-4"
-            style={{ fontSize: "clamp(80px, 18vw, 240px)", lineHeight: 1 }}
-          >
-            CONTATTI
-          </span>
-        </div>
-
+      <section className="relative pt-40 md:pt-56 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden z-10">
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-
             <motion.div
               className="lg:col-span-7"
               initial={{ opacity: 0, x: -30 }}
@@ -141,17 +132,14 @@ const Contatti = () => {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center gap-4 mb-8">
-                <span className="font-mono tracking-widest text-[11px] uppercase tracking-[0.4em] text-cyan-400 font-bold">
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]">
                   CONTATTI E COLLABORAZIONI
                 </span>
-                <div className="w-10 h-[1px] bg-cyan-500/25" />
+                <div className="w-12 h-[1px] bg-[#d4af37]/30" />
               </div>
-              <h1
-                className="font-sans font-black tracking-tighter font-bold leading-[0.85] tracking-tighter text-slate-100"
-                style={{ fontSize: "clamp(3rem, 7vw, 5.8rem)" }}
-              >
+              <h1 className="font-fraunces italic font-light leading-[0.9] tracking-tight text-white" style={{ fontSize: "clamp(3.5rem, 8vw, 7rem)" }}>
                 <RevealText text="Parlami del" delay={0.1} />
-                <RevealText text="tuo progetto." delay={0.2} className="text-cyan-400 " />
+                <RevealText text="tuo progetto." delay={0.2} className="text-[#d4af37]" />
               </h1>
             </motion.div>
 
@@ -161,18 +149,17 @@ const Contatti = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
             >
-              <p className="font-sans font-light text-slate-300 text-xl text-slate-100/70 leading-relaxed border-l border-cyan-500/25 pl-8">
+              <p className="font-outfit font-light text-white/60 text-lg leading-relaxed border-l border-[#d4af37]/30 pl-8">
                 Hai un progetto in mente, vuoi un preventivo o semplicemente vuoi
                 capire se posso aiutarti? Scrivimi — rispondo entro 24 ore.
               </p>
-              <div className="mt-6 pl-8 flex items-center gap-2.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-600 animate-pulse" />
-                <span className="font-mono tracking-widest text-[9px] uppercase tracking-[0.35em] text-slate-100/50 font-bold">
+              <div className="mt-8 pl-8 flex items-center gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
+                <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37]">
                   Disponibile per nuovi progetti
                 </span>
               </div>
             </motion.div>
-
           </div>
         </div>
       </section>
@@ -180,12 +167,11 @@ const Contatti = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            MAIN SPLIT — canali + form
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="px-6 md:px-12 lg:px-24 pb-32">
+      <section className="px-6 md:px-12 lg:px-24 pb-32 relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-
           {/* ── Left: info + canali ── */}
           <motion.div
-            className="lg:col-span-4 space-y-12 lg:pt-4"
+            className="lg:col-span-4 space-y-16 lg:pt-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -193,37 +179,36 @@ const Contatti = () => {
           >
             {/* Canali diretti */}
             <div>
-              <span className="font-mono tracking-widest text-[9px] uppercase tracking-[0.45em] text-cyan-400 font-bold block mb-7">
-                Canali diretti
+              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] block mb-8">
+                CANALI DIRETTI
               </span>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {CONTACTS.map((c, i) => (
                   <motion.a
                     key={i}
                     href={c.href}
                     target={c.href.startsWith("http") ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    data-cursor="pointer"
                     initial={{ opacity: 0, x: -15 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1, duration: 0.7 }}
-                    className="group flex items-center gap-5 p-5 border border-white/10 bg-white/[0.02] backdrop-blur-xl hover:border-cyan-500/30 hover:shadow-[0_0_20px_rgba(34,211,238,0.1)] hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all duration-400 rounded-2xl"
+                    className="group flex items-center gap-5 p-6 border border-white/5 bg-white/[0.02] hover:border-[#d4af37]/30 transition-all duration-500 rounded-none"
                   >
-                    <div className="w-10 h-10 border border-white/10 flex items-center justify-center text-slate-100/40 bg-cyan-500/5 group-hover:text-cyan-400 group-hover:border-cyan-500/30 transition-all duration-400 shrink-0">
+                    <div className="w-10 h-10 border border-white/10 flex items-center justify-center text-white/40 group-hover:text-[#d4af37] transition-colors shrink-0">
                       {c.icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <span className="font-mono tracking-widest text-[8px] uppercase tracking-[0.35em] text-slate-100/40 block mb-1 font-bold">
+                      <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-white/40 block mb-1">
                         {c.label}
                       </span>
-                      <span className="font-sans font-black tracking-tighter text-base font-black text-slate-100 group-hover:text-cyan-400 transition-colors truncate block">
+                      <span className="font-bricolage font-black tracking-tight text-lg text-white group-hover:text-[#d4af37] transition-colors truncate block">
                         {c.detail}
                       </span>
                     </div>
                     <ArrowRight
-                      size={13}
-                      className="text-cyan-400/0 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all duration-400 shrink-0"
+                      size={14}
+                      className="text-[#d4af37] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-500 shrink-0"
                     />
                   </motion.a>
                 ))}
@@ -243,16 +228,16 @@ const Contatti = () => {
             </div>
 
             {/* Sede */}
-            <div className="p-6 border border-white/10 bg-white/[0.02] backdrop-blur-xl rounded-2xl flex items-start gap-4">
-              <MapPin size={16} className="text-cyan-400 mt-0.5 shrink-0" />
+            <div className="p-8 border border-white/5 bg-white/[0.02] rounded-none flex items-start gap-5">
+              <MapPin size={18} className="text-[#d4af37] shrink-0" />
               <div>
-                <span className="font-mono tracking-widest text-[8px] uppercase tracking-[0.4em] text-cyan-400 font-bold block mb-2">
+                <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] block mb-3">
                   Sede operativa
                 </span>
-                <p className="font-sans font-light text-slate-300 text-[15px] text-slate-100/70">
+                <p className="font-outfit font-light text-[15px] text-white">
                   Sicilia, Italia
                 </p>
-                <p className="font-sans font-light text-slate-300 text-[13px] text-slate-100/50 mt-1">
+                <p className="font-outfit font-light text-[13px] text-white/50 mt-2">
                   Lavoro da remoto su tutto il territorio nazionale e internazionale.
                 </p>
               </div>
@@ -267,20 +252,17 @@ const Contatti = () => {
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="bg-white/[0.02] backdrop-blur-xl border border-white/10 p-10 md:p-14 rounded-[2rem] relative overflow-hidden shadow-[0_0_40px_rgba(34,211,238,0.05)]">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-100 pointer-events-none" />
+            <div className="bg-white/[0.02] border border-white/5 p-10 md:p-16 rounded-none relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-100 pointer-events-none" />
 
               <div className="relative z-10">
-                <div className="mb-10">
-                  <span className="font-mono tracking-widest text-[10px] uppercase tracking-[0.5em] text-cyan-400 block mb-4 font-bold">
-                    Invia un messaggio
+                <div className="mb-12">
+                  <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] block mb-4">
+                    INVIA UN MESSAGGIO
                   </span>
-                  <h2
-                    className="font-sans font-black tracking-tighter font-black leading-[0.9] tracking-tighter text-slate-100"
-                    style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
-                  >
+                  <h2 className="font-fraunces italic font-light leading-[0.9] tracking-tight text-white" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}>
                     Raccontami il <br />
-                    <span className="text-cyan-400 ">tuo progetto.</span>
+                    <span className="text-[#d4af37]">tuo progetto.</span>
                   </h2>
                 </div>
 
@@ -293,16 +275,16 @@ const Contatti = () => {
                       exit={{ opacity: 0 }}
                       className="flex flex-col items-center justify-center py-24 gap-6 text-center"
                     >
-                      <CheckCircle size={48} className="text-cyan-400" strokeWidth={1.5} />
+                      <CheckCircle size={48} className="text-[#d4af37]" strokeWidth={1} />
                       <div>
-                        <p className="font-sans font-black tracking-tighter text-3xl font-black mb-3 text-slate-100">Messaggio inviato!</p>
-                        <p className="font-sans font-light text-slate-300 text-slate-100/70 text-lg leading-relaxed">
+                        <p className="font-fraunces italic font-light text-4xl mb-4 text-white">Messaggio inviato!</p>
+                        <p className="font-outfit font-light text-white/50 text-lg leading-relaxed">
                           Perfetto. Ti rispondo entro 24 ore — a presto.
                         </p>
                       </div>
                       <button
                         onClick={() => setStatus("idle")}
-                        className="font-mono tracking-widest text-[9px] uppercase tracking-[0.4em] text-slate-100/40 hover:text-cyan-400 transition-colors mt-4 font-bold"
+                        className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 hover:text-[#d4af37] transition-colors mt-8"
                       >
                         Invia un altro messaggio
                       </button>
@@ -311,12 +293,12 @@ const Contatti = () => {
                     <motion.form
                       key="form"
                       onSubmit={handleSubmit}
-                      className="space-y-10"
+                      className="space-y-12"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                     >
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
                         <InputField
                           label="Il tuo nome"
                           name="name"
@@ -343,7 +325,7 @@ const Contatti = () => {
                       />
 
                       <div className="group">
-                        <label htmlFor="message" className="font-mono tracking-widest text-[9px] uppercase tracking-[0.45em] text-slate-100/60 block mb-3 font-bold cursor-pointer">
+                        <label htmlFor="message" className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/50 block mb-3 cursor-pointer">
                           Messaggio
                         </label>
                         <textarea
@@ -354,7 +336,7 @@ const Contatti = () => {
                           value={formData.message}
                           onChange={handleChange}
                           placeholder="Raccontami la tua idea, il tuo progetto o la tua necessità..."
-                          className="w-full bg-transparent border-b border-white/10 py-3.5 text-slate-100 placeholder:text-slate-100/30 font-sans font-light text-slate-300 text-base outline-none focus:border-cyan-500 transition-colors duration-300 resize-none"
+                          className="w-full bg-transparent border-b border-white/10 py-3.5 text-white placeholder:text-white/20 font-outfit font-light text-base outline-none focus:border-[#d4af37] transition-colors duration-300 resize-none"
                         />
                       </div>
 
@@ -362,7 +344,7 @@ const Contatti = () => {
                         <motion.p
                           initial={{ opacity: 0, y: 5 }}
                           animate={{ opacity: 1, y: 0 }}
-                          className="font-mono tracking-widest text-[9px] uppercase tracking-[0.35em] text-red-500 font-bold"
+                          className="font-mono text-[9px] uppercase tracking-[0.2em] text-red-500"
                         >
                           Qualcosa è andato storto. Prova di nuovo o scrivimi via email.
                         </motion.p>
@@ -372,15 +354,14 @@ const Contatti = () => {
                         <button
                           type="submit"
                           disabled={status === "loading"}
-                          data-cursor="pointer"
-                          className="group relative flex items-center justify-between w-full p-7 border border-white/10 bg-white/[0.02] backdrop-blur-xl rounded-[1.5rem] hover:bg-cyan-500 hover:border-cyan-500 overflow-hidden transition-all duration-500 disabled:opacity-50 mt-4 shadow-[0_0_20px_rgba(34,211,238,0.05)]"
+                          className="group relative flex items-center justify-between w-full p-8 border border-[#d4af37]/30 bg-transparent hover:bg-[#d4af37]/10 transition-colors duration-500 disabled:opacity-50 mt-8"
                         >
-                          <span className="relative z-10 font-mono tracking-widest text-[11px] uppercase tracking-[0.4em] text-slate-100 group-hover:text-white font-bold transition-colors">
-                            {status === "loading" ? "Invio in corso..." : "Invia messaggio"}
+                          <span className="relative z-10 font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37] font-bold">
+                            {status === "loading" ? "INVIO IN CORSO..." : "INVIA MESSAGGIO"}
                           </span>
                           <ArrowRight
-                            size={18}
-                            className="relative z-10 text-slate-100 group-hover:text-white group-hover:translate-x-3 transition-transform duration-500"
+                            size={16}
+                            className="relative z-10 text-[#d4af37] group-hover:translate-x-3 transition-transform duration-500"
                           />
                         </button>
                       </MagneticWrapper>
@@ -390,7 +371,6 @@ const Contatti = () => {
               </div>
             </div>
           </motion.div>
-
         </div>
       </section>
 

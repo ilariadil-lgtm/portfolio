@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Terminal } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { RevealText } from "@/components/RevealText";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
 
@@ -27,11 +27,11 @@ export const NebulaBriefingCTA = () => {
 
           <RevealText 
             text="Costruiamo qualcosa di unico." 
-            className="font-space text-5xl md:text-7xl font-black leading-[0.9] tracking-tighter text-white mb-8 max-w-3xl uppercase" 
+            className="font-fraunces italic font-light text-5xl md:text-7xl leading-[0.9] tracking-tight text-white mb-8 max-w-3xl" 
           />
           
-          <p className="font-inter text-lg md:text-xl text-white/50 leading-relaxed font-light max-w-2xl mb-12">
-            Hai un'idea per una web app, un design system personalizzato o un e-commerce ad alte prestazioni? Inizializza il protocollo per concretizzare la tua visione digitale.
+          <p className="font-outfit text-lg md:text-xl text-white/50 leading-relaxed font-light max-w-2xl mb-12">
+            Hai un'idea per una web app, un design system personalizzato o un e-commerce ad alte prestazioni? Contattami per concretizzare la tua visione digitale.
           </p>
           
           <MagneticWrapper>
@@ -40,8 +40,8 @@ export const NebulaBriefingCTA = () => {
               className="group px-8 py-4 border border-[#d4af37]/30 bg-transparent text-[#d4af37] font-mono uppercase tracking-widest font-bold text-xs hover:bg-[#d4af37]/10 transition-colors flex items-center gap-2"
             >
               <span className="relative z-10 flex items-center gap-3">
-                <Terminal size={18} />
-                INIZIALIZZA PROTOCOLLO
+                <Mail size={18} />
+                CONTATTAMI
               </span>
               <ArrowRight size={18} className="relative z-10 group-hover:translate-x-2 transition-transform" />
             </Link>
