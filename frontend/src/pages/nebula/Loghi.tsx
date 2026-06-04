@@ -1,15 +1,19 @@
-import React, { useState } from "react";
-import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { NebulaNav } from "./components/NebulaNav";
+import { NebulaFooter } from "./components/NebulaFooter";
+import { NebulaBriefingCTA } from "./components/NebulaBriefingCTA";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, Hexagon } from "lucide-react";
+import { usePageMeta } from "@/hooks/usePageMeta";
+import { useTranslation } from "react-i18next";
+import { RevealText } from "@/components/RevealText";
+import { MagneticWrapper } from "@/components/MagneticWrapper";
 
 interface BrandItem {
   id: string;
   title: string;
-  role: string;
   year: string;
-  description: string;
   images: string[];
   portfolioUrl: string;
   liveUrl?: string;
@@ -19,9 +23,7 @@ const BRAND_DATA: BrandItem[] = [
   {
     id: "villamasami",
     title: "Villa Masami",
-    role: "Brand & Logo Design • UI/UX Design • Web",
     year: "2025",
-    description: "L'identità di Villa Masami nasce dalla sintesi tra l'eleganza classica del barocco siciliano e una sensibilità minimale contemporanea. Dal design del logo, basato su linee armoniche e proporzioni perfette, fino alle linee guida di stile, ai materiali fisici e alla presenza digitale multilingua.",
     images: [
       "/assets/loghi/villamasami/insegna.webp",
       "/assets/loghi/villamasami/asciugamano.webp",
@@ -40,9 +42,7 @@ const BRAND_DATA: BrandItem[] = [
   {
     id: "sicef",
     title: "Sicef",
-    role: "Brand Identity • Corporate & Logo Design",
     year: "2022",
-    description: `Il logo Sicef è caratterizzato da un design pulito che lo rende facilmente riconoscibile. La scelta di utilizzare il carattere Lato conferisce al logo un’immagine forte e decisa. In particolare, la “s” con il taglio diagonale permette a quest’ultima di poter essere utilizzata come icona rappresentativa dell’azienda, grazie alla sua forma semplice.\n\nLa presenza della dicitura “ingegneria e architettura” sottolinea l’attività dell’azienda, mentre il colore predominante, il nero, trasmette un senso di affidabilità e professionalità.`,
     images: [
       "/assets/loghi/sicef/logo_1.webp",
       "/assets/loghi/sicef/logo_2.webp",
@@ -56,9 +56,7 @@ const BRAND_DATA: BrandItem[] = [
   {
     id: "mapicreazioni",
     title: "Mapi Creazioni",
-    role: "Visual Identity • Branding & Design",
     year: "2022",
-    description: `Il logo presenta un design moderno, con un tratto sottile ed elegante. Il font utilizzato, Sacramento, conferisce un aspetto minimalista ed essenziale.\n\nLa presenza del pittogramma, l’ago e il filo, rappresentano il valore dell’azienda stessa nel creare i propri prodotti totalmente a mano. Inoltre, il pittogramma diventa parte integrante del logo creando così un senso di armonia e continuità.`,
     images: [
       "/assets/loghi/mapicreazioni/logo_1.webp",
       "/assets/loghi/mapicreazioni/logo_2.webp",
@@ -70,7 +68,7 @@ const BRAND_DATA: BrandItem[] = [
   },
 ];
 
-const NebulaBrandCarousel = ({ images, brandTitle }: { images: string[]; brandTitle: string }) => {
+const HolographicCarousel = ({ images, brandTitle }: { images: string[]; brandTitle: string }) => {
   const [currentIdx, setCurrentIdx] = useState(0);
 
   const handlePrev = (e: React.MouseEvent) => {
@@ -86,22 +84,19 @@ const NebulaBrandCarousel = ({ images, brandTitle }: { images: string[]; brandTi
   };
 
   return (
-    <div className="relative w-full aspect-[3/2] border border-white/10 bg-[#080808] overflow-hidden group">
-      <div className="absolute top-4 left-4 z-10 px-3 py-1 bg-black/80 backdrop-blur-md border border-white/10 font-mono text-[8px] uppercase tracking-[0.2em] text-white">
-        IMG {String(currentIdx + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
-      </div>
-      
-      <div className="absolute inset-0 z-0 flex items-center justify-center">
+    <div className="relative w-full aspect-[4/3] md:aspect-[16/10] bg-white/5 border border-white/10 overflow-hidden group">
+      {/* Immagine con AnimatePresence per cambio fluido */}
+      <div className="absolute inset-0 z-0 bg-[#050505] flex items-center justify-center">
         <AnimatePresence mode="wait">
           <motion.img
             key={currentIdx}
             src={images[currentIdx]}
-            alt={`${brandTitle} visual ${currentIdx}`}
+            alt={`${brandTitle} Brand Identity Mockup ${currentIdx + 1}`}
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.5 }}
-            className="w-full h-full object-cover object-top opacity-70 group-hover:opacity-100 transition-opacity duration-700"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
             onError={(e) => {
               const srcStr = images[currentIdx];
               if (srcStr.includes("villamasami")) {
@@ -111,100 +106,208 @@ const NebulaBrandCarousel = ({ images, brandTitle }: { images: string[]; brandTi
                 } else {
                   e.currentTarget.src = `/assets/projects/villa-masami/homepage.webp`;
                 }
-              } else {
-                e.currentTarget.src = "/assets/project-visio.png";
               }
             }}
           />
         </AnimatePresence>
       </div>
 
+      {/* Noise overlay */}
+      <div className="absolute inset-0 z-10 pointer-events-none mix-blend-overlay opacity-30 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+
+      {/* Cornici Olografiche */}
+      <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#d4af37]/30 pointer-events-none group-hover:border-[#d4af37]/80 transition-colors duration-500 m-4" />
+      <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#d4af37]/30 pointer-events-none group-hover:border-[#d4af37]/80 transition-colors duration-500 m-4" />
+
+      {/* Navigazione */}
       {images.length > 1 && (
         <>
-          <button
-            onClick={handlePrev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-white/10 bg-black/50 backdrop-blur hover:bg-[#d4af37]/20 hover:border-[#d4af37] text-white hover:text-[#d4af37] flex items-center justify-center transition-all duration-300"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <button
-            onClick={handleNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-white/10 bg-black/50 backdrop-blur hover:bg-[#d4af37]/20 hover:border-[#d4af37] text-white hover:text-[#d4af37] flex items-center justify-center transition-all duration-300"
-          >
-            <ChevronRight size={20} />
-          </button>
+          <MagneticWrapper strength={15} className="absolute left-6 top-1/2 -translate-y-1/2 z-20">
+            <button
+              onClick={handlePrev}
+              className="w-12 h-12 rounded-full border border-white/20 bg-black/30 backdrop-blur-md flex items-center justify-center text-white/60 hover:text-[#d4af37] hover:border-[#d4af37]/50 transition-all duration-300"
+              aria-label="Precedente"
+            >
+              <ChevronLeft size={20} />
+            </button>
+          </MagneticWrapper>
+          
+          <MagneticWrapper strength={15} className="absolute right-6 top-1/2 -translate-y-1/2 z-20">
+            <button
+              onClick={handleNext}
+              className="w-12 h-12 rounded-full border border-white/20 bg-black/30 backdrop-blur-md flex items-center justify-center text-white/60 hover:text-[#d4af37] hover:border-[#d4af37]/50 transition-all duration-300"
+              aria-label="Successiva"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </MagneticWrapper>
+
+          {/* Indicatori telemetria in basso */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2 bg-black/40 border border-white/10 px-4 py-2 backdrop-blur-sm rounded-full">
+            {images.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setCurrentIdx(idx);
+                }}
+                className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${
+                  idx === currentIdx ? "bg-[#d4af37] w-4" : "bg-white/30 hover:bg-white/60"
+                }`}
+                aria-label={`Vai a ${idx + 1}`}
+              />
+            ))}
+          </div>
         </>
       )}
+
+      {/* Contatore in alto a destra */}
+      <span className="absolute top-6 right-6 z-20 font-mono text-[9px] uppercase tracking-[0.2em] bg-black/40 border border-white/10 px-3 py-1.5 text-white/80 backdrop-blur-md rounded-full">
+        {String(currentIdx + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
+      </span>
     </div>
   );
 };
 
 export const NebulaLoghi = () => {
+  const { t } = useTranslation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  usePageMeta({
+    title: "Branding & Loghi",
+    description: "Identità visive e progettazione di loghi. Esplora i brand che ho contribuito a lanciare e consolidare.",
+  });
+
   return (
-    <NebulaProjectLayout
-      title="Branding & Loghi"
-      type="BRAND GUIDELINES • VISUAL IDENTITY"
-      description={
-        <p>
-          Una selezione curata di marchi ed elementi di identità visiva. Non una serie di semplici segni grafici, ma veri e propri ecosistemi visivi progettati per dare forma, coerenza e valore unico a storie d'eccellenza.
-        </p>
-      }
-      techList={["Illustrator", "Photoshop", "Brand Identity", "Visual System"]}
-      role="Art Director"
-      year="Multi-Year"
-    >
-      <div className="space-y-32">
-        {BRAND_DATA.map((brand) => (
-          <div key={brand.id} className="relative border-t border-white/10 pt-16">
-            <div className="flex flex-col gap-6 mb-12">
-              <div>
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="font-mono text-[9px] text-white/50 uppercase tracking-[0.2em] border border-white/10 px-2 py-0.5">
-                    Y.{brand.year}
-                  </span>
-                  <span className="font-mono text-[9px] text-[#d4af37] uppercase tracking-[0.2em]">
-                    {brand.role}
-                  </span>
-                </div>
-                <h2 className="text-4xl lg:text-5xl font-bricolage font-black text-white tracking-tight">
-                  {brand.title}
-                </h2>
-              </div>
-              
-              <div className="font-outfit font-light text-base text-white/60 leading-relaxed whitespace-pre-wrap border-l border-[#d4af37]/30 pl-6 max-w-3xl">
-                {brand.description}
-              </div>
-            </div>
+    <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative">
+      <NebulaNav />
 
-            <NebulaBrandCarousel images={brand.images} brandTitle={brand.title} />
+      {/* Background Noise */}
+      <div className="fixed inset-0 pointer-events-none z-[0] opacity-[0.2] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
 
-            {/* Azioni del dossier */}
-            <div className="flex flex-wrap gap-4 mt-12">
-              {brand.portfolioUrl && (
-                <Link
-                  to={brand.portfolioUrl}
-                  className="group flex items-center gap-3 px-6 py-3 border border-[#d4af37]/30 bg-transparent text-[#d4af37] hover:bg-[#d4af37]/10 transition-all text-[10px] font-mono uppercase tracking-[0.2em]"
-                >
-                  VIEW PROJECT
-                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-              )}
-              {brand.liveUrl && (
-                <a
-                  href={brand.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-3 px-6 py-3 border border-white/10 bg-white/5 text-white/80 hover:bg-white/10 hover:text-white transition-all text-[10px] font-mono uppercase tracking-[0.2em]"
-                >
-                  LIVE SITE
-                  <ArrowUpRight size={14} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
-                </a>
-              )}
+      {/* HERO SECTION */}
+      <section className="relative pt-40 md:pt-56 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden z-10 border-b border-white/5">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <Link
+            to="/progetti"
+            className="group inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-white/50 hover:text-[#d4af37] transition-colors mb-12"
+          >
+            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+            ALL PROJECTS
+          </Link>
+          
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]">
+                VISUAL IDENTITY ARCHIVE
+              </span>
+              <div className="w-12 h-[1px] bg-[#d4af37]/30" />
             </div>
-          </div>
-        ))}
-      </div>
-    </NebulaProjectLayout>
+            
+            <h1 className="font-fraunces italic font-light leading-[0.9] tracking-tight text-white mb-8" style={{ fontSize: "clamp(3.5rem, 8vw, 7rem)" }}>
+              <RevealText text="Branding &" delay={0.1} />
+              <br />
+              <RevealText text="Loghi." delay={0.2} className="text-[#d4af37]" />
+            </h1>
+            
+            <p className="font-outfit font-light text-white/50 text-lg md:text-xl leading-relaxed max-w-2xl pl-8 border-l border-[#d4af37]/30">
+              Esplora i brand che ho contribuito a creare e consolidare. Dall'ideazione del marchio fino alle applicazioni pratiche.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* GALLERIA BRAND */}
+      <section className="px-6 md:px-12 lg:px-24 py-32 z-10 relative">
+        <div className="max-w-7xl mx-auto space-y-32 md:space-y-48">
+          {BRAND_DATA.map((brand, idx) => {
+            const isEven = idx % 2 === 0;
+
+            return (
+              <div key={brand.id} className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+                {/* Visual Block */}
+                <motion.div
+                  className={`lg:col-span-7 ${isEven ? "order-1" : "order-1 lg:order-2"}`}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <HolographicCarousel images={brand.images} brandTitle={brand.title} />
+                </motion.div>
+
+                {/* Content Block */}
+                <motion.div
+                  className={`lg:col-span-5 ${isEven ? "order-2" : "order-2 lg:order-1"} flex flex-col justify-center`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div className="flex items-center gap-4 mb-6">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40">
+                      {String(idx + 1).padStart(2, '0')} // {brand.year}
+                    </span>
+                    <div className="flex-1 h-[1px] bg-white/10" />
+                  </div>
+
+                  <h2 className="font-bricolage font-black text-4xl md:text-5xl lg:text-6xl text-white mb-4 tracking-tight group-hover:text-[#d4af37] transition-colors duration-500">
+                    {brand.title}
+                  </h2>
+                  
+                  <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] block mb-6">
+                    {t(`loghi.brands.${brand.id}.role`, "Visual Identity & Logo Design")}
+                  </span>
+
+                  <p className="font-outfit font-light text-white/60 text-base md:text-lg leading-relaxed mb-10 whitespace-pre-line">
+                    {t(`loghi.brands.${brand.id}.description`, "Creazione dell'identità visiva e coordinata.")}
+                  </p>
+
+                  {/* Azioni */}
+                  <div className="flex flex-wrap gap-4">
+                    {brand.portfolioUrl && (
+                      <Link
+                        to={brand.portfolioUrl}
+                        className="group flex items-center gap-3 px-8 py-4 border border-white/10 bg-white/[0.02] hover:border-[#d4af37]/50 hover:bg-[#d4af37]/10 transition-all duration-300"
+                      >
+                        <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white group-hover:text-[#d4af37] transition-colors font-bold">
+                          CASE STUDY
+                        </span>
+                        <ArrowRight size={14} className="text-[#d4af37] group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                    )}
+                    
+                    {brand.liveUrl && (
+                      <a
+                        href={brand.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-center gap-3 px-8 py-4 bg-[#d4af37] hover:bg-white transition-colors duration-300"
+                      >
+                        <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#080808] font-bold">
+                          VISIT SITE
+                        </span>
+                        <ArrowUpRight size={14} className="text-[#080808] group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    )}
+                  </div>
+                </motion.div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <NebulaBriefingCTA />
+      <NebulaFooter />
+    </div>
   );
 };
 
