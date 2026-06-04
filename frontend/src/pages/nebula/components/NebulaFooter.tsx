@@ -27,7 +27,7 @@ export const NebulaFooter = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="relative bg-black text-white/50 py-16 md:py-24 px-6 md:px-12 lg:px-24 overflow-hidden border-t border-[#d4af37]/20"
+      className="relative bg-black text-white/50 py-16 md:py-24 px-6 md:px-12 lg:px-24 overflow-hidden border-t border-[#d4af37]/20 snap-start"
     >
       {/* Background glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-white/5 blur-[150px] rounded-t-full pointer-events-none" />
@@ -57,8 +57,7 @@ export const NebulaFooter = () => {
               CONTATTAMI
               <ArrowRight size={14} />
             </Link>
-          </div>
-        </div>
+          </div>        </div>
 
         {/* Links Column */}
         <div className="md:col-span-3 space-y-6">
@@ -72,9 +71,9 @@ export const NebulaFooter = () => {
               { path: "/contatti", label: "Parliamo" },
             ].map((link) => (
               <li key={link.path}>
-                <Link to={link.path} className="font-outfit text-sm tracking-wide hover:text-[#d4af37] transition-colors flex items-center gap-2 group text-white/60">
-                  <span className="w-2 h-[1px] bg-transparent group-hover:bg-[#d4af37] transition-all duration-300" />
-                  {link.label}
+                <Link to={link.path} className="font-outfit text-sm tracking-wide hover:text-[#d4af37] transition-colors relative inline-block group text-white/60">
+                  <span className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-[1px] bg-[#d4af37] opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                  <span className="inline-block transform group-hover:translate-x-4 transition-transform duration-300">{link.label}</span>
                 </Link>
               </li>
             ))}

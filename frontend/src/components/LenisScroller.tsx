@@ -39,8 +39,48 @@ export const LenisScroller: React.FC<LenisScrollerProps> = ({ children }) => {
 
     rafId = requestAnimationFrame(raf);
 
+    // Magnetic Scroll Snapping (Awwwards Style)
+    let isSnapping = false;
+    let snapTimeout: NodeJS.Timeout | null = null;
+
+    lenis.on('scroll', () => {
+      if (isSnapping) return;
+      
+      if (snapTimeout) clearTimeout(snapTimeout);
+      
+      // Debounce: wait 150ms after the last scroll event to snap
+      snapTimeout = setTimeout(() => {
+        const sections = document.querySelectorAll('.snap-start');
+        let closestSection: Element | null = null;
+        let minDistance = Infinity;
+
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          const distance = Math.abs(rect.top);
+          
+          // Magnet radius: 45% of viewport height
+          if (distance < minDistance && distance < window.innerHeight * 0.45 && distance > 5) {
+            minDistance = distance;
+            closestSection = section;
+          }
+        });
+
+        if (closestSection) {
+          isSnapping = true;
+          lenis.scrollTo(closestSection, {
+            duration: 1.2,
+            easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            onComplete: () => {
+              setTimeout(() => { isSnapping = false; }, 50);
+            }
+          });
+        }
+      }, 150);
+    });
+
     return () => {
       cancelAnimationFrame(rafId);
+      if (snapTimeout) clearTimeout(snapTimeout);
       lenis.destroy();
       lenisRef.current = null;
     };

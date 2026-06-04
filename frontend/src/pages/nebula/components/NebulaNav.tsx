@@ -16,7 +16,7 @@ export const NebulaNav = () => {
   }, []);
 
   const links = [
-    { name: "Home", path: "/nebula", icon: <Home size={18} /> },
+    { name: "Home", path: "/", icon: <Home size={18} /> },
     { name: "Progetti", path: "/progetti", icon: <Folder size={18} /> },
     { name: "Chi sono", path: "/chisono", icon: <User size={18} /> },
     { name: "Servizi", path: "/servizi", icon: <Briefcase size={18} /> },
@@ -33,32 +33,32 @@ export const NebulaNav = () => {
         {/* Top Logo */}
         <div className="w-full flex justify-center mb-12">
           <Link to="/" className="flex items-center justify-center transition-all duration-300 shrink-0">
-            <Fingerprint size={22} strokeWidth={1.5} className="text-[#d4af37]" />
+            <Fingerprint size={24} strokeWidth={1.5} className="text-[#d4af37] drop-shadow-[0_0_10px_rgba(212,175,55,0.4)]" />
           </Link>
         </div>
 
         {/* Center Links */}
-        <div className="flex flex-col gap-4 w-full">
+        <div className="flex flex-col gap-2 w-full px-2">
           {links.map((link) => {
-            const isActive = location.pathname === link.path || (link.path !== '/' && link.path !== '/nebula' && location.pathname.startsWith(link.path));
+            const isActive = location.pathname === link.path || (link.path !== '/' && location.pathname.startsWith(link.path));
             return (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`relative flex items-center gap-6 w-full h-12 transition-all duration-300 ${isActive ? 'text-[#d4af37]' : 'text-white/40 hover:text-white'}`}
+                className={`group relative flex items-center gap-4 w-full h-12 rounded-xl transition-all duration-300 ${isActive ? 'bg-[#d4af37]/5' : 'hover:bg-white/[0.02]'}`}
                 aria-label={link.name}
               >
-                <div className="w-20 h-12 flex items-center justify-center shrink-0">
-                  {React.cloneElement(link.icon as React.ReactElement, { strokeWidth: 1.5, size: 22 })}
+                <div className={`w-16 h-12 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 ${isActive ? 'text-[#d4af37] drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]' : 'text-white/40 group-hover:text-white'}`}>
+                  {React.cloneElement(link.icon as React.ReactElement, { strokeWidth: isActive ? 2 : 1.5, size: 20 })}
                 </div>
-                <span className="font-mono text-[10px] uppercase tracking-widest whitespace-nowrap opacity-0 group-hover/nav:opacity-100 transition-opacity duration-300">
+                <span className={`font-mono text-[10px] uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 ${isActive ? 'text-[#d4af37] font-bold opacity-0 group-hover/nav:opacity-100' : 'text-white/40 group-hover:text-white opacity-0 group-hover/nav:opacity-100'}`}>
                   {link.name}
                 </span>
                 
                 {isActive && (
                   <motion.div 
                     layoutId="activeNav" 
-                    className="absolute left-0 w-[3px] h-6 bg-[#d4af37] top-1/2 -translate-y-1/2" 
+                    className="absolute left-0 w-[3px] h-6 bg-[#d4af37] top-1/2 -translate-y-1/2 rounded-r-full shadow-[0_0_10px_rgba(212,175,55,0.5)]" 
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
                 )}
