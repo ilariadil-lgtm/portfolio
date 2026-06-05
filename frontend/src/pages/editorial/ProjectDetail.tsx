@@ -58,7 +58,7 @@ export const EditorialProjectDetail = () => {
       try {
         if (id) {
           let data: any = null;
-          try { data = await api.getProject(id); } catch {}
+          try { data = await api.getProject(id); } catch (err) { console.warn("API fallback triggered", err); }
           if (!data || data.detail === "Not found." || data.error) {
             data = getFallbackProjects(t).find(p => p.id.toString() === id) ?? null;
           }

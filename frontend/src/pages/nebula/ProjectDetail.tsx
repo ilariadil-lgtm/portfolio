@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { api } from "@/lib/api";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
+import { NebulaImageSlider } from "./components/NebulaImageSlider";
 import { Hexagon } from "lucide-react";
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
@@ -65,14 +66,12 @@ const NebulaProjectDetail = () => {
       year={project.year || "2026"}
       liveUrl={project.project_url}
     >
-      {/* Featured Image */}
-      <div className="w-full bg-white/5 relative group mb-12">
-        <img 
-          src={project.image?.startsWith('http') || project.image?.startsWith('/') ? project.image : `${BASE_URL}${project.image}`} 
-          alt={project.title} 
-          className="w-full h-auto transition-transform duration-1000 group-hover:scale-[1.02]"
-        />
-      </div>
+      {/* Image Gallery as an Interactive Slider */}
+      <NebulaImageSlider 
+        images={[
+          project.image?.startsWith('http') || project.image?.startsWith('/') ? project.image : `${BASE_URL}${project.image}`
+        ]}
+      />
     </NebulaProjectLayout>
   );
 };

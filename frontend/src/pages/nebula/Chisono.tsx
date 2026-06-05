@@ -96,7 +96,7 @@ const Chisono = () => {
   ];
 
   return (
-    <div ref={containerRef} className="bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 relative overflow-hidden flex flex-col min-h-screen">
+    <div ref={containerRef} className="bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 relative overflow-hidden flex flex-col min-h-screen md:pl-20">
       <NebulaNav />
       <ScrollIndicator />
 

@@ -17,7 +17,7 @@ const Terrain = () => {
       const x = position.getX(i);
       const y = position.getY(i);
       // Equazione d'onda che unisce due frequenze per un movimento organico e complesso
-      const z = Math.sin(x * 0.4 + time * 0.8) * Math.cos(y * 0.4 + time * 0.8) * 1.5;
+      const z = Math.sin(x * 0.4 + time * 1.0) * Math.cos(y * 0.4 + time * 1.0) * 2.5;
       position.setZ(i, z);
     }
     position.needsUpdate = true;
@@ -28,7 +28,7 @@ const Terrain = () => {
       {/* Geometria molto larga e suddivisa per permettere onde morbide */}
       <planeGeometry ref={geomRef} args={[100, 100, 64, 64]} />
       {/* Wireframe elegante per un look altamente tecnico ma artistico */}
-      <meshBasicMaterial color="#d4af37" wireframe={true} transparent opacity={0.15} />
+      <meshBasicMaterial color="#d4af37" wireframe={true} transparent opacity={0.35} />
     </mesh>
   );
 };

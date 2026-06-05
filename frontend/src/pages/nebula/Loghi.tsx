@@ -182,7 +182,7 @@ export const NebulaLoghi = () => {
   });
 
   return (
-    <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative">
+    <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
       <NebulaNav />
 
       {/* Background Noise */}
@@ -196,7 +196,7 @@ export const NebulaLoghi = () => {
             className="group inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-white/50 hover:text-[#d4af37] transition-colors mb-12"
           >
             <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-            ALL PROJECTS
+            TUTTI I PROGETTI
           </Link>
           
           <motion.div
@@ -206,16 +206,23 @@ export const NebulaLoghi = () => {
           >
             <div className="flex items-center gap-4 mb-8">
               <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]">
-                VISUAL IDENTITY ARCHIVE
+                ARCHIVIO BRANDING
               </span>
               <div className="w-12 h-[1px] bg-[#d4af37]/30" />
             </div>
             
-            <h1 className="font-fraunces italic font-light leading-[0.9] tracking-tight text-white mb-8" style={{ fontSize: "clamp(3.5rem, 8vw, 7rem)" }}>
-              <RevealText text="Branding &" delay={0.1} />
-              <br />
-              <RevealText text="Loghi." delay={0.2} className="text-[#d4af37]" />
-            </h1>
+            <div className="flex flex-wrap items-baseline gap-x-6 pb-4 mb-4">
+              <RevealText 
+                text="BRANDING &" 
+                delay={0.1} 
+                className="font-bricolage font-black tracking-tighter text-6xl md:text-8xl lg:text-[7vw] leading-[0.9] text-white uppercase" 
+              />
+              <RevealText 
+                text="Loghi." 
+                delay={0.2} 
+                className="font-fraunces italic font-light tracking-tight text-6xl md:text-8xl lg:text-[7vw] leading-[0.9] text-[#d4af37]" 
+              />
+            </div>
             
             <p className="font-outfit font-light text-white/50 text-lg md:text-xl leading-relaxed max-w-2xl pl-8 border-l border-[#d4af37]/30">
               Esplora i brand che ho contribuito a creare e consolidare. Dall'ideazione del marchio fino alle applicazioni pratiche.
@@ -278,7 +285,7 @@ export const NebulaLoghi = () => {
                         className="group flex items-center gap-3 px-8 py-4 border border-white/10 bg-white/[0.02] hover:border-[#d4af37]/50 hover:bg-[#d4af37]/10 transition-all duration-300"
                       >
                         <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white group-hover:text-[#d4af37] transition-colors font-bold">
-                          CASE STUDY
+                          VAI AL PROGETTO
                         </span>
                         <ArrowRight size={14} className="text-[#d4af37] group-hover:translate-x-1 transition-transform" />
                       </Link>
@@ -292,7 +299,7 @@ export const NebulaLoghi = () => {
                         className="group flex items-center gap-3 px-8 py-4 bg-[#d4af37] hover:bg-white transition-colors duration-300"
                       >
                         <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#080808] font-bold">
-                          VISIT SITE
+                          VISITA IL SITO
                         </span>
                         <ArrowUpRight size={14} className="text-[#080808] group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
                       </a>

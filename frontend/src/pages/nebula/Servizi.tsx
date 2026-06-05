@@ -1,10 +1,12 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { NebulaNav } from "./components/NebulaNav";
 import { NebulaFooter } from "./components/NebulaFooter";
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, Suspense } from "react";
+const HeroCanvas = React.lazy(() => import("./components/HeroCanvas").then(module => ({ default: module.HeroCanvas })));
 import { api } from "@/lib/api";
 import { Box, Cpu, Globe, Layout, ChevronRight, Hexagon } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useTranslation } from "react-i18next";
 import { RevealText } from "@/components/RevealText";
 import { NebulaBriefingCTA } from "./components/NebulaBriefingCTA";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
@@ -12,54 +14,54 @@ import { MagneticWrapper } from "@/components/MagneticWrapper";
 // ─────────────────────────────────────────────────────────────────────────────
 // DATA
 // ─────────────────────────────────────────────────────────────────────────────
-const serviceSpecs: Record<number, any> = {
+const getServiceSpecs = (t: any): Record<number, any> => ({
   1: {
     core: "Figma & Creative Suite",
-    workflow: "User Research e Prototipazione Iterativa",
-    kpi: "Accessibilità visiva e flussi utente intuitivi",
-    load: "USER - CENTRIC",
+    workflow: t("services.spec1_workflow"),
+    kpi: t("services.spec1_kpi"),
+    load: t("services.spec_user_centric"),
     tools: ["Figma", "Adobe CC", "Responsive design", "Branding"]
   },
   2: {
     core: "React, Vite, Tailwind, Python, Django, PHP, Javascript",
-    workflow: "Sviluppo Modulare (Front-end & Back-end)",
-    kpi: "Prestazioni, sicurezza e codice scalabile",
-    load: "LOGICA SOLIDA & VELOCE",
+    workflow: t("services.spec2_workflow"),
+    kpi: t("services.spec2_kpi"),
+    load: t("services.spec_logic"),
     tools: ["React", "TypeScript", "TailwindCSS", "Next.js", "WordPress", "Prestashop", "PYTHON / DJANGO"]
   },
   3: {
     core: "Git, Supabase, AI Tools (Gemini / GPT)",
-    workflow: "Vibe Coding & Gestione Agile End-to-End",
-    kpi: "Rilascio del prodotto fluido e zero-stress",
-    load: "STRATEGICO // PROBLEMSOLVING",
+    workflow: t("services.spec3_workflow"),
+    kpi: t("services.spec3_kpi"),
+    load: t("services.spec_strategy"),
     tools: ["PRODUCT MNGMT", "VIBE CODING", "AI WORKFLOWS", "STRATEGIA"]
   }
-};
+});
 
-const steps = [
+const getSteps = (t: any) => [
   {
     num: "01",
-    title: "Analisi & Strategia",
-    subtitle: "Obiettivi e scope",
-    description: "Definizione degli obiettivi di business e delle esigenze degli utenti. Strutturo una roadmap chiara per definire lo scope e i requisiti tecnici dell'intero ecosistema."
+    title: t("services.step1_title"),
+    subtitle: t("services.step1_sub"),
+    description: t("services.step1_desc")
   },
   {
     num: "02",
-    title: "UX & UI Design",
-    subtitle: "Empatia e visione",
-    description: "Progettazione e prototipazione iterativa ad alta fedeltà. Definisco le linee guida visive per un brand solido, bilanciando sempre usabilità, pulizia ed estetica d'avanguardia."
+    title: t("services.step2_title"),
+    subtitle: t("services.step2_sub"),
+    description: t("services.step2_desc")
   },
   {
     num: "03",
-    title: "Sviluppo Full-Stack",
-    subtitle: "Codice e logica",
-    description: "Costruzione dell'ecosistema digitale. Scrivo codice pulito e modulare, affiancando interfacce reattive a solide architetture back-end o CMS avanzati. Massimo focus sulle performance e sulla scalabilità."
+    title: t("services.step3_title"),
+    subtitle: t("services.step3_sub"),
+    description: t("services.step3_desc")
   },
   {
     num: "04",
-    title: "Collaudo & Deploy",
-    subtitle: "Test e rilascio",
-    description: "Audit di performance, accessibilità e SEO prima del rilascio ufficiale. Configuro il lancio in modo fluido e sicuro, assicurandomi che il prodotto sia impeccabile, stabile e pronto per il mercato."
+    title: t("services.step4_title"),
+    subtitle: t("services.step4_sub"),
+    description: t("services.step4_desc")
   }
 ];
 
@@ -67,6 +69,7 @@ const steps = [
 // SPOTLIGHT CARD COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
+  const { t } = useTranslation();
   const [isHovered, setIsHovered] = useState(false);
   const [showSpecs, setShowSpecs] = useState(false);
   
@@ -81,6 +84,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
     setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
   };
 
+  const serviceSpecs = getServiceSpecs(t);
   const specs = serviceSpecs[service.id] || serviceSpecs[(idx % 3) + 1];
 
   return (
@@ -100,7 +104,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
         setOpacity(0);
         setShowSpecs(false);
       }}
-      className="h-full relative border border-white/5 p-8 md:p-12 bg-white/[0.02] hover:border-[#d4af37]/40 transition-all duration-700 flex flex-col justify-between group overflow-hidden rounded-none"
+      className="h-full relative border border-white/5 p-8 md:p-12 bg-white/[0.02] backdrop-blur-md hover:border-[#d4af37]/30 hover:bg-white/[0.04] transition-all duration-700 flex flex-col justify-between group overflow-hidden rounded-3xl"
     >
       {/* Spotlight Effect overlay */}
       <div
@@ -112,12 +116,18 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
       />
       <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
 
+      {/* Numero in background (Watermark) */}
+      <div className="absolute -bottom-4 -right-2 font-bricolage text-[140px] leading-none font-black text-white/[0.04] group-hover:text-[#d4af37]/[0.08] transition-colors duration-500 select-none pointer-events-none z-0">
+        0{idx + 1}
+      </div>
+
       {/* Content wrapper */}
       <div className="relative z-10 flex-1 flex flex-col">
         {/* Card Header telemetry */}
-        <div className="flex justify-between items-start border-b border-white/5 pb-6 mb-8 relative">
+        <div className="flex justify-between items-start border-b border-white/10 pb-6 mb-8 relative group-hover:border-[#d4af37]/20 transition-colors duration-500">
           <div className="flex flex-col">
-            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37]">
+            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
               {service.subtitle || `SERVICE_0${idx + 1}`}
             </span>
           </div>
@@ -145,12 +155,12 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
         </div>
 
         {/* Action button specs expander */}
-        <div className="mb-8 flex justify-between items-center relative z-10">
+        <div className="mb-8 flex justify-between items-center relative z-10 mt-6">
           <button
             onClick={() => setShowSpecs(!showSpecs)}
-            className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] hover:text-white transition-colors cursor-pointer flex items-center gap-2"
+            className="px-4 py-2 rounded-full border border-white/10 bg-white/[0.02] text-white/60 font-mono text-[9px] uppercase tracking-[0.2em] hover:text-[#d4af37] hover:border-[#d4af37]/40 hover:bg-[#d4af37]/5 transition-all cursor-pointer flex items-center gap-2"
           >
-            {showSpecs ? "− HIDE DETAILS" : "+ SHOW DETAILS"}
+            {showSpecs ? `- ${t('services.close_details')}` : `+ ${t('services.open_details')}`}
           </button>
         </div>
 
@@ -164,21 +174,21 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden mb-8 relative z-10"
             >
-              <div className="font-mono text-[9px] divide-y divide-white/5 bg-black/60 backdrop-blur-md p-6 border border-white/5 space-y-4">
+              <div className="font-mono text-[9px] divide-y divide-white/5 bg-black/40 backdrop-blur-md p-6 border border-white/5 rounded-2xl space-y-4">
                 <div className="flex justify-between pb-3 items-center">
-                  <span className="text-white/40 uppercase tracking-[0.2em]">Tools:</span>
+                  <span className="text-white/40 uppercase tracking-[0.2em]">{t('services.tools')}:</span>
                   <span className="text-[#d4af37] text-right bg-[#d4af37]/10 px-2 py-1">{specs.core}</span>
                 </div>
                 <div className="flex justify-between py-3">
-                  <span className="text-white/40 uppercase tracking-[0.2em]">Methodology:</span>
+                  <span className="text-white/40 uppercase tracking-[0.2em]">{t('services.methodology')}:</span>
                   <span className="text-white/80 text-right">{specs.workflow}</span>
                 </div>
                 <div className="flex justify-between py-3">
-                  <span className="text-white/40 uppercase tracking-[0.2em]">Key KPI:</span>
+                  <span className="text-white/40 uppercase tracking-[0.2em]">{t('services.key_objective')}:</span>
                   <span className="text-[#d4af37] text-right">{specs.kpi}</span>
                 </div>
                 <div className="pt-3">
-                  <span className="text-white/40 uppercase tracking-[0.2em] block mb-3">Skills:</span>
+                  <span className="text-white/40 uppercase tracking-[0.2em] block mb-3">{t('services.skills')}:</span>
                   <div className="flex flex-wrap gap-2">
                     {specs.tools.map((t: string, i: number) => (
                       <span key={i} className="border border-white/10 bg-white/[0.02] text-white/70 px-2 py-1 rounded-full text-[8px] uppercase tracking-[0.1em]">
@@ -209,10 +219,6 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
           </ul>
         </div>
       </div>
-      
-      {/* Corner Brackets */}
-      <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/10 group-hover:border-[#d4af37]/50 transition-colors pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-white/10 group-hover:border-[#d4af37]/50 transition-colors pointer-events-none" />
     </motion.div>
   );
 };
@@ -221,21 +227,20 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
 // COMPACT DATA TERMINAL (WORKFLOW)
 // ─────────────────────────────────────────────────────────────────────────────
 const WorkflowDataTerminal = () => {
+  const { t } = useTranslation();
+  const steps = getSteps(t);
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start w-full bg-[#050505]/50 border border-white/5 p-8 md:p-16 rounded-none backdrop-blur-md relative overflow-hidden">
-      
-      {/* Decorative Corners */}
-      <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#d4af37]/30 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#d4af37]/30 pointer-events-none" />
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start w-full bg-white/[0.02] border border-white/5 p-8 md:p-16 rounded-3xl backdrop-blur-md relative overflow-hidden group hover:border-[#d4af37]/20 hover:bg-white/[0.03] transition-all duration-700">
 
       {/* Navigation Column */}
-      <div className="lg:col-span-5 flex flex-col justify-center space-y-4 relative z-10">
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37] mb-8 block border-b border-white/10 pb-4">
-          SEQUENZA OPERATIVA
+      <div className="lg:col-span-5 flex flex-col justify-center relative z-10">
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37] mb-6 block border-b border-white/10 pb-4">
+          {t('services.workflow_label')}
         </span>
         
+        <div className="flex flex-col space-y-1">
         {steps.map((step, idx) => {
           const isActive = activeIndex === idx;
           return (
@@ -243,10 +248,10 @@ const WorkflowDataTerminal = () => {
               key={idx}
               onMouseEnter={() => setActiveIndex(idx)}
               onClick={() => setActiveIndex(idx)}
-              className={`w-full text-left py-6 px-6 border-l-2 transition-all duration-300 relative group flex items-center justify-between ${
+              className={`w-full text-left py-4 px-5 rounded-2xl transition-all duration-500 relative flex items-center justify-between overflow-hidden ${
                 isActive 
-                  ? "border-[#d4af37] bg-white/[0.03]" 
-                  : "border-transparent hover:border-white/20 hover:bg-white/[0.01]"
+                  ? "border border-[#d4af37]/40 bg-gradient-to-r from-[#d4af37]/10 to-transparent shadow-[inset_0_0_20px_rgba(212,175,55,0.05)]" 
+                  : "border border-transparent hover:border-white/10 hover:bg-white/[0.02]"
               }`}
             >
               <div className="flex items-center gap-6">
@@ -267,14 +272,27 @@ const WorkflowDataTerminal = () => {
             </button>
           );
         })}
+        </div>
       </div>
 
       {/* Display Panel */}
       <div className="lg:col-span-7 flex items-center relative z-10 min-h-[400px]">
-        <div className="w-full h-full p-8 md:p-12 border border-white/10 bg-black/40 shadow-inner relative overflow-hidden flex flex-col justify-center">
+        <div className="w-full h-full p-8 md:p-14 border border-white/5 bg-black/40 backdrop-blur-xl relative overflow-hidden flex flex-col justify-center rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.5)]">
           
+          {/* Terminal Top Bar */}
+          <div className="absolute top-0 left-0 w-full h-8 border-b border-white/5 flex items-center px-4 justify-between bg-white/[0.01]">
+            <div className="flex gap-1.5">
+              <div className="w-2 h-2 rounded-full bg-white/10" />
+              <div className="w-2 h-2 rounded-full bg-white/10" />
+              <div className="w-2 h-2 rounded-full bg-white/10" />
+            </div>
+            <span className="font-mono text-[8px] uppercase tracking-widest text-white/20">
+              SYS.PROCESS_VIEWER
+            </span>
+          </div>
+
           {/* Background grid for the display */}
-          <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none opacity-50" />
+          <div className="absolute inset-0 bg-[radial-gradient(rgba(212,175,55,0.04)_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none mt-8" />
           
           <AnimatePresence mode="wait">
             <motion.div
@@ -286,28 +304,34 @@ const WorkflowDataTerminal = () => {
               className="relative z-10"
             >
               <div className="flex items-center gap-4 mb-8">
-                <Hexagon size={18} className="text-[#d4af37]" />
-                <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37]/80">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]">
                   {steps[activeIndex].subtitle}
                 </span>
               </div>
               
-              <h3 className="font-fraunces italic font-light text-4xl md:text-5xl lg:text-6xl leading-[0.9] text-white mb-8">
-                {steps[activeIndex].title}.
+              <h3 className="font-bricolage font-bold tracking-tight text-3xl md:text-5xl text-white mb-6 leading-tight">
+                {steps[activeIndex].title}
               </h3>
               
-              <p className="font-outfit font-light text-white/60 text-lg md:text-xl leading-relaxed">
+              <p className="font-outfit font-light text-white/70 text-lg md:text-xl leading-relaxed max-w-lg">
                 {steps[activeIndex].description}
               </p>
 
               {/* Fake loading bar / telemetry */}
-              <div className="mt-12 w-full h-[1px] bg-white/10 relative overflow-hidden">
-                <motion.div 
-                  initial={{ x: "-100%" }}
-                  animate={{ x: "0%" }}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                  className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-transparent via-[#d4af37]/50 to-transparent"
-                />
+              <div className="mt-12 w-full pt-6 border-t border-white/10 relative">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="font-mono text-[8px] text-white/30 uppercase tracking-widest">{t('services.workflow_label')}</span>
+                  <span className="font-mono text-[8px] text-[#d4af37] tracking-widest animate-pulse">100%</span>
+                </div>
+                <div className="w-full h-[1px] bg-white/5 relative overflow-hidden">
+                  <motion.div 
+                    initial={{ x: "-100%" }}
+                    animate={{ x: "0%" }}
+                    transition={{ duration: 1, ease: "easeOut" }}
+                    className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-transparent via-[#d4af37] to-transparent"
+                  />
+                </div>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -323,6 +347,7 @@ const WorkflowDataTerminal = () => {
 // MAIN PAGE
 // ─────────────────────────────────────────────────────────────────────────────
 const Servizi = () => {
+  const { t } = useTranslation();
   usePageMeta({
     title: "Servizi",
     description: "UI/UX Design, sviluppo web su misura e tech product management.",
@@ -349,41 +374,63 @@ const Servizi = () => {
   const fallbackServices = [
     {
       id: 1,
-      title: "UI & UX Design",
-      subtitle: "ESTETICA & INTERAZIONE",
-      description: "Creazione di interfacce digitali memorabili. Curo la progettazione visiva dall'architettura dell'informazione fino all'alta fedeltà visiva, garantendo un'esperienza fluida.",
-      deliverables: ["Progettazione UI/UX design", "Wireframe & Prototipi", "Visual Identity", "Design Systems"],
-      icon: <Layout size={28} />
+      title: t('services.fallback_service1_title'),
+      subtitle: t('services.fallback_service1_sub'),
+      description: t('services.fallback_service1_desc'),
+      deliverables: [t('services.fallback_service1_del1'), t('services.fallback_service1_del2'), t('services.fallback_service1_del3'), t('services.fallback_service1_del4')],
+      icon: <Layout size={24} />
     },
     {
       id: 2,
-      title: "Sviluppo Full-Stack",
-      subtitle: "LOGICA & CODICE",
-      description: "Dall'interfaccia al database. Sviluppo applicazioni web robuste e performanti, affiancate alla creazione di ecosistemi completi e temi personalizzati ed esclusivi.",
-      deliverables: ["Web App", "Sviluppo Front-end", "Temi custom", "OTTIMIZZAZIONE PERFORMANCE"],
-      icon: <Cpu size={28} />
+      title: t('services.fallback_service2_title'),
+      subtitle: t('services.fallback_service2_sub'),
+      description: t('services.fallback_service2_desc'),
+      deliverables: [t('services.fallback_service2_del1'), t('services.fallback_service2_del2'), t('services.fallback_service2_del3'), t('services.fallback_service2_del4')],
+      icon: <Cpu size={24} />
     },
     {
       id: 3,
-      title: "Tech PM & Gestione Prodotto",
-      subtitle: "STRATEGIA & SCALABILITÀ",
-      description: "Il ponte tra visione e sviluppo. Prendo in carico la complessità tecnica del tuo progetto, strutturando roadmap chiare e coordinando l'intero ciclo di vita.",
-      deliverables: ["PRODUCT MANAGEMENT", "ANALISI DEI REQUISITI", "INTEGRAZIONE AI WORKFLOWS", "COORDINAMENTO AGILE"],
-      icon: <Globe size={28} />
+      title: t('services.fallback_service3_title'),
+      subtitle: t('services.fallback_service3_sub'),
+      description: t('services.fallback_service3_desc'),
+      deliverables: [t('services.fallback_service3_del1'), t('services.fallback_service3_del2'), t('services.fallback_service3_del3'), t('services.fallback_service3_del4')],
+      icon: <Globe size={24} />
     }
   ];
 
   const displayServices = services.length > 0 ? services : fallbackServices;
 
   return (
-    <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative">
+    <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
       <NebulaNav />
 
-      {/* HUD Background Elements */}
-      <div className="fixed inset-0 pointer-events-none z-[0] flex items-center justify-center opacity-[0.03]">
-         <div className="w-full h-full bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:40px_40px]" />
+      {/* ═════════════════════════════════════════════════════
+          GLOBAL BACKGROUNDS (NEBULA AESTHETIC)
+          ═════════════════════════════════════════════════════ */}
+      <div className="fixed inset-0 pointer-events-none z-[0]">
+        <Suspense fallback={<div className="absolute inset-0 bg-[#080808]" />}>
+          <HeroCanvas />
+        </Suspense>
       </div>
-      <div className="fixed inset-0 pointer-events-none z-[0] opacity-[0.2] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+
+      <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden mix-blend-screen opacity-70">
+        <motion.div 
+          animate={{ x: ["0%", "10%", "0%"], y: ["0%", "5%", "0%"], scale: [1, 1.15, 1] }} 
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-[#d4af37]/10 to-[#3d0f1a]/10 blur-[130px]" 
+        />
+        <motion.div 
+          animate={{ x: ["0%", "-10%", "0%"], y: ["0%", "-5%", "0%"], scale: [1, 1.1, 1] }} 
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-tl from-indigo-900/10 to-[#3d0f1a]/5 blur-[140px]" 
+        />
+        <motion.div 
+          animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }} 
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[30%] left-[40%] w-[30vw] h-[30vw] rounded-full bg-rose-900/5 blur-[120px] mix-blend-screen" 
+        />
+        <div className="absolute inset-0 opacity-[0.25] mix-blend-overlay" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }} />
+      </div>
 
       {/* Hero */}
       <section className="pt-40 md:pt-56 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden z-10 border-b border-white/5">
@@ -396,14 +443,23 @@ const Servizi = () => {
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 className="space-y-6"
               >
-                <div className="flex items-center gap-4">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]">COSA OFFRO</span>
-                  <div className="w-12 h-[1px] bg-[#d4af37]/30" />
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.3em] text-[#d4af37] flex items-center gap-2">
+                    <span className="text-[10px]">✦</span> {t('services.what_i_offer')}
+                  </span>
                 </div>
-                <h1 className="font-fraunces italic font-light text-[10vw] lg:text-[7vw] leading-[0.9] tracking-tight text-white">
-                  <RevealText text="I miei" delay={0.1} />
-                  <RevealText text="servizi." delay={0.2} className="text-[#d4af37]" />
-                </h1>
+                <div className="flex flex-wrap items-baseline gap-x-6 pb-4">
+                  <RevealText 
+                    text="I MIEI" 
+                    delay={0.1} 
+                    className="font-bricolage font-bold tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-white whitespace-nowrap uppercase" 
+                  />
+                  <RevealText 
+                    text="servizi." 
+                    delay={0.2} 
+                    className="font-fraunces italic font-light tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap" 
+                  />
+                </div>
               </motion.div>
             </div>
             <div className="lg:col-span-5 space-y-6">
@@ -443,14 +499,25 @@ const Servizi = () => {
 
       {/* Compact Data Terminal Workflow */}
       <section className="relative z-10 w-full px-6 md:px-12 lg:px-24 pb-48 pt-12">
-        <div className="max-w-7xl mx-auto flex flex-col items-center">
-          <div className="mb-16 text-center">
-            <h2 className="font-fraunces italic font-light text-4xl md:text-6xl leading-none tracking-tight text-white mb-6">
-              <RevealText text="Come lavoro:" delay={0.1} />
-              <RevealText text="il processo." delay={0.3} className="text-[#d4af37]" />
-            </h2>
-            <p className="font-outfit font-light text-white/50 text-lg max-w-2xl mx-auto">
-              Un approccio metodico che garantisce controllo, flessibilità e una qualità finale ineccepibile.
+        <div className="max-w-7xl mx-auto flex flex-col items-start w-full">
+          <div className="mb-16 text-left w-full">
+            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4af37] font-medium mb-4 block">
+              02 — {t('services.workflow_label')}
+            </span>
+            <div className="flex flex-wrap items-baseline gap-x-4 mb-6">
+              <RevealText 
+                text={t("services.workflow_title_1")} 
+                delay={0.1} 
+                className="font-bricolage font-bold tracking-tight text-4xl md:text-5xl lg:text-6xl text-white uppercase"
+              />
+              <RevealText 
+                text={t("services.workflow_title_2")} 
+                delay={0.3} 
+                className="font-fraunces italic font-light text-4xl md:text-5xl lg:text-6xl text-[#d4af37]" 
+              />
+            </div>
+            <p className="font-outfit font-light text-white/50 text-lg max-w-2xl">
+              {t('services.workflow_description')}
             </p>
           </div>
           

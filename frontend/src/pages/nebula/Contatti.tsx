@@ -2,38 +2,40 @@ import { motion, AnimatePresence } from "framer-motion";
 import { NebulaNav } from "./components/NebulaNav";
 import { NebulaFooter } from "./components/NebulaFooter";
 import { Mail, Linkedin, Github, Instagram, ArrowRight, MapPin, CheckCircle } from "lucide-react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
+const HeroCanvas = React.lazy(() => import("./components/HeroCanvas").then(module => ({ default: module.HeroCanvas })));
 import { api } from "@/lib/api";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useTranslation } from "react-i18next";
 import { RevealText } from "@/components/RevealText";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
 
-const CONTACTS = [
+const getContacts = (t: any) => [
   {
     label: "Email",
     detail: "ilaria.dil@gmail.com",
-    sub: "Rispondo entro 24h",
+    sub: t("contact.sub_email"),
     icon: <Mail size={17} />,
     href: "mailto:ilaria.dil@gmail.com",
   },
   {
     label: "LinkedIn",
     detail: "Ilaria Diliberto",
-    sub: "Connettiti sulla piattaforma",
+    sub: t("contact.sub_linkedin"),
     icon: <Linkedin size={17} />,
     href: "https://www.linkedin.com/in/ilaria-diliberto/",
   },
   {
     label: "GitHub",
     detail: "@ilariadil-lgtm",
-    sub: "Esplora il codice",
+    sub: t("contact.sub_github"),
     icon: <Github size={17} />,
     href: "https://github.com/ilariadil-lgtm",
   },
   {
     label: "Instagram",
     detail: "@ilaryvision",
-    sub: "Scopri i miei lavori",
+    sub: t("contact.sub_instagram"),
     icon: <Instagram size={17} />,
     href: "https://www.instagram.com/ilaryvision/",
   },
@@ -72,6 +74,7 @@ function InputField({
 
 // ─────────────────────────────────────────────────────────────────────────────
 const Contatti = () => {
+  const { t } = useTranslation();
   usePageMeta({
     title: "Contatti",
     description: "Hai un progetto in mente? Scrivimi. Rispondo entro 24 ore per discutere la tua idea e trovare insieme la soluzione giusta.",
@@ -113,11 +116,36 @@ const Contatti = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative">
+    <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
       <NebulaNav />
 
-      {/* Background Noise */}
-      <div className="fixed inset-0 pointer-events-none z-[0] opacity-[0.2] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+      {/* ═════════════════════════════════════════════════════
+          GLOBAL BACKGROUNDS (NEBULA AESTHETIC)
+          ═════════════════════════════════════════════════════ */}
+      <div className="fixed inset-0 pointer-events-none z-[0]">
+        <Suspense fallback={<div className="absolute inset-0 bg-[#080808]" />}>
+          <HeroCanvas />
+        </Suspense>
+      </div>
+
+      <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden mix-blend-screen opacity-70">
+        <motion.div 
+          animate={{ x: ["0%", "10%", "0%"], y: ["0%", "5%", "0%"], scale: [1, 1.15, 1] }} 
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-[#d4af37]/10 to-[#3d0f1a]/10 blur-[130px]" 
+        />
+        <motion.div 
+          animate={{ x: ["0%", "-10%", "0%"], y: ["0%", "-5%", "0%"], scale: [1, 1.1, 1] }} 
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-tl from-indigo-900/10 to-[#3d0f1a]/5 blur-[140px]" 
+        />
+        <motion.div 
+          animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }} 
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[30%] left-[40%] w-[30vw] h-[30vw] rounded-full bg-rose-900/5 blur-[120px] mix-blend-screen" 
+        />
+        <div className="absolute inset-0 opacity-[0.25] mix-blend-overlay" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }} />
+      </div>
 
       {/* ═══════════════════════════════════════════════════════════════════
            HERO
@@ -131,16 +159,23 @@ const Contatti = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="flex items-center gap-4 mb-8">
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]">
-                  CONTATTI E COLLABORAZIONI
+              <div className="flex items-center gap-4 mb-6">
+                <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.3em] text-[#d4af37] flex items-center gap-2">
+                  <span className="text-[10px]">✦</span> {t("contact.subtitle")}
                 </span>
-                <div className="w-12 h-[1px] bg-[#d4af37]/30" />
               </div>
-              <h1 className="font-fraunces italic font-light leading-[0.9] tracking-tight text-white" style={{ fontSize: "clamp(3.5rem, 8vw, 7rem)" }}>
-                <RevealText text="Parlami del" delay={0.1} />
-                <RevealText text="tuo progetto." delay={0.2} className="text-[#d4af37]" />
-              </h1>
+              <div className="flex flex-col sm:flex-row flex-wrap items-baseline gap-x-6 pb-4">
+                <RevealText 
+                  text={t("contact.title_1")} 
+                  delay={0.1} 
+                  className="font-bricolage font-bold tracking-wider text-5xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-white whitespace-nowrap uppercase" 
+                />
+                <RevealText 
+                  text={t("contact.title_2")} 
+                  delay={0.2} 
+                  className="font-fraunces italic font-light tracking-wider text-5xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap" 
+                />
+              </div>
             </motion.div>
 
             <motion.div
@@ -150,13 +185,12 @@ const Contatti = () => {
               transition={{ duration: 1.2, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
             >
               <p className="font-outfit font-light text-white/60 text-lg leading-relaxed border-l border-[#d4af37]/30 pl-8">
-                Hai un progetto in mente, vuoi un preventivo o semplicemente vuoi
-                capire se posso aiutarti? Scrivimi — rispondo entro 24 ore.
+                {t("contact.description")}
               </p>
               <div className="mt-8 pl-8 flex items-center gap-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
                 <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37]">
-                  Disponibile per nuovi progetti
+                  {t("contact.available")}
                 </span>
               </div>
             </motion.div>
@@ -180,10 +214,10 @@ const Contatti = () => {
             {/* Canali diretti */}
             <div>
               <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] block mb-8">
-                CANALI DIRETTI
+                {t("contact.channels")}
               </span>
               <div className="space-y-4">
-                {CONTACTS.map((c, i) => (
+                {getContacts(t).map((c, i) => (
                   <motion.a
                     key={i}
                     href={c.href}
@@ -193,9 +227,9 @@ const Contatti = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1, duration: 0.7 }}
-                    className="group flex items-center gap-5 p-6 border border-white/5 bg-white/[0.02] hover:border-[#d4af37]/30 transition-all duration-500 rounded-none"
+                    className="group flex items-center gap-5 p-6 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-md hover:border-[#d4af37]/40 hover:bg-gradient-to-r from-[#d4af37]/10 to-transparent hover:shadow-[inset_0_0_20px_rgba(212,175,55,0.05)] transition-all duration-500 overflow-hidden"
                   >
-                    <div className="w-10 h-10 border border-white/10 flex items-center justify-center text-white/40 group-hover:text-[#d4af37] transition-colors shrink-0">
+                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 group-hover:text-[#d4af37] group-hover:border-[#d4af37]/50 transition-colors shrink-0">
                       {c.icon}
                     </div>
                     <div className="flex-1 min-w-0">
@@ -228,17 +262,17 @@ const Contatti = () => {
             </div>
 
             {/* Sede */}
-            <div className="p-8 border border-white/5 bg-white/[0.02] rounded-none flex items-start gap-5">
+            <div className="p-8 border border-white/5 bg-white/[0.02] backdrop-blur-md rounded-2xl flex items-start gap-5">
               <MapPin size={18} className="text-[#d4af37] shrink-0" />
               <div>
                 <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] block mb-3">
-                  Sede operativa
+                  {t("contact.hq_label")}
                 </span>
                 <p className="font-outfit font-light text-[15px] text-white">
-                  Sicilia, Italia
+                  {t("contact.hq_val")}
                 </p>
                 <p className="font-outfit font-light text-[13px] text-white/50 mt-2">
-                  Lavoro da remoto su tutto il territorio nazionale e internazionale.
+                  {t("contact.hq_desc")}
                 </p>
               </div>
             </div>
@@ -252,17 +286,31 @@ const Contatti = () => {
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="bg-white/[0.02] border border-white/5 p-10 md:p-16 rounded-none relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-100 pointer-events-none" />
+            <div className="bg-black/40 backdrop-blur-xl border border-white/5 p-10 md:p-16 rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.5)] relative overflow-hidden group-hover:bg-white/[0.03] transition-colors duration-700">
+              
+              {/* Terminal Top Bar */}
+              <div className="absolute top-0 left-0 w-full h-8 border-b border-white/5 flex items-center px-4 justify-between bg-white/[0.01]">
+                <div className="flex gap-1.5">
+                  <div className="w-2 h-2 rounded-full bg-white/10" />
+                  <div className="w-2 h-2 rounded-full bg-white/10" />
+                  <div className="w-2 h-2 rounded-full bg-white/10" />
+                </div>
+                <span className="font-mono text-[8px] uppercase tracking-widest text-white/20">
+                  SYS.CONTACT_PROTOCOL
+                </span>
+              </div>
+
+              {/* Background grid for the display */}
+              <div className="absolute inset-0 bg-[radial-gradient(rgba(212,175,55,0.04)_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none mt-8" />
 
               <div className="relative z-10">
                 <div className="mb-12">
                   <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] block mb-4">
-                    INVIA UN MESSAGGIO
+                    {t("contact.send_msg_label")}
                   </span>
                   <h2 className="font-fraunces italic font-light leading-[0.9] tracking-tight text-white" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}>
-                    Raccontami il <br />
-                    <span className="text-[#d4af37]">tuo progetto.</span>
+                    {t("contact.form_title_1")} <br />
+                    <span className="text-[#d4af37]">{t("contact.form_title_2")}</span>
                   </h2>
                 </div>
 
@@ -277,9 +325,9 @@ const Contatti = () => {
                     >
                       <CheckCircle size={48} className="text-[#d4af37]" strokeWidth={1} />
                       <div>
-                        <p className="font-fraunces italic font-light text-4xl mb-4 text-white">Messaggio inviato!</p>
+                        <p className="font-fraunces italic font-light text-4xl mb-4 text-white">{t("contact.msg_sent_title")}</p>
                         <p className="font-outfit font-light text-white/50 text-lg leading-relaxed">
-                          Perfetto. Ti rispondo entro 24 ore — a presto.
+                          {t("contact.msg_sent_desc")}
                         </p>
                       </div>
                       <button
@@ -300,33 +348,33 @@ const Contatti = () => {
                     >
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
                         <InputField
-                          label="Il tuo nome"
+                          label={t("contact.form_name")}
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          placeholder="Mario Rossi"
+                          placeholder={t("contact.form_name_ph")}
                         />
                         <InputField
-                          label="Email"
+                          label={t("contact.form_email")}
                           name="email"
                           type="email"
                           value={formData.email}
                           onChange={handleChange}
-                          placeholder="mario@esempio.com"
+                          placeholder={t("contact.form_email_ph")}
                         />
                       </div>
 
                       <InputField
-                        label="Oggetto"
+                        label={t("contact.form_subject")}
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        placeholder="Di cosa vuoi parlare?"
+                        placeholder={t("contact.form_subject_ph")}
                       />
 
                       <div className="group">
                         <label htmlFor="message" className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/50 block mb-3 cursor-pointer">
-                          Messaggio
+                          {t("contact.form_message")}
                         </label>
                         <textarea
                           id="message"
@@ -335,7 +383,7 @@ const Contatti = () => {
                           rows={5}
                           value={formData.message}
                           onChange={handleChange}
-                          placeholder="Raccontami la tua idea, il tuo progetto o la tua necessità..."
+                          placeholder={t("contact.form_message_ph")}
                           className="w-full bg-transparent border-b border-white/10 py-3.5 text-white placeholder:text-white/20 font-outfit font-light text-base outline-none focus:border-[#d4af37] transition-colors duration-300 resize-none"
                         />
                       </div>
@@ -354,10 +402,10 @@ const Contatti = () => {
                         <button
                           type="submit"
                           disabled={status === "loading"}
-                          className="group relative flex items-center justify-between w-full p-8 border border-[#d4af37]/30 bg-transparent hover:bg-[#d4af37]/10 transition-colors duration-500 disabled:opacity-50 mt-8"
+                          className="group relative flex items-center justify-between w-full p-8 rounded-2xl border border-[#d4af37]/30 bg-transparent hover:bg-[#d4af37]/10 hover:shadow-[inset_0_0_20px_rgba(212,175,55,0.2)] transition-all duration-500 disabled:opacity-50 mt-8 overflow-hidden"
                         >
                           <span className="relative z-10 font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37] font-bold">
-                            {status === "loading" ? "INVIO IN CORSO..." : "INVIA MESSAGGIO"}
+                            {status === "loading" ? t("contact.btn_sending") : t("contact.btn_send")}
                           </span>
                           <ArrowRight
                             size={16}

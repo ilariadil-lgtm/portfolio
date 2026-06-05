@@ -1,57 +1,73 @@
 import React from "react";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
+import { NebulaProjectPhases, Phase } from "./components/NebulaProjectPhases";
+import { NebulaImageSlider } from "./components/NebulaImageSlider";
 
 export const NebulaFreelens = () => {
-  return (
-    <NebulaProjectLayout
-      title="Freelens"
-      type="SAAS DEVELOPMENT"
-      description={
+  const phasesData: Phase[] = [
+    {
+      id: "01",
+      title: "Il Contesto",
+      description: (
         <>
-          <p>
-            Una piattaforma gestionale SaaS creata appositamente per professionisti autonomi.
-            Un ecosistema completo per il tracciamento finanziario, il controllo dei margini e
-            l'ottimizzazione del business tramite Intelligenza Artificiale integrata.
-          </p>
-
-          <h3>01 — Il Contesto</h3>
-          <h2>L'antidoto alla bancarotta tecnica.</h2>
-          <p>
+          <h2 className="font-bricolage font-bold text-3xl text-white mb-6">L'antidoto alla bancarotta tecnica.</h2>
+          <p className="text-white/80 leading-relaxed">
             Lavorare molto non significa sempre lavorare in attivo.
-            Freelense nasce per risolvere un problema endemico tra i professionisti:
+            Freelens nasce per risolvere un problema endemico tra i professionisti:
             la perdita di controllo sulla reale redditività dei progetti.
             L'obiettivo era creare una piattaforma che trasformasse il tracciamento delle ore,
             la preventivazione e la gestione delle scadenze in un processo visivo e immediato,
             scongiurando il rischio di lavorare in perdita e offrendo una chiarezza finanziaria assoluta.
           </p>
-
-          <h3>02 — L'Obiettivo</h3>
-          <p className="border-l-2 border-[#d4af37]/30 pl-4 py-2 italic text-white/80">
+        </>
+      ),
+      image: "/assets/projects/freelens/home.webp"
+    },
+    {
+      id: "02",
+      title: "L'Obiettivo",
+      description: (
+        <div className="flex flex-col justify-center h-full">
+          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit">
             "Riprendere il controllo del proprio tempo. Un ecosistema dove la salute finanziaria diventa finalmente chiara, misurabile e assistita dall'intelligenza artificiale."
           </p>
-
-          <h3>03 — Il Processo</h3>
-          <h2>L'esperienza utente al centro.</h2>
-          <p>
+        </div>
+      ),
+      image: "/assets/projects/freelens/dash.webp"
+    },
+    {
+      id: "03",
+      title: "Il Processo",
+      description: (
+        <>
+          <h2 className="font-bricolage font-bold text-3xl text-white mb-6">L'esperienza utente al centro.</h2>
+          <p className="text-white/80 leading-relaxed mb-4">
             L'interfaccia è concepita come una Single Page Application fluida e reattiva,
             ingegnerizzata con React 18 e TypeScript. Ho adottato un'estetica premium—con
             richiami al glassmorphism, gradienti dinamici e micro-interazioni—per rendere
             piacevole un'attività solitamente noiosa come l'amministrazione.
           </p>
-          <p>
+          <p className="text-white/80 leading-relaxed">
             Grazie a TanStack Query per il caching e Recharts per la data visualization,
             ogni KPI finanziario è istantaneamente disponibile sulla dashboard, azzerando
             i tempi di caricamento percepiti.
           </p>
-
-          <h3>04 — Sviluppo</h3>
-          <h2>Supabase, Serverless & AI.</h2>
-          <p>
+        </>
+      ),
+      image: "/assets/projects/freelens/kanban.webp"
+    },
+    {
+      id: "04",
+      title: "Sviluppo",
+      description: (
+        <>
+          <h2 className="font-bricolage font-bold text-3xl text-white mb-6">Supabase, Serverless & AI.</h2>
+          <p className="text-white/80 leading-relaxed mb-4">
             L'infrastruttura backend poggia interamente su PostgreSQL, garantendo la massima sicurezza
             tramite policy RLS (Row Level Security) rigorose: ogni utente ha accesso esclusivo ai
             propri dati.
           </p>
-          <p>
+          <p className="text-white/80 leading-relaxed">
             Il vero valore aggiunto risiede però nelle Edge Functions: un microservizio serverless
             alimenta l'assistente virtuale integrato, capace di leggere il contesto finanziario del
             professionista (pagamenti, progetti, scadenze) e fornire suggerimenti strategici in tempo
@@ -59,40 +75,50 @@ export const NebulaFreelens = () => {
             abbonamenti premium.
           </p>
         </>
+      ),
+      image: "/assets/projects/freelens/ai-assistant.webp"
+    },
+    {
+      id: "05",
+      title: "Il Risultato",
+      description: (
+        <>
+          <h2 className="font-bricolage font-bold text-3xl text-white mb-6">Intelligenza Finanziaria.</h2>
+          <p className="text-white/80 leading-relaxed">
+            Il risultato è un prodotto SaaS end-to-end completo e scalabile. Unendo un'interfaccia utente d'impatto a un'architettura dati complessa e serverless, la piattaforma non si limita a organizzare il lavoro, ma agisce come un vero e proprio partner strategico per la crescita del professionista.
+          </p>
+        </>
+      ),
+      image: "/assets/projects/freelens/finances.webp"
+    }
+  ];
+
+  return (
+    <NebulaProjectLayout
+      title1="Free"
+      title2="lens"
+      type="SVILUPPO SAAS"
+      description={
+        <p className="mb-8">
+          Una piattaforma gestionale SaaS creata appositamente per professionisti autonomi.
+          Un ecosistema completo per il tracciamento finanziario, il controllo dei margini e
+          l'ottimizzazione del business tramite Intelligenza Artificiale integrata.
+        </p>
       }
+      phases={phasesData}
       techList={["React 18 & TypeScript", "Tailwind & Shadcn UI", "Supabase & PostgreSQL", "Edge Functions & AI API"]}
       role="Lead Product Designer & Dev"
       year="2026"
     >
-      
-      {/* Immagine Principale */}
-      <div className="w-full rounded-none overflow-hidden  bg-[#050505] relative group mb-12">
-        
-        <img 
-          src="/assets/projects/freelens/home.webp" 
-          alt="Freelens Homepage"
-          className="w-full h-auto transition-transform duration-700 hover:scale-[1.02]"
-        />
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {[
-          "dash.webp",
-          "kanban.webp",
-          "finances.webp",
-          "ai-assistant.webp"
-        ].map((img, i) => (
-          <div key={i} className="w-full rounded-none overflow-hidden  bg-[#050505] relative group">
-            
-            <img 
-              src={`/assets/projects/freelens/${img}`} 
-              alt={`Freelens UI ${i}`}
-              className="w-full h-auto transition-transform duration-700 hover:scale-[1.02]"
-            />
-          </div>
-        ))}
-      </div>
-
+      <NebulaImageSlider 
+        images={[
+          "/assets/projects/freelens/home.webp",
+          "/assets/projects/freelens/dash.webp",
+          "/assets/projects/freelens/kanban.webp",
+          "/assets/projects/freelens/finances.webp",
+          "/assets/projects/freelens/ai-assistant.webp"
+        ]}
+      />
     </NebulaProjectLayout>
   );
 };

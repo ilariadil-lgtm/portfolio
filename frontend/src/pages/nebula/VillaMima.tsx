@@ -1,91 +1,109 @@
 import React from "react";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
+import { NebulaProjectPhases, Phase } from "./components/NebulaProjectPhases";
+import { NebulaImageSlider } from "./components/NebulaImageSlider";
 
 export const NebulaVillaMima = () => {
-  return (
-    <NebulaProjectLayout
-      title="Villa Mima"
-      type="UI/UX DESIGN • WEB & CONTENT • WEDDING & EVENTS"
-      description={
+  const phasesData: Phase[] = [
+    {
+      id: "01",
+      title: "Il Contesto",
+      description: (
         <>
-          <p>
-            Un progetto digitale raffinato realizzato in collaborazione con l'agenzia Carnova. Cura dell'interfaccia utente, della narrazione visiva e dello sviluppo su WordPress per una location d'eccellenza dedicata a matrimoni e ricevimenti in Sicilia.
-          </p>
-
-          <h3>01 — Il Contesto</h3>
-          <h2>Eventi sotto le stelle.</h2>
-          <p>
+          <h2 className="font-bricolage font-bold text-3xl text-white mb-6">Eventi sotto le stelle.</h2>
+          <p className="text-white/80 leading-relaxed mb-4">
             Immersa tra uliveti e vigneti a due passi dalla Valle dei Templi, Villa Mima è molto più di una sala ricevimenti: è un'esperienza sensoriale completa. In collaborazione con Carnova, la sfida era trasmettere online questa forte identità e la cura maniacale per i dettagli.
           </p>
-          <p>
+          <p className="text-white/80 leading-relaxed">
             Serviva una piattaforma capace di esaltare non solo la bellezza paesaggistica e architettonica della struttura, ma anche l'alta cucina e il 'food design', elementi decisivi per chi è alla ricerca della location perfetta per un evento esclusivo.
           </p>
-
-          <h3>02 — L'Obiettivo</h3>
-          <p className="border-l-2 border-[#d4af37]/30 pl-4 py-2 italic text-white/80">
+        </>
+      ),
+      image: "/assets/projects/villa-mima/home.webp"
+    },
+    {
+      id: "02",
+      title: "L'Obiettivo",
+      description: (
+        <div className="flex flex-col justify-center h-full">
+          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit">
             "L'eleganza si nasconde nei dettagli: un'interfaccia progettata per far pregustare l'atmosfera magica di un evento indimenticabile, ancor prima del primo assaggio."
           </p>
-
-          <h3>03 — Il Processo</h3>
-          <h2>UI/UX e Food Design.</h2>
-          <p>
+        </div>
+      ),
+      image: "/assets/projects/villa-mima/la-villa.webp"
+    },
+    {
+      id: "03",
+      title: "Il Processo",
+      description: (
+        <>
+          <h2 className="font-bricolage font-bold text-3xl text-white mb-6">UI/UX e Food Design.</h2>
+          <p className="text-white/80 leading-relaxed mb-4">
             Ho sviluppato un'architettura visiva che mette in primo piano le emozioni e i sensi. Il layout lascia ampio respiro alle fotografie della location e alle creazioni culinarie artistiche dello chef, trattando ogni piatto come un'opera di design.
           </p>
-          <p>
+          <p className="text-white/80 leading-relaxed">
             L'uso di tipografie graziate ed eleganti, unito a spazi negativi generosi, crea un'atmosfera di lusso sussurrato, guidando l'utente attraverso i servizi: dai matrimoni da favola agli show cooking, fino all'intrattenimento a bordo piscina.
           </p>
-
-          <h3>04 — Sviluppo</h3>
-          <h2>WordPress e Narrazione Emozionale.</h2>
-          <p>
+        </>
+      ),
+      image: "/assets/projects/villa-mima/menu.webp"
+    },
+    {
+      id: "04",
+      title: "Sviluppo",
+      description: (
+        <>
+          <h2 className="font-bricolage font-bold text-3xl text-white mb-6">WordPress e Narrazione Emozionale.</h2>
+          <p className="text-white/80 leading-relaxed mb-4">
             A livello tecnico, l'intero ecosistema è stato ingegnerizzato su piattaforma WordPress, garantendo fluidità e velocità di caricamento nonostante l'alta densità di contenuti fotografici. L'esperienza utente è stata studiata per abbattere ogni attrito nel percorso di conversione.
           </p>
-          <p>
+          <p className="text-white/80 leading-relaxed">
             I moduli di contatto e le call to action sono posizionati in modo organico e non invasivo, invitando i futuri sposi o i planner a mettersi in contatto con la struttura in modo semplice, empatico e diretto.
           </p>
-
-          <h3>05 — The Result</h3>
-          <h2>La magia dei dettagli.</h2>
-          <p>
+        </>
+      ),
+      image: "/assets/projects/villa-mima/contatti.webp"
+    },
+    {
+      id: "05",
+      title: "Il Risultato",
+      description: (
+        <>
+          <h2 className="font-bricolage font-bold text-3xl text-white mb-6">La magia dei dettagli.</h2>
+          <p className="text-white/80 leading-relaxed">
             Il risultato è un sito web che cattura perfettamente l'essenza dell'ospitalità e dell'alta cucina. Un progetto che dimostra come il giusto equilibrio tra design minimale, immagini d'impatto e un copy accurato possa trasformare una vetrina digitale nel primo, fondamentale passo verso l'organizzazione di un evento perfetto.
           </p>
         </>
+      ),
+      image: "/assets/projects/villa-mima/home.webp"
+    }
+  ];
+
+  return (
+    <NebulaProjectLayout
+      title1="Villa"
+      title2="Mima"
+      type="DESIGN UI/UX • WEB & CONTENT • EVENTI & MATRIMONI"
+      description={
+        <p className="mb-8">
+          Un progetto digitale raffinato realizzato in collaborazione con l'agenzia Carnova. Cura dell'interfaccia utente, della narrazione visiva e dello sviluppo su WordPress per una location d'eccellenza dedicata a matrimoni e ricevimenti in Sicilia.
+        </p>
       }
+      phases={phasesData}
       techList={["UI/UX Design", "WordPress Environment", "Copywriting & Storytelling"]}
       role="UI/UX & Web Developer"
       year="2023"
     >
-      
-      {/* Immagine Principale */}
-      <div className="w-full rounded-none overflow-hidden  bg-[#050505] relative group mb-12">
-        
-        <img 
-          src="/assets/projects/villa-mima/home.webp" 
-          alt="Villa Mima Homepage"
-          onError={(e) => { e.currentTarget.src = "/assets/project-visio.png"; }}
-          className="w-full h-auto transition-transform duration-700 hover:scale-[1.02]"
-        />
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {[
-          "la-villa.webp",
-          "menu.webp",
-          "contatti.webp",
-          "home.webp"
-        ].map((img, i) => (
-          <div key={i} className="w-full rounded-none overflow-hidden  bg-[#050505] relative group">
-            
-            <img 
-              src={`/assets/projects/villa-mima/${img}`} 
-              alt={`Villa Mima UI ${i}`}
-              onError={(e) => { e.currentTarget.src = "/assets/project-visio.png"; }}
-              className="w-full h-auto transition-transform duration-700 hover:scale-[1.02]"
-            />
-          </div>
-        ))}
-      </div>
-
+      <NebulaImageSlider 
+        images={[
+          "/assets/projects/villa-mima/home.webp",
+          "/assets/projects/villa-mima/la-villa.webp",
+          "/assets/projects/villa-mima/menu.webp",
+          "/assets/projects/villa-mima/contatti.webp",
+          "/assets/projects/villa-mima/home.webp"
+        ]}
+      />
     </NebulaProjectLayout>
   );
 };
