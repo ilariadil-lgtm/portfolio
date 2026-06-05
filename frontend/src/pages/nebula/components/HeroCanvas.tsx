@@ -10,24 +10,34 @@ const Terrain = () => {
   useFrame((state) => {
     if (!geomRef.current) return;
     const time = state.clock.getElapsedTime();
+    
+    // Awwwards Scrollytelling: leggiamo lo scroll e usiamolo per alterare lo spazio 3D
+    const scrollY = window.scrollY;
+    const scrollFactor = scrollY * 0.002; 
+    
     const position = geomRef.current.attributes.position;
     
-    // Animazione di tutti i vertici per creare morbide onde topografiche
+    // Animazione dei vertici: l'ampiezza e la fase delle onde aumentano scendendo
     for (let i = 0; i < position.count; i++) {
       const x = position.getX(i);
       const y = position.getY(i);
-      // Equazione d'onda che unisce due frequenze per un movimento organico e complesso
-      const z = Math.sin(x * 0.4 + time * 1.0) * Math.cos(y * 0.4 + time * 1.0) * 2.5;
+      const z = Math.sin(x * 0.4 + time * 1.0 + scrollFactor) * 
+                Math.cos(y * 0.4 + time * 1.0) * 
+                (2.5 + scrollY * 0.001); // Le onde si alzano scendendo
       position.setZ(i, z);
     }
     position.needsUpdate = true;
+
+    // Inclinazione reattiva allo scroll
+    if (meshRef.current) {
+      meshRef.current.rotation.x = -Math.PI / 2.2 - scrollY * 0.0003;
+      meshRef.current.position.y = -2 - scrollY * 0.003;
+    }
   });
 
   return (
     <mesh ref={meshRef} rotation={[-Math.PI / 2.2, 0, 0]} position={[0, -2, -10]}>
-      {/* Geometria molto larga e suddivisa per permettere onde morbide */}
       <planeGeometry ref={geomRef} args={[100, 100, 64, 64]} />
-      {/* Wireframe elegante per un look altamente tecnico ma artistico */}
       <meshBasicMaterial color="#d4af37" wireframe={true} transparent opacity={0.35} />
     </mesh>
   );

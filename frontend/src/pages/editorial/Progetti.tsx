@@ -121,14 +121,14 @@ const CATEGORIES = [
   { id: "ALL", label: "Tutti", count: null },
   { id: "WEB_ECOMMERCE", label: "Web & E-Commerce", count: null },
   { id: "WEBAPP_SAAS", label: "Web App & SaaS", count: null },
-  { id: "SOPHIA_THEME", label: "Sophia Theme", count: null },
+  // { id: "SOPHIA_THEME", label: "Sophia Theme", count: null },
   { id: "BRAND_IDENTITY", label: "Brand Identity", count: null },
 ];
 
 const TYPE_LABELS: Record<string, string> = {
   WEB_ECOMMERCE: "Web & E-Commerce",
   WEBAPP_SAAS: "Web App & SaaS",
-  SOPHIA_THEME: "Sophia Theme",
+  // SOPHIA_THEME: "Sophia Theme",
   BRAND_IDENTITY: "Brand Identity",
 };
 
@@ -253,7 +253,8 @@ const Progetti = () => {
       try {
         const data = await api.getProjects();
         const results = data.results || data;
-        setProjects(results && results.length > 0 ? results : fallbackProjects);
+        const filtered = results.filter((p: any) => p.id !== 'SOPHIA_THEME' && p.id !== 'sophiatheme');
+        setProjects(filtered && filtered.length > 0 ? filtered : fallbackProjects);
       } catch {
         setProjects(fallbackProjects);
       } finally {

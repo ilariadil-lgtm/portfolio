@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect, useMemo } from "react";
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, animate, MotionValue, useSpring } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { KineticText } from "./KineticText";
 
 interface NavPointProps {
   angle: number;
@@ -230,28 +231,25 @@ export const CreativeHero: React.FC = () => {
             </div>
 
             <h1 className="relative font-display leading-[0.85] tracking-tighter">
-              <div className="overflow-hidden">
-                <motion.span
-                  initial={{ y: "100%" }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              <motion.div style={{ y: y1 }} className="overflow-hidden">
+                <KineticText 
+                  text="ilaria" 
+                  delay={0.2} 
+                  mode="char"
                   className="block text-[14vw] lg:text-[8.5vw] font-bold text-[#3d0f1a]"
-                  style={{ y: y1 }}
-                >
-                  ilaria
-                </motion.span>
-              </div>
-              <div className="overflow-hidden -mt-2 lg:-mt-4">
-                <motion.span
-                  initial={{ y: "100%" }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="block text-[14vw] lg:text-[8.5vw] font-bold text-primary italic"
-                  style={{ y: y1 }}
-                >
-                  diliberto<span className="text-[#3d0f1a] not-italic">.</span>
-                </motion.span>
-              </div>
+                />
+              </motion.div>
+              <motion.div style={{ y: y1 }} className="overflow-hidden -mt-2 lg:-mt-4">
+                <div className="flex items-baseline">
+                  <KineticText 
+                    text="diliberto" 
+                    delay={0.6} 
+                    mode="char"
+                    className="block text-[14vw] lg:text-[8.5vw] font-bold text-primary italic pr-2"
+                  />
+                  <span className="block text-[14vw] lg:text-[8.5vw] font-bold text-[#3d0f1a] not-italic leading-none translate-y-2">.</span>
+                </div>
+              </motion.div>
             </h1>
 
             <motion.div

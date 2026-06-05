@@ -58,12 +58,14 @@ const NebulaLoghi        = lazy(() => import("./pages/nebula/Loghi"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 import { DesignProvider, useDesign } from "./context/DesignContext";
+import { SoundProvider } from "./context/SoundContext";
 import { DesignSwitcher } from "./components/DesignSwitcher";
 import { Preloader } from "./components/Preloader";
 import { NebulaPreloader } from "./pages/nebula/components/NebulaPreloader";
 import { CustomCursor } from "./components/CustomCursor";
 import { PageTransition } from "./components/PageTransition";
 import { LenisScroller } from "./components/LenisScroller";
+import { useThemeFavicon } from "./hooks/useThemeFavicon";
 
 const queryClient = new QueryClient();
 
@@ -82,6 +84,8 @@ const AnimatedRoutes = () => {
   const location = useLocation();
   const { design } = useDesign();
   const isEditorial = design === "editorial";
+
+  useThemeFavicon(design as 'editorial' | 'nebula');
 
   return (
     <Suspense fallback={<PageFallback />}>
@@ -155,11 +159,13 @@ const AppContent = () => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <DesignProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <AppContent />
-      </TooltipProvider>
+      <SoundProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <AppContent />
+        </TooltipProvider>
+      </SoundProvider>
     </DesignProvider>
   </QueryClientProvider>
 );

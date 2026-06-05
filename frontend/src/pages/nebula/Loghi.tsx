@@ -177,8 +177,8 @@ export const NebulaLoghi = () => {
   }, []);
 
   usePageMeta({
-    title: "Branding & Loghi",
-    description: "Identità visive e progettazione di loghi. Esplora i brand che ho contribuito a lanciare e consolidare.",
+    title: t('projects_data.loghi.title', "Branding & Loghi"),
+    description: t('projects_data.loghi.description', "Identità visive e progettazione di loghi. Esplora i brand che ho contribuito a lanciare e consolidare."),
   });
 
   return (
@@ -196,7 +196,7 @@ export const NebulaLoghi = () => {
             className="group inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-white/50 hover:text-[#d4af37] transition-colors mb-12"
           >
             <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-            TUTTI I PROGETTI
+            {t('projects.all_projects', "TUTTI I PROGETTI")}
           </Link>
           
           <motion.div

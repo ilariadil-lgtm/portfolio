@@ -17,9 +17,9 @@ const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 const getFallbackProjects = (t: any) => [
   {
     id: "storagehub",
-    title: "StorageHub",
+    title: t('projects_data.storagehub.title', 'StorageHub'),
     type: "WEBAPP_SAAS",
-    technologies: "React.js, Node.js (Express), AWS S3 / CloudFront, PostgreSQL, REST API, UX Strategy",
+    technologies: t('projects_data.storagehub.technologies', 'React.js, Node.js (Express), AWS S3 / CloudFront, PostgreSQL, REST API, UX Strategy'),
     year: "2024",
     image: "/assets/projects/storage-hub/dashboard.webp",
     project_url: "https://storagehub.com",
@@ -27,9 +27,9 @@ const getFallbackProjects = (t: any) => [
   },
   {
     id: "freelens",
-    title: "Freelens",
+    title: t('projects_data.freelens.title', 'Freelens'),
     type: "WEBAPP_SAAS",
-    technologies: "Figma, React, Framer Motion, Product Strategy",
+    technologies: t('projects_data.freelens.technologies', 'Figma, React, Framer Motion, Product Strategy'),
     year: "2024",
     image: "/assets/projects/freelens/home.webp",
     project_url: "https://freelens.app",
@@ -37,9 +37,9 @@ const getFallbackProjects = (t: any) => [
   },
   {
     id: "villamasami",
-    title: "Villa Masami",
+    title: t('projects_data.villamasami.title', 'Villa Masami'),
     type: "WEB_ECOMMERCE BRAND_IDENTITY",
-    technologies: "Brand & Logo Design, UI/UX Design, Copywriting, WordPress (Bilingual)",
+    technologies: t('projects_data.villamasami.technologies', 'Brand & Logo Design, UI/UX Design, Copywriting, WordPress (Bilingual)'),
     year: "2026",
     image: "/assets/projects/villa-masami/homepage.webp",
     project_url: "",
@@ -47,9 +47,9 @@ const getFallbackProjects = (t: any) => [
   },
   {
     id: "pattiforniture",
-    title: "Patti Forniture",
+    title: t('projects_data.pattiforniture.title', 'Patti Forniture'),
     type: "WEB_ECOMMERCE",
-    technologies: "UI/UX Design, Information Architecture, Copywriting, WordPress Corporate",
+    technologies: t('projects_data.pattiforniture.technologies', 'UI/UX Design, Information Architecture, Copywriting, WordPress Corporate'),
     year: "2026",
     image: "/assets/projects/patti-forniture/homepage.webp",
     project_url: "",
@@ -57,9 +57,9 @@ const getFallbackProjects = (t: any) => [
   },
   {
     id: "sicilcosmetic",
-    title: "SicilCosmetic",
+    title: t('projects_data.sicilcosmetic.title', 'SicilCosmetic'),
     type: "WEB_ECOMMERCE",
-    technologies: "PrestaShop Configuration, E-commerce UI/UX, Catalog Management, Copywriting & Layout",
+    technologies: t('projects_data.sicilcosmetic.technologies', 'PrestaShop Configuration, E-commerce UI/UX, Catalog Management, Copywriting & Layout'),
     year: "2026",
     image: "/assets/projects/sicil-cosmetic/homepage.webp",
     project_url: "",
@@ -67,9 +67,9 @@ const getFallbackProjects = (t: any) => [
   },
   {
     id: "newpop",
-    title: "Newpop",
+    title: t('projects_data.newpop.title', 'Newpop'),
     type: "WEB_ECOMMERCE",
-    technologies: "PrestaShop Integration, UI/UX Design, Visual Merchandising, Information Architecture",
+    technologies: t('projects_data.newpop.technologies', 'PrestaShop Integration, UI/UX Design, Visual Merchandising, Information Architecture'),
     year: "2026",
     image: "/assets/projects/newpop/homepage.webp",
     project_url: "",
@@ -77,9 +77,9 @@ const getFallbackProjects = (t: any) => [
   },
   {
     id: "vinigambino",
-    title: "Vini Gambino",
+    title: t('projects_data.vinigambino.title', 'Vini Gambino'),
     type: "WEB_ECOMMERCE",
-    technologies: "UI/UX & Graphic Layout, WordPress Environment, Hospitality & E-commerce, Visual Storytelling",
+    technologies: t('projects_data.vinigambino.technologies', 'UI/UX & Graphic Layout, WordPress Environment, Hospitality & E-commerce, Visual Storytelling'),
     year: "2026",
     image: "/assets/projects/vini-gambino/homepage.webp",
     project_url: "",
@@ -87,9 +87,9 @@ const getFallbackProjects = (t: any) => [
   },
   {
     id: "bagliolauria",
-    title: "Baglio Lauria",
+    title: t('projects_data.bagliolauria.title', 'Baglio Lauria'),
     type: "WEB_ECOMMERCE",
-    technologies: "UI/UX Design, Copywriting & Content, WordPress Layout, Hospitality Design",
+    technologies: t('projects_data.bagliolauria.technologies', 'UI/UX Design, Copywriting & Content, WordPress Layout, Hospitality Design'),
     year: "2026",
     image: "/assets/projects/baglio-lauria/homepage.webp",
     project_url: "",
@@ -97,21 +97,21 @@ const getFallbackProjects = (t: any) => [
   },
   {
     id: "villamima",
-    title: "Villa Mima",
+    title: t('projects_data.villamima.title', 'Villa Mima'),
     type: "WEB_ECOMMERCE",
-    technologies: "UI/UX Design, WordPress Environment, Copywriting & Storytelling, Wedding & Event Industry",
+    technologies: t('projects_data.villamima.technologies', 'UI/UX Design, WordPress Environment, Copywriting & Storytelling, Wedding & Event Industry'),
     year: "2026",
-    image: "/assets/projects/villa-mima/home.webp",
+    image: "/assets/projects/villa-mima/homepage.webp",
     project_url: "",
     description: t('projects_data.villamima.description')
   },
   {
     id: "loghi",
-    title: "Branding & Loghi",
+    title: t('projects_data.loghi.title', 'Branding & Loghi'),
     type: "BRAND_IDENTITY",
-    technologies: "Logo Design, Brand Identity, Visual Guidelines, Art Direction",
-    year: "2025-2026",
-    image: "/assets/loghi/sicef/logo_1.webp",
+    technologies: t('projects_data.loghi.technologies', 'Logo Design, Brand Identity, Visual Guidelines, Art Direction'),
+    year: "2026",
+    image: "/assets/projects/loghi/1.webp",
     project_url: "",
     description: t('projects_data.loghi.description')
   }
@@ -121,14 +121,14 @@ const getCategories = (t: any) => [
   { id: "ALL", label: t('projects.cat_all'), count: null },
   { id: "WEB_ECOMMERCE", label: "Web & E-Commerce", count: null },
   { id: "WEBAPP_SAAS", label: "Web App & SaaS", count: null },
-  { id: "SOPHIA_THEME", label: "Sophia Theme", count: null },
+  // { id: "SOPHIA_THEME", label: "Sophia Theme", count: null },
   { id: "BRAND_IDENTITY", label: "Brand Identity", count: null },
 ];
 
 const TYPE_LABELS: Record<string, string> = {
   WEB_ECOMMERCE: "Web & E-Commerce",
   WEBAPP_SAAS: "Web App & SaaS",
-  SOPHIA_THEME: "Sophia Theme",
+  // SOPHIA_THEME: "Sophia Theme",
   BRAND_IDENTITY: "Brand Identity",
 };
 
@@ -266,7 +266,8 @@ const NebulaProgetti = () => {
       try {
         const data = await api.getProjects();
         const results = data.results || data;
-        setProjects(results && results.length > 0 ? results : fallbackProjects);
+        const filtered = results.filter((p: any) => p.id !== 'SOPHIA_THEME' && p.id !== 'sophiatheme');
+        setProjects(filtered && filtered.length > 0 ? filtered : fallbackProjects);
       } catch (error) {
         console.error("Errore nel caricamento dei progetti:", error);
         setProjects(fallbackProjects);

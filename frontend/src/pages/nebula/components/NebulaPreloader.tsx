@@ -10,7 +10,7 @@ export const NebulaPreloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
   const { active, progress: realProgress } = useProgress();
-  
+
   // Ref per tracciare lo stato di Drei senza far ricaricare il setInterval
   const loadingStatus = useRef({ active, realProgress });
   useEffect(() => {
@@ -35,7 +35,7 @@ export const NebulaPreloader: React.FC<PreloaderProps> = ({ onComplete }) => {
       if (status.active && next > 90) {
         next = 90;
       }
-      
+
       if (status.realProgress > next) {
         next = Math.floor(status.realProgress);
       }
@@ -82,9 +82,9 @@ export const NebulaPreloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 <span>Loading Assets</span>
                 <span className="text-white font-bold">{progress}%</span>
               </div>
-              
+
               <div className="w-full h-[1px] bg-white/10 relative overflow-hidden">
-                <motion.div 
+                <motion.div
                   className="absolute top-0 left-0 h-full bg-[#d4af37]"
                   initial={{ width: "0%" }}
                   animate={{ width: `${progress}%` }}
@@ -95,13 +95,13 @@ export const NebulaPreloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           </div>
 
           {/* Minimal branding */}
-          <motion.div 
+          <motion.div
             className="absolute bottom-10 flex justify-between w-full px-8 md:px-12 font-mono text-[10px] uppercase tracking-[0.3em] text-white/30"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            <span className="hidden md:inline">SYSTEM INITIALIZATION</span>
+            <span className="hidden md:inline">Inizializzazione del sistema</span>
             <span>PORTFOLIO © 2026</span>
           </motion.div>
         </motion.div>

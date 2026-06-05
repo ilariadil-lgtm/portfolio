@@ -450,7 +450,7 @@ const Servizi = () => {
                 </div>
                 <div className="flex flex-wrap items-baseline gap-x-6 pb-4">
                   <RevealText 
-                    text="I MIEI" 
+                    text={t("services.title_1", "I MIEI")} 
                     delay={0.1} 
                     className="font-bricolage font-bold tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-white whitespace-nowrap uppercase" 
                   />

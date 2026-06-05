@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { useSound } from "../context/SoundContext";
 
 const navItems = [
   { key: "home", path: "/" },
@@ -16,9 +17,11 @@ export const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { t, i18n } = useTranslation();
+  const { isMuted, toggleMute, playHover, playClick } = useSound();
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
+    playClick();
   };
 
   useEffect(() => {
@@ -61,11 +64,9 @@ export const Navigation = () => {
             aria-label="Torna alla Home"
           >
             <img 
-              src="/logo.webp" 
+              src="/logo-editorial.webp" 
               alt="Ilaria Diliberto" 
-              width="140"
-              height="28"
-              className="h-5 md:h-7 w-auto object-contain shrink-0"
+              className="w-48 md:w-64 h-auto object-contain shrink-0"
             />
           </Link>
 
@@ -76,6 +77,8 @@ export const Navigation = () => {
                 <Link
                   key={item.path}
                   to={item.path}
+                  onMouseEnter={playHover}
+                  onClick={playClick}
                   className={`relative font-body text-[11px] uppercase tracking-[0.3em] transition-all duration-300 group ${
                     location.pathname === item.path 
                       ? "text-primary" 
@@ -94,6 +97,13 @@ export const Navigation = () => {
 
             <div className="flex items-center gap-4 border-l border-primary/20 pl-4">
               <button 
+                onClick={toggleMute} 
+                className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${isMuted ? 'text-foreground/40 hover:text-primary' : 'text-primary font-bold'}`}
+              >
+                {isMuted ? 'SND: OFF' : 'SND: ON'}
+              </button>
+              <span className="text-primary/20 text-[11px]">|</span>
+              <button 
                 onClick={() => changeLanguage('it')} 
                 className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'it' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
               >
@@ -110,6 +120,8 @@ export const Navigation = () => {
 
             <Link 
               to="/contatti"
+              onMouseEnter={playHover}
+              onClick={playClick}
               className={`px-7 py-3 font-body text-[11px] uppercase tracking-[0.3em] transition-all duration-500 rounded-full border border-primary/20 hover:bg-primary hover:text-white ${
                 scrolled ? "bg-primary/5" : "bg-transparent"
               }`}

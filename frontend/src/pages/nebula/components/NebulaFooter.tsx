@@ -42,33 +42,33 @@ export const NebulaFooter = () => {
                 ILARIA DILIBERTO.
               </span>
             </div>
-            <p className="font-mono text-xs tracking-[0.2em] text-[#d4af37] uppercase font-bold">DESIGN E SVILUPPO</p>
+            <p className="font-mono text-xs tracking-[0.2em] text-[#d4af37] uppercase font-bold">{t('footer.subtitle').toUpperCase()}</p>
           </Link>
           <p className="font-outfit font-light text-sm text-white/50 leading-relaxed max-w-sm whitespace-pre-wrap">
-            Design editoriale, sviluppo web e gestione progetti fusi in un'unica visione. Costruisco ecosistemi digitali curati in ogni dettaglio, dal primo bozzetto grafico all'ultima riga di codice.
+            {t('footer.description')}
           </p>
 
           <div className="relative p-8 border border-[#d4af37]/20 bg-white/5 rounded-none hover:bg-white/10 transition-all duration-500 overflow-hidden backdrop-blur-sm mt-4">
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 font-bold block mb-4">LAVORIAMO INSIEME?</span>
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 font-bold block mb-4">{t('footer.work_together').toUpperCase()}</span>
             <p className="font-outfit text-sm text-white/60 mb-6">
-              Hai un progetto in mente? Scrivimi, rispondo entro 24 ore.
+              {t('footer.work_together_desc')}
             </p>
             <Link to="/contatti" className="flex items-center gap-3 text-white hover:text-[#d4af37] transition-colors font-mono tracking-widest font-bold text-xs">
-              CONTATTAMI
+              {t('footer.contact_me').toUpperCase()}
               <ArrowRight size={14} />
             </Link>
           </div>        </div>
 
         {/* Links Column */}
         <div className="md:col-span-3 space-y-6">
-          <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 font-bold">ESPLORA</span>
+          <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 font-bold">{t('footer.explore').toUpperCase()}</span>
           <ul className="space-y-4">
             {[
-              { path: "/", label: "Home" },
-              { path: "/progetti", label: "Progetti" },
-              { path: "/chisono", label: "Chi sono" },
-              { path: "/servizi", label: "Servizi" },
-              { path: "/contatti", label: "Parliamo" },
+              { path: "/", label: t("nav.home") },
+              { path: "/progetti", label: t("nav.projects") },
+              { path: "/chisono", label: t("nav.about") },
+              { path: "/servizi", label: t("nav.services") },
+              { path: "/contatti", label: t("nav.contact") },
             ].map((link) => (
               <li key={link.path}>
                 <Link to={link.path} className="font-outfit text-sm tracking-wide hover:text-[#d4af37] transition-colors relative inline-block group text-white/60">
@@ -101,13 +101,13 @@ export const NebulaFooter = () => {
 
           <div className="pt-6 flex justify-between items-center mt-auto">
             <div className="flex flex-col gap-1">
-              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/50">BASE</span>
+              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/50">{t('footer.base_label').toUpperCase()}</span>
               <span className="font-mono text-xs text-white tracking-widest">Italia // <time dateTime={currentTime}>{currentTime}</time></span>
             </div>
             <div className="flex flex-col gap-1 text-right">
-              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/50">STATO</span>
+              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/50">{t('footer.status_label').toUpperCase()}</span>
               <span className="font-mono text-xs text-green-500 tracking-widest flex items-center gap-2">
-                Disponibile <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                {t('footer.available').replace(' ✓', '')} <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
               </span>
             </div>
           </div>
@@ -121,10 +121,10 @@ export const NebulaFooter = () => {
             © {currentYear} ILARIA DILIBERTO
           </p>
           <span className="hidden md:inline font-mono text-[10px] tracking-wider text-white/30 border-l border-white/10 pl-4">
-            TUTTI I DIRITTI RISERVATI
+            {t('footer.all_rights').toUpperCase()}
           </span>
           <span className="hidden md:inline font-mono text-[10px] tracking-wider text-white/30 border-l border-white/10 pl-4">
-            DESIGN E CODICE SU MISURA
+            {t('footer.tailored').toUpperCase()}
           </span>
         </div>
         <div className="flex flex-wrap items-center gap-6">

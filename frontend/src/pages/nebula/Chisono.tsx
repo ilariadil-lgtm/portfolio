@@ -29,8 +29,8 @@ const wordVariants: Variants = {
 const Chisono = () => {
   const { t } = useTranslation();
   usePageMeta({
-    title: "Chi Sono",
-    description: "Ilaria Diliberto — Designer e sviluppatrice full-stack. Dalla Accademia di Belle Arti al prodotto digitale: il percorso che unisce estetica, codice e strategia.",
+    title: t('about.title_1', "Chi Sono"),
+    description: t('about.bio_default', "Ilaria Diliberto — Designer e sviluppatrice full-stack."),
   });
   
   const [about, setAbout] = useState<any>(null);

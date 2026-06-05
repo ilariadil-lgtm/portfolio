@@ -9,6 +9,7 @@ import { NebulaBriefingCTA } from "./components/NebulaBriefingCTA";
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
 import { RevealText } from "@/components/RevealText";
+import { KineticText } from "@/components/KineticText";
 import { ScrollIndicator } from "./components/ScrollIndicator";
 import { SkewWrapper } from "./components/SkewWrapper";
 
@@ -43,7 +44,9 @@ const NebulaIndex = () => {
           api.getProjects(),
           api.getServices()
         ]);
-        setProjects(projData.results || projData);
+        const results = projData.results || projData;
+        const filtered = results.filter((p: any) => p.id !== 'SOPHIA_THEME' && p.id !== 'sophiatheme');
+        setProjects(filtered);
         setServices(servData.results || servData);
       } catch (error) {
         console.error("Errore nel caricamento dei dati:", error);
@@ -73,27 +76,27 @@ const NebulaIndex = () => {
   const fallbackProjects = [
     {
       id: 1,
-      title: "Villa Masami",
-      type: "Brand Identity • UI/UX Design • Web",
+      title: t('index_fallback.1.title', "Villa Masami"),
+      type: t('index_fallback.1.type', "Brand Identity • UI/UX Design • Web"),
       image: "/assets/projects/villa-masami/homepage.webp",
       url: "/progetti/villamasami",
-      description: "Un progetto digitale completo. Cura integrale dell'identità della struttura, dal logo allo sviluppo WordPress."
+      description: t('index_fallback.1.description', "Un progetto digitale completo. Cura integrale dell'identità della struttura, dal logo allo sviluppo WordPress.")
     },
     {
       id: 2,
-      title: "Freelens",
-      type: "SaaS Management • UI/UX Design",
+      title: t('index_fallback.2.title', "Freelens"),
+      type: t('index_fallback.2.type', "SaaS Management • UI/UX Design"),
       image: "/assets/projects/freelens/home.webp",
       url: "/progetti/freelens",
-      description: "Spazio digitale di project management per gestire progetti e task, riprendendo il controllo del proprio tempo con un'interfaccia focalizzata."
+      description: t('index_fallback.2.description', "Spazio digitale di project management per gestire progetti e task, riprendendo il controllo del proprio tempo con un'interfaccia focalizzata.")
     },
     {
       id: 3,
-      title: "StorageHub",
-      type: "Sviluppo Web Full-Stack • Cloud Management",
+      title: t('index_fallback.3.title', "StorageHub"),
+      type: t('index_fallback.3.type', "Sviluppo Web Full-Stack • Cloud Management"),
       image: "/assets/projects/storage-hub/dashboard.webp",
       url: "/progetti/storagehub",
-      description: "Una web app intelligente di storage e inventory management su scala enterprise."
+      description: t('index_fallback.3.description', "Una web app intelligente di storage e inventory management su scala enterprise.")
     }
   ];
 
@@ -155,19 +158,21 @@ const NebulaIndex = () => {
               <div className="flex flex-col relative z-20">
                 <div className="flex items-center gap-4 mb-6">
                   <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.3em] text-[#d4af37] flex items-center gap-2">
-                    <span className="text-[10px]">✦</span> BRANDING • WEB DESIGN • SVILUPPO
+                    <span className="text-[10px]">✦</span> {t('hero.tags')}
                   </span>
                 </div>
                 
                 <div className="flex flex-wrap items-baseline gap-x-6 pb-4">
-                  <RevealText 
+                  <KineticText 
                     text="Ilaria" 
                     delay={0.1} 
+                    mode="char"
                     className="font-bricolage font-bold tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-white whitespace-nowrap" 
                   />
-                  <RevealText 
+                  <KineticText 
                     text="Diliberto." 
-                    delay={0.2} 
+                    delay={0.6} 
+                    mode="char"
                     className="font-fraunces italic font-light tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap" 
                   />
                 </div>
@@ -179,7 +184,7 @@ const NebulaIndex = () => {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.6 }}
               >
-                Do forma alla tua identità visiva e la trasformo in un ecosistema digitale completo. Le mie radici nel graphic design mi permettono di curare ogni dettaglio del tuo brand — dal logo ai materiali editoriali —, ma non mi fermo all'estetica: gestisco il progetto a 360 gradi, arrivando fino allo sviluppo pratico e intuitivo di siti web, e-commerce e web app.
+                {t('hero.description')}
               </motion.p>
 
               <motion.div
@@ -191,7 +196,7 @@ const NebulaIndex = () => {
                 <MagneticWrapper>
                   <Link to="/contatti" className="group inline-flex items-center gap-4 font-mono text-[10px] uppercase tracking-[0.3em] text-white hover:text-[#d4af37] transition-colors duration-300 pointer-events-auto">
                     <span className="relative">
-                      PARLIAMONE
+                      {t('cta.button')}
                       <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-[#d4af37] group-hover:w-full transition-all duration-700 ease-out" />
                     </span>
                     <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform duration-500" />
@@ -203,16 +208,16 @@ const NebulaIndex = () => {
             {/* META DATI A DESTRA - Simmetria Architetturale */}
             <div className="hidden lg:flex absolute right-6 md:right-12 lg:right-24 top-1/2 -translate-y-1/2 flex-col items-end text-right gap-8 opacity-60 pointer-events-none border-r-2 border-[#d4af37]/20 pr-6">
               <div className="flex flex-col items-end gap-2">
-                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/60">Stato</span>
-                <span className="font-inter text-xs tracking-[0.2em] text-white font-light">DISPONIBILE</span>
+                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/60">{t('footer.status_label')}</span>
+                <span className="font-inter text-xs tracking-[0.2em] text-white font-light">{t('footer.available').toUpperCase().replace(' ✓', '')}</span>
               </div>
               <div className="flex flex-col items-end gap-2">
-                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/60">Sede</span>
-                <span className="font-inter text-xs tracking-[0.2em] text-white font-light">SICILIA, ITALIA</span>
+                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/60">{t('about.loc_label')}</span>
+                <span className="font-inter text-xs tracking-[0.2em] text-white font-light">{t('about.loc_val').toUpperCase()}</span>
               </div>
               <div className="flex flex-col items-end gap-2">
-                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/60">Ruolo</span>
-                <span className="font-inter text-xs tracking-[0.2em] text-white font-light">UI/UX DESIGNER & DEV</span>
+                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/60">{t('about.role_label')}</span>
+                <span className="font-inter text-xs tracking-[0.2em] text-white font-light">{t('about.role_val').toUpperCase()}</span>
               </div>
             </div>
 
@@ -231,7 +236,7 @@ const NebulaIndex = () => {
         >
 
           <div className="px-6 md:px-12 lg:px-24 relative z-10">
-            <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#d4af37] mb-12 block">02 — IL MIO APPROCCIO</span>
+            <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#d4af37] mb-12 block">{t('index.approach_label')}</span>
 
             {/* Massive editorial quote */}
             <motion.h2
@@ -241,22 +246,22 @@ const NebulaIndex = () => {
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="font-bricolage font-bold text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white max-w-5xl mb-16"
             >
-              Do forma alle tue idee, <br />
-              <span className="font-fraunces italic font-light text-[#d4af37]">dal design al prodotto</span>
+              {t('index.approach_title_1')} <br />
+              <span className="font-fraunces italic font-light text-[#d4af37]">{t('index.approach_title_2')}</span>
               <br/>
-              <span className="text-white/70">digitale completo.</span>
+              <span className="text-white/70">{t('index.approach_title_3')}</span>
             </motion.h2>
 
             <div className="flex flex-col md:flex-row md:items-start gap-12 max-w-5xl">
               <div className="md:w-1/2 h-[1px] bg-white/10 mt-4 hidden md:block" />
               <div className="md:w-1/2 border-l-2 border-[#d4af37]/20 pl-8">
                 <p className="font-inter text-base text-white/60 leading-[1.9] font-light mb-8 whitespace-pre-wrap">
-                  Il mio percorso parte dal graphic design: la cura per l'identità visiva e per i dettagli è da sempre la mia base. Ma per dare davvero vita a un progetto ho capito che non basta fermarsi all'estetica. Oggi creo siti web, e-commerce e app gestendo il processo a 360 gradi come Tech Product Manager. Ascolto le tue necessità, curo la grafica e mi occupo dello sviluppo pratico. Il mio obiettivo non è solo consegnarti un prodotto che funzioni alla perfezione, ma rendere tutto il lavoro fluido, umano e privo di intoppi tecnici.
+                  {t('index.approach_desc')}
                 </p>
                 <MagneticWrapper>
                   <Link to="/chisono" className="group inline-flex items-center gap-4 font-mono text-[10px] uppercase tracking-[0.3em] text-white hover:text-[#d4af37] transition-colors duration-300">
                     <span className="relative">
-                      SCOPRI I SERVIZI
+                      {t('index.discover_services')}
                       <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-[#d4af37] group-hover:w-full transition-all duration-700 ease-out" />
                     </span>
                     <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform duration-500" />
@@ -282,13 +287,13 @@ const NebulaIndex = () => {
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8 border-b border-white/10 pb-10">
               <div className="md:w-[60%]">
                 <div className="flex items-center gap-4 mb-6">
-                  <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#d4af37] block">03 — LE MIE SKILLS</span>
+                  <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#d4af37] block">{t('index.skills_label')}</span>
                 </div>
-                <RevealText text="Le mie aree di competenza." className="font-bricolage text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white" />
+                <RevealText text={`${t('index.skills_title_1')} ${t('index.skills_title_2')}`} className="font-bricolage text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white" />
               </div>
               <div className="md:w-[40%] flex justify-start md:justify-end">
                 <p className="font-inter text-sm text-white/60 max-w-sm font-light leading-relaxed">
-                  Non credo nei confini rigidi tra chi disegna e chi programma. Questo schema riassume il mio bagaglio tecnico e creativo: un mix di competenze nato per curare ogni aspetto del tuo progetto. Dalla creazione di un'identità visiva forte allo sviluppo di siti web ed e-commerce, fino alla gestione di tutte le fasi di lavoro.
+                  {t('index.skills_desc')}
                 </p>
               </div>
             </div>
@@ -413,7 +418,7 @@ const NebulaIndex = () => {
           className="py-32 relative z-20 bg-[#0a0a0a] snap-start"
         >
           <div className="px-6 md:px-12 lg:px-24 mb-16">
-            <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#d4af37] mb-6 block">04 — PROGETTI</span>
+            <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#d4af37] mb-6 block">{t('index.projects_label')}</span>
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -421,7 +426,7 @@ const NebulaIndex = () => {
               transition={{ duration: 0.8 }}
               className="font-bricolage text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white"
             >
-              Dal problema <span className="font-fraunces text-[#d4af37] italic font-light tracking-wide">al prodotto.</span>
+              {t('index.projects_title_1')} <span className="font-fraunces text-[#d4af37] italic font-light tracking-wide">{t('index.projects_title_2')}</span>
             </motion.h2>
           </div>
 

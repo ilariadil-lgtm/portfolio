@@ -29,7 +29,9 @@ const Index = () => {
           api.getProjects(),
           api.getServices()
         ]);
-        setProjects(projData.results || projData);
+        const results = projData.results || projData;
+        const filtered = results.filter((p: any) => p.id !== 'SOPHIA_THEME' && p.id !== 'sophiatheme');
+        setProjects(filtered);
         setServices(servData.results || servData);
       } catch (error) {
         console.error("Errore nel caricamento dei dati:", error);
