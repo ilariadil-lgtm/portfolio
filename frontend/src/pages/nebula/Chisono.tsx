@@ -30,7 +30,7 @@ const Chisono = () => {
   const { t } = useTranslation();
   usePageMeta({
     title: "Chi Sono",
-    description: "Ilaria Diliberto — Designer e sviluppatrice full-stack.",
+    description: "Ilaria Diliberto — Designer e sviluppatrice full-stack. Dalla Accademia di Belle Arti al prodotto digitale: il percorso che unisce estetica, codice e strategia.",
   });
   
   const [about, setAbout] = useState<any>(null);
@@ -56,6 +56,13 @@ const Chisono = () => {
       }
     };
     fetchData();
+
+    // Abilita lo scroll snapping nativo
+    document.documentElement.classList.add("snap-y", "snap-mandatory");
+    
+    return () => {
+      document.documentElement.classList.remove("snap-y", "snap-mandatory");
+    };
   }, []);
 
   const evolution = [
@@ -113,206 +120,167 @@ const Chisono = () => {
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
           className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-tl from-indigo-900/10 to-[#3d0f1a]/5 blur-[140px]" 
         />
+        <motion.div 
+          animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }} 
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[30%] left-[40%] w-[30vw] h-[30vw] rounded-full bg-rose-900/5 blur-[120px] mix-blend-screen" 
+        />
         <div className="absolute inset-0 opacity-[0.25] mix-blend-overlay" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }} />
       </div>
 
       <main className="relative z-20 w-full">
         
         {/* ═══════════════════════════════════════════════════════════════════
-             1. HERO & HOLOGRAPHIC LEDGER (Fusion)
+             1. HERO SECTION (Allineata all'Homepage)
              ═══════════════════════════════════════════════════════════════════ */}
         <motion.section 
           style={{ y: yParallax, opacity: opacityParallax }}
-          className="min-h-screen flex items-center px-6 md:px-12 lg:px-24 pt-32 pb-20 relative"
+          className="relative min-h-[90vh] flex items-center pt-32 pb-20 overflow-hidden snap-start"
         >
-          <div className="w-full max-w-7xl relative z-20">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
-              
-              {/* Left Column: Macro Typography & Bio */}
-              <div className="lg:col-span-7 space-y-12">
-                <div className="flex items-center gap-4 mb-2">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-[#d4af37] font-medium block">
-                    {t('about.bio_profile')}
+
+          {/* Bagliore focus per i testi */}
+          <div className="absolute top-[40%] left-[10%] -translate-y-1/2 w-[50vw] h-[50vw] rounded-full bg-[#d4af37]/[0.03] blur-[120px] pointer-events-none z-10" />
+
+          {/* TESTO IN PRIMO PIANO - Riportato a sinistra */}
+          <div className="w-full px-6 md:px-12 lg:px-24 flex flex-col relative z-20 pointer-events-none">
+            <div className="max-w-4xl pt-10 md:pt-0">
+              <div className="flex flex-col relative z-20">
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.3em] text-[#d4af37] flex items-center gap-2">
+                    <span className="text-[10px]">✦</span> {t('about.bio_profile')}
                   </span>
-                  <div className="w-12 h-[1px] bg-[#d4af37]/40" />
                 </div>
                 
-                <div className="flex flex-col relative z-20">
+                <div className="flex flex-wrap items-baseline gap-x-6 pb-4">
                   <RevealText 
-                    text={t('about.title_1') || "Ilaria"} 
+                    text={t('about.title_1') || "Chi"} 
                     delay={0.1} 
-                    className="font-bricolage font-bold tracking-tighter text-[16vw] lg:text-[8vw] leading-[0.85] text-white/90 uppercase"
+                    className="font-bricolage font-bold tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-white whitespace-nowrap uppercase" 
                   />
                   <RevealText 
-                    text={t('about.title_2') || "Diliberto."} 
+                    text={t('about.title_2') || "Sono."} 
                     delay={0.2} 
-                    className="font-fraunces italic font-light tracking-tight text-[18vw] lg:text-[9vw] leading-[0.85] text-[#d4af37] md:ml-12"
+                    className="font-fraunces italic font-light tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap" 
                   />
                 </div>
-                
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1.5, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  className="pl-6 border-l border-[#d4af37]/30 max-w-xl"
-                >
-                  <SkewWrapper intensity={3}>
-                    <p className="font-inter font-light text-white/60 text-lg leading-[1.9]">
-                      {about?.bio || t('about.bio_default')}
-                    </p>
-                  </SkewWrapper>
-                </motion.div>
               </div>
 
-              {/* Right Column: Holographic Ledger & Glass Monolith (Manifesto) */}
-              <div className="lg:col-span-5 flex flex-col gap-16 mt-12 lg:mt-32">
-                
-                {/* Holographic Ledger */}
-                <motion.div
-                  initial={{ opacity: 0, x: 40 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ type: "spring", damping: 24, stiffness: 80, delay: 0.8 }}
-                  className="border-l border-white/10 pl-8 space-y-6"
-                >
-                  <div className="flex items-center justify-between pb-4 border-b border-white/5">
-                    <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-white/40">{t('about.professional_profile')}</span>
-                    <div className="flex gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37]/50 animate-pulse" />
-                    </div>
-                  </div>
-                  <div className="space-y-4">
-                    {[
-                      { label: t('about.role_label'), val: t('about.role_val') },
-                      { label: t('about.spec_label'), val: t('about.spec_val') },
-                      { label: t('about.loc_label'), val: t('about.loc_val') },
-                      { label: t('about.exp_label'), val: t('about.exp_val'), highlight: true }
-                    ].map((item, idx) => (
-                      <div key={idx} className="flex justify-between items-center group cursor-default">
-                        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/30 group-hover:text-white/50 transition-colors">{item.label}</span>
-                        <span className={`font-mono text-[11px] uppercase tracking-widest ${item.highlight ? 'text-[#d4af37] font-medium text-[12px]' : 'text-white/80'}`}>{item.val}</span>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.6 }}
+                className="mt-6 border-l-2 border-[#d4af37]/20 pl-6 pointer-events-auto max-w-2xl"
+              >
+                <p className="text-neutral-400 font-inter font-light text-base md:text-lg leading-relaxed mb-12">
+                  {about?.bio || t('about.bio_default')}
+                </p>
+
+                {/* Il Manifesto - Restore texts from Editorial */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-white/10 pt-8">
+                  {[
+                    { num: "I.", label: t('about.rule1_label'), desc: t('about.rule1_desc') },
+                    { num: "II.", label: t('about.rule2_label'), desc: t('about.rule2_desc') },
+                    { num: "III.", label: t('about.rule3_label'), desc: t('about.rule3_desc') }
+                  ].map((rule, idx) => (
+                    <div key={idx} className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <span className="font-fraunces italic text-[#d4af37] text-sm">{rule.num}</span>
+                        <span className="font-mono text-[9px] uppercase tracking-widest text-white/80">{rule.label}</span>
                       </div>
-                    ))}
-                  </div>
-                </motion.div>
-
-                {/* Glass Monolith (Manifesto) */}
-                <motion.div
-                  initial={{ opacity: 0, x: 40 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ type: "spring", damping: 24, stiffness: 80, delay: 1 }}
-                  className="relative w-full max-w-[400px] aspect-[4/5] bg-white/[0.015] backdrop-blur-2xl border border-white/10 p-8 flex flex-col justify-between overflow-hidden group shadow-[0_0_50px_rgba(212,175,55,0.03)] hover:shadow-[0_0_50px_rgba(212,175,55,0.1)] hover:border-[#d4af37]/30 transition-all duration-700"
-                >
-                  {/* Golden Laser Scanline */}
-                  <motion.div
-                    animate={{ top: ["0%", "100%", "0%"] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/80 to-transparent z-10 pointer-events-none shadow-[0_0_10px_rgba(212,175,55,0.8)]"
-                  />
-                  
-                  {/* Glass Noise Overlay */}
-                  <div className="absolute inset-0 opacity-[0.4] mix-blend-overlay pointer-events-none" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }} />
-
-                  {/* Top Telemetry */}
-                  <div className="flex justify-between items-start border-b border-white/10 pb-4 relative z-10">
-                    <div className="flex flex-col">
-                      <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-white/80 font-bold">{t('about.method_label')}</span>
-                      <span className="font-mono text-[7px] uppercase tracking-[0.2em] text-[#d4af37]/60 mt-1">{t('about.vision_label')}</span>
+                      <p className="font-inter font-light text-[12px] text-white/40 leading-relaxed">
+                        {rule.desc}
+                      </p>
                     </div>
-                    <span className="font-mono text-[8px] text-[#d4af37]">{t('about.name_label')}</span>
-                  </div>
-
-                  {/* Rules / Manifesto */}
-                  <div className="space-y-6 my-auto pt-4 relative z-10">
-                    {[
-                      { num: "I.", label: t('about.rule1_label'), desc: t('about.rule1_desc') },
-                      { num: "II.", label: t('about.rule2_label'), desc: t('about.rule2_desc') },
-                      { num: "III.", label: t('about.rule3_label'), desc: t('about.rule3_desc') }
-                    ].map((rule, idx) => (
-                      <div key={idx} className="space-y-2">
-                        <div className="flex items-center gap-3">
-                          <span className="font-fraunces text-sm italic font-light text-[#d4af37]">{rule.num}</span>
-                          <span className="font-mono text-[10px] uppercase tracking-widest text-white font-medium">{rule.label}</span>
-                        </div>
-                        <p className="font-inter font-light text-[12px] text-white/50 leading-relaxed pl-6">
-                          {rule.desc}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-                
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+            
+            {/* META DATI A DESTRA - Simmetria Architetturale */}
+            <div className="hidden lg:flex absolute right-6 md:right-12 lg:right-24 top-1/2 -translate-y-1/2 flex-col items-end text-right gap-8 opacity-60 pointer-events-none border-r-2 border-[#d4af37]/20 pr-6">
+              <div className="flex flex-col items-end gap-2">
+                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/60">{t('about.role_label')}</span>
+                <span className="font-inter text-xs tracking-[0.2em] text-white font-light">{t('about.role_val')}</span>
+              </div>
+              <div className="flex flex-col items-end gap-2">
+                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/60">{t('about.loc_label')}</span>
+                <span className="font-inter text-xs tracking-[0.2em] text-white font-light">{t('about.loc_val')}</span>
+              </div>
+              <div className="flex flex-col items-end gap-2">
+                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/60">{t('about.exp_label')}</span>
+                <span className="font-inter text-xs tracking-[0.2em] text-[#d4af37] font-light">{t('about.exp_val')}</span>
               </div>
             </div>
+
           </div>
         </motion.section>
 
         {/* ═══════════════════════════════════════════════════════════════════
              2. L'EVOLUZIONE (Skew-on-Scroll Timeline)
              ═══════════════════════════════════════════════════════════════════ */}
-        <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-24">
+        <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-24 snap-start">
           <div className="max-w-7xl mx-auto">
             <div className="mb-24 text-center md:text-left">
-              <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4af37] font-medium mb-4 block">{t('about.evo_label')}</span>
+              <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4af37] font-medium mb-4 block">01 — {t('about.evo_label')}</span>
               <RevealText 
                 text={t('about.evo_title_1') + " " + t('about.evo_title_2')} 
                 className="font-bricolage text-5xl md:text-7xl font-bold leading-none tracking-tighter text-white" 
               />
             </div>
 
-            <div className="space-y-32 relative before:absolute before:left-4 lg:before:left-12 before:top-2 before:bottom-2 before:w-[1px] before:bg-gradient-to-b before:from-[#d4af37]/0 before:via-[#d4af37]/30 before:to-[#d4af37]/0">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {evolution.map((step, i) => (
                 <motion.div
                   key={step.num}
-                  initial={{ opacity: 0, y: 80, filter: "blur(10px)" }}
-                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start relative pl-12 lg:pl-24 group/timeline"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.8, delay: i * 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="bg-white/[0.02] border border-white/5 backdrop-blur-md rounded-3xl p-8 flex flex-col justify-between group hover:border-[#d4af37]/30 hover:bg-white/[0.04] transition-all duration-500 relative overflow-hidden"
                 >
-                  {/* Glowing Node with pulse */}
-                  <div className="absolute left-4 lg:left-12 -translate-x-1/2 w-4 h-4 bg-[#080808] rounded-full border-2 border-white/20 group-hover/timeline:border-[#d4af37] transition-colors duration-700 z-10 flex items-center justify-center">
-                    <motion.div 
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      transition={{ delay: 0.5, duration: 0.5 }}
-                      className="w-1.5 h-1.5 bg-[#d4af37] rounded-full shadow-[0_0_10px_#d4af37] opacity-0 group-hover/timeline:opacity-100 transition-opacity duration-700" 
-                    />
+                  {/* Numero in background (Watermark) */}
+                  <div className="absolute -bottom-4 -right-2 font-bricolage text-[140px] leading-none font-black text-white/[0.04] group-hover:text-[#d4af37]/[0.08] transition-colors duration-500 select-none pointer-events-none">
+                    {step.num}
                   </div>
-
-                    {/* Number & Period */}
-                    <div className="lg:col-span-2 flex lg:flex-col items-baseline lg:items-start gap-4">
-                      <div className="font-bricolage text-7xl md:text-8xl font-black text-white/5 select-none leading-none">
-                        {step.num}
+                  
+                  <div className="relative z-10 flex flex-col flex-grow">
+                    {/* Header: Period & Icon */}
+                    <div className="flex justify-between items-start mb-8 pb-4 border-b border-white/10 group-hover:border-[#d4af37]/20 transition-colors duration-500">
+                      <div className="flex flex-col gap-1">
+                        <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#d4af37] font-medium flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
+                          FASE {step.num}
+                        </span>
+                        <span className="font-mono text-xs uppercase tracking-widest text-white/50 group-hover:text-white/80 transition-colors">{step.period}</span>
                       </div>
-                      <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37] font-medium whitespace-nowrap">{step.period}</span>
+                      <div className="text-white/20 group-hover:text-[#d4af37] transition-colors duration-500">
+                        {step.icon}
+                      </div>
                     </div>
 
-                    {/* Description */}
-                    <div className="lg:col-span-6 space-y-4 pt-2">
-                      <h3 className="font-bricolage text-4xl font-bold text-white/90">{step.title}</h3>
-                      <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-white/40 font-bold mb-4 block">{step.subtitle}</span>
-                      <p className="font-inter font-light text-lg text-white/50 leading-[1.8] max-w-xl">
+                    {/* Body: Title & Desc */}
+                    <div className="mb-12">
+                      <h3 className="font-bricolage text-2xl lg:text-3xl font-bold text-white/90 mb-2 group-hover:text-white transition-colors">{step.title}</h3>
+                      <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-white/30 font-bold block mb-4">{step.subtitle}</span>
+                      <p className="font-inter font-light text-[13px] text-white/50 leading-relaxed group-hover:text-white/70 transition-colors">
                         {step.description}
                       </p>
                     </div>
 
-                    {/* Dark Glass HUD */}
-                    <div className="lg:col-span-4 bg-white/[0.02] border border-white/5 p-8 backdrop-blur-md rounded-2xl hover:border-[#d4af37]/30 hover:bg-white/[0.04] transition-all duration-500 group">
-                      <div className="absolute top-6 right-6 text-white/10 group-hover:text-[#d4af37] transition-colors duration-500">
-                        {step.icon}
-                      </div>
-                      <span className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/30 mb-6 block font-medium">{t('about.phase_inventory')}</span>
-                      <ul className="space-y-4">
+                    {/* Footer: Tech Stack Pills */}
+                    <div className="mt-auto pt-6 border-t border-white/5 group-hover:border-[#d4af37]/10 transition-colors">
+                      <span className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/30 mb-4 block font-medium group-hover:text-white/50 transition-colors">{t('about.phase_inventory')}</span>
+                      <div className="flex flex-wrap gap-2">
                         {step.tech.map((t, idx) => (
-                          <li key={idx} className="flex items-center gap-4">
-                            <div className="w-1 h-1 rounded-full bg-[#d4af37]/50" />
-                            <span className="font-mono text-[10px] uppercase tracking-widest text-white/70">{t}</span>
-                          </li>
+                          <div key={idx} className="px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] text-white/60 font-mono text-[8px] uppercase tracking-widest group-hover:border-[#d4af37]/30 group-hover:bg-[#d4af37]/5 group-hover:text-[#d4af37] transition-all duration-300">
+                            {t}
+                          </div>
                         ))}
-                      </ul>
+                      </div>
                     </div>
-                  </motion.div>
-                ))}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
@@ -320,17 +288,17 @@ const Chisono = () => {
         {/* ═══════════════════════════════════════════════════════════════════
              3. COMPETENZE (Cluster Magnetici Organici)
              ═══════════════════════════════════════════════════════════════════ */}
-        <section className="py-24 md:py-36 px-6 md:px-12 lg:px-24 border-t border-white/5 relative z-20">
+        <section className="py-24 md:py-36 px-6 md:px-12 lg:px-24 border-t border-white/5 relative z-20 snap-start">
           <div className="max-w-7xl mx-auto">
-            <div className="mb-24 text-center">
-              <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4af37] font-medium mb-4 block">{t('about.skills_label')}</span>
+            <div className="mb-24 text-center md:text-left">
+              <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4af37] font-medium mb-4 block">02 — {t('about.skills_label')}</span>
               <RevealText 
                 text={t('about.skills_title_1') + " " + t('about.skills_title_2')} 
                 className="font-bricolage text-5xl md:text-7xl font-bold leading-none tracking-tighter text-white" 
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-24">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {services.length > 0 ? services.slice(0,3).map((tech, i) => (
                 <motion.div 
                   key={tech.id} 
@@ -338,10 +306,13 @@ const Chisono = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 1, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex flex-col gap-6"
+                  className="bg-white/[0.02] border border-white/5 backdrop-blur-md rounded-3xl p-8 flex flex-col justify-between group hover:border-[#d4af37]/30 hover:bg-white/[0.04] transition-all duration-500 relative overflow-hidden gap-6"
                 >
-                  <div className="flex items-center gap-4 border-b border-white/10 pb-6">
-                    <span className="font-mono text-[9px] text-[#d4af37]/50">0{i + 1}</span>
+                  <div className="flex items-center gap-4 border-b border-white/10 pb-6 group-hover:border-[#d4af37]/20 transition-colors duration-500">
+                    <span className="font-mono text-[9px] text-[#d4af37]/50 flex items-center gap-2">
+                      <span className="w-1 h-1 rounded-full bg-[#d4af37] animate-pulse" />
+                      0{i + 1}
+                    </span>
                     <h3 className="font-fraunces italic text-3xl text-white/90">{tech.title}</h3>
                   </div>
                   <p className="font-inter font-light text-[14px] text-white/50 leading-relaxed">
@@ -349,10 +320,10 @@ const Chisono = () => {
                   </p>
                   
                   {/* Semantic Cluster of Magnetic Pills */}
-                  <div className="flex flex-wrap gap-3 mt-4">
+                  <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-white/5 group-hover:border-[#d4af37]/10 transition-colors">
                     {["Design System", "Prototyping", "UI/UX"].map((tag, j) => (
                        <MagneticWrapper key={j}>
-                         <div className="px-4 py-2 rounded-full border border-white/10 text-white/40 font-mono text-[9px] uppercase tracking-widest hover:border-[#d4af37]/50 hover:text-[#d4af37] cursor-crosshair transition-colors duration-300">
+                         <div className="px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] text-white/60 font-mono text-[8px] uppercase tracking-widest group-hover:border-[#d4af37]/30 group-hover:bg-[#d4af37]/5 group-hover:text-[#d4af37] cursor-crosshair transition-all duration-300">
                            {tag}
                          </div>
                        </MagneticWrapper>
@@ -371,10 +342,13 @@ const Chisono = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 1, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex flex-col gap-6 group"
+                    className="bg-white/[0.02] border border-white/5 backdrop-blur-md rounded-3xl p-8 flex flex-col justify-between group hover:border-[#d4af37]/30 hover:bg-white/[0.04] transition-all duration-500 relative overflow-hidden gap-6"
                   >
-                    <div className="flex items-center gap-4 border-b border-white/10 pb-6 group-hover:border-[#d4af37]/30 transition-colors duration-500">
-                      <span className="font-mono text-[9px] text-[#d4af37]/50 group-hover:text-[#d4af37]">0{i + 1}</span>
+                    <div className="flex items-center gap-4 border-b border-white/10 pb-6 group-hover:border-[#d4af37]/20 transition-colors duration-500">
+                      <span className="font-mono text-[9px] text-[#d4af37]/50 group-hover:text-[#d4af37] flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-[#d4af37] animate-pulse" />
+                        0{i + 1}
+                      </span>
                       <h3 className="font-fraunces italic font-light text-3xl text-white/70 group-hover:text-white transition-colors duration-500">{tech.title}</h3>
                     </div>
                     <p className="font-inter font-light text-[14px] text-white/50 leading-[1.8]">
