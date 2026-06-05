@@ -72,9 +72,19 @@ export const NebulaPreloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="font-fraunces italic font-light text-5xl md:text-7xl lg:text-[7vw] text-white tracking-tight mb-16"
+              className="flex flex-col items-center text-center mb-16"
             >
-              ilaria diliberto.
+              <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.4em] text-[#d4af37] mb-6">
+                ogni pixel conta.
+              </span>
+              <div className="flex items-baseline gap-x-3 md:gap-x-4">
+                <span className="font-bricolage font-bold text-5xl md:text-7xl lg:text-[7vw] tracking-wider text-white">
+                  ilaria
+                </span>
+                <span className="font-fraunces italic font-light text-5xl md:text-7xl lg:text-[7vw] tracking-wider text-[#d4af37]">
+                  diliberto.
+                </span>
+              </div>
             </motion.div>
 
             <div className="w-full max-w-xs md:max-w-md flex flex-col gap-4">
