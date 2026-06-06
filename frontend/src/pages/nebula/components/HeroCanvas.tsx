@@ -60,10 +60,11 @@ const createCircleTexture = () => {
 
 const defaultCircleTexture = createCircleTexture();
 
+const particlesCount = 800;
+
 // Sistema Particellare: Dati fluttuanti in zero gravità (Orali piccoli e rotondi)
 const Particles = () => {
   const pointsRef = useRef<THREE.Points>(null);
-  const particlesCount = 800;
   
   const positions = useMemo(() => {
     const pos = new Float32Array(particlesCount * 3);
@@ -71,7 +72,7 @@ const Particles = () => {
       pos[i] = (Math.random() - 0.5) * 40;
     }
     return pos;
-  }, [particlesCount]);
+  }, []);
 
   const circleTexture = defaultCircleTexture;
 

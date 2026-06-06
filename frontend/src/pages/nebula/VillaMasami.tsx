@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
 import { NebulaProjectPhases, Phase } from "./components/NebulaProjectPhases";
 import { NebulaImageSlider } from "./components/NebulaImageSlider";
@@ -29,6 +30,54 @@ export const NebulaVillaMasami = () => {
           <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit">
             "Più comodità, meno pensieri: tradurre il calore dell'accoglienza reale in un'esperienza di navigazione fluida e priva di ostacoli."
           </p>
+
+          {/* Architectural Grid / Blueprint SVG Animation */}
+          <div className="mt-12 relative w-full max-w-[500px] mx-auto aspect-[16/9] border border-[#d4af37]/20 bg-[#0a0a0a] overflow-hidden group shadow-sm hover:shadow-lg transition-shadow duration-700">
+            <svg className="w-full h-full text-[#d4af37]/20" viewBox="0 0 600 337.5" fill="none">
+              {/* Background Grid */}
+              <pattern id="blueprint" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <rect width="20" height="20" fill="none" stroke="currentColor" strokeWidth="0.5" />
+                <rect width="100" height="100" fill="none" stroke="currentColor" strokeWidth="1.5" />
+              </pattern>
+              <rect width="100%" height="100%" fill="url(#blueprint)" />
+              
+              {/* Animated Room Blocks */}
+              <motion.rect 
+                x="120" y="60" width="140" height="200" 
+                fill="rgba(212, 175, 55, 0.05)" stroke="#d4af37" strokeWidth="1.5"
+                initial={{ opacity: 0, pathLength: 0 }}
+                whileInView={{ opacity: 1, pathLength: 1 }}
+                transition={{ duration: 2, ease: "easeInOut" }}
+              />
+              <motion.rect 
+                x="320" y="100" width="160" height="120" 
+                fill="rgba(212, 175, 55, 0.08)" stroke="#d4af37" strokeWidth="1.5"
+                initial={{ opacity: 0, pathLength: 0 }}
+                whileInView={{ opacity: 1, pathLength: 1 }}
+                transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }}
+              />
+              
+              {/* Connection Line */}
+              <motion.line 
+                x1="260" y1="160" x2="320" y2="160" 
+                stroke="#d4af37" strokeWidth="1.5" strokeDasharray="4,4"
+                animate={{ strokeDashoffset: [0, -16] }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              />
+              
+              {/* Interactive Scanning Line */}
+              <motion.line
+                x1="0" y1="0" x2="0" y2="337.5"
+                stroke="rgba(212,175,55,0.3)" strokeWidth="2"
+                animate={{ x: [0, 600, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+              />
+              
+              {/* Blueprint measurements */}
+              <text x="190" y="280" className="font-typewriter text-[8px] fill-[#d4af37]/50" textAnchor="middle">ZONA GIORNO</text>
+              <text x="400" y="240" className="font-typewriter text-[8px] fill-[#d4af37]/50" textAnchor="middle">ZONA NOTTE</text>
+            </svg>
+          </div>
         </div>
       ),
       image: "/assets/projects/villa-masami/struttura.webp"

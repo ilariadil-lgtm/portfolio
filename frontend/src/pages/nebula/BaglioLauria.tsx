@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
 import { NebulaProjectPhases, Phase } from "./components/NebulaProjectPhases";
 import { NebulaImageSlider } from "./components/NebulaImageSlider";
@@ -30,6 +31,64 @@ export const NebulaBaglioLauria = () => {
           <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit">
             "Trasmettere il calore del sole siciliano e l'eleganza della pietra antica attraverso un'interfaccia capace di far sognare l'utente dal primo click."
           </p>
+
+          {/* Topographical Map / Nature SVG Animation */}
+          <div className="mt-12 relative w-full max-w-[500px] mx-auto aspect-[16/9] border border-[#d4af37]/20 bg-[#0a0a0a] overflow-hidden group shadow-sm hover:shadow-lg transition-shadow duration-700">
+            <svg className="w-full h-full text-[#d4af37]/30" viewBox="0 0 600 337.5" fill="none">
+              {/* Topographical Contour Lines */}
+              <motion.path 
+                d="M -100 100 Q 100 50, 300 150 T 700 100" 
+                stroke="currentColor" strokeWidth="1.5"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                transition={{ duration: 2, ease: "easeInOut" }}
+              />
+              <motion.path 
+                d="M -100 150 Q 150 100, 350 200 T 700 150" 
+                stroke="currentColor" strokeWidth="1"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                transition={{ duration: 2.2, delay: 0.2, ease: "easeInOut" }}
+              />
+              <motion.path 
+                d="M -100 200 Q 200 150, 400 250 T 700 200" 
+                stroke="currentColor" strokeWidth="1"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                transition={{ duration: 2.4, delay: 0.4, ease: "easeInOut" }}
+              />
+              <motion.path 
+                d="M -100 250 Q 250 200, 450 300 T 700 250" 
+                stroke="currentColor" strokeWidth="1"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                transition={{ duration: 2.6, delay: 0.6, ease: "easeInOut" }}
+              />
+              
+              {/* Sun Element */}
+              <motion.circle 
+                cx="450" cy="100" r="40" 
+                fill="rgba(212, 175, 55, 0.05)" stroke="#d4af37" strokeWidth="1.5" strokeDasharray="4 4"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                style={{ originX: "450px", originY: "100px" }}
+              />
+              <circle cx="450" cy="100" r="20" fill="rgba(212, 175, 55, 0.1)" />
+              
+              {/* Map Coordinates */}
+              <text x="30" y="40" className="font-typewriter text-[8px] fill-[#d4af37]/50">LAT: 37.2845° N</text>
+              <text x="30" y="55" className="font-typewriter text-[8px] fill-[#d4af37]/50">LONG: 13.5670° E</text>
+              <text x="520" y="300" className="font-typewriter text-[8px] fill-[#d4af37]/50">ALT: 450m</text>
+              
+              {/* Scanning point */}
+              <motion.circle
+                cx="300" cy="150" r="4"
+                fill="#d4af37"
+                animate={{ scale: [1, 2, 1], opacity: [1, 0.5, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </svg>
+          </div>
         </div>
       ),
       image: "/assets/projects/baglio-lauria/il-baglio.webp"

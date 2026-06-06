@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
 import { NebulaProjectPhases, Phase } from "./components/NebulaProjectPhases";
 import { NebulaImageSlider } from "./components/NebulaImageSlider";
@@ -31,6 +32,40 @@ export const NebulaFreelens = () => {
           <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit">
             "Riprendere il controllo del proprio tempo. Un ecosistema dove la salute finanziaria diventa finalmente chiara, misurabile e assistita dall'intelligenza artificiale."
           </p>
+
+          {/* Elegant Camera Viewfinder Animation */}
+          <div className="mt-12 relative w-full max-w-[500px] mx-auto aspect-video bg-[#0a0a0a] border border-[#d4af37]/20 overflow-hidden shadow-lg group">
+            {/* Viewfinder Grid */}
+            <div className="absolute inset-0 border-[1px] border-[#d4af37]/10 m-6 md:m-8" />
+            <div className="absolute top-1/2 left-0 w-full h-[1px] bg-[#d4af37]/10" />
+            <div className="absolute top-0 left-1/2 w-[1px] h-full bg-[#d4af37]/10" />
+            
+            {/* Animated Focus Box */}
+            <motion.div
+              className="absolute top-1/2 left-1/2 w-24 h-24 md:w-40 md:h-40 border border-[#d4af37]"
+              style={{ x: "-50%", y: "-50%" }}
+              animate={{ scale: [1, 1.05, 1], rotate: [0, 90, 0] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+            />
+            <motion.div
+              className="absolute top-1/2 left-1/2 w-12 h-12 md:w-16 md:h-16 border border-[#d4af37]/40 rounded-full"
+              style={{ x: "-50%", y: "-50%" }}
+              animate={{ scale: [0.8, 1.2, 0.8] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+            
+            {/* Camera UI Elements */}
+            <div className="absolute top-8 left-8 font-typewriter text-[10px] text-[#d4af37] flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-[#d4af37] animate-pulse" />
+              REC
+            </div>
+            <div className="absolute bottom-8 right-8 font-typewriter text-[10px] text-white/50 tracking-widest">
+              F2.8 &nbsp; 1/1000 &nbsp; ISO100
+            </div>
+            <div className="absolute bottom-8 left-8 font-typewriter text-[10px] text-white/50 tracking-widest">
+              FOCUS: AUTO
+            </div>
+          </div>
         </div>
       ),
       image: "/assets/projects/freelens/dash.webp"

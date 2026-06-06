@@ -197,6 +197,64 @@ export const EditorialBaglioLauria = () => {
               {t('bagliolauria.ch2_label')}
             </span>
             <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]" dangerouslySetInnerHTML={{ __html: t('bagliolauria.ch2_title1') }} />
+
+            {/* Topographical Map / Nature SVG Animation */}
+            <div className="mt-20 relative w-full max-w-[600px] mx-auto aspect-[16/9] border border-[#3d0f1a]/20 bg-[#f5f2ed] overflow-hidden group shadow-sm hover:shadow-lg transition-shadow duration-700">
+              <svg className="w-full h-full text-primary/30" viewBox="0 0 600 337.5" fill="none">
+                {/* Topographical Contour Lines */}
+                <motion.path 
+                  d="M -100 100 Q 100 50, 300 150 T 700 100" 
+                  stroke="currentColor" strokeWidth="1.5"
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  transition={{ duration: 2, ease: "easeInOut" }}
+                />
+                <motion.path 
+                  d="M -100 150 Q 150 100, 350 200 T 700 150" 
+                  stroke="currentColor" strokeWidth="1"
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  transition={{ duration: 2.2, delay: 0.2, ease: "easeInOut" }}
+                />
+                <motion.path 
+                  d="M -100 200 Q 200 150, 400 250 T 700 200" 
+                  stroke="currentColor" strokeWidth="1"
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  transition={{ duration: 2.4, delay: 0.4, ease: "easeInOut" }}
+                />
+                <motion.path 
+                  d="M -100 250 Q 250 200, 450 300 T 700 250" 
+                  stroke="currentColor" strokeWidth="1"
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  transition={{ duration: 2.6, delay: 0.6, ease: "easeInOut" }}
+                />
+                
+                {/* Sun Element */}
+                <motion.circle 
+                  cx="450" cy="100" r="40" 
+                  fill="rgba(192, 57, 43, 0.05)" stroke="#c0392b" strokeWidth="1.5" strokeDasharray="4 4"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                  style={{ originX: "450px", originY: "100px" }}
+                />
+                <circle cx="450" cy="100" r="20" fill="rgba(192, 57, 43, 0.1)" />
+                
+                {/* Map Coordinates */}
+                <text x="30" y="40" className="font-typewriter text-[8px] fill-[#3d0f1a]/50">LAT: 37.2845° N</text>
+                <text x="30" y="55" className="font-typewriter text-[8px] fill-[#3d0f1a]/50">LONG: 13.5670° E</text>
+                <text x="520" y="300" className="font-typewriter text-[8px] fill-[#3d0f1a]/50">ALT: 450m</text>
+                
+                {/* Scanning point */}
+                <motion.circle
+                  cx="300" cy="150" r="4"
+                  fill="#c0392b"
+                  animate={{ scale: [1, 2, 1], opacity: [1, 0.5, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                />
+              </svg>
+            </div>
           </motion.div>
         </div>
       </section >

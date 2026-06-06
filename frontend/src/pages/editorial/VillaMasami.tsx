@@ -200,6 +200,54 @@ export const EditorialVillaMasami = () => {
               {t('villamasami.ch2_label')}
             </span>
             <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]" dangerouslySetInnerHTML={{ __html: t('villamasami.ch2_title1') }} />
+
+            {/* Architectural Grid / Blueprint SVG Animation */}
+            <div className="mt-20 relative w-full max-w-[600px] mx-auto aspect-[16/9] border border-[#3d0f1a]/20 bg-white overflow-hidden group shadow-sm hover:shadow-lg transition-shadow duration-700">
+              <svg className="w-full h-full text-primary/20" viewBox="0 0 600 337.5" fill="none">
+                {/* Background Grid */}
+                <pattern id="blueprint" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <rect width="20" height="20" fill="none" stroke="currentColor" strokeWidth="0.5" />
+                  <rect width="100" height="100" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                </pattern>
+                <rect width="100%" height="100%" fill="url(#blueprint)" />
+                
+                {/* Animated Room Blocks */}
+                <motion.rect 
+                  x="120" y="60" width="140" height="200" 
+                  fill="rgba(192, 57, 43, 0.05)" stroke="#c0392b" strokeWidth="1.5"
+                  initial={{ opacity: 0, pathLength: 0 }}
+                  whileInView={{ opacity: 1, pathLength: 1 }}
+                  transition={{ duration: 2, ease: "easeInOut" }}
+                />
+                <motion.rect 
+                  x="320" y="100" width="160" height="120" 
+                  fill="rgba(192, 57, 43, 0.08)" stroke="#c0392b" strokeWidth="1.5"
+                  initial={{ opacity: 0, pathLength: 0 }}
+                  whileInView={{ opacity: 1, pathLength: 1 }}
+                  transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }}
+                />
+                
+                {/* Connection Line */}
+                <motion.line 
+                  x1="260" y1="160" x2="320" y2="160" 
+                  stroke="#c0392b" strokeWidth="1.5" strokeDasharray="4,4"
+                  animate={{ strokeDashoffset: [0, -16] }}
+                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                />
+                
+                {/* Interactive Scanning Line */}
+                <motion.line
+                  x1="0" y1="0" x2="0" y2="337.5"
+                  stroke="rgba(192,57,43,0.3)" strokeWidth="2"
+                  animate={{ x: [0, 600, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                />
+                
+                {/* Blueprint measurements */}
+                <text x="190" y="280" className="font-typewriter text-[8px] fill-[#3d0f1a]/50" textAnchor="middle">ZONA GIORNO</text>
+                <text x="400" y="240" className="font-typewriter text-[8px] fill-[#3d0f1a]/50" textAnchor="middle">ZONA NOTTE</text>
+              </svg>
+            </div>
           </motion.div>
         </div>
       </section >
