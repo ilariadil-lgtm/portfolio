@@ -26,19 +26,7 @@
     <link rel="manifest" href="/site.webmanifest" />
   </head>
   <body>
-    <script>
-      window.onerror = function(message, source, lineno, colno, error) {
-        document.body.innerHTML += '<div style="position:fixed;top:0;left:0;width:100%;background:red;color:white;z-index:999999;padding:20px;font-family:monospace;">' + 
-          '<b>ERROR:</b> ' + message + '<br>' + source + ':' + lineno + ':' + colno + 
-          '<br><pre>' + (error && error.stack ? error.stack : '') + '</pre>' +
-          '</div>';
-      };
-      window.addEventListener("unhandledrejection", function(event) {
-        document.body.innerHTML += '<div style="position:fixed;top:0;left:0;width:100%;background:red;color:white;z-index:999999;padding:20px;font-family:monospace;">' + 
-          '<b>PROMISE REJECTION:</b> ' + event.reason + 
-          '</div>';
-      });
-    </script>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
