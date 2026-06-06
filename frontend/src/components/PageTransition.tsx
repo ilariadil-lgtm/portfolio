@@ -9,7 +9,7 @@ interface PageTransitionProps {
 export const PageTransition = ({ children }: PageTransitionProps) => {
   const { design } = useDesign();
   const isEditorial = design === "editorial";
-  const transitionColor = isEditorial ? "#3d0f1a" : "#050505"; // Bordeaux per Editorial, Deep Black per Nebula
+  const transitionColor = isEditorial ? "hsl(var(--primary))" : "#050505"; // Bordeaux per Editorial, Deep Black per Nebula
 
   return (
     <>

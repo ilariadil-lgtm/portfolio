@@ -8,8 +8,8 @@ interface PreloaderProps {
 // ── costanti ────────────────────────────────────────────────────────────────
 const PHRASE_1 = "ogni pixel conta.";
 const PHRASE_2 = "ilaria diliberto.";
-const BG_COLOR = "#f5f2ed";
-const TEXT_COLOR = "#3d0f1a";
+const BG_COLOR = "hsl(var(--background))";
+const TEXT_COLOR = "hsl(var(--primary))";
 const STAIN_COLOR = "hsl(345, 50%, 25%)";
 
 const CHAR_DELAY = 60;
@@ -64,7 +64,7 @@ const TypewriterSequence: React.FC<{ onFinished: () => void }> = ({ onFinished }
 
   return (
     <div className="relative inline-block px-4">
-      <span className="font-typewriter text-[clamp(16px,2.5vw,28px)] font-normal tracking-tight leading-none text-[#3d0f1a]">
+      <span className="font-typewriter text-[clamp(16px,2.5vw,28px)] font-normal tracking-tight leading-none text-primary">
         {text}
       </span>
       <motion.span
@@ -109,7 +109,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-[#f5f2ed]"
+          className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-background"
         >
           {/* Noise texture overlay */}
           <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[url('data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E')]"></div>
@@ -132,7 +132,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               <motion.div
                 animate={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="font-typewriter text-[clamp(16px,2.5vw,28px)] font-normal tracking-tight leading-none text-[#3d0f1a]"
+                className="font-typewriter text-[clamp(16px,2.5vw,28px)] font-normal tracking-tight leading-none text-primary"
               >
                 {PHRASE_2}
               </motion.div>

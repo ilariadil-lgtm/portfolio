@@ -12,7 +12,7 @@ const DesignContext = createContext<DesignContextType | undefined>(undefined);
 
 export const DesignProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [design, setDesignInternal] = useState<DesignType>(() => {
-    const saved = localStorage.getItem("portfolio-design");
+    const saved = sessionStorage.getItem("portfolio-design");
     if (saved === "editorial" || saved === "nebula") {
       return saved;
     }
@@ -21,7 +21,7 @@ export const DesignProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
   const setDesign = (newDesign: DesignType) => {
     setDesignInternal(newDesign);
-    localStorage.setItem("portfolio-design", newDesign);
+    sessionStorage.setItem("portfolio-design", newDesign);
   };
 
   const toggleDesign = () => {

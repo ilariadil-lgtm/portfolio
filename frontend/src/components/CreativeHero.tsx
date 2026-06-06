@@ -217,7 +217,7 @@ export const CreativeHero: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-8 lg:gap-12 items-center relative z-10 max-w-screen-2xl mx-auto">
-        <div className="lg:col-span-5 flex flex-col justify-center">
+        <div className="lg:col-span-5 flex flex-col justify-center relative z-20">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
             <div className="overflow-hidden mb-4">
               <motion.span
@@ -266,7 +266,7 @@ export const CreativeHero: React.FC = () => {
         </div>
 
         {/* ── SVG Graphic column ── */}
-        <div className="lg:col-span-7 relative flex justify-center items-center h-[300px] sm:h-[400px] lg:h-[700px] perspective-1000">
+        <div className="lg:col-span-7 relative z-50 flex justify-center items-center h-[300px] sm:h-[400px] lg:h-[700px] perspective-1000">
           <motion.div
             className="relative aspect-square w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[580px]"
             onMouseEnter={() => setIsGraphicHovered(true)}

@@ -60,8 +60,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ["Fraunces", "serif"],
-        body: ["Inter", "sans-serif"],
+        display: ["var(--font-heading)", "serif"],
+        body: ["var(--font-body)", "sans-serif"],
         bricolage: ["Bricolage Grotesque", "sans-serif"],
         fraunces: ["Fraunces", "serif"],
         outfit: ["Bricolage Grotesque", "sans-serif"], // legacy alias → punta su bricolage

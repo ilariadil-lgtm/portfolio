@@ -100,7 +100,7 @@ const NebulaIndex = () => {
     }
   ];
 
-  const displayProjects = projects.length > 0 ? projects.slice(0, 4) : fallbackProjects;
+  const displayProjects = projects.length > 0 ? projects.slice(0, 3) : fallbackProjects;
 
   return (
     <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">

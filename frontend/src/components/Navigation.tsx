@@ -54,7 +54,7 @@ export const Navigation = () => {
           animate={{ y: 0, opacity: 1 }}
           className={`mx-auto px-6 py-4 flex items-center justify-between transition-all duration-500 ${
             scrolled 
-              ? "max-w-[1200px] bg-[#f5f2ed]/80 backdrop-blur-xl border border-primary/5 shadow-2xl rounded-full" 
+              ? "max-w-[1200px] bg-background/80 backdrop-blur-xl border border-primary/5 shadow-2xl rounded-full" 
               : "max-w-full px-8 md:px-16 lg:px-24"
           }`}
         >
@@ -63,7 +63,7 @@ export const Navigation = () => {
             className="hover:opacity-80 transition-opacity"
             aria-label="Torna alla Home"
           >
-            <img 
+            <img loading="lazy" 
               src="/logo-editorial.webp" 
               alt="Ilaria Diliberto" 
               className="w-48 md:w-64 h-auto object-contain shrink-0"
@@ -170,7 +170,7 @@ export const Navigation = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%" }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 bg-[#f5f2ed] flex flex-col items-center justify-center"
+            className="fixed inset-0 z-40 bg-background flex flex-col items-center justify-center"
           >
             <div className="flex flex-col items-center gap-10 text-center">
               {navItems.map((item, i) => (
@@ -182,7 +182,7 @@ export const Navigation = () => {
                 >
                   <Link
                     to={item.path}
-                    className={`font-display text-4xl font-bold tracking-tighter ${
+                    className={`font-display text-3xl font-bold tracking-tighter hover:opacity-80 transition-opacity ${
                       location.pathname === item.path 
                         ? "text-primary" 
                         : "text-[#3d0f1a]"

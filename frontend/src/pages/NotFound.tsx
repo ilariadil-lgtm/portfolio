@@ -14,14 +14,14 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-[#f5f2ed] text-[#3d0f1a] overflow-hidden selection:bg-primary/30">
+    <div className="min-h-screen bg-background text-primary overflow-hidden selection:bg-primary/30">
       <Navigation />
 
       <section className="min-h-screen flex flex-col items-center justify-center px-6 relative overflow-hidden">
         {/* Watermark di sfondo */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
           <span
-            className="font-display font-black text-[#3d0f1a]/[0.025]"
+            className="font-display font-black text-primary/[0.025]"
             style={{ fontSize: "clamp(120px, 30vw, 400px)", lineHeight: 1 }}
           >
             404
@@ -46,7 +46,7 @@ const NotFound = () => {
           </motion.div>
 
           <motion.h1
-            className="font-display font-black leading-[0.85] tracking-tighter text-[#3d0f1a] mb-8"
+            className="font-display font-black leading-[0.85] tracking-tighter text-primary mb-8"
             style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -57,7 +57,7 @@ const NotFound = () => {
           </motion.h1>
 
           <motion.p
-            className="font-body text-lg text-[#3d0f1a]/60 leading-relaxed mb-12 max-w-md mx-auto"
+            className="font-body text-lg text-primary/60 leading-relaxed mb-12 max-w-md mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.25 }}
@@ -74,7 +74,7 @@ const NotFound = () => {
           >
             <Link
               to="/"
-              className="group inline-flex items-center gap-4 px-8 py-4 bg-primary text-[#f5f2ed] font-typewriter text-[10px] uppercase tracking-[0.4em] font-bold hover:bg-[#3d0f1a] transition-colors duration-300"
+              className="group inline-flex items-center gap-4 px-8 py-4 bg-primary text-background font-typewriter text-[10px] uppercase tracking-[0.4em] font-bold hover:bg-primary transition-colors duration-300"
             >
               Torna alla Home
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -89,7 +89,7 @@ const NotFound = () => {
 
           {/* Technical marker */}
           <motion.div
-            className="mt-16 font-typewriter text-[9px] uppercase tracking-[0.3em] text-[#3d0f1a]/30"
+            className="mt-16 font-typewriter text-[9px] uppercase tracking-[0.3em] text-primary/30"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}

@@ -36,6 +36,42 @@
 
     --radius: 0rem;
   }
+
+  .theme-editorial {
+    --font-heading: 'EB Garamond', serif;
+    --font-body: 'Hind Siliguri', sans-serif;
+  }
+
+  /* Font diretti per editorial — garantisce applicazione anche senza Tailwind CSS vars */
+  body.theme-editorial {
+    font-family: 'Hind Siliguri', sans-serif;
+  }
+  body.theme-editorial h1,
+  body.theme-editorial h2,
+  body.theme-editorial h3,
+  body.theme-editorial h4,
+  body.theme-editorial h5,
+  body.theme-editorial h6 {
+    font-family: 'EB Garamond', serif;
+  }
+
+  .theme-nebula {
+    --font-heading: 'Fraunces', serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  /* Font diretti per nebula */
+  body.theme-nebula {
+    font-family: 'Inter', sans-serif;
+  }
+  body.theme-nebula h1,
+  body.theme-nebula h2,
+  body.theme-nebula h3,
+  body.theme-nebula h4,
+  body.theme-nebula h5,
+  body.theme-nebula h6 {
+    font-family: 'Fraunces', serif;
+  }
 }
 
 @layer base {
@@ -56,7 +92,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Hind Siliguri', sans-serif;
+    font-family: var(--font-body);
     overflow-x: hidden;
     position: relative;
   }
@@ -76,7 +112,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'EB Garamond', serif;
+    font-family: var(--font-heading);
   }
 
   ::selection {
@@ -87,11 +123,27 @@
 
 @layer utilities {
   .font-display {
+    font-family: var(--font-heading);
+  }
+
+  /* Override esplicito per tema editorial */
+  body.theme-editorial .font-display {
     font-family: 'EB Garamond', serif;
+  }
+  body.theme-editorial .font-body {
+    font-family: 'Hind Siliguri', sans-serif;
+  }
+
+  /* Override esplicito per tema nebula */
+  body.theme-nebula .font-display {
+    font-family: 'Fraunces', serif;
+  }
+  body.theme-nebula .font-body {
+    font-family: 'Inter', sans-serif;
   }
 
   .font-body {
-    font-family: 'Hind Siliguri', sans-serif;
+    font-family: var(--font-body);
   }
 
   .font-typewriter {

@@ -76,7 +76,7 @@ export const Footer = () => {
               <li key={i}>
                 <Link
                   to={link.to}
-                  className="group flex items-center justify-between font-display text-2xl md:text-3xl text-primary hover:text-primary/80 transition-colors duration-300"
+                  className="group flex items-center justify-between font-display text-xl md:text-2xl text-[#3d0f1a] hover:text-primary transition-colors duration-300"
                 >
                   <span>{link.label}</span>
                   <ArrowUpRight size={20} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
