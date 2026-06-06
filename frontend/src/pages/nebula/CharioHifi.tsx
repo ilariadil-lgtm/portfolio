@@ -20,7 +20,7 @@ export const NebulaCharioHifi = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/chario-hifi/homepage.webp"
+      image: "/assets/chario-hero.webp"
     },
     {
       id: "02",
@@ -31,43 +31,9 @@ export const NebulaCharioHifi = () => {
             "Tradurre la purezza del suono analogico e l'eccellenza materica in un'esperienza digitale senza compromessi."
           </p>
           
-          {/* Elegant Audio Waveform Animation (SVG) */}
-          <div className="mt-12 flex justify-center items-center w-full max-w-[400px] mx-auto opacity-60 hover:opacity-100 transition-opacity">
-            <svg viewBox="0 0 400 80" className="w-full h-auto text-[#d4af37]" fill="none" stroke="currentColor">
-              <motion.path
-                d="M 0 40 Q 20 40, 40 40 T 80 40 T 120 40 T 160 40 T 200 40 T 240 40 T 280 40 T 320 40 T 360 40 T 400 40"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                animate={{
-                  d: [
-                    "M 0 40 Q 20 40, 40 40 T 80 40 T 120 40 T 160 40 T 200 40 T 240 40 T 280 40 T 320 40 T 360 40 T 400 40",
-                    "M 0 40 Q 20 10, 40 40 T 80 70 T 120 20 T 160 60 T 200 15 T 240 65 T 280 25 T 320 55 T 360 30 T 400 40",
-                    "M 0 40 Q 20 70, 40 40 T 80 10 T 120 60 T 160 20 T 200 65 T 240 15 T 280 55 T 320 25 T 360 50 T 400 40",
-                    "M 0 40 Q 20 40, 40 40 T 80 40 T 120 40 T 160 40 T 200 40 T 240 40 T 280 40 T 320 40 T 360 40 T 400 40"
-                  ]
-                }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <motion.path
-                d="M 0 40 Q 20 40, 40 40 T 80 40 T 120 40 T 160 40 T 200 40 T 240 40 T 280 40 T 320 40 T 360 40 T 400 40"
-                strokeWidth="1"
-                strokeOpacity="0.4"
-                strokeLinecap="round"
-                animate={{
-                  d: [
-                    "M 0 40 Q 20 40, 40 40 T 80 40 T 120 40 T 160 40 T 200 40 T 240 40 T 280 40 T 320 40 T 360 40 T 400 40",
-                    "M 0 40 Q 20 60, 40 40 T 80 20 T 120 50 T 160 30 T 200 65 T 240 15 T 280 60 T 320 20 T 360 55 T 400 40",
-                    "M 0 40 Q 20 20, 40 40 T 80 60 T 120 30 T 160 50 T 200 15 T 240 65 T 280 20 T 320 60 T 360 25 T 400 40",
-                    "M 0 40 Q 20 40, 40 40 T 80 40 T 120 40 T 160 40 T 200 40 T 240 40 T 280 40 T 320 40 T 360 40 T 400 40"
-                  ]
-                }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </svg>
-          </div>
         </div>
       ),
-      image: "/assets/projects/chario-hifi/dettaglio-prodotto.webp"
+      image: "/assets/chario-gallery-1.webp"
     },
     {
       id: "03",
@@ -83,7 +49,7 @@ export const NebulaCharioHifi = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/chario-hifi/tecnologia.webp"
+      image: "/assets/chario-process.webp"
     },
     {
       id: "04",
@@ -99,7 +65,7 @@ export const NebulaCharioHifi = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/chario-hifi/costruzione.webp"
+      image: "/assets/chario-gallery-2.webp"
     },
     {
       id: "05",
@@ -112,7 +78,7 @@ export const NebulaCharioHifi = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/chario-hifi/rivenditori.webp"
+      image: "/assets/chario-gallery-3.webp"
     }
   ];
 
@@ -134,12 +100,11 @@ export const NebulaCharioHifi = () => {
     >
       <NebulaImageSlider 
         images={[
-          "/assets/projects/chario-hifi/homepage.webp",
-          "/assets/projects/chario-hifi/dettaglio-prodotto.webp",
-          "/assets/projects/chario-hifi/tecnologia.webp",
-          "/assets/projects/chario-hifi/costruzione.webp",
-          "/assets/projects/chario-hifi/rivenditori.webp",
-          "/assets/projects/chario-hifi/su-misura.webp"
+          "/assets/chario-hero.webp",
+          "/assets/chario-gallery-1.webp",
+          "/assets/chario-process.webp",
+          "/assets/chario-gallery-2.webp",
+          "/assets/chario-gallery-3.webp"
         ]}
       />
     </NebulaProjectLayout>

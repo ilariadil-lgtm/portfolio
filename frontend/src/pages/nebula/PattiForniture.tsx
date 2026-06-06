@@ -47,7 +47,7 @@ export const NebulaPattiForniture = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/patti-forniture/azienda.webp"
+      image: "/assets/projects/patti-forniture/chi-siamo.webp"
     },
     {
       id: "04",
@@ -63,7 +63,7 @@ export const NebulaPattiForniture = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/patti-forniture/partners.webp"
+      image: "/assets/projects/patti-forniture/settore1.webp"
     },
     {
       id: "05",
@@ -100,8 +100,8 @@ export const NebulaPattiForniture = () => {
         images={[
           "/assets/projects/patti-forniture/homepage.webp",
           "/assets/projects/patti-forniture/settori.webp",
-          "/assets/projects/patti-forniture/azienda.webp",
-          "/assets/projects/patti-forniture/partners.webp",
+          "/assets/projects/patti-forniture/chi-siamo.webp",
+          "/assets/projects/patti-forniture/settore1.webp",
           "/assets/projects/patti-forniture/contatti.webp"
         ]}
       />

@@ -21,7 +21,7 @@ const directoryPath = path.join(__dirname, 'public');
 
 // Cerca tutte le immagini nelle cartelle
 const getAllFiles = (dirPath, arrayOfFiles) => {
-  files = fs.readdirSync(dirPath);
+  let files = fs.readdirSync(dirPath);
   arrayOfFiles = arrayOfFiles || [];
   
   files.forEach((file) => {
@@ -50,9 +50,11 @@ const processImages = async () => {
     
     if (!fs.existsSync(webpPath)) {
       try {
-        await sharp(file)
-          .webp({ quality: 80 })
-          .toFile(webpPath);
+        if (ext.toLowerCase() === '.png') {
+          await sharp(file).webp({ lossless: true }).toFile(webpPath);
+        } else {
+          await sharp(file).webp({ quality: 95 }).toFile(webpPath);
+        }
         console.log(`Convertito: ${path.basename(file)} -> ${path.basename(webpPath)}`);
         count++;
       } catch (err) {

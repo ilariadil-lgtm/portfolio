@@ -182,42 +182,7 @@ export const EditorialFreelens = () => {
             </span>
             <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]" dangerouslySetInnerHTML={{ __html: t('freelens.ch2_title1') }} />
 
-            {/* Interactive Viewfinder Mockup */}
-            <div className="mt-20 relative w-full max-w-[600px] mx-auto aspect-[16/9] bg-[#0a0a0a] overflow-hidden group shadow-[15px_15px_0px_#3d0f1a]">
-              {/* Dynamic Glow */}
-              <div className="absolute inset-0 opacity-20 group-hover:opacity-60 transition-opacity duration-1000 bg-[radial-gradient(circle_at_center,rgba(192,57,43,0.5)_0%,transparent_70%)]" />
-              
-              {/* Viewfinder Grid */}
-              <div className="absolute inset-0 border-[1px] border-white/10 m-6 md:m-8" />
-              <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/10" />
-              <div className="absolute top-0 left-1/2 w-[1px] h-full bg-white/10" />
-              
-              {/* Animated Focus Box */}
-              <motion.div
-                className="absolute top-1/2 left-1/2 w-24 h-24 md:w-40 md:h-40 border border-[#c0392b]"
-                style={{ x: "-50%", y: "-50%" }}
-                animate={{ scale: [1, 1.05, 1], rotate: [0, 90, 0] }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              />
-              <motion.div
-                className="absolute top-1/2 left-1/2 w-12 h-12 md:w-16 md:h-16 border border-white/40 rounded-full"
-                style={{ x: "-50%", y: "-50%" }}
-                animate={{ scale: [0.8, 1.2, 0.8] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              />
-              
-              {/* Camera UI Elements */}
-              <div className="absolute top-8 left-8 font-typewriter text-[10px] text-[#c0392b] flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-[#c0392b] animate-pulse" />
-                REC
-              </div>
-              <div className="absolute bottom-8 right-8 font-typewriter text-[10px] text-white/50 tracking-widest">
-                F2.8 &nbsp; 1/1000 &nbsp; ISO100
-              </div>
-              <div className="absolute bottom-8 left-8 font-typewriter text-[10px] text-white/50 tracking-widest">
-                FOCUS: AUTO
-              </div>
-            </div>
+
           </motion.div>
         </div>
       </section >
@@ -302,29 +267,7 @@ export const EditorialFreelens = () => {
               </p>
             </div>
 
-            {/* Interactive Mini-Mockup */}
-            <div className="mt-8 p-6 bg-white border border-[#3d0f1a] shadow-[5px_5px_0px_#3d0f1a] relative overflow-hidden group cursor-pointer">
-              <div className="absolute inset-0 bg-[#f5f2ed] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
-              <div className="relative z-10 flex flex-col gap-4">
-                <div className="h-4 w-24 bg-primary/20 rounded-full" />
-                <motion.div 
-                  className="h-2 w-full bg-[#3d0f1a]/10 rounded-full overflow-hidden"
-                >
-                  <motion.div 
-                    className="h-full bg-primary" 
-                    animate={{ width: ["0%", "100%", "0%"] }} 
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} 
-                  />
-                </motion.div>
-                <div className="flex justify-between items-center mt-2">
-                  <div className="flex gap-2">
-                    <motion.div animate={{ rotate: 360 }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="w-6 h-6 border-2 border-[#3d0f1a] rounded-sm" />
-                    <motion.div animate={{ scale: [1, 0.8, 1] }} transition={{ duration: 2, repeat: Infinity }} className="w-6 h-6 border-2 border-primary rounded-full" />
-                  </div>
-                  <span className="font-typewriter text-[10px] text-[#3d0f1a]/50">PROCESSING...</span>
-                </div>
-              </div>
-            </div>
+
           </motion.div>
 
           <motion.div

@@ -44,7 +44,7 @@ export const NebulaSicilCosmetic = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/sicil-cosmetic/prodotto.webp"
+      image: "/assets/projects/sicil-cosmetic/paginaprodotto.webp"
     },
     {
       id: "04",
@@ -60,7 +60,7 @@ export const NebulaSicilCosmetic = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/sicil-cosmetic/ricerca.webp"
+      image: "/assets/projects/sicil-cosmetic/prodottimarca.webp"
     },
     {
       id: "05",
@@ -73,7 +73,7 @@ export const NebulaSicilCosmetic = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/sicil-cosmetic/dettaglio.webp"
+      image: "/assets/projects/sicil-cosmetic/checkout.webp"
     }
   ];
 
@@ -97,9 +97,9 @@ export const NebulaSicilCosmetic = () => {
         images={[
           "/assets/projects/sicil-cosmetic/homepage.webp",
           "/assets/projects/sicil-cosmetic/categoria.webp",
-          "/assets/projects/sicil-cosmetic/prodotto.webp",
-          "/assets/projects/sicil-cosmetic/ricerca.webp",
-          "/assets/projects/sicil-cosmetic/dettaglio.webp"
+          "/assets/projects/sicil-cosmetic/paginaprodotto.webp",
+          "/assets/projects/sicil-cosmetic/prodottimarca.webp",
+          "/assets/projects/sicil-cosmetic/checkout.webp"
         ]}
       />
     </NebulaProjectLayout>
