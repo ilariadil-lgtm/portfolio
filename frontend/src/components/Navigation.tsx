@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useSound } from "../context/SoundContext";
+import { useDesign } from "../context/DesignContext";
 
 const navItems = [
   { key: "home", path: "/" },
@@ -12,12 +13,18 @@ const navItems = [
   { key: "projects", path: "/progetti" },
 ];
 
+// ═══════════════════════════════════════════════════════════════════
+// EDITORIAL THEME ONLY - Componente esclusivo del tema "Editorial"
+// (Il tema Nebula usa NebulaNav.tsx all'interno di pages/nebula)
+// ═══════════════════════════════════════════════════════════════════
+
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { t, i18n } = useTranslation();
   const { isMuted, toggleMute, playHover, playClick } = useSound();
+  const { design } = useDesign();
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
@@ -64,9 +71,9 @@ export const Navigation = () => {
             aria-label="Torna alla Home"
           >
             <img loading="lazy" 
-              src="/logo-editorial.webp" 
+              src={design === 'editorial' ? "/logo-editorial.webp" : "/logo-editorial-light.svg"} 
               alt="Ilaria Diliberto" 
-              className="w-48 md:w-64 h-auto object-contain shrink-0"
+              className={`w-48 md:w-64 h-auto object-contain shrink-0 ${design === 'editorial' ? '' : 'brightness-0 invert'}`}
             />
           </Link>
 

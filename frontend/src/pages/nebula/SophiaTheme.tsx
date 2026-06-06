@@ -16,7 +16,7 @@ export const NebulaSophiaTheme = () => {
           </p>
         </>
       ),
-      image: "/assets/project-sophia.png"
+      image: "/assets/project-sophia.webp"
     },
     {
       id: "02",
@@ -28,7 +28,7 @@ export const NebulaSophiaTheme = () => {
           </p>
         </div>
       ),
-      image: "/assets/project-sophia.png"
+      image: "/assets/project-sophia.webp"
     },
     {
       id: "03",
@@ -41,7 +41,7 @@ export const NebulaSophiaTheme = () => {
           </p>
         </>
       ),
-      image: "/assets/project-sophia.jpg"
+      image: "/assets/project-sophia.webp"
     },
     {
       id: "04",
@@ -54,7 +54,7 @@ export const NebulaSophiaTheme = () => {
           </p>
         </>
       ),
-      image: "/assets/chario-hero.png"
+      image: "/assets/chario-hero.webp"
     },
     {
       id: "05",
@@ -67,7 +67,7 @@ export const NebulaSophiaTheme = () => {
           </p>
         </>
       ),
-      image: "/assets/about-portrait.jpg"
+      image: "/assets/about-portrait.webp"
     }
   ];
 
@@ -88,11 +88,11 @@ export const NebulaSophiaTheme = () => {
     >
       <NebulaImageSlider 
         images={[
-          "/assets/project-sophia.png",
-          "/assets/project-sophia.png",
-          "/assets/project-sophia.jpg",
-          "/assets/chario-hero.png",
-          "/assets/about-portrait.jpg"
+          "/assets/project-sophia.webp",
+          "/assets/project-sophia.webp",
+          "/assets/project-sophia.webp",
+          "/assets/chario-hero.webp",
+          "/assets/about-portrait.webp"
         ]}
       />
     </NebulaProjectLayout>

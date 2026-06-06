@@ -4,21 +4,26 @@ import { Mail, Linkedin, Github, Instagram, ArrowUpRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+// ═══════════════════════════════════════════════════════════════════
+// EDITORIAL THEME ONLY - Componente esclusivo del tema "Editorial"
+// (Il tema Nebula usa NebulaFooter.tsx all'interno di pages/nebula)
+// ═══════════════════════════════════════════════════════════════════
+
 export const Footer = () => {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   // Orologio in tempo reale
   const [currentTime, setCurrentTime] = useState(
-    new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit", hour12: false })
+    new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false })
   );
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTime(
-        new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit", hour12: false })
+        new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false })
       );
-    }, 60000); // aggiornamento ogni minuto
+    }, 1000); // aggiornamento ogni secondo
     return () => clearInterval(interval);
   }, []);
 

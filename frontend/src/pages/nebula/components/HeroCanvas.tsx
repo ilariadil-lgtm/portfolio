@@ -43,6 +43,23 @@ const Terrain = () => {
   );
 };
 
+// Genera una texture circolare per far sì che le particelle non siano quadratini
+const createCircleTexture = () => {
+  const canvas = document.createElement('canvas');
+  canvas.width = 32;
+  canvas.height = 32;
+  const context = canvas.getContext('2d');
+  if (context) {
+    context.beginPath();
+    context.arc(16, 16, 16, 0, Math.PI * 2);
+    context.fillStyle = '#ffffff';
+    context.fill();
+  }
+  return new THREE.CanvasTexture(canvas);
+};
+
+const defaultCircleTexture = createCircleTexture();
+
 // Sistema Particellare: Dati fluttuanti in zero gravità (Orali piccoli e rotondi)
 const Particles = () => {
   const pointsRef = useRef<THREE.Points>(null);
@@ -56,20 +73,7 @@ const Particles = () => {
     return pos;
   }, [particlesCount]);
 
-  // Genera una texture circolare per far sì che le particelle non siano quadratini
-  const circleTexture = useMemo(() => {
-    const canvas = document.createElement('canvas');
-    canvas.width = 32;
-    canvas.height = 32;
-    const context = canvas.getContext('2d');
-    if (context) {
-      context.beginPath();
-      context.arc(16, 16, 16, 0, Math.PI * 2);
-      context.fillStyle = '#ffffff';
-      context.fill();
-    }
-    return new THREE.CanvasTexture(canvas);
-  }, []);
+  const circleTexture = defaultCircleTexture;
 
   useFrame((state) => {
     if (pointsRef.current) {

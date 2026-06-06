@@ -35,6 +35,7 @@ const Index = () => {
         setServices(servData.results || servData);
       } catch (error) {
         console.error("Errore nel caricamento dei dati:", error);
+        console.warn("Utilizzo dati di fallback hardcoded per progetti e servizi. Rimuovere in produzione.");
       }
     };
     fetchData();
@@ -205,7 +206,7 @@ const Index = () => {
             initial={{ scale: 1.2, opacity: 0, filter: "blur(10px)" }}
             whileInView={{ scale: 1, opacity: 0.4, filter: "blur(0px)" }}
             transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-            src="/assets/about-portrait.jpg"
+            src="/assets/about-portrait.webp"
             alt="Portrait"
             loading="lazy"
             decoding="async"

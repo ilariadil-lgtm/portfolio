@@ -1,8 +1,6 @@
 import { motion, Variants } from "framer-motion";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { useEffect, useState } from "react";
-import { api } from "@/lib/api";
 import { ArrowRight, Box, Cpu, Globe, Layers } from "lucide-react";
 import { RevealText } from "@/components/RevealText";
 import { Link } from "react-router-dom";
@@ -28,24 +26,7 @@ const Chisono = () => {
     title: "Chi Sono",
     description: "Ilaria Diliberto — Designer e sviluppatrice full-stack. Dalla Accademia di Belle Arti al prodotto digitale: il percorso che unisce estetica, codice e strategia.",
   });
-  const [about, setAbout] = useState<any>(null);
-  const [services, setServices] = useState<any[]>([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [aboutData, servData] = await Promise.all([
-          api.getAbout(),
-          api.getServices()
-        ]);
-        setAbout(aboutData);
-        setServices(servData.results || servData);
-      } catch (error) {
-        console.error("Errore nel caricamento dei dati:", error);
-      }
-    };
-    fetchData();
-  }, []);
 
   const evolution = [
     {
@@ -133,7 +114,7 @@ const Chisono = () => {
                   transition={{ delay: 0.6 }}
                   className="font-body text-l text-[#3d0f1a]/80 leading-relaxed pl-8 border-l border-primary/25 max-w-xl"
                 >
-                  {about?.bio || t('about.bio_default')}
+                  {t('about.bio_default')}
                 </motion.p>
               </motion.div>
 
@@ -330,14 +311,18 @@ const Chisono = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.length > 0 ? services.map((tech, i) => (
+            {[
+              { title: t('about.fallback1_title'), desc: t('about.fallback1_desc') },
+              { title: t('about.fallback2_title'), desc: t('about.fallback2_desc') },
+              { title: t('about.fallback3_title'), desc: t('about.fallback3_desc') }
+            ].map((tech, i) => (
               <motion.div
-                key={tech.id}
+                key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group p-8 border border-[#3d0f1a] bg-white shadow-[10px_10px_0px_rgba(61,15,26,0.1)] hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-300"
+                className="group p-8 border border-[#3d0f1a] bg-white shadow-[10px_10px_0px_rgba(61,15,26,0.1)] hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-300 min-h-[320px]"
               >
                 <div className="flex justify-between items-start mb-12">
                   <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform bg-primary/5">
@@ -347,37 +332,10 @@ const Chisono = () => {
                 </div>
                 <h3 className="font-display text-3xl font-bold mb-4">{tech.title}</h3>
                 <p className="font-body text-[14px] text-[#3d0f1a]/70 leading-relaxed">
-                  {tech.description || t('about.tech_default')}
+                  {tech.desc}
                 </p>
               </motion.div>
-            )) : (
-              // Fallback cards
-              [
-                { title: t('about.fallback1_title'), desc: t('about.fallback1_desc') },
-                { title: t('about.fallback2_title'), desc: t('about.fallback2_desc') },
-                { title: t('about.fallback3_title'), desc: t('about.fallback3_desc') }
-              ].map((tech, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="group p-8 border border-[#3d0f1a] bg-white shadow-[10px_10px_0px_rgba(61,15,26,0.1)] hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-300 min-h-[320px]"
-                >
-                  <div className="flex justify-between items-start mb-12">
-                    <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform bg-primary/5">
-                      <Box size={20} />
-                    </div>
-                    <span className="font-typewriter text-[9px] text-[#3d0f1a]/30 font-medium">0{i + 1}</span>
-                  </div>
-                  <h3 className="font-display text-3xl font-bold mb-4">{tech.title}</h3>
-                  <p className="font-body text-[14px] text-[#3d0f1a]/70 leading-relaxed">
-                    {tech.desc}
-                  </p>
-                </motion.div>
-              ))
-            )}
+            ))}
           </div>
         </div>
       </section>

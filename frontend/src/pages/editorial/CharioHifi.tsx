@@ -8,6 +8,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight, Github, Globe, ExternalLink } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
+import { ProjectNavigation } from "@/components/ProjectNavigation";
 
 export const EditorialCharioHifi = () => {
   const { t } = useTranslation();
@@ -126,7 +127,7 @@ export const EditorialCharioHifi = () => {
                 {/* Image */}
                 <div className="flex-1 relative overflow-hidden bg-black">
                   <img
-                    src="/assets/chario-hero.png"
+                    src="/assets/chario-hero.webp"
                     alt="Chario Hifi Interface"
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                   />
@@ -190,9 +191,26 @@ export const EditorialCharioHifi = () => {
             <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]">
               {t('chario.ch2_title1')}<span className="text-primary italic">{t('chario.ch2_title2')}</span>{t('chario.ch2_title3')}
             </h3>
+
+            {/* Audio Waveform Animation */}
+            <div className="mt-16 flex justify-center items-center gap-1.5 h-16">
+              {[0.4, 0.8, 0.3, 0.9, 0.5, 1, 0.6, 0.2, 0.8, 0.4, 0.7, 0.3, 0.9, 0.5, 0.8].map((val, i) => (
+                <motion.div
+                  key={i}
+                  className="w-1 bg-primary/50"
+                  animate={{ height: ["20%", `${val * 100}%`, "20%"] }}
+                  transition={{ 
+                    duration: 1.2, 
+                    repeat: Infinity, 
+                    ease: "easeInOut",
+                    delay: i * 0.1 
+                  }}
+                />
+              ))}
+            </div>
           </motion.div>
         </div>
-      </section >
+      </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
            CH. 03 — THE PROCESS (Asymmetric with image)
@@ -210,7 +228,7 @@ export const EditorialCharioHifi = () => {
             {/* Process Image con Shadow Brutalista */}
             <div className="aspect-[3/4] relative border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] group">
               <img
-                src="/assets/chario-process.png"
+                src="/assets/chario-process.webp"
                 alt="UX Wireframing phase"
                   className="w-full h-full object-cover"
               />
@@ -350,10 +368,10 @@ export const EditorialCharioHifi = () => {
             {[...Array(2)].map((_, i) => (
               <div key={i} className="flex gap-8 shrink-0">
                 {[
-                  "/assets/chario-hero.png",
-                  "/assets/chario-gallery-1.png",
-                  "/assets/chario-gallery-2.png",
-                  "/assets/chario-gallery-3.png",
+                  "/assets/chario-hero.webp",
+                  "/assets/chario-gallery-1.webp",
+                  "/assets/chario-gallery-2.webp",
+                  "/assets/chario-gallery-3.webp",
                 ].map((src, j) => (
                   <div key={j} className="h-full shrink-0 border border-[#3d0f1a] shadow-[10px_10px_0px_#c0392b] bg-[#f5f2ed] p-3 md:p-5 group">
                     <img
@@ -373,20 +391,10 @@ export const EditorialCharioHifi = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            NAVIGATION
            ═══════════════════════════════════════════════════════════════════ */}
-      < section className="border-t border-[#3d0f1a]/10 px-6 md:px-12 lg:px-24 py-20 bg-[#f5f2ed]" >
-        <div className="max-w-7xl mx-auto flex justify-center">
-          <Link
-            to="/progetti"
-            className="group relative flex items-center justify-center px-12 py-5 border border-[#3d0f1a] hover:border-primary overflow-hidden transition-all duration-500"
-          >
-            <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-            <span className="relative z-10 flex items-center gap-4 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white transition-colors font-semibold">
-              <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-500" />
-              {t('project_detail.back_to_archive')}
-            </span>
-          </Link>
-        </div>
-      </section >
+      <ProjectNavigation 
+        prev={{ url: '/progetti/storagehub', title: 'StorageHub' }}
+        next={{ url: '/progetti/freelens', title: 'Freelens' }}
+      />
 
       <FloatingCTA url="https://chariohifi.it" />
       <Footer />

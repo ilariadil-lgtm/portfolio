@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { BriefingCTA } from "@/components/BriefingCTA";
 import { useTranslation } from "react-i18next";
+import { ProjectNavigation } from "@/components/ProjectNavigation";
 
 export const EditorialFreelens = () => {
   const { t } = useTranslation();
@@ -263,6 +264,30 @@ export const EditorialFreelens = () => {
                 {t('freelens.ch4_p1')}
               </p>
             </div>
+
+            {/* Interactive Mini-Mockup */}
+            <div className="mt-8 p-6 bg-white border border-[#3d0f1a] shadow-[5px_5px_0px_#3d0f1a] relative overflow-hidden group cursor-pointer">
+              <div className="absolute inset-0 bg-[#f5f2ed] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
+              <div className="relative z-10 flex flex-col gap-4">
+                <div className="h-4 w-24 bg-primary/20 rounded-full" />
+                <motion.div 
+                  className="h-2 w-full bg-[#3d0f1a]/10 rounded-full overflow-hidden"
+                >
+                  <motion.div 
+                    className="h-full bg-primary" 
+                    animate={{ width: ["0%", "100%", "0%"] }} 
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} 
+                  />
+                </motion.div>
+                <div className="flex justify-between items-center mt-2">
+                  <div className="flex gap-2">
+                    <motion.div animate={{ rotate: 360 }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="w-6 h-6 border-2 border-[#3d0f1a] rounded-sm" />
+                    <motion.div animate={{ scale: [1, 0.8, 1] }} transition={{ duration: 2, repeat: Infinity }} className="w-6 h-6 border-2 border-primary rounded-full" />
+                  </div>
+                  <span className="font-typewriter text-[10px] text-[#3d0f1a]/50">PROCESSING...</span>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div
@@ -374,20 +399,10 @@ export const EditorialFreelens = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            NAVIGATION
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="border-t border-[#3d0f1a]/10 px-6 md:px-12 lg:px-24 py-20 bg-[#f5f2ed]" >
-        <div className="max-w-7xl mx-auto flex justify-center">
-          <Link
-            to="/progetti"
-            className="group relative flex items-center justify-center px-12 py-5 border border-[#3d0f1a] hover:border-primary overflow-hidden transition-all duration-500"
-          >
-            <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-            <span className="relative z-10 flex items-center gap-4 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white transition-colors font-semibold">
-              <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-500" />
-              {t('project_detail.back_to_archive')}
-            </span>
-          </Link>
-        </div>
-      </section >
+      <ProjectNavigation 
+        prev={{ url: '/progetti/chariohifi', title: 'Chario Hifi' }}
+        next={{ url: '/progetti/villamasami', title: 'Villa Masami' }}
+      />
 
       <Footer />
     </div >

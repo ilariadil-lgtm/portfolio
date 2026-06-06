@@ -88,7 +88,7 @@ export const CustomCursor = () => {
         transition={{ type: "spring", stiffness: isEditorial ? 150 : 250, damping: isEditorial ? 15 : 25, mass: 0.5 }}
       >
         <motion.span
-          className="text-white font-typewriter text-[3px] uppercase tracking-widest font-bold"
+          className="text-white font-typewriter text-[10px] uppercase tracking-widest font-bold"
           initial={{ opacity: 0 }}
           animate={{ opacity: (cursorType === "view" || cursorType === "drag") ? 1 : 0 }}
         >

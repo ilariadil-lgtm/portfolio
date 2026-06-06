@@ -33,8 +33,7 @@ const NebulaIndex = () => {
   const parallaxFast = useTransform(scrollY, [0, 3000], [0, -250]);
 
   // Interactive Glow
-  const [mousePosGlow, setMousePosGlow] = useState({ x: 0, y: 0 });
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0, glowX: 0, glowY: 0 });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -50,16 +49,16 @@ const NebulaIndex = () => {
         setServices(servData.results || servData);
       } catch (error) {
         console.error("Errore nel caricamento dei dati:", error);
+        console.warn("Utilizzo dati di fallback hardcoded per progetti e servizi. Rimuovere in produzione.");
       }
     };
     fetchData();
 
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
-      const x = (clientX / window.innerWidth - 0.5) * 100;
-      const y = (clientY / window.innerHeight - 0.5) * 100;
-      setMousePosGlow({ x, y });
-      setMousePos({ x: clientX, y: clientY });
+      const glowX = (clientX / window.innerWidth - 0.5) * 100;
+      const glowY = (clientY / window.innerHeight - 0.5) * 100;
+      setMousePos({ x: clientX, y: clientY, glowX, glowY });
     };
 
     window.addEventListener("mousemove", handleMouseMove);

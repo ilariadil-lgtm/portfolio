@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Github, Globe, ExternalLink } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
+import { ProjectNavigation } from "@/components/ProjectNavigation";
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
@@ -20,7 +21,7 @@ const getFallbackProjects = (t: any) => [
     project_url: "https://chariohifi.it",
     github_url: "",
     description: t('project_detail.fallback_desc1'),
-    image: "/assets/chario-hero.png"
+    image: "/assets/chario-hero.webp"
   },
   {
     id: 2,
@@ -28,7 +29,7 @@ const getFallbackProjects = (t: any) => [
     type: "Frontend custom • Tech PM",
     technologies: "React, Node.js, AWS S3, CloudFront, UX Strategy",
     year: "2024",
-    image: "/assets/project-zenith.png",
+    image: "/assets/project-zenith.webp",
     project_url: "https://storagehub.com",
     github_url: "https://github.com",
     description: t('project_detail.fallback_desc2')
@@ -39,7 +40,7 @@ const getFallbackProjects = (t: any) => [
     type: "UI/UX Design • Sviluppo Web",
     technologies: "Figma, React, Framer Motion, Product Strategy",
     year: "2024",
-    image: "/assets/project-zenith.png",
+    image: "/assets/project-zenith.webp",
     project_url: "https://freelens.app",
     github_url: "https://github.com",
     description: t('project_detail.fallback_desc3')
@@ -390,20 +391,10 @@ export const EditorialProjectDetail = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            NAVIGATION — prev / back / next
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="border-t border-primary/10 px-8 md:px-16 lg:px-24 py-20 bg-[#f5f2ed]">
-        <div className="max-w-7xl mx-auto flex justify-center">
-          <Link
-            to="/progetti"
-            className="group relative flex items-center justify-center px-12 py-5 border border-[#3d0f1a]/20 hover:border-primary overflow-hidden transition-all duration-500"
-          >
-            <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-            <span className="relative z-10 flex items-center gap-4 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white transition-colors font-semibold">
-              <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-500" />
-              {t('project_detail.back_to_archive')}
-            </span>
-          </Link>
-        </div>
-      </section>
+      <ProjectNavigation 
+        prev={undefined} 
+        next={undefined} 
+      />
 
       {/* ═══════════════════════════════════════════════════════════════════
            CTA — dark strip

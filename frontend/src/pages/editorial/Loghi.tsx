@@ -109,10 +109,10 @@ const BrandMockupCarousel = ({ images, brandTitle }: { images: string[]; brandTi
                 }
               } else {
                 const generalFallbacks = [
-                  "/assets/projects/villa-masami/masami-5.png",
-                  "/assets/projects/villa-masami/masami-6.png",
-                  "/assets/projects/villa-masami/masami-7.png",
-                  "/assets/projects/villa-masami/masami-8.png",
+                  "/assets/projects/villa-masami/masami-5.webp",
+                  "/assets/projects/villa-masami/masami-6.webp",
+                  "/assets/projects/villa-masami/masami-7.webp",
+                  "/assets/projects/villa-masami/masami-8.webp",
                 ];
                 e.currentTarget.src = generalFallbacks[currentIdx % generalFallbacks.length];
               }

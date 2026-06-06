@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, useMemo } from "react";
-import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, animate, MotionValue, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, animate, MotionValue, useSpring, AnimationPlaybackControls } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { KineticText } from "./KineticText";
@@ -124,6 +124,11 @@ const NavPoint: React.FC<NavPointProps> = ({ angle, radiusSpring, label, detail,
 };
 
 
+// ═══════════════════════════════════════════════════════════════════
+// EDITORIAL THEME ONLY - Componente esclusivo del tema "Editorial"
+// (Il tema Nebula usa HeroCanvas.tsx all'interno di pages/nebula)
+// ═══════════════════════════════════════════════════════════════════
+
 export const CreativeHero: React.FC = () => {
   const { t } = useTranslation();
   const [hoveredPoint, setHoveredPoint] = useState<number | null>(null);
@@ -155,7 +160,7 @@ export const CreativeHero: React.FC = () => {
     radius3.set(85);
   }, [radius1, radius2, radius3]);
 
-  const rotationControls = useRef<any>(null);
+  const rotationControls = useRef<AnimationPlaybackControls | null>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -297,13 +302,43 @@ export const CreativeHero: React.FC = () => {
                   animate={{ r: hoveredPoint !== null ? 45 : 40 }}
                 />
 
+                {/* ── Desktop: Triangolo ── */}
                 <polygon
                   points={points}
                   fill="rgba(192, 57, 43, 0.05)"
                   stroke="currentColor"
                   strokeWidth="0.8"
-                  className="text-primary transition-all duration-300"
+                  className="text-primary transition-all duration-300 hidden lg:block"
                 />
+
+                {/* ── Mobile: Cerchio interattivo ad archi (Soluzione Ottimale) ── */}
+                <g className="lg:hidden">
+                  {[
+                    { label: t('nav.about'), to: "/chisono", rot: 220, tx: 100, ty: 22 },
+                    { label: t('nav.services'), to: "/servizi", rot: 340, tx: 172, ty: 142 },
+                    { label: t('nav.projects'), to: "/progetti", rot: 100, tx: 28, ty: 142 }
+                  ].map((arc, i) => (
+                    <Link to={arc.to} key={i} className="group outline-none cursor-pointer pointer-events-auto">
+                      <circle
+                        cx="100" cy="100" r="70"
+                        fill="none" stroke="currentColor" strokeWidth="16"
+                        strokeDasharray="122.17 400"
+                        transform={`rotate(${arc.rot} 100 100)`}
+                        className="text-primary/0 group-hover:text-primary/10 transition-colors duration-300"
+                      />
+                      <circle
+                        cx="100" cy="100" r="70"
+                        fill="none" stroke="currentColor" strokeWidth="1"
+                        strokeDasharray="122.17 400"
+                        transform={`rotate(${arc.rot} 100 100)`}
+                        className="text-primary/50 group-hover:text-primary group-hover:stroke-[1.5] transition-all duration-300"
+                      />
+                      <text x={arc.tx} y={arc.ty} textAnchor="middle" className="font-typewriter text-[6px] uppercase tracking-[0.2em] fill-primary/70 group-hover:fill-primary transition-colors duration-300">
+                        {arc.label}
+                      </text>
+                    </Link>
+                  ))}
+                </g>
 
                 <defs>
                   <path id="textCircle" d="M 100, 100 m -78, 0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0" />
@@ -333,22 +368,7 @@ export const CreativeHero: React.FC = () => {
                 })}
               </div>
 
-              {/* Mobile: 3 link testuali sotto il grafico al posto dei NavPoint */}
-              <div className="lg:hidden absolute -bottom-10 sm:-bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-5 sm:gap-6 whitespace-nowrap z-20">
-                {[
-                  { label: t('nav.about'), to: "/chisono" },
-                  { label: t('nav.services'), to: "/servizi" },
-                  { label: t('nav.projects'), to: "/progetti" },
-                ].map((link, i) => (
-                  <Link
-                    key={i}
-                    to={link.to}
-                    className="font-typewriter text-[9px] uppercase tracking-[0.35em] text-primary/60 hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
+              {/* Mobile links replaced by interactive SVG arcs above */}
             </motion.div>
 
             {/* CENTRAL BLOOM CORE */}

@@ -44,7 +44,7 @@ export const RevealText: React.FC<RevealTextProps> = ({
   return (
     <motion.div
       className={`flex flex-wrap ${className}`}
-      style={{ columnGap: "0.22em", rowGap: 0 }}
+      style={{ columnGap: "0.22em", rowGap: "0.22em" }}
       variants={container}
       initial="hidden"
       whileInView="visible"

@@ -21,8 +21,8 @@ import { SoundProvider } from "./context/SoundContext";
 
 const queryClient = new QueryClient();
 
-const PageFallback = () => (
-  <div className="min-h-screen bg-background" aria-hidden="true" />
+const PageFallback = ({ isEditorial }: { isEditorial: boolean }) => (
+  <div className={`min-h-screen ${isEditorial ? 'bg-background' : 'bg-[#0a0a0a]'}`} aria-hidden="true" />
 );
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -40,7 +40,7 @@ const AnimatedRoutes = () => {
   useThemeFavicon(design as 'editorial' | 'nebula');
 
   return (
-    <Suspense fallback={<PageFallback />}>
+    <Suspense fallback={<PageFallback isEditorial={isEditorial} />}>
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
           {activeRoutes.map((route) => {

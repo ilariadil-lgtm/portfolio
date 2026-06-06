@@ -8,6 +8,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
+import { ProjectNavigation } from "@/components/ProjectNavigation";
 
 export const EditorialBaglioLauria = () => {
   const { t } = useTranslation();
@@ -164,6 +165,21 @@ export const EditorialBaglioLauria = () => {
           </motion.div>
         </div>
       </section >
+
+      {/* ═══════════════════════════════════════════════════════════════════
+           IMAGE BREAK
+           ═══════════════════════════════════════════════════════════════════ */}
+      <section className="w-full h-[60vh] lg:h-[80vh] relative overflow-hidden">
+        <motion.img 
+          initial={{ scale: 1.1 }}
+          whileInView={{ scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          viewport={{ once: true }}
+          src="/assets/projects/baglio-lauria/lecamere.webp" 
+          alt="Baglio Lauria Interior" 
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+      </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
            CH. 02 — THE MISSION
@@ -378,20 +394,10 @@ export const EditorialBaglioLauria = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            NAVIGATION
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="border-t border-[#3d0f1a]/10 px-6 md:px-12 lg:px-24 py-20 bg-[#f5f2ed]" >
-        <div className="max-w-7xl mx-auto flex justify-center">
-          <Link
-            to="/progetti"
-            className="group relative flex items-center justify-center px-12 py-5 border border-[#3d0f1a] hover:border-primary overflow-hidden transition-all duration-500"
-          >
-            <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-            <span className="relative z-10 flex items-center gap-4 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white transition-colors font-semibold">
-              <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-500" />
-              {t('project_detail.back_to_archive')}
-            </span>
-          </Link>
-        </div>
-      </section >
+      <ProjectNavigation 
+        prev={{ url: '/progetti/villamasami', title: 'Villa Masami' }}
+        next={{ url: '/progetti/chariohifi', title: 'Chario Hifi' }}
+      />
 
       <FloatingCTA url="https://www.bagliolauria.com/" />
       <Footer />

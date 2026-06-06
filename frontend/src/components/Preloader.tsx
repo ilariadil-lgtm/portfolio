@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 interface PreloaderProps {
   onComplete: () => void;
 }
 
 // ── costanti ────────────────────────────────────────────────────────────────
-const PHRASE_1 = "ogni pixel conta.";
-const PHRASE_2 = "ilaria diliberto.";
 const BG_COLOR = "hsl(var(--background))";
 const TEXT_COLOR = "hsl(var(--primary))";
 const STAIN_COLOR = "hsl(345, 50%, 25%)";
@@ -18,7 +17,7 @@ const PAUSE_WRITE = 1000;
 const PAUSE_STAIN = 400;
 
 // ── componente Typewriter Avanzato ──────────────────────────────────────────
-const TypewriterSequence: React.FC<{ onFinished: () => void }> = ({ onFinished }) => {
+const TypewriterSequence: React.FC<{ onFinished: () => void; phrase1: string; phrase2: string }> = ({ onFinished, phrase1, phrase2 }) => {
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [step, setStep] = useState(1); // 1: write p1, 2: delete p1, 3: write p2
@@ -27,7 +26,7 @@ const TypewriterSequence: React.FC<{ onFinished: () => void }> = ({ onFinished }
     let timeout: NodeJS.Timeout;
 
     const tick = () => {
-      const fullText = step === 1 ? PHRASE_1 : PHRASE_2;
+      const fullText = step === 1 ? phrase1 : phrase2;
 
       if (step === 2) {
         // Cancellazione
@@ -60,7 +59,7 @@ const TypewriterSequence: React.FC<{ onFinished: () => void }> = ({ onFinished }
 
     timeout = setTimeout(tick, CHAR_DELAY);
     return () => clearTimeout(timeout);
-  }, [step, text.length, onFinished]);
+  }, [step, text.length, onFinished, phrase1, phrase2]);
 
   return (
     <div className="relative inline-block px-4">
@@ -78,7 +77,11 @@ const TypewriterSequence: React.FC<{ onFinished: () => void }> = ({ onFinished }
 
 // ── componente principale ───────────────────────────────────────────────────
 export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
+  const { t } = useTranslation();
   const [phase, setPhase] = useState<"typewriter" | "stain" | "exit">("typewriter");
+  
+  const phrase1 = t('preloader.phrase1', 'ogni pixel conta.');
+  const phrase2 = t('preloader.phrase2', 'ilaria diliberto.');
 
   useEffect(() => {
     const isReducedMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -127,14 +130,14 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           {/* Content Container */}
           <div className="relative z-20 text-center">
             {phase === "typewriter" ? (
-              <TypewriterSequence onFinished={handleSequenceFinished} />
+              <TypewriterSequence onFinished={handleSequenceFinished} phrase1={phrase1} phrase2={phrase2} />
             ) : (
               <motion.div
                 animate={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
                 className="font-typewriter text-[clamp(16px,2.5vw,28px)] font-normal tracking-tight leading-none text-primary"
               >
-                {PHRASE_2}
+                {phrase2}
               </motion.div>
             )}
           </div>

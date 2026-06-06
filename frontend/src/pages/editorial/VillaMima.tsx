@@ -124,7 +124,7 @@ export const EditorialVillaMima = () => {
                     alt="Villa Mima Homepage Screenshot"
                     onError={(e) => {
                       // Fallback visual in case files aren't uploaded yet
-                      e.currentTarget.src = "/assets/project-visio.png";
+                      e.currentTarget.src = "/assets/project-visio.webp";
                     }}
                     className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                   />
@@ -218,7 +218,7 @@ export const EditorialVillaMima = () => {
                     src="/assets/projects/villa-mima/la-villa.webp"
                     alt="Villa Mima Structure and Materials"
                     onError={(e) => {
-                      e.currentTarget.src = "/assets/project-visio.png";
+                      e.currentTarget.src = "/assets/project-visio.webp";
                     }}
                     className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                   />

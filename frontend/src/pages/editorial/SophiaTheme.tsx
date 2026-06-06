@@ -126,7 +126,7 @@ export const EditorialSophiaTheme = () => {
                 {/* Image */}
                 <div className="flex-1 relative overflow-hidden bg-black">
                   <img
-                    src="/assets/project-sophia.png"
+                    src="/assets/project-sophia.webp"
                     alt="Sophia Theme Architecture"
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                   />
@@ -211,7 +211,7 @@ export const EditorialSophiaTheme = () => {
             {/* Process Image con Shadow Brutalista */}
             <div className="aspect-[3/4] relative border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] group">
               <img
-                src="/assets/chario-process.png"
+                src="/assets/chario-process.webp"
                 alt="UX Wireframing phase"
                   className="w-full h-full object-cover"
               />
@@ -354,10 +354,10 @@ export const EditorialSophiaTheme = () => {
             {[...Array(2)].map((_, i) => (
               <div key={i} className="flex gap-8 shrink-0">
                 {[
-                  "/assets/project-sophia.png",
-                  "/assets/project-sophia.jpg",
-                  "/assets/chario-hero.png",
-                  "/assets/about-portrait.jpg",
+                  "/assets/project-sophia.webp",
+                  "/assets/project-sophia.webp",
+                  "/assets/chario-hero.webp",
+                  "/assets/about-portrait.webp",
                 ].map((src, j) => (
                   <div key={j} className="h-full shrink-0 border border-[#3d0f1a] shadow-[10px_10px_0px_#c0392b] bg-[#f5f2ed] p-3 md:p-5 group">
                     <img
