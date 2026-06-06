@@ -68,12 +68,12 @@ export const EditorialSicilCosmetic = () => {
               </div>
 
               <h1 className="relative font-display leading-[0.85] tracking-tighter">
-                <div className="overflow-hidden pt-4 pb-24 -mb-20">
+                <div className="overflow-hidden pt-4 pb-24 -mb-20 w-max">
                   <motion.span
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
                     transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="block text-[10vw] lg:text-[5vw] font-bold text-[#3d0f1a] whitespace-nowrap"
+                    className="block text-[10vw] lg:text-[5vw] font-bold text-[#3d0f1a] whitespace-nowrap pr-4"
                     style={{ y: y1 }}
                   >
                     Sicil<span className="text-primary italic">Cosmetic</span><span className="text-[#3d0f1a] not-italic">.</span>

@@ -171,13 +171,8 @@ export const NebulaProjectLayout = ({
             transition={{ duration: 1 }}
             className="bg-black/40 border border-white/5 backdrop-blur-xl p-8 md:p-16 rounded-3xl font-outfit font-light text-white/80 text-lg md:text-xl leading-relaxed mb-20 shadow-[0_0_50px_rgba(0,0,0,0.6)] [&>p]:mb-8 [&>p:last-child]:mb-0 [&>h3]:font-mono [&>h3]:text-[10px] [&>h3]:uppercase [&>h3]:tracking-[0.3em] [&>h3]:text-[#d4af37] [&>h3]:mb-4 [&>h3]:mt-12 [&>h2]:font-bricolage [&>h2]:font-bold [&>h2]:text-3xl [&>h2]:text-white [&>h2]:mb-6"
           >
-            <div className="flex items-center gap-4 mb-8 pb-8 border-b border-white/10">
-               <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]">SYS.PANORAMICA_PROGETTO</span>
-               <div className="flex gap-1.5 ml-auto">
-                 <div className="w-2 h-2 rounded-full bg-white/20" />
-                 <div className="w-2 h-2 rounded-full bg-white/20" />
-                 <div className="w-2 h-2 rounded-full bg-[#d4af37] animate-pulse" />
-               </div>
+            <div className="mb-8 pb-8 border-b border-white/10">
+               <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]">PANORAMICA PROGETTO</span>
             </div>
             {description}
           </motion.div>

@@ -44,7 +44,7 @@ const NebulaIndex = () => {
           api.getServices()
         ]);
         const results = projData.results || projData;
-        const filtered = results.filter((p: any) => p.id !== 'SOPHIA_THEME' && p.id !== 'sophiatheme');
+        const filtered = results.filter((p: any) => p.id !== 'SOPHIA_THEME' && p.id !== 'sophiatheme' && p.id !== 'CHARIO_HIFI' && p.id !== 'chariohifi');
         setProjects(filtered);
         setServices(servData.results || servData);
       } catch (error) {
@@ -77,7 +77,7 @@ const NebulaIndex = () => {
       id: 1,
       title: t('index_fallback.1.title', "Villa Masami"),
       type: t('index_fallback.1.type', "Brand Identity • UI/UX Design • Web"),
-      image: "/assets/projects/villa-masami/homepage.webp",
+      image: "/assets/projects/villa-masami/struttura.webp",
       url: "/progetti/villamasami",
       description: t('index_fallback.1.description', "Un progetto digitale completo. Cura integrale dell'identità della struttura, dal logo allo sviluppo WordPress.")
     },

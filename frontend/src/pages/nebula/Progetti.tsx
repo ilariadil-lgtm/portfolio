@@ -41,7 +41,7 @@ const getFallbackProjects = (t: any) => [
     type: "WEB_ECOMMERCE BRAND_IDENTITY",
     technologies: t('projects_data.villamasami.technologies', 'Brand & Logo Design, UI/UX Design, Copywriting, WordPress (Bilingual)'),
     year: "2026",
-    image: "/assets/projects/villa-masami/homepage.webp",
+    image: "/assets/projects/villa-masami/struttura.webp",
     project_url: "",
     description: t('projects_data.villamasami.description')
   },
@@ -266,7 +266,7 @@ const NebulaProgetti = () => {
       try {
         const data = await api.getProjects();
         const results = data.results || data;
-        const filtered = results.filter((p: any) => p.id !== 'SOPHIA_THEME' && p.id !== 'sophiatheme');
+        const filtered = results.filter((p: any) => p.id !== 'SOPHIA_THEME' && p.id !== 'sophiatheme' && p.id !== 'CHARIO_HIFI' && p.id !== 'chariohifi');
         setProjects(filtered && filtered.length > 0 ? filtered : fallbackProjects);
       } catch (error) {
         console.error("Errore nel caricamento dei progetti:", error);

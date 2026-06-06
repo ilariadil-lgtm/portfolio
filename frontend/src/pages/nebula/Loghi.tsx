@@ -104,7 +104,7 @@ const HolographicCarousel = ({ images, brandTitle }: { images: string[]; brandTi
                 if (filename && filename.startsWith("masami-")) {
                   e.currentTarget.src = `/assets/projects/villa-masami/${filename}`;
                 } else {
-                  e.currentTarget.src = `/assets/projects/villa-masami/homepage.webp`;
+                  e.currentTarget.src = `/assets/projects/villa-masami/struttura.webp`;
                 }
               }
             }}

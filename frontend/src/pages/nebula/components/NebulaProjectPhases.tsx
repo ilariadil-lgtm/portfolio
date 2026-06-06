@@ -22,14 +22,8 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
 
   return (
     <div className="w-full relative z-10 pt-16 pb-8">
-      {/* Intestazione della sezione interattiva */}
-      <div className="flex items-center gap-4 mb-12">
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]">SYS.PHASES_EXPLORER</span>
-        <div className="flex gap-1.5 ml-auto">
-          <div className="w-2 h-2 rounded-full bg-[#d4af37] animate-pulse" />
-          <div className="w-2 h-2 rounded-full bg-white/20" />
-          <div className="w-2 h-2 rounded-full bg-white/20" />
-        </div>
+      <div className="mb-12">
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]">IL PROCESSO</span>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -71,15 +65,9 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
         <div className="lg:col-span-7 flex items-stretch min-h-[450px]">
           <div className="w-full p-8 md:p-12 border border-white/5 bg-black/40 backdrop-blur-xl relative overflow-hidden flex flex-col justify-center rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.5)]">
             
-            {/* Terminal Top Bar */}
-            <div className="absolute top-0 left-0 w-full h-8 border-b border-white/5 flex items-center px-4 justify-between bg-white/[0.01]">
-              <div className="flex gap-1.5">
-                <div className="w-2 h-2 rounded-full bg-white/20" />
-                <div className="w-2 h-2 rounded-full bg-white/20" />
-                <div className="w-2 h-2 rounded-full bg-[#d4af37]/50" />
-              </div>
+            <div className="absolute top-0 left-0 w-full h-8 border-b border-white/5 flex items-center px-4 justify-end bg-white/[0.01]">
               <span className="font-mono text-[8px] uppercase tracking-widest text-white/30">
-                DATA_NODE_{activeIndex + 1}
+                FASE {activeIndex + 1}
               </span>
             </div>
 
@@ -121,17 +109,7 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
                   </motion.div>
                 )}
 
-                {/* Loading bar bottom */}
-                <div className="mt-auto pt-8">
-                  <div className="w-full h-[1px] bg-white/5 relative overflow-hidden">
-                    <motion.div 
-                      initial={{ x: "-100%" }}
-                      animate={{ x: "0%" }}
-                      transition={{ duration: 1.5, ease: "easeOut" }}
-                      className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-transparent via-[#d4af37] to-transparent"
-                    />
-                  </div>
-                </div>
+
               </motion.div>
             </AnimatePresence>
           </div>

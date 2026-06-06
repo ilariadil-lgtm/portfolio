@@ -17,10 +17,10 @@ export function useThemeFavicon(theme: Theme) {
     const timestamp = new Date().getTime();
 
     // Se troviamo i tag, aggiorniamo il loro attributo href
-    if (icon32) icon32.href = `${basePath}/favicon-32x32.png?v=${timestamp}`;
-    if (icon16) icon16.href = `${basePath}/favicon-16x16.png?v=${timestamp}`;
+    if (icon32) icon32.href = `${basePath}/favicon-32x32.webp?v=${timestamp}`;
+    if (icon16) icon16.href = `${basePath}/favicon-16x16.webp?v=${timestamp}`;
     if (iconIco) iconIco.href = `${basePath}/favicon.ico?v=${timestamp}`;
-    if (appleTouchIcon) appleTouchIcon.href = `${basePath}/apple-touch-icon.png?v=${timestamp}`;
+    if (appleTouchIcon) appleTouchIcon.href = `${basePath}/apple-touch-icon.webp?v=${timestamp}`;
 
   }, [theme]);
 }

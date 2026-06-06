@@ -105,7 +105,7 @@ const BrandMockupCarousel = ({ images, brandTitle }: { images: string[]; brandTi
                 if (filename && filename.startsWith("masami-")) {
                   e.currentTarget.src = `/assets/projects/villa-masami/${filename}`;
                 } else {
-                  e.currentTarget.src = `/assets/projects/villa-masami/homepage.webp`;
+                  e.currentTarget.src = `/assets/projects/villa-masami/struttura.webp`;
                 }
               } else {
                 const generalFallbacks = [
@@ -221,7 +221,7 @@ export const EditorialLoghi = () => {
             </div>
 
             <h1 className="relative font-display leading-[0.85] tracking-tighter">
-              <div className="overflow-hidden pt-4 pb-24 -mb-20">
+              <div className="overflow-hidden pt-4 pb-24 -mb-20 w-max">
                 <motion.span
                   initial={{ y: "100%" }}
                   animate={{ y: 0 }}

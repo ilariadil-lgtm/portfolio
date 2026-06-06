@@ -40,7 +40,7 @@ const fallbackProjects = [
     type: "WEB_ECOMMERCE BRAND_IDENTITY",
     technologies: "Brand & Logo Design, UI/UX Design, Copywriting, WordPress (Bilingual)",
     year: "2026",
-    image: "/assets/projects/villa-masami/homepage.webp",
+    image: "/assets/projects/villa-masami/struttura.webp",
     project_url: "",
     description: "Un progetto digitale completo realizzato in collaborazione con l'agenzia Carnova. Cura integrale dell'identità della struttura, dal logo allo sviluppo WordPress."
   },
@@ -253,7 +253,7 @@ const Progetti = () => {
       try {
         const data = await api.getProjects();
         const results = data.results || data;
-        const filtered = results.filter((p: any) => p.id !== 'SOPHIA_THEME' && p.id !== 'sophiatheme');
+        const filtered = results.filter((p: any) => p.id !== 'SOPHIA_THEME' && p.id !== 'sophiatheme' && p.id !== 'CHARIO_HIFI' && p.id !== 'chariohifi');
         setProjects(filtered && filtered.length > 0 ? filtered : fallbackProjects);
       } catch {
         setProjects(fallbackProjects);

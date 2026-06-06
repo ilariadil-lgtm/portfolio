@@ -70,12 +70,12 @@ export const EditorialCharioHifi = () => {
               </div>
 
               <h1 className="relative font-display leading-[0.85] tracking-tighter">
-                <div className="overflow-hidden pt-4 pb-24 -mb-20">
+                <div className="overflow-hidden pt-4 pb-24 -mb-20 w-max">
                   <motion.span
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
                     transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="block text-[10vw] lg:text-[6.5vw] font-bold text-[#3d0f1a] whitespace-nowrap"
+                    className="block text-[10vw] lg:text-[6.5vw] font-bold text-[#3d0f1a] whitespace-nowrap pr-4"
                     style={{ y: y1 }}
                   >
                     Chario<span className="text-primary italic">Hifi</span><span className="text-[#3d0f1a] not-italic">.</span>
@@ -192,40 +192,7 @@ export const EditorialCharioHifi = () => {
               {t('chario.ch2_title1')}<span className="text-primary italic">{t('chario.ch2_title2')}</span>{t('chario.ch2_title3')}
             </h3>
 
-            {/* Audio Waveform Animation (SVG) */}
-            <div className="mt-20 flex justify-center items-center w-full max-w-[400px] mx-auto opacity-80 hover:opacity-100 transition-opacity">
-              <svg viewBox="0 0 400 80" className="w-full h-auto text-primary" fill="none" stroke="currentColor">
-                <motion.path
-                  d="M 0 40 Q 20 40, 40 40 T 80 40 T 120 40 T 160 40 T 200 40 T 240 40 T 280 40 T 320 40 T 360 40 T 400 40"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  animate={{
-                    d: [
-                      "M 0 40 Q 20 40, 40 40 T 80 40 T 120 40 T 160 40 T 200 40 T 240 40 T 280 40 T 320 40 T 360 40 T 400 40",
-                      "M 0 40 Q 20 10, 40 40 T 80 70 T 120 20 T 160 60 T 200 15 T 240 65 T 280 25 T 320 55 T 360 30 T 400 40",
-                      "M 0 40 Q 20 70, 40 40 T 80 10 T 120 60 T 160 20 T 200 65 T 240 15 T 280 55 T 320 25 T 360 50 T 400 40",
-                      "M 0 40 Q 20 40, 40 40 T 80 40 T 120 40 T 160 40 T 200 40 T 240 40 T 280 40 T 320 40 T 360 40 T 400 40"
-                    ]
-                  }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                />
-                <motion.path
-                  d="M 0 40 Q 20 40, 40 40 T 80 40 T 120 40 T 160 40 T 200 40 T 240 40 T 280 40 T 320 40 T 360 40 T 400 40"
-                  strokeWidth="1"
-                  strokeOpacity="0.4"
-                  strokeLinecap="round"
-                  animate={{
-                    d: [
-                      "M 0 40 Q 20 40, 40 40 T 80 40 T 120 40 T 160 40 T 200 40 T 240 40 T 280 40 T 320 40 T 360 40 T 400 40",
-                      "M 0 40 Q 20 60, 40 40 T 80 20 T 120 50 T 160 30 T 200 65 T 240 15 T 280 60 T 320 20 T 360 55 T 400 40",
-                      "M 0 40 Q 20 20, 40 40 T 80 60 T 120 30 T 160 50 T 200 15 T 240 65 T 280 20 T 320 60 T 360 25 T 400 40",
-                      "M 0 40 Q 20 40, 40 40 T 80 40 T 120 40 T 160 40 T 200 40 T 240 40 T 280 40 T 320 40 T 360 40 T 400 40"
-                    ]
-                  }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                />
-              </svg>
-            </div>
+
           </motion.div>
         </div>
       </section>

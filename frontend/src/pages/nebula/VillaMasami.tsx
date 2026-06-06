@@ -20,7 +20,7 @@ export const NebulaVillaMasami = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/villa-masami/homepage.webp"
+      image: "/assets/projects/villa-masami/struttura.webp"
     },
     {
       id: "02",
@@ -100,7 +100,7 @@ export const NebulaVillaMasami = () => {
     >
       <NebulaImageSlider 
         images={[
-          "/assets/projects/villa-masami/homepage.webp",
+          "/assets/projects/villa-masami/struttura.webp",
           "/assets/projects/villa-masami/struttura.webp",
           "/assets/projects/villa-masami/camera-matrimoniale.webp",
           "/assets/projects/villa-masami/servizi.webp",
