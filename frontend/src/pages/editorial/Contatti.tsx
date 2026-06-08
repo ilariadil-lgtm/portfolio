@@ -153,7 +153,7 @@ const Contatti = () => {
                 style={{ fontSize: "clamp(3rem, 7vw, 5.8rem)" }}
               >
                 <RevealText text={t('contact.title_1')} delay={0.1} />
-                <RevealText text={t('contact.title_2')} delay={0.2} className="text-primary italic" />
+                <RevealText text={t('contact.title_2')} delay={0.2} className="text-primary italic pr-2" />
               </h1>
             </motion.div>
 
@@ -280,7 +280,7 @@ const Contatti = () => {
                     style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
                   >
                     {t('contact.form_title_1')} <br />
-                    <span className="text-primary italic">{t('contact.form_title_2')}</span>
+                    <span className="text-primary italic pr-2">{t('contact.form_title_2')}</span>
                   </h2>
                 </div>
 

@@ -1,10 +1,12 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
 import { NebulaProjectPhases, Phase } from "./components/NebulaProjectPhases";
 import { NebulaImageSlider } from "./components/NebulaImageSlider";
 
 export const NebulaFreelens = () => {
+  const { t } = useTranslation();
   const phasesData: Phase[] = [
     {
       id: "01",
@@ -29,7 +31,7 @@ export const NebulaFreelens = () => {
       title: "L'Obiettivo",
       description: (
         <div className="flex flex-col justify-center h-full">
-          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit">
+          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
             "Riprendere il controllo del proprio tempo. Un ecosistema dove la salute finanziaria diventa finalmente chiara, misurabile e assistita dall'intelligenza artificiale."
           </p>
 
@@ -99,17 +101,15 @@ export const NebulaFreelens = () => {
     <NebulaProjectLayout
       title1="Free"
       title2="lens"
-      type="SVILUPPO SAAS"
+      type={t('freelens.hero_label')}
       description={
-        <p className="mb-8">
-          Una piattaforma gestionale SaaS creata appositamente per professionisti autonomi.
-          Un ecosistema completo per il tracciamento finanziario, il controllo dei margini e
-          l'ottimizzazione del business tramite Intelligenza Artificiale integrata.
+        <p>
+          {t('freelens.hero_desc')}
         </p>
       }
       phases={phasesData}
       techList={["React 18 & TypeScript", "Tailwind & Shadcn UI", "Supabase & PostgreSQL", "Edge Functions & AI API"]}
-      role="Lead Product Designer & Dev"
+      role={t('freelens.role_val')}
       year="2026"
     >
       <NebulaImageSlider 

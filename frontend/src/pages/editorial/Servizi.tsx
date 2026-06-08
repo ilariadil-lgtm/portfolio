@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { RevealText } from "@/components/RevealText";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
-import { BriefingCTA } from "@/components/BriefingCTA";
 import { useTranslation } from "react-i18next";
 
 // Standard static framework specifications for each service card
@@ -283,7 +282,7 @@ const Servizi = () => {
                 </div>
                 <h1 className="font-display text-[9.5vw] lg:text-[6.2vw] font-bold leading-[0.85] tracking-tighter text-[#3d0f1a]">
                   <RevealText text={t('services.title_1')} delay={0.1} />
-                  <RevealText text={t('services.title_2')} delay={0.2} className="text-primary italic" />
+                  <RevealText text={t('services.title_2')} delay={0.2} className="text-primary italic pr-2" />
                 </h1>
               </motion.div>
             </div>
@@ -343,7 +342,7 @@ const Servizi = () => {
             <div className="w-12 h-[1px] bg-primary/20 mb-8" />
             <h2 className="font-display text-5xl md:text-7xl font-bold leading-none tracking-tighter text-[#3d0f1a]">
               <RevealText text={t('services.workflow_title_1')} delay={0.1} />
-              <RevealText text={t('services.workflow_title_2')} delay={0.3} className="text-primary italic" />
+              <RevealText text={t('services.workflow_title_2')} delay={0.3} className="text-primary italic pr-2" />
             </h2>
           </div>
 
@@ -384,9 +383,6 @@ const Servizi = () => {
           </div>
         </div>
       </section>
-
-      <BriefingCTA />
-
       <Footer />
     </div>
   );

@@ -1,10 +1,12 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
 import { NebulaProjectPhases, Phase } from "./components/NebulaProjectPhases";
 import { NebulaImageSlider } from "./components/NebulaImageSlider";
 
 export const NebulaBaglioLauria = () => {
+  const { t } = useTranslation();
   const phasesData: Phase[] = [
     {
       id: "01",
@@ -28,7 +30,7 @@ export const NebulaBaglioLauria = () => {
       title: "L'Obiettivo",
       description: (
         <div className="flex flex-col justify-center h-full">
-          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit">
+          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
             "Trasmettere il calore del sole siciliano e l'eleganza della pietra antica attraverso un'interfaccia capace di far sognare l'utente dal primo click."
           </p>
 
@@ -87,15 +89,15 @@ export const NebulaBaglioLauria = () => {
     <NebulaProjectLayout
       title1="Baglio"
       title2="Lauria"
-      type="SITO WEB OSPITALITÀ"
+      type={t('bagliolauria.hero_label')}
       description={
-        <p className="mb-8">
-          Un progetto digitale realizzato in collaborazione con l'agenzia Carnova, dedicato a un incantevole agriturismo e location per eventi immerso nella campagna siciliana. Cura integrale del web design, dell'esperienza utente (UI/UX) e della stesura dei testi su piattaforma WordPress.
+        <p>
+          {t('bagliolauria.hero_desc')}
         </p>
       }
       phases={phasesData}
       techList={["UI/UX Design", "Copywriting", "WordPress", "Hospitality"]}
-      role="UI/UX & Web Developer"
+      role={t('bagliolauria.role_val')}
       year="2023"
       liveUrl="https://www.bagliolauria.com/"
     >

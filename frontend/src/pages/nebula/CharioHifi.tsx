@@ -1,10 +1,12 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 import { motion } from "framer-motion";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
 import { NebulaProjectPhases, Phase } from "./components/NebulaProjectPhases";
 import { NebulaImageSlider } from "./components/NebulaImageSlider";
 
 export const NebulaCharioHifi = () => {
+  const { t } = useTranslation();
   const phasesData: Phase[] = [
     {
       id: "01",
@@ -27,7 +29,7 @@ export const NebulaCharioHifi = () => {
       title: "L'Obiettivo",
       description: (
         <div className="flex flex-col justify-center h-full">
-          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit">
+          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
             "Tradurre la purezza del suono analogico e l'eccellenza materica in un'esperienza digitale senza compromessi."
           </p>
           

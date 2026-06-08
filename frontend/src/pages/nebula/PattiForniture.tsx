@@ -1,9 +1,11 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
 import { NebulaProjectPhases, Phase } from "./components/NebulaProjectPhases";
 import { NebulaImageSlider } from "./components/NebulaImageSlider";
 
 export const NebulaPattiForniture = () => {
+  const { t } = useTranslation();
   const phasesData: Phase[] = [
     {
       id: "01",
@@ -26,7 +28,7 @@ export const NebulaPattiForniture = () => {
       title: "L'Obiettivo",
       description: (
         <div className="flex flex-col justify-center h-full">
-          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit">
+          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
             "Trasferire la solidità e l'assortimento del punto vendita fisico in un'infrastruttura digitale orientata alla chiarezza e alla conversione."
           </p>
         </div>
@@ -84,15 +86,15 @@ export const NebulaPattiForniture = () => {
     <NebulaProjectLayout
       title1="Patti"
       title2="Forniture"
-      type="WEB & CONTENUTI"
+      type={t('pattiforniture.hero_label')}
       description={
-        <p className="mb-8">
-          Un progetto web corporate realizzato in collaborazione con l'agenzia Carnova. Il restyling digitale di una storica azienda leader nel Sud Italia per le forniture industriali, termoidraulica ed edilizia. Cura dell'interfaccia utente, stesura dei testi strategici e sviluppo completo su WordPress.
+        <p>
+          {t('pattiforniture.hero_desc')}
         </p>
       }
       phases={phasesData}
       techList={["UI/UX Design", "Information Architecture", "Copywriting", "WordPress Corporate"]}
-      role="E-commerce Developer & UI/UX"
+      role={t('pattiforniture.role_val')}
       year="2025"
       liveUrl="https://www.pattiforniture.com/"
     >

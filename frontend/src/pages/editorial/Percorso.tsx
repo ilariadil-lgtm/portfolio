@@ -71,7 +71,7 @@ const Percorso = () => {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-stretch">
 
             {/* Left Column: Typography & Bio Info */}
             <div className="lg:col-span-7 space-y-12">
@@ -87,7 +87,7 @@ const Percorso = () => {
                 </div>
                 <h1 className="font-display text-[9vw] md:text-[6vw] font-black leading-[0.85] tracking-tighter text-[#3d0f1a] mb-8">
                   {t('percorso.hero_h1_1')} <br />
-                  <span className="text-primary italic">{t('percorso.hero_h1_2')}</span>
+                  <span className="text-primary italic pr-2">{t('percorso.hero_h1_2')}</span>
                 </h1>
 
                 <p className="font-body text-xl text-[#3d0f1a]/80 leading-relaxed pl-8 border-l border-primary/25 max-w-xl">
@@ -177,7 +177,7 @@ const Percorso = () => {
                     ].map((rule, idx) => (
                       <div key={idx} className="space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className="font-display text-sm italic font-bold text-primary">{rule.num}</span>
+                          <span className="font-display text-sm italic font-bold text-primary pr-2">{rule.num}</span>
                           <span className="font-typewriter text-[10px] uppercase tracking-widest text-[#3d0f1a] font-medium">{rule.label}</span>
                         </div>
                         <p className="font-body text-[13px] text-[#3d0f1a]/70 leading-relaxed pl-4">
@@ -236,7 +236,7 @@ const Percorso = () => {
           <div className="w-12 h-[1px] bg-primary/20 mb-8" />
           <h2 className="font-display text-5xl md:text-7xl font-bold leading-none tracking-tighter">
             {t('percorso.timeline_h1_1')} <br />
-            <span className="text-primary italic">{t('percorso.timeline_h1_2')}</span>
+            <span className="text-primary italic pr-2">{t('percorso.timeline_h1_2')}</span>
           </h2>
         </div>
 
@@ -263,7 +263,7 @@ const Percorso = () => {
 
               {/* Title & Narrative Description */}
               <div className="lg:col-span-6 space-y-4">
-                <h3 className="font-display text-4xl md:text-5xl font-bold italic text-[#3d0f1a]">{step.title}</h3>
+                <h3 className="font-display text-4xl md:text-5xl font-bold italic text-[#3d0f1a] pr-2">{step.title}</h3>
                 <span className="font-typewriter text-[9px] uppercase tracking-[0.4em] text-primary font-medium mb-4 block">{step.subtitle}</span>
                 <p className="font-body text-lg text-[#3d0f1a]/70 leading-relaxed max-w-xl">
                   {step.description}
@@ -301,7 +301,7 @@ const Percorso = () => {
             <span className="font-typewriter text-[12px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">{t('percorso.skills_label')}</span>
             <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tighter">
               {t('percorso.skills_h1_1')} <br />
-              <span className="text-primary italic">{t('percorso.skills_h1_2')}</span>
+              <span className="text-primary italic pr-2">{t('percorso.skills_h1_2')}</span>
             </h2>
           </div>
 

@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { NebulaNav } from "./components/NebulaNav";
+import { ScrollIndicator } from './components/ScrollIndicator';
 import { NebulaFooter } from "./components/NebulaFooter";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { NebulaBriefingCTA } from "./components/NebulaBriefingCTA";
 import { ArrowRight } from "lucide-react";
 import { RevealText } from "@/components/RevealText";
 
@@ -34,6 +34,7 @@ const Blog = () => {
   return (
     <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
       <NebulaNav />
+      <ScrollIndicator sections={['scroll.hero', 'scroll.contact'].map(k => t(k))} />
 
       {/* Background Noise */}
       <div className="fixed inset-0 pointer-events-none z-[0] opacity-[0.2] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
@@ -52,7 +53,7 @@ const Blog = () => {
               </span>
               <div className="w-12 h-[1px] bg-[#d4af37]/30" />
             </div>
-            <h1 className="font-fraunces italic font-light leading-[0.9] tracking-tight text-white mb-8" style={{ fontSize: "clamp(3.5rem, 8vw, 7rem)" }}>
+            <h1 className="font-fraunces italic font-light leading-[0.9] tracking-tight text-white mb-8 pr-2" style={{ fontSize: "clamp(3.5rem, 8vw, 7rem)" }}>
               <RevealText text="Pensieri e" delay={0.1} />
               <br />
               <RevealText text="riflessioni." delay={0.2} className="text-[#d4af37]" />
@@ -114,7 +115,7 @@ const Blog = () => {
               <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37] block mb-8">
                 IN ARRIVO
               </span>
-              <p className="font-fraunces italic font-light text-5xl text-white mb-6">
+              <p className="font-fraunces italic font-light text-5xl text-white mb-6 pr-2">
                 Presto nuovi articoli.
               </p>
               <p className="font-outfit font-light text-white/50 text-lg">
@@ -124,8 +125,6 @@ const Blog = () => {
           )}
         </div>
       </section>
-
-      <NebulaBriefingCTA />
       <NebulaFooter />
     </div>
   );

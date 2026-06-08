@@ -1,9 +1,11 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
 import { NebulaProjectPhases, Phase } from "./components/NebulaProjectPhases";
 import { NebulaImageSlider } from "./components/NebulaImageSlider";
 
 export const NebulaNewpop = () => {
+  const { t } = useTranslation();
   const phasesData: Phase[] = [
     {
       id: "01",
@@ -23,7 +25,7 @@ export const NebulaNewpop = () => {
       title: "L'Obiettivo",
       description: (
         <div className="flex flex-col justify-center h-full">
-          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit">
+          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
             "Mettersi al servizio del design d'autore: un'interfaccia invisibile che lascia la scena alla bellezza dei prodotti, guidando l'utente verso una conversione naturale."
           </p>
         </div>
@@ -81,15 +83,15 @@ export const NebulaNewpop = () => {
     <NebulaProjectLayout
       title1="New"
       title2="pop"
-      type="E-COMMERCE"
+      type={t('newpop.hero_label')}
       description={
-        <p className="mb-8">
-          L'e-commerce dell'arredamento e del design d'eccellenza. Progetto realizzato in collaborazione con l'agenzia Carnova, curando integralmente l'assetto grafico, l'interfaccia utente (UI/UX) e parte della configurazione tecnica dell'infrastruttura PrestaShop.
+        <p>
+          {t('newpop.hero_desc')}
         </p>
       }
       phases={phasesData}
       techList={["PrestaShop", "UI/UX Design", "Visual Merchandising"]}
-      role="UI/UX & PrestaShop Developer"
+      role={t('newpop.role_val')}
       year="2024"
       liveUrl="https://www.newpop.it/"
     >

@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { BriefingCTA } from "@/components/BriefingCTA";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight, Globe } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -75,7 +74,7 @@ export const EditorialSophiaTheme = () => {
                     className="block text-[10vw] lg:text-[5.0vw] font-bold text-[#3d0f1a] whitespace-nowrap pr-4"
                     style={{ y: y1 }}
                   >
-                    Sophia<span className="text-primary italic">Theme</span><span className="text-[#3d0f1a] not-italic">.</span>
+                    Sophia<span className="text-primary italic pr-2">Theme</span><span className="text-[#3d0f1a] not-italic pr-2">.</span>
                   </motion.span>
                 </div>
               </h1>
@@ -150,7 +149,7 @@ export const EditorialSophiaTheme = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block lg:sticky lg:top-32">
+            <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block">
               {t('sophia.ch1_label')}
             </span>
           </motion.div>
@@ -162,7 +161,7 @@ export const EditorialSophiaTheme = () => {
             transition={{ delay: 0.2 }}
           >
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              {t('sophia.ch1_title1')}<span className="italic text-primary">{t('sophia.ch1_title2')}</span>
+              {t('sophia.ch1_title1')}<span className="italic text-primary pr-2">{t('sophia.ch1_title2')}</span>
             </h2>
             <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed max-w-2xl">
               <p>
@@ -189,7 +188,7 @@ export const EditorialSophiaTheme = () => {
               {t('sophia.ch2_label')}
             </span>
             <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]">
-              {t('sophia.ch2_title1')}<span className="text-primary italic">{t('sophia.ch2_title2')}</span>{t('sophia.ch2_title3')}
+              {t('sophia.ch2_title1')}<span className="text-primary italic pr-2">{t('sophia.ch2_title2')}</span>{t('sophia.ch2_title3')}
             </h3>
           </motion.div>
         </div>
@@ -199,12 +198,12 @@ export const EditorialSophiaTheme = () => {
            CH. 03 — THE PROCESS
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="px-6 md:px-12 lg:px-24 py-24 md:py-40 bg-white" >
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-stretch">
 
           <motion.div
             className="lg:col-span-5 order-2 lg:order-1"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1 }}
           >
@@ -225,8 +224,8 @@ export const EditorialSophiaTheme = () => {
 
           <motion.div
             className="lg:col-span-6 lg:col-start-7 order-1 lg:order-2 space-y-12"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ delay: 0.2, duration: 1 }}
           >
@@ -301,7 +300,7 @@ export const EditorialSophiaTheme = () => {
               <div className="border-t border-[#3d0f1a]/10 pt-6 mt-12 space-y-4 text-[#3d0f1a]">
                 <div className="flex items-center justify-between">
                   <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.role_label')}</span>
-                  <span className="font-display text-md font-black italic">{t('sophia.role_val')}</span>
+                  <span className="font-display text-md font-black italic pr-2">{t('sophia.role_val')}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.launch_label')}</span>
@@ -352,12 +351,12 @@ export const EditorialSophiaTheme = () => {
             transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
           >
             {[...Array(2)].map((_, i) => (
-              <div key={i} className="flex gap-8 shrink-0">
+              <div key={i} className="flex gap-8 shrink-0 h-full">
                 {[
                   "/assets/project-sophia.webp",
                   "/assets/project-sophia.webp",
                   "/assets/chario-hero.webp",
-                  "/assets/about-portrait.webp",
+                  "/assets/projects/villa-masami/struttura.webp",
                 ].map((src, j) => (
                   <div key={j} className="h-full shrink-0 border border-[#3d0f1a] shadow-[10px_10px_0px_#c0392b] bg-[#f5f2ed] p-3 md:p-5 group">
                     <img
@@ -372,8 +371,6 @@ export const EditorialSophiaTheme = () => {
           </motion.div>
         </div>
       </section >
-      <BriefingCTA />
-
       {/* ═══════════════════════════════════════════════════════════════════
            NAVIGATION
            ═══════════════════════════════════════════════════════════════════ */}

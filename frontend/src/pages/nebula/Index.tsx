@@ -5,7 +5,6 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { NebulaNav } from "./components/NebulaNav";
 import { NebulaFooter } from "./components/NebulaFooter";
-import { NebulaBriefingCTA } from "./components/NebulaBriefingCTA";
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
 import { RevealText } from "@/components/RevealText";
@@ -104,7 +103,7 @@ const NebulaIndex = () => {
   return (
     <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
       <NebulaNav />
-      <ScrollIndicator />
+      <ScrollIndicator sections={['scroll.hero', 'scroll.about', 'scroll.work', 'scroll.metrics', 'scroll.skills', 'scroll.contact'].map(k => t(k))} />
 
       <main className="relative z-10 w-full min-h-screen flex flex-col">
         
@@ -172,7 +171,7 @@ const NebulaIndex = () => {
                     text="Diliberto." 
                     delay={0.6} 
                     mode="char"
-                    className="font-fraunces italic font-light tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap" 
+                    className="font-fraunces italic font-light tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap pr-2" 
                   />
                 </div>
               </div>
@@ -246,7 +245,7 @@ const NebulaIndex = () => {
               className="font-bricolage font-bold text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white max-w-5xl mb-16"
             >
               {t('index.approach_title_1')} <br />
-              <span className="font-fraunces italic font-light text-[#d4af37]">{t('index.approach_title_2')}</span>
+              <span className="font-fraunces italic font-light text-[#d4af37] pr-2">{t('index.approach_title_2')}</span>
               <br/>
               <span className="text-white/70">{t('index.approach_title_3')}</span>
             </motion.h2>
@@ -425,7 +424,7 @@ const NebulaIndex = () => {
               transition={{ duration: 0.8 }}
               className="font-bricolage text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white"
             >
-              {t('index.projects_title_1')} <span className="font-fraunces text-[#d4af37] italic font-light tracking-wide">{t('index.projects_title_2')}</span>
+              {t('index.projects_title_1')} <span className="font-fraunces text-[#d4af37] italic font-light tracking-wide pr-2">{t('index.projects_title_2')}</span>
             </motion.h2>
           </div>
 
@@ -506,9 +505,6 @@ const NebulaIndex = () => {
             </MagneticWrapper>
           </div>
         </motion.section>
-
-        <NebulaBriefingCTA />
-
         <NebulaFooter />
       </main>
     </div>

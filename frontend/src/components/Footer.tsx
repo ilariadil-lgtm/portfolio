@@ -45,7 +45,7 @@ export const Footer = () => {
             </div>
             <h3 className="font-display text-4xl md:text-5xl font-black text-[#3d0f1a] leading-none mb-8">
               Ilaria <br />
-              <span className="text-primary italic">Diliberto.</span>
+              <span className="text-primary italic pr-2">Diliberto.</span>
             </h3>
             <p className="font-body text-sm text-[#3d0f1a]/60 leading-relaxed max-w-sm">
               {t('footer.description')}

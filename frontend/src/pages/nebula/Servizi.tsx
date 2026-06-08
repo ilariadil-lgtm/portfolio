@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { NebulaNav } from "./components/NebulaNav";
+import { ScrollIndicator } from './components/ScrollIndicator';
 import { NebulaFooter } from "./components/NebulaFooter";
 import React, { useEffect, useState, useRef, Suspense } from "react";
 const HeroCanvas = React.lazy(() => import("./components/HeroCanvas").then(module => ({ default: module.HeroCanvas })));
@@ -8,7 +9,6 @@ import { Box, Cpu, Globe, Layout, ChevronRight, Hexagon } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
 import { RevealText } from "@/components/RevealText";
-import { NebulaBriefingCTA } from "./components/NebulaBriefingCTA";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -142,7 +142,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
         {/* Central Title & Description */}
         <div className="space-y-6 mb-8 flex-1">
           <div className="flex items-baseline gap-4 min-h-[80px] lg:min-h-[120px]">
-            <span className="font-fraunces italic font-light text-5xl md:text-6xl text-white/5 group-hover:text-[#d4af37]/10 transition-colors duration-700 select-none">
+            <span className="font-fraunces italic font-light text-5xl md:text-6xl text-white/5 group-hover:text-[#d4af37]/10 transition-colors duration-700 select-none pr-2">
               0{idx + 1}
             </span>
             <h3 className="font-bricolage font-black tracking-tight text-3xl text-white">
@@ -403,6 +403,7 @@ const Servizi = () => {
   return (
     <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
       <NebulaNav />
+      <ScrollIndicator sections={['scroll.hero', 'scroll.services', 'scroll.process', 'scroll.contact'].map(k => t(k))} />
 
       {/* ═════════════════════════════════════════════════════
           GLOBAL BACKGROUNDS (NEBULA AESTHETIC)
@@ -457,7 +458,7 @@ const Servizi = () => {
                   <RevealText 
                     text="servizi." 
                     delay={0.2} 
-                    className="font-fraunces italic font-light tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap" 
+                    className="font-fraunces italic font-light tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap pr-2" 
                   />
                 </div>
               </motion.div>
@@ -513,7 +514,7 @@ const Servizi = () => {
               <RevealText 
                 text={t("services.workflow_title_2")} 
                 delay={0.3} 
-                className="font-fraunces italic font-light text-4xl md:text-5xl lg:text-6xl text-[#d4af37]" 
+                className="font-fraunces italic font-light text-4xl md:text-5xl lg:text-6xl text-[#d4af37] pr-2" 
               />
             </div>
             <p className="font-outfit font-light text-white/50 text-lg max-w-2xl">
@@ -532,8 +533,6 @@ const Servizi = () => {
           </motion.div>
         </div>
       </section>
-
-      <NebulaBriefingCTA />
       <NebulaFooter />
     </div>
   );

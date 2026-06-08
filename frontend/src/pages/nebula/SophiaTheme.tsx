@@ -1,9 +1,11 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
 import { NebulaProjectPhases, Phase } from "./components/NebulaProjectPhases";
 import { NebulaImageSlider } from "./components/NebulaImageSlider";
 
 export const NebulaSophiaTheme = () => {
+  const { t } = useTranslation();
   const phasesData: Phase[] = [
     {
       id: "01",
@@ -23,7 +25,7 @@ export const NebulaSophiaTheme = () => {
       title: "L'Obiettivo",
       description: (
         <div className="flex flex-col justify-center h-full">
-          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit">
+          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
             "Costruire una struttura leggera, robusta e modulare per liberare la potenza del design d'eccellenza."
           </p>
         </div>
@@ -67,7 +69,7 @@ export const NebulaSophiaTheme = () => {
           </p>
         </>
       ),
-      image: "/assets/about-portrait.webp"
+      image: "/assets/projects/villa-masami/struttura.webp"
     }
   ];
 
@@ -92,7 +94,7 @@ export const NebulaSophiaTheme = () => {
           "/assets/project-sophia.webp",
           "/assets/project-sophia.webp",
           "/assets/chario-hero.webp",
-          "/assets/about-portrait.webp"
+          "/assets/projects/villa-masami/struttura.webp"
         ]}
       />
     </NebulaProjectLayout>

@@ -1,10 +1,12 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
 import { NebulaProjectPhases, Phase } from "./components/NebulaProjectPhases";
 import { NebulaImageSlider } from "./components/NebulaImageSlider";
 
 export const NebulaVillaMasami = () => {
+  const { t } = useTranslation();
   const phasesData: Phase[] = [
     {
       id: "01",
@@ -27,7 +29,7 @@ export const NebulaVillaMasami = () => {
       title: "L'Obiettivo",
       description: (
         <div className="flex flex-col justify-center h-full">
-          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit">
+          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
             "Più comodità, meno pensieri: tradurre il calore dell'accoglienza reale in un'esperienza di navigazione fluida e priva di ostacoli."
           </p>
 
@@ -86,15 +88,15 @@ export const NebulaVillaMasami = () => {
     <NebulaProjectLayout
       title1="Villa"
       title2="Masami"
-      type="IDENTITÀ DI BRAND • UI/UX"
+      type={t('villamasami.hero_label')}
       description={
-        <p className="mb-8">
-          Un progetto digitale completo, realizzato in collaborazione con l'agenzia Carnova. Cura integrale dell'identità della struttura: dall'ideazione e realizzazione del logo alla stesura dei testi, fino allo sviluppo dell'infrastruttura web su WordPress.
+        <p>
+          {t('villamasami.hero_desc')}
         </p>
       }
       phases={phasesData}
       techList={["Brand & Logo Design", "UI/UX Design", "Copywriting", "WordPress"]}
-      role="Full-Stack Developer & UI/UX Designer"
+      role={t('villamasami.role_val')}
       year="2025"
       liveUrl="https://villamasami.it/"
     >

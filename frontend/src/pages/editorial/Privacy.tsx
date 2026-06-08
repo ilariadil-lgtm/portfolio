@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="border-t border-[#3d0f1a]/10 pt-10 pb-4">
-    <h2 className="font-display text-2xl md:text-3xl font-bold text-[#3d0f1a] mb-6 italic">{title}</h2>
+    <h2 className="font-display text-2xl md:text-3xl font-bold text-[#3d0f1a] mb-6 italic pr-2">{title}</h2>
     <div className="font-body text-[16px] text-[#3d0f1a]/70 leading-relaxed space-y-4 max-w-3xl">
       {children}
     </div>
@@ -43,7 +43,7 @@ const Privacy = () => {
               style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
             >
               {t('legal.privacy_h1_1')}<br />
-              <span className="text-primary italic">{t('legal.privacy_h1_2')}</span>
+              <span className="text-primary italic pr-2">{t('legal.privacy_h1_2')}</span>
             </h1>
             <p className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-[#3d0f1a]/40 mt-6">
               {t('legal.last_updated')} {new Date().toLocaleDateString(i18n.language === 'en' ? 'en-US' : 'it-IT', { year: 'numeric', month: 'long' })}

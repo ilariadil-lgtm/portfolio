@@ -5,7 +5,6 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { CreativeHero } from "@/components/CreativeHero";
 import { useEffect, useState } from "react";
-import { BriefingCTA } from "@/components/BriefingCTA";
 import { api } from "@/lib/api";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
@@ -206,7 +205,7 @@ const Index = () => {
             initial={{ scale: 1.2, opacity: 0, filter: "blur(10px)" }}
             whileInView={{ scale: 1, opacity: 0.4, filter: "blur(0px)" }}
             transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-            src="/assets/about-portrait.webp"
+            src="/assets/projects/villa-masami/struttura.webp"
             alt="Portrait"
             loading="lazy"
             decoding="async"
@@ -261,7 +260,7 @@ const Index = () => {
               transition={{ delay: 1 }}
               className="mt-12 pt-8 border-t border-background/10"
             >
-              <p className="font-body text-[15px] italic leading-relaxed text-background/60 max-w-sm">
+              <p className="font-body text-[15px] italic leading-relaxed text-background/60 max-w-sm pr-2">
                 {t('index.signature')}
               </p>
             </motion.div>
@@ -273,7 +272,7 @@ const Index = () => {
            TECHNICAL SKILL RADAR — ARCHITECTURAL DATA
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="py-20 md:py-24 px-6 md:px-12 bg-[#f5f2ed] border-b border-editorial overflow-hidden relative">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
           <div className="lg:col-span-5">
             <div className="flex items-center gap-4 mb-8">
               <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">{t('index.skills_label')}</span>
@@ -281,7 +280,7 @@ const Index = () => {
             </div>
             <h2 className="font-display text-6xl md:text-8xl lg:text-[6vw] font-bold leading-[0.85] tracking-tighter text-[#3d0f1a] mb-12">
               {t('index.skills_title_1')} <br />
-              <span className="text-primary italic">{t('index.skills_title_2')}</span>
+              <span className="text-primary italic pr-2">{t('index.skills_title_2')}</span>
             </h2>
             <p className="font-body text-lg text-[#3d0f1a]/60 leading-relaxed max-w-md mb-12 border-l border-primary/20 pl-8">
               {t('index.skills_desc')}
@@ -379,7 +378,7 @@ const Index = () => {
             </div>
             <h2 className="font-display text-6xl md:text-8xl lg:text-[7vw] font-bold leading-none tracking-tighter">
               {t('index.projects_title_1')} <br />
-              <span className="text-primary italic">{t('index.projects_title_2')}</span>
+              <span className="text-primary italic pr-2">{t('index.projects_title_2')}</span>
             </h2>
           </div>
           <div className="flex flex-col items-end gap-4">
@@ -456,9 +455,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      <BriefingCTA />
-
       <Footer />
     </div>
   );

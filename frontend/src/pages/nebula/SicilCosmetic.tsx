@@ -1,9 +1,11 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
 import { NebulaProjectPhases, Phase } from "./components/NebulaProjectPhases";
 import { NebulaImageSlider } from "./components/NebulaImageSlider";
 
 export const NebulaSicilCosmetic = () => {
+  const { t } = useTranslation();
   const phasesData: Phase[] = [
     {
       id: "01",
@@ -23,7 +25,7 @@ export const NebulaSicilCosmetic = () => {
       title: "L'Obiettivo",
       description: (
         <div className="flex flex-col justify-center h-full">
-          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit">
+          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
             "Organizzare la bellezza: trasformare un catalogo complesso in un'esperienza d'acquisto fluida, intuitiva e orientata alla conversione."
           </p>
         </div>
@@ -81,15 +83,15 @@ export const NebulaSicilCosmetic = () => {
     <NebulaProjectLayout
       title1="Sicil"
       title2="Cosmetic"
-      type="E-COMMERCE • UI/UX"
+      type={t('sicilcosmetic.hero_label')}
       description={
-        <p className="mb-8">
-          Un progetto e-commerce end-to-end realizzato su piattaforma PrestaShop per l'agenzia Carnova. Cura integrale dell'ecosistema digitale: dal design dell'interfaccia utente alla stesura dei contenuti, fino alla configurazione tecnica e gestione dell'intero catalogo.
+        <p>
+          {t('sicilcosmetic.hero_desc')}
         </p>
       }
       phases={phasesData}
       techList={["PrestaShop", "UI/UX Design", "Catalog Management", "Copywriting"]}
-      role="PrestaShop & UI/UX Developer"
+      role={t('sicilcosmetic.role_val')}
       year="2025"
       liveUrl="https://www.sicilcosmetic.com/"
     >

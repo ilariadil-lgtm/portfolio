@@ -53,7 +53,7 @@ const NotFound = () => {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           >
             Pagina non<br />
-            <span className="text-primary italic">trovata.</span>
+            <span className="text-primary italic pr-2">trovata.</span>
           </motion.h1>
 
           <motion.p

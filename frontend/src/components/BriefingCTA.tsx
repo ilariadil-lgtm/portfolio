@@ -26,7 +26,7 @@ export const BriefingCTA: React.FC = () => {
             </span>
             <h2 className="font-display text-5xl md:text-7xl font-black leading-none tracking-tighter text-[#f5f2ed]">
               <RevealText text={t('cta.title_1')} delay={0.1} />
-              <RevealText text={t('cta.title_2')} delay={0.3} className="text-primary italic" />
+              <RevealText text={t('cta.title_2')} delay={0.3} className="text-primary italic pr-2" />
             </h2>
             <p className="font-body text-lg text-[#f5f2ed]/70 leading-relaxed max-w-xl">
               {t('cta.description')}

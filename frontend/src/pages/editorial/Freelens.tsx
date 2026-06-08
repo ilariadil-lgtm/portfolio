@@ -5,7 +5,6 @@ import { Footer } from "@/components/Footer";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { BriefingCTA } from "@/components/BriefingCTA";
 import { useTranslation } from "react-i18next";
 import { ProjectNavigation } from "@/components/ProjectNavigation";
 
@@ -76,7 +75,7 @@ export const EditorialFreelens = () => {
                     className="block text-[10vw] lg:text-[6.5vw] font-bold text-[#3d0f1a] whitespace-nowrap pr-4"
                     style={{ y: y1 }}
                   >
-                    Free<span className="text-primary italic">lens</span><span className="text-[#3d0f1a] not-italic">.</span>
+                    Free<span className="text-primary italic pr-2">lens</span><span className="text-[#3d0f1a] not-italic pr-2">.</span>
                   </motion.span>
                 </div>
               </h1>
@@ -144,7 +143,7 @@ export const EditorialFreelens = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block lg:sticky lg:top-32">
+            <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block">
               {t('freelens.ch1_label')}
             </span>
           </motion.div>
@@ -191,12 +190,12 @@ export const EditorialFreelens = () => {
            CH. 03 — THE PROCESS
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="px-6 md:px-12 lg:px-24 py-24 md:py-40 bg-white" >
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-stretch">
 
           <motion.div
-            className="lg:col-span-6 order-2 lg:order-1"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="lg:col-span-6 order-2 lg:order-1 h-full"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1 }}
           >
@@ -221,8 +220,8 @@ export const EditorialFreelens = () => {
 
           <motion.div
             className="lg:col-span-6 lg:col-start-7 order-1 lg:order-2 space-y-12"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ delay: 0.2, duration: 1 }}
           >
@@ -298,7 +297,7 @@ export const EditorialFreelens = () => {
               <div className="border-t border-[#3d0f1a]/10 pt-6 mt-12 space-y-4 text-[#3d0f1a]">
                 <div className="flex items-center justify-between">
                   <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.role_label')}</span>
-                  <span className="font-display text-md font-black italic">{t('freelens.role_val')}</span>
+                  <span className="font-display text-md font-black italic pr-2">{t('freelens.role_val')}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.launch_label')}</span>
@@ -349,7 +348,7 @@ export const EditorialFreelens = () => {
             transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
           >
             {[...Array(2)].map((_, i) => (
-              <div key={i} className="flex gap-8 shrink-0">
+              <div key={i} className="flex gap-8 shrink-0 h-full">
                 {[
                   "/assets/projects/freelens/home.webp",
                   "/assets/projects/freelens/dash.webp",
@@ -374,8 +373,6 @@ export const EditorialFreelens = () => {
           </motion.div>
         </div>
       </section>
-      <BriefingCTA />
-
       {/* ═══════════════════════════════════════════════════════════════════
            NAVIGATION
            ═══════════════════════════════════════════════════════════════════ */}

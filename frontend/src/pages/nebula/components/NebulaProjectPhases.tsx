@@ -84,7 +84,7 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
                 className="relative z-10 w-full h-full flex flex-col mt-4"
               >
                 {phases[activeIndex].subtitle && (
-                  <h3 className="font-fraunces italic font-light text-2xl md:text-3xl text-white mb-6 leading-tight">
+                  <h3 className="font-fraunces italic font-light text-2xl md:text-3xl text-white mb-6 leading-tight pr-2">
                     {phases[activeIndex].subtitle}
                   </h3>
                 )}

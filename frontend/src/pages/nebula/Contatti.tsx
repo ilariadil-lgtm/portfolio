@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { NebulaNav } from "./components/NebulaNav";
+import { ScrollIndicator } from './components/ScrollIndicator';
 import { NebulaFooter } from "./components/NebulaFooter";
 import { Mail, Linkedin, Github, Instagram, ArrowRight, MapPin, CheckCircle } from "lucide-react";
 import React, { useState, useEffect, Suspense } from "react";
@@ -118,6 +119,7 @@ const Contatti = () => {
   return (
     <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
       <NebulaNav />
+      <ScrollIndicator sections={['scroll.hero', 'scroll.contact'].map(k => t(k))} />
 
       {/* ═════════════════════════════════════════════════════
           GLOBAL BACKGROUNDS (NEBULA AESTHETIC)
@@ -173,7 +175,7 @@ const Contatti = () => {
                 <RevealText 
                   text={t("contact.title_2")} 
                   delay={0.2} 
-                  className="font-fraunces italic font-light tracking-wider text-5xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap" 
+                  className="font-fraunces italic font-light tracking-wider text-5xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap pr-2" 
                 />
               </div>
             </motion.div>
@@ -308,7 +310,7 @@ const Contatti = () => {
                   <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] block mb-4">
                     {t("contact.send_msg_label")}
                   </span>
-                  <h2 className="font-fraunces italic font-light leading-[0.9] tracking-tight text-white" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}>
+                  <h2 className="font-fraunces italic font-light leading-[0.9] tracking-tight text-white pr-2" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}>
                     {t("contact.form_title_1")} <br />
                     <span className="text-[#d4af37]">{t("contact.form_title_2")}</span>
                   </h2>
@@ -325,7 +327,7 @@ const Contatti = () => {
                     >
                       <CheckCircle size={48} className="text-[#d4af37]" strokeWidth={1} />
                       <div>
-                        <p className="font-fraunces italic font-light text-4xl mb-4 text-white">{t("contact.msg_sent_title")}</p>
+                        <p className="font-fraunces italic font-light text-4xl mb-4 text-white pr-2">{t("contact.msg_sent_title")}</p>
                         <p className="font-outfit font-light text-white/50 text-lg leading-relaxed">
                           {t("contact.msg_sent_desc")}
                         </p>

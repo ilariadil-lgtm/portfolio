@@ -43,7 +43,7 @@ const NebulaPrivacy = () => {
               <div className="w-12 h-[1px] bg-[#d4af37]/30" />
             </div>
             
-            <h1 className="font-fraunces italic font-light leading-[0.9] tracking-tight text-white mb-8" style={{ fontSize: "clamp(3.5rem, 8vw, 7rem)" }}>
+            <h1 className="font-fraunces italic font-light leading-[0.9] tracking-tight text-white mb-8 pr-2" style={{ fontSize: "clamp(3.5rem, 8vw, 7rem)" }}>
               <RevealText text={t('legal.privacy_h1_1', "Privacy")} delay={0.1} />
               <br />
               <RevealText text={t('legal.privacy_h1_2', "Policy.")} delay={0.2} className="text-[#d4af37]" />

@@ -5,8 +5,8 @@ import { Footer } from "@/components/Footer";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { BriefingCTA } from "@/components/BriefingCTA";
 import { useTranslation } from "react-i18next";
+import { ProjectNavigation } from "@/components/ProjectNavigation";
 
 export const EditorialStorageHub = () => {
   const { t } = useTranslation();
@@ -75,7 +75,7 @@ export const EditorialStorageHub = () => {
                     className="block text-[10vw] lg:text-[6.5vw] font-bold text-[#3d0f1a] whitespace-nowrap pr-4"
                     style={{ y: y1 }}
                   >
-                    Storage<span className="text-primary italic">Hub</span><span className="text-[#3d0f1a] not-italic">.</span>
+                    Storage<span className="text-primary italic pr-2">Hub</span><span className="text-[#3d0f1a] not-italic pr-2">.</span>
                   </motion.span>
                 </div>
               </h1>
@@ -143,7 +143,7 @@ export const EditorialStorageHub = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block lg:sticky lg:top-32">
+            <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block">
               {t('storagehub.ch1_label')}
             </span>
           </motion.div>
@@ -182,7 +182,7 @@ export const EditorialStorageHub = () => {
               {t('storagehub.ch2_label')}
             </span>
             <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]">
-              {t('storagehub.ch2_title1')}<span className="text-primary italic">{t('storagehub.ch2_title2')}</span>{t('storagehub.ch2_title3')}
+              {t('storagehub.ch2_title1')}<span className="text-primary italic pr-2">{t('storagehub.ch2_title2')}</span>{t('storagehub.ch2_title3')}
             </h3>
           </motion.div>
         </div>
@@ -192,12 +192,12 @@ export const EditorialStorageHub = () => {
            CH. 03 — THE PROCESS
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="px-6 md:px-12 lg:px-24 py-24 md:py-40 bg-white" >
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-stretch">
 
           <motion.div
-            className="lg:col-span-6 order-2 lg:order-1"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="lg:col-span-6 order-2 lg:order-1 h-full"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1 }}
           >
@@ -222,8 +222,8 @@ export const EditorialStorageHub = () => {
 
           <motion.div
             className="lg:col-span-6 lg:col-start-7 order-1 lg:order-2 space-y-12"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ delay: 0.2, duration: 1 }}
           >
@@ -237,6 +237,9 @@ export const EditorialStorageHub = () => {
               <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed">
                 <p>
                   {t('storagehub.ch3_p1')}
+                </p>
+                <p>
+                  {t('storagehub.ch3_p2')}
                 </p>
               </div>
             </div>
@@ -266,6 +269,9 @@ export const EditorialStorageHub = () => {
               <p>
                 {t('storagehub.ch4_p1')}
               </p>
+                <p>
+                  {t('storagehub.ch4_p2')}
+                </p>
             </div>
           </motion.div>
 
@@ -297,7 +303,7 @@ export const EditorialStorageHub = () => {
               <div className="border-t border-[#3d0f1a]/10 pt-6 mt-12 space-y-4 text-[#3d0f1a]">
                 <div className="flex items-center justify-between">
                   <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.role_label')}</span>
-                  <span className="font-display text-md font-black italic">{t('storagehub.role_val')}</span>
+                  <span className="font-display text-md font-black italic pr-2">{t('storagehub.role_val')}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.launch_label')}</span>
@@ -348,7 +354,7 @@ export const EditorialStorageHub = () => {
             transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
           >
             {[...Array(2)].map((_, i) => (
-              <div key={i} className="flex gap-8 shrink-0">
+              <div key={i} className="flex gap-8 shrink-0 h-full">
                 {[
                   "/assets/projects/storage-hub/dashboard.webp",
                   "/assets/projects/storage-hub/catalogo.webp",
@@ -373,25 +379,13 @@ export const EditorialStorageHub = () => {
           </motion.div>
         </div>
       </section>
-      <BriefingCTA />
-
       {/* ═══════════════════════════════════════════════════════════════════
            NAVIGATION
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="border-t border-[#3d0f1a]/10 px-6 md:px-12 lg:px-24 py-20 bg-[#f5f2ed]" >
-        <div className="max-w-7xl mx-auto flex justify-center">
-          <Link
-            to="/progetti"
-            className="group relative flex items-center justify-center px-12 py-5 border border-[#3d0f1a] hover:border-primary overflow-hidden transition-all duration-500"
-          >
-            <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-            <span className="relative z-10 flex items-center gap-4 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white transition-colors font-semibold">
-              <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-500" />
-              {t('project_detail.back_to_archive')}
-            </span>
-          </Link>
-        </div>
-      </section >
+      <ProjectNavigation 
+        prev={{ url: '/progetti/loghi', title: 'Branding & Loghi' }}
+        next={{ url: '/progetti/freelens', title: 'Freelens' }}
+      />
 
       <Footer />
     </div >

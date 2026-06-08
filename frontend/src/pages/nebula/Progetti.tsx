@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { api } from "@/lib/api";
 import { ArrowRight, Hexagon, Maximize2 } from "lucide-react";
 import { NebulaNav } from "./components/NebulaNav";
+import { ScrollIndicator } from './components/ScrollIndicator';
 import { NebulaFooter } from "./components/NebulaFooter";
-import { NebulaBriefingCTA } from "./components/NebulaBriefingCTA";
 import { RevealText } from "@/components/RevealText";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
@@ -290,6 +290,7 @@ const NebulaProgetti = () => {
   return (
     <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
       <NebulaNav />
+      <ScrollIndicator sections={['scroll.hero', 'scroll.archive', 'scroll.contact'].map(k => t(k))} />
 
       {/* ═════════════════════════════════════════════════════
           GLOBAL BACKGROUNDS (NEBULA AESTHETIC)
@@ -345,7 +346,7 @@ const NebulaProgetti = () => {
                   <RevealText 
                     text={t('projects.title_2')} 
                     delay={0.2} 
-                    className="font-fraunces italic font-light tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap" 
+                    className="font-fraunces italic font-light tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap pr-2" 
                   />
                </div>
              </motion.div>
@@ -464,8 +465,6 @@ const NebulaProgetti = () => {
 
         </div>
       </main>
-
-      <NebulaBriefingCTA />
       <NebulaFooter />
     </div>
   );

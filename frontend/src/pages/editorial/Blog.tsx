@@ -4,7 +4,6 @@ import { Footer } from "@/components/Footer";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { BriefingCTA } from "@/components/BriefingCTA";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
@@ -68,7 +67,7 @@ const Blog = () => {
               style={{ fontSize: "clamp(3rem, 7vw, 5.8rem)" }}
             >
               {t('blog.title_1')}<br />
-              <span className="text-primary italic">{t('blog.title_2')}</span>
+              <span className="text-primary italic pr-2">{t('blog.title_2')}</span>
             </h1>
           </motion.div>
         </div>
@@ -124,7 +123,7 @@ const Blog = () => {
               <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-primary font-bold block mb-6">
                 {t('blog.coming_soon_label')}
               </span>
-              <p className="font-display text-3xl md:text-4xl font-bold text-[#3d0f1a] italic">
+              <p className="font-display text-3xl md:text-4xl font-bold text-[#3d0f1a] italic pr-2">
                 {t('blog.coming_soon_title')}
               </p>
               <p className="font-body text-[#3d0f1a]/50 mt-4">
@@ -134,8 +133,6 @@ const Blog = () => {
           )}
         </div>
       </section>
-
-      <BriefingCTA />
       <Footer />
     </div>
   );

@@ -4,7 +4,6 @@ import { Footer } from "@/components/Footer";
 import { ArrowRight, Box, Cpu, Globe, Layers } from "lucide-react";
 import { RevealText } from "@/components/RevealText";
 import { Link } from "react-router-dom";
-import { BriefingCTA } from "@/components/BriefingCTA";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
 
@@ -72,7 +71,7 @@ const Chisono = () => {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-stretch">
 
             {/* Left Column: Typography & Bio Info */}
             <div className="lg:col-span-7 space-y-12">
@@ -102,7 +101,7 @@ const Chisono = () => {
                     </motion.span>
                   </span>
                   <span className="overflow-hidden inline-block py-3 -my-3">
-                    <motion.span variants={wordVariants} transition={{ delay: 0.15 }} className="inline-block origin-bottom-left text-primary italic">
+                    <motion.span variants={wordVariants} transition={{ delay: 0.15 }} className="inline-block origin-bottom-left text-primary italic pr-2">
                       &nbsp;{t('about.title_2')}
                     </motion.span>
                   </span>
@@ -187,7 +186,7 @@ const Chisono = () => {
                     ].map((rule, idx) => (
                       <div key={idx} className="space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className="font-display text-sm italic font-bold text-[#c0392b]">{rule.num}</span>
+                          <span className="font-display text-sm italic font-bold text-[#c0392b] pr-2">{rule.num}</span>
                           <span className="font-typewriter text-[10px] uppercase tracking-widest text-[#3d0f1a] font-bold">{rule.label}</span>
                         </div>
                         <p className="font-body text-[13px] text-[#3d0f1a]/70 leading-relaxed pl-4">
@@ -223,7 +222,7 @@ const Chisono = () => {
                 </motion.span>
               </span>
               <span className="overflow-hidden inline-block py-3 -my-3">
-                <motion.span variants={wordVariants} transition={{ delay: 0.15 }} className="inline-block origin-bottom-left text-primary italic">
+                <motion.span variants={wordVariants} transition={{ delay: 0.15 }} className="inline-block origin-bottom-left text-primary italic pr-2">
                   &nbsp;{t('about.evo_title_2')}
                 </motion.span>
               </span>
@@ -303,7 +302,7 @@ const Chisono = () => {
                 </motion.span>
               </span>
               <span className="overflow-hidden inline-block py-3 -my-3">
-                <motion.span variants={wordVariants} transition={{ delay: 0.15 }} className="inline-block origin-bottom-left text-primary italic">
+                <motion.span variants={wordVariants} transition={{ delay: 0.15 }} className="inline-block origin-bottom-left text-primary italic pr-2">
                   &nbsp;{t('about.skills_title_2')}
                 </motion.span>
               </span>
@@ -339,8 +338,6 @@ const Chisono = () => {
           </div>
         </div>
       </section>
-
-      <BriefingCTA />
       <Footer />
     </div>
   );

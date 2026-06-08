@@ -4,7 +4,6 @@ import { Footer } from "@/components/Footer";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { BriefingCTA } from "@/components/BriefingCTA";
 import { Plus, Minus } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
@@ -138,7 +137,7 @@ const FAQ = () => {
               style={{ fontSize: "clamp(3rem, 7vw, 5.8rem)" }}
             >
               {t('faq.title_1')}<br />
-              <span className="text-primary italic">{t('faq.title_2')}</span>
+              <span className="text-primary italic pr-2">{t('faq.title_2')}</span>
             </h1>
           </motion.div>
         </div>
@@ -152,8 +151,6 @@ const FAQ = () => {
           ))}
         </div>
       </section>
-
-      <BriefingCTA />
       <Footer />
     </div>
   );

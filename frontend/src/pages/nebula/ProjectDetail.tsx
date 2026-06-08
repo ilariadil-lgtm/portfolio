@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from 'react-i18next';
 import { useParams, Link } from "react-router-dom";
 import { api } from "@/lib/api";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
@@ -40,7 +41,7 @@ const NebulaProjectDetail = () => {
   if (!project) {
     return (
       <div className="min-h-screen w-full bg-[#080808] flex flex-col items-center justify-center space-y-8 text-white">
-        <h1 className="font-fraunces italic font-light text-5xl">Project Not Found</h1>
+        <h1 className="font-fraunces italic font-light text-5xl pr-2">Project Not Found</h1>
         <Link to="/progetti" className="px-8 py-4 border border-[#d4af37]/30 text-[#d4af37] font-mono text-[9px] uppercase tracking-[0.2em] hover:bg-[#d4af37]/10 transition-colors">
           RETURN TO SELECTED WORKS
         </Link>

@@ -81,7 +81,7 @@ export const NebulaPreloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 <span className="font-bricolage font-bold text-5xl md:text-7xl lg:text-[7vw] tracking-wider text-white">
                   ilaria
                 </span>
-                <span className="font-fraunces italic font-light text-5xl md:text-7xl lg:text-[7vw] tracking-wider text-[#d4af37]">
+                <span className="font-fraunces italic font-light text-5xl md:text-7xl lg:text-[7vw] tracking-wider text-[#d4af37] pr-2">
                   diliberto.
                 </span>
               </div>

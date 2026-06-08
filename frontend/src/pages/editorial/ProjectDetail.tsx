@@ -196,7 +196,7 @@ export const EditorialProjectDetail = () => {
               style={{ fontSize: 'clamp(3.5rem, 9vw, 9rem)' }}
             >
               {titleStart && <>{titleStart}<br /></>}
-              <span className="text-primary italic">{titleEnd}</span>
+              <span className="text-primary italic pr-2">{titleEnd}</span>
             </h1>
           </motion.div>
         </div>
@@ -292,7 +292,7 @@ export const EditorialProjectDetail = () => {
                 <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35 block mb-3">
                   {t('project_detail.challenge_title')}
                 </span>
-                <p className="font-body text-[15px] text-[#3d0f1a]/65 leading-relaxed italic">
+                <p className="font-body text-[15px] text-[#3d0f1a]/65 leading-relaxed italic pr-2">
                   {t('project_detail.challenge_desc')}
                 </p>
               </div>
@@ -300,7 +300,7 @@ export const EditorialProjectDetail = () => {
                 <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35 block mb-3">
                   {t('project_detail.result_title')}
                 </span>
-                <p className="font-body text-[15px] text-[#3d0f1a]/65 leading-relaxed italic">
+                <p className="font-body text-[15px] text-[#3d0f1a]/65 leading-relaxed italic pr-2">
                   {t('project_detail.result_desc')}
                 </p>
               </div>
@@ -310,8 +310,8 @@ export const EditorialProjectDetail = () => {
           {/* Right — scheda tecnica */}
           <motion.div
             className="lg:col-span-5"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
@@ -337,7 +337,7 @@ export const EditorialProjectDetail = () => {
               <div className="border-t border-white/10 pt-8 space-y-5">
                 <div className="flex items-center justify-between">
                   <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-white/35">{t('project_detail.role_label')}</span>
-                  <span className="font-display text-lg font-black italic">{t('project_detail.role_val')}</span>
+                  <span className="font-display text-lg font-black italic pr-2">{t('project_detail.role_val')}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-white/35">{t('project_detail.year')}</span>
@@ -402,7 +402,7 @@ export const EditorialProjectDetail = () => {
       <section className="py-24 md:py-36 px-8 md:px-16 lg:px-24 bg-[#3d0f1a] text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#c0392b_1px,transparent_1px)] [background-size:40px_40px]" />
 
-        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
           <div className="lg:col-span-7 space-y-6">
             <span className="font-typewriter text-[12px] uppercase tracking-[0.4em] text-white font-bold block">
               {t('project_detail.cta_label')}
@@ -412,7 +412,7 @@ export const EditorialProjectDetail = () => {
               style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)' }}
             >
               {t('project_detail.cta_title_1')} <br />
-              <span className="text-primary italic">{t('project_detail.cta_title_2')}</span>
+              <span className="text-primary italic pr-2">{t('project_detail.cta_title_2')}</span>
             </h2>
             <p className="font-body text-lg text-white/80 leading-relaxed max-w-xl">
               {t('project_detail.cta_desc')}

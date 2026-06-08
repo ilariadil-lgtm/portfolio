@@ -1,9 +1,11 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
 import { NebulaProjectPhases, Phase } from "./components/NebulaProjectPhases";
 import { NebulaImageSlider } from "./components/NebulaImageSlider";
 
 export const NebulaVillaMima = () => {
+  const { t } = useTranslation();
   const phasesData: Phase[] = [
     {
       id: "01",
@@ -26,7 +28,7 @@ export const NebulaVillaMima = () => {
       title: "L'Obiettivo",
       description: (
         <div className="flex flex-col justify-center h-full">
-          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit">
+          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
             "L'eleganza si nasconde nei dettagli: un'interfaccia progettata per far pregustare l'atmosfera magica di un evento indimenticabile, ancor prima del primo assaggio."
           </p>
         </div>
@@ -84,15 +86,15 @@ export const NebulaVillaMima = () => {
     <NebulaProjectLayout
       title1="Villa"
       title2="Mima"
-      type="DESIGN UI/UX • WEB & CONTENT • EVENTI & MATRIMONI"
+      type={t('villamima.hero_label')}
       description={
-        <p className="mb-8">
-          Un progetto digitale raffinato realizzato in collaborazione con l'agenzia Carnova. Cura dell'interfaccia utente, della narrazione visiva e dello sviluppo su WordPress per una location d'eccellenza dedicata a matrimoni e ricevimenti in Sicilia.
+        <p>
+          {t('villamima.hero_desc')}
         </p>
       }
       phases={phasesData}
       techList={["UI/UX Design", "WordPress Environment", "Copywriting & Storytelling"]}
-      role="UI/UX & Web Developer"
+      role={t('villamima.role_val')}
       year="2023"
     >
       <NebulaImageSlider 

@@ -252,7 +252,7 @@ export const CreativeHero: React.FC = () => {
                     mode="char"
                     className="block text-[14vw] lg:text-[8.5vw] font-bold text-primary italic pr-2"
                   />
-                  <span className="block text-[14vw] lg:text-[8.5vw] font-bold text-[#3d0f1a] not-italic leading-none translate-y-2">.</span>
+                  <span className="block text-[14vw] lg:text-[8.5vw] font-bold text-[#3d0f1a] not-italic leading-none translate-y-2 pr-2">.</span>
                 </div>
               </motion.div>
             </h1>

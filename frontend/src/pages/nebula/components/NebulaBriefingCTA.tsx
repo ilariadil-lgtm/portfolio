@@ -24,7 +24,7 @@ export const NebulaBriefingCTA = () => {
           </span>
 
           <h2 className="font-bricolage text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-8">
-            {t('cta.title_1', 'Costruiamo')} <span className="font-fraunces text-[#d4af37] italic font-light tracking-wide">{t('cta.title_2', 'qualcosa di unico.')}</span>
+            {t('cta.title_1', 'Costruiamo')} <span className="font-fraunces text-[#d4af37] italic font-light tracking-wide pr-2">{t('cta.title_2', 'qualcosa di unico.')}</span>
           </h2>
           
           <p className="font-inter text-base md:text-lg text-white/50 leading-relaxed font-light mb-0 max-w-2xl">

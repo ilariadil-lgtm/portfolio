@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { NebulaNav } from "./components/NebulaNav";
+import { ScrollIndicator } from './components/ScrollIndicator';
 import { NebulaFooter } from "./components/NebulaFooter";
-import { NebulaBriefingCTA } from "./components/NebulaBriefingCTA";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, Hexagon } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -184,6 +184,7 @@ export const NebulaLoghi = () => {
   return (
     <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
       <NebulaNav />
+      <ScrollIndicator sections={['scroll.hero', 'scroll.contact'].map(k => t(k))} />
 
       {/* Background Noise */}
       <div className="fixed inset-0 pointer-events-none z-[0] opacity-[0.2] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
@@ -220,7 +221,7 @@ export const NebulaLoghi = () => {
               <RevealText 
                 text="Loghi." 
                 delay={0.2} 
-                className="font-fraunces italic font-light tracking-tight text-6xl md:text-8xl lg:text-[7vw] leading-[0.9] text-[#d4af37]" 
+                className="font-fraunces italic font-light tracking-tight text-6xl md:text-8xl lg:text-[7vw] leading-[0.9] text-[#d4af37] pr-2" 
               />
             </div>
             
@@ -311,8 +312,6 @@ export const NebulaLoghi = () => {
           })}
         </div>
       </section>
-
-      <NebulaBriefingCTA />
       <NebulaFooter />
     </div>
   );

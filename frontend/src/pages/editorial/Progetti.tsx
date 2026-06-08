@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { RevealText } from "@/components/RevealText";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
-import { BriefingCTA } from "@/components/BriefingCTA";
 import { useTranslation } from "react-i18next";
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
@@ -165,7 +164,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20, scale: 0.97 }}
       transition={{ duration: 0.6, delay: (idx % 3) * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative flex flex-col bg-white border border-[#3d0f1a] shadow-[10px_10px_0px_rgba(61,15,26,0.05)] hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-500"
+      className="group relative flex flex-col h-full bg-white border border-[#3d0f1a] shadow-[10px_10px_0px_rgba(61,15,26,0.05)] hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-500"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -330,7 +329,7 @@ const Progetti = () => {
                 style={{ fontSize: 'clamp(3.5rem, 9vw, 8rem)' }}
               >
                 <RevealText text={t('projects.title_1')} delay={0.1} />
-                <RevealText text={t('projects.title_2')} delay={0.2} className="text-primary italic" />
+                <RevealText text={t('projects.title_2')} delay={0.2} className="text-primary italic pr-2" />
               </h1>
             </motion.div>
 
@@ -450,7 +449,7 @@ const Progetti = () => {
           style={{ backgroundImage: 'radial-gradient(#3d0f1a 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
             <motion.div
               className="lg:col-span-7"
@@ -467,7 +466,7 @@ const Progetti = () => {
                 style={{ fontSize: 'clamp(2rem, 4.5vw, 4rem)' }}
               >
                 "{t('projects.manifesto_title_1')} <br />
-                <span className="text-primary italic">{t('projects.manifesto_title_2')}"</span>
+                <span className="text-primary italic pr-2">{t('projects.manifesto_title_2')}"</span>
               </blockquote>
               <p className="font-body text-lg text-[#3d0f1a]/70 leading-relaxed mt-8 max-w-xl">
                 {t('projects.manifesto_desc')}
@@ -502,9 +501,6 @@ const Progetti = () => {
           </div>
         </div>
       </section>
-
-      <BriefingCTA />
-
       <Footer />
     </div>
   );

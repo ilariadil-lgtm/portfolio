@@ -5,7 +5,6 @@ import { NebulaNav } from "./components/NebulaNav";
 import { NebulaFooter } from "./components/NebulaFooter";
 import { api } from "@/lib/api";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { NebulaBriefingCTA } from "./components/NebulaBriefingCTA";
 import { ArrowUpRight, Box, Cpu, Globe, Layers } from "lucide-react";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
 import { RevealText } from "@/components/RevealText";
@@ -98,7 +97,7 @@ const Chisono = () => {
   return (
     <div ref={containerRef} className="bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 relative overflow-hidden flex flex-col min-h-screen md:pl-20">
       <NebulaNav />
-      <ScrollIndicator />
+      <ScrollIndicator sections={['scroll.hero', 'scroll.mindset', 'scroll.skills', 'scroll.vision', 'scroll.contact'].map(k => t(k))} />
 
       {/* ═════════════════════════════════════════════════════
           GLOBAL BACKGROUNDS (NEBULA AESTHETIC)
@@ -160,7 +159,7 @@ const Chisono = () => {
                   <RevealText 
                     text={t('about.title_2') || "Sono."} 
                     delay={0.2} 
-                    className="font-fraunces italic font-light tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap" 
+                    className="font-fraunces italic font-light tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap pr-2" 
                   />
                 </div>
               </div>
@@ -184,7 +183,7 @@ const Chisono = () => {
                   ].map((rule, idx) => (
                     <div key={idx} className="space-y-2">
                       <div className="flex items-center gap-2">
-                        <span className="font-fraunces italic text-[#d4af37] text-sm">{rule.num}</span>
+                        <span className="font-fraunces italic text-[#d4af37] text-sm pr-2">{rule.num}</span>
                         <span className="font-mono text-[9px] uppercase tracking-widest text-white/80">{rule.label}</span>
                       </div>
                       <p className="font-inter font-light text-[12px] text-white/40 leading-relaxed">
@@ -313,7 +312,7 @@ const Chisono = () => {
                       <span className="w-1 h-1 rounded-full bg-[#d4af37] animate-pulse" />
                       0{i + 1}
                     </span>
-                    <h3 className="font-fraunces italic text-3xl text-white/90">{tech.title}</h3>
+                    <h3 className="font-fraunces italic text-3xl text-white/90 pr-2">{tech.title}</h3>
                   </div>
                   <p className="font-inter font-light text-[14px] text-white/50 leading-relaxed">
                     {tech.description || t('about.tech_default')}
@@ -349,7 +348,7 @@ const Chisono = () => {
                         <span className="w-1 h-1 rounded-full bg-[#d4af37] animate-pulse" />
                         0{i + 1}
                       </span>
-                      <h3 className="font-fraunces italic font-light text-3xl text-white/70 group-hover:text-white transition-colors duration-500">{tech.title}</h3>
+                      <h3 className="font-fraunces italic font-light text-3xl text-white/70 group-hover:text-white transition-colors duration-500 pr-2">{tech.title}</h3>
                     </div>
                     <p className="font-inter font-light text-[14px] text-white/50 leading-[1.8]">
                       {tech.desc}
@@ -372,8 +371,6 @@ const Chisono = () => {
         </section>
 
       </main>
-
-      <NebulaBriefingCTA />
       <NebulaFooter />
     </div>
   );

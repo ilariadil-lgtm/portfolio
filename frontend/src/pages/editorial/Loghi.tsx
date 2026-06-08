@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { FloatingCTA } from "@/components/FloatingCTA";
-import { BriefingCTA } from "@/components/BriefingCTA";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
+import { ProjectNavigation } from "@/components/ProjectNavigation";
 
 interface BrandItem {
   id: string;
@@ -228,7 +228,7 @@ export const EditorialLoghi = () => {
                   transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                   className="block text-[8vw] lg:text-[5vw] font-bold text-[#3d0f1a]"
                 >
-                  Branding & <span className="text-primary italic">Loghi</span>.
+                  Branding & <span className="text-primary italic pr-2">Loghi</span>.
                 </motion.span>
               </div>
             </h1>
@@ -256,7 +256,7 @@ export const EditorialLoghi = () => {
             return (
               <div
                 key={brand.id}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center"
+                className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start"
               >
                 {/* Visual Showcase Block */}
                 <motion.div
@@ -331,25 +331,13 @@ export const EditorialLoghi = () => {
           })}
         </div>
       </section>
-      <BriefingCTA />
-
       {/* ═══════════════════════════════════════════════════════════════════
            BOTTOM NAVIGATION
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="border-t border-[#3d0f1a]/10 px-6 md:px-12 lg:px-24 py-20 bg-[#f5f2ed]">
-        <div className="max-w-7xl mx-auto flex justify-center">
-          <Link
-            to="/progetti"
-            className="group relative flex items-center justify-center px-12 py-5 border border-[#3d0f1a] hover:border-primary overflow-hidden transition-all duration-500"
-          >
-            <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-            <span className="relative z-10 flex items-center gap-4 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white transition-colors font-semibold">
-              <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-500" />
-              {t('project_detail.back_to_archive')}
-            </span>
-          </Link>
-        </div>
-      </section>
+      <ProjectNavigation 
+        prev={{ url: '/progetti/villamima', title: 'Villa Mima' }}
+        next={{ url: '/progetti/storagehub', title: 'Storage Hub' }}
+      />
 
       <FloatingCTA url="" />
       <Footer />

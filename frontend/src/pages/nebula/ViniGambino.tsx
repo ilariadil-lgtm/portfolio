@@ -1,9 +1,11 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
 import { NebulaProjectPhases, Phase } from "./components/NebulaProjectPhases";
 import { NebulaImageSlider } from "./components/NebulaImageSlider";
 
 export const NebulaViniGambino = () => {
+  const { t } = useTranslation();
   const phasesData: Phase[] = [
     {
       id: "01",
@@ -23,7 +25,7 @@ export const NebulaViniGambino = () => {
       title: "L'Obiettivo",
       description: (
         <div className="flex flex-col justify-center h-full">
-          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit">
+          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
             "Tradurre la potenza del vulcano e l'eleganza del vino in un percorso visivo che invita all'assaggio, prima ancora di stappare la bottiglia."
           </p>
         </div>
@@ -81,15 +83,15 @@ export const NebulaViniGambino = () => {
     <NebulaProjectLayout
       title1="Vini"
       title2="Gambino"
-      type="DESIGN UI/UX • LAYOUT WEB"
+      type={t('vinigambino.hero_label')}
       description={
-        <p className="mb-8">
-          L'essenza del terroir vulcanico tradotta in un'esperienza digitale immersiva. Progetto realizzato in collaborazione con l'agenzia Carnova per una storica cantina alle pendici dell'Etna, curando integralmente l'assetto grafico, l'interfaccia utente (UI/UX) e il layout su piattaforma WordPress.
+        <p>
+          {t('vinigambino.hero_desc')}
         </p>
       }
       phases={phasesData}
       techList={["UI/UX & Graphic Layout", "WordPress Environment", "Hospitality & E-commerce", "Visual Storytelling"]}
-      role="Shopify & Frontend Developer"
+      role={t('vinigambino.role_val')}
       year="2025"
       liveUrl="https://www.vinigambino.it/"
     >
