@@ -54,9 +54,9 @@ export const MagneticWrapper: React.FC<MagneticWrapperProps> = ({
     };
   }, [isHovered, x, y, strength]);
 
-  // Su mobile: restituisce children senza wrapping spring
+  // Su mobile: restituisce children senza wrapping spring o stili inutili
   if (isTouchDevice) {
-    return <div className={`inline-block ${className}`}>{children}</div>;
+    return <div className={className}>{children}</div>;
   }
 
   return (

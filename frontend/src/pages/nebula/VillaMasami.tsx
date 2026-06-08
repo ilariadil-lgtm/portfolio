@@ -51,7 +51,10 @@ export const NebulaVillaMasami = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/villa-masami/camera-matrimoniale.webp"
+      image: [
+        "/assets/projects/villa-masami/insegna.webp",
+        "/assets/projects/villa-masami/homepage.webp"
+      ]
     },
     {
       id: "04",

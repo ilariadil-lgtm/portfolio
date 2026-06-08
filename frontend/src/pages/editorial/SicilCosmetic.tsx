@@ -120,8 +120,8 @@ export const EditorialSicilCosmetic = () => {
                 {/* Image */}
                 <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
                   <img
-                    src="/assets/projects/sicil-cosmetic/homepage.webp"
-                    alt="SicilCosmetic Homepage Screenshot"
+                    src="/assets/projects/sicil-cosmetic/account.webp"
+                    alt="SicilCosmetic Account"
                     className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                   />
                 </div>
@@ -208,9 +208,9 @@ export const EditorialSicilCosmetic = () => {
                 {/* Image */}
                 <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
                   <img
-                    src="/assets/projects/sicil-cosmetic/categoria.webp"
-                    alt="SicilCosmetic Catalog Layout"
-                    className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
+                    src="/assets/projects/sicil-cosmetic/homepage.webp"
+                    alt="SicilCosmetic Categories and Hair Types"
+                    className="absolute inset-0 w-full h-full object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-1000"
                   />
                 </div>
               </div>

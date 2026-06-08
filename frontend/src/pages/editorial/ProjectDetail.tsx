@@ -123,7 +123,7 @@ export const EditorialProjectDetail = () => {
 
 
   return (
-    <div className="min-h-screen bg-[#f5f2ed] text-[#3d0f1a] selection:bg-primary/30">
+    <div className="min-h-screen bg-[#f5f2ed] text-[#3d0f1a] selection:bg-primary/30 overflow-hidden">
       <Navigation />
 
       {/* ═══════════════════════════════════════════════════════════════════

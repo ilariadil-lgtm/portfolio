@@ -74,7 +74,7 @@ const NavPoint: React.FC<NavPointProps> = ({ angle, radiusSpring, label, detail,
 
   return (
     <motion.div
-      className="absolute z-30 pointer-events-auto cursor-none interactive"
+      className="absolute z-30 pointer-events-auto md:cursor-none interactive"
       style={{ left, top, x: "-50%", y: "-50%" }}
       onMouseEnter={() => {
         setIsLocalHover(true);

@@ -244,7 +244,7 @@ const Chisono = () => {
 
                 {/* Display Number */}
                 <div className="lg:col-span-2 flex lg:flex-col items-baseline lg:items-start gap-4">
-                  <div className="font-display text-7xl md:text-8xl font-black text-[#3d0f1a]/10 select-none leading-none">
+                  <div className="font-display text-6xl md:text-8xl font-black text-[#3d0f1a]/10 select-none leading-none">
                     {step.num}
                   </div>
                   <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-primary/60 font-medium whitespace-nowrap">{step.period}</span>

@@ -46,7 +46,8 @@ export const NebulaNewpop = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/newpop/prodotto.webp"
+      image: "/assets/projects/newpop/homepage.webp",
+      objectPosition: "object-[center_45%]"
     },
     {
       id: "04",

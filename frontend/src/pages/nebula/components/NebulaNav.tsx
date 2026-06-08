@@ -117,10 +117,10 @@ export const NebulaNav = () => {
       {/* 
         MOBILE HUD (Bottom Dock) 
       */}
-      <div className="md:hidden fixed bottom-6 left-6 right-6 z-[100]">
+      <div className="md:hidden fixed left-6 right-6 z-[100]" style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}>
         <nav className="flex items-center justify-between bg-[#050505]/80 backdrop-blur-3xl border border-white/10 rounded-[2rem] shadow-[0_0_40px_rgba(255,255,255,0.05)] px-4 py-3">
-          <Link to="/" className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white">
-            <Fingerprint size={20} />
+          <Link to="/" className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white">
+            <img src="/id_nebula.webp" alt="ID" className="w-6 h-6 object-contain opacity-70" />
           </Link>
           
           <div className="flex items-center gap-1">
@@ -130,7 +130,7 @@ export const NebulaNav = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${isActive ? 'text-white bg-white/10' : 'text-white/40'}`}
+                  className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all ${isActive ? 'text-white bg-white/10' : 'text-white/40'}`}
                 >
                   {link.icon}
                 </Link>
@@ -140,7 +140,7 @@ export const NebulaNav = () => {
 
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-slate-100"
+            className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-slate-100"
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>

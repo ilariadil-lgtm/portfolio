@@ -46,7 +46,13 @@ export const NebulaViniGambino = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/vini-gambino/e-shop.webp"
+      image: [
+        "/assets/projects/vini-gambino/e-shop.webp",
+        "/assets/projects/vini-gambino/vino.webp",
+        "/assets/projects/vini-gambino/le-terre.webp",
+        "/assets/projects/vini-gambino/vino2.webp",
+        "/assets/projects/vini-gambino/raggiungici.webp"
+      ]
     },
     {
       id: "04",

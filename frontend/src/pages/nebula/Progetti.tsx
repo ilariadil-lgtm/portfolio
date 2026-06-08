@@ -341,12 +341,12 @@ const NebulaProgetti = () => {
                   <RevealText 
                     text={t('projects.title_1')} 
                     delay={0.1} 
-                    className="font-bricolage font-bold tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-white whitespace-nowrap uppercase" 
+                    className="font-bricolage font-bold tracking-wider text-5xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-white whitespace-nowrap uppercase" 
                   />
                   <RevealText 
                     text={t('projects.title_2')} 
                     delay={0.2} 
-                    className="font-fraunces italic font-light tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap pr-2" 
+                    className="font-fraunces italic font-light tracking-wider text-5xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap pr-2" 
                   />
                </div>
              </motion.div>
@@ -369,10 +369,10 @@ const NebulaProgetti = () => {
           ─────────────────────────────────────────────────────────────────── */}
       <section className="sticky top-0 z-40 bg-[#080808]/80 backdrop-blur-xl border-y border-white/5 px-6 md:px-12 lg:px-24 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between py-5 gap-4">
+          <div className="flex items-center justify-center py-5">
 
             {/* Category buttons */}
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
+            <div className="flex flex-wrap items-center justify-center gap-2">
               {categoriesWithCount.map((cat) => (
                 <button
                   key={cat.id}
@@ -386,17 +386,9 @@ const NebulaProgetti = () => {
                     : 'text-white/40 border border-transparent hover:text-white hover:bg-white/5 hover:border-white/10'
                   }`}
                 >
-                  {cat.label}
+                  {cat.label} <sup className="ml-1 opacity-60 font-medium">{cat.count}</sup>
                 </button>
               ))}
-            </div>
-
-            {/* Status / Count */}
-            <div className="shrink-0 flex items-center gap-3 bg-white/[0.02] border border-white/5 px-4 py-2 rounded-full">
-               <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
-               <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#d4af37]/70 font-bold">
-                 {filtered.length} {filtered.length === 1 ? t('projects.count_singular') : t('projects.count_plural')}
-               </span>
             </div>
 
           </div>

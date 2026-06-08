@@ -278,7 +278,7 @@ const Index = () => {
               <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">{t('index.skills_label')}</span>
               <div className="w-12 h-[1px] bg-primary/20" />
             </div>
-            <h2 className="font-display text-6xl md:text-8xl lg:text-[6vw] font-bold leading-[0.85] tracking-tighter text-[#3d0f1a] mb-12">
+            <h2 className="font-display text-5xl md:text-8xl lg:text-[6vw] font-bold leading-[0.85] tracking-tighter text-[#3d0f1a] mb-12">
               {t('index.skills_title_1')} <br />
               <span className="text-primary italic pr-2">{t('index.skills_title_2')}</span>
             </h2>
@@ -376,7 +376,7 @@ const Index = () => {
               <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">{t('index.projects_label')}</span>
               <div className="w-12 h-[1px] bg-primary/20" />
             </div>
-            <h2 className="font-display text-6xl md:text-8xl lg:text-[7vw] font-bold leading-none tracking-tighter">
+            <h2 className="font-display text-5xl md:text-8xl lg:text-[7vw] font-bold leading-none tracking-tighter">
               {t('index.projects_title_1')} <br />
               <span className="text-primary italic pr-2">{t('index.projects_title_2')}</span>
             </h2>

@@ -198,21 +198,26 @@ export const EditorialViniGambino = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1 }}
           >
-            {/* Process Image con Anteprima Brutalista (Senza Padding, Più Rettangolare e Grande) */}
+            {/* Process Slider Orizzontale */}
             <div className="relative w-full min-h-[400px] lg:h-full max-w-[720px] lg:max-w-none">
-              {/* Geometria astratta sul fondo */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] rounded-full bg-primary/5 blur-3xl pointer-events-none" />
 
-              {/* Box Frame Brutalista (Senza Padding, l'immagine tocca i bordi) */}
-              <div className="relative z-10 w-full h-full bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] flex flex-col overflow-hidden p-0 group">
-                {/* Image */}
-                <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
-                  <img
-                    src="/assets/projects/vini-gambino/le-terre.webp"
-                    alt="Vini Gambino Visual Storytelling"
-                    className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
-                  />
-                </div>
+              <div className="relative z-10 w-full h-full flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 hide-scrollbar">
+                {[
+                  "/assets/projects/vini-gambino/e-shop.webp",
+                  "/assets/projects/vini-gambino/vino.webp",
+                  "/assets/projects/vini-gambino/le-terre.webp",
+                  "/assets/projects/vini-gambino/vino2.webp",
+                  "/assets/projects/vini-gambino/raggiungici.webp"
+                ].map((src, idx) => (
+                  <div key={idx} className="shrink-0 w-[85%] md:w-[70%] h-[400px] lg:h-full snap-center bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] overflow-hidden group">
+                    <img
+                      src={src}
+                      alt={`Vini Gambino Process ${idx + 1}`}
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>

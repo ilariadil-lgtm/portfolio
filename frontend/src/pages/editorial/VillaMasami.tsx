@@ -219,17 +219,24 @@ export const EditorialVillaMasami = () => {
             transition={{ duration: 1 }}
           >
             {/* Process Image con Anteprima Brutalista (Senza Padding, Più Rettangolare e Grande) */}
-            <div className="relative w-full min-h-[400px] lg:h-full max-w-[720px] lg:max-w-none">
-              {/* Geometria astratta sul fondo */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] rounded-full bg-primary/5 blur-3xl pointer-events-none" />
-              
-              {/* Box Frame Brutalista (Senza Padding, l'immagine tocca i bordi) */}
-              <div className="relative z-10 w-full h-full bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] flex flex-col overflow-hidden p-0 group">
-                {/* Image */}
-                <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
+            <div className="relative w-full min-h-[400px] lg:h-full max-w-[720px] lg:max-w-none flex flex-col gap-8">
+              {/* Box Frame Brutalista 1: Logo/Insegna */}
+              <div className="relative z-10 w-full flex-1 min-h-[300px] bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] overflow-hidden group">
+                <div className="w-full h-full relative overflow-hidden bg-white">
                   <img
-                    src="/assets/projects/villa-masami/struttura.webp"
-                    alt="Villa Masami Structure UI"
+                    src="/assets/projects/villa-masami/insegna.webp"
+                    alt="Villa Masami Logo"
+                    className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000"
+                  />
+                </div>
+              </div>
+              
+              {/* Box Frame Brutalista 2: Homepage */}
+              <div className="relative z-10 w-full flex-1 min-h-[400px] bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] overflow-hidden group">
+                <div className="w-full h-full relative overflow-hidden bg-white">
+                  <img
+                    src="/assets/projects/villa-masami/homepage.webp"
+                    alt="Villa Masami Homepage"
                     className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                   />
                 </div>

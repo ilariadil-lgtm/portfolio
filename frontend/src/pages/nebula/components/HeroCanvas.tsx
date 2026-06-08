@@ -2,10 +2,12 @@ import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-// Il "Mare di Dati" - Un piano topografico wireframe che ondeggia
+const isMobileDevice = typeof window !== 'undefined' && window.innerWidth < 768;
+
 const Terrain = () => {
   const meshRef = useRef<THREE.Mesh>(null);
   const geomRef = useRef<THREE.PlaneGeometry>(null);
+  const segments = isMobileDevice ? 24 : 64;
   
   useFrame((state) => {
     if (!geomRef.current) return;
@@ -37,7 +39,7 @@ const Terrain = () => {
 
   return (
     <mesh ref={meshRef} rotation={[-Math.PI / 2.2, 0, 0]} position={[0, -2, -10]}>
-      <planeGeometry ref={geomRef} args={[100, 100, 64, 64]} />
+      <planeGeometry ref={geomRef} args={[100, 100, segments, segments]} />
       <meshBasicMaterial color="#d4af37" wireframe={true} transparent opacity={0.35} />
     </mesh>
   );
@@ -60,7 +62,7 @@ const createCircleTexture = () => {
 
 const defaultCircleTexture = createCircleTexture();
 
-const particlesCount = 800;
+const particlesCount = isMobileDevice ? 200 : 800;
 
 // Sistema Particellare: Dati fluttuanti in zero gravità (Orali piccoli e rotondi)
 const Particles = () => {
@@ -104,8 +106,8 @@ const Particles = () => {
 // Il Canvas Wrapper (che ora funge da vero sfondo dell'intera Hero)
 export const HeroCanvas = () => {
   return (
-    <div className="w-full h-full absolute inset-0 z-0 overflow-visible">
-      <Canvas camera={{ position: [-2, 2, 8], fov: 45 }}>
+    <div className="w-full h-full absolute inset-0 z-0 overflow-visible pointer-events-none">
+      <Canvas dpr={[1, 1.5]} camera={{ position: [-2, 2, 8], fov: 45 }}>
         {/* Nebbia volumetrica per far sfumare dolcemente la griglia in lontananza e ai bordi */}
         <fog attach="fog" args={['#080808', 2, 25]} />
         

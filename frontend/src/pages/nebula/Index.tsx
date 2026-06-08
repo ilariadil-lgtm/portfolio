@@ -165,13 +165,13 @@ const NebulaIndex = () => {
                     text="Ilaria" 
                     delay={0.1} 
                     mode="char"
-                    className="font-bricolage font-bold tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-white whitespace-nowrap" 
+                    className="font-bricolage font-bold tracking-wider text-5xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-white whitespace-nowrap" 
                   />
                   <KineticText 
                     text="Diliberto." 
                     delay={0.6} 
                     mode="char"
-                    className="font-fraunces italic font-light tracking-wider text-6xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap pr-2" 
+                    className="font-fraunces italic font-light tracking-wider text-5xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap pr-2" 
                   />
                 </div>
               </div>

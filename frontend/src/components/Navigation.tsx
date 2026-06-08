@@ -155,12 +155,12 @@ export const Navigation = () => {
             </div>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-3 text-primary"
+              className="w-12 h-12 flex items-center justify-center text-primary"
               aria-label={isOpen ? "Chiudi menu" : "Apri menu"}
               aria-expanded={isOpen}
               aria-controls="mobile-nav"
             >
-              {isOpen ? <X size={20} /> : <Menu size={20} />}
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </motion.div>

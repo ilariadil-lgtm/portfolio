@@ -126,14 +126,14 @@ export const NebulaProjectLayout = ({
                  <RevealText 
                    text={finalTitleStart} 
                    delay={0.1} 
-                   className="font-bricolage font-black tracking-tighter text-6xl md:text-8xl lg:text-[7vw] leading-[0.9] text-white uppercase" 
+                   className="font-bricolage font-black tracking-tighter text-5xl md:text-8xl lg:text-[7vw] leading-[0.9] text-white uppercase" 
                  />
                )}
                {finalTitleEnd && (
                  <RevealText 
                    text={finalTitleEnd} 
                    delay={0.2} 
-                   className="font-fraunces italic font-light tracking-tight text-6xl md:text-8xl lg:text-[7vw] leading-[0.9] text-[#d4af37] pr-2" 
+                   className="font-fraunces italic font-light tracking-tight text-5xl md:text-8xl lg:text-[7vw] leading-[0.9] text-[#d4af37] pr-2" 
                  />
                )}
             </div>

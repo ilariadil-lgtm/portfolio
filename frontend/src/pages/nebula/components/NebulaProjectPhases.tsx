@@ -8,7 +8,8 @@ export interface Phase {
   title: string;
   subtitle?: string;
   description: React.ReactNode;
-  image?: string;
+  image?: string | string[];
+  objectPosition?: string;
 }
 
 interface NebulaProjectPhasesProps {
@@ -98,14 +99,57 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="mt-10 rounded-xl overflow-hidden border border-white/10 relative group"
+                    className={`mt-10 ${Array.isArray(phases[activeIndex].image) && phases[activeIndex].image.length > 1 ? 'flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 hide-scrollbar' : 'block'}`}
                   >
-                    <div className="absolute inset-0 bg-[#d4af37]/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-                    <img 
-                      src={phases[activeIndex].image} 
-                      alt={phases[activeIndex].title}
-                      className="w-full h-[250px] md:h-[350px] lg:h-[450px] object-cover object-top transform transition-transform duration-700 group-hover:scale-105"
-                    />
+                    {Array.isArray(phases[activeIndex].image) 
+                      ? phases[activeIndex].image.map((img, i) => (
+                          <div key={i} className="shrink-0 w-[85%] md:w-[65%] snap-center rounded-xl overflow-hidden border border-white/10 bg-[#0A0A0A] shadow-2xl flex flex-col h-[250px] md:h-[350px] relative group">
+                            {/* Browser Bar */}
+                            <div className="h-6 md:h-8 bg-[#151515] border-b border-white/5 flex items-center px-3 md:px-4 shrink-0 z-20">
+                              <div className="flex gap-1.5 md:gap-2">
+                                <div className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full bg-[#ff5f56]" />
+                                <div className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full bg-[#ffbd2e]" />
+                                <div className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full bg-[#27c93f]" />
+                              </div>
+                            </div>
+                            {/* Screen */}
+                            <div className="flex-1 relative overflow-hidden bg-black">
+                              <div className="absolute inset-0 bg-[#d4af37]/5 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
+                              <img 
+                                src={img} 
+                                alt={`${phases[activeIndex].title} ${i + 1}`}
+                                className={`absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105 ${phases[activeIndex].objectPosition || 'object-top'}`}
+                              />
+                            </div>
+                          </div>
+                        ))
+                      : (
+                          <div className="rounded-xl overflow-hidden border border-white/10 bg-[#0A0A0A] shadow-2xl flex flex-col h-[300px] md:h-[400px] lg:h-[500px] relative group">
+                            {/* Browser Bar */}
+                            <div className="h-8 md:h-10 bg-[#151515] border-b border-white/5 flex items-center px-4 gap-2 shrink-0 z-20">
+                              <div className="flex gap-1.5 md:gap-2">
+                                <div className="w-2.5 md:w-3 h-2.5 md:h-3 rounded-full bg-[#ff5f56]" />
+                                <div className="w-2.5 md:w-3 h-2.5 md:h-3 rounded-full bg-[#ffbd2e]" />
+                                <div className="w-2.5 md:w-3 h-2.5 md:h-3 rounded-full bg-[#27c93f]" />
+                              </div>
+                              <div className="flex-1 ml-4 bg-white/5 rounded-md h-5 md:h-6 flex items-center px-3 max-w-[200px]">
+                                <span className="text-[9px] md:text-[10px] text-white/30 font-mono tracking-wider truncate">
+                                  {phases[activeIndex].title.toLowerCase()}.design
+                                </span>
+                              </div>
+                            </div>
+                            {/* Screen */}
+                            <div className="flex-1 relative overflow-hidden bg-black">
+                              <div className="absolute inset-0 bg-[#d4af37]/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
+                              <img 
+                                src={phases[activeIndex].image as string} 
+                                alt={phases[activeIndex].title}
+                                className={`absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105 ${phases[activeIndex].objectPosition || 'object-top'}`}
+                              />
+                            </div>
+                          </div>
+                        )
+                    }
                   </motion.div>
                 )}
 

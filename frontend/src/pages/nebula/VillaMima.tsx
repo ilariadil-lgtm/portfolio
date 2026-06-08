@@ -21,7 +21,10 @@ export const NebulaVillaMima = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/villa-mima/home.webp"
+      image: [
+        "/assets/projects/villa-mima/paesaggio.webp",
+        "/assets/projects/villa-mima/piastrelle.webp"
+      ]
     },
     {
       id: "02",
@@ -49,7 +52,10 @@ export const NebulaVillaMima = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/villa-mima/menu.webp"
+      image: [
+        "/assets/projects/villa-mima/ristorante.webp",
+        "/assets/projects/villa-mima/wedding.webp"
+      ]
     },
     {
       id: "04",
@@ -96,14 +102,19 @@ export const NebulaVillaMima = () => {
       techList={["UI/UX Design", "WordPress Environment", "Copywriting & Storytelling"]}
       role={t('villamima.role_val')}
       year="2023"
+      liveUrl="https://www.villamima.it/"
     >
       <NebulaImageSlider 
         images={[
           "/assets/projects/villa-mima/home.webp",
           "/assets/projects/villa-mima/la-villa.webp",
+          "/assets/projects/villa-mima/paesaggio.webp",
           "/assets/projects/villa-mima/menu.webp",
-          "/assets/projects/villa-mima/contatti.webp",
-          "/assets/projects/villa-mima/home.webp"
+          "/assets/projects/villa-mima/piastrelle.webp",
+          "/assets/projects/villa-mima/ristorante.webp",
+          "/assets/projects/villa-mima/wedding.webp",
+          "/assets/projects/villa-mima/servizi.webp",
+          "/assets/projects/villa-mima/contatti.webp"
         ]}
       />
     </NebulaProjectLayout>
