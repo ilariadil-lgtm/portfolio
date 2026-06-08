@@ -2,29 +2,27 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { FloatingCTA } from "@/components/FloatingCTA";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowLeft, ArrowRight, Github, Globe, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
 import { ProjectNavigation } from "@/components/ProjectNavigation";
 
-export const EditorialCharioHifi = () => {
+export const EditorialPortfolio = () => {
   const { t } = useTranslation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   usePageMeta({
-    title: "Chario Hifi",
-    description: t('chario.meta_desc'),
+    title: "Portfolio",
+    description: t('portfolio.meta_desc'),
   });
 
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 60]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -80]);
 
-  const techList = ["Sophia Theme", "Custom Wordpress", "PHP Modulare", "GSAP & SWIPER", "Api Realtime", "UI/UX DESIGN"];
+  const techList = ["React 18 & TypeScript", "Tailwind & Shadcn UI", "Supabase & PostgreSQL", "Edge Functions & AI AP"];
 
   return (
     <div className="min-h-screen bg-[#f5f2ed] text-[#3d0f1a] selection:bg-primary/30 font-body">
@@ -64,7 +62,7 @@ export const EditorialCharioHifi = () => {
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium block"
                 >
-                  {t('chario.hero_label')}
+                  {t('portfolio.hero_label')}
                 </motion.span>
               </div>
 
@@ -77,7 +75,7 @@ export const EditorialCharioHifi = () => {
                     className="block text-[10vw] lg:text-[6.5vw] font-bold text-[#3d0f1a] whitespace-nowrap pr-4"
                     style={{ y: y1 }}
                   >
-                    Chario<span className="text-primary italic pr-2">Hifi</span><span className="text-[#3d0f1a] not-italic pr-2">.</span>
+                    Ilaria<span className="text-primary italic pr-2">Portfolio</span><span className="text-[#3d0f1a] not-italic pr-2">.</span>
                   </motion.span>
                 </div>
               </h1>
@@ -89,17 +87,19 @@ export const EditorialCharioHifi = () => {
                 className="mt-8 lg:mt-12 max-w-[34rem]"
               >
                 <p className="font-body text-sm md:text-base text-[#3d0f1a]/70 leading-relaxed border-l-2 border-primary/20 pl-6 lg:pl-8 py-2">
-                  {t('chario.hero_desc')}
+                  {t('portfolio.hero_desc')}
                 </p>
               </motion.div>
             </motion.div>
           </div>
 
-          {/* RIGHT: Mockup senza sfondo + Astrazione geometrica */}
-          <div className="lg:col-span-7 relative flex justify-center items-center h-[400px] lg:h-[700px] mt-12 lg:mt-0">
+          {/* RIGHT: Device Preview Brutalista */}
+          <div className="lg:col-span-6 lg:col-start-7 flex items-center justify-center w-full">
             <motion.div
-              style={{ y: y2 }}
-              className="relative w-full max-w-[500px] lg:max-w-[700px] aspect-[4/3]"
+              className="relative w-full aspect-[3/2] max-w-[580px] lg:max-w-none"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
             >
               {/* Geometria astratta sul fondo */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] rounded-full bg-primary/5 blur-3xl" />
@@ -109,26 +109,19 @@ export const EditorialCharioHifi = () => {
                 className="absolute -top-10 -right-10 w-64 h-64 border-[1px] border-primary/20 rounded-full border-dashed"
               />
 
-              {/* Device Frame Brutalista */}
+              {/* Box Frame Brutalista (Senza Padding, l'immagine tocca i bordi) */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative z-10 w-full h-full bg-[#f5f2ed] border border-[#3d0f1a] shadow-[15px_15px_0px_#c0392b] flex flex-col overflow-hidden group"
+                className="relative z-10 w-full h-full bg-[#f5f2ed] border border-[#3d0f1a] shadow-[15px_15px_0px_#c0392b] flex flex-col overflow-hidden p-0 group"
               >
-                {/* Browser bar top */}
-                <div className="h-8 border-b border-[#3d0f1a] flex items-center px-4 gap-2 bg-white/50">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#3d0f1a]/20" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#3d0f1a]/20" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#3d0f1a]/20" />
-                  <div className="mx-auto font-typewriter text-[8px] text-[#3d0f1a]/50">chariohifi.it</div>
-                </div>
                 {/* Image */}
-                <div className="flex-1 relative overflow-hidden bg-black">
+                <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
                   <img
-                    src="/assets/chario-hero.webp"
-                    alt="Chario Hifi Interface"
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                    src="/assets/projects/portfolio/split.png"
+                    alt="Portfolio Homepage Interface"
+                    className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                   />
                 </div>
               </motion.div>
@@ -151,7 +144,7 @@ export const EditorialCharioHifi = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block">
-              {t('chario.ch1_label')}
+              {t('portfolio.ch1_label')}
             </span>
           </motion.div>
           <motion.div
@@ -161,21 +154,20 @@ export const EditorialCharioHifi = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ delay: 0.2 }}
           >
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              {t('chario.ch1_title1')}<span className="italic text-primary pr-2">{t('chario.ch1_title2')}</span>
-            </h2>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]" dangerouslySetInnerHTML={{ __html: t('portfolio.ch1_title1') }} />
             <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed max-w-2xl">
-              <p dangerouslySetInnerHTML={{ __html: t('chario.ch1_p1') }} />
-              <p>{t('chario.ch1_p2')}</p>
+              <p>
+                {t('portfolio.ch1_p1')}
+              </p>
             </div>
           </motion.div>
         </div>
       </section >
 
       {/* ═══════════════════════════════════════════════════════════════════
-           CH. 02 — THE MISSION (Leggero e Chiaro)
+           CH. 02 — THE MISSION
            ═══════════════════════════════════════════════════════════════════ */}
-      < section className="bg-[#f5f2ed] py-24 md:py-32 px-6 md:px-12 lg:px-24" >
+      <section className="bg-[#f5f2ed] py-24 md:py-32 px-6 md:px-12 lg:px-24" >
         <div className="max-w-7xl mx-auto flex justify-center">
           <motion.div
             className="max-w-4xl text-center"
@@ -185,41 +177,43 @@ export const EditorialCharioHifi = () => {
             transition={{ duration: 1 }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-12">
-              {t('chario.ch2_label')}
+              {t('portfolio.ch2_label')}
             </span>
-            <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]">
-              {t('chario.ch2_title1')}<span className="text-primary italic pr-2">{t('chario.ch2_title2')}</span>{t('chario.ch2_title3')}
-            </h3>
+            <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]" dangerouslySetInnerHTML={{ __html: t('portfolio.ch2_title1') }} />
 
 
           </motion.div>
         </div>
-      </section>
+      </section >
 
       {/* ═══════════════════════════════════════════════════════════════════
-           CH. 03 — THE PROCESS (Asymmetric with image)
+           CH. 03 — THE PROCESS
            ═══════════════════════════════════════════════════════════════════ */}
-      < section className="px-6 md:px-12 lg:px-24 py-24 md:py-40 bg-white" >
+      <section className="px-6 md:px-12 lg:px-24 py-24 md:py-40 bg-white" >
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-stretch">
 
           <motion.div
-            className="lg:col-span-5 order-2 lg:order-1"
+            className="lg:col-span-6 order-2 lg:order-1 h-full"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1 }}
           >
-            {/* Process Image con Shadow Brutalista */}
-            <div className="aspect-[3/4] relative border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] group">
-              <img
-                src="/assets/chario-process.webp"
-                alt="UX Wireframing phase"
-                  className="w-full h-full object-cover"
-              />
-              <div className="absolute bottom-4 left-4 z-20">
-                <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-white bg-[#3d0f1a] px-3 py-1.5">
-                  {t('chario.fig1')}
-                </span>
+            {/* Process Image con Anteprima Brutalista (Senza Padding, Più Rettangolare e Grande) */}
+            <div className="relative w-full aspect-[16/9] max-w-[720px] lg:max-w-none">
+              {/* Geometria astratta sul fondo */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] rounded-full bg-primary/5 blur-3xl pointer-events-none" />
+
+              {/* Box Frame Brutalista (Senza Padding, l'immagine tocca i bordi) */}
+              <div className="relative z-10 w-full h-full bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] flex flex-col overflow-hidden p-0 group">
+                {/* Image */}
+                <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
+                  <img
+                    src="/assets/projects/portfolio/editorial.png"
+                    alt="Portfolio Dashboard Mockup"
+                    className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000"
+                  />
+                </div>
               </div>
             </div>
           </motion.div>
@@ -233,14 +227,15 @@ export const EditorialCharioHifi = () => {
           >
             <div>
               <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-8">
-                {t('chario.ch3_label')}
+                {t('portfolio.ch3_label')}
               </span>
               <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter mb-8 text-[#3d0f1a]">
-                {t('chario.ch3_title')}
+                {t('portfolio.ch3_title')}
               </h2>
               <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed">
-                <p>{t('chario.ch3_p1')}</p>
-                <p>{t('chario.ch3_p2')}</p>
+                <p>
+                  {t('portfolio.ch3_p1')}
+                </p>
               </div>
             </div>
           </motion.div>
@@ -249,9 +244,9 @@ export const EditorialCharioHifi = () => {
       </section >
 
       {/* ═══════════════════════════════════════════════════════════════════
-           CH. 04 — THE DEVELOPMENT (Tech Stack integration)
+           CH. 04 — THE DEVELOPMENT
            ═══════════════════════════════════════════════════════════════════ */}
-      < section className="px-6 md:px-12 lg:px-24 py-24 bg-[#f5f2ed] border-y border-[#3d0f1a]/5" >
+      <section className="px-6 md:px-12 lg:px-24 py-24 bg-[#f5f2ed] border-y border-[#3d0f1a]/5" >
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
           <motion.div
             className="lg:col-span-7 space-y-8"
@@ -260,15 +255,18 @@ export const EditorialCharioHifi = () => {
             viewport={{ once: true }}
           >
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-2">
-              {t('chario.ch4_label')}
+              {t('portfolio.ch4_label')}
             </span>
             <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
-              {t('chario.ch4_title')}
+              {t('portfolio.ch4_title')}
             </h2>
             <div className="font-body text-[#3d0f1a]/70 text-lg leading-relaxed space-y-6">
-              <p>{t('chario.ch4_p1')}</p>
-              <p>{t('chario.ch4_p2')}</p>
+              <p>
+                {t('portfolio.ch4_p1')}
+              </p>
             </div>
+
+
           </motion.div>
 
           <motion.div
@@ -299,7 +297,7 @@ export const EditorialCharioHifi = () => {
               <div className="border-t border-[#3d0f1a]/10 pt-6 mt-12 space-y-4 text-[#3d0f1a]">
                 <div className="flex items-center justify-between">
                   <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.role_label')}</span>
-                  <span className="font-display text-md font-black italic pr-2">{t('chario.role_val')}</span>
+                  <span className="font-display text-md font-black italic pr-2">{t('portfolio.role_val')}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.launch_label')}</span>
@@ -314,7 +312,7 @@ export const EditorialCharioHifi = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            CH. 05 — THE RESULT (Gallery)
            ═══════════════════════════════════════════════════════════════════ */}
-      < section className="px-6 md:px-12 lg:px-24 py-24 md:py-40 bg-white" >
+      <section className="px-6 md:px-12 lg:px-24 py-24 md:py-40 bg-white" >
         <motion.div
           className="max-w-7xl mx-auto"
           initial={{ opacity: 0, y: 40 }}
@@ -324,17 +322,17 @@ export const EditorialCharioHifi = () => {
         >
           <div className="flex items-center gap-4 mb-16">
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
-              {t('chario.ch5_label')}
+              {t('portfolio.ch5_label')}
             </span>
             <div className="flex-1 h-[1px] bg-primary/10" />
           </div>
 
           <div className="mb-12 max-w-2xl">
             <h2 className="font-display text-3xl md:text-5xl font-black tracking-tighter mb-6 text-[#3d0f1a]">
-              {t('chario.ch5_title')}
+              {t('portfolio.ch5_title')}
             </h2>
             <p className="font-body text-lg text-[#3d0f1a]/70">
-              {t('chario.ch5_p1')}
+              {t('portfolio.ch5_p1')}
             </p>
           </div>
         </motion.div>
@@ -352,15 +350,14 @@ export const EditorialCharioHifi = () => {
             {[...Array(2)].map((_, i) => (
               <div key={i} className="flex gap-8 shrink-0 h-full">
                 {[
-                  "/assets/chario-hero.webp",
-                  "/assets/chario-gallery-1.webp",
-                  "/assets/chario-gallery-2.webp",
-                  "/assets/chario-gallery-3.webp",
+                  "/assets/projects/portfolio/split.png",
+                  "/assets/projects/portfolio/editorial.png",
+                  "/assets/projects/portfolio/nebula.png",
                 ].map((src, j) => (
-                  <div key={j} className="h-full shrink-0 border border-[#3d0f1a] shadow-[10px_10px_0px_#c0392b] bg-[#f5f2ed] p-3 md:p-5 group">
+                  <div key={j} className="h-full shrink-0 border border-[#3d0f1a] shadow-[10px_10px_0px_#c0392b] bg-[#f5f2ed] p-0 group overflow-hidden">
                     <img
                       src={src}
-                      alt={`Chario Slide ${j}`}
+                      alt={`Portfolio Slide ${j}`}
                               className="h-full w-auto object-contain max-w-[80vw] lg:max-w-[40vw] group-hover:opacity-90 transition-opacity"
                     />
                   </div>
@@ -369,19 +366,18 @@ export const EditorialCharioHifi = () => {
             ))}
           </motion.div>
         </div>
-      </section >
+      </section>
       {/* ═══════════════════════════════════════════════════════════════════
            NAVIGATION
            ═══════════════════════════════════════════════════════════════════ */}
       <ProjectNavigation 
         prev={{ url: '/progetti/storagehub', title: 'StorageHub' }}
-        next={{ url: '/progetti/freelens', title: 'Freelens' }}
+        next={{ url: '/progetti/villamasami', title: 'Villa Masami' }}
       />
 
-      <FloatingCTA url="https://chariohifi.it" />
       <Footer />
     </div >
   );
 };
 
-export default EditorialCharioHifi;
+export default EditorialPortfolio;

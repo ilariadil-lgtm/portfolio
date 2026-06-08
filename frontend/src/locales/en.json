@@ -725,6 +725,21 @@
       "title": "Branding & Logos",
       "description": "A curated selection of visual identities, brands, and signature logos designed to shape, unify, and add value to leading companies' stories.",
       "technologies": "Logo Design, Brand Identity, Visual Guidelines, Art Direction"
+    },
+    "portfolio": {
+      "title": "Ilaria Portfolio",
+      "type": "Full Stack Web App • UX/UI Design • React",
+      "description": "Design and development of my personal portfolio, a hybrid architecture with two souls: the minimalist elegance of the Editorial theme and the glassmorphism innovation of the Nebula theme.",
+      "ch1_title": "The Brief",
+      "ch1_p1": "As a digital designer, the portfolio is the hardest project. The goal was to create not just a showcase site, but a true interactive web application reflecting two fundamental aspects of my professional identity: love for classic typography and the push towards futuristic interfaces.",
+      "ch2_title": "The Solution",
+      "ch2_p1": "I developed a dual-theme system (Editorial and Nebula) allowing the user to dynamically switch the entire interface. The frontend is built in React with Vite to maximize performance, while fluid animations are handled via Framer Motion and Lenis for smooth scrolling. A digital ecosystem designed to scale and amaze.",
+      "fase1_title": "Frontend Architecture",
+      "fase1_desc": "Isolated component React development with dynamic routing and LCP optimization for Awwwards-level performance.",
+      "fase2_title": "Design System",
+      "fase2_desc": "Creation of two parallel design systems (Editorial & Nebula) integrated into a single theming engine.",
+      "fase3_title": "Micro-Interactions",
+      "fase3_desc": "Implementation of physics-based animations and fluid transitions with Framer Motion for an immersive user experience."
     }
   },
   "index_fallback": {

@@ -725,6 +725,21 @@
       "title": "Branding & Loghi",
       "description": "Una selezione curata di identità visive, marchi e loghi d'autore disegnati per dare forma, coerenza e valore a storie ed aziende leader.",
       "technologies": "Logo Design, Brand Identity, Visual Guidelines, Art Direction"
+    },
+    "portfolio": {
+      "title": "Ilaria Portfolio",
+      "type": "Full Stack Web App • UX/UI Design • React",
+      "description": "Progettazione e sviluppo del mio portfolio personale, un'architettura ibrida con due anime: l'eleganza minimale del tema Editorial e l'innovazione glassmorphism del tema Nebula.",
+      "ch1_title": "Il Brief",
+      "ch1_p1": "Come progettista digitale, il portfolio è il progetto più difficile. L'obiettivo era creare non un semplice sito vetrina, ma una vera e propria applicazione web interattiva che riflettesse due aspetti fondamentali della mia identità professionale: l'amore per la tipografia classica e la spinta verso interfacce futuristiche.",
+      "ch2_title": "La Soluzione",
+      "ch2_p1": "Ho sviluppato un sistema a doppio tema (Editorial e Nebula) che permette all'utente di switchare dinamicamente l'intera interfaccia. Il frontend è costruito in React con Vite per massimizzare le performance, mentre le animazioni fluide sono gestite tramite Framer Motion e Lenis per lo smooth scrolling. Un ecosistema digitale progettato per scalare e stupire.",
+      "fase1_title": "Architettura Frontend",
+      "fase1_desc": "Sviluppo React a componenti isolati con routing dinamico e ottimizzazione LCP per prestazioni da Awwwards.",
+      "fase2_title": "Design System",
+      "fase2_desc": "Creazione di due design system paralleli (Editorial & Nebula) integrati in un unico motore di theming.",
+      "fase3_title": "Micro-Interazioni",
+      "fase3_desc": "Implementazione di animazioni fisiche e transizioni fluide con Framer Motion per un'esperienza utente immersiva."
     }
   },
   "index_fallback": {

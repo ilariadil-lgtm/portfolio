@@ -41,6 +41,17 @@ const Index = () => {
   }, []);
 
   const fallbackProjects = [
+  {
+    id: "portfolio",
+    title: "Ilaria Portfolio",
+    type: "Full Stack Web App • UX/UI Design • React",
+    technologies: "React, TypeScript, Tailwind, Framer Motion",
+    year: "2026",
+    image: "/assets/projects/portfolio/split.png",
+    url: "/progetti/portfolio",
+    project_url: "/progetti/portfolio",
+    description: "Progettazione e sviluppo del mio portfolio personale, un architettura ibrida con due anime: l'eleganza minimale del tema Editorial e l'innovazione glassmorphism del tema Nebula."
+  },
     {
       id: 1,
       title: "Villa Masami",
@@ -205,10 +216,11 @@ const Index = () => {
             initial={{ scale: 1.2, opacity: 0, filter: "blur(10px)" }}
             whileInView={{ scale: 1, opacity: 0.4, filter: "blur(0px)" }}
             transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-            src="/assets/projects/villa-masami/struttura.webp"
+            src="/assets/about-portrait.webp"
             alt="Portrait"
-            loading="lazy"
-            decoding="async"
+            fetchPriority="high"
+            loading="eager"
+            decoding="sync"
             className="w-full h-full object-cover absolute inset-0 mix-blend-luminosity group-hover:scale-105 transition-transform duration-2000"
           />
           <div className="absolute top-12 right-12 w-24 h-24 border border-white/5 backdrop-blur-md flex items-center justify-center">
