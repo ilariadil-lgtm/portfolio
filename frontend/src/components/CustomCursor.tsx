@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { motion, useSpring } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { useDesign } from "../context/DesignContext";
+import { useTranslation } from "react-i18next";
 
 export const CustomCursor = () => {
+  const { t } = useTranslation();
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [cursorType, setCursorType] = useState<"default" | "pointer" | "view" | "drag">("default");
   const [hidden, setHidden] = useState(false);
@@ -92,7 +94,7 @@ export const CustomCursor = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: (cursorType === "view" || cursorType === "drag") ? 1 : 0 }}
         >
-          {cursorType === "view" ? "VIEW" : cursorType === "drag" ? "DRAG" : ""}
+          {cursorType === "view" ? t('cursor.view', 'VIEW') : cursorType === "drag" ? t('cursor.drag', 'DRAG') : ""}
         </motion.span>
       </motion.div>
 

@@ -22,7 +22,7 @@ export const EditorialPortfolio = () => {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 60]);
 
-  const techList = ["React 18 & TypeScript", "Tailwind & Shadcn UI", "Supabase & PostgreSQL", "Edge Functions & AI AP"];
+  const techList = ["React + Vite", "Framer Motion", "Three.js", "Web Audio API", "Lenis Scroll", "i18n IT/EN"];
 
   return (
     <div className="min-h-screen bg-[#f5f2ed] text-[#3d0f1a] selection:bg-primary/30 font-body">
@@ -301,7 +301,7 @@ export const EditorialPortfolio = () => {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">{t('chario.launch_label')}</span>
-                  <span className="font-display text-md font-black">2026</span>
+                  <span className="font-display text-md font-black">2025</span>
                 </div>
               </div>
             </div>

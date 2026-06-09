@@ -43,7 +43,7 @@ const NebulaIndex = () => {
           api.getServices()
         ]);
         const results = projData.results || projData;
-        const filtered = results.filter((p: any) => p.id !== 'SOPHIA_THEME' && p.id !== 'sophiatheme' && p.id !== 'CHARIO_HIFI' && p.id !== 'chariohifi');
+        const filtered = results.filter((p: any) => p.id !== 'SOPHIA_THEME' && p.id !== 'sophiatheme' && p.id !== 'CHARIO_HIFI' && p.id !== 'chariohifi' && p.id !== 'portfolio');
         setProjects(filtered);
         setServices(servData.results || servData);
       } catch (error) {
@@ -72,17 +72,6 @@ const NebulaIndex = () => {
   }, []);
 
   const fallbackProjects = [
-  {
-    id: "portfolio",
-    title: "Ilaria Portfolio",
-    type: "Full Stack Web App • UX/UI Design • React",
-    technologies: "React, TypeScript, Tailwind, Framer Motion",
-    year: "2026",
-    image: "/assets/projects/portfolio/split.png",
-    url: "/progetti/portfolio",
-    project_url: "/progetti/portfolio",
-    description: "Progettazione e sviluppo del mio portfolio personale, un architettura ibrida con due anime: l'eleganza minimale del tema Editorial e l'innovazione glassmorphism del tema Nebula."
-  },
     {
       id: 1,
       title: t('index_fallback.1.title', "Villa Masami"),
@@ -90,14 +79,6 @@ const NebulaIndex = () => {
       image: "/assets/projects/villa-masami/struttura.webp",
       url: "/progetti/villamasami",
       description: t('index_fallback.1.description', "Un progetto digitale completo. Cura integrale dell'identità della struttura, dal logo allo sviluppo WordPress.")
-    },
-    {
-      id: 2,
-      title: t('index_fallback.2.title', "Freelens"),
-      type: t('index_fallback.2.type', "SaaS Management • UI/UX Design"),
-      image: "/assets/projects/freelens/home.webp",
-      url: "/progetti/freelens",
-      description: t('index_fallback.2.description', "Spazio digitale di project management per gestire progetti e task, riprendendo il controllo del proprio tempo con un'interfaccia focalizzata.")
     },
     {
       id: 3,

@@ -26,16 +26,6 @@ const getFallbackProjects = (t: any) => [
     description: t('projects_data.storagehub.description')
   },
   {
-    id: "freelens",
-    title: t('projects_data.freelens.title', 'Freelens'),
-    type: "WEBAPP_SAAS",
-    technologies: t('projects_data.freelens.technologies', 'Figma, React, Framer Motion, Product Strategy'),
-    year: "2024",
-    image: "/assets/projects/freelens/home.webp",
-    project_url: "https://freelens.app",
-    description: t('projects_data.freelens.description')
-  },
-  {
     id: "villamasami",
     title: t('projects_data.villamasami.title', 'Villa Masami'),
     type: "WEB_ECOMMERCE BRAND_IDENTITY",
@@ -266,7 +256,7 @@ const NebulaProgetti = () => {
       try {
         const data = await api.getProjects();
         const results = data.results || data;
-        const filtered = results.filter((p: any) => p.id !== 'SOPHIA_THEME' && p.id !== 'sophiatheme' && p.id !== 'CHARIO_HIFI' && p.id !== 'chariohifi');
+        const filtered = results.filter((p: any) => p.id !== 'SOPHIA_THEME' && p.id !== 'sophiatheme' && p.id !== 'CHARIO_HIFI' && p.id !== 'chariohifi' && p.id !== 'portfolio' && p.id !== 'freelens');
         setProjects(filtered && filtered.length > 0 ? filtered : fallbackProjects);
       } catch (error) {
         console.error("Errore nel caricamento dei progetti:", error);

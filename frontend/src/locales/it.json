@@ -6,6 +6,10 @@
     "projects": "Progetti",
     "contact": "Parliamo"
   },
+  "cursor": {
+    "view": "Vedi",
+    "drag": "Trascina"
+  },
   "footer": {
     "subtitle": "Design e sviluppo",
     "description": "Design editoriale, sviluppo web e gestione progetti fusi in un'unica visione. Costruisco ecosistemi digitali curati in ogni dettaglio, dal primo bozzetto grafico all'ultima riga di codice.",
@@ -497,6 +501,26 @@
     "ch5_title": "Intelligenza Finanziaria.",
     "ch5_p1": "Il risultato è un prodotto SaaS end-to-end completo e scalabile che unisce un'interfaccia d'impatto a un'architettura dati complessa. La sfida più difficile non era tecnica — era di posizionamento: costruire qualcosa che i freelancer volessero davvero usare ogni giorno, non solo quando erano già in crisi. La risposta è stata un'interfaccia che fa sentire in controllo, non sotto pressione. Che mostra i numeri in modo chiaro, non allarmistico. Che suggerisce, non giudica."
   },
+  "portfolio": {
+    "meta_desc": "Un sistema digitale a doppia identità visiva, costruito per dimostrare che un portfolio può essere esso stesso il progetto più complesso del portfolio.",
+    "hero_label": "DESIGN SYSTEM & SVILUPPO FRONT-END",
+    "hero_desc": "Un portfolio che cambia pelle a seconda di chi lo guarda. Un sistema digitale a doppia identità visiva, costruito per dimostrare che un portfolio può essere esso stesso il progetto più complesso del portfolio.",
+    "ch1_label": "01 — Il Contesto",
+    "ch1_title1": "Non un portfolio. <span class=\"italic text-primary\">Un sistema.</span>",
+    "ch1_p1": "Il brief era personale: costruire qualcosa che non si limitasse a mostrare il lavoro, ma che incarnasse il metodo. Un portfolio che fosse già una risposta alla domanda \"come pensi al design?\". La soluzione è stata un dual design system live-switchable — Editorial e Nebula — due identità visive coerenti e distinte che l'utente può alternare in tempo reale, senza ricaricare la pagina.",
+    "ch2_label": "02 — L'Obiettivo",
+    "ch2_title1": "\"Sfidare tecnicamente se stesse, <span class=\"text-primary italic\">senza perdere il calore.</span> L'obiettivo non era stupire con gli effetti — era dimostrare controllo.\"",
+    "ch3_label": "03 — Il Processo",
+    "ch3_title": "Il problema vero era il CSS, non il design.",
+    "ch3_p1": "Costruire un design system che cambi in tempo reale richiede che ogni valore visivo — colori, tipografia, spaziature, ombre — sia astratto in variabili CSS scambiate a livello root. Nessun componente può contenere valori hardcoded. Dopo le prime iterazioni era chiaro che la sfida più grande non era l'estetica, ma la coerenza sistemica: ogni nuovo componente aggiunto doveva funzionare in entrambi i temi senza eccezioni. Il sistema ha richiesto circa 1-2 mesi di lavoro, di cui la maggior parte spesa a testare casi limite — hover states, animazioni, transizioni — su entrambi i temi simultaneamente.",
+    "ch4_label": "04 — Sviluppo",
+    "ch4_title": "Web Audio, Three.js e una favicon che cambia tema.",
+    "ch4_p1": "Lo stack tecnico è stato scelto per massimizzare l'espressività senza compromettere le performance: React + Vite per l'architettura, Framer Motion per le transizioni di pagina, Three.js per il canvas 3D nel tema Nebula, Web Audio API per la risposta sonora reattiva al tema attivo, Lenis per lo smooth scroll, i18n completo IT/EN. Un dettaglio che sintetizza l'approccio: la favicon cambia dinamicamente al toggle del tema — un gesto minimo che dimostra che il sistema è davvero end-to-end. Il bundle splitting è configurato per garantire LCP sotto i 2.5 secondi anche su connessioni medie.",
+    "role_val": "Designer & Developer",
+    "ch5_label": "05 — Risultato",
+    "ch5_title": "Il portfolio è la risposta.",
+    "ch5_p1": "Il risultato è un sistema in cui ogni componente — dalla tipografia alla favicon, dall'audio al canvas 3D — è ingegnerizzato attorno a un'unica idea: che l'identità di un designer non è monolitica. Il portfolio è stato sottoposto ad Awwwards come dimostrazione di un metodo progettuale, non solo di un risultato estetico. La metrica più onesta: ogni persona che lo apre sceglie il tema che la rispecchia di più. Quello era l'obiettivo."
+  },
   "villamasami": {
     "meta_desc": "Prima presenza digitale di Villa Masami, B&B immerso nel territorio agrigentino. Brand identity creata da zero — logo, tono di voce, UI — e sito WordPress multilingua IT/EN sviluppato per Carnova.",
     "hero_label": "BRAND IDENTITY • UI/UX • WEB",
@@ -727,19 +751,19 @@
       "technologies": "Logo Design, Brand Identity, Visual Guidelines, Art Direction"
     },
     "portfolio": {
-      "title": "Ilaria Portfolio",
-      "type": "Full Stack Web App • UX/UI Design • React",
-      "description": "Progettazione e sviluppo del mio portfolio personale, un'architettura ibrida con due anime: l'eleganza minimale del tema Editorial e l'innovazione glassmorphism del tema Nebula.",
-      "ch1_title": "Il Brief",
-      "ch1_p1": "Come progettista digitale, il portfolio è il progetto più difficile. L'obiettivo era creare non un semplice sito vetrina, ma una vera e propria applicazione web interattiva che riflettesse due aspetti fondamentali della mia identità professionale: l'amore per la tipografia classica e la spinta verso interfacce futuristiche.",
-      "ch2_title": "La Soluzione",
-      "ch2_p1": "Ho sviluppato un sistema a doppio tema (Editorial e Nebula) che permette all'utente di switchare dinamicamente l'intera interfaccia. Il frontend è costruito in React con Vite per massimizzare le performance, mentre le animazioni fluide sono gestite tramite Framer Motion e Lenis per lo smooth scrolling. Un ecosistema digitale progettato per scalare e stupire.",
-      "fase1_title": "Architettura Frontend",
-      "fase1_desc": "Sviluppo React a componenti isolati con routing dinamico e ottimizzazione LCP per prestazioni da Awwwards.",
-      "fase2_title": "Design System",
-      "fase2_desc": "Creazione di due design system paralleli (Editorial & Nebula) integrati in un unico motore di theming.",
-      "fase3_title": "Micro-Interazioni",
-      "fase3_desc": "Implementazione di animazioni fisiche e transizioni fluide con Framer Motion per un'esperienza utente immersiva."
+      "title": "Ilaria Diliberto Portfolio",
+      "type": "Design System & Sviluppo Front-end",
+      "description": "Un portfolio che cambia pelle a seconda di chi lo guarda. Un sistema digitale a doppia identità visiva, costruito per dimostrare che un portfolio può essere esso stesso il progetto più complesso del portfolio.",
+      "ch1_title": "Il Contesto",
+      "ch1_p1": "Il brief era personale: costruire qualcosa che non si limitasse a mostrare il lavoro, ma che incarnasse il metodo. La soluzione è stata un dual design system live-switchable — Editorial e Nebula.",
+      "ch2_title": "L'Obiettivo",
+      "ch2_p1": "Sfidare tecnicamente se stesse, senza perdere il calore. Ogni decisione tecnica doveva avere una motivazione progettuale.",
+      "fase1_title": "Dual Design System",
+      "fase1_desc": "Due identità visive coerenti e distinte — Editorial e Nebula — live-switchable senza ricaricare la pagina.",
+      "fase2_title": "CSS Variables Engine",
+      "fase2_desc": "Ogni valore visivo astratto in variabili CSS scambiate a livello root per una coerenza sistemica totale.",
+      "fase3_title": "Motion & Audio",
+      "fase3_desc": "Framer Motion, Three.js, Web Audio API e una favicon che cambia dinamicamente al toggle del tema."
     }
   },
   "index_fallback": {

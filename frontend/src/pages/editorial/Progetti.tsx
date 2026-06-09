@@ -14,17 +14,6 @@ const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 const fallbackProjects = [
   {
-    id: "portfolio",
-    title: "Ilaria Portfolio",
-    type: "Full Stack Web App • UX/UI Design • React",
-    technologies: "React, TypeScript, Tailwind, Framer Motion",
-    year: "2026",
-    image: "/assets/projects/portfolio/split.png",
-    url: "/progetti/portfolio",
-    project_url: "/progetti/portfolio",
-    description: "Progettazione e sviluppo del mio portfolio personale, un architettura ibrida con due anime: l'eleganza minimale del tema Editorial e l'innovazione glassmorphism del tema Nebula."
-  },
-  {
     id: "storagehub",
     title: "StorageHub",
     type: "WEBAPP_SAAS",
@@ -33,16 +22,6 @@ const fallbackProjects = [
     image: "/assets/projects/storage-hub/dashboard.webp",
     project_url: "https://storagehub.com",
     description: "Una web app intelligente di storage e inventory management che semplifica e automatizza la gestione dell'inventario su scala enterprise."
-  },
-  {
-    id: "freelens",
-    title: "Freelens",
-    type: "WEBAPP_SAAS",
-    technologies: "Figma, React, Framer Motion, Product Strategy",
-    year: "2024",
-    image: "/assets/projects/freelens/home.webp",
-    project_url: "https://freelens.app",
-    description: "Spazio digitale di project management per gestire progetti e task, riprendendo il controllo del proprio tempo con un'interfaccia focalizzata."
   },
   {
     id: "villamasami",
@@ -263,7 +242,7 @@ const Progetti = () => {
       try {
         const data = await api.getProjects();
         const results = data.results || data;
-        const filtered = results.filter((p: any) => p.id !== 'SOPHIA_THEME' && p.id !== 'sophiatheme' && p.id !== 'CHARIO_HIFI' && p.id !== 'chariohifi');
+        const filtered = results.filter((p: any) => p.id !== 'SOPHIA_THEME' && p.id !== 'sophiatheme' && p.id !== 'CHARIO_HIFI' && p.id !== 'chariohifi' && p.id !== 'portfolio' && p.id !== 'freelens');
         setProjects(filtered && filtered.length > 0 ? filtered : fallbackProjects);
       } catch {
         setProjects(fallbackProjects);

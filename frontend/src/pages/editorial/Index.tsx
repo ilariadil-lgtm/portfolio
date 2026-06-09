@@ -29,7 +29,7 @@ const Index = () => {
           api.getServices()
         ]);
         const results = projData.results || projData;
-        const filtered = results.filter((p: any) => p.id !== 'SOPHIA_THEME' && p.id !== 'sophiatheme' && p.id !== 'CHARIO_HIFI' && p.id !== 'chariohifi');
+        const filtered = results.filter((p: any) => p.id !== 'SOPHIA_THEME' && p.id !== 'sophiatheme' && p.id !== 'CHARIO_HIFI' && p.id !== 'chariohifi' && p.id !== 'portfolio' && p.id !== 'freelens');
         setProjects(filtered);
         setServices(servData.results || servData);
       } catch (error) {
@@ -41,17 +41,6 @@ const Index = () => {
   }, []);
 
   const fallbackProjects = [
-  {
-    id: "portfolio",
-    title: "Ilaria Portfolio",
-    type: "Full Stack Web App • UX/UI Design • React",
-    technologies: "React, TypeScript, Tailwind, Framer Motion",
-    year: "2026",
-    image: "/assets/projects/portfolio/split.png",
-    url: "/progetti/portfolio",
-    project_url: "/progetti/portfolio",
-    description: "Progettazione e sviluppo del mio portfolio personale, un architettura ibrida con due anime: l'eleganza minimale del tema Editorial e l'innovazione glassmorphism del tema Nebula."
-  },
     {
       id: 1,
       title: "Villa Masami",
