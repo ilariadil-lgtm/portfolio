@@ -1,13 +1,31 @@
 import axios from 'axios';
 
-// Aggiungi la parola "export" proprio qui davanti a const
-export const api = axios.create({
-  baseURL: 'https://ilariadiliberto.com/api/',
+const baseURL = import.meta.env.VITE_API_URL || 'https://ilariadiliberto.com/api';
+
+const axiosInstance = axios.create({
+  baseURL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
-  }
+  },
 });
 
-api.defaults.xsrfCookieName = 'csrftoken';
-api.defaults.xsrfHeaderName = 'X-CSRFToken';
+axiosInstance.defaults.xsrfCookieName = 'csrftoken';
+axiosInstance.defaults.xsrfHeaderName = 'X-CSRFToken';
+
+// ─── Typed API methods ─────────────────────────────────────────────────────────
+
+export interface ContactPayload {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  website?: string; // honeypot
+}
+
+export const api = {
+  sendContactMessage: (data: ContactPayload) =>
+    axiosInstance.post('/contact/', data),
+};
+
+export default axiosInstance;

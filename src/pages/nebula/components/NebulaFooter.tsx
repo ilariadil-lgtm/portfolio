@@ -88,8 +88,8 @@ export const NebulaFooter = () => {
               {[
                 { label: "LINKEDIN", icon: Linkedin, href: "https://www.linkedin.com/in/ilaria-diliberto/" },
                 { label: "GITHUB", icon: Github, href: "https://github.com/ilariadil-lgtm" },
-                { label: "EMAIL", icon: Mail, href: "mailto:ilaria.dil@gmail.com" },
-                { label: "INSTAGRAM", icon: Instagram, href: "https://www.instagram.com/ilaryvision/" },
+                { label: "EMAIL", icon: Mail, href: "mailto:info@ilariadiliberto.com" },
+                { label: "INSTAGRAM", icon: Instagram, href: "https://www.instagram.com/ilariadiliberto_tech/" },
               ].map((social, idx) => (
                 <a key={idx} href={social.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 border border-white/10 bg-white/5 hover:bg-[#d4af37]/10 hover:border-[#d4af37]/30 text-white/50 hover:text-[#d4af37] transition-all">
                   <social.icon size={14} />
@@ -128,8 +128,8 @@ export const NebulaFooter = () => {
           </span>
         </div>
         <div className="flex flex-wrap items-center gap-6">
-          <Link to="/privacy" className="font-mono text-[10px] tracking-wider text-white/30 hover:text-white transition-colors uppercase">PRIVACY POLICY</Link>
-          <Link to="/cookies" className="font-mono text-[10px] tracking-wider text-white/30 hover:text-white transition-colors uppercase">COOKIE POLICY</Link>
+          <a href="https://www.iubenda.com/privacy-policy/46903805" target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] tracking-wider text-white/30 hover:text-white transition-colors uppercase">PRIVACY POLICY</a>
+          <a href="https://www.iubenda.com/privacy-policy/46903805/cookie-policy" target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] tracking-wider text-white/30 hover:text-white transition-colors uppercase">COOKIE POLICY</a>
           <span className="font-mono text-[10px] tracking-wider text-[#d4af37]/50 uppercase">P.IVA: 03065860847</span>
         </div>
       </div>

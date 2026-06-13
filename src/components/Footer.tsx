@@ -98,8 +98,8 @@ export const Footer = () => {
             {[
               { label: "LinkedIn", icon: <Linkedin size={18} />, href: "https://www.linkedin.com/in/ilaria-diliberto/" },
               { label: "GitHub", icon: <Github size={18} />, href: "https://github.com/ilariadil-lgtm" },
-              { label: "Email", icon: <Mail size={18} />, href: "mailto:ilaria.dil@gmail.com" },
-              { label: "Instagram", icon: <Instagram size={18} />, href: "https://www.instagram.com/ilaryvision/" }
+              { label: "Email", icon: <Mail size={18} />, href: "mailto:info@ilariadiliberto.com" },
+              { label: "Instagram", icon: <Instagram size={18} />, href: "https://www.instagram.com/ilariadiliberto_tech/" }
             ].map((social, i) => (
               <a
                 key={i}
@@ -147,8 +147,8 @@ export const Footer = () => {
         </div>
 
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-typewriter text-[11px] uppercase tracking-[0.25em] text-primary font-medium">
-          <Link to="/privacy" className="hover:text-primary/80 transition-colors">Privacy policy</Link>
-          <Link to="/cookies" className="hover:text-primary/80 transition-colors">Cookie policy</Link>
+          <a href="https://www.iubenda.com/privacy-policy/46903805" target="_blank" rel="noopener noreferrer" className="hover:text-primary/80 transition-colors">Privacy policy</a>
+          <a href="https://www.iubenda.com/privacy-policy/46903805/cookie-policy" target="_blank" rel="noopener noreferrer" className="hover:text-primary/80 transition-colors">Cookie policy</a>
           <span className="text-primary/70">P.IVA: 03065860847</span>
         </div>
       </div>

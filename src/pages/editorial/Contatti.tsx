@@ -12,10 +12,10 @@ import { useTranslation } from "react-i18next";
 const getContacts = (t: any) => [
   {
     label: "Email",
-    detail: "ilaria.dil@gmail.com",
+    detail: "info@ilariadiliberto.com",
     sub: t('contact.sub_email'),
     icon: <Mail size={17} />,
-    href: "mailto:ilaria.dil@gmail.com",
+    href: "mailto:info@ilariadiliberto.com",
   },
   {
     label: "LinkedIn",
@@ -33,10 +33,10 @@ const getContacts = (t: any) => [
   },
   {
     label: "Instagram",
-    detail: "@ilaryvision",
+    detail: "@ilariadiliberto_tech",
     sub: t('contact.sub_instagram'),
     icon: <Instagram size={17} />,
-    href: "https://www.instagram.com/ilaryvision/",
+    href: "https://www.instagram.com/ilariadiliberto_tech/",
   },
 ];
 
