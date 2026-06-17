@@ -84,6 +84,23 @@ const AppContent = () => {
   useEffect(() => {
     // Aggiungi la classe del tema al body per gestire i font dinamici
     document.body.className = `theme-${design}`;
+
+    // Ottimizzazione Font: carica solo le famiglie del tema corrente
+    const fontLinkId = "google-fonts-dynamic";
+    let fontLink = document.getElementById(fontLinkId) as HTMLLinkElement | null;
+    
+    if (!fontLink) {
+      fontLink = document.createElement("link");
+      fontLink.id = fontLinkId;
+      fontLink.rel = "stylesheet";
+      document.head.appendChild(fontLink);
+    }
+    
+    if (design === "editorial") {
+      fontLink.href = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap";
+    } else {
+      fontLink.href = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300..600&family=JetBrains+Mono:wght@400..800&display=swap";
+    }
   }, [design]);
 
   return (

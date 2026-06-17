@@ -241,7 +241,7 @@ export const CreativeHero: React.FC = () => {
                   text="ilaria" 
                   delay={0.2} 
                   mode="char"
-                  className="block text-[14vw] lg:text-[8.5vw] font-bold text-[#3d0f1a]"
+                  className="block text-[clamp(3.5rem,14vw,8rem)] lg:text-[8.5vw] font-bold text-[#3d0f1a]"
                 />
               </motion.div>
               <motion.div style={{ y: y1 }} className="overflow-hidden -mt-2 lg:-mt-4">
@@ -250,9 +250,9 @@ export const CreativeHero: React.FC = () => {
                     text="diliberto" 
                     delay={0.6} 
                     mode="char"
-                    className="block text-[14vw] lg:text-[8.5vw] font-bold text-primary italic pr-2"
+                    className="block text-[clamp(3.5rem,14vw,8rem)] lg:text-[8.5vw] font-bold text-primary italic pr-2"
                   />
-                  <span className="block text-[14vw] lg:text-[8.5vw] font-bold text-[#3d0f1a] not-italic leading-none translate-y-2 pr-2">.</span>
+                  <span className="block text-[clamp(3.5rem,14vw,8rem)] lg:text-[8.5vw] font-bold text-[#3d0f1a] not-italic leading-none translate-y-2 pr-2">.</span>
                 </div>
               </motion.div>
             </h1>

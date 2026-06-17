@@ -5,7 +5,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Github, Globe, ExternalLink } from "lucide-react";
-import { usePageMeta } from "@/hooks/usePageMeta";
+import { usePageMeta, injectSchema } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
 import { ProjectNavigation } from "@/components/ProjectNavigation";
 
@@ -119,7 +119,27 @@ export const EditorialProjectDetail = () => {
     description: project.description
       ? `${project.description.slice(0, 150)}…`
       : `Scopri il progetto ${project.title} — realizzato da Ilaria Diliberto.`,
+    canonical: `/progetti/${id}`,
   });
+
+  // Schema.org CreativeWork per il progetto
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    if (!project) return;
+    const cleanup = injectSchema({
+      "@type": "CreativeWork",
+      "name": project.title,
+      "description": project.description,
+      "url": `https://ilariadiliberto.com/progetti/${id}`,
+      "image": project.image?.startsWith('http') ? project.image : `${BASE_URL}${project.image}`,
+      "author": {
+        "@type": "Person",
+        "name": "Ilaria Diliberto"
+      },
+      "dateCreated": project.year || "2025"
+    });
+    return cleanup;
+  }, [project, id]);
 
 
   return (
