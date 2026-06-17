@@ -5,19 +5,23 @@ interface PageMetaProps {
   description: string;
   ogImage?: string;
   themeColor?: string;
+  canonical?: string;
 }
 
 const BASE_TITLE = "Ilaria Diliberto";
-const BASE_OG_IMAGE = "/og-image.jpg"; // da creare in /public
+const BASE_URL = "https://ilariadiliberto.com";
+const BASE_OG_IMAGE = `${BASE_URL}/og-image.jpg`;
 
 /**
- * Hook che aggiorna dinamicamente title, meta description e og tags
+ * Hook che aggiorna dinamicamente title, meta description, og tags e canonical
  * per ogni pagina senza dipendenze esterne (no react-helmet).
  */
-export const usePageMeta = ({ title, description, ogImage, themeColor }: PageMetaProps) => {
+export const usePageMeta = ({ title, description, ogImage, themeColor, canonical }: PageMetaProps) => {
   useEffect(() => {
     const fullTitle = `${title} — ${BASE_TITLE}`;
-    const image = ogImage ?? BASE_OG_IMAGE;
+    // Garantisce sempre URL assoluti per og:image (richiesto dai crawler social)
+    const rawImage = ogImage ?? BASE_OG_IMAGE;
+    const image = rawImage.startsWith("http") ? rawImage : `${BASE_URL}${rawImage}`;
     const color = themeColor ?? "#080808";
 
     // Title
@@ -26,11 +30,24 @@ export const usePageMeta = ({ title, description, ogImage, themeColor }: PageMet
     // Meta description
     setMeta("name", "description", description);
 
+    // Canonical URL
+    const canonicalUrl = canonical ? `${BASE_URL}${canonical}` : null;
+    if (canonicalUrl) {
+      let canonicalEl = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+      if (!canonicalEl) {
+        canonicalEl = document.createElement("link");
+        canonicalEl.setAttribute("rel", "canonical");
+        document.head.appendChild(canonicalEl);
+      }
+      canonicalEl.setAttribute("href", canonicalUrl);
+    }
+
     // Open Graph
     setMeta("property", "og:title", fullTitle);
     setMeta("property", "og:description", description);
     setMeta("property", "og:image", image);
     setMeta("property", "og:type", "website");
+    if (canonicalUrl) setMeta("property", "og:url", canonicalUrl);
 
     // Twitter Card
     setMeta("name", "twitter:title", fullTitle);
@@ -45,7 +62,7 @@ export const usePageMeta = ({ title, description, ogImage, themeColor }: PageMet
     return () => {
       document.title = `${BASE_TITLE} — UX Design & Sviluppo Web`;
     };
-  }, [title, description, ogImage, themeColor]);
+  }, [title, description, ogImage, themeColor, canonical]);
 };
 
 // Helper: trova o crea un tag <meta> e ne imposta il content
@@ -58,3 +75,22 @@ function setMeta(attr: "name" | "property", key: string, value: string) {
   }
   el.setAttribute("content", value);
 }
+
+/**
+ * Inietta un blocco JSON-LD di structured data nel <head>.
+ * Usare in useEffect nelle pagine che necessitano di Schema.org.
+ * @example injectSchema({ "@type": "Person", "name": "Ilaria Diliberto" })
+ */
+export function injectSchema(data: Record<string, unknown>) {
+  const id = "schema-jsonld";
+  let el = document.getElementById(id) as HTMLScriptElement | null;
+  if (!el) {
+    el = document.createElement("script");
+    el.id = id;
+    el.type = "application/ld+json";
+    document.head.appendChild(el);
+  }
+  el.textContent = JSON.stringify({ "@context": "https://schema.org", ...data });
+  return () => { el?.parentNode?.removeChild(el!); };
+}
+

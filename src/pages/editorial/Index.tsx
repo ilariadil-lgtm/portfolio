@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 import { CreativeHero } from "@/components/CreativeHero";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
-import { usePageMeta } from "@/hooks/usePageMeta";
+import { usePageMeta, injectSchema } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
@@ -16,7 +16,31 @@ const Index = () => {
   usePageMeta({
     title: "Home",
     description: "Ilaria Diliberto — UX Designer e Web Developer. Progetto e costruisco ecosistemi digitali su misura: siti web, e-commerce e web app con estrema cura e precisione.",
+    canonical: "/",
   });
+
+  // Schema.org Person — migliora il knowledge panel Google
+  useEffect(() => {
+    const cleanup = injectSchema({
+      "@type": "Person",
+      name: "Ilaria Diliberto",
+      url: "https://ilariadiliberto.com",
+      jobTitle: "UX Designer & Web Developer",
+      description: "Designer editoriale e sviluppatrice web specializzata in ecosistemi digitali curati, dal bozzetto all'ultima riga di codice.",
+      image: "https://ilariadiliberto.com/assets/about-portrait.webp",
+      sameAs: [
+        "https://www.linkedin.com/in/ilaria-diliberto/",
+        "https://github.com/ilariadil-lgtm",
+        "https://www.instagram.com/ilariadiliberto_tech/"
+      ],
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "IT"
+      }
+    });
+    return cleanup;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [projects, setProjects] = useState<any[]>([]);
   const [services, setServices] = useState<any[]>([]);
@@ -34,7 +58,6 @@ const Index = () => {
         setServices(servData.results || servData);
       } catch (error) {
         console.error("Errore nel caricamento dei dati:", error);
-        console.warn("Utilizzo dati di fallback hardcoded per progetti e servizi. Rimuovere in produzione.");
       }
     };
     fetchData();

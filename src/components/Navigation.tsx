@@ -70,7 +70,7 @@ export const Navigation = () => {
             className="hover:opacity-80 transition-opacity"
             aria-label="Torna alla Home"
           >
-            <img loading="lazy" 
+            <img
               src={design === 'editorial' ? "/logo-editorial.webp" : "/logo-editorial-light.svg"} 
               alt="Ilaria Diliberto" 
               className={`w-48 md:w-64 h-auto object-contain shrink-0 ${design === 'editorial' ? '' : 'brightness-0 invert'}`}
@@ -104,21 +104,27 @@ export const Navigation = () => {
 
             <div className="flex items-center gap-4 border-l border-primary/20 pl-4">
               <button 
-                onClick={toggleMute} 
+                onClick={toggleMute}
+                aria-label={isMuted ? 'Attiva audio' : 'Disattiva audio'}
+                aria-pressed={!isMuted}
                 className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${isMuted ? 'text-foreground/40 hover:text-primary' : 'text-primary font-bold'}`}
               >
                 {isMuted ? 'SND: OFF' : 'SND: ON'}
               </button>
               <span className="text-primary/20 text-[11px]">|</span>
               <button 
-                onClick={() => changeLanguage('it')} 
+                onClick={() => changeLanguage('it')}
+                aria-label="Seleziona lingua italiana"
+                aria-pressed={i18n.language === 'it'}
                 className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'it' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
               >
                 IT
               </button>
-              <span className="text-primary/20 text-[11px]">|</span>
+              <span className="text-primary/20 text-[11px]" aria-hidden="true">|</span>
               <button 
-                onClick={() => changeLanguage('en')} 
+                onClick={() => changeLanguage('en')}
+                aria-label="Select English language"
+                aria-pressed={i18n.language === 'en'}
                 className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'en' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
               >
                 EN
@@ -141,13 +147,17 @@ export const Navigation = () => {
           <div className="md:hidden flex items-center gap-4">
             <div className="flex items-center gap-3 border-r border-primary/20 pr-4 mr-2">
               <button 
-                onClick={() => changeLanguage('it')} 
+                onClick={() => changeLanguage('it')}
+                aria-label="Seleziona lingua italiana"
+                aria-pressed={i18n.language === 'it'}
                 className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'it' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
               >
                 IT
               </button>
               <button 
-                onClick={() => changeLanguage('en')} 
+                onClick={() => changeLanguage('en')}
+                aria-label="Select English language"
+                aria-pressed={i18n.language === 'en'}
                 className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'en' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
               >
                 EN
