@@ -116,7 +116,7 @@ const NebulaFAQ = () => {
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
+    <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
       <NebulaNav />
       <ScrollIndicator sections={['scroll.hero', 'scroll.contact'].map(k => t(k))} />
 
@@ -138,7 +138,7 @@ const NebulaFAQ = () => {
               <div className="w-12 h-[1px] bg-[#d4af37]/30" />
             </div>
             
-            <h1 className="font-fraunces italic font-light text-[12vw] md:text-[8vw] lg:text-[7vw] leading-[0.9] tracking-tight text-white mb-8 pr-2">
+            <h1 className="font-fraunces italic font-light text-[12vw] md:text-[8vw] lg:text-[clamp(2rem,7vw,7rem)] leading-[0.9] tracking-tight text-white mb-8 pr-2">
               <RevealText text="FAQ" delay={0.1} className="not-italic font-bricolage pr-2" />
               <br />
               <RevealText text="& Info." delay={0.2} className="text-[#d4af37]" />

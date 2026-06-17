@@ -58,13 +58,13 @@ const Chisono = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f5f2ed] text-[#3d0f1a] overflow-hidden selection:bg-primary/30">
+    <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] overflow-hidden selection:bg-primary/30">
       <Navigation />
 
       {/* ═══════════════════════════════════════════════════════════════════
            HERO SECTION — CHI SONO
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="pt-32 md:pt-44 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden">
+      <section className="pt-44 md:pt-44 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden">
         {/* Background Grid Pattern */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#3d0f1a 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
@@ -93,7 +93,7 @@ const Chisono = () => {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, margin: "-50px" }}
-                  className="font-display text-[12vw] lg:text-[6.5vw] font-bold leading-[0.85] tracking-tighter text-[#3d0f1a] mb-8"
+                  className="font-display text-[12vw] lg:text-[clamp(2rem,6.5vw,6.5rem)] font-bold leading-[0.85] tracking-tighter text-[#3d0f1a] mb-8"
                 >
                   <span className="overflow-hidden inline-block py-3 -my-3">
                     <motion.span variants={wordVariants} className="inline-block origin-bottom-left">

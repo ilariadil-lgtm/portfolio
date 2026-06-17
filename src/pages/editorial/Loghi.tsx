@@ -182,13 +182,13 @@ export const EditorialLoghi = () => {
   });
 
   return (
-    <div className="min-h-screen bg-[#f5f2ed] text-[#3d0f1a] selection:bg-primary/30 font-body">
+    <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] selection:bg-primary/30 font-body">
       <Navigation />
 
       {/* ═══════════════════════════════════════════════════════════════════
            HERO SECTION
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-[50vh] flex items-center px-6 md:px-12 lg:px-24 overflow-hidden pt-36 pb-20 border-b border-[#3d0f1a]/10">
+      <section className="relative min-h-[50vh] flex items-center px-6 md:px-12 lg:px-24 overflow-hidden pt-48 md:pt-36 pb-20 border-b border-[#3d0f1a]/10">
         {/* Background Grid Pattern */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#3d0f1a 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
@@ -226,7 +226,7 @@ export const EditorialLoghi = () => {
                   initial={{ y: "100%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="block text-[8vw] lg:text-[5vw] font-bold text-[#3d0f1a]"
+                  className="block text-[8vw] lg:text-[clamp(2rem,5vw,5rem)] font-bold text-[#3d0f1a]"
                 >
                   Branding & <span className="text-primary italic pr-2">Loghi</span>.
                 </motion.span>

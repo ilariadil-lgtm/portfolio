@@ -26,13 +26,13 @@ export const EditorialViniGambino = () => {
   const techList = ["UI/UX & Graphic Layout", "WordPress Environment", "Hospitality & E-commerce", "Visual Storytelling"];
 
   return (
-    <div className="min-h-screen bg-[#f5f2ed] text-[#3d0f1a] selection:bg-primary/30 font-body">
+    <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] selection:bg-primary/30 font-body">
       <Navigation />
 
       {/* ═══════════════════════════════════════════════════════════════════
            HERO — Stile Portfolio Ilaria
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-[100vh] flex items-center px-6 md:px-12 lg:px-24 overflow-hidden bg-[#f5f2ed]">
+      <section className="relative lg:min-h-[100svh] flex items-start lg:items-center pt-40 md:pt-48 lg:pt-0 pb-20 md:pb-32 lg:pb-0 px-6 md:px-12 lg:px-24 overflow-hidden bg-[#f5f2ed]">
         {/* Background Grid Pattern */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#3d0f1a 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
@@ -73,7 +73,7 @@ export const EditorialViniGambino = () => {
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
                     transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="block text-[10vw] lg:text-[5vw] font-bold text-[#3d0f1a] whitespace-nowrap pr-4"
+                    className="block text-[10vw] lg:text-[clamp(2rem,5vw,5rem)] font-bold text-[#3d0f1a] whitespace-nowrap pr-4"
                     style={{ y: y1 }}
                   >
                     Vini <span className="text-primary italic pr-2">Gambino</span><span className="text-[#3d0f1a] not-italic pr-2">.</span>
@@ -210,7 +210,7 @@ export const EditorialViniGambino = () => {
                   "/assets/projects/vini-gambino/vino2.webp",
                   "/assets/projects/vini-gambino/raggiungici.webp"
                 ].map((src, idx) => (
-                  <div key={idx} className="shrink-0 w-[85%] md:w-[70%] h-[400px] lg:h-full snap-center bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] overflow-hidden group">
+                  <div key={idx} className="shrink-0 w-[85%] md:w-[70%] h-[300px] md:h-[400px] lg:h-full snap-center bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] overflow-hidden group">
                     <img
                       src={src}
                       alt={`Vini Gambino Process ${idx + 1}`}

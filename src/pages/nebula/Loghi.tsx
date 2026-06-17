@@ -182,7 +182,7 @@ export const NebulaLoghi = () => {
   });
 
   return (
-    <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
+    <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
       <NebulaNav />
       <ScrollIndicator sections={['scroll.hero', 'scroll.contact'].map(k => t(k))} />
 
@@ -216,12 +216,12 @@ export const NebulaLoghi = () => {
               <RevealText 
                 text="BRANDING &" 
                 delay={0.1} 
-                className="font-bricolage font-black tracking-tighter text-6xl md:text-8xl lg:text-[7vw] leading-[0.9] text-white uppercase" 
+                className="font-bricolage font-black tracking-tighter text-6xl md:text-8xl lg:text-[clamp(2rem,7vw,7rem)] leading-[0.9] text-white uppercase" 
               />
               <RevealText 
                 text="Loghi." 
                 delay={0.2} 
-                className="font-fraunces italic font-light tracking-tight text-6xl md:text-8xl lg:text-[7vw] leading-[0.9] text-[#d4af37] pr-2" 
+                className="font-fraunces italic font-light tracking-tight text-6xl md:text-8xl lg:text-[clamp(2rem,7vw,7rem)] leading-[0.9] text-[#d4af37] pr-2" 
               />
             </div>
             

@@ -93,11 +93,11 @@ const NebulaIndex = () => {
   const displayProjects = projects.length > 0 ? projects.slice(0, 3) : fallbackProjects;
 
   return (
-    <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
+    <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
       <NebulaNav />
       <ScrollIndicator sections={['scroll.hero', 'scroll.about', 'scroll.work', 'scroll.metrics', 'scroll.skills', 'scroll.contact'].map(k => t(k))} />
 
-      <main className="relative z-10 w-full min-h-screen flex flex-col">
+      <main className="relative z-10 w-full min-h-[100dvh] flex flex-col">
         
         {/* SFONDO 3D GLOBALE IMMERSIVO (Awwwards Style) */}
         <div className="fixed inset-0 pointer-events-none z-0">
@@ -135,7 +135,7 @@ const NebulaIndex = () => {
         {/* HERO SECTION */}
         <motion.section 
           style={{ y: yParallax, opacity: opacityParallax }}
-          className="relative min-h-[90vh] flex items-center pt-32 pb-20 overflow-hidden snap-start"
+          className="relative lg:min-h-[90vh] flex items-start lg:items-center pt-40 lg:pt-32 pb-20 overflow-hidden snap-start"
         >
 
 
@@ -152,19 +152,17 @@ const NebulaIndex = () => {
                   </span>
                 </div>
                 
-                <div className="flex flex-wrap items-baseline gap-x-6 pb-4">
-                  <KineticText 
-                    text="Ilaria" 
-                    delay={0.1} 
-                    mode="char"
-                    className="font-bricolage font-bold tracking-wider text-5xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-white whitespace-nowrap" 
-                  />
-                  <KineticText 
-                    text="Diliberto." 
-                    delay={0.6} 
-                    mode="char"
-                    className="font-fraunces italic font-light tracking-wider text-5xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap pr-2" 
-                  />
+                <div className="flex flex-row flex-nowrap items-baseline gap-x-2 md:gap-x-4 pb-4 w-full overflow-hidden">
+                  <RevealText 
+                  text={t('index.hero_title_1')} 
+                  delay={0.1} 
+                  className="font-bricolage font-bold tracking-wider text-[clamp(1.75rem,6.5vw,5rem)] md:text-fluid-h1 leading-[1.1] text-white whitespace-nowrap" 
+                />
+                <RevealText 
+                  text={t('index.hero_title_2')} 
+                  delay={0.2} 
+                  className="font-fraunces italic font-light tracking-wider text-[clamp(1.75rem,6.5vw,5rem)] md:text-fluid-h1 leading-[1.1] text-[#d4af37] whitespace-nowrap pr-2" 
+                />
                 </div>
               </div>
 

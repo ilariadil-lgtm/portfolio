@@ -22,7 +22,7 @@ import { SoundProvider } from "./context/SoundContext";
 const queryClient = new QueryClient();
 
 const PageFallback = ({ isEditorial }: { isEditorial: boolean }) => (
-  <div className={`min-h-screen ${isEditorial ? 'bg-background' : 'bg-[#0a0a0a]'}`} aria-hidden="true" />
+  <div className={`min-h-[100dvh] ${isEditorial ? 'bg-background' : 'bg-[#0a0a0a]'}`} aria-hidden="true" />
 );
 
 // ─────────────────────────────────────────────────────────────────────────────

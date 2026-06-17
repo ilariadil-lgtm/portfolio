@@ -106,7 +106,7 @@ const FAQ = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#f5f2ed] text-[#3d0f1a] overflow-hidden selection:bg-primary/30">
+    <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] overflow-hidden selection:bg-primary/30">
       <Navigation />
 
       {/* HERO */}

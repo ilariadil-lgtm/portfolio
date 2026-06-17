@@ -215,13 +215,13 @@ export const CreativeHero: React.FC = () => {
 
 
   return (
-    <section className="relative min-h-[100vh] flex items-center px-6 md:px-12 lg:px-20 overflow-hidden bg-[#f5f2ed]">
+    <section className="relative lg:min-h-[100svh] flex flex-col justify-start lg:justify-center pt-32 md:pt-40 lg:pt-0 pb-16 md:pb-24 lg:pb-0 px-6 md:px-12 lg:px-20 bg-[#f5f2ed]">
       {/* BACKGROUND INFRASTRUCTURE */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#3d0f1a 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-8 lg:gap-12 items-center relative z-10 max-w-screen-2xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-16 md:gap-24 lg:gap-12 items-center relative z-10 max-w-screen-2xl mx-auto">
         <div className="lg:col-span-5 flex flex-col justify-center relative z-20">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
             <div className="overflow-hidden mb-4">
@@ -229,30 +229,30 @@ export const CreativeHero: React.FC = () => {
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="font-typewriter text-[14px] uppercase text-primary font-medium tracking-[0.3em] block"
+                className="font-typewriter text-[9px] sm:text-[10px] md:text-[14px] uppercase text-primary font-medium tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.3em] block"
               >
                 {t('hero.tags')}
               </motion.span>
             </div>
 
-            <h1 className="relative font-display leading-[0.85] tracking-tighter">
-              <motion.div style={{ y: y1 }} className="overflow-hidden">
+            <h1 className="relative font-display leading-[0.95] tracking-tighter flex flex-wrap items-baseline gap-x-2 md:gap-x-4 lg:gap-x-6 w-full">
+              <motion.div style={{ y: y1 }} className="overflow-hidden pb-2 md:pb-4">
                 <KineticText 
                   text="ilaria" 
                   delay={0.2} 
                   mode="char"
-                  className="block text-[clamp(3.5rem,14vw,8rem)] lg:text-[8.5vw] font-bold text-[#3d0f1a]"
+                  className="inline-block text-[clamp(2.5rem,10vw,6rem)] md:text-[clamp(4rem,8vw,8rem)] font-bold text-[#3d0f1a]"
                 />
               </motion.div>
-              <motion.div style={{ y: y1 }} className="overflow-hidden -mt-2 lg:-mt-4">
+              <motion.div style={{ y: y1 }} className="overflow-hidden mt-0 md:-mt-2 lg:-mt-4 pb-4 md:pb-8 flex-shrink-0">
                 <div className="flex items-baseline">
                   <KineticText 
                     text="diliberto" 
                     delay={0.6} 
                     mode="char"
-                    className="block text-[clamp(3.5rem,14vw,8rem)] lg:text-[8.5vw] font-bold text-primary italic pr-2"
+                    className="inline-block text-[clamp(2.5rem,10vw,6rem)] md:text-[clamp(4rem,8vw,8rem)] font-bold text-primary italic"
                   />
-                  <span className="block text-[clamp(3.5rem,14vw,8rem)] lg:text-[8.5vw] font-bold text-[#3d0f1a] not-italic leading-none translate-y-2 pr-2">.</span>
+                  <span className="inline-block text-[clamp(2.5rem,10vw,6rem)] md:text-[clamp(4rem,8vw,8rem)] font-bold text-[#3d0f1a] not-italic leading-none translate-y-1 md:translate-y-2">.</span>
                 </div>
               </motion.div>
             </h1>
@@ -271,14 +271,13 @@ export const CreativeHero: React.FC = () => {
         </div>
 
         {/* ── SVG Graphic column ── */}
-        <div className="lg:col-span-7 relative z-50 flex justify-center items-center h-[300px] sm:h-[400px] lg:h-[700px] perspective-1000">
+        <div className="lg:col-span-7 relative z-50 flex justify-center items-center h-[350px] sm:h-[450px] lg:h-[700px] perspective-1000">
           <motion.div
             className="relative aspect-square w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[580px]"
             onMouseEnter={() => setIsGraphicHovered(true)}
             onMouseLeave={() => setIsGraphicHovered(false)}
             style={{
               y: y2,
-              opacity,
               rotateX: tiltX,
               rotateY: tiltY,
               transformStyle: "preserve-3d"
@@ -385,7 +384,7 @@ export const CreativeHero: React.FC = () => {
       </div>
 
       <motion.div
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-4"
         style={{ opacity }}
       >
         <span className="font-typewriter text-[12px] uppercase tracking-[0.5em] text-primary font-medium">{t('hero.explore')}</span>

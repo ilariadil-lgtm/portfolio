@@ -401,7 +401,7 @@ const Servizi = () => {
   const displayServices = services.length > 0 ? services : fallbackServices;
 
   return (
-    <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
+    <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
       <NebulaNav />
       <ScrollIndicator sections={['scroll.hero', 'scroll.services', 'scroll.process', 'scroll.contact'].map(k => t(k))} />
 
@@ -453,12 +453,12 @@ const Servizi = () => {
                   <RevealText 
                     text={t("services.title_1", "I MIEI")} 
                     delay={0.1} 
-                    className="font-bricolage font-bold tracking-wider text-5xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-white whitespace-nowrap uppercase" 
+                    className="font-bricolage font-bold tracking-wider text-fluid-h1 leading-[1.1] text-white whitespace-nowrap uppercase" 
                   />
                   <RevealText 
-                    text="servizi." 
+                    text={t("services.title_2", "servizi.")} 
                     delay={0.2} 
-                    className="font-fraunces italic font-light tracking-wider text-5xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap pr-2" 
+                    className="font-fraunces italic font-light tracking-wider text-fluid-h1 leading-[1.1] text-[#d4af37] whitespace-nowrap pr-2" 
                   />
                 </div>
               </motion.div>

@@ -93,7 +93,7 @@ const Index = () => {
   const displayProjects = projects.length > 0 ? projects.slice(0, 3) : fallbackProjects;
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-hidden selection:bg-primary/30">
+    <div className="min-h-[100dvh] bg-background text-foreground overflow-hidden selection:bg-primary/30">
       <Navigation />
 
       {/* ═══════════════════════════════════════════════════════════════════
@@ -104,7 +104,7 @@ const Index = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            TRI-LAYER CINEMATIC MARQUEE — CREATIVE PRO
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative pb-32 border-b border-editorial overflow-hidden bg-[#f5f2ed]">
+      <section className="relative pb-40 md:pb-32 border-b border-editorial overflow-hidden bg-[#f5f2ed]">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -114,34 +114,34 @@ const Index = () => {
           <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(#3d0f1a 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
         </motion.div>
 
-        <div className="flex whitespace-nowrap overflow-hidden -rotate-2 opacity-5 pointer-events-none">
+        <div className="flex whitespace-nowrap -rotate-2 opacity-5 pointer-events-none py-8">
           <motion.div
             animate={{ x: ["0%", "-50%"] }}
             transition={{ duration: 25, repeat: Infinity, ease: "linear", repeatType: "loop" }}
-            className="flex gap-16 font-display text-[12vw] font-black text-stroke-primary text-transparent whitespace-nowrap"
+            className="flex gap-16 font-display text-[12vw] font-black text-stroke-primary text-transparent whitespace-nowrap leading-normal"
           >
-            <span>{t('index.marquee_1')}</span>
-            <span>{t('index.marquee_1')}</span>
+            <span className="pb-4">{t('index.marquee_1')}</span>
+            <span className="pb-4">{t('index.marquee_1')}</span>
           </motion.div>
         </div>
-        <div className="relative z-10 flex whitespace-nowrap overflow-hidden rotate-1 scale-110 -mt-24 md:-mt-32">
+        <div className="relative z-10 flex whitespace-nowrap rotate-1 scale-110 -mt-32 md:-mt-40 py-8">
           <motion.div
             animate={{ x: ["-50%", "0%"] }}
             transition={{ duration: 18, repeat: Infinity, ease: "linear", repeatType: "loop" }}
-            className="flex gap-12 font-display text-[6vw] font-bold text-primary mix-blend-multiply opacity-90 whitespace-nowrap"
+            className="flex gap-12 font-display text-[6vw] font-bold text-primary mix-blend-multiply opacity-90 whitespace-nowrap leading-normal"
           >
-            <span>{t('index.marquee_2')}</span>
-            <span>{t('index.marquee_2')}</span>
+            <span className="pb-4">{t('index.marquee_2')}</span>
+            <span className="pb-4">{t('index.marquee_2')}</span>
           </motion.div>
         </div>
-        <div className="relative z-20 flex whitespace-nowrap overflow-hidden -rotate-1 scale-105 mt-2 md:mt-4">
+        <div className="relative z-20 flex whitespace-nowrap -rotate-1 scale-105 mt-2 md:mt-4 py-8">
             <motion.div
               animate={{ x: ["0%", "-50%"] }}
               transition={{ duration: 12, repeat: Infinity, ease: "linear", repeatType: "loop" }}
-              className="flex gap-20 font-typewriter text-[13px] uppercase tracking-[0.5em] text-primary font-medium whitespace-nowrap"
+              className="flex gap-20 font-typewriter text-[13px] uppercase tracking-[0.5em] text-primary font-medium whitespace-nowrap leading-normal"
             >
-              <span>{t('index.marquee_3')}</span>
-              <span>{t('index.marquee_3')}</span>
+              <span className="pb-4">{t('index.marquee_3')}</span>
+              <span className="pb-4">{t('index.marquee_3')}</span>
             </motion.div>
         </div>
       </section>
@@ -190,7 +190,7 @@ const Index = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 1.1, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                  className={`font-display text-4xl md:text-6xl lg:text-[4vw] font-bold leading-[0.95] tracking-tight ${i === 2 ? 'text-primary italic' : 'text-[#3d0f1a]'}`}
+                  className={`font-display text-4xl md:text-6xl lg:text-[clamp(2rem,4vw,4rem)] font-bold leading-[0.95] tracking-tight ${i === 2 ? 'text-primary italic' : 'text-[#3d0f1a]'}`}
                 >
                   {line}
                 </motion.h2>
@@ -302,7 +302,7 @@ const Index = () => {
               <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">{t('index.skills_label')}</span>
               <div className="w-12 h-[1px] bg-primary/20" />
             </div>
-            <h2 className="font-display text-5xl md:text-8xl lg:text-[6vw] font-bold leading-[0.85] tracking-tighter text-[#3d0f1a] mb-12">
+            <h2 className="font-display text-5xl md:text-8xl lg:text-[clamp(2rem,6vw,6rem)] font-bold leading-[0.85] tracking-tighter text-[#3d0f1a] mb-12">
               {t('index.skills_title_1')} <br />
               <span className="text-primary italic pr-2">{t('index.skills_title_2')}</span>
             </h2>
@@ -324,8 +324,8 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-7 relative flex justify-center items-center h-[500px] md:h-[700px]">
-            <div className="relative w-full max-w-[500px] aspect-square">
+          <div className="lg:col-span-7 flex flex-col justify-center items-center py-16 md:py-0 md:h-[700px]">
+            <div className="relative w-full max-w-[280px] sm:max-w-[380px] md:max-w-[500px] aspect-square mx-auto mb-20 md:mb-0">
               <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
                 {[20, 40, 60, 80, 100].map((r, i) => (
                   <circle key={i} cx="50" cy="50" r={r / 2} fill="none" stroke="currentColor" strokeWidth="0.1" className="text-primary/20" />
@@ -359,14 +359,14 @@ const Index = () => {
                 let layoutClass = "";
                 let transformStr = "";
                 if (l.type === "vertical") {
-                  layoutClass = "flex flex-col items-center gap-2";
-                  transformStr = "translate(-50%, -3px)";
+                  layoutClass = l.top === "0%" ? "flex flex-col-reverse items-center gap-3" : "flex flex-col items-center gap-3";
+                  transformStr = l.top === "0%" ? "translate(-50%, -100%)" : "translate(-50%, 0%)";
                 } else if (l.type === "right") {
-                  layoutClass = "flex flex-row items-center gap-2";
-                  transformStr = "translate(-3px, -50%)";
+                  layoutClass = "flex flex-row items-center gap-3";
+                  transformStr = "translate(0%, -50%)";
                 } else {
-                  layoutClass = "flex flex-row-reverse items-center gap-2";
-                  transformStr = "translate(calc(-100% + 3px), -50%)";
+                  layoutClass = "flex flex-row-reverse items-center gap-3";
+                  transformStr = "translate(-100%, -50%)";
                 }
 
                 return (
@@ -376,14 +376,36 @@ const Index = () => {
                     style={{ top: l.top, left: l.left, transform: transformStr }}
                   >
                     <div className="w-1.5 h-1.5 rounded-full bg-primary/80" />
-                    <span className="font-typewriter text-[11px] uppercase tracking-[0.2em] text-primary font-medium whitespace-nowrap bg-[#f5f2ed]/90 backdrop-blur-sm px-3 py-1.5 border border-primary/20 shadow-sm">
+                    <span className="font-typewriter text-[11px] uppercase tracking-[0.2em] text-primary font-medium whitespace-nowrap bg-[#f5f2ed]/90 backdrop-blur-sm px-3 py-1.5 border border-primary/20 shadow-sm hidden lg:block">
                       {l.label}
+                    </span>
+                    <span className="font-typewriter text-[12px] uppercase text-primary font-bold bg-[#f5f2ed]/98 backdrop-blur-sm w-7 h-7 flex items-center justify-center border border-primary/20 shadow-[0_4px_10px_rgba(61,15,26,0.1)] rounded-full lg:hidden">
+                      {i + 1}
                     </span>
                   </div>
                 );
               })}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 border border-primary/10 rounded-full flex items-center justify-center pointer-events-none">
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              </div>
+            </div>
+
+            {/* Mobile Legend for Radar Chart */}
+            <div className="flex justify-center lg:hidden w-full px-2 sm:px-6 mt-16 md:mt-24">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-[400px] md:max-w-[600px]">
+                {[
+                  t('index.radar_1'),
+                  t('index.radar_2'),
+                  t('index.radar_3'),
+                  t('index.radar_4'),
+                  t('index.radar_5'),
+                  t('index.radar_6')
+                ].map((label, i) => (
+                  <div key={i} className="flex items-center gap-3 bg-white p-3 border border-[#3d0f1a] shadow-[6px_6px_0px_rgba(61,15,26,0.05)]">
+                    <span className="font-display text-[14px] text-primary font-bold bg-primary/5 w-6 h-6 flex items-center justify-center rounded-full shrink-0">{i + 1}</span>
+                    <span className="font-typewriter text-[9px] uppercase tracking-widest text-[#3d0f1a]/80 leading-tight">{label}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -400,7 +422,7 @@ const Index = () => {
               <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">{t('index.projects_label')}</span>
               <div className="w-12 h-[1px] bg-primary/20" />
             </div>
-            <h2 className="font-display text-5xl md:text-8xl lg:text-[7vw] font-bold leading-none tracking-tighter">
+            <h2 className="font-display text-5xl md:text-8xl lg:text-[clamp(2rem,7vw,7rem)] font-bold leading-none tracking-tighter">
               {t('index.projects_title_1')} <br />
               <span className="text-primary italic pr-2">{t('index.projects_title_2')}</span>
             </h2>

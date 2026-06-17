@@ -252,14 +252,14 @@ const Servizi = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f5f2ed] text-[#3d0f1a] overflow-hidden selection:bg-primary/30">
+    <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] overflow-hidden selection:bg-primary/30">
       <Navigation />
 
 
       {/* ═══════════════════════════════════════════════════════════════════
            HERO SECTION — SERVICES GATEWAY
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="pt-32 md:pt-48 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden">
+      <section className="pt-44 md:pt-48 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden">
         {/* Background Watermark */}
         <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center opacity-[0.02] pointer-events-none">
           <span className="font-display text-[20vw] font-black uppercase tracking-tighter">{t('services.watermark')}</span>
@@ -280,7 +280,7 @@ const Servizi = () => {
                   <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium">{t('services.what_i_offer')}</span>
                   <div className="w-12 h-[1px] bg-primary/20" />
                 </div>
-                <h1 className="font-display text-[9.5vw] lg:text-[6.2vw] font-bold leading-[0.85] tracking-tighter text-[#3d0f1a]">
+                <h1 className="font-display text-[9.5vw] lg:text-[clamp(2rem,6.2vw,6.2rem)] font-bold leading-[0.85] tracking-tighter text-[#3d0f1a]">
                   <RevealText text={t('services.title_1')} delay={0.1} />
                   <RevealText text={t('services.title_2')} delay={0.2} className="text-primary italic pr-2" />
                 </h1>

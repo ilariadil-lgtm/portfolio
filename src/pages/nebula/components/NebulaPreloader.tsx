@@ -18,12 +18,7 @@ export const NebulaPreloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   }, [active, realProgress]);
 
   useEffect(() => {
-    const isReducedMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (isReducedMotion) {
-      setIsExiting(true);
-      onComplete();
-      return;
-    }
+    // Rimosso check prefers-reduced-motion per garantire che l'animazione funzioni sempre
 
     let current = 0;
     const interval = setInterval(() => {
@@ -62,12 +57,12 @@ export const NebulaPreloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           initial={{ y: 0 }}
           exit={{ y: "-100%" }}
           transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#020202] overflow-hidden"
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-start pt-64 lg:justify-center lg:pt-0 bg-[#020202] overflow-hidden"
         >
           {/* Subtle noise */}
           <div className="absolute inset-0 pointer-events-none opacity-[0.2] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" style={{ mixBlendMode: 'overlay' }} />
 
-          <div className="relative z-20 w-full px-8 md:px-24 flex flex-col items-center justify-center h-full">
+          <div className="relative z-20 w-full px-8 md:px-24 flex flex-col items-center justify-start lg:justify-center h-full">
             <motion.div
               initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
@@ -78,10 +73,10 @@ export const NebulaPreloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 ogni pixel conta.
               </span>
               <div className="flex items-baseline gap-x-3 md:gap-x-4">
-                <span className="font-bricolage font-bold text-5xl md:text-7xl lg:text-[7vw] tracking-wider text-white">
+                <span className="font-bricolage font-bold text-5xl md:text-7xl lg:text-[clamp(2rem,7vw,7rem)] tracking-wider text-white">
                   ilaria
                 </span>
-                <span className="font-fraunces italic font-light text-5xl md:text-7xl lg:text-[7vw] tracking-wider text-[#d4af37] pr-2">
+                <span className="font-fraunces italic font-light text-5xl md:text-7xl lg:text-[clamp(2rem,7vw,7rem)] tracking-wider text-[#d4af37] pr-2">
                   diliberto.
                 </span>
               </div>

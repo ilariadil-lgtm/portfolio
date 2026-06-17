@@ -69,7 +69,7 @@ export const NebulaProjectLayout = ({
   }
 
   return (
-    <div className="min-h-screen w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 flex flex-col relative overflow-hidden md:pl-20">
+    <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 flex flex-col relative overflow-hidden md:pl-20">
       <NebulaNav />
 
       {/* ═════════════════════════════════════════════════════
@@ -100,8 +100,7 @@ export const NebulaProjectLayout = ({
         <div className="absolute inset-0 opacity-[0.25] mix-blend-overlay" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }} />
       </div>
 
-      {/* Hero Section */}
-      <section className="relative pt-40 md:pt-56 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden min-h-[60vh] flex flex-col justify-end border-b border-white/5 z-10">
+      <section className="relative pt-40 md:pt-56 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden lg:min-h-[60vh] flex flex-col justify-start lg:justify-end border-b border-white/5 z-10">
         <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col items-start">
           
           <Link to="/progetti" className="group flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37] hover:text-white transition-colors mb-12 bg-[#d4af37]/5 px-4 py-2 border border-[#d4af37]/20 rounded-full backdrop-blur-md">
@@ -126,14 +125,14 @@ export const NebulaProjectLayout = ({
                  <RevealText 
                    text={finalTitleStart} 
                    delay={0.1} 
-                   className="font-bricolage font-black tracking-tighter text-5xl md:text-8xl lg:text-[7vw] leading-[0.9] text-white uppercase" 
+                   className="font-bricolage font-black tracking-tighter text-5xl md:text-8xl lg:text-[clamp(2rem,7vw,7rem)] leading-[0.9] text-white uppercase" 
                  />
                )}
                {finalTitleEnd && (
                  <RevealText 
                    text={finalTitleEnd} 
                    delay={0.2} 
-                   className="font-fraunces italic font-light tracking-tight text-5xl md:text-8xl lg:text-[7vw] leading-[0.9] text-[#d4af37] pr-2" 
+                   className="font-fraunces italic font-light tracking-tight text-5xl md:text-8xl lg:text-[clamp(2rem,7vw,7rem)] leading-[0.9] text-[#d4af37] pr-2" 
                  />
                )}
             </div>

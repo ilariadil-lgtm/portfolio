@@ -97,6 +97,12 @@
     position: relative;
   }
 
+  #root {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
   /* Noise overlay for material feel */
   body::before {
     content: '';
@@ -217,5 +223,16 @@
   .img-editorial:hover {
     transform: scale(1.05);
     filter: grayscale(0) brightness(1.05);
+  }
+
+  /* Fluid Typography for perfect 10/10 responsive text scaling */
+  .text-fluid-h1 {
+    font-size: clamp(2.5rem, 7vw, 6rem); /* 40px min, ~112px max su 1600px */
+  }
+  .text-fluid-h2 {
+    font-size: clamp(2rem, 5vw, 4.5rem); /* 32px min, ~72px max su 1600px */
+  }
+  .text-fluid-h3 {
+    font-size: clamp(1.75rem, 4vw, 3.5rem); /* 28px min, ~56px max su 1600px */
   }
 }

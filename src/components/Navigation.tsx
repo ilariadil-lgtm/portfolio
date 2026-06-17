@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useSound } from "../context/SoundContext";
 import { useDesign } from "../context/DesignContext";
@@ -31,13 +31,13 @@ export const Navigation = () => {
     playClick();
   };
 
+  const { scrollY } = useScroll();
+
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    return scrollY.on("change", (latest) => {
+      setScrolled(latest > 50);
+    });
+  }, [scrollY]);
 
   useEffect(() => {
     setIsOpen(false);
@@ -53,16 +53,16 @@ export const Navigation = () => {
     <>
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
-          scrolled ? "py-4" : "py-6"
+          scrolled ? "pt-[calc(env(safe-area-inset-top)+1rem)] pb-4" : "pt-[calc(env(safe-area-inset-top)+1.5rem)] pb-6"
         }`}
       >
         <motion.div 
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className={`mx-auto px-6 py-4 flex items-center justify-between transition-all duration-500 ${
+          className={`mx-auto flex items-center justify-between transition-all duration-500 ${
             scrolled 
-              ? "max-w-[1200px] bg-background/80 backdrop-blur-xl border border-primary/5 shadow-2xl rounded-full" 
-              : "max-w-full px-8 md:px-16 lg:px-24"
+              ? "max-w-[1200px] w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] px-6 py-4 bg-[#f5f2ed] border border-primary/10 shadow-[0_20px_40px_-15px_rgba(61,15,26,0.2)] rounded-full" 
+              : "max-w-full px-6 py-4 md:px-16 lg:px-24"
           }`}
         >
           <Link 
@@ -78,7 +78,7 @@ export const Navigation = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden lg:flex items-center gap-10">
             <nav className="flex items-center gap-8" aria-label="Navigazione principale">
               {navItems.map((item) => (
                 <Link
@@ -144,25 +144,7 @@ export const Navigation = () => {
           </div>
 
           {/* Mobile Toggle */}
-          <div className="md:hidden flex items-center gap-4">
-            <div className="flex items-center gap-3 border-r border-primary/20 pr-4 mr-2">
-              <button 
-                onClick={() => changeLanguage('it')}
-                aria-label="Seleziona lingua italiana"
-                aria-pressed={i18n.language === 'it'}
-                className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'it' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
-              >
-                IT
-              </button>
-              <button 
-                onClick={() => changeLanguage('en')}
-                aria-label="Select English language"
-                aria-pressed={i18n.language === 'en'}
-                className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'en' ? 'text-primary font-bold' : 'text-foreground/40 hover:text-primary'}`}
-              >
-                EN
-              </button>
-            </div>
+          <div className="lg:hidden flex items-center gap-4">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="w-12 h-12 flex items-center justify-center text-primary"
@@ -187,7 +169,7 @@ export const Navigation = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%" }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 bg-background flex flex-col items-center justify-center"
+            className="fixed inset-0 z-40 bg-background flex flex-col items-center justify-start pt-32 md:pt-40 overflow-y-auto"
           >
             <div className="flex flex-col items-center gap-10 text-center">
               {navItems.map((item, i) => (
@@ -220,6 +202,30 @@ export const Navigation = () => {
                 >
                   {t('nav.contact')}
                 </Link>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 + (navItems.length + 1) * 0.07, duration: 0.5 }}
+                className="flex items-center gap-6 mt-4"
+              >
+                <button 
+                  onClick={() => changeLanguage('it')}
+                  aria-label="Seleziona lingua italiana"
+                  aria-pressed={i18n.language === 'it'}
+                  className={`font-body text-[13px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'it' ? 'text-primary font-bold' : 'text-[#3d0f1a]/50 hover:text-primary'}`}
+                >
+                  IT
+                </button>
+                <span className="text-primary/20 text-[13px]" aria-hidden="true">|</span>
+                <button 
+                  onClick={() => changeLanguage('en')}
+                  aria-label="Select English language"
+                  aria-pressed={i18n.language === 'en'}
+                  className={`font-body text-[13px] uppercase tracking-[0.2em] transition-all ${i18n.language === 'en' ? 'text-primary font-bold' : 'text-[#3d0f1a]/50 hover:text-primary'}`}
+                >
+                  EN
+                </button>
               </motion.div>
             </div>
           </motion.div>

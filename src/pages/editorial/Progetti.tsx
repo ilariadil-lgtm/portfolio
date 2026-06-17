@@ -265,7 +265,7 @@ const Progetti = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#f5f2ed] flex items-center justify-center">
+      <div className="min-h-[100dvh] bg-[#f5f2ed] flex items-center justify-center">
         <motion.div
           animate={{ opacity: [0.3, 0.8, 0.3] }}
           transition={{ duration: 1.5, repeat: Infinity }}
@@ -278,13 +278,13 @@ const Progetti = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#f5f2ed] text-[#3d0f1a] overflow-hidden selection:bg-primary/30">
+    <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] overflow-hidden selection:bg-primary/30">
       <Navigation />
 
       {/* ═══════════════════════════════════════════════════════════════════
            HERO
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative pt-32 md:pt-48 pb-16 px-6 md:px-12 lg:px-24 overflow-hidden">
+      <section className="relative pt-44 md:pt-48 pb-16 px-6 md:px-12 lg:px-24 overflow-hidden">
         {/* Background Grid Pattern */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#3d0f1a 1px, transparent 1px)', backgroundSize: '60px 60px' }} />

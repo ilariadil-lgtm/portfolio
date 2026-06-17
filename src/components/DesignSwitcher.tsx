@@ -13,6 +13,11 @@ export const DesignSwitcher = () => {
       // Small delay so it appears smoothly after page load
       const timer = setTimeout(() => {
         setShowTooltip(true);
+        // Auto-hide after 5 seconds to prevent overlapping content permanently on mobile
+        setTimeout(() => {
+          setShowTooltip(false);
+          localStorage.setItem("hasSeenSwitcherTooltip", "true");
+        }, 5000);
       }, 3000);
       return () => clearTimeout(timer);
     }

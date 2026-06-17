@@ -14,10 +14,10 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-background text-primary overflow-hidden selection:bg-primary/30">
+    <div className="min-h-[100dvh] bg-background text-primary overflow-hidden selection:bg-primary/30">
       <Navigation />
 
-      <section className="min-h-screen flex flex-col items-center justify-center px-6 relative overflow-hidden">
+      <section className="min-h-[100dvh] flex flex-col items-center justify-center px-6 relative overflow-hidden">
         {/* Watermark di sfondo */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
           <span

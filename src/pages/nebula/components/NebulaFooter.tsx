@@ -27,10 +27,10 @@ export const NebulaFooter = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="relative bg-black text-white/50 py-16 md:py-24 px-6 md:px-12 lg:px-24 overflow-hidden border-t border-[#d4af37]/20 snap-start"
+      className="relative bg-black text-white/50 pt-16 md:pt-24 pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-[calc(6rem+env(safe-area-inset-bottom))] px-6 md:px-12 lg:px-24 overflow-hidden border-t border-[#d4af37]/20 snap-start"
     >
       {/* Background glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-white/5 blur-[150px] rounded-t-full pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] max-w-[100vw] h-[300px] bg-white/5 blur-[150px] rounded-t-full pointer-events-none" />
       
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24 relative z-10">
         

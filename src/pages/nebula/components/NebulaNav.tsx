@@ -37,7 +37,7 @@ export const NebulaNav = () => {
       {/* 
         DESKTOP HUD (Left Sidebar) 
       */}
-      <nav className="hidden md:flex flex-col items-start justify-between fixed left-0 top-0 bottom-0 w-20 hover:w-56 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-[100] bg-[#050505] border-r border-white/5 overflow-hidden group/nav py-8">
+      <nav className="hidden lg:flex flex-col items-start justify-between fixed left-0 top-0 bottom-0 w-20 hover:w-56 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-[100] bg-[#050505] border-r border-white/5 overflow-hidden group/nav py-8">
         
         {/* Top Logo */}
         <div className="w-full flex justify-center mb-12 h-10 px-4">
@@ -117,7 +117,7 @@ export const NebulaNav = () => {
       {/* 
         MOBILE HUD (Bottom Dock) 
       */}
-      <div className="md:hidden fixed left-6 right-6 z-[100]" style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}>
+      <div className="lg:hidden fixed left-6 right-6 z-[100]" style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}>
         <nav className="flex items-center justify-between bg-[#050505]/80 backdrop-blur-3xl border border-white/10 rounded-[2rem] shadow-[0_0_40px_rgba(255,255,255,0.05)] px-4 py-3">
           <Link to="/" className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white">
             <img src="/id_nebula.webp" alt="ID" className="w-6 h-6 object-contain opacity-70" />

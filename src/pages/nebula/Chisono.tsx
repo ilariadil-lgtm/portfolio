@@ -95,7 +95,7 @@ const Chisono = () => {
   ];
 
   return (
-    <div ref={containerRef} className="bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 relative overflow-hidden flex flex-col min-h-screen md:pl-20">
+    <div ref={containerRef} className="bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 relative overflow-hidden flex flex-col min-h-[100dvh] md:pl-20">
       <NebulaNav />
       <ScrollIndicator sections={['scroll.hero', 'scroll.mindset', 'scroll.skills', 'scroll.vision', 'scroll.contact'].map(k => t(k))} />
 
@@ -134,7 +134,7 @@ const Chisono = () => {
              ═══════════════════════════════════════════════════════════════════ */}
         <motion.section 
           style={{ y: yParallax, opacity: opacityParallax }}
-          className="relative min-h-[90vh] flex items-center pt-32 pb-20 overflow-hidden snap-start"
+          className="relative lg:min-h-[90vh] flex items-start lg:items-center pt-40 lg:pt-32 pb-20 overflow-hidden snap-start"
         >
 
           {/* Bagliore focus per i testi */}
@@ -151,16 +151,16 @@ const Chisono = () => {
                 </div>
                 
                 <div className="flex flex-wrap items-baseline gap-x-6 pb-4">
-                  <RevealText 
-                    text={t('about.title_1') || "Chi"} 
-                    delay={0.1} 
-                    className="font-bricolage font-bold tracking-wider text-5xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-white whitespace-nowrap uppercase" 
-                  />
-                  <RevealText 
-                    text={t('about.title_2') || "Sono."} 
-                    delay={0.2} 
-                    className="font-fraunces italic font-light tracking-wider text-5xl md:text-7xl lg:text-[6.5vw] leading-[1.1] text-[#d4af37] whitespace-nowrap pr-2" 
-                  />
+                    <RevealText 
+                      text={t("about.title_1")} 
+                      delay={0.1} 
+                      className="font-bricolage font-bold tracking-wider text-fluid-h1 leading-[1.1] text-white whitespace-nowrap uppercase" 
+                    />
+                    <RevealText 
+                      text={t("about.title_2")} 
+                      delay={0.2} 
+                      className="font-fraunces italic font-light tracking-wider text-fluid-h1 leading-[1.1] text-[#d4af37] whitespace-nowrap pr-2" 
+                    />
                 </div>
               </div>
 

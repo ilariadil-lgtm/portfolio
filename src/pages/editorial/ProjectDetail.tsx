@@ -78,7 +78,7 @@ export const EditorialProjectDetail = () => {
   /* ── Loading ── */
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#f5f2ed] flex items-center justify-center">
+      <div className="min-h-[100dvh] bg-[#f5f2ed] flex items-center justify-center">
         <motion.span
           animate={{ opacity: [0.3, 0.9, 0.3] }}
           transition={{ duration: 1.4, repeat: Infinity }}
@@ -93,7 +93,7 @@ export const EditorialProjectDetail = () => {
   /* ── Not found ── */
   if (!project) {
     return (
-      <div className="min-h-screen bg-[#f5f2ed] flex flex-col items-center justify-center gap-8 text-[#3d0f1a]">
+      <div className="min-h-[100dvh] bg-[#f5f2ed] flex flex-col items-center justify-center gap-8 text-[#3d0f1a]">
         <h1 className="font-display text-5xl font-black">{t('project_detail.not_found')}</h1>
         <Link to="/progetti" className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-primary font-semibold">
           <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
@@ -143,13 +143,13 @@ export const EditorialProjectDetail = () => {
 
 
   return (
-    <div className="min-h-screen bg-[#f5f2ed] text-[#3d0f1a] selection:bg-primary/30 overflow-hidden">
+    <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] selection:bg-primary/30 overflow-hidden">
       <Navigation />
 
       {/* ═══════════════════════════════════════════════════════════════════
            HERO — full-viewport image + title overlay
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative h-[92vh] min-h-[600px] overflow-hidden bg-[#3d0f1a]">
+      <section className="relative h-[92vh] min-h-[400px] lg:min-h-[600px] overflow-hidden bg-[#3d0f1a]">
 
         {/* Background image */}
         <motion.img
