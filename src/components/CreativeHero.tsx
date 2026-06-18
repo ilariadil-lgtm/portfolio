@@ -1,5 +1,15 @@
 import React, { useRef, useState, useEffect, useMemo } from "react";
-import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, animate, MotionValue, useSpring, AnimationPlaybackControls } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+  useMotionValue,
+  animate,
+  MotionValue,
+  useSpring,
+  AnimationPlaybackControls,
+} from "framer-motion";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { KineticText } from "./KineticText";
@@ -15,7 +25,16 @@ interface NavPointProps {
   onHover: (index: number | null) => void;
 }
 
-const NavPoint: React.FC<NavPointProps> = ({ angle, radiusSpring, label, detail, to, index, counterRotation, onHover }) => {
+const NavPoint: React.FC<NavPointProps> = ({
+  angle,
+  radiusSpring,
+  label,
+  detail,
+  to,
+  index,
+  counterRotation,
+  onHover,
+}) => {
   const [isLocalHover, setIsLocalHover] = useState(false);
 
   const xTransform = useTransform(radiusSpring, (r) => {
@@ -38,8 +57,8 @@ const NavPoint: React.FC<NavPointProps> = ({ angle, radiusSpring, label, detail,
     index === 0
       ? "absolute bottom-full left-1/2 -translate-x-1/2 pb-6 flex flex-col items-center pointer-events-auto z-[100]"
       : index === 1
-      ? "absolute left-full top-1/2 -translate-y-1/2 pl-6 flex items-center pointer-events-auto z-[100]"
-      : "absolute right-full top-1/2 -translate-y-1/2 pr-6 flex items-center pointer-events-auto z-[100]";
+        ? "absolute left-full top-1/2 -translate-y-1/2 pl-6 flex items-center pointer-events-auto z-[100]"
+        : "absolute right-full top-1/2 -translate-y-1/2 pr-6 flex items-center pointer-events-auto z-[100]";
 
   const getAnimationProps = () => {
     switch (index) {
@@ -47,25 +66,25 @@ const NavPoint: React.FC<NavPointProps> = ({ angle, radiusSpring, label, detail,
         return {
           initial: { opacity: 0, y: -20 },
           animate: { opacity: 1, y: 0 },
-          exit: { opacity: 0, y: -20 }
+          exit: { opacity: 0, y: -20 },
         };
       case 1: // Right
         return {
           initial: { opacity: 0, x: 20 },
           animate: { opacity: 1, x: 0 },
-          exit: { opacity: 0, x: 20 }
+          exit: { opacity: 0, x: 20 },
         };
       case 2: // Left
         return {
           initial: { opacity: 0, x: -20 },
           animate: { opacity: 1, x: 0 },
-          exit: { opacity: 0, x: -20 }
+          exit: { opacity: 0, x: -20 },
         };
       default:
         return {
           initial: { opacity: 0, scale: 0.95 },
           animate: { opacity: 1, scale: 1 },
-          exit: { opacity: 0, scale: 0.95 }
+          exit: { opacity: 0, scale: 0.95 },
         };
     }
   };
@@ -91,7 +110,9 @@ const NavPoint: React.FC<NavPointProps> = ({ angle, radiusSpring, label, detail,
             className="w-3 h-3 rounded-full bg-[#C0392B]"
             animate={{
               scale: isLocalHover ? 1.5 : 1,
-              boxShadow: isLocalHover ? "0 0 30px rgba(192, 57, 43, 0.6)" : "0 0 0px rgba(192, 57, 43, 0)"
+              boxShadow: isLocalHover
+                ? "0 0 30px rgba(192, 57, 43, 0.6)"
+                : "0 0 0px rgba(192, 57, 43, 0)",
             }}
           />
 
@@ -123,7 +144,6 @@ const NavPoint: React.FC<NavPointProps> = ({ angle, radiusSpring, label, detail,
   );
 };
 
-
 // ═══════════════════════════════════════════════════════════════════
 // EDITORIAL THEME ONLY - Componente esclusivo del tema "Editorial"
 // (Il tema Nebula usa HeroCanvas.tsx all'interno di pages/nebula)
@@ -141,8 +161,14 @@ export const CreativeHero: React.FC = () => {
   const springX = useSpring(mouseX, { damping: 30, stiffness: 300 });
   const springY = useSpring(mouseY, { damping: 30, stiffness: 300 });
 
-  const tiltX = useSpring(useTransform(mouseY, [0, 800], [4, -4]), { stiffness: 40, damping: 25 });
-  const tiltY = useSpring(useTransform(mouseX, [0, 1200], [-4, 4]), { stiffness: 40, damping: 25 });
+  const tiltX = useSpring(useTransform(mouseY, [0, 800], [4, -4]), {
+    stiffness: 40,
+    damping: 25,
+  });
+  const tiltY = useSpring(useTransform(mouseX, [0, 1200], [-4, 4]), {
+    stiffness: 40,
+    damping: 25,
+  });
 
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 60]);
@@ -170,11 +196,15 @@ export const CreativeHero: React.FC = () => {
     window.addEventListener("mousemove", handleMouseMove);
 
     if (hoveredPoint === null && !isGraphicHovered) {
-      rotationControls.current = animate(rotationValue, rotationValue.get() + 360, {
-        duration: 100,
-        ease: "linear",
-        repeat: Infinity
-      });
+      rotationControls.current = animate(
+        rotationValue,
+        rotationValue.get() + 360,
+        {
+          duration: 100,
+          ease: "linear",
+          repeat: Infinity,
+        },
+      );
     } else {
       if (rotationControls.current) rotationControls.current.stop();
     }
@@ -196,12 +226,14 @@ export const CreativeHero: React.FC = () => {
     function updatePoints() {
       const v = [-90, 30, 150];
       const r = [radius1.get(), radius2.get(), radius3.get()];
-      const pts = v.map((angle, i) => {
-        const rad = (angle) * (Math.PI / 180);
-        const x = 100 + r[i] * Math.cos(rad);
-        const y = 100 + r[i] * Math.sin(rad);
-        return `${x.toFixed(2)},${y.toFixed(2)}`;
-      }).join(" ");
+      const pts = v
+        .map((angle, i) => {
+          const rad = angle * (Math.PI / 180);
+          const x = 100 + r[i] * Math.cos(rad);
+          const y = 100 + r[i] * Math.sin(rad);
+          return `${x.toFixed(2)},${y.toFixed(2)}`;
+        })
+        .join(" ");
       setPoints(pts);
     }
 
@@ -212,18 +244,26 @@ export const CreativeHero: React.FC = () => {
     };
   }, [radius1, radius2, radius3]);
 
-
-
   return (
-    <section className="relative lg:min-h-[100svh] flex flex-col justify-start lg:justify-center pt-32 md:pt-40 lg:pt-0 pb-16 md:pb-24 lg:pb-0 px-6 md:px-12 lg:px-20 bg-[#f5f2ed]">
+    <section className="relative lg:min-h-[100svh] flex flex-col justify-start lg:justify-center pt-24 md:pt-28 lg:pt-0 pb-8 md:pb-12 lg:pb-0 px-6 md:px-12 lg:px-20 bg-[#f5f2ed]">
       {/* BACKGROUND INFRASTRUCTURE */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#3d0f1a 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: "radial-gradient(#3d0f1a 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-16 md:gap-24 lg:gap-12 items-center relative z-10 max-w-screen-2xl mx-auto">
         <div className="lg:col-span-5 flex flex-col justify-center relative z-20">
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
             <div className="overflow-hidden mb-4">
               <motion.span
                 initial={{ y: "100%" }}
@@ -231,28 +271,36 @@ export const CreativeHero: React.FC = () => {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="font-typewriter text-[9px] sm:text-[10px] md:text-[14px] uppercase text-primary font-medium tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.3em] block"
               >
-                {t('hero.tags')}
+                {t("hero.tags")}
               </motion.span>
             </div>
 
             <h1 className="relative font-display leading-[0.95] tracking-tighter flex flex-wrap items-baseline gap-x-2 md:gap-x-4 lg:gap-x-6 w-full">
-              <motion.div style={{ y: y1 }} className="overflow-hidden pb-2 md:pb-4">
-                <KineticText 
-                  text="ilaria" 
-                  delay={0.2} 
+              <motion.div
+                style={{ y: y1 }}
+                className="overflow-hidden pb-2 md:pb-4"
+              >
+                <KineticText
+                  text="ilaria"
+                  delay={0.2}
                   mode="char"
                   className="inline-block text-[clamp(2.5rem,10vw,6rem)] md:text-[clamp(4rem,8vw,8rem)] font-bold text-[#3d0f1a]"
                 />
               </motion.div>
-              <motion.div style={{ y: y1 }} className="overflow-hidden mt-0 md:-mt-2 lg:-mt-4 pb-4 md:pb-8 flex-shrink-0">
+              <motion.div
+                style={{ y: y1 }}
+                className="overflow-hidden mt-0 md:-mt-2 lg:-mt-4 pb-4 md:pb-8 flex-shrink-0"
+              >
                 <div className="flex items-baseline">
-                  <KineticText 
-                    text="diliberto" 
-                    delay={0.6} 
+                  <KineticText
+                    text="diliberto"
+                    delay={0.6}
                     mode="char"
                     className="inline-block text-[clamp(2.5rem,10vw,6rem)] md:text-[clamp(4rem,8vw,8rem)] font-bold text-primary italic"
                   />
-                  <span className="inline-block text-[clamp(2.5rem,10vw,6rem)] md:text-[clamp(4rem,8vw,8rem)] font-bold text-[#3d0f1a] not-italic leading-none translate-y-1 md:translate-y-2">.</span>
+                  <span className="inline-block text-[clamp(2.5rem,10vw,6rem)] md:text-[clamp(4rem,8vw,8rem)] font-bold text-[#3d0f1a] not-italic leading-none translate-y-1 md:translate-y-2">
+                    .
+                  </span>
                 </div>
               </motion.div>
             </h1>
@@ -264,7 +312,7 @@ export const CreativeHero: React.FC = () => {
               className="mt-8 lg:mt-12 max-w-[34rem]"
             >
               <p className="font-body text-sm md:text-base text-[#3d0f1a]/60 leading-relaxed border-l-2 border-primary/10 pl-6 lg:pl-8 py-2">
-                "{t('hero.description')}"
+                "{t("hero.description")}"
               </p>
             </motion.div>
           </motion.div>
@@ -280,23 +328,63 @@ export const CreativeHero: React.FC = () => {
               y: y2,
               rotateX: tiltX,
               rotateY: tiltY,
-              transformStyle: "preserve-3d"
+              transformStyle: "preserve-3d",
             }}
           >
             <motion.div
               className="absolute inset-0 w-full h-full"
               style={{ rotate: rotationValue, transformStyle: "preserve-3d" }}
             >
-              <svg viewBox="0 0 200 200" className="absolute inset-0 w-full h-full overflow-visible">
-                <circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" strokeWidth="0.1" strokeDasharray="3 3" className="text-primary/20" />
-                <line x1="100" y1="5" x2="100" y2="195" stroke="currentColor" strokeWidth="0.05" className="text-primary/10" />
-                <line x1="5" y1="100" x2="195" y2="100" stroke="currentColor" strokeWidth="0.05" className="text-primary/10" />
+              <svg
+                viewBox="0 0 200 200"
+                className="absolute inset-0 w-full h-full overflow-visible"
+              >
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="95"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="0.1"
+                  strokeDasharray="3 3"
+                  className="text-primary/20"
+                />
+                <line
+                  x1="100"
+                  y1="5"
+                  x2="100"
+                  y2="195"
+                  stroke="currentColor"
+                  strokeWidth="0.05"
+                  className="text-primary/10"
+                />
+                <line
+                  x1="5"
+                  y1="100"
+                  x2="195"
+                  y2="100"
+                  stroke="currentColor"
+                  strokeWidth="0.05"
+                  className="text-primary/10"
+                />
 
-                <circle cx="100" cy="100" r="65" fill="none" stroke="currentColor" strokeWidth="0.15" className="text-primary/15" />
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="65"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="0.15"
+                  className="text-primary/15"
+                />
 
                 <motion.circle
-                  cx="100" cy="100" r="40"
-                  fill="none" stroke="currentColor" strokeWidth="0.4"
+                  cx="100"
+                  cy="100"
+                  r="40"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="0.4"
                   className="text-primary/30"
                   animate={{ r: hoveredPoint !== null ? 45 : 40 }}
                 />
@@ -313,26 +401,61 @@ export const CreativeHero: React.FC = () => {
                 {/* ── Mobile: Cerchio interattivo ad archi (Soluzione Ottimale) ── */}
                 <g className="lg:hidden">
                   {[
-                    { label: t('nav.about'), to: "/chisono", rot: 220, tx: 100, ty: 22 },
-                    { label: t('nav.services'), to: "/servizi", rot: 340, tx: 172, ty: 142 },
-                    { label: t('nav.projects'), to: "/progetti", rot: 100, tx: 28, ty: 142 }
+                    {
+                      label: t("nav.about"),
+                      to: "/chisono",
+                      rot: 220,
+                      tx: 100,
+                      ty: 22,
+                    },
+                    {
+                      label: t("nav.services"),
+                      to: "/servizi",
+                      rot: 340,
+                      tx: 172,
+                      ty: 142,
+                    },
+                    {
+                      label: t("nav.projects"),
+                      to: "/progetti",
+                      rot: 100,
+                      tx: 28,
+                      ty: 142,
+                    },
                   ].map((arc, i) => (
-                    <Link to={arc.to} key={i} className="group outline-none cursor-pointer pointer-events-auto">
+                    <Link
+                      to={arc.to}
+                      key={i}
+                      className="group outline-none cursor-pointer pointer-events-auto"
+                    >
                       <circle
-                        cx="100" cy="100" r="70"
-                        fill="none" stroke="currentColor" strokeWidth="16"
+                        cx="100"
+                        cy="100"
+                        r="70"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="16"
                         strokeDasharray="122.17 400"
                         transform={`rotate(${arc.rot} 100 100)`}
                         className="text-primary/0 group-hover:text-primary/10 transition-colors duration-300"
                       />
                       <circle
-                        cx="100" cy="100" r="70"
-                        fill="none" stroke="currentColor" strokeWidth="1"
+                        cx="100"
+                        cy="100"
+                        r="70"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1"
                         strokeDasharray="122.17 400"
                         transform={`rotate(${arc.rot} 100 100)`}
                         className="text-primary/50 group-hover:text-primary group-hover:stroke-[1.5] transition-all duration-300"
                       />
-                      <text x={arc.tx} y={arc.ty} textAnchor="middle" className="font-typewriter text-[6px] uppercase tracking-[0.2em] fill-primary/70 group-hover:fill-primary transition-colors duration-300">
+                      <text
+                        x={arc.tx}
+                        y={arc.ty}
+                        textAnchor="middle"
+                        className="font-typewriter text-[6px] uppercase tracking-[0.2em] fill-primary/70 group-hover:fill-primary transition-colors duration-300"
+                      >
                         {arc.label}
                       </text>
                     </Link>
@@ -340,10 +463,15 @@ export const CreativeHero: React.FC = () => {
                 </g>
 
                 <defs>
-                  <path id="textCircle" d="M 100, 100 m -78, 0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0" />
+                  <path
+                    id="textCircle"
+                    d="M 100, 100 m -78, 0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0"
+                  />
                 </defs>
                 <text className="font-typewriter text-[4px] uppercase tracking-[0.8em] fill-primary/20">
-                  <textPath xlinkHref="#textCircle">{t('hero.circle_text')}</textPath>
+                  <textPath xlinkHref="#textCircle">
+                    {t("hero.circle_text")}
+                  </textPath>
                 </text>
               </svg>
 
@@ -352,14 +480,26 @@ export const CreativeHero: React.FC = () => {
                 {[0, 1, 2].map((i) => {
                   const angles = [-90, 30, 150];
                   const springs = [radius1, radius2, radius3];
-                  const labels = [t('hero.point1_label'), t('hero.point2_label'), t('hero.point3_label')];
-                  const details = [t('hero.point1_desc'), t('hero.point2_desc'), t('hero.point3_desc')];
+                  const labels = [
+                    t("hero.point1_label"),
+                    t("hero.point2_label"),
+                    t("hero.point3_label"),
+                  ];
+                  const details = [
+                    t("hero.point1_desc"),
+                    t("hero.point2_desc"),
+                    t("hero.point3_desc"),
+                  ];
                   const links = ["/chisono", "/servizi", "/progetti"];
                   return (
                     <NavPoint
                       key={i}
-                      angle={angles[i]} radiusSpring={springs[i]}
-                      label={labels[i]} detail={details[i]} to={links[i]} index={i}
+                      angle={angles[i]}
+                      radiusSpring={springs[i]}
+                      label={labels[i]}
+                      detail={details[i]}
+                      to={links[i]}
+                      index={i}
                       counterRotation={counterRotation}
                       onHover={setHoveredPoint}
                     />
@@ -387,7 +527,9 @@ export const CreativeHero: React.FC = () => {
         className="absolute bottom-12 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-4"
         style={{ opacity }}
       >
-        <span className="font-typewriter text-[12px] uppercase tracking-[0.5em] text-primary font-medium">{t('hero.explore')}</span>
+        <span className="font-typewriter text-[12px] uppercase tracking-[0.5em] text-primary font-medium">
+          {t("hero.explore")}
+        </span>
         <div className="w-[1px] h-16 bg-primary/20 relative overflow-hidden">
           <motion.div
             className="absolute top-0 left-0 w-full h-1/2 bg-primary/60"

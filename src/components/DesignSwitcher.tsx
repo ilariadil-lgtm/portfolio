@@ -32,7 +32,9 @@ export const DesignSwitcher = () => {
   };
 
   return (
-    <div className={`fixed z-[100] ${design === "editorial" ? "bottom-6 left-6 md:bottom-8 md:left-8" : "top-6 right-6 lg:top-auto lg:bottom-8 lg:right-8"}`}>
+    <div
+      className={`fixed z-[100] ${design === "editorial" ? "bottom-6 left-6 md:bottom-8 md:left-8" : "top-6 right-6 lg:top-auto lg:bottom-8 lg:right-8"}`}
+    >
       <AnimatePresence>
         {showTooltip && (
           <motion.div
@@ -65,16 +67,24 @@ export const DesignSwitcher = () => {
       >
         <div className="relative w-6 h-6 flex items-center justify-center">
           {design === "editorial" ? (
-            <Sparkles size={18} className="animate-in fade-in zoom-in duration-500 group-hover:text-[#d4af37] transition-colors" />
+            <Sparkles
+              size={18}
+              className="animate-in fade-in zoom-in duration-500 group-hover:text-[#d4af37] transition-colors"
+            />
           ) : (
-            <BookOpen size={18} className="animate-in fade-in zoom-in duration-500 group-hover:text-black transition-colors" />
+            <BookOpen
+              size={18}
+              className="animate-in fade-in zoom-in duration-500 group-hover:text-black transition-colors"
+            />
           )}
         </div>
-        <span className={`font-mono text-[10px] font-bold uppercase tracking-[0.2em] overflow-hidden max-w-0 group-hover:max-w-[180px] transition-all duration-500 whitespace-nowrap px-0 group-hover:px-1 ${
-          design === "editorial" 
-            ? "group-hover:text-[#d4af37]" 
-            : "text-white/80 group-hover:text-black"
-        }`}>
+        <span
+          className={`font-mono text-[10px] font-bold uppercase tracking-[0.2em] overflow-hidden max-w-0 group-hover:max-w-[180px] transition-all duration-500 whitespace-nowrap px-0 group-hover:px-1 ${
+            design === "editorial"
+              ? "group-hover:text-[#d4af37]"
+              : "text-white/80 group-hover:text-black"
+          }`}
+        >
           {design === "editorial" ? "PASSA A NEBULA" : "PASSA A EDITORIAL"}
         </span>
       </button>

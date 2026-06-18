@@ -4,7 +4,13 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { FloatingCTA } from "@/components/FloatingCTA";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
 import { ProjectNavigation } from "@/components/ProjectNavigation";
@@ -68,7 +74,13 @@ const BRAND_DATA: BrandItem[] = [
 ];
 
 // Carousel per il brand singolo
-const BrandMockupCarousel = ({ images, brandTitle }: { images: string[]; brandTitle: string }) => {
+const BrandMockupCarousel = ({
+  images,
+  brandTitle,
+}: {
+  images: string[];
+  brandTitle: string;
+}) => {
   const [currentIdx, setCurrentIdx] = useState(0);
 
   const handlePrev = (e: React.MouseEvent) => {
@@ -114,7 +126,8 @@ const BrandMockupCarousel = ({ images, brandTitle }: { images: string[]; brandTi
                   "/assets/projects/villa-masami/masami-7.webp",
                   "/assets/projects/villa-masami/masami-8.webp",
                 ];
-                e.currentTarget.src = generalFallbacks[currentIdx % generalFallbacks.length];
+                e.currentTarget.src =
+                  generalFallbacks[currentIdx % generalFallbacks.length];
               }
             }}
           />
@@ -153,8 +166,11 @@ const BrandMockupCarousel = ({ images, brandTitle }: { images: string[]; brandTi
                   e.stopPropagation();
                   setCurrentIdx(idx);
                 }}
-                className={`w-2 h-2 rounded-full border border-[#3d0f1a] transition-all duration-300 ${idx === currentIdx ? "bg-[#c0392b] scale-110" : "bg-transparent hover:bg-[#3d0f1a]/30"
-                  }`}
+                className={`w-2 h-2 rounded-full border border-[#3d0f1a] transition-all duration-300 ${
+                  idx === currentIdx
+                    ? "bg-[#c0392b] scale-110"
+                    : "bg-transparent hover:bg-[#3d0f1a]/30"
+                }`}
                 aria-label={`Vai all'immagine ${idx + 1}`}
               />
             ))}
@@ -164,7 +180,8 @@ const BrandMockupCarousel = ({ images, brandTitle }: { images: string[]; brandTi
 
       {/* Contatore numerico in alto a sinistra */}
       <span className="absolute top-4 left-4 z-10 font-typewriter text-[9px] bg-[#f5f2ed] border border-[#3d0f1a]/20 px-2 py-1 text-[#3d0f1a] font-bold">
-        {String(currentIdx + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
+        {String(currentIdx + 1).padStart(2, "0")} /{" "}
+        {String(images.length).padStart(2, "0")}
       </span>
     </div>
   );
@@ -178,7 +195,7 @@ export const EditorialLoghi = () => {
 
   usePageMeta({
     title: "Branding & Loghi",
-    description: t('loghi.meta_desc'),
+    description: t("loghi.meta_desc"),
   });
 
   return (
@@ -188,21 +205,34 @@ export const EditorialLoghi = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            HERO SECTION
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-[50vh] flex items-center px-6 md:px-12 lg:px-24 overflow-hidden pt-48 md:pt-36 pb-20 border-b border-[#3d0f1a]/10">
+      <section className="relative min-h-[50vh] flex items-center px-6 md:px-12 lg:px-24 overflow-hidden pt-56 md:pt-36 pb-20 border-b border-[#3d0f1a]/10">
         {/* Background Grid Pattern */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#3d0f1a 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: "radial-gradient(#3d0f1a 1px, transparent 1px)",
+              backgroundSize: "60px 60px",
+            }}
+          />
         </div>
 
         {/* Back Link */}
         <div className="absolute top-32 left-6 md:left-12 lg:left-24 z-20">
-          <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2 }}
+          >
             <Link
               to="/progetti"
               className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a]/60 hover:text-primary transition-colors font-semibold"
             >
-              <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
-              {t('project_detail.back_to_archive')}
+              <ArrowLeft
+                size={13}
+                className="group-hover:-translate-x-1 transition-transform"
+              />
+              {t("project_detail.back_to_archive")}
             </Link>
           </motion.div>
         </div>
@@ -216,19 +246,24 @@ export const EditorialLoghi = () => {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium block whitespace-nowrap"
               >
-                {t('loghi.hero_label')}
+                {t("loghi.hero_label")}
               </motion.span>
             </div>
 
-            <h1 className="relative font-display leading-[0.85] tracking-tighter">
+            <h1 className="relative font-display leading-[1.1] md:leading-[0.85] tracking-tighter">
               <div className="overflow-hidden pt-4 pb-24 -mb-20 w-max">
                 <motion.span
                   initial={{ y: "100%" }}
                   animate={{ y: 0 }}
-                  transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{
+                    duration: 1.2,
+                    delay: 0.1,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
                   className="block text-[8vw] lg:text-[clamp(2rem,5vw,5rem)] font-bold text-[#3d0f1a]"
                 >
-                  Branding & <span className="text-primary italic pr-2">Loghi</span>.
+                  Branding &{" "}
+                  <span className="text-primary italic pr-2">Loghi</span>.
                 </motion.span>
               </div>
             </h1>
@@ -239,7 +274,7 @@ export const EditorialLoghi = () => {
               transition={{ delay: 0.6, duration: 1 }}
               className="mt-6 font-body text-base md:text-lg text-[#3d0f1a]/70 leading-relaxed border-l-2 border-primary/20 pl-6 lg:pl-8 py-2 max-w-2xl"
             >
-              {t('loghi.hero_desc')}
+              {t("loghi.hero_desc")}
             </motion.p>
           </div>
         </div>
@@ -266,7 +301,10 @@ export const EditorialLoghi = () => {
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 1 }}
                 >
-                  <BrandMockupCarousel images={brand.images} brandTitle={brand.title} />
+                  <BrandMockupCarousel
+                    images={brand.images}
+                    brandTitle={brand.title}
+                  />
                 </motion.div>
 
                 {/* Text Block */}
@@ -281,7 +319,7 @@ export const EditorialLoghi = () => {
                     {/* Index & Stack info */}
                     <div className="flex items-center gap-4">
                       <span className="font-typewriter text-[10px] uppercase tracking-[0.4em] text-primary/80 font-bold">
-                        {String(idx + 1).padStart(2, '0')} — {brand.year}
+                        {String(idx + 1).padStart(2, "0")} — {brand.year}
                       </span>
                       <div className="flex-1 h-[1px] bg-primary/10" />
                     </div>
@@ -306,8 +344,11 @@ export const EditorialLoghi = () => {
                           to={brand.portfolioUrl}
                           className="group inline-flex items-center gap-2.5 font-typewriter text-[10px] uppercase tracking-[0.3em] text-[#3d0f1a] font-bold hover:text-primary transition-colors border border-[#3d0f1a]/20 hover:border-primary px-5 py-2.5 bg-[#f5f2ed]"
                         >
-                          {t('loghi.portfolio_site')}
-                          <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                          {t("loghi.portfolio_site")}
+                          <ArrowRight
+                            size={13}
+                            className="group-hover:translate-x-1 transition-transform"
+                          />
                         </Link>
                       )}
 
@@ -319,8 +360,11 @@ export const EditorialLoghi = () => {
                           rel="noopener noreferrer"
                           className="group inline-flex items-center gap-2.5 font-typewriter text-[10px] uppercase tracking-[0.3em] text-white font-bold bg-[#3d0f1a] hover:bg-primary transition-colors px-5 py-2.5 shadow-[4px_4px_0px_rgba(61,15,26,0.15)] hover:shadow-none active:translate-x-1 active:translate-y-1"
                         >
-                          {t('loghi.visit_site')}
-                          <ArrowUpRight size={13} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
+                          {t("loghi.visit_site")}
+                          <ArrowUpRight
+                            size={13}
+                            className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"
+                          />
                         </a>
                       )}
                     </div>
@@ -334,9 +378,9 @@ export const EditorialLoghi = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            BOTTOM NAVIGATION
            ═══════════════════════════════════════════════════════════════════ */}
-      <ProjectNavigation 
-        prev={{ url: '/progetti/villamima', title: 'Villa Mima' }}
-        next={{ url: '/progetti/storagehub', title: 'Storage Hub' }}
+      <ProjectNavigation
+        prev={{ url: "/progetti/villamima", title: "Villa Mima" }}
+        next={{ url: "/progetti/storagehub", title: "Storage Hub" }}
       />
 
       <FloatingCTA url="" />

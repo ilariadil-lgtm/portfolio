@@ -3,7 +3,19 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
-import { ArrowRight, Box, Cpu, Eye, Globe, Layout, Server, Sparkles, Terminal, Activity, CheckCircle2 } from "lucide-react";
+import {
+  ArrowRight,
+  Box,
+  Cpu,
+  Eye,
+  Globe,
+  Layout,
+  Server,
+  Sparkles,
+  Terminal,
+  Activity,
+  CheckCircle2,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { RevealText } from "@/components/RevealText";
@@ -14,25 +26,40 @@ import { useTranslation } from "react-i18next";
 const getServiceSpecs = (t: any): Record<number, any> => ({
   1: {
     core: "Figma & Creative Suite",
-    workflow: t('services.spec1_workflow'),
-    kpi: t('services.spec1_kpi'),
-    load: t('services.spec_user_centric'),
-    tools: ["Figma", "Adobe CC", "Responsive design", "Branding"]
+    workflow: t("services.spec1_workflow"),
+    kpi: t("services.spec1_kpi"),
+    load: t("services.spec_user_centric"),
+    tools: ["Figma", "Adobe CC", "Responsive design", "Branding"],
   },
   2: {
     core: "React, Vite, Tailwind, Python, Django, PHP, Javascript",
-    workflow: t('services.spec2_workflow'),
-    kpi: t('services.spec2_kpi'),
-    load: t('services.spec_logic'),
-    tools: ["React", "TypeScript", "TailwindCSS", "Next.js", "WordPress", "Prestashop", "HTML / CSS / JS", "PYTHON / DJANGO"]
+    workflow: t("services.spec2_workflow"),
+    kpi: t("services.spec2_kpi"),
+    load: t("services.spec_logic"),
+    tools: [
+      "React",
+      "TypeScript",
+      "TailwindCSS",
+      "Next.js",
+      "WordPress",
+      "Prestashop",
+      "HTML / CSS / JS",
+      "PYTHON / DJANGO",
+    ],
   },
   3: {
     core: "Git, Supabase, AI Tools (Gemini / GPT)",
-    workflow: t('services.spec3_workflow'),
-    kpi: t('services.spec3_kpi'),
-    load: t('services.spec_strategy'),
-    tools: ["PRODUCT MNGMT", "VIBE CODING", "AI WORKFLOWS", "STRATEGIA", "PROBLEM SOLVING"]
-  }
+    workflow: t("services.spec3_workflow"),
+    kpi: t("services.spec3_kpi"),
+    load: t("services.spec_strategy"),
+    tools: [
+      "PRODUCT MNGMT",
+      "VIBE CODING",
+      "AI WORKFLOWS",
+      "STRATEGIA",
+      "PROBLEM SOLVING",
+    ],
+  },
 });
 
 const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
@@ -47,7 +74,11 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
     <motion.div
       variants={{
         hidden: { opacity: 0, y: 40 },
-        show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 80, damping: 18 } }
+        show: {
+          opacity: 1,
+          y: 0,
+          transition: { type: "spring", stiffness: 80, damping: 18 },
+        },
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {
@@ -69,7 +100,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
               {service.subtitle || `SYSTEM_MODULE_0${idx + 1}`}
             </span>
             <span className="font-typewriter text-[7px] uppercase tracking-[0.2em] text-[#3d0f1a]/40 font-medium mt-1">
-              {t('services.focus')}
+              {t("services.focus")}
             </span>
           </div>
           <div className="w-10 h-10 rounded-full border border-primary/15 flex items-center justify-center text-[#3d0f1a]/40 bg-primary/5 group-hover:scale-110 group-hover:text-primary group-hover:border-primary/30 transition-all duration-500">
@@ -99,12 +130,16 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
             data-cursor="pointer"
             className="font-typewriter text-[9px] uppercase tracking-widest text-[#3d0f1a] border border-[#3d0f1a]/20 hover:bg-[#3d0f1a]/5 hover:border-[#3d0f1a]/50 px-3 py-1.5 transition-all duration-300 relative z-20 font-bold cursor-pointer"
           >
-            {showSpecs ? t('services.close_details') : t('services.open_details')}
+            {showSpecs
+              ? t("services.close_details")
+              : t("services.open_details")}
           </button>
 
           <div className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-primary/75 animate-ping" />
-            <span className="font-mono text-[7px] text-[#3d0f1a]/40">{t('services.aligned')}</span>
+            <span className="font-mono text-[7px] text-[#3d0f1a]/40">
+              {t("services.aligned")}
+            </span>
           </div>
         </div>
 
@@ -120,26 +155,47 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
             >
               <div className="font-mono text-[10px] divide-y divide-primary/10 bg-[#f5f2ed] p-5 border border-primary/15 space-y-3 shadow-inner">
                 <div className="flex justify-between pb-2">
-                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">{t('services.tools')}</span>
-                  <span className="text-[#3d0f1a] font-semibold text-right">{specs.core}</span>
+                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">
+                    {t("services.tools")}
+                  </span>
+                  <span className="text-[#3d0f1a] font-semibold text-right">
+                    {specs.core}
+                  </span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">{t('services.methodology')}</span>
-                  <span className="text-[#3d0f1a] font-semibold text-right">{specs.workflow}</span>
+                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">
+                    {t("services.methodology")}
+                  </span>
+                  <span className="text-[#3d0f1a] font-semibold text-right">
+                    {specs.workflow}
+                  </span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">{t('services.key_objective')}</span>
-                  <span className="text-primary font-bold text-right">{specs.kpi}</span>
+                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">
+                    {t("services.key_objective")}
+                  </span>
+                  <span className="text-primary font-bold text-right">
+                    {specs.kpi}
+                  </span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">{t('services.approach')}</span>
-                  <span className="text-green-700 font-black text-right">{specs.load}</span>
+                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">
+                    {t("services.approach")}
+                  </span>
+                  <span className="text-green-700 font-black text-right">
+                    {specs.load}
+                  </span>
                 </div>
                 <div className="pt-2">
-                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px] block mb-2">{t('services.skills')}</span>
+                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px] block mb-2">
+                    {t("services.skills")}
+                  </span>
                   <div className="flex flex-wrap gap-1.5">
                     {specs.tools.map((t: string, i: number) => (
-                      <span key={i} className="bg-primary/10 text-[#3d0f1a] border border-[#3d0f1a]/10 px-2 py-0.5 rounded-sm text-[8px] uppercase tracking-wider font-bold">
+                      <span
+                        key={i}
+                        className="bg-primary/10 text-[#3d0f1a] border border-[#3d0f1a]/10 px-2 py-0.5 rounded-sm text-[8px] uppercase tracking-wider font-bold"
+                      >
                         {t}
                       </span>
                     ))}
@@ -154,10 +210,16 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
       {/* Deliverables List */}
       <div className="space-y-4 pt-6 border-t border-[#3d0f1a]/10 relative z-10 mt-auto">
         <span className="font-typewriter text-[8px] uppercase tracking-[0.3em] text-primary block font-bold">
-          {t('services.key_services')}
+          {t("services.key_services")}
         </span>
         <ul className="space-y-2.5">
-          {(service.deliverables || ["Strategia Digitale", "Deployment", "Ottimizzazioni"]).map((del: string, dIdx: number) => (
+          {(
+            service.deliverables || [
+              "Strategia Digitale",
+              "Deployment",
+              "Ottimizzazioni",
+            ]
+          ).map((del: string, dIdx: number) => (
             <li key={dIdx} className="flex items-center gap-3">
               <div className="w-1 h-1 rounded-full bg-primary/60" />
               <span className="font-typewriter text-[10px] uppercase tracking-widest text-[#3d0f1a]/80 font-bold">
@@ -175,7 +237,8 @@ const Servizi = () => {
   const { t } = useTranslation();
   usePageMeta({
     title: "Servizi",
-    description: "UI/UX Design, sviluppo web su misura e tech product management. Scopri come posso trasformare la tua idea in un prodotto digitale di qualità.",
+    description:
+      "UI/UX Design, sviluppo web su misura e tech product management. Scopri come posso trasformare la tua idea in un prodotto digitale di qualità.",
   });
 
   const [services, setServices] = useState<any[]>([]);
@@ -198,28 +261,43 @@ const Servizi = () => {
   const fallbackServices = [
     {
       id: 1,
-      title: t('services.fallback_service1_title'),
-      subtitle: t('services.fallback_service1_sub'),
-      description: t('services.fallback_service1_desc'),
-      deliverables: [t('services.fallback_service1_del1'), t('services.fallback_service1_del2'), t('services.fallback_service1_del3'), t('services.fallback_service1_del4')],
-      icon: <Layout size={24} />
+      title: t("services.fallback_service1_title"),
+      subtitle: t("services.fallback_service1_sub"),
+      description: t("services.fallback_service1_desc"),
+      deliverables: [
+        t("services.fallback_service1_del1"),
+        t("services.fallback_service1_del2"),
+        t("services.fallback_service1_del3"),
+        t("services.fallback_service1_del4"),
+      ],
+      icon: <Layout size={24} />,
     },
     {
       id: 2,
-      title: t('services.fallback_service2_title'),
-      subtitle: t('services.fallback_service2_sub'),
-      description: t('services.fallback_service2_desc'),
-      deliverables: [t('services.fallback_service2_del1'), t('services.fallback_service2_del2'), t('services.fallback_service2_del3'), t('services.fallback_service2_del4')],
-      icon: <Cpu size={24} />
+      title: t("services.fallback_service2_title"),
+      subtitle: t("services.fallback_service2_sub"),
+      description: t("services.fallback_service2_desc"),
+      deliverables: [
+        t("services.fallback_service2_del1"),
+        t("services.fallback_service2_del2"),
+        t("services.fallback_service2_del3"),
+        t("services.fallback_service2_del4"),
+      ],
+      icon: <Cpu size={24} />,
     },
     {
       id: 3,
-      title: t('services.fallback_service3_title'),
-      subtitle: t('services.fallback_service3_sub'),
-      description: t('services.fallback_service3_desc'),
-      deliverables: [t('services.fallback_service3_del1'), t('services.fallback_service3_del2'), t('services.fallback_service3_del3'), t('services.fallback_service3_del4')],
-      icon: <Globe size={24} />
-    }
+      title: t("services.fallback_service3_title"),
+      subtitle: t("services.fallback_service3_sub"),
+      description: t("services.fallback_service3_desc"),
+      deliverables: [
+        t("services.fallback_service3_del1"),
+        t("services.fallback_service3_del2"),
+        t("services.fallback_service3_del3"),
+        t("services.fallback_service3_del4"),
+      ],
+      icon: <Globe size={24} />,
+    },
   ];
 
   const displayServices = services.length > 0 ? services : fallbackServices;
@@ -227,47 +305,47 @@ const Servizi = () => {
   const steps = [
     {
       num: "01",
-      title: t('services.step1_title'),
-      subtitle: t('services.step1_sub'),
-      description: t('services.step1_desc')
+      title: t("services.step1_title"),
+      subtitle: t("services.step1_sub"),
+      description: t("services.step1_desc"),
     },
     {
       num: "02",
-      title: t('services.step2_title'),
-      subtitle: t('services.step2_sub'),
-      description: t('services.step2_desc')
+      title: t("services.step2_title"),
+      subtitle: t("services.step2_sub"),
+      description: t("services.step2_desc"),
     },
     {
       num: "03",
-      title: t('services.step3_title'),
-      subtitle: t('services.step3_sub'),
-      description: t('services.step3_desc')
+      title: t("services.step3_title"),
+      subtitle: t("services.step3_sub"),
+      description: t("services.step3_desc"),
     },
     {
       num: "04",
-      title: t('services.step4_title'),
-      subtitle: t('services.step4_sub'),
-      description: t('services.step4_desc')
-    }
+      title: t("services.step4_title"),
+      subtitle: t("services.step4_sub"),
+      description: t("services.step4_desc"),
+    },
   ];
 
   return (
     <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] overflow-hidden selection:bg-primary/30">
       <Navigation />
 
-
       {/* ═══════════════════════════════════════════════════════════════════
            HERO SECTION — SERVICES GATEWAY
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="pt-44 md:pt-48 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden">
+      <section className="pt-52 md:pt-48 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden">
         {/* Background Watermark */}
         <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center opacity-[0.02] pointer-events-none">
-          <span className="font-display text-[20vw] font-black uppercase tracking-tighter">{t('services.watermark')}</span>
+          <span className="font-display text-[20vw] font-black uppercase tracking-tighter">
+            {t("services.watermark")}
+          </span>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:items-center items-start">
-
             {/* Left Column: Title & Subtitle */}
             <div className="lg:col-span-7 space-y-8">
               <motion.div
@@ -277,12 +355,20 @@ const Servizi = () => {
                 className="space-y-6"
               >
                 <div className="flex items-center gap-4">
-                  <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium">{t('services.what_i_offer')}</span>
+                  <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium">
+                    {t("services.what_i_offer")}
+                  </span>
                   <div className="w-12 h-[1px] bg-primary/20" />
                 </div>
-                <h1 className="font-display text-[9.5vw] lg:text-[clamp(2rem,6.2vw,6.2rem)] font-bold leading-[0.85] tracking-tighter text-[#3d0f1a]">
-                  <RevealText text={t('services.title_1')} delay={0.1} />
-                  <RevealText text={t('services.title_2')} delay={0.2} className="text-primary italic pr-2" />
+                <h1 className="flex whitespace-nowrap font-display text-[10vw] lg:text-[clamp(2rem,6.2vw,6.2rem)] font-bold leading-[1.1] md:leading-[0.85] tracking-tighter text-[#3d0f1a]">
+                  <RevealText text={t("services.title_1")} delay={0.1} />
+                  <span className="ml-2 sm:ml-4">
+                    <RevealText
+                      text={t("services.title_2")}
+                      delay={0.2}
+                      className="text-primary italic pr-2"
+                    />
+                  </span>
                 </h1>
               </motion.div>
             </div>
@@ -292,13 +378,16 @@ const Servizi = () => {
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                transition={{
+                  duration: 1.2,
+                  delay: 0.2,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
                 className="font-body text-lg text-[#3d0f1a]/80 leading-relaxed pl-8 border-l border-primary/25"
               >
-                {t('services.description')}
+                {t("services.description")}
               </motion.p>
             </div>
-
           </div>
         </div>
       </section>
@@ -313,9 +402,9 @@ const Servizi = () => {
             show: {
               opacity: 1,
               transition: {
-                staggerChildren: 0.15
-              }
-            }
+                staggerChildren: 0.15,
+              },
+            },
           }}
           initial="hidden"
           whileInView="show"
@@ -338,11 +427,17 @@ const Servizi = () => {
         <div className="max-w-7xl mx-auto relative">
           {/* Header section */}
           <div className="mb-16 relative z-10">
-            <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">{t('services.workflow_label')}</span>
+            <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">
+              {t("services.workflow_label")}
+            </span>
             <div className="w-12 h-[1px] bg-primary/20 mb-8" />
             <h2 className="font-display text-5xl md:text-7xl font-bold leading-none tracking-tighter text-[#3d0f1a]">
-              <RevealText text={t('services.workflow_title_1')} delay={0.1} />
-              <RevealText text={t('services.workflow_title_2')} delay={0.3} className="text-primary italic pr-2" />
+              <RevealText text={t("services.workflow_title_1")} delay={0.1} />
+              <RevealText
+                text={t("services.workflow_title_2")}
+                delay={0.3}
+                className="text-primary italic pr-2"
+              />
             </h2>
           </div>
 
@@ -354,7 +449,11 @@ const Servizi = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                transition={{
+                  duration: 1,
+                  delay: i * 0.15,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
                 data-cursor="pointer"
                 className="group relative p-8 border border-[#3d0f1a] bg-[#f5f2ed] hover:bg-white hover:border-primary transition-all duration-500 shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b]"
               >

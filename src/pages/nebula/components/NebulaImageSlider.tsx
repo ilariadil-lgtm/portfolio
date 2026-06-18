@@ -14,7 +14,8 @@ export const NebulaImageSlider = ({ images }: NebulaImageSliderProps) => {
     const updateWidth = () => {
       if (sliderRef.current && containerRef.current) {
         // Calcola quanto può scorrere: larghezza totale del contenuto meno larghezza del contenitore visibile
-        const scrollWidth = sliderRef.current.scrollWidth - containerRef.current.offsetWidth;
+        const scrollWidth =
+          sliderRef.current.scrollWidth - containerRef.current.offsetWidth;
         setSliderWidth(scrollWidth > 0 ? scrollWidth : 0);
       }
     };
@@ -30,7 +31,7 @@ export const NebulaImageSlider = ({ images }: NebulaImageSliderProps) => {
   if (!images || images.length === 0) return null;
 
   return (
-    <div 
+    <div
       className="w-full relative overflow-hidden py-4 cursor-grab active:cursor-grabbing"
       ref={containerRef}
     >
@@ -43,8 +44,8 @@ export const NebulaImageSlider = ({ images }: NebulaImageSliderProps) => {
         dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
       >
         {images.map((src, idx) => (
-          <div 
-            key={idx} 
+          <div
+            key={idx}
             className="w-[85vw] md:w-[60vw] lg:w-[50vw] flex-shrink-0 rounded-2xl overflow-hidden bg-[#050505] border border-white/5 shadow-[0_0_40px_rgba(0,0,0,0.3)] relative group pointer-events-none"
           >
             <div className="h-6 md:h-8 bg-[#151515] border-b border-white/5 flex items-center px-3 md:px-4 shrink-0 z-20">
@@ -56,10 +57,10 @@ export const NebulaImageSlider = ({ images }: NebulaImageSliderProps) => {
             </div>
             <div className="flex-1 relative overflow-hidden bg-black">
               <div className="absolute inset-0 bg-white/5 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-              <img 
-                src={src} 
+              <img
+                src={src}
                 alt={`Project Gallery Image ${idx}`}
-                className="w-full h-[350px] md:h-[450px] lg:h-[550px] object-cover object-top transform transition-transform duration-700 group-hover:scale-[1.02]"
+                className="w-full aspect-[4/3] md:aspect-video object-cover object-top transform transition-transform duration-700 group-hover:scale-[1.02]"
               />
             </div>
           </div>

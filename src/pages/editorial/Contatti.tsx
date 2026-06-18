@@ -1,7 +1,15 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Mail, Linkedin, Github, Instagram, ArrowRight, MapPin, CheckCircle } from "lucide-react";
+import {
+  Mail,
+  Linkedin,
+  Github,
+  Instagram,
+  ArrowRight,
+  MapPin,
+  CheckCircle,
+} from "lucide-react";
 import { useState } from "react";
 import { api } from "@/lib/api";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -13,28 +21,28 @@ const getContacts = (t: any) => [
   {
     label: "Email",
     detail: "info@ilariadiliberto.com",
-    sub: t('contact.sub_email'),
+    sub: t("contact.sub_email"),
     icon: <Mail size={17} />,
     href: "mailto:info@ilariadiliberto.com",
   },
   {
     label: "LinkedIn",
     detail: "Ilaria Diliberto",
-    sub: t('contact.sub_linkedin'),
+    sub: t("contact.sub_linkedin"),
     icon: <Linkedin size={17} />,
     href: "https://www.linkedin.com/in/ilaria-diliberto/",
   },
   {
     label: "GitHub",
     detail: "@ilariadil-lgtm",
-    sub: t('contact.sub_github'),
+    sub: t("contact.sub_github"),
     icon: <Github size={17} />,
     href: "https://github.com/ilariadil-lgtm",
   },
   {
     label: "Instagram",
     detail: "@ilariadiliberto_tech",
-    sub: t('contact.sub_instagram'),
+    sub: t("contact.sub_instagram"),
     icon: <Instagram size={17} />,
     href: "https://www.instagram.com/ilariadiliberto_tech/",
   },
@@ -42,7 +50,13 @@ const getContacts = (t: any) => [
 
 // ─────────────────────────────────────────────────────────────────────────────
 function InputField({
-  label, name, type = "text", required = true, value, onChange, placeholder,
+  label,
+  name,
+  type = "text",
+  required = true,
+  value,
+  onChange,
+  placeholder,
 }: {
   label: string;
   name: string;
@@ -54,7 +68,10 @@ function InputField({
 }) {
   return (
     <div className="group relative">
-      <label htmlFor={name} className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/60 block mb-3 font-bold cursor-pointer">
+      <label
+        htmlFor={name}
+        className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/60 block mb-3 font-bold cursor-pointer"
+      >
         {label}
       </label>
       <input
@@ -76,7 +93,8 @@ const Contatti = () => {
   const { t } = useTranslation();
   usePageMeta({
     title: "Contatti",
-    description: "Hai un progetto in mente? Scrivimi. Rispondo entro 24 ore per discutere la tua idea e trovare insieme la soluzione giusta.",
+    description:
+      "Hai un progetto in mente? Scrivimi. Rispondo entro 24 ore per discutere la tua idea e trovare insieme la soluzione giusta.",
   });
 
   const [formData, setFormData] = useState({
@@ -86,25 +104,33 @@ const Contatti = () => {
     message: "",
     website: "", // Honeypot
   });
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.website) {
       // Honeypot tripped (bot)
-      setStatus("success"); 
+      setStatus("success");
       return;
     }
-    
+
     setStatus("loading");
     try {
       await api.sendContactMessage(formData);
       setStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "", website: "" });
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+        website: "",
+      });
     } catch {
       setStatus("error");
     }
@@ -117,10 +143,16 @@ const Contatti = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            HERO
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative pt-32 md:pt-48 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden">
+      <section className="relative pt-52 md:pt-48 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden">
         {/* Background Grid Pattern */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#3d0f1a 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: "radial-gradient(#3d0f1a 1px, transparent 1px)",
+              backgroundSize: "60px 60px",
+            }}
+          />
         </div>
 
         {/* Watermark */}
@@ -129,13 +161,12 @@ const Contatti = () => {
             className="font-display font-black text-[#3d0f1a]/[0.025] pr-4"
             style={{ fontSize: "clamp(80px, 18vw, 240px)", lineHeight: 1 }}
           >
-            {t('contact.watermark')}
+            {t("contact.watermark")}
           </span>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-
             <motion.div
               className="lg:col-span-7"
               initial={{ opacity: 0, x: -30 }}
@@ -144,16 +175,20 @@ const Contatti = () => {
             >
               <div className="flex items-center gap-4 mb-8">
                 <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-primary font-bold">
-                  {t('contact.subtitle')}
+                  {t("contact.subtitle")}
                 </span>
                 <div className="w-10 h-[1px] bg-primary/25" />
               </div>
               <h1
-                className="font-display font-bold leading-[0.85] tracking-tighter text-[#3d0f1a]"
+                className="font-display font-bold leading-[1.1] md:leading-[0.85] tracking-tighter text-[#3d0f1a]"
                 style={{ fontSize: "clamp(3rem, 7vw, 5.8rem)" }}
               >
-                <RevealText text={t('contact.title_1')} delay={0.1} />
-                <RevealText text={t('contact.title_2')} delay={0.2} className="text-primary italic pr-2" />
+                <RevealText text={t("contact.title_1")} delay={0.1} />
+                <RevealText
+                  text={t("contact.title_2")}
+                  delay={0.2}
+                  className="text-primary italic pr-2"
+                />
               </h1>
             </motion.div>
 
@@ -161,19 +196,22 @@ const Contatti = () => {
               className="lg:col-span-5"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                duration: 1.2,
+                delay: 0.25,
+                ease: [0.16, 1, 0.3, 1],
+              }}
             >
               <p className="font-body text-xl text-[#3d0f1a]/70 leading-relaxed border-l border-primary/25 pl-8">
-                {t('contact.description')}
+                {t("contact.description")}
               </p>
               <div className="mt-6 pl-8 flex items-center gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-600 animate-pulse" />
                 <span className="font-typewriter text-[9px] uppercase tracking-[0.35em] text-[#3d0f1a]/50 font-bold">
-                  {t('contact.available')}
+                  {t("contact.available")}
                 </span>
               </div>
             </motion.div>
-
           </div>
         </div>
       </section>
@@ -183,7 +221,6 @@ const Contatti = () => {
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="px-6 md:px-12 lg:px-24 pb-32">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-
           {/* ── Left: info + canali ── */}
           <motion.div
             className="lg:col-span-4 space-y-12 lg:pt-4"
@@ -195,7 +232,7 @@ const Contatti = () => {
             {/* Canali diretti */}
             <div>
               <span className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-primary font-bold block mb-7">
-                {t('contact.channels')}
+                {t("contact.channels")}
               </span>
               <div className="space-y-3">
                 {getContacts(t).map((c, i) => (
@@ -248,13 +285,13 @@ const Contatti = () => {
               <MapPin size={16} className="text-primary mt-0.5 shrink-0" />
               <div>
                 <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-primary font-bold block mb-2">
-                  {t('contact.hq_label')}
+                  {t("contact.hq_label")}
                 </span>
                 <p className="font-body text-[15px] text-[#3d0f1a]/70">
-                  {t('contact.hq_val')}
+                  {t("contact.hq_val")}
                 </p>
                 <p className="font-body text-[13px] text-[#3d0f1a]/50 mt-1">
-                  {t('contact.hq_desc')}
+                  {t("contact.hq_desc")}
                 </p>
               </div>
             </div>
@@ -269,18 +306,19 @@ const Contatti = () => {
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="bg-white border border-[#3d0f1a] p-10 md:p-14 relative overflow-hidden shadow-[15px_15px_0px_#c0392b]">
-
               <div className="relative z-10">
                 <div className="mb-10">
                   <span className="font-typewriter text-[10px] uppercase tracking-[0.5em] text-primary block mb-4 font-bold">
-                    {t('contact.send_msg_label')}
+                    {t("contact.send_msg_label")}
                   </span>
                   <h2
                     className="font-display font-black leading-[0.9] tracking-tighter text-[#3d0f1a]"
                     style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
                   >
-                    {t('contact.form_title_1')} <br />
-                    <span className="text-primary italic pr-2">{t('contact.form_title_2')}</span>
+                    {t("contact.form_title_1")} <br />
+                    <span className="text-primary italic pr-2">
+                      {t("contact.form_title_2")}
+                    </span>
                   </h2>
                 </div>
 
@@ -293,18 +331,24 @@ const Contatti = () => {
                       exit={{ opacity: 0 }}
                       className="flex flex-col items-center justify-center py-24 gap-6 text-center"
                     >
-                      <CheckCircle size={48} className="text-primary" strokeWidth={1.5} />
+                      <CheckCircle
+                        size={48}
+                        className="text-primary"
+                        strokeWidth={1.5}
+                      />
                       <div>
-                        <p className="font-display text-3xl font-black mb-3 text-[#3d0f1a]">{t('contact.msg_sent_title')}</p>
+                        <p className="font-display text-3xl font-black mb-3 text-[#3d0f1a]">
+                          {t("contact.msg_sent_title")}
+                        </p>
                         <p className="font-body text-[#3d0f1a]/70 text-lg leading-relaxed">
-                          {t('contact.msg_sent_desc')}
+                          {t("contact.msg_sent_desc")}
                         </p>
                       </div>
                       <button
                         onClick={() => setStatus("idle")}
                         className="font-typewriter text-[9px] uppercase tracking-[0.4em] text-[#3d0f1a]/40 hover:text-primary transition-colors mt-4 font-bold"
                       >
-                        {t('contact.send_another')}
+                        {t("contact.send_another")}
                       </button>
                     </motion.div>
                   ) : (
@@ -318,33 +362,36 @@ const Contatti = () => {
                     >
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
                         <InputField
-                          label={t('contact.form_name')}
+                          label={t("contact.form_name")}
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          placeholder={t('contact.form_name_ph')}
+                          placeholder={t("contact.form_name_ph")}
                         />
                         <InputField
-                          label={t('contact.form_email')}
+                          label={t("contact.form_email")}
                           name="email"
                           type="email"
                           value={formData.email}
                           onChange={handleChange}
-                          placeholder={t('contact.form_email_ph')}
+                          placeholder={t("contact.form_email_ph")}
                         />
                       </div>
 
                       <InputField
-                        label={t('contact.form_subject')}
+                        label={t("contact.form_subject")}
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        placeholder={t('contact.form_subject_ph')}
+                        placeholder={t("contact.form_subject_ph")}
                       />
 
                       <div className="group">
-                        <label htmlFor="message" className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/60 block mb-3 font-bold cursor-pointer">
-                          {t('contact.form_message')}
+                        <label
+                          htmlFor="message"
+                          className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/60 block mb-3 font-bold cursor-pointer"
+                        >
+                          {t("contact.form_message")}
                         </label>
                         <textarea
                           id="message"
@@ -353,7 +400,7 @@ const Contatti = () => {
                           rows={5}
                           value={formData.message}
                           onChange={handleChange}
-                          placeholder={t('contact.form_message_ph')}
+                          placeholder={t("contact.form_message_ph")}
                           className="w-full bg-transparent border-b border-[#3d0f1a]/20 py-3.5 text-[#3d0f1a] placeholder:text-[#3d0f1a]/30 font-body text-base outline-none focus:border-primary transition-colors duration-300 resize-none"
                         />
                       </div>
@@ -364,7 +411,7 @@ const Contatti = () => {
                           animate={{ opacity: 1, y: 0 }}
                           className="font-typewriter text-[9px] uppercase tracking-[0.35em] text-red-500 font-bold"
                         >
-                          {t('contact.form_error')}
+                          {t("contact.form_error")}
                         </motion.p>
                       )}
 
@@ -376,7 +423,9 @@ const Contatti = () => {
                           className="group relative flex items-center justify-between w-full p-7 border border-[#3d0f1a] bg-[#f5f2ed] hover:bg-primary overflow-hidden transition-all duration-500 disabled:opacity-50 mt-4"
                         >
                           <span className="relative z-10 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white font-bold transition-colors">
-                            {status === "loading" ? t('contact.btn_sending') : t('contact.btn_send')}
+                            {status === "loading"
+                              ? t("contact.btn_sending")
+                              : t("contact.btn_send")}
                           </span>
                           <ArrowRight
                             size={18}
@@ -390,7 +439,6 @@ const Contatti = () => {
               </div>
             </div>
           </motion.div>
-
         </div>
       </section>
 

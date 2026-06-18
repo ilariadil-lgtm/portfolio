@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { NebulaNav } from "./components/NebulaNav";
-import { ScrollIndicator } from './components/ScrollIndicator';
+import { ScrollIndicator } from "./components/ScrollIndicator";
 import { NebulaFooter } from "./components/NebulaFooter";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
@@ -12,28 +12,46 @@ import { RevealText } from "@/components/RevealText";
 const getStaticFaqs = (t: any) => [
   {
     id: 1,
-    question: t('faq.q1', "Come funziona il processo di sviluppo?"),
-    answer: t('faq.a1', "Il processo prevede tre fasi principali: scoperta e strategia, design e sviluppo, test e rilascio.")
+    question: t("faq.q1", "Come funziona il processo di sviluppo?"),
+    answer: t(
+      "faq.a1",
+      "Il processo prevede tre fasi principali: scoperta e strategia, design e sviluppo, test e rilascio.",
+    ),
   },
   {
     id: 2,
-    question: t('faq.q2', "Quali sono i tempi medi per la realizzazione di un progetto?"),
-    answer: t('faq.a2', "I tempi variano a seconda della complessità. Un sito vetrina richiede in media 3-4 settimane, mentre web app o e-commerce richiedono tra le 6 e le 12 settimane.")
+    question: t(
+      "faq.q2",
+      "Quali sono i tempi medi per la realizzazione di un progetto?",
+    ),
+    answer: t(
+      "faq.a2",
+      "I tempi variano a seconda della complessità. Un sito vetrina richiede in media 3-4 settimane, mentre web app o e-commerce richiedono tra le 6 e le 12 settimane.",
+    ),
   },
   {
     id: 3,
-    question: t('faq.q3', "Quali tecnologie utilizzi per lo sviluppo?"),
-    answer: t('faq.a3', "Utilizzo uno stack moderno basato su React, Vite e TailwindCSS per il front-end. Per il back-end, prediligo Node.js o Python/Django. A seconda del progetto, implemento Supabase o Firebase.")
+    question: t("faq.q3", "Quali tecnologie utilizzi per lo sviluppo?"),
+    answer: t(
+      "faq.a3",
+      "Utilizzo uno stack moderno basato su React, Vite e TailwindCSS per il front-end. Per il back-end, prediligo Node.js o Python/Django. A seconda del progetto, implemento Supabase o Firebase.",
+    ),
   },
   {
     id: 4,
-    question: t('faq.q4', "Fornisci servizi di manutenzione post-rilascio?"),
-    answer: t('faq.a4', "Sì, offro pacchetti di manutenzione mensili per aggiornamenti di sicurezza, monitoraggio delle performance e piccoli interventi evolutivi.")
+    question: t("faq.q4", "Fornisci servizi di manutenzione post-rilascio?"),
+    answer: t(
+      "faq.a4",
+      "Sì, offro pacchetti di manutenzione mensili per aggiornamenti di sicurezza, monitoraggio delle performance e piccoli interventi evolutivi.",
+    ),
   },
   {
     id: 5,
-    question: t('faq.q5', "Lavori solo con clienti in Italia?"),
-    answer: t('faq.a5', "No, opero a livello internazionale. Molti dei miei clienti si trovano all'estero. Il flusso di lavoro asincrono e i meeting strategici permettono di collaborare perfettamente a distanza.")
+    question: t("faq.q5", "Lavori solo con clienti in Italia?"),
+    answer: t(
+      "faq.a5",
+      "No, opero a livello internazionale. Molti dei miei clienti si trovano all'estero. Il flusso di lavoro asincrono e i meeting strategici permettono di collaborare perfettamente a distanza.",
+    ),
   },
 ];
 
@@ -56,15 +74,15 @@ const FaqItem = ({ faq, index }: { faq: any; index: number }) => {
         <div className="flex items-start gap-8 md:gap-12 w-full">
           {/* Numero Progressivo */}
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37]/40 font-bold mt-2 shrink-0">
-            {String(index + 1).padStart(2, '0')}
+            {String(index + 1).padStart(2, "0")}
           </span>
-          
+
           {/* Contenuto principale: Domanda & Risposta espandibile */}
           <div className="flex-1">
             <h3 className="font-bricolage font-black tracking-tight text-xl md:text-3xl text-white group-hover:text-[#d4af37] transition-colors duration-500 mb-2">
               {faq.question}
             </h3>
-            
+
             <AnimatePresence initial={false}>
               {isOpen && (
                 <motion.div
@@ -96,7 +114,8 @@ const NebulaFAQ = () => {
   const { t } = useTranslation();
   usePageMeta({
     title: "FAQ",
-    description: "Domande frequenti su come lavoro, i miei processi, tempi e costi. Tutto quello che devi sapere prima di iniziare un progetto insieme.",
+    description:
+      "Domande frequenti su come lavoro, i miei processi, tempi e costi. Tutto quello che devi sapere prima di iniziare un progetto insieme.",
   });
 
   const [faqs, setFaqs] = useState<any[]>([]);
@@ -118,7 +137,9 @@ const NebulaFAQ = () => {
   return (
     <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
       <NebulaNav />
-      <ScrollIndicator sections={['scroll.hero', 'scroll.contact'].map(k => t(k))} />
+      <ScrollIndicator
+        sections={["scroll.hero", "scroll.contact"].map((k) => t(k))}
+      />
 
       {/* Background Noise */}
       <div className="fixed inset-0 pointer-events-none z-[0] opacity-[0.2] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
@@ -137,20 +158,30 @@ const NebulaFAQ = () => {
               </span>
               <div className="w-12 h-[1px] bg-[#d4af37]/30" />
             </div>
-            
+
             <h1 className="font-fraunces italic font-light text-[12vw] md:text-[8vw] lg:text-[clamp(2rem,7vw,7rem)] leading-[0.9] tracking-tight text-white mb-8 pr-2">
-              <RevealText text="FAQ" delay={0.1} className="not-italic font-bricolage pr-2" />
+              <RevealText
+                text="FAQ"
+                delay={0.1}
+                className="not-italic font-bricolage pr-2"
+              />
               <br />
-              <RevealText text="& Info." delay={0.2} className="text-[#d4af37]" />
+              <RevealText
+                text="& Info."
+                delay={0.2}
+                className="text-[#d4af37]"
+              />
             </h1>
-            
+
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 1 }}
               className="font-outfit font-light text-white/50 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto"
             >
-              Domande frequenti su come lavoro, i miei processi, metodologie e tempistiche. Tutto ciò che ti serve sapere prima di iniziare la nostra collaborazione.
+              Domande frequenti su come lavoro, i miei processi, metodologie e
+              tempistiche. Tutto ciò che ti serve sapere prima di iniziare la
+              nostra collaborazione.
             </motion.p>
           </motion.div>
         </div>

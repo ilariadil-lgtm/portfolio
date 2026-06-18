@@ -10,28 +10,28 @@ import { useTranslation } from "react-i18next";
 const getStaticFaqs = (t: any) => [
   {
     id: 1,
-    question: t('faq.q1'),
-    answer: t('faq.a1')
+    question: t("faq.q1"),
+    answer: t("faq.a1"),
   },
   {
     id: 2,
-    question: t('faq.q2'),
-    answer: t('faq.a2')
+    question: t("faq.q2"),
+    answer: t("faq.a2"),
   },
   {
     id: 3,
-    question: t('faq.q3'),
-    answer: t('faq.a3')
+    question: t("faq.q3"),
+    answer: t("faq.a3"),
   },
   {
     id: 4,
-    question: t('faq.q4'),
-    answer: t('faq.a4')
+    question: t("faq.q4"),
+    answer: t("faq.a4"),
   },
   {
     id: 5,
-    question: t('faq.q5'),
-    answer: t('faq.a5')
+    question: t("faq.q5"),
+    answer: t("faq.a5"),
   },
 ];
 
@@ -53,7 +53,7 @@ const FaqItem = ({ faq, index }: { faq: any; index: number }) => {
       >
         <div className="flex items-start gap-5">
           <span className="font-typewriter text-[10px] text-primary/40 font-bold mt-1 shrink-0">
-            {String(index + 1).padStart(2, '0')}
+            {String(index + 1).padStart(2, "0")}
           </span>
           <h2 className="font-display text-xl md:text-2xl font-bold text-[#3d0f1a] group-hover:text-primary transition-colors duration-300 leading-snug">
             {faq.question}
@@ -87,7 +87,8 @@ const FAQ = () => {
   const { t } = useTranslation();
   usePageMeta({
     title: "FAQ",
-    description: "Domande frequenti su come lavoro, i miei processi, tempi e costi. Tutto quello che devi sapere prima di iniziare un progetto insieme.",
+    description:
+      "Domande frequenti su come lavoro, i miei processi, tempi e costi. Tutto quello che devi sapere prima di iniziare un progetto insieme.",
   });
 
   const [faqs, setFaqs] = useState<any[]>([]);
@@ -110,13 +111,13 @@ const FAQ = () => {
       <Navigation />
 
       {/* HERO */}
-      <section className="relative pt-32 md:pt-48 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden">
+      <section className="relative pt-52 md:pt-48 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
           <span
             className="font-display font-black text-[#3d0f1a]/[0.025] pr-4"
             style={{ fontSize: "clamp(80px, 18vw, 240px)", lineHeight: 1 }}
           >
-            {t('faq.watermark')}
+            {t("faq.watermark")}
           </span>
         </div>
 
@@ -128,16 +129,19 @@ const FAQ = () => {
           >
             <div className="flex items-center gap-4 mb-8">
               <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-primary font-bold">
-                {t('faq.subtitle')}
+                {t("faq.subtitle")}
               </span>
               <div className="w-10 h-[1px] bg-primary/25" />
             </div>
             <h1
-              className="font-display font-bold leading-[0.85] tracking-tighter text-[#3d0f1a]"
+              className="font-display font-bold leading-[1.1] md:leading-[0.85] tracking-tighter text-[#3d0f1a]"
               style={{ fontSize: "clamp(3rem, 7vw, 5.8rem)" }}
             >
-              {t('faq.title_1')}<br />
-              <span className="text-primary italic pr-2">{t('faq.title_2')}</span>
+              {t("faq.title_1")}
+              <br />
+              <span className="text-primary italic pr-2">
+                {t("faq.title_2")}
+              </span>
             </h1>
           </motion.div>
         </div>

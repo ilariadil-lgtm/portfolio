@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { NebulaNav } from "./components/NebulaNav";
-import { ScrollIndicator } from './components/ScrollIndicator';
+import { ScrollIndicator } from "./components/ScrollIndicator";
 import { NebulaFooter } from "./components/NebulaFooter";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
@@ -8,12 +8,13 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { ArrowRight } from "lucide-react";
 import { RevealText } from "@/components/RevealText";
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 const Blog = () => {
   usePageMeta({
     title: "Journal",
-    description: "Riflessioni su design, sviluppo web e strategia digitale. Articoli tecnici e pensieri sul mestiere di costruire prodotti digitali.",
+    description:
+      "Riflessioni su design, sviluppo web e strategia digitale. Articoli tecnici e pensieri sul mestiere di costruire prodotti digitali.",
   });
 
   const [posts, setPosts] = useState<any[]>([]);
@@ -34,7 +35,9 @@ const Blog = () => {
   return (
     <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
       <NebulaNav />
-      <ScrollIndicator sections={['scroll.hero', 'scroll.contact'].map(k => t(k))} />
+      <ScrollIndicator
+        sections={["scroll.hero", "scroll.contact"].map((k) => t(k))}
+      />
 
       {/* Background Noise */}
       <div className="fixed inset-0 pointer-events-none z-[0] opacity-[0.2] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
@@ -53,13 +56,21 @@ const Blog = () => {
               </span>
               <div className="w-12 h-[1px] bg-[#d4af37]/30" />
             </div>
-            <h1 className="font-fraunces italic font-light leading-[0.9] tracking-tight text-white mb-8 pr-2" style={{ fontSize: "clamp(3.5rem, 8vw, 7rem)" }}>
+            <h1
+              className="font-fraunces italic font-light leading-[0.9] tracking-tight text-white mb-8 pr-2"
+              style={{ fontSize: "clamp(3.5rem, 8vw, 7rem)" }}
+            >
               <RevealText text="Pensieri e" delay={0.1} />
               <br />
-              <RevealText text="riflessioni." delay={0.2} className="text-[#d4af37]" />
+              <RevealText
+                text="riflessioni."
+                delay={0.2}
+                className="text-[#d4af37]"
+              />
             </h1>
             <p className="font-outfit font-light text-white/50 text-lg leading-relaxed max-w-xl pl-8 border-l border-[#d4af37]/30">
-              Uno spazio dedicato a riflessioni su design, sviluppo web, intelligenza artificiale e strategia digitale.
+              Uno spazio dedicato a riflessioni su design, sviluppo web,
+              intelligenza artificiale e strategia digitale.
             </p>
           </motion.div>
         </div>
@@ -82,7 +93,12 @@ const Blog = () => {
                   {post.image && (
                     <div className="overflow-hidden mb-8 aspect-[16/10] bg-white/5">
                       <img
-                        src={post.image.startsWith('http') || post.image.startsWith('/') ? post.image : `${BASE_URL}${post.image}`}
+                        src={
+                          post.image.startsWith("http") ||
+                          post.image.startsWith("/")
+                            ? post.image
+                            : `${BASE_URL}${post.image}`
+                        }
                         alt={post.title}
                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700"
                         loading="lazy"
@@ -90,8 +106,19 @@ const Blog = () => {
                     </div>
                   )}
                   <div className="flex items-center gap-4 mb-6 font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37]">
-                    <span>{new Date(post.created_at).toLocaleDateString('it-IT', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                    {post.tags && <><span>·</span><span>{post.tags}</span></>}
+                    <span>
+                      {new Date(post.created_at).toLocaleDateString("it-IT", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </span>
+                    {post.tags && (
+                      <>
+                        <span>·</span>
+                        <span>{post.tags}</span>
+                      </>
+                    )}
                   </div>
                   <h2 className="font-bricolage font-black tracking-tight text-3xl md:text-4xl text-white mb-6 group-hover:text-[#d4af37] transition-colors duration-500">
                     {post.title}
@@ -101,7 +128,10 @@ const Blog = () => {
                   </p>
                   <span className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37] opacity-60 group-hover:opacity-100 transition-opacity">
                     LEGGI ARTICOLO
-                    <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
+                    <ArrowRight
+                      size={14}
+                      className="group-hover:translate-x-2 transition-transform"
+                    />
                   </span>
                 </motion.article>
               ))}
@@ -119,7 +149,8 @@ const Blog = () => {
                 Presto nuovi articoli.
               </p>
               <p className="font-outfit font-light text-white/50 text-lg">
-                Sto preparando riflessioni su design, codice e strategia digitale.
+                Sto preparando riflessioni su design, codice e strategia
+                digitale.
               </p>
             </motion.div>
           )}

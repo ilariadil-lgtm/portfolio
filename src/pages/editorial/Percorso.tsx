@@ -16,7 +16,7 @@ const Percorso = () => {
       try {
         const [aboutData, servData] = await Promise.all([
           api.getAbout(),
-          api.getServices()
+          api.getServices(),
         ]);
         setAbout(aboutData);
         setServices(servData.results || servData);
@@ -31,30 +31,34 @@ const Percorso = () => {
     {
       num: "01",
       period: "2014 — 2018",
-      title: t('percorso.evo_title1'),
-      subtitle: t('percorso.evo_sub1'),
-      description: t('percorso.evo_desc1'),
-      tech: [t('percorso.evo_tech1_1'), t('percorso.evo_tech1_2'), t('percorso.evo_tech1_3')],
-      icon: <Layers size={22} />
+      title: t("percorso.evo_title1"),
+      subtitle: t("percorso.evo_sub1"),
+      description: t("percorso.evo_desc1"),
+      tech: [
+        t("percorso.evo_tech1_1"),
+        t("percorso.evo_tech1_2"),
+        t("percorso.evo_tech1_3"),
+      ],
+      icon: <Layers size={22} />,
     },
     {
       num: "02",
       period: "2019 — 2021",
-      title: t('percorso.evo_title2'),
-      subtitle: t('percorso.evo_sub2'),
-      description: t('percorso.evo_desc2'),
+      title: t("percorso.evo_title2"),
+      subtitle: t("percorso.evo_sub2"),
+      description: t("percorso.evo_desc2"),
       tech: ["React", "TypeScript", "Design Systems"],
-      icon: <Cpu size={22} />
+      icon: <Cpu size={22} />,
     },
     {
       num: "03",
       period: "2022 — oggi",
-      title: t('percorso.evo_title3'),
-      subtitle: t('percorso.evo_sub3'),
-      description: t('percorso.evo_desc3'),
+      title: t("percorso.evo_title3"),
+      subtitle: t("percorso.evo_sub3"),
+      description: t("percorso.evo_desc3"),
       tech: ["AWS", "Serverless", "DevOps"],
-      icon: <Globe size={22} />
-    }
+      icon: <Globe size={22} />,
+    },
   ];
 
   return (
@@ -64,15 +68,16 @@ const Percorso = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            HERO SECTION — CHI SONO
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="pt-32 md:pt-44 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden">
+      <section className="pt-52 md:pt-52 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden">
         {/* Background Monumental Text */}
         <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center opacity-[0.02] pointer-events-none">
-          <span className="font-display text-[22vw] font-black uppercase tracking-tighter">ABOUT</span>
+          <span className="font-display text-[22vw] font-black uppercase tracking-tighter">
+            ABOUT
+          </span>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-stretch">
-
             {/* Left Column: Typography & Bio Info */}
             <div className="lg:col-span-7 space-y-12">
               <motion.div
@@ -82,16 +87,20 @@ const Percorso = () => {
                 className="space-y-6"
               >
                 <div className="flex items-center gap-4 mb-2">
-                  <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium">{t('percorso.hero_label')}</span>
+                  <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium">
+                    {t("percorso.hero_label")}
+                  </span>
                   <div className="w-12 h-[1px] bg-primary/20" />
                 </div>
-                <h1 className="font-display text-[9vw] md:text-[6vw] font-black leading-[0.85] tracking-tighter text-[#3d0f1a] mb-8">
-                  {t('percorso.hero_h1_1')} <br />
-                  <span className="text-primary italic pr-2">{t('percorso.hero_h1_2')}</span>
+                <h1 className="font-display text-[9vw] md:text-[6vw] font-black leading-[1.1] md:leading-[0.85] tracking-tighter text-[#3d0f1a] mb-8">
+                  {t("percorso.hero_h1_1")} <br />
+                  <span className="text-primary italic pr-2">
+                    {t("percorso.hero_h1_2")}
+                  </span>
                 </h1>
 
                 <p className="font-body text-xl text-[#3d0f1a]/80 leading-relaxed pl-8 border-l border-primary/25 max-w-xl">
-                  {about?.bio || t('percorso.hero_bio_default')}
+                  {about?.bio || t("percorso.hero_bio_default")}
                 </p>
               </motion.div>
 
@@ -99,11 +108,17 @@ const Percorso = () => {
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                transition={{
+                  duration: 1.2,
+                  delay: 0.2,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
                 className="border border-primary/10 bg-white/20 backdrop-blur-md shadow-sm max-w-xl"
               >
                 <div className="bg-primary/5 px-6 py-3 border-b border-primary/10 flex items-center justify-between">
-                  <span className="font-typewriter text-[10px] uppercase tracking-[0.2em] text-primary font-medium">{t('percorso.profile_title')}</span>
+                  <span className="font-typewriter text-[10px] uppercase tracking-[0.2em] text-primary font-medium">
+                    {t("percorso.profile_title")}
+                  </span>
                   <div className="flex gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary/40" />
                     <span className="w-1.5 h-1.5 rounded-full bg-primary/20" />
@@ -111,14 +126,36 @@ const Percorso = () => {
                 </div>
                 <div className="divide-y divide-primary/5">
                   {[
-                    { label: t('percorso.prof_l1'), val: t('percorso.prof_v1') },
-                    { label: t('percorso.prof_l2'), val: t('percorso.prof_v2') },
-                    { label: t('percorso.prof_l3'), val: t('percorso.prof_v3') },
-                    { label: t('percorso.prof_l4'), val: t('percorso.prof_v4'), highlight: true }
+                    {
+                      label: t("percorso.prof_l1"),
+                      val: t("percorso.prof_v1"),
+                    },
+                    {
+                      label: t("percorso.prof_l2"),
+                      val: t("percorso.prof_v2"),
+                    },
+                    {
+                      label: t("percorso.prof_l3"),
+                      val: t("percorso.prof_v3"),
+                    },
+                    {
+                      label: t("percorso.prof_l4"),
+                      val: t("percorso.prof_v4"),
+                      highlight: true,
+                    },
                   ].map((item, idx) => (
-                    <div key={idx} className="flex justify-between items-center px-6 py-4">
-                      <span className="font-typewriter text-[11px] uppercase tracking-widest text-[#3d0f1a]/60 font-medium">{item.label}</span>
-                      <span className={`font-mono text-[12px] ${item.highlight ? 'text-primary font-semibold' : 'text-[#3d0f1a] font-medium'}`}>{item.val}</span>
+                    <div
+                      key={idx}
+                      className="flex justify-between items-center px-6 py-4"
+                    >
+                      <span className="font-typewriter text-[11px] uppercase tracking-widest text-[#3d0f1a]/60 font-medium">
+                        {item.label}
+                      </span>
+                      <span
+                        className={`font-mono text-[12px] ${item.highlight ? "text-primary font-semibold" : "text-[#3d0f1a] font-medium"}`}
+                      >
+                        {item.val}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -134,14 +171,24 @@ const Percorso = () => {
                 className="relative w-full max-w-[400px] aspect-[4/5] border border-primary/15 p-3 bg-white/30 backdrop-blur-sm shadow-xl group"
               >
                 {/* Corner Blueprint Markers */}
-                <span className="absolute -top-2 -left-2 font-mono text-[10px] text-primary/40 pointer-events-none">[+]</span>
-                <span className="absolute -top-2 -right-2 font-mono text-[10px] text-primary/40 pointer-events-none">[+]</span>
-                <span className="absolute -bottom-2 -left-2 font-mono text-[10px] text-primary/40 pointer-events-none">[+]</span>
-                <span className="absolute -bottom-2 -right-2 font-mono text-[10px] text-primary/40 pointer-events-none">[+]</span>
+                <span className="absolute -top-2 -left-2 font-mono text-[10px] text-primary/40 pointer-events-none">
+                  [+]
+                </span>
+                <span className="absolute -top-2 -right-2 font-mono text-[10px] text-primary/40 pointer-events-none">
+                  [+]
+                </span>
+                <span className="absolute -bottom-2 -left-2 font-mono text-[10px] text-primary/40 pointer-events-none">
+                  [+]
+                </span>
+                <span className="absolute -bottom-2 -right-2 font-mono text-[10px] text-primary/40 pointer-events-none">
+                  [+]
+                </span>
 
                 {/* Monogram Background Grid */}
                 <div className="absolute inset-0 flex justify-center items-center select-none opacity-[0.03] pointer-events-none">
-                  <span className="font-display text-[16vw] font-black uppercase tracking-tighter text-[#3d0f1a]">ID</span>
+                  <span className="font-display text-[16vw] font-black uppercase tracking-tighter text-[#3d0f1a]">
+                    ID
+                  </span>
                 </div>
 
                 {/* Content Container with scanner animation */}
@@ -149,7 +196,11 @@ const Percorso = () => {
                   {/* Animated Scanline Laser Beam */}
                   <motion.div
                     animate={{ top: ["0%", "100%", "0%"] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                    transition={{
+                      duration: 6,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
                     className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-primary/50 to-transparent shadow-[0_0_6px_rgba(192,57,43,0.4)] z-10 pointer-events-none"
                   />
 
@@ -159,26 +210,48 @@ const Percorso = () => {
                   {/* Top Ledger Telemetry */}
                   <div className="flex justify-between items-start border-b border-primary/15 pb-4 relative z-10">
                     <div className="flex flex-col">
-                      <span className="font-typewriter text-[9px] uppercase tracking-[0.25em] text-primary font-medium">Core_Principles</span>
-                      <span className="font-typewriter text-[7px] uppercase tracking-[0.2em] text-[#3d0f1a]/50 font-medium">ID_MANIFESTO // v1.0</span>
+                      <span className="font-typewriter text-[9px] uppercase tracking-[0.25em] text-primary font-medium">
+                        Core_Principles
+                      </span>
+                      <span className="font-typewriter text-[7px] uppercase tracking-[0.2em] text-[#3d0f1a]/50 font-medium">
+                        ID_MANIFESTO // v1.0
+                      </span>
                     </div>
                     <div className="flex gap-1.5 items-center">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                      <span className="font-mono text-[8px] text-primary/80">ACTIVE</span>
+                      <span className="font-mono text-[8px] text-primary/80">
+                        ACTIVE
+                      </span>
                     </div>
                   </div>
 
                   {/* Main Rules Text Block */}
                   <div className="space-y-6 my-auto pt-4 relative z-10">
                     {[
-                      { num: "I.", label: t('percorso.manifesto_label1'), desc: t('percorso.manifesto_desc1') },
-                      { num: "II.", label: t('percorso.manifesto_label2'), desc: t('percorso.manifesto_desc2') },
-                      { num: "III.", label: t('percorso.manifesto_label3'), desc: t('percorso.manifesto_desc3') }
+                      {
+                        num: "I.",
+                        label: t("percorso.manifesto_label1"),
+                        desc: t("percorso.manifesto_desc1"),
+                      },
+                      {
+                        num: "II.",
+                        label: t("percorso.manifesto_label2"),
+                        desc: t("percorso.manifesto_desc2"),
+                      },
+                      {
+                        num: "III.",
+                        label: t("percorso.manifesto_label3"),
+                        desc: t("percorso.manifesto_desc3"),
+                      },
                     ].map((rule, idx) => (
                       <div key={idx} className="space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className="font-display text-sm italic font-bold text-primary pr-2">{rule.num}</span>
-                          <span className="font-typewriter text-[10px] uppercase tracking-widest text-[#3d0f1a] font-medium">{rule.label}</span>
+                          <span className="font-display text-sm italic font-bold text-primary pr-2">
+                            {rule.num}
+                          </span>
+                          <span className="font-typewriter text-[10px] uppercase tracking-widest text-[#3d0f1a] font-medium">
+                            {rule.label}
+                          </span>
                         </div>
                         <p className="font-body text-[13px] text-[#3d0f1a]/70 leading-relaxed pl-4">
                           {rule.desc}
@@ -190,21 +263,30 @@ const Percorso = () => {
                   {/* Bottom Specs */}
                   <div className="border-t border-primary/15 pt-4 flex justify-between items-end relative z-10">
                     <div className="flex flex-col">
-                      <span className="font-typewriter text-[7px] uppercase tracking-[0.2em] text-[#3d0f1a]/50 font-medium">SYSTEM_ENVELOPE</span>
-                      <span className="font-mono text-[9px] text-[#3d0f1a]/70">[ SECURED_INTEGRITY ]</span>
+                      <span className="font-typewriter text-[7px] uppercase tracking-[0.2em] text-[#3d0f1a]/50 font-medium">
+                        SYSTEM_ENVELOPE
+                      </span>
+                      <span className="font-mono text-[9px] text-[#3d0f1a]/70">
+                        [ SECURED_INTEGRITY ]
+                      </span>
                     </div>
-                    <span className="font-typewriter text-[8px] text-primary font-medium">L_38.1 / R_13.3</span>
+                    <span className="font-typewriter text-[8px] text-primary font-medium">
+                      L_38.1 / R_13.3
+                    </span>
                   </div>
                 </div>
 
                 {/* Status indicator typewriter label */}
                 <div className="flex justify-between items-center mt-3 px-1">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.2em] text-primary/60 font-medium">[ CORE_MANIFESTO // v1.0 ]</span>
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.2em] text-primary/60 font-medium">SYS_OK</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.2em] text-primary/60 font-medium">
+                    [ CORE_MANIFESTO // v1.0 ]
+                  </span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.2em] text-primary/60 font-medium">
+                    SYS_OK
+                  </span>
                 </div>
               </motion.div>
             </div>
-
           </div>
         </div>
       </section>
@@ -220,9 +302,9 @@ const Percorso = () => {
             transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
             className="flex gap-20 font-typewriter text-[12px] uppercase tracking-[0.4em] text-primary font-medium"
           >
-            <span>{t('percorso.marquee')}</span>
-            <span>{t('percorso.marquee')}</span>
-            <span>{t('percorso.marquee')}</span>
+            <span>{t("percorso.marquee")}</span>
+            <span>{t("percorso.marquee")}</span>
+            <span>{t("percorso.marquee")}</span>
           </motion.div>
         </div>
       </section>
@@ -232,11 +314,15 @@ const Percorso = () => {
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
         <div className="mb-20">
-          <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium mb-4 block">{t('percorso.timeline_label')}</span>
+          <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium mb-4 block">
+            {t("percorso.timeline_label")}
+          </span>
           <div className="w-12 h-[1px] bg-primary/20 mb-8" />
           <h2 className="font-display text-5xl md:text-7xl font-bold leading-none tracking-tighter">
-            {t('percorso.timeline_h1_1')} <br />
-            <span className="text-primary italic pr-2">{t('percorso.timeline_h1_2')}</span>
+            {t("percorso.timeline_h1_1")} <br />
+            <span className="text-primary italic pr-2">
+              {t("percorso.timeline_h1_2")}
+            </span>
           </h2>
         </div>
 
@@ -258,13 +344,19 @@ const Percorso = () => {
                 <div className="font-display text-6xl md:text-8xl font-black text-primary/10 select-none leading-none">
                   {step.num}
                 </div>
-                <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-primary/60 font-medium whitespace-nowrap">{step.period}</span>
+                <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-primary/60 font-medium whitespace-nowrap">
+                  {step.period}
+                </span>
               </div>
 
               {/* Title & Narrative Description */}
               <div className="lg:col-span-6 space-y-4">
-                <h3 className="font-display text-4xl md:text-5xl font-bold italic text-[#3d0f1a] pr-2">{step.title}</h3>
-                <span className="font-typewriter text-[9px] uppercase tracking-[0.4em] text-primary font-medium mb-4 block">{step.subtitle}</span>
+                <h3 className="font-display text-4xl md:text-5xl font-bold italic text-[#3d0f1a] pr-2">
+                  {step.title}
+                </h3>
+                <span className="font-typewriter text-[9px] uppercase tracking-[0.4em] text-primary font-medium mb-4 block">
+                  {step.subtitle}
+                </span>
                 <p className="font-body text-lg text-[#3d0f1a]/70 leading-relaxed max-w-xl">
                   {step.description}
                 </p>
@@ -275,12 +367,16 @@ const Percorso = () => {
                 <div className="absolute top-6 right-6 text-primary/25 group-hover:text-primary/50 group-hover:scale-110 transition-all duration-300">
                   {step.icon}
                 </div>
-                <span className="font-typewriter text-[8px] uppercase tracking-[0.3em] text-primary/45 mb-6 block font-medium">Phase_Inventory</span>
+                <span className="font-typewriter text-[8px] uppercase tracking-[0.3em] text-primary/45 mb-6 block font-medium">
+                  Phase_Inventory
+                </span>
                 <ul className="space-y-3.5">
                   {step.tech.map((t, idx) => (
                     <li key={idx} className="flex items-center gap-3">
                       <div className="w-1 h-1 rounded-full bg-primary/70" />
-                      <span className="font-typewriter text-[10px] uppercase tracking-widest text-[#3d0f1a] font-medium">{t}</span>
+                      <span className="font-typewriter text-[10px] uppercase tracking-widest text-[#3d0f1a] font-medium">
+                        {t}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -294,74 +390,105 @@ const Percorso = () => {
            CAPABILITIES MATRIX — TECHNICAL GRID
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="py-24 md:py-36 px-6 md:px-12 lg:px-24 bg-[#3d0f1a] text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#C0392B 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+        <div
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{
+            backgroundImage: "radial-gradient(#C0392B 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
 
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
-            <span className="font-typewriter text-[12px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">{t('percorso.skills_label')}</span>
+            <span className="font-typewriter text-[12px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">
+              {t("percorso.skills_label")}
+            </span>
             <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tighter">
-              {t('percorso.skills_h1_1')} <br />
-              <span className="text-primary italic pr-2">{t('percorso.skills_h1_2')}</span>
+              {t("percorso.skills_h1_1")} <br />
+              <span className="text-primary italic pr-2">
+                {t("percorso.skills_h1_2")}
+              </span>
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-            {services.length > 0 ? services.map((tech, i) => (
-              <motion.div
-                key={tech.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group p-8 border border-white/10 hover:border-primary/40 transition-all bg-white/[0.02] backdrop-blur-sm relative"
-              >
-                <div className="flex justify-between items-start mb-12">
-                  <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform bg-[#3d0f1a]">
-                    <Box size={20} />
-                  </div>
-                  <span className="font-typewriter text-[9px] text-white/30 font-medium">MODULE_0{i + 1}</span>
-                </div>
-                <h3 className="font-display text-3xl font-bold mb-4">{tech.title}</h3>
-                <p className="font-body text-[14px] text-white/60 leading-relaxed">
-                  {tech.description || t('percorso.skills_default_desc')}
-                </p>
-                <div className="mt-8 pt-8 border-t border-white/5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="font-typewriter text-[9px] tracking-[0.4em] text-primary font-medium">INIT_AUDIT</span>
-                  <ArrowRight size={14} className="text-primary" />
-                </div>
-              </motion.div>
-            )) : (
-              // Styled static fallbacks matching the exact grid cards
-              [
-                { title: t('percorso.fb_skill1_t'), desc: t('percorso.fb_skill1_d') },
-                { title: t('percorso.fb_skill2_t'), desc: t('percorso.fb_skill2_d') },
-                { title: t('percorso.fb_skill3_t'), desc: t('percorso.fb_skill3_d') }
-              ].map((tech, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="group p-8 border border-white/10 hover:border-primary/40 transition-all bg-white/[0.02] backdrop-blur-sm relative"
-                >
-                  <div className="flex justify-between items-start mb-12">
-                    <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform bg-[#3d0f1a]">
-                      <Box size={20} />
+            {services.length > 0
+              ? services.map((tech, i) => (
+                  <motion.div
+                    key={tech.id}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="group p-8 border border-white/10 hover:border-primary/40 transition-all bg-white/[0.02] backdrop-blur-sm relative"
+                  >
+                    <div className="flex justify-between items-start mb-12">
+                      <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform bg-[#3d0f1a]">
+                        <Box size={20} />
+                      </div>
+                      <span className="font-typewriter text-[9px] text-white/30 font-medium">
+                        MODULE_0{i + 1}
+                      </span>
                     </div>
-                    <span className="font-typewriter text-[9px] text-white/30 font-medium">MODULE_0{i + 1}</span>
-                  </div>
-                  <h3 className="font-display text-3xl font-bold mb-4">{tech.title}</h3>
-                  <p className="font-body text-[14px] text-white/60 leading-relaxed">
-                    {tech.desc}
-                  </p>
-                  <div className="mt-8 pt-8 border-t border-white/5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="font-typewriter text-[9px] tracking-[0.4em] text-primary font-medium">INIT_AUDIT</span>
-                    <ArrowRight size={14} className="text-primary" />
-                  </div>
-                </motion.div>
-              ))
-            )}
+                    <h3 className="font-display text-3xl font-bold mb-4">
+                      {tech.title}
+                    </h3>
+                    <p className="font-body text-[14px] text-white/60 leading-relaxed">
+                      {tech.description || t("percorso.skills_default_desc")}
+                    </p>
+                    <div className="mt-8 pt-8 border-t border-white/5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span className="font-typewriter text-[9px] tracking-[0.4em] text-primary font-medium">
+                        INIT_AUDIT
+                      </span>
+                      <ArrowRight size={14} className="text-primary" />
+                    </div>
+                  </motion.div>
+                ))
+              : // Styled static fallbacks matching the exact grid cards
+                [
+                  {
+                    title: t("percorso.fb_skill1_t"),
+                    desc: t("percorso.fb_skill1_d"),
+                  },
+                  {
+                    title: t("percorso.fb_skill2_t"),
+                    desc: t("percorso.fb_skill2_d"),
+                  },
+                  {
+                    title: t("percorso.fb_skill3_t"),
+                    desc: t("percorso.fb_skill3_d"),
+                  },
+                ].map((tech, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="group p-8 border border-white/10 hover:border-primary/40 transition-all bg-white/[0.02] backdrop-blur-sm relative"
+                  >
+                    <div className="flex justify-between items-start mb-12">
+                      <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform bg-[#3d0f1a]">
+                        <Box size={20} />
+                      </div>
+                      <span className="font-typewriter text-[9px] text-white/30 font-medium">
+                        MODULE_0{i + 1}
+                      </span>
+                    </div>
+                    <h3 className="font-display text-3xl font-bold mb-4">
+                      {tech.title}
+                    </h3>
+                    <p className="font-body text-[14px] text-white/60 leading-relaxed">
+                      {tech.desc}
+                    </p>
+                    <div className="mt-8 pt-8 border-t border-white/5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span className="font-typewriter text-[9px] tracking-[0.4em] text-primary font-medium">
+                        INIT_AUDIT
+                      </span>
+                      <ArrowRight size={14} className="text-primary" />
+                    </div>
+                  </motion.div>
+                ))}
           </div>
         </div>
       </section>

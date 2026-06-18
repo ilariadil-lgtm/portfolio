@@ -31,7 +31,10 @@ const NotFound = () => {
         {/* Dot grid */}
         <div
           className="absolute inset-0 opacity-[0.03] pointer-events-none"
-          style={{ backgroundImage: "radial-gradient(#3d0f1a 1px, transparent 1px)", backgroundSize: "40px 40px" }}
+          style={{
+            backgroundImage: "radial-gradient(#3d0f1a 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+          }}
         />
 
         <div className="relative z-10 text-center max-w-2xl mx-auto">
@@ -46,13 +49,14 @@ const NotFound = () => {
           </motion.div>
 
           <motion.h1
-            className="font-display font-black leading-[0.85] tracking-tighter text-primary mb-8"
+            className="font-display font-black leading-[1.1] md:leading-[0.85] tracking-tighter text-primary mb-8"
             style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           >
-            Pagina non<br />
+            Pagina non
+            <br />
             <span className="text-primary italic pr-2">trovata.</span>
           </motion.h1>
 
@@ -62,8 +66,8 @@ const NotFound = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.25 }}
           >
-            La pagina che stai cercando non esiste o è stata spostata.
-            Torna alla home e riparti da lì.
+            La pagina che stai cercando non esiste o è stata spostata. Torna
+            alla home e riparti da lì.
           </motion.p>
 
           <motion.div
@@ -77,7 +81,10 @@ const NotFound = () => {
               className="group inline-flex items-center gap-4 px-8 py-4 bg-primary text-background font-typewriter text-[10px] uppercase tracking-[0.4em] font-bold hover:bg-primary transition-colors duration-300"
             >
               Torna alla Home
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight
+                size={14}
+                className="group-hover:translate-x-1 transition-transform"
+              />
             </Link>
             <Link
               to="/progetti"

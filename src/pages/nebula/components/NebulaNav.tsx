@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Home, User, Briefcase, Folder, MessageSquare, Menu, X, Fingerprint, Volume2, VolumeX, Globe } from "lucide-react";
+import {
+  Home,
+  User,
+  Briefcase,
+  Folder,
+  MessageSquare,
+  Menu,
+  X,
+  Fingerprint,
+  Volume2,
+  VolumeX,
+  Globe,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useSound } from "../../../context/SoundContext";
@@ -14,7 +26,7 @@ export const NebulaNav = () => {
 
   const toggleLanguage = () => {
     playClick();
-    i18n.changeLanguage(i18n.language === 'en' ? 'it' : 'en');
+    i18n.changeLanguage(i18n.language === "en" ? "it" : "en");
   };
 
   useEffect(() => {
@@ -26,10 +38,26 @@ export const NebulaNav = () => {
 
   const links = [
     { name: t("nav.home", "Home"), path: "/", icon: <Home size={18} /> },
-    { name: t("nav.projects", "Progetti"), path: "/progetti", icon: <Folder size={18} /> },
-    { name: t("nav.about", "Chi sono"), path: "/chisono", icon: <User size={18} /> },
-    { name: t("nav.services", "Servizi"), path: "/servizi", icon: <Briefcase size={18} /> },
-    { name: t("nav.contact", "Parliamo"), path: "/contatti", icon: <MessageSquare size={18} /> }
+    {
+      name: t("nav.projects", "Progetti"),
+      path: "/progetti",
+      icon: <Folder size={18} />,
+    },
+    {
+      name: t("nav.about", "Chi sono"),
+      path: "/chisono",
+      icon: <User size={18} />,
+    },
+    {
+      name: t("nav.services", "Servizi"),
+      path: "/servizi",
+      icon: <Briefcase size={18} />,
+    },
+    {
+      name: t("nav.contact", "Parliamo"),
+      path: "/contatti",
+      icon: <MessageSquare size={18} />,
+    },
   ];
 
   return (
@@ -38,42 +66,65 @@ export const NebulaNav = () => {
         DESKTOP HUD (Left Sidebar) 
       */}
       <nav className="hidden lg:flex flex-col items-start justify-between fixed left-0 top-0 bottom-0 w-20 hover:w-56 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-[100] bg-[#050505] border-r border-white/5 overflow-hidden group/nav py-8">
-        
         {/* Top Logo */}
         <div className="w-full flex justify-center mb-12 h-10 px-4">
-          <Link to="/" className="relative flex items-center justify-center transition-all duration-300 w-full h-full shrink-0">
-            <img src="/id_nebula.webp" alt="ID" className="absolute w-8 h-8 object-contain group-hover/nav:opacity-0 group-hover/nav:scale-75 transition-all duration-300" />
-            <img src="/logo-nebula.webp" alt="Ilaria Diliberto" className="absolute w-36 md:w-44 object-contain opacity-0 scale-90 group-hover/nav:opacity-100 group-hover/nav:scale-100 transition-all duration-500" />
+          <Link
+            to="/"
+            className="relative flex items-center justify-center transition-all duration-300 w-full h-full shrink-0"
+          >
+            <img
+              src="/id_nebula.webp"
+              alt="ID"
+              className="absolute w-8 h-8 object-contain group-hover/nav:opacity-0 group-hover/nav:scale-75 transition-all duration-300"
+            />
+            <img
+              src="/logo-nebula.webp"
+              alt="Ilaria Diliberto"
+              className="absolute w-36 md:w-44 object-contain opacity-0 scale-90 group-hover/nav:opacity-100 group-hover/nav:scale-100 transition-all duration-500"
+            />
           </Link>
         </div>
 
         {/* Center Links */}
         <div className="flex flex-col gap-2 w-full px-2">
           {links.map((link) => {
-            const isActive = location.pathname === link.path || (link.path !== '/' && location.pathname.startsWith(link.path));
+            const isActive =
+              location.pathname === link.path ||
+              (link.path !== "/" && location.pathname.startsWith(link.path));
             return (
               <Link
                 key={link.path}
                 to={link.path}
                 onMouseEnter={playHover}
                 onClick={playClick}
-                className={`group relative flex items-center w-full h-12 rounded-xl transition-all duration-300 ${isActive ? 'bg-[#d4af37]/5' : 'hover:bg-white/[0.02]'}`}
+                className={`group relative flex items-center w-full h-12 rounded-xl transition-all duration-300 ${isActive ? "bg-[#d4af37]/5" : "hover:bg-white/[0.02]"}`}
                 aria-label={link.name}
               >
-                <div className={`w-16 h-12 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 ${isActive ? 'text-[#d4af37] drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]' : 'text-white/40 group-hover:text-white'}`}>
-                  {React.cloneElement(link.icon as React.ReactElement, { strokeWidth: isActive ? 2 : 1.5, size: 20 })}
+                <div
+                  className={`w-16 h-12 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 ${isActive ? "text-[#d4af37] drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]" : "text-white/40 group-hover:text-white"}`}
+                >
+                  {React.cloneElement(link.icon as React.ReactElement, {
+                    strokeWidth: isActive ? 2 : 1.5,
+                    size: 20,
+                  })}
                 </div>
-                <span className={`absolute left-16 font-mono text-[10px] uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 ${isActive ? 'text-[#d4af37] font-bold opacity-0 group-hover/nav:opacity-100' : 'text-white/40 group-hover:text-white opacity-0 group-hover/nav:opacity-100'}`}>
+                <span
+                  className={`absolute left-16 font-mono text-[10px] uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 ${isActive ? "text-[#d4af37] font-bold opacity-0 group-hover/nav:opacity-100" : "text-white/40 group-hover:text-white opacity-0 group-hover/nav:opacity-100"}`}
+                >
                   {link.name}
                 </span>
-                
+
                 {isActive && (
                   <div className="absolute left-0 inset-y-0 flex items-center">
-                    <motion.div 
+                    <motion.div
                       initial={{ scaleY: 0 }}
                       animate={{ scaleY: 1 }}
-                      className="w-[3px] h-6 bg-[#d4af37] rounded-r-full shadow-[0_0_10px_rgba(212,175,55,0.5)] origin-center" 
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      className="w-[3px] h-6 bg-[#d4af37] rounded-r-full shadow-[0_0_10px_rgba(212,175,55,0.5)] origin-center"
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30,
+                      }}
                     />
                   </div>
                 )}
@@ -84,7 +135,7 @@ export const NebulaNav = () => {
 
         {/* Controls (Sound & Lang) */}
         <div className="w-full flex flex-col gap-2 mt-auto mb-16 px-2">
-          <button 
+          <button
             onClick={toggleLanguage}
             onMouseEnter={playHover}
             className="flex items-center w-full h-12 group relative rounded-xl hover:bg-white/[0.02] transition-all"
@@ -94,21 +145,38 @@ export const NebulaNav = () => {
               <Globe size={18} strokeWidth={1.5} />
             </div>
             <span className="absolute left-16 font-mono text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover/nav:opacity-100 transition-opacity text-white/40 group-hover:text-white whitespace-nowrap">
-              {i18n.language === 'en' ? 'EN' : 'IT'}
+              {i18n.language === "en" ? "EN" : "IT"}
             </span>
           </button>
-          
-          <button 
-            onClick={() => { playClick(); toggleMute(); }}
+
+          <button
+            onClick={() => {
+              playClick();
+              toggleMute();
+            }}
             onMouseEnter={playHover}
             className="flex items-center w-full h-12 group relative rounded-xl hover:bg-white/[0.02] transition-all"
             aria-label="Toggle Sound"
           >
             <div className="w-16 h-12 flex items-center justify-center transition-colors shrink-0">
-              {isMuted ? <VolumeX size={18} className="text-white/40 group-hover:text-white" strokeWidth={1.5} /> : <Volume2 size={18} className="text-[#d4af37]" strokeWidth={1.5} />}
+              {isMuted ? (
+                <VolumeX
+                  size={18}
+                  className="text-white/40 group-hover:text-white"
+                  strokeWidth={1.5}
+                />
+              ) : (
+                <Volume2
+                  size={18}
+                  className="text-[#d4af37]"
+                  strokeWidth={1.5}
+                />
+              )}
             </div>
-            <span className={`absolute left-16 font-mono text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover/nav:opacity-100 transition-opacity whitespace-nowrap ${isMuted ? 'text-white/40 group-hover:text-white' : 'text-[#d4af37]'}`}>
-              {isMuted ? 'SND: OFF' : 'SND: ON'}
+            <span
+              className={`absolute left-16 font-mono text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover/nav:opacity-100 transition-opacity whitespace-nowrap ${isMuted ? "text-white/40 group-hover:text-white" : "text-[#d4af37]"}`}
+            >
+              {isMuted ? "SND: OFF" : "SND: ON"}
             </span>
           </button>
         </div>
@@ -117,20 +185,34 @@ export const NebulaNav = () => {
       {/* 
         MOBILE HUD (Bottom Dock) 
       */}
-      <div className="lg:hidden fixed left-6 right-6 z-[100]" style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}>
+      <div
+        className="lg:hidden fixed left-6 right-6 z-[100]"
+        style={{ bottom: "calc(1.5rem + env(safe-area-inset-bottom, 0px))" }}
+      >
         <nav className="flex items-center justify-between bg-[#050505]/80 backdrop-blur-3xl border border-white/10 rounded-[2rem] shadow-[0_0_40px_rgba(255,255,255,0.05)] px-4 py-3">
-          <Link to="/" className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white">
-            <img src="/id_nebula.webp" alt="ID" className="w-6 h-6 object-contain opacity-70" />
+          <Link
+            to="/"
+            className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white"
+          >
+            <img
+              src="/id_nebula.webp"
+              alt="ID"
+              className="w-6 h-6 object-contain opacity-70"
+            />
           </Link>
-          
+
           <div className="flex items-center gap-1">
             {links.slice(0, 3).map((link) => {
-              const isActive = location.pathname === link.path || (link.path !== '/' && link.path !== '/nebula' && location.pathname.startsWith(link.path));
+              const isActive =
+                location.pathname === link.path ||
+                (link.path !== "/" &&
+                  link.path !== "/nebula" &&
+                  location.pathname.startsWith(link.path));
               return (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all ${isActive ? 'text-white bg-white/10' : 'text-white/40'}`}
+                  className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all ${isActive ? "text-white bg-white/10" : "text-white/40"}`}
                 >
                   {link.icon}
                 </Link>
@@ -138,7 +220,7 @@ export const NebulaNav = () => {
             })}
           </div>
 
-          <button 
+          <button
             onClick={() => setIsOpen(!isOpen)}
             className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-slate-100"
           >
@@ -149,7 +231,7 @@ export const NebulaNav = () => {
         {/* Expanded Mobile Menu */}
         <AnimatePresence>
           {isOpen && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -160,26 +242,34 @@ export const NebulaNav = () => {
                   key={link.path}
                   to={link.path}
                   onMouseEnter={playHover}
-                  onClick={() => { playClick(); setIsOpen(false); }}
+                  onClick={() => {
+                    playClick();
+                    setIsOpen(false);
+                  }}
                   className="flex items-center gap-4 p-4 rounded-xl hover:bg-white/[0.05] border border-transparent hover:border-white/10 transition-all text-white"
                 >
                   <div className="text-white/70">{link.icon}</div>
-                  <span className="font-mono text-[11px] uppercase tracking-widest text-slate-100">{link.name}</span>
+                  <span className="font-mono text-[11px] uppercase tracking-widest text-slate-100">
+                    {link.name}
+                  </span>
                 </Link>
               ))}
               <div className="flex gap-2 mt-4 pt-4 border-t border-white/10">
-                <button 
+                <button
                   onClick={toggleLanguage}
                   className="flex-1 flex items-center justify-center gap-2 p-4 rounded-xl bg-white/[0.05] text-white font-mono text-[10px] uppercase tracking-widest"
                 >
-                  <Globe size={16} /> {i18n.language === 'en' ? 'EN' : 'IT'}
+                  <Globe size={16} /> {i18n.language === "en" ? "EN" : "IT"}
                 </button>
-                <button 
-                  onClick={() => { playClick(); toggleMute(); }}
-                  className={`flex-1 flex items-center justify-center gap-2 p-4 rounded-xl bg-white/[0.05] font-mono text-[10px] uppercase tracking-widest ${isMuted ? 'text-white/60' : 'text-[#d4af37]'}`}
+                <button
+                  onClick={() => {
+                    playClick();
+                    toggleMute();
+                  }}
+                  className={`flex-1 flex items-center justify-center gap-2 p-4 rounded-xl bg-white/[0.05] font-mono text-[10px] uppercase tracking-widest ${isMuted ? "text-white/60" : "text-[#d4af37]"}`}
                 >
-                  {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />} 
-                  {isMuted ? 'OFF' : 'ON'}
+                  {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+                  {isMuted ? "OFF" : "ON"}
                 </button>
               </div>
             </motion.div>

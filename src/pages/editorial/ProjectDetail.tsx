@@ -4,12 +4,18 @@ import { api } from "@/lib/api";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Github, Globe, ExternalLink } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Github,
+  Globe,
+  ExternalLink,
+} from "lucide-react";
 import { usePageMeta, injectSchema } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
 import { ProjectNavigation } from "@/components/ProjectNavigation";
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 const getFallbackProjects = (t: any) => [
   {
@@ -20,8 +26,8 @@ const getFallbackProjects = (t: any) => [
     year: "2025",
     project_url: "https://chariohifi.it",
     github_url: "",
-    description: t('project_detail.fallback_desc1'),
-    image: "/assets/chario-hero.webp"
+    description: t("project_detail.fallback_desc1"),
+    image: "/assets/chario-hero.webp",
   },
   {
     id: 2,
@@ -32,7 +38,7 @@ const getFallbackProjects = (t: any) => [
     image: "/assets/project-zenith.webp",
     project_url: "https://storagehub.com",
     github_url: "https://github.com",
-    description: t('project_detail.fallback_desc2')
+    description: t("project_detail.fallback_desc2"),
   },
   {
     id: 3,
@@ -43,8 +49,8 @@ const getFallbackProjects = (t: any) => [
     image: "/assets/project-zenith.webp",
     project_url: "https://freelens.app",
     github_url: "https://github.com",
-    description: t('project_detail.fallback_desc3')
-  }
+    description: t("project_detail.fallback_desc3"),
+  },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -59,9 +65,15 @@ export const EditorialProjectDetail = () => {
       try {
         if (id) {
           let data: any = null;
-          try { data = await api.getProject(id); } catch (err) { console.warn("API fallback triggered", err); }
+          try {
+            data = await api.getProject(id);
+          } catch (err) {
+            console.warn("API fallback triggered", err);
+          }
           if (!data || data.detail === "Not found." || data.error) {
-            data = getFallbackProjects(t).find(p => p.id.toString() === id) ?? null;
+            data =
+              getFallbackProjects(t).find((p) => p.id.toString() === id) ??
+              null;
           }
           setProject(data);
         }
@@ -84,7 +96,7 @@ export const EditorialProjectDetail = () => {
           transition={{ duration: 1.4, repeat: Infinity }}
           className="font-typewriter text-[10px] uppercase tracking-[0.5em] text-primary"
         >
-          {t('project_detail.loading')}
+          {t("project_detail.loading")}
         </motion.span>
       </div>
     );
@@ -94,23 +106,35 @@ export const EditorialProjectDetail = () => {
   if (!project) {
     return (
       <div className="min-h-[100dvh] bg-[#f5f2ed] flex flex-col items-center justify-center gap-8 text-[#3d0f1a]">
-        <h1 className="font-display text-5xl font-black">{t('project_detail.not_found')}</h1>
-        <Link to="/progetti" className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-primary font-semibold">
-          <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
-          {t('project_detail.back_to_archive')}
+        <h1 className="font-display text-5xl font-black">
+          {t("project_detail.not_found")}
+        </h1>
+        <Link
+          to="/progetti"
+          className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-primary font-semibold"
+        >
+          <ArrowLeft
+            size={13}
+            className="group-hover:-translate-x-1 transition-transform"
+          />
+          {t("project_detail.back_to_archive")}
         </Link>
       </div>
     );
   }
 
-  const techList: string[] = typeof project.technologies === 'string'
-    ? project.technologies.split(',').map((t: string) => t.trim()).filter(Boolean)
-    : (project.technologies ?? []);
+  const techList: string[] =
+    typeof project.technologies === "string"
+      ? project.technologies
+          .split(",")
+          .map((t: string) => t.trim())
+          .filter(Boolean)
+      : (project.technologies ?? []);
 
   /* Split title: last word gets italic-red styling */
-  const words = project.title.trim().split(' ');
-  const titleStart = words.slice(0, -1).join(' ');
-  const titleEnd   = words.at(-1) ?? '';
+  const words = project.title.trim().split(" ");
+  const titleStart = words.slice(0, -1).join(" ");
+  const titleEnd = words.at(-1) ?? "";
 
   // Dynamic SEO meta per ogni pagina progetto
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -128,19 +152,20 @@ export const EditorialProjectDetail = () => {
     if (!project) return;
     const cleanup = injectSchema({
       "@type": "CreativeWork",
-      "name": project.title,
-      "description": project.description,
-      "url": `https://ilariadiliberto.com/progetti/${id}`,
-      "image": project.image?.startsWith('http') ? project.image : `${BASE_URL}${project.image}`,
-      "author": {
+      name: project.title,
+      description: project.description,
+      url: `https://ilariadiliberto.com/progetti/${id}`,
+      image: project.image?.startsWith("http")
+        ? project.image
+        : `${BASE_URL}${project.image}`,
+      author: {
         "@type": "Person",
-        "name": "Ilaria Diliberto"
+        name: "Ilaria Diliberto",
       },
-      "dateCreated": project.year || "2025"
+      dateCreated: project.year || "2025",
     });
     return cleanup;
   }, [project, id]);
-
 
   return (
     <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] selection:bg-primary/30 overflow-hidden">
@@ -150,11 +175,10 @@ export const EditorialProjectDetail = () => {
            HERO — full-viewport image + title overlay
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="relative h-[92vh] min-h-[400px] lg:min-h-[600px] overflow-hidden bg-[#3d0f1a]">
-
         {/* Background image */}
         <motion.img
           src={
-            project.image?.startsWith('http') || project.image?.startsWith('/')
+            project.image?.startsWith("http") || project.image?.startsWith("/")
               ? project.image
               : `${BASE_URL}${project.image}`
           }
@@ -177,13 +201,20 @@ export const EditorialProjectDetail = () => {
 
         {/* Back link — top left */}
         <div className="absolute top-8 left-24 flex items-center h-12 pl-4">
-          <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}>
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+          >
             <Link
               to="/progetti"
               className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-white/60 hover:text-white transition-colors font-semibold"
             >
-              <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
-              {t('project_detail.archive')}
+              <ArrowLeft
+                size={13}
+                className="group-hover:-translate-x-1 transition-transform"
+              />
+              {t("project_detail.archive")}
             </Link>
           </motion.div>
         </div>
@@ -191,7 +222,9 @@ export const EditorialProjectDetail = () => {
         {/* Year badge — top right */}
         <motion.div
           className="absolute top-8 right-24 h-12 flex items-center"
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
         >
           <span className="font-typewriter text-[10px] uppercase tracking-[0.4em] text-white/40">
             {project.year || "2025"}
@@ -207,15 +240,20 @@ export const EditorialProjectDetail = () => {
           >
             <div className="flex items-center gap-4 mb-5">
               <span className="font-typewriter text-[10px] uppercase tracking-[0.5em] text-white/50 font-semibold">
-                {project.type || t('project_detail.default_type')}
+                {project.type || t("project_detail.default_type")}
               </span>
               <div className="w-8 h-[1px] bg-white/25" />
             </div>
             <h1
-              className="font-display font-black leading-[0.85] tracking-tighter text-white"
-              style={{ fontSize: 'clamp(3.5rem, 9vw, 9rem)' }}
+              className="font-display font-black leading-[1.1] md:leading-[0.85] tracking-tighter text-white"
+              style={{ fontSize: "clamp(3.5rem, 9vw, 9rem)" }}
             >
-              {titleStart && <>{titleStart}<br /></>}
+              {titleStart && (
+                <>
+                  {titleStart}
+                  <br />
+                </>
+              )}
               <span className="text-primary italic pr-2">{titleEnd}</span>
             </h1>
           </motion.div>
@@ -227,24 +265,31 @@ export const EditorialProjectDetail = () => {
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="border-b border-primary/10 px-8 md:px-16 lg:px-24 bg-[#f5f2ed]">
         <div className="max-w-7xl mx-auto py-6 flex flex-wrap items-center justify-between gap-6">
-
           <div className="flex flex-wrap items-center gap-8">
             <div className="flex flex-col gap-1">
-              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35">{t('project_detail.category')}</span>
+              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35">
+                {t("project_detail.category")}
+              </span>
               <span className="font-typewriter text-[11px] uppercase tracking-[0.2em] text-[#3d0f1a] font-bold">
                 {project.type || "—"}
               </span>
             </div>
             <div className="w-px h-8 bg-primary/10 hidden sm:block" />
             <div className="flex flex-col gap-1">
-              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35">{t('project_detail.year')}</span>
-              <span className="font-display text-xl font-black">{project.year || "—"}</span>
+              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35">
+                {t("project_detail.year")}
+              </span>
+              <span className="font-display text-xl font-black">
+                {project.year || "—"}
+              </span>
             </div>
             <div className="w-px h-8 bg-primary/10 hidden sm:block" />
             <div className="flex flex-col gap-1">
-              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35">{t('project_detail.status')}</span>
+              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35">
+                {t("project_detail.status")}
+              </span>
               <span className="font-typewriter text-[11px] text-green-700 font-bold tracking-widest">
-                {t('project_detail.online')}
+                {t("project_detail.online")}
               </span>
             </div>
           </div>
@@ -257,9 +302,12 @@ export const EditorialProjectDetail = () => {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2.5 px-5 py-2.5 border border-primary/25 hover:bg-primary hover:border-primary transition-all duration-400"
               >
-                <ExternalLink size={13} className="text-primary group-hover:text-white transition-colors" />
+                <ExternalLink
+                  size={13}
+                  className="text-primary group-hover:text-white transition-colors"
+                />
                 <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-primary group-hover:text-white transition-colors font-semibold">
-                  {t('project_detail.view_live')}
+                  {t("project_detail.view_live")}
                 </span>
               </a>
             )}
@@ -270,14 +318,16 @@ export const EditorialProjectDetail = () => {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2.5 px-5 py-2.5 border border-primary/15 hover:border-primary/40 transition-all duration-400"
               >
-                <Github size={13} className="text-[#3d0f1a]/50 group-hover:text-[#3d0f1a] transition-colors" />
+                <Github
+                  size={13}
+                  className="text-[#3d0f1a]/50 group-hover:text-[#3d0f1a] transition-colors"
+                />
                 <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-[#3d0f1a]/50 group-hover:text-[#3d0f1a] transition-colors font-semibold">
-                  {t('project_detail.github')}
+                  {t("project_detail.github")}
                 </span>
               </a>
             )}
           </div>
-
         </div>
       </section>
 
@@ -286,7 +336,6 @@ export const EditorialProjectDetail = () => {
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="px-8 md:px-16 lg:px-24 py-20 md:py-32">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-
           {/* Left — narrazione */}
           <motion.div
             className="lg:col-span-7 space-y-16"
@@ -297,11 +346,11 @@ export const EditorialProjectDetail = () => {
           >
             <div>
               <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-6">
-                {t('project_detail.the_project')}
+                {t("project_detail.the_project")}
               </span>
               <p
                 className="font-body text-[#3d0f1a]/80 leading-relaxed"
-                style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)' }}
+                style={{ fontSize: "clamp(1.1rem, 2vw, 1.4rem)" }}
               >
                 {project.description}
               </p>
@@ -310,18 +359,18 @@ export const EditorialProjectDetail = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 pt-10 border-t border-primary/8">
               <div>
                 <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35 block mb-3">
-                  {t('project_detail.challenge_title')}
+                  {t("project_detail.challenge_title")}
                 </span>
                 <p className="font-body text-[15px] text-[#3d0f1a]/65 leading-relaxed italic pr-2">
-                  {t('project_detail.challenge_desc')}
+                  {t("project_detail.challenge_desc")}
                 </p>
               </div>
               <div>
                 <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35 block mb-3">
-                  {t('project_detail.result_title')}
+                  {t("project_detail.result_title")}
                 </span>
                 <p className="font-body text-[15px] text-[#3d0f1a]/65 leading-relaxed italic pr-2">
-                  {t('project_detail.result_desc')}
+                  {t("project_detail.result_desc")}
                 </p>
               </div>
             </div>
@@ -340,11 +389,11 @@ export const EditorialProjectDetail = () => {
               <div className="absolute top-0 left-0 w-full h-[3px] bg-primary" />
 
               <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-white/40 block mb-8">
-                {t('project_detail.tech_stack')}
+                {t("project_detail.tech_stack")}
               </span>
 
               <div className="flex flex-wrap gap-2.5 mb-10">
-                {techList.map(tech => (
+                {techList.map((tech) => (
                   <span
                     key={tech}
                     className="px-3.5 py-1.5 border border-white/10 font-typewriter text-[10px] uppercase tracking-widest text-white/75 hover:border-primary hover:text-white transition-all duration-300"
@@ -356,12 +405,20 @@ export const EditorialProjectDetail = () => {
 
               <div className="border-t border-white/10 pt-8 space-y-5">
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-white/35">{t('project_detail.role_label')}</span>
-                  <span className="font-display text-lg font-black italic pr-2">{t('project_detail.role_val')}</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-white/35">
+                    {t("project_detail.role_label")}
+                  </span>
+                  <span className="font-display text-lg font-black italic pr-2">
+                    {t("project_detail.role_val")}
+                  </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-white/35">{t('project_detail.year')}</span>
-                  <span className="font-display text-lg font-black">{project.year || "2025"}</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-white/35">
+                    {t("project_detail.year")}
+                  </span>
+                  <span className="font-display text-lg font-black">
+                    {project.year || "2025"}
+                  </span>
                 </div>
               </div>
             </div>
@@ -379,10 +436,13 @@ export const EditorialProjectDetail = () => {
                     <div className="flex items-center gap-3">
                       <Globe size={14} className="text-primary" />
                       <span className="font-typewriter text-[10px] uppercase tracking-[0.35em] font-semibold">
-                        {t('project_detail.site_live')}
+                        {t("project_detail.site_live")}
                       </span>
                     </div>
-                    <ArrowRight size={14} className="text-primary/40 group-hover:text-primary group-hover:translate-x-1.5 transition-all duration-400" />
+                    <ArrowRight
+                      size={14}
+                      className="text-primary/40 group-hover:text-primary group-hover:translate-x-1.5 transition-all duration-400"
+                    />
                   </a>
                 )}
                 {project.github_url && (
@@ -395,26 +455,25 @@ export const EditorialProjectDetail = () => {
                     <div className="flex items-center gap-3">
                       <Github size={14} className="text-primary" />
                       <span className="font-typewriter text-[10px] uppercase tracking-[0.35em] font-semibold">
-                        {t('project_detail.repo_github')}
+                        {t("project_detail.repo_github")}
                       </span>
                     </div>
-                    <ArrowRight size={14} className="text-primary/40 group-hover:text-primary group-hover:translate-x-1.5 transition-all duration-400" />
+                    <ArrowRight
+                      size={14}
+                      className="text-primary/40 group-hover:text-primary group-hover:translate-x-1.5 transition-all duration-400"
+                    />
                   </a>
                 )}
               </div>
             )}
           </motion.div>
-
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
            NAVIGATION — prev / back / next
            ═══════════════════════════════════════════════════════════════════ */}
-      <ProjectNavigation 
-        prev={undefined} 
-        next={undefined} 
-      />
+      <ProjectNavigation prev={undefined} next={undefined} />
 
       {/* ═══════════════════════════════════════════════════════════════════
            CTA — dark strip
@@ -425,17 +484,19 @@ export const EditorialProjectDetail = () => {
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
           <div className="lg:col-span-7 space-y-6">
             <span className="font-typewriter text-[12px] uppercase tracking-[0.4em] text-white font-bold block">
-              {t('project_detail.cta_label')}
+              {t("project_detail.cta_label")}
             </span>
             <h2
               className="font-display font-black leading-none tracking-tighter"
-              style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)' }}
+              style={{ fontSize: "clamp(3rem, 6vw, 5.5rem)" }}
             >
-              {t('project_detail.cta_title_1')} <br />
-              <span className="text-primary italic pr-2">{t('project_detail.cta_title_2')}</span>
+              {t("project_detail.cta_title_1")} <br />
+              <span className="text-primary italic pr-2">
+                {t("project_detail.cta_title_2")}
+              </span>
             </h2>
             <p className="font-body text-lg text-white/80 leading-relaxed max-w-xl">
-              {t('project_detail.cta_desc')}
+              {t("project_detail.cta_desc")}
             </p>
           </div>
 
@@ -445,9 +506,12 @@ export const EditorialProjectDetail = () => {
               className="group inline-flex items-center gap-8 p-8 border border-white/10 hover:border-primary/40 bg-white/[0.02] backdrop-blur-sm transition-all duration-700 w-full max-w-md justify-between"
             >
               <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-white font-medium group-hover:text-primary transition-colors">
-                {t('project_detail.cta_btn')}
+                {t("project_detail.cta_btn")}
               </span>
-              <ArrowRight size={18} className="text-white group-hover:text-primary group-hover:translate-x-4 transition-all duration-700" />
+              <ArrowRight
+                size={18}
+                className="text-white group-hover:text-primary group-hover:translate-x-4 transition-all duration-700"
+              />
             </Link>
           </div>
         </div>

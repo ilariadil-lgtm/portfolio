@@ -15,7 +15,7 @@ export const KineticText: React.FC<KineticTextProps> = ({
   mode = "char",
 }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-10%" });
+  const isInView = useInView(ref, { once: true, margin: "0px" });
 
   // Dividiamo per parola prima
   const words = text.split(" ");
@@ -32,10 +32,10 @@ export const KineticText: React.FC<KineticTextProps> = ({
   };
 
   const child: Variants = {
-    hidden: { 
-      opacity: 0, 
-      y: "100%", 
-      rotateX: -90 
+    hidden: {
+      opacity: 0,
+      y: "100%",
+      rotateX: -90,
     },
     visible: {
       opacity: 1,
@@ -72,7 +72,10 @@ export const KineticText: React.FC<KineticTextProps> = ({
               <motion.span
                 key={`${wordIndex}-${charIndex}`}
                 variants={child}
-                style={{ display: "inline-block", transformOrigin: "bottom center" }}
+                style={{
+                  display: "inline-block",
+                  transformOrigin: "bottom center",
+                }}
               >
                 {char}
               </motion.span>
@@ -80,7 +83,10 @@ export const KineticText: React.FC<KineticTextProps> = ({
           ) : (
             <motion.span
               variants={child}
-              style={{ display: "inline-block", transformOrigin: "bottom center" }}
+              style={{
+                display: "inline-block",
+                transformOrigin: "bottom center",
+              }}
             >
               {word}
             </motion.span>

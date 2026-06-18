@@ -17,7 +17,11 @@ const PAUSE_WRITE = 1000;
 const PAUSE_STAIN = 400;
 
 // ── componente Typewriter Avanzato ──────────────────────────────────────────
-const TypewriterSequence: React.FC<{ onFinished: () => void; phrase1: string; phrase2: string }> = ({ onFinished, phrase1, phrase2 }) => {
+const TypewriterSequence: React.FC<{
+  onFinished: () => void;
+  phrase1: string;
+  phrase2: string;
+}> = ({ onFinished, phrase1, phrase2 }) => {
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [step, setStep] = useState(1); // 1: write p1, 2: delete p1, 3: write p2
@@ -78,10 +82,12 @@ const TypewriterSequence: React.FC<{ onFinished: () => void; phrase1: string; ph
 // ── componente principale ───────────────────────────────────────────────────
 export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const { t } = useTranslation();
-  const [phase, setPhase] = useState<"typewriter" | "stain" | "exit">("typewriter");
-  
-  const phrase1 = t('preloader.phrase1', 'ogni pixel conta.');
-  const phrase2 = t('preloader.phrase2', 'ilaria diliberto.');
+  const [phase, setPhase] = useState<"typewriter" | "stain" | "exit">(
+    "typewriter",
+  );
+
+  const phrase1 = t("preloader.phrase1", "ogni pixel conta.");
+  const phrase2 = t("preloader.phrase2", "ilaria diliberto.");
 
   useEffect(() => {
     // Rimosso check prefers-reduced-motion per garantire che l'animazione funzioni sempre
@@ -108,7 +114,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="fixed inset-0 z-[9999] flex items-start lg:items-center justify-center pt-64 lg:pt-0 overflow-hidden bg-background"
+          className="fixed inset-0 z-[9999] flex items-start md:items-center justify-center pt-56 md:pt-0 overflow-hidden bg-background"
         >
           {/* Noise texture overlay */}
           <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[url('data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E')]"></div>
@@ -126,7 +132,11 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           {/* Content Container */}
           <div className="relative z-20 text-center">
             {phase === "typewriter" ? (
-              <TypewriterSequence onFinished={handleSequenceFinished} phrase1={phrase1} phrase2={phrase2} />
+              <TypewriterSequence
+                onFinished={handleSequenceFinished}
+                phrase1={phrase1}
+                phrase2={phrase2}
+              />
             ) : (
               <motion.div
                 animate={{ opacity: 0 }}
