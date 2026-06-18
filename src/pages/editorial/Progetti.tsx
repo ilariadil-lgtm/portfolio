@@ -19,7 +19,7 @@ const fallbackProjects = [
     type: "WEBAPP_SAAS",
     technologies:
       "React.js, Node.js (Express), AWS S3 / CloudFront, PostgreSQL, REST API, UX Strategy",
-    year: "2024",
+    year: "2026",
     image: "/assets/projects/storage-hub/dashboard.webp",
     project_url: "https://storagehub.com",
     description:
@@ -31,7 +31,7 @@ const fallbackProjects = [
     type: "WEB_ECOMMERCE BRAND_IDENTITY",
     technologies:
       "Brand & Logo Design, UI/UX Design, Copywriting, WordPress (Bilingual)",
-    year: "2026",
+    year: "2025",
     image: "/assets/projects/villa-masami/struttura.webp",
     project_url: "",
     description:
@@ -43,7 +43,7 @@ const fallbackProjects = [
     type: "WEB_ECOMMERCE",
     technologies:
       "UI/UX Design, Information Architecture, Copywriting, WordPress Corporate",
-    year: "2026",
+    year: "2024",
     image: "/assets/projects/patti-forniture/homepage.webp",
     project_url: "",
     description:
@@ -55,7 +55,7 @@ const fallbackProjects = [
     type: "WEB_ECOMMERCE",
     technologies:
       "PrestaShop Configuration, E-commerce UI/UX, Catalog Management, Copywriting & Layout",
-    year: "2026",
+    year: "2025",
     image: "/assets/projects/sicil-cosmetic/homepage.webp",
     project_url: "",
     description:
@@ -67,7 +67,7 @@ const fallbackProjects = [
     type: "WEB_ECOMMERCE",
     technologies:
       "PrestaShop Integration, UI/UX Design, Visual Merchandising, Information Architecture",
-    year: "2026",
+    year: "2024",
     image: "/assets/projects/newpop/homepage.webp",
     project_url: "",
     description:
@@ -79,7 +79,7 @@ const fallbackProjects = [
     type: "WEB_ECOMMERCE",
     technologies:
       "UI/UX & Graphic Layout, WordPress Environment, Hospitality & E-commerce, Visual Storytelling",
-    year: "2026",
+    year: "2024",
     image: "/assets/projects/vini-gambino/homepage.webp",
     project_url: "",
     description:
@@ -91,7 +91,7 @@ const fallbackProjects = [
     type: "WEB_ECOMMERCE",
     technologies:
       "UI/UX Design, Copywriting & Content, WordPress Layout, Hospitality Design",
-    year: "2026",
+    year: "2023",
     image: "/assets/projects/baglio-lauria/homepage.webp",
     project_url: "",
     description:
@@ -103,7 +103,7 @@ const fallbackProjects = [
     type: "WEB_ECOMMERCE",
     technologies:
       "UI/UX Design, WordPress Environment, Copywriting & Storytelling, Wedding & Event Industry",
-    year: "2026",
+    year: "2023",
     image: "/assets/projects/villa-mima/home.webp",
     project_url: "",
     description:
@@ -115,7 +115,7 @@ const fallbackProjects = [
     type: "BRAND_IDENTITY",
     technologies:
       "Logo Design, Brand Identity, Visual Guidelines, Art Direction",
-    year: "2025-2026",
+    year: "2022-2025",
     image: "/assets/loghi/sicef/logo_1.webp",
     project_url: "",
     description:
