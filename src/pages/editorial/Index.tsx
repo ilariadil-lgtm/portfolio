@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { CreativeHero } from "@/components/CreativeHero";
+import { KineticText } from "@/components/KineticText";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import { usePageMeta, injectSchema } from "@/hooks/usePageMeta";
@@ -355,207 +356,182 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════
-           TECHNICAL SKILL RADAR — ARCHITECTURAL DATA
+        {/* ═══════════════════════════════════════════════════════════════════
+           LE TRE PORTE - ECOSISTEMI SU MISURA (Editorial Airy Style)
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="py-20 md:py-24 px-6 md:px-12 bg-[#f5f2ed] border-b border-editorial overflow-hidden relative">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
-          <div className="lg:col-span-5">
-            <div className="flex items-center gap-4 mb-8">
-              <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">
-                {t("index.skills_label")}
-              </span>
-              <div className="w-12 h-[1px] bg-primary/20" />
+        <section className="py-24 md:py-32 px-6 md:px-12 lg:px-20 max-w-[1920px] mx-auto bg-[#f5f2ed] border-b border-editorial relative z-20">
+          
+          {/* Header */}
+          <div className="flex flex-col lg:flex-row justify-between lg:items-end gap-12 mb-20 md:mb-24">
+            <div className="relative inline-block">
+              <div className="flex items-center gap-4 mb-8">
+                <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">
+                  03 — I MIEI SERVIZI
+                </span>
+                <div className="w-12 h-[1px] bg-primary/20" />
+              </div>
+              <h2 className="font-display text-4xl md:text-6xl lg:text-[clamp(2.5rem,5vw,5rem)] font-bold leading-[1.05] tracking-tight text-[#3d0f1a] relative pr-12">
+                Ecosistemi <br />
+                <span className="text-primary italic pr-2">
+                  su misura.
+                </span>
+              </h2>
             </div>
-            <h2 className="font-display text-5xl md:text-8xl lg:text-[clamp(2rem,6vw,6rem)] font-bold leading-[1.1] md:leading-[0.85] tracking-tighter text-[#3d0f1a] mb-12">
-              {t("index.skills_title_1")} <br />
-              <span className="text-primary italic pr-2">
-                {t("index.skills_title_2")}
-              </span>
-            </h2>
-            <p className="font-body text-lg text-[#3d0f1a]/60 leading-relaxed max-w-md mb-12 border-l border-primary/20 pl-8">
-              {t("index.skills_desc")}
-            </p>
-            <div className="space-y-4">
-              {[
-                { label: t("index.skill_1"), value: "95%" },
-                { label: t("index.skill_2"), value: "90%" },
-                { label: t("index.skill_3"), value: "85%" },
-                { label: t("index.skill_4"), value: "80%" },
-              ].map((skill, i) => (
-                <div
-                  key={i}
-                  className="flex items-center justify-between border-b border-primary/5 pb-2 group cursor-default"
-                >
-                  <span className="font-typewriter text-[13px] uppercase tracking-widest text-primary font-medium transition-colors">
-                    {skill.label}
+            <div className="max-w-xl lg:pb-2">
+              <p className="font-body text-xl text-[#3d0f1a]/70 leading-relaxed border-l border-primary/20 pl-8">
+                Sviluppare un progetto digitale significa scegliere la giusta architettura tecnica. Ho strutturato la mia offerta in tre approcci distinti, pensati per rispondere a specifiche necessità di business.
+              </p>
+            </div>
+          </div>
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+            
+            {/* Porta 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="group flex flex-col p-8 md:p-10 border border-[#3d0f1a] bg-white shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b] transition-all duration-500 h-full relative overflow-hidden"
+            >
+              {/* Dynamic Scrolling Scanning laser beam (da Servizi.tsx) */}
+              <div className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#c0392b]/50 to-transparent top-0 group-hover:top-[100%] transition-all duration-[3s] ease-in-out z-10 pointer-events-none opacity-0 group-hover:opacity-100" />
+              
+              <div className="relative z-10 flex-1 flex flex-col">
+                <div className="flex justify-between items-start mb-12">
+                  <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium">
+                    APPROCCIO_01
                   </span>
-                  <span className="font-typewriter text-[13px] text-primary font-black">
-                    {skill.value}
-                  </span>
+                  <div className="w-10 h-10 rounded-full border border-primary/15 flex items-center justify-center text-[#3d0f1a]/40 bg-primary/5 group-hover:scale-110 group-hover:text-primary group-hover:border-primary/30 transition-all duration-500">
+                    <span className="font-display font-black text-xl">1</span>
+                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          <div className="lg:col-span-7 flex flex-col justify-center items-center py-16 md:py-0 md:h-[700px] overflow-visible">
-            <div className="relative w-full max-w-[280px] sm:max-w-[380px] md:max-w-[400px] lg:max-w-[500px] aspect-square mx-auto mb-20 md:mb-0">
-              <svg
-                viewBox="0 0 100 100"
-                className="w-full h-full overflow-visible"
-              >
-                {[20, 40, 60, 80, 100].map((r, i) => (
-                  <circle
-                    key={i}
-                    cx="50"
-                    cy="50"
-                    r={r / 2}
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="0.1"
-                    className="text-primary/20"
-                  />
-                ))}
-                {[0, 60, 120, 180, 240, 300].map((angle, i) => {
-                  const x = 50 + 50 * Math.cos((angle - 90) * (Math.PI / 180));
-                  const y = 50 + 50 * Math.sin((angle - 90) * (Math.PI / 180));
-                  return (
-                    <line
-                      key={i}
-                      x1="50"
-                      y1="50"
-                      x2={x}
-                      y2={y}
-                      stroke="currentColor"
-                      strokeWidth="0.1"
-                      className="text-primary/30"
-                    />
-                  );
-                })}
-                <motion.polygon
-                  initial={{ pathLength: 0, opacity: 0, scale: 0.8 }}
-                  whileInView={{ pathLength: 1, opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-                  points="50,10 82.5,31.25 86.8,71.25 50,90 15.36,70 13.19,28.75"
-                  fill="rgba(192, 57, 43, 0.15)"
-                  stroke="#C0392B"
-                  strokeWidth="0.5"
-                  className="backdrop-blur-md"
-                  style={{
-                    filter: "drop-shadow(0 0 10px rgba(192, 57, 43, 0.3))",
-                  }}
-                />
-              </svg>
-              {[
-                {
-                  label: t("index.radar_1"),
-                  top: "0%",
-                  left: "50%",
-                  type: "vertical",
-                },
-                {
-                  label: t("index.radar_2"),
-                  top: "25%",
-                  left: "93.3%",
-                  type: "right",
-                },
-                {
-                  label: t("index.radar_3"),
-                  top: "75%",
-                  left: "93.3%",
-                  type: "right",
-                },
-                {
-                  label: t("index.radar_4"),
-                  top: "100%",
-                  left: "50%",
-                  type: "vertical",
-                },
-                {
-                  label: t("index.radar_5"),
-                  top: "75%",
-                  left: "6.7%",
-                  type: "left",
-                },
-                {
-                  label: t("index.radar_6"),
-                  top: "25%",
-                  left: "6.7%",
-                  type: "left",
-                },
-              ].map((l, i) => {
-                let layoutClass = "";
-                let transformStr = "";
-                if (l.type === "vertical") {
-                  layoutClass =
-                    l.top === "0%"
-                      ? "flex flex-col-reverse items-center gap-3"
-                      : "flex flex-col items-center gap-3";
-                  transformStr =
-                    l.top === "0%"
-                      ? "translate(-50%, -100%)"
-                      : "translate(-50%, 0%)";
-                } else if (l.type === "right") {
-                  layoutClass = "flex flex-row items-center gap-3";
-                  transformStr = "translate(0%, -50%)";
-                } else {
-                  layoutClass = "flex flex-row-reverse items-center gap-3";
-                  transformStr = "translate(-100%, -50%)";
-                }
-
-                return (
-                  <div
-                    key={i}
-                    className={`absolute pointer-events-none ${layoutClass}`}
-                    style={{
-                      top: l.top,
-                      left: l.left,
-                      transform: transformStr,
-                    }}
+                <h3 className="font-display text-3xl md:text-4xl font-bold text-[#3d0f1a] mb-6 leading-tight">
+                  Sviluppo <br /><span className="italic text-primary">CMS</span>
+                </h3>
+                <p className="font-typewriter text-[11px] uppercase tracking-[0.2em] text-[#3d0f1a]/50 font-bold leading-relaxed mb-6">
+                  Autonomia e performance
+                </p>
+                <p className="font-body text-[15px] text-[#3d0f1a]/70 leading-relaxed flex-1 mb-12">
+                  Progettazione di siti vetrina ed e-commerce strutturati per brand e PMI che esigono un'estetica ricercata unita alla totale indipendenza di gestione quotidiana dei contenuti.
+                </p>
+                
+                <div className="pt-8 border-t border-[#3d0f1a]/10">
+                  <Link
+                    to="/servizi"
+                    className="group/btn inline-flex items-center justify-between w-full font-typewriter text-[13px] uppercase tracking-[0.25em] text-[#3d0f1a] group-hover:text-primary font-medium transition-colors"
                   >
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary/80" />
-                    <span className="font-typewriter text-[11px] uppercase tracking-[0.2em] text-primary font-medium whitespace-nowrap bg-[#f5f2ed]/90 backdrop-blur-sm px-3 py-1.5 border border-primary/20 shadow-sm hidden lg:block">
-                      {l.label}
+                    <span className="relative overflow-hidden">
+                      Scopri di più
+                      <span className="absolute bottom-0 left-0 w-full h-[1px] bg-primary transform origin-left scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500" />
                     </span>
-                    <span className="font-typewriter text-[12px] uppercase text-primary font-bold bg-[#f5f2ed]/98 backdrop-blur-sm w-7 h-7 flex items-center justify-center border border-primary/20 shadow-[0_4px_10px_rgba(61,15,26,0.1)] rounded-full lg:hidden">
-                      {i + 1}
-                    </span>
-                  </div>
-                );
-              })}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 border border-primary/10 rounded-full flex items-center justify-center pointer-events-none">
-                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                    <div className="w-10 h-10 rounded-full border border-[#3d0f1a]/20 flex items-center justify-center group-hover/btn:bg-primary group-hover/btn:border-primary group-hover/btn:text-white transition-all duration-500 transform group-hover/btn:scale-110">
+                      <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                    </div>
+                  </Link>
+                </div>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Mobile Legend for Radar Chart */}
-            <div className="flex justify-center lg:hidden w-full px-2 sm:px-6 mt-16 md:mt-24">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-[400px] md:max-w-[600px]">
-                {[
-                  t("index.radar_1"),
-                  t("index.radar_2"),
-                  t("index.radar_3"),
-                  t("index.radar_4"),
-                  t("index.radar_5"),
-                  t("index.radar_6"),
-                ].map((label, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-3 bg-white p-3 border border-[#3d0f1a] shadow-[6px_6px_0px_rgba(61,15,26,0.05)]"
-                  >
-                    <span className="font-display text-[14px] text-primary font-bold bg-primary/5 w-6 h-6 flex items-center justify-center rounded-full shrink-0">
-                      {i + 1}
-                    </span>
-                    <span className="font-typewriter text-[9px] uppercase tracking-widest text-[#3d0f1a]/80 leading-tight">
-                      {label}
-                    </span>
+            {/* Porta 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="group flex flex-col p-8 md:p-10 border border-[#3d0f1a] bg-white shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b] transition-all duration-500 h-full relative overflow-hidden"
+            >
+              {/* Dynamic Scrolling Scanning laser beam */}
+              <div className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#c0392b]/50 to-transparent top-0 group-hover:top-[100%] transition-all duration-[3s] ease-in-out z-10 pointer-events-none opacity-0 group-hover:opacity-100" />
+              
+              <div className="relative z-10 flex-1 flex flex-col">
+                <div className="flex justify-between items-start mb-12">
+                  <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium">
+                    APPROCCIO_02
+                  </span>
+                  <div className="w-10 h-10 rounded-full border border-primary/15 flex items-center justify-center text-[#3d0f1a]/40 bg-primary/5 group-hover:scale-110 group-hover:text-primary group-hover:border-primary/30 transition-all duration-500">
+                    <span className="font-display font-black text-xl">2</span>
                   </div>
-                ))}
+                </div>
+
+                <h3 className="font-display text-3xl md:text-4xl font-bold text-[#3d0f1a] mb-6 leading-tight">
+                  Sviluppo <br /><span className="italic text-primary">MVP</span>
+                </h3>
+                <p className="font-typewriter text-[11px] uppercase tracking-[0.2em] text-[#3d0f1a]/50 font-bold leading-relaxed mb-6">
+                  Validazione rapida
+                </p>
+                <p className="font-body text-[15px] text-[#3d0f1a]/70 leading-relaxed flex-1 mb-12">
+                  Sviluppo accelerato focalizzato sul Core Loop funzionale. Ideale per startup e founder che devono testare la propria idea sul mercato minimizzando i tempi di lancio.
+                </p>
+                
+                <div className="pt-8 border-t border-[#3d0f1a]/10">
+                  <Link
+                    to="/servizi"
+                    className="group/btn inline-flex items-center justify-between w-full font-typewriter text-[13px] uppercase tracking-[0.25em] text-[#3d0f1a] group-hover:text-primary font-medium transition-colors"
+                  >
+                    <span className="relative overflow-hidden">
+                      Scopri di più
+                      <span className="absolute bottom-0 left-0 w-full h-[1px] bg-primary transform origin-left scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500" />
+                    </span>
+                    <div className="w-10 h-10 rounded-full border border-[#3d0f1a]/20 flex items-center justify-center group-hover/btn:bg-primary group-hover/btn:border-primary group-hover/btn:text-white transition-all duration-500 transform group-hover/btn:scale-110">
+                      <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                    </div>
+                  </Link>
+                </div>
               </div>
-            </div>
+            </motion.div>
+
+            {/* Porta 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="group flex flex-col p-8 md:p-10 border border-[#3d0f1a] bg-white shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b] transition-all duration-500 h-full relative overflow-hidden"
+            >
+              {/* Dynamic Scrolling Scanning laser beam */}
+              <div className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#c0392b]/50 to-transparent top-0 group-hover:top-[100%] transition-all duration-[3s] ease-in-out z-10 pointer-events-none opacity-0 group-hover:opacity-100" />
+              
+              <div className="relative z-10 flex-1 flex flex-col">
+                <div className="flex justify-between items-start mb-12">
+                  <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium">
+                    APPROCCIO_03
+                  </span>
+                  <div className="w-10 h-10 rounded-full border border-primary/15 flex items-center justify-center text-[#3d0f1a]/40 bg-primary/5 group-hover:scale-110 group-hover:text-primary group-hover:border-primary/30 transition-all duration-500">
+                    <span className="font-display font-black text-xl">3</span>
+                  </div>
+                </div>
+
+                <h3 className="font-display text-3xl md:text-4xl font-bold text-[#3d0f1a] mb-6 leading-tight">
+                  Sviluppo <br /><span className="italic text-primary">Custom</span>
+                </h3>
+                <p className="font-typewriter text-[11px] uppercase tracking-[0.2em] text-[#3d0f1a]/50 font-bold leading-relaxed mb-6">
+                  Infrastruttura dedicata
+                </p>
+                <p className="font-body text-[15px] text-[#3d0f1a]/70 leading-relaxed flex-1 mb-12">
+                  Ecosistemi digitali ingegnerizzati da zero su stack Python/Django o Node. Nessun limite tecnico, massima scalabilità e totale proprietà intellettuale del codice.
+                </p>
+                
+                <div className="pt-8 border-t border-[#3d0f1a]/10">
+                  <Link
+                    to="/servizi"
+                    className="group/btn inline-flex items-center justify-between w-full font-typewriter text-[13px] uppercase tracking-[0.25em] text-[#3d0f1a] group-hover:text-primary font-medium transition-colors"
+                  >
+                    <span className="relative overflow-hidden">
+                      Scopri di più
+                      <span className="absolute bottom-0 left-0 w-full h-[1px] bg-primary transform origin-left scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500" />
+                    </span>
+                    <div className="w-10 h-10 rounded-full border border-[#3d0f1a]/20 flex items-center justify-center group-hover/btn:bg-primary group-hover/btn:border-primary group-hover/btn:text-white transition-all duration-500 transform group-hover/btn:scale-110">
+                      <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+
           </div>
-        </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════

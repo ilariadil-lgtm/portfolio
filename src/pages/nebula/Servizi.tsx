@@ -10,6 +10,7 @@ const HeroCanvas = React.lazy(() =>
 );
 import { api } from "@/lib/api";
 import { Box, Cpu, Globe, Layout, ChevronRight, Hexagon } from "lucide-react";
+import { Link } from "react-router-dom";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
 import { RevealText } from "@/components/RevealText";
@@ -577,6 +578,20 @@ const Servizi = () => {
 
       {/* Cards */}
       <section className="py-32 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto w-full z-10 relative">
+        <div className="mb-16">
+           <div className="flex items-center gap-4 mb-6">
+              <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4af37] font-medium flex items-center gap-2">
+                 <span className="text-[10px]">✦</span> Le mie aree di competenza
+              </span>
+              <div className="w-12 h-[1px] bg-[#d4af37]/20" />
+           </div>
+           <h2 className="font-bricolage text-3xl md:text-5xl font-bold text-white mt-2">
+              Il motore dei <span className="font-fraunces italic font-light text-[#d4af37]">tuoi progetti</span>
+           </h2>
+           <p className="mt-6 font-outfit font-light text-lg text-white/60 max-w-2xl">
+              Le skill verticali che metto in campo per trasformare la tua visione in ecosistemi stabili, belli da vedere e performanti.
+           </p>
+        </div>
         <motion.div
           variants={{
             hidden: { opacity: 0 },
@@ -596,6 +611,158 @@ const Servizi = () => {
         </motion.div>
       </section>
 
+
+      {/* ───────────────────────────────────────────────────────────────────
+           ECOSISTEMI SU MISURA — LE TRE OFFERTE (SUBSCRIPTION STYLE NEBULA)
+           ─────────────────────────────────────────────────────────────────── */}
+      <section className="relative z-10 w-full px-6 md:px-12 lg:px-24 pb-32 pt-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16 text-left">
+            <div className="flex items-center gap-4 justify-start mb-6">
+              <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4af37] font-medium flex items-center gap-2">
+                <span className="text-[10px]">✦</span> I miei pacchetti
+              </span>
+              <div className="w-12 h-[1px] bg-[#d4af37]/20" />
+            </div>
+            <h2 className="font-bricolage text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight max-w-3xl mx-0">
+              Scegli l'ecosistema perfetto per <span className="font-fraunces italic font-light text-[#d4af37]">la tua fase di business.</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            {/* TIER 1: CMS */}
+            <div className="border border-white/5 bg-white/[0.02] backdrop-blur-md p-8 flex flex-col group hover:bg-white/[0.04] hover:border-[#d4af37]/30 transition-all duration-500 rounded-3xl relative overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="mb-8">
+                  <h3 className="font-bricolage text-2xl font-bold text-white mb-2">CMS</h3>
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#d4af37] font-bold mb-6">Autonomia & Performance</p>
+                  <p className="font-outfit font-light text-[14px] text-white/60 min-h-[60px]">
+                    Siti vetrina ed e-commerce in totale autonomia per PMI e brand.
+                  </p>
+                </div>
+                
+                <div className="mb-8 pb-8 border-b border-white/10">
+                  <span className="font-bricolage text-3xl font-black text-white">4-6</span>
+                  <span className="font-outfit font-light text-sm text-white/40 ml-2">settimane</span>
+                </div>
+
+                <ul className="space-y-4 mb-10 flex-grow">
+                  <li className="flex items-start gap-3">
+                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <span className="font-outfit font-light text-[14px] text-white/80">UI/UX Design personalizzato</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <span className="font-outfit font-light text-[14px] text-white/80">Sviluppo front-end reattivo</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <span className="font-outfit font-light text-[14px] text-white/80">Setup piattaforma headless o ibrida</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <span className="font-outfit font-light text-[14px] text-white/80">Training per gestione contenuti</span>
+                  </li>
+                </ul>
+
+                <Link to="/cms-details" className="w-full py-4 border border-white/10 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-white/60 group-hover:text-[#d4af37] group-hover:border-[#d4af37]/40 group-hover:bg-[#d4af37]/5 rounded-full transition-all duration-300 inline-block">
+                  Scopri il pacchetto
+                </Link>
+              </div>
+            </div>
+
+            {/* TIER 2: MVP */}
+            <div className="border border-[#d4af37]/40 bg-gradient-to-b from-[#d4af37]/10 to-white/[0.02] backdrop-blur-md p-8 flex flex-col group relative shadow-[0_0_40px_rgba(212,175,55,0.15)] md:-mt-4 md:mb-4 rounded-3xl overflow-hidden">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#d4af37] text-black font-mono text-[9px] uppercase tracking-widest px-4 py-1.5 font-bold whitespace-nowrap rounded-b-lg z-20">
+                Più richiesto
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
+              <div className="relative z-10 flex flex-col h-full mt-4">
+                <div className="mb-8">
+                  <h3 className="font-bricolage text-2xl font-bold text-white mb-2">MVP</h3>
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#d4af37] font-bold mb-6">Validazione rapida</p>
+                  <p className="font-outfit font-light text-[14px] text-white/60 min-h-[60px]">
+                    Sviluppo accelerato del Core Loop per validare l'idea sul mercato.
+                  </p>
+                </div>
+                
+                <div className="mb-8 pb-8 border-b border-white/10">
+                  <span className="font-bricolage text-3xl font-black text-white">8-10</span>
+                  <span className="font-outfit font-light text-sm text-white/40 ml-2">settimane</span>
+                </div>
+
+                <ul className="space-y-4 mb-10 flex-grow">
+                  <li className="flex items-start gap-3">
+                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <span className="font-outfit font-light text-[14px] text-white/80">Workshop di scoping MVP</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <span className="font-outfit font-light text-[14px] text-white/80">Prototipazione interattiva</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <span className="font-outfit font-light text-[14px] text-white/80">Sviluppo core-features scalabili</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <span className="font-outfit font-light text-[14px] text-white/80">Setup base Analytics/Tracking</span>
+                  </li>
+                </ul>
+
+                <Link to="/mvp-details" className="w-full py-4 bg-[#d4af37] text-black text-center font-mono text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-white rounded-full transition-colors duration-300 inline-block">
+                  Scopri il pacchetto
+                </Link>
+              </div>
+            </div>
+
+            {/* TIER 3: Custom */}
+            <div className="border border-white/5 bg-white/[0.02] backdrop-blur-md p-8 flex flex-col group hover:bg-white/[0.04] hover:border-[#d4af37]/30 transition-all duration-500 rounded-3xl relative overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="mb-8">
+                  <h3 className="font-bricolage text-2xl font-bold text-white mb-2">Custom</h3>
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#d4af37] font-bold mb-6">Infrastruttura dedicata</p>
+                  <p className="font-outfit font-light text-[14px] text-white/60 min-h-[60px]">
+                    Ecosistemi complessi per startup o corporate senza limiti tecnici.
+                  </p>
+                </div>
+                
+                <div className="mb-8 pb-8 border-b border-white/10">
+                  <span className="font-bricolage text-3xl font-black text-white">+3</span>
+                  <span className="font-outfit font-light text-sm text-white/40 ml-2">mesi</span>
+                </div>
+
+                <ul className="space-y-4 mb-10 flex-grow">
+                  <li className="flex items-start gap-3">
+                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <span className="font-outfit font-light text-[14px] text-white/80">Architettura Data & Backend custom</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <span className="font-outfit font-light text-[14px] text-white/80">Sviluppo API proprietarie</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <span className="font-outfit font-light text-[14px] text-white/80">Integrazione con sistemi aziendali</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <span className="font-outfit font-light text-[14px] text-white/80">Dashboard di amministrazione</span>
+                  </li>
+                </ul>
+
+                <Link to="/custom-details" className="w-full py-4 border border-white/10 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-white/60 group-hover:text-[#d4af37] group-hover:border-[#d4af37]/40 group-hover:bg-[#d4af37]/5 rounded-full transition-all duration-300 inline-block">
+                  Scopri il pacchetto
+                </Link>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
       {/* Compact Data Terminal Workflow */}
       <section className="relative z-10 w-full px-6 md:px-12 lg:px-24 pb-48 pt-12">
         <div className="max-w-7xl mx-auto flex flex-col items-start w-full">

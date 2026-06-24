@@ -13,6 +13,7 @@ import {
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { KineticText } from "./KineticText";
+import { ArrowRight } from "lucide-react";
 
 interface NavPointProps {
   angle: number;
@@ -311,9 +312,24 @@ export const CreativeHero: React.FC = () => {
               transition={{ delay: 1, duration: 1 }}
               className="mt-8 lg:mt-12 max-w-[34rem]"
             >
-              <p className="font-body text-sm md:text-base text-[#3d0f1a]/60 leading-relaxed border-l-2 border-primary/10 pl-6 lg:pl-8 py-2">
+              <p className="font-body text-sm md:text-base text-[#3d0f1a]/60 leading-relaxed border-l-2 border-primary/10 pl-6 lg:pl-8 py-2 mb-8">
                 "{t("hero.description")}"
               </p>
+              <Link 
+                to="/contatti" 
+                className="group inline-flex items-center gap-6 font-typewriter text-[11px] md:text-[13px] uppercase tracking-[0.25em] text-primary font-medium ml-6 lg:ml-8 mt-2"
+              >
+                <span className="relative overflow-hidden">
+                  Raccontami il tuo progetto
+                  <span className="absolute bottom-0 left-0 w-full h-[1px] bg-primary transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                </span>
+                <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-500 transform group-hover:scale-110 shrink-0">
+                  <ArrowRight
+                    size={14}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
+                </div>
+              </Link>
             </motion.div>
           </motion.div>
         </div>

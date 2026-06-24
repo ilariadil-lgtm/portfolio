@@ -18,8 +18,11 @@ axiosInstance.defaults.xsrfHeaderName = 'X-CSRFToken';
 export interface ContactPayload {
   name: string;
   email: string;
-  subject: string;
-  message: string;
+  company: string;
+  onlinePresence: string;
+  direction: string;
+  objective: string;
+  budget: string;
   website?: string; // honeypot
 }
 
@@ -32,6 +35,8 @@ export const api = {
     axiosInstance.get(`/projects/${id}/`).then(res => res.data),
   getServices: () =>
     axiosInstance.get('/services/').then(res => res.data),
+  getAbout: () =>
+    axiosInstance.get('/about/').then(res => res.data),
 };
 
 export default axiosInstance;

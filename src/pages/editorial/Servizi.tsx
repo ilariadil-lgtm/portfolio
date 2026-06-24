@@ -15,6 +15,7 @@ import {
   Terminal,
   Activity,
   CheckCircle2,
+  Target,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -395,7 +396,21 @@ const Servizi = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            SERVICES DETAILED LEDGER — INTERACTIVE CARD MATRIX
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="pb-32 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
+      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto border-t border-[#3d0f1a]/10">
+        <div className="mb-16">
+           <div className="flex items-center gap-4 mb-6">
+              <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium">
+                 Le mie aree di competenza
+              </span>
+              <div className="w-12 h-[1px] bg-primary/20" />
+           </div>
+           <h2 className="font-display text-3xl md:text-5xl font-bold text-[#3d0f1a] mt-2">
+              Il motore dei <span className="italic text-primary">tuoi progetti</span>
+           </h2>
+           <p className="mt-6 font-body text-lg text-[#3d0f1a]/70 max-w-2xl">
+              Le skill verticali che metto in campo per trasformare la tua visione in ecosistemi stabili, belli da vedere e performanti.
+           </p>
+        </div>
         <motion.div
           variants={{
             hidden: { opacity: 0 },
@@ -415,6 +430,147 @@ const Servizi = () => {
             <ServiceCard key={service.id || idx} service={service} idx={idx} />
           ))}
         </motion.div>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────────────
+           ECOSISTEMI SU MISURA — LE TRE OFFERTE (SUBSCRIPTION STYLE)
+           ─────────────────────────────────────────────────────────────────── */}
+      <section className="pb-24 md:pb-32 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
+        <div className="mb-16 text-left">
+          <div className="flex items-center gap-4 justify-start mb-6">
+            <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium">
+              I miei pacchetti
+            </span>
+            <div className="w-12 h-[1px] bg-primary/20" />
+          </div>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-[#3d0f1a] leading-tight tracking-tighter max-w-3xl mx-0">
+            Scegli l'ecosistema perfetto per <span className="italic text-primary">la tua fase di business.</span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          {/* TIER 1: CMS */}
+          <div className="border border-[#3d0f1a] bg-[#f5f2ed] p-8 flex flex-col group hover:bg-white hover:border-primary transition-all duration-300 shadow-[6px_6px_0px_rgba(61,15,26,0.05)] hover:shadow-[6px_6px_0px_#c0392b]">
+            <div className="mb-8">
+              <h3 className="font-display text-2xl font-bold text-[#3d0f1a] mb-2">CMS</h3>
+              <p className="font-typewriter text-[9px] uppercase tracking-widest text-[#3d0f1a]/50 font-bold mb-6">Autonomia & Performance</p>
+              <p className="font-body text-[14px] text-[#3d0f1a]/70 min-h-[60px]">
+                Siti vetrina ed e-commerce in totale autonomia per PMI e brand.
+              </p>
+            </div>
+            
+            <div className="mb-8 pb-8 border-b border-[#3d0f1a]/10">
+              <span className="font-display text-3xl font-black text-[#3d0f1a]">4-6</span>
+              <span className="font-body text-sm text-[#3d0f1a]/60 ml-2">settimane</span>
+            </div>
+
+            <ul className="space-y-4 mb-10 flex-grow">
+              <li className="flex items-start gap-3">
+                <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+                <span className="font-body text-[14px] text-[#3d0f1a]/80">UI/UX Design personalizzato</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+                <span className="font-body text-[14px] text-[#3d0f1a]/80">Sviluppo front-end reattivo</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+                <span className="font-body text-[14px] text-[#3d0f1a]/80">Setup piattaforma headless o ibrida</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+                <span className="font-body text-[14px] text-[#3d0f1a]/80">Training per gestione contenuti</span>
+              </li>
+            </ul>
+
+            <Link to="/cms-details" className="w-full py-4 border border-[#3d0f1a] text-center font-typewriter text-[10px] uppercase tracking-[0.2em] font-bold text-[#3d0f1a] group-hover:bg-[#3d0f1a] group-hover:text-white transition-colors duration-300 inline-block">
+              Scopri il pacchetto
+            </Link>
+          </div>
+
+          {/* TIER 2: MVP */}
+          <div className="border-2 border-primary bg-white p-8 flex flex-col group relative shadow-[8px_8px_0px_#c0392b] md:-mt-4 md:mb-4">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white font-typewriter text-[9px] uppercase tracking-widest px-4 py-1.5 font-bold whitespace-nowrap">
+              Più richiesto
+            </div>
+            <div className="mb-8 mt-2">
+              <h3 className="font-display text-2xl font-bold text-[#3d0f1a] mb-2">MVP</h3>
+              <p className="font-typewriter text-[9px] uppercase tracking-widest text-[#3d0f1a]/50 font-bold mb-6">Validazione rapida</p>
+              <p className="font-body text-[14px] text-[#3d0f1a]/70 min-h-[60px]">
+                Sviluppo accelerato del Core Loop per validare l'idea sul mercato.
+              </p>
+            </div>
+            
+            <div className="mb-8 pb-8 border-b border-[#3d0f1a]/10">
+              <span className="font-display text-3xl font-black text-[#3d0f1a]">8-10</span>
+              <span className="font-body text-sm text-[#3d0f1a]/60 ml-2">settimane</span>
+            </div>
+
+            <ul className="space-y-4 mb-10 flex-grow">
+              <li className="flex items-start gap-3">
+                <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+                <span className="font-body text-[14px] text-[#3d0f1a]/80">Workshop di scoping MVP</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+                <span className="font-body text-[14px] text-[#3d0f1a]/80">Prototipazione interattiva</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+                <span className="font-body text-[14px] text-[#3d0f1a]/80">Sviluppo core-features scalabili</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+                <span className="font-body text-[14px] text-[#3d0f1a]/80">Setup base Analytics/Tracking</span>
+              </li>
+            </ul>
+
+            <Link to="/mvp-details" className="w-full py-4 bg-primary text-white text-center font-typewriter text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#3d0f1a] transition-colors duration-300 inline-block">
+              Scopri il pacchetto
+            </Link>
+          </div>
+
+          {/* TIER 3: Custom */}
+          <div className="border border-[#3d0f1a] bg-[#f5f2ed] p-8 flex flex-col group hover:bg-white hover:border-primary transition-all duration-300 shadow-[6px_6px_0px_rgba(61,15,26,0.05)] hover:shadow-[6px_6px_0px_#c0392b]">
+            <div className="mb-8">
+              <h3 className="font-display text-2xl font-bold text-[#3d0f1a] mb-2">Custom</h3>
+              <p className="font-typewriter text-[9px] uppercase tracking-widest text-[#3d0f1a]/50 font-bold mb-6">Infrastruttura dedicata</p>
+              <p className="font-body text-[14px] text-[#3d0f1a]/70 min-h-[60px]">
+                Ecosistemi complessi per startup o corporate senza limiti tecnici.
+              </p>
+            </div>
+            
+            <div className="mb-8 pb-8 border-b border-[#3d0f1a]/10">
+              <span className="font-display text-3xl font-black text-[#3d0f1a]">+3</span>
+              <span className="font-body text-sm text-[#3d0f1a]/60 ml-2">mesi</span>
+            </div>
+
+            <ul className="space-y-4 mb-10 flex-grow">
+              <li className="flex items-start gap-3">
+                <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+                <span className="font-body text-[14px] text-[#3d0f1a]/80">Architettura Data & Backend custom</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+                <span className="font-body text-[14px] text-[#3d0f1a]/80">Sviluppo API proprietarie</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+                <span className="font-body text-[14px] text-[#3d0f1a]/80">Integrazione con sistemi aziendali</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+                <span className="font-body text-[14px] text-[#3d0f1a]/80">Dashboard di amministrazione</span>
+              </li>
+            </ul>
+
+            <Link to="/custom-details" className="w-full py-4 border border-[#3d0f1a] text-center font-typewriter text-[10px] uppercase tracking-[0.2em] font-bold text-[#3d0f1a] group-hover:bg-[#3d0f1a] group-hover:text-white transition-colors duration-300 inline-block">
+              Scopri il pacchetto
+            </Link>
+          </div>
+
+        </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════

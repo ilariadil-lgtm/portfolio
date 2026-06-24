@@ -31,7 +31,6 @@ const NebulaIndex = () => {
   const [projects, setProjects] = useState<any[]>([]);
   const [services, setServices] = useState<any[]>([]);
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-  const [activeTab, setActiveTab] = useState("Design");
 
   const { scrollY } = useScroll();
   const yParallax = useTransform(scrollY, [0, 1000], [0, 300]);
@@ -338,7 +337,7 @@ const NebulaIndex = () => {
         </motion.section>
 
         {/* ───────────────────────────────────────────────────────────────────
-             TECHNICAL SKILLS (AWWWARDS MINIMAL DASHBOARD) 
+             ECOSISTEMI SU MISURA (LE TRE PORTE - NEBULA EDITION) 
              ─────────────────────────────────────────────────────────────────── */}
         <motion.section
           initial={{ opacity: 0, y: 50 }}
@@ -348,135 +347,174 @@ const NebulaIndex = () => {
           className="px-6 md:px-12 lg:px-24 py-32 relative z-20"
         >
           <div className="max-w-7xl mx-auto">
+            {/* Header */}
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8 border-b border-white/10 pb-10">
               <div className="md:w-[60%]">
                 <div className="flex items-center gap-4 mb-6">
                   <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#d4af37] block">
-                    {t("index.skills_label")}
+                    03 — I MIEI SERVIZI
                   </span>
                 </div>
-                <RevealText
-                  text={`${t("index.skills_title_1")} ${t("index.skills_title_2")}`}
-                  className="font-bricolage text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white"
-                />
+                <div className="flex flex-col">
+                  <RevealText
+                    text="Ecosistemi"
+                    className="font-bricolage text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white"
+                  />
+                  <RevealText
+                    text="su misura."
+                    delay={0.1}
+                    className="font-fraunces text-4xl md:text-5xl lg:text-6xl italic font-light tracking-tight text-[#d4af37]"
+                  />
+                </div>
               </div>
               <div className="md:w-[40%] flex justify-start md:justify-end">
                 <p className="font-inter text-sm text-white/60 max-w-sm font-light leading-relaxed">
-                  {t("index.skills_desc")}
+                  Sviluppare un progetto digitale significa scegliere la giusta architettura tecnica. Ho strutturato la mia offerta in tre approcci distinti, pensati per rispondere a specifiche necessità di business.
                 </p>
               </div>
             </div>
 
-            {/* DASHBOARD LAYOUT */}
-            <div className="flex flex-col md:flex-row gap-16 md:gap-24">
-              {/* Categorie a Sinistra */}
-              <div className="md:w-1/3 flex flex-col gap-6">
-                {[
-                  { id: "Design", label: "Design" },
-                  { id: "Sviluppo", label: "Sviluppo" },
-                  { id: "Strategia", label: "Strategia & Prodotto" },
-                ].map((cat) => (
-                  <button
-                    key={cat.id}
-                    onClick={() => setActiveTab(cat.id)}
-                    className={`text-left pb-4 border-b transition-colors duration-500 font-mono text-xs uppercase tracking-[0.2em] ${
-                      activeTab === cat.id
-                        ? "border-[#d4af37] text-white"
-                        : "border-white/10 text-white/30 hover:text-white/60 hover:border-white/30"
-                    }`}
-                  >
-                    {cat.label}
-                  </button>
-                ))}
+            {/* Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              
+              {/* Porta 1 */}
+              <div className="h-full relative border border-white/5 p-8 md:p-10 bg-white/[0.02] backdrop-blur-md hover:border-[#d4af37]/30 hover:bg-white/[0.04] transition-all duration-700 flex flex-col group overflow-hidden rounded-3xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
+                <div className="absolute -bottom-4 -right-2 font-bricolage text-[140px] leading-none font-black text-white/[0.04] group-hover:text-[#d4af37]/[0.08] transition-colors duration-500 select-none pointer-events-none z-0">
+                  01
+                </div>
+
+                <div className="relative z-10 flex-1 flex flex-col">
+                  <div className="flex justify-between items-start border-b border-white/10 pb-6 mb-8 group-hover:border-[#d4af37]/20 transition-colors duration-500">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37] flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
+                      APPROCCIO_01
+                    </span>
+                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/30 bg-white/[0.02] group-hover:text-[#d4af37] group-hover:border-[#d4af37]/30 transition-all duration-500">
+                      <span className="font-bricolage font-black text-xl">1</span>
+                    </div>
+                  </div>
+
+                  <h3 className="font-bricolage text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                    Sviluppo <br /><span className="italic font-fraunces font-light text-[#d4af37]">CMS</span>
+                  </h3>
+                  
+                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37]/80 font-bold leading-relaxed mb-6">
+                    Autonomia e performance
+                  </p>
+                  <p className="font-outfit text-[15px] text-white/60 leading-relaxed flex-1 mb-12">
+                    Progettazione di siti vetrina ed e-commerce strutturati per brand e PMI che esigono un'estetica ricercata unita alla totale indipendenza di gestione quotidiana dei contenuti.
+                  </p>
+                  
+                  <div className="pt-8 border-t border-white/5 mt-auto">
+                    <Link
+                      to="/servizi"
+                      className="group/btn inline-flex items-center justify-between w-full font-mono text-[11px] uppercase tracking-[0.25em] text-white/60 hover:text-[#d4af37] transition-colors"
+                    >
+                      <span className="relative overflow-hidden">
+                        Scopri di più
+                        <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#d4af37] transform origin-left scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500" />
+                      </span>
+                      <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover/btn:border-[#d4af37] group-hover/btn:text-[#d4af37] transition-all duration-500">
+                        <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                  </div>
+                </div>
               </div>
 
-              {/* Skills a Destra */}
-              <div className="md:w-2/3 min-h-[250px] relative">
-                <AnimatePresence mode="wait">
-                  {activeTab === "Design" && (
-                    <motion.div
-                      key="Design"
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }}
-                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                      className="flex flex-wrap gap-4"
+              {/* Porta 2 */}
+              <div className="h-full relative border border-white/5 p-8 md:p-10 bg-white/[0.02] backdrop-blur-md hover:border-[#d4af37]/30 hover:bg-white/[0.04] transition-all duration-700 flex flex-col group overflow-hidden rounded-3xl" style={{ transitionDelay: "150ms" }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
+                <div className="absolute -bottom-4 -right-2 font-bricolage text-[140px] leading-none font-black text-white/[0.04] group-hover:text-[#d4af37]/[0.08] transition-colors duration-500 select-none pointer-events-none z-0">
+                  02
+                </div>
+
+                <div className="relative z-10 flex-1 flex flex-col">
+                  <div className="flex justify-between items-start border-b border-white/10 pb-6 mb-8 group-hover:border-[#d4af37]/20 transition-colors duration-500">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37] flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
+                      APPROCCIO_02
+                    </span>
+                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/30 bg-white/[0.02] group-hover:text-[#d4af37] group-hover:border-[#d4af37]/30 transition-all duration-500">
+                      <span className="font-bricolage font-black text-xl">2</span>
+                    </div>
+                  </div>
+
+                  <h3 className="font-bricolage text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                    Sviluppo <br /><span className="italic font-fraunces font-light text-[#d4af37]">MVP</span>
+                  </h3>
+                  
+                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37]/80 font-bold leading-relaxed mb-6">
+                    Validazione rapida
+                  </p>
+                  <p className="font-outfit text-[15px] text-white/60 leading-relaxed flex-1 mb-12">
+                    Sviluppo accelerato focalizzato sul Core Loop funzionale. Ideale per startup e founder che devono testare la propria idea sul mercato minimizzando i tempi di lancio.
+                  </p>
+                  
+                  <div className="pt-8 border-t border-white/5 mt-auto">
+                    <Link
+                      to="/servizi"
+                      className="group/btn inline-flex items-center justify-between w-full font-mono text-[11px] uppercase tracking-[0.25em] text-white/60 hover:text-[#d4af37] transition-colors"
                     >
-                      {[
-                        "UI & UX Design",
-                        "Visual Identity",
-                        "Design Systems",
-                        "Prototipazione Iterativa",
-                        "Wireframing",
-                        "User Research",
-                        "Architettura dell'Informazione",
-                      ].map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-6 py-4 border border-white/10 text-white/70 font-inter text-sm font-medium tracking-wide rounded-none hover:border-[#d4af37]/60 hover:text-[#d4af37] hover:bg-[#d4af37]/5 transition-all duration-300 cursor-default"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </motion.div>
-                  )}
-                  {activeTab === "Sviluppo" && (
-                    <motion.div
-                      key="Sviluppo"
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }}
-                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                      className="flex flex-wrap gap-4"
-                    >
-                      {[
-                        "Sviluppo Front-end",
-                        "Sviluppo Full-Stack",
-                        "Web App Custom",
-                        "Ottimizzazione Performance",
-                        "E-commerce su misura",
-                        "Temi WordPress",
-                        "PrestaShop",
-                        "Integrazione API",
-                      ].map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-6 py-4 border border-white/10 text-white/70 font-inter text-sm font-medium tracking-wide rounded-none hover:border-[#d4af37]/60 hover:text-[#d4af37] hover:bg-[#d4af37]/5 transition-all duration-300 cursor-default"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </motion.div>
-                  )}
-                  {activeTab === "Strategia" && (
-                    <motion.div
-                      key="Strategia"
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }}
-                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                      className="flex flex-wrap gap-4"
-                    >
-                      {[
-                        "Tech Product Management",
-                        "Analisi dei Requisiti",
-                        "Integrazione AI Workflows",
-                        "Coordinamento Agile",
-                        "Strategia Digitale",
-                        "SEO Tecnico",
-                        "Ottimizzazione Conversioni (CRO)",
-                      ].map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-6 py-4 border border-white/10 text-white/70 font-inter text-sm font-medium tracking-wide rounded-none hover:border-[#d4af37]/60 hover:text-[#d4af37] hover:bg-[#d4af37]/5 transition-all duration-300 cursor-default"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                      <span className="relative overflow-hidden">
+                        Scopri di più
+                        <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#d4af37] transform origin-left scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500" />
+                      </span>
+                      <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover/btn:border-[#d4af37] group-hover/btn:text-[#d4af37] transition-all duration-500">
+                        <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                  </div>
+                </div>
               </div>
+
+              {/* Porta 3 */}
+              <div className="h-full relative border border-white/5 p-8 md:p-10 bg-white/[0.02] backdrop-blur-md hover:border-[#d4af37]/30 hover:bg-white/[0.04] transition-all duration-700 flex flex-col group overflow-hidden rounded-3xl" style={{ transitionDelay: "300ms" }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
+                <div className="absolute -bottom-4 -right-2 font-bricolage text-[140px] leading-none font-black text-white/[0.04] group-hover:text-[#d4af37]/[0.08] transition-colors duration-500 select-none pointer-events-none z-0">
+                  03
+                </div>
+
+                <div className="relative z-10 flex-1 flex flex-col">
+                  <div className="flex justify-between items-start border-b border-white/10 pb-6 mb-8 group-hover:border-[#d4af37]/20 transition-colors duration-500">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37] flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
+                      APPROCCIO_03
+                    </span>
+                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/30 bg-white/[0.02] group-hover:text-[#d4af37] group-hover:border-[#d4af37]/30 transition-all duration-500">
+                      <span className="font-bricolage font-black text-xl">3</span>
+                    </div>
+                  </div>
+
+                  <h3 className="font-bricolage text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                    Sviluppo <br /><span className="italic font-fraunces font-light text-[#d4af37]">Custom</span>
+                  </h3>
+                  
+                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37]/80 font-bold leading-relaxed mb-6">
+                    Infrastruttura dedicata
+                  </p>
+                  <p className="font-outfit text-[15px] text-white/60 leading-relaxed flex-1 mb-12">
+                    Ecosistemi digitali ingegnerizzati da zero su stack Python/Django o Node. Nessun limite tecnico, massima scalabilità e totale proprietà intellettuale del codice.
+                  </p>
+                  
+                  <div className="pt-8 border-t border-white/5 mt-auto">
+                    <Link
+                      to="/servizi"
+                      className="group/btn inline-flex items-center justify-between w-full font-mono text-[11px] uppercase tracking-[0.25em] text-white/60 hover:text-[#d4af37] transition-colors"
+                    >
+                      <span className="relative overflow-hidden">
+                        Scopri di più
+                        <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#d4af37] transform origin-left scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500" />
+                      </span>
+                      <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover/btn:border-[#d4af37] group-hover/btn:text-[#d4af37] transition-all duration-500">
+                        <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </motion.section>

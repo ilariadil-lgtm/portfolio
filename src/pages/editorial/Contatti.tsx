@@ -9,6 +9,7 @@ import {
   ArrowRight,
   MapPin,
   CheckCircle,
+  ChevronDown,
 } from "lucide-react";
 import { useState } from "react";
 import { api } from "@/lib/api";
@@ -88,6 +89,51 @@ function InputField({
   );
 }
 
+function SelectField({
+  label,
+  name,
+  required = true,
+  value,
+  onChange,
+  options,
+}: {
+  label: string;
+  name: string;
+  required?: boolean;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  options: { label: string; value: string }[];
+}) {
+  return (
+    <div className="group relative">
+      <label
+        htmlFor={name}
+        className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/60 block mb-3 font-bold cursor-pointer"
+      >
+        {label}
+      </label>
+      <div className="relative">
+        <select
+          id={name}
+          name={name}
+          required={required}
+          value={value}
+          onChange={onChange}
+          className="w-full bg-transparent border-b border-[#3d0f1a]/20 py-3.5 text-[#3d0f1a] font-body text-base outline-none focus:border-primary transition-colors duration-300 appearance-none rounded-none pr-8"
+        >
+          <option value="" disabled className="text-[#3d0f1a]/30">Seleziona un'opzione</option>
+          {options.map((opt) => (
+            <option key={opt.value} value={opt.value} className="text-black">
+              {opt.label}
+            </option>
+          ))}
+        </select>
+        <ChevronDown size={16} className="absolute right-2 top-1/2 -translate-y-1/2 text-[#3d0f1a]/40 pointer-events-none group-hover:text-primary transition-colors" />
+      </div>
+    </div>
+  );
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 const Contatti = () => {
   const { t } = useTranslation();
@@ -100,8 +146,11 @@ const Contatti = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
-    message: "",
+    company: "",
+    onlinePresence: "",
+    direction: "",
+    objective: "",
+    budget: "",
     website: "", // Honeypot
   });
   const [status, setStatus] = useState<
@@ -109,7 +158,7 @@ const Contatti = () => {
   >("idle");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -127,8 +176,11 @@ const Contatti = () => {
       setFormData({
         name: "",
         email: "",
-        subject: "",
-        message: "",
+        company: "",
+        onlinePresence: "",
+        direction: "",
+        objective: "",
+        budget: "",
         website: "",
       });
     } catch {
@@ -360,47 +412,87 @@ const Contatti = () => {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                     >
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-                        <InputField
-                          label={t("contact.form_name")}
-                          name="name"
-                          value={formData.name}
+                      <div className="space-y-10">
+                        {/* Riga 1: Dati Personali */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                          <InputField
+                            label={t("contact.form_name") || "Nome"}
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder={t("contact.form_name_ph") || "Il tuo nome"}
+                          />
+                          <InputField
+                            label={t("contact.form_email") || "Email"}
+                            name="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder={t("contact.form_email_ph") || "La tua email"}
+                          />
+                        </div>
+
+                        {/* Riga 2: Contesto Aziendale */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                          <InputField
+                            label="Azienda / Progetto"
+                            name="company"
+                            value={formData.company}
+                            onChange={handleChange}
+                            placeholder="Nome dell'azienda o progetto"
+                          />
+                          <InputField
+                            label="Presenza online attuale"
+                            name="onlinePresence"
+                            type="url"
+                            required={false}
+                            value={formData.onlinePresence}
+                            onChange={handleChange}
+                            placeholder="Sito web o link social (opzionale)"
+                          />
+                        </div>
+
+                        {/* Riga 3 & 4: Select full-width per non sembrare schiacciate */}
+                        <SelectField
+                          label="Selezione Direzione"
+                          name="direction"
+                          value={formData.direction}
                           onChange={handleChange}
-                          placeholder={t("contact.form_name_ph")}
+                          options={[
+                            { label: "Pacchetto Custom", value: "Pacchetto Custom" },
+                            { label: "Pacchetto MVP", value: "Pacchetto MVP" },
+                            { label: "Pacchetto CMS", value: "Pacchetto CMS" },
+                            { label: "Non sono sicuro", value: "Non sono sicuro" },
+                          ]}
                         />
-                        <InputField
-                          label={t("contact.form_email")}
-                          name="email"
-                          type="email"
-                          value={formData.email}
+                        <SelectField
+                          label="Orizzonte di Investimento"
+                          name="budget"
+                          value={formData.budget}
                           onChange={handleChange}
-                          placeholder={t("contact.form_email_ph")}
+                          options={[
+                            { label: "Fino a € 2.500", value: "Fino a € 2.500" },
+                            { label: "Tra € 2.500 e € 6.000", value: "Tra € 2.500 e € 6.000" },
+                            { label: "Oltre € 6.000", value: "Oltre € 6.000" },
+                          ]}
                         />
                       </div>
 
-                      <InputField
-                        label={t("contact.form_subject")}
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        placeholder={t("contact.form_subject_ph")}
-                      />
-
                       <div className="group">
                         <label
-                          htmlFor="message"
+                          htmlFor="objective"
                           className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/60 block mb-3 font-bold cursor-pointer"
                         >
-                          {t("contact.form_message")}
+                          Obiettivo di Prodotto
                         </label>
                         <textarea
-                          id="message"
-                          name="message"
+                          id="objective"
+                          name="objective"
                           required
                           rows={5}
-                          value={formData.message}
+                          value={formData.objective}
                           onChange={handleChange}
-                          placeholder={t("contact.form_message_ph")}
+                          placeholder="Descrivi la funzionalità core necessaria..."
                           className="w-full bg-transparent border-b border-[#3d0f1a]/20 py-3.5 text-[#3d0f1a] placeholder:text-[#3d0f1a]/30 font-body text-base outline-none focus:border-primary transition-colors duration-300 resize-none"
                         />
                       </div>
