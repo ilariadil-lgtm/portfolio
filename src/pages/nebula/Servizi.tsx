@@ -11,6 +11,7 @@ const HeroCanvas = React.lazy(() =>
 import { api } from "@/lib/api";
 import { Box, Cpu, Globe, Layout, ChevronRight, Hexagon } from "lucide-react";
 import { Link } from "react-router-dom";
+import { NebulaPackagesSection } from "./components/NebulaPackagesSection";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
 import { RevealText } from "@/components/RevealText";
@@ -620,13 +621,16 @@ const Servizi = () => {
           <div className="mb-16 text-left">
             <div className="flex items-center gap-4 justify-start mb-6">
               <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4af37] font-medium flex items-center gap-2">
-                <span className="text-[10px]">✦</span> I miei pacchetti
+                <span className="text-[10px]">✦</span> {t("services.packages_label")}
               </span>
               <div className="w-12 h-[1px] bg-[#d4af37]/20" />
             </div>
             <h2 className="font-bricolage text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight max-w-3xl mx-0">
-              Scegli l'ecosistema perfetto per <span className="font-fraunces italic font-light text-[#d4af37]">la tua fase di business.</span>
+              {t("services.packages_title")} <span className="font-fraunces italic font-light text-[#d4af37]">{t("services.packages_title_highlight")}</span>
             </h2>
+            <p className="mt-6 font-outfit text-lg text-white/60 max-w-2xl font-light">
+              {t("services.packages_subtitle")}
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -636,39 +640,39 @@ const Servizi = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
               <div className="relative z-10 flex flex-col h-full">
                 <div className="mb-8">
-                  <h3 className="font-bricolage text-2xl font-bold text-white mb-2">CMS</h3>
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#d4af37] font-bold mb-6">Autonomia & Performance</p>
+                  <h3 className="font-bricolage text-2xl font-bold text-white mb-2">{t("services.pkg_cms_name")}</h3>
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#d4af37] font-bold mb-6">{t("services.pkg_cms_tagline")}</p>
                   <p className="font-outfit font-light text-[14px] text-white/60 min-h-[60px]">
-                    Siti vetrina ed e-commerce in totale autonomia per PMI e brand.
+                    {t("services.pkg_cms_desc")}
                   </p>
                 </div>
                 
                 <div className="mb-8 pb-8 border-b border-white/10">
-                  <span className="font-bricolage text-3xl font-black text-white">4-6</span>
-                  <span className="font-outfit font-light text-sm text-white/40 ml-2">settimane</span>
+                  <span className="font-bricolage text-3xl font-black text-white">{t("services.pkg_cms_time")}</span>
+                  <span className="font-outfit font-light text-sm text-white/40 ml-2">{t("services.pkg_cms_time_unit")}</span>
                 </div>
 
                 <ul className="space-y-4 mb-10 flex-grow">
                   <li className="flex items-start gap-3">
                     <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">UI/UX Design personalizzato</span>
+                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_cms_p1")}</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">Sviluppo front-end reattivo</span>
+                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_cms_p2")}</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">Setup piattaforma headless o ibrida</span>
+                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_cms_p3")}</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">Training per gestione contenuti</span>
+                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_cms_p4")}</span>
                   </li>
                 </ul>
 
-                <Link to="/cms-details" className="w-full py-4 border border-white/10 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-white/60 group-hover:text-[#d4af37] group-hover:border-[#d4af37]/40 group-hover:bg-[#d4af37]/5 rounded-full transition-all duration-300 inline-block">
-                  Scopri il pacchetto
+                <Link to="/sviluppo-cms" className="w-full py-4 border border-white/10 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-white/60 group-hover:text-[#d4af37] group-hover:border-[#d4af37]/40 group-hover:bg-[#d4af37]/5 rounded-full transition-all duration-300 inline-block">
+                  {t("services.pkg_cms_btn")}
                 </Link>
               </div>
             </div>
@@ -676,44 +680,44 @@ const Servizi = () => {
             {/* TIER 2: MVP */}
             <div className="border border-[#d4af37]/40 bg-gradient-to-b from-[#d4af37]/10 to-white/[0.02] backdrop-blur-md p-8 flex flex-col group relative shadow-[0_0_40px_rgba(212,175,55,0.15)] md:-mt-4 md:mb-4 rounded-3xl overflow-hidden">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#d4af37] text-black font-mono text-[9px] uppercase tracking-widest px-4 py-1.5 font-bold whitespace-nowrap rounded-b-lg z-20">
-                Più richiesto
+                {t("services.pkg_mvp_badge")}
               </div>
               <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
               <div className="relative z-10 flex flex-col h-full mt-4">
                 <div className="mb-8">
-                  <h3 className="font-bricolage text-2xl font-bold text-white mb-2">MVP</h3>
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#d4af37] font-bold mb-6">Validazione rapida</p>
+                  <h3 className="font-bricolage text-2xl font-bold text-white mb-2">{t("services.pkg_mvp_name")}</h3>
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#d4af37] font-bold mb-6">{t("services.pkg_mvp_tagline")}</p>
                   <p className="font-outfit font-light text-[14px] text-white/60 min-h-[60px]">
-                    Sviluppo accelerato del Core Loop per validare l'idea sul mercato.
+                    {t("services.pkg_mvp_desc")}
                   </p>
                 </div>
                 
                 <div className="mb-8 pb-8 border-b border-white/10">
-                  <span className="font-bricolage text-3xl font-black text-white">8-10</span>
-                  <span className="font-outfit font-light text-sm text-white/40 ml-2">settimane</span>
+                  <span className="font-bricolage text-3xl font-black text-white">{t("services.pkg_mvp_time")}</span>
+                  <span className="font-outfit font-light text-sm text-white/40 ml-2">{t("services.pkg_mvp_time_unit")}</span>
                 </div>
 
                 <ul className="space-y-4 mb-10 flex-grow">
                   <li className="flex items-start gap-3">
                     <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">Workshop di scoping MVP</span>
+                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_mvp_p1")}</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">Prototipazione interattiva</span>
+                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_mvp_p2")}</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">Sviluppo core-features scalabili</span>
+                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_mvp_p3")}</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">Setup base Analytics/Tracking</span>
+                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_mvp_p4")}</span>
                   </li>
                 </ul>
 
-                <Link to="/mvp-details" className="w-full py-4 bg-[#d4af37] text-black text-center font-mono text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-white rounded-full transition-colors duration-300 inline-block">
-                  Scopri il pacchetto
+                <Link to="/sviluppo-mvp" className="w-full py-4 bg-[#d4af37] text-black text-center font-mono text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-white rounded-full transition-colors duration-300 inline-block">
+                  {t("services.pkg_mvp_btn")}
                 </Link>
               </div>
             </div>
@@ -723,39 +727,39 @@ const Servizi = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
               <div className="relative z-10 flex flex-col h-full">
                 <div className="mb-8">
-                  <h3 className="font-bricolage text-2xl font-bold text-white mb-2">Custom</h3>
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#d4af37] font-bold mb-6">Infrastruttura dedicata</p>
+                  <h3 className="font-bricolage text-2xl font-bold text-white mb-2">{t("services.pkg_custom_name")}</h3>
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#d4af37] font-bold mb-6">{t("services.pkg_custom_tagline")}</p>
                   <p className="font-outfit font-light text-[14px] text-white/60 min-h-[60px]">
-                    Ecosistemi complessi per startup o corporate senza limiti tecnici.
+                    {t("services.pkg_custom_desc")}
                   </p>
                 </div>
                 
                 <div className="mb-8 pb-8 border-b border-white/10">
-                  <span className="font-bricolage text-3xl font-black text-white">+3</span>
-                  <span className="font-outfit font-light text-sm text-white/40 ml-2">mesi</span>
+                  <span className="font-bricolage text-3xl font-black text-white">{t("services.pkg_custom_time")}</span>
+                  <span className="font-outfit font-light text-sm text-white/40 ml-2">{t("services.pkg_custom_time_unit")}</span>
                 </div>
 
                 <ul className="space-y-4 mb-10 flex-grow">
                   <li className="flex items-start gap-3">
                     <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">Architettura Data & Backend custom</span>
+                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_custom_p1")}</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">Sviluppo API proprietarie</span>
+                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_custom_p2")}</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">Integrazione con sistemi aziendali</span>
+                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_custom_p3")}</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">Dashboard di amministrazione</span>
+                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_custom_p4")}</span>
                   </li>
                 </ul>
 
-                <Link to="/custom-details" className="w-full py-4 border border-white/10 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-white/60 group-hover:text-[#d4af37] group-hover:border-[#d4af37]/40 group-hover:bg-[#d4af37]/5 rounded-full transition-all duration-300 inline-block">
-                  Scopri il pacchetto
+                <Link to="/sviluppo-custom" className="w-full py-4 border border-white/10 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-white/60 group-hover:text-[#d4af37] group-hover:border-[#d4af37]/40 group-hover:bg-[#d4af37]/5 rounded-full transition-all duration-300 inline-block">
+                  {t("services.pkg_custom_btn")}
                 </Link>
               </div>
             </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, ArrowRight } from "lucide-react";
 import { NebulaNav } from "./NebulaNav";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -27,7 +27,15 @@ interface NebulaProjectLayoutProps {
   year: string;
   liveUrl?: string;
   prev?: { url: string; title: string };
+  prevLabel?: string;
+  nextLabel?: string;
   next?: { url: string; title: string };
+  finalCta?: {
+    title?: string;
+    description: string;
+    buttonText: string;
+    buttonUrl: string;
+  };
   children: React.ReactNode;
 }
 
@@ -44,6 +52,9 @@ export const NebulaProjectLayout = ({
   liveUrl,
   prev,
   next,
+  prevLabel,
+  nextLabel,
+  finalCta,
   children,
 }: NebulaProjectLayoutProps) => {
   const { t } = useTranslation();
@@ -212,14 +223,28 @@ export const NebulaProjectLayout = ({
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1 }}
-            className="bg-black/40 border border-white/5 backdrop-blur-xl p-8 md:p-16 rounded-3xl font-outfit font-light text-white/80 text-lg md:text-xl leading-relaxed mb-20 shadow-[0_0_50px_rgba(0,0,0,0.6)] [&>p]:mb-8 [&>p:last-child]:mb-0 [&>h3]:font-mono [&>h3]:text-[10px] [&>h3]:uppercase [&>h3]:tracking-[0.3em] [&>h3]:text-[#d4af37] [&>h3]:mb-4 [&>h3]:mt-12 [&>h2]:font-bricolage [&>h2]:font-bold [&>h2]:text-3xl [&>h2]:text-white [&>h2]:mb-6"
+            className="w-full flex flex-col lg:flex-row gap-12 lg:gap-24 mb-32 items-start"
           >
-            <div className="mb-8 pb-8 border-b border-white/10">
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]">
+            <div className="lg:w-1/4 pt-2">
+              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37] flex items-center gap-4">
+                <span className="w-8 h-[1px] bg-[#d4af37]/30 block" />
                 PANORAMICA PROGETTO
               </span>
             </div>
-            {description}
+            <div className="lg:w-3/4 font-outfit font-light text-white/80 text-lg md:text-xl leading-relaxed [&>p]:mb-8 [&>p:last-child]:mb-0 [&>div>p]:text-justify">
+              {description}
+              
+              <div className="mt-16 flex flex-col sm:flex-row gap-6">
+                <a href="mailto:info@ilariadiliberto.com" className="group inline-flex items-center justify-center gap-4 bg-[#d4af37] text-black px-8 py-4 font-mono text-[10px] uppercase tracking-widest hover:bg-white hover:scale-105 transition-all duration-300">
+                  Prenota una call gratuita
+                  <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                </a>
+                <Link to="/contatti" className="group inline-flex items-center justify-center gap-4 border border-white/20 bg-transparent text-white px-8 py-4 font-mono text-[10px] uppercase tracking-widest hover:border-white hover:bg-white/5 transition-all duration-300">
+                  Parlami del tuo progetto
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </div>
           </motion.div>
 
           {phases && phases.length > 0 && (
@@ -229,12 +254,12 @@ export const NebulaProjectLayout = ({
           )}
 
           {liveUrl && (
-            <div className="flex justify-center mb-24 relative z-20">
+            <div className="flex justify-start mb-24 relative z-20">
               <a
                 href={liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between gap-6 px-10 py-5 rounded-full border border-[#d4af37]/30 hover:border-[#d4af37] bg-[#d4af37]/5 hover:bg-[#d4af37]/20 backdrop-blur-md shadow-[0_0_20px_rgba(212,175,55,0.05)] hover:shadow-[0_0_40px_rgba(212,175,55,0.2)] transition-all duration-500"
+                className="group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 px-10 py-5 rounded-full border border-[#d4af37]/30 hover:border-[#d4af37] bg-[#d4af37]/5 hover:bg-[#d4af37]/20 backdrop-blur-md shadow-[0_0_20px_rgba(212,175,55,0.05)] hover:shadow-[0_0_40px_rgba(212,175,55,0.2)] transition-all duration-500"
               >
                 <span className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-[#d4af37] group-hover:text-white transition-colors">
                   VISITA IL SITO
@@ -254,9 +279,28 @@ export const NebulaProjectLayout = ({
           {children}
         </div>
 
+        {finalCta && (
+          <div className="w-full max-w-5xl mx-auto px-6 md:px-12 mt-20 mb-10 relative z-10">
+            <div className="border border-[#d4af37]/20 bg-[#d4af37]/5 backdrop-blur-md p-10 md:p-16 text-left flex flex-col items-start shadow-[0_0_50px_rgba(212,175,55,0.05)]">
+              {finalCta.title && (
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37] mb-6">
+                  {finalCta.title}
+                </span>
+              )}
+              <h2 className="font-fraunces italic font-light text-3xl md:text-5xl text-white mb-10 leading-tight max-w-2xl">
+                {finalCta.description}
+              </h2>
+              <Link to={finalCta.buttonUrl} className="group inline-flex items-center justify-center gap-4 bg-[#d4af37] text-black px-10 py-5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-white hover:scale-105 transition-all duration-300">
+                {finalCta.buttonText}
+                <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </Link>
+            </div>
+          </div>
+        )}
+
         {prev && next && (
           <div className="w-full max-w-7xl mx-auto px-6 md:px-12 mt-12">
-            <NebulaProjectNavigation prev={prev} next={next} />
+            <NebulaProjectNavigation prev={prev} next={next} prevLabel={prevLabel} nextLabel={nextLabel} archiveUrl="/servizi" archiveTitle="Servizi" />
           </div>
         )}
       </main>

@@ -31,31 +31,31 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Navigation List */}
-        <div className="lg:col-span-5 flex flex-col gap-3">
+        <div className="lg:col-span-4 flex flex-col gap-0 border-t border-white/10">
           {phases.map((phase, idx) => {
             const isActive = activeIndex === idx;
             return (
               <button
                 key={idx}
                 onClick={() => setActiveIndex(idx)}
-                className={`w-full text-left py-4 px-5 rounded-2xl transition-all duration-500 relative flex items-center justify-between overflow-hidden group ${
+                className={`w-full text-left py-6 transition-all duration-500 relative flex items-center justify-between group border-b border-white/10 ${
                   isActive
-                    ? "border border-[#d4af37]/40 bg-gradient-to-r from-[#d4af37]/10 to-transparent shadow-[inset_0_0_20px_rgba(212,175,55,0.05)]"
-                    : "border border-white/5 bg-black/20 hover:border-white/20 hover:bg-white/[0.03]"
+                    ? "bg-gradient-to-r from-[#d4af37]/5 to-transparent px-4"
+                    : "hover:px-4 hover:bg-white/[0.02]"
                 }`}
               >
-                <div className="flex items-center gap-5">
+                <div className="flex items-center gap-6">
                   <span
-                    className={`font-fraunces italic font-light text-xl transition-colors duration-300 ${
+                    className={`font-fraunces italic font-light text-2xl md:text-3xl transition-colors duration-300 ${
                       isActive
                         ? "text-[#d4af37]"
-                        : "text-white/30 group-hover:text-white/60"
+                        : "text-white/20 group-hover:text-[#d4af37]/70"
                     }`}
                   >
                     {phase.num || phase.id}
                   </span>
                   <span
-                    className={`font-bricolage font-bold tracking-tight text-lg transition-colors duration-300 ${
+                    className={`font-bricolage font-medium tracking-tight text-xl transition-colors duration-300 ${
                       isActive
                         ? "text-white"
                         : "text-white/50 group-hover:text-white"
@@ -78,33 +78,24 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
         </div>
 
         {/* Display Panel */}
-        <div className="lg:col-span-7 flex items-stretch min-h-[450px]">
-          <div className="w-full p-8 md:p-12 border border-white/5 bg-black/40 backdrop-blur-xl relative overflow-hidden flex flex-col justify-center rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.5)]">
-            <div className="absolute top-0 left-0 w-full h-8 border-b border-white/5 flex items-center px-4 justify-end bg-white/[0.01]">
-              <span className="font-mono text-[8px] uppercase tracking-widest text-white/30">
-                FASE {activeIndex + 1}
-              </span>
-            </div>
-
-            {/* Background grid */}
-            <div className="absolute inset-0 bg-[radial-gradient(rgba(212,175,55,0.03)_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none mt-8" />
-
+        <div className="lg:col-span-8 flex items-stretch ">
+          <div className="w-full lg:pl-12 py-6 relative flex flex-col justify-start">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
-                initial={{ opacity: 0, filter: "blur(10px)", x: 20 }}
-                animate={{ opacity: 1, filter: "blur(0px)", x: 0 }}
-                exit={{ opacity: 0, filter: "blur(10px)", x: -20 }}
+                initial={{ opacity: 0, filter: "blur(10px)", y: 10 }}
+                animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                exit={{ opacity: 0, filter: "blur(10px)", y: -10 }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="relative z-10 w-full h-full flex flex-col mt-4"
+                className="relative z-10 w-full h-full flex flex-col"
               >
                 {phases[activeIndex].subtitle && (
-                  <h3 className="font-fraunces italic font-light text-2xl md:text-3xl text-white mb-6 leading-tight pr-2">
+                  <h3 className="font-fraunces italic font-light text-3xl md:text-4xl text-[#d4af37] mb-8 leading-tight pr-2">
                     {phases[activeIndex].subtitle}
                   </h3>
                 )}
 
-                <div className="font-outfit font-light text-white/70 text-base md:text-lg leading-relaxed space-y-4">
+                <div className="font-outfit font-light text-white/80 text-lg md:text-xl leading-relaxed space-y-6">
                   {phases[activeIndex].description}
                 </div>
 

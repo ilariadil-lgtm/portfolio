@@ -18,6 +18,7 @@ import { CustomCursor } from "./components/CustomCursor";
 import { LenisScroller } from "./components/LenisScroller";
 import { DesignSwitcher } from "./components/DesignSwitcher";
 import { SoundProvider } from "./context/SoundContext";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 
 const queryClient = new QueryClient();
 
@@ -114,7 +115,9 @@ const AppContent = () => {
               : <NebulaPreloader onComplete={() => setIsLoading(false)} />
           )}
         </AnimatePresence>
-        <AnimatedRoutes />
+        <ErrorBoundary>
+          <AnimatedRoutes />
+        </ErrorBoundary>
         <DesignSwitcher />
       </LenisScroller>
     </BrowserRouter>

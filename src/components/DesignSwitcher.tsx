@@ -59,7 +59,7 @@ export const DesignSwitcher = () => {
       </AnimatePresence>
       <button
         onClick={handleClick}
-        className={`flex items-center gap-3 px-4 py-2 rounded-full border transition-all duration-500 shadow-2xl group ${
+        className={`flex items-center gap-0 group-hover:gap-3 px-4 py-2 rounded-full border transition-all duration-500 shadow-2xl group ${
           design === "editorial"
             ? "bg-primary text-background border-primary/20 hover:bg-[#080808] hover:text-[#d4af37] hover:scale-105"
             : "bg-white/10 text-white border-white/20 backdrop-blur-xl hover:bg-white hover:text-black hover:scale-105"

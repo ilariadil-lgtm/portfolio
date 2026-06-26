@@ -452,30 +452,32 @@ const Contatti = () => {
                           />
                         </div>
 
-                        {/* Riga 3 & 4: Select full-width per non sembrare schiacciate */}
-                        <SelectField
-                          label="Selezione Direzione"
-                          name="direction"
-                          value={formData.direction}
-                          onChange={handleChange}
-                          options={[
-                            { label: "Pacchetto Custom", value: "Pacchetto Custom" },
-                            { label: "Pacchetto MVP", value: "Pacchetto MVP" },
-                            { label: "Pacchetto CMS", value: "Pacchetto CMS" },
-                            { label: "Non sono sicuro", value: "Non sono sicuro" },
-                          ]}
-                        />
-                        <SelectField
-                          label="Orizzonte di Investimento"
-                          name="budget"
-                          value={formData.budget}
-                          onChange={handleChange}
-                          options={[
-                            { label: "Fino a € 2.500", value: "Fino a € 2.500" },
-                            { label: "Tra € 2.500 e € 6.000", value: "Tra € 2.500 e € 6.000" },
-                            { label: "Oltre € 6.000", value: "Oltre € 6.000" },
-                          ]}
-                        />
+                        {/* Riga 3: Select in due colonne */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                          <SelectField
+                            label="Selezione Direzione"
+                            name="direction"
+                            value={formData.direction}
+                            onChange={handleChange}
+                            options={[
+                              { label: "Sviluppo Custom", value: "Sviluppo Custom" },
+                              { label: "Sviluppo MVP", value: "Sviluppo MVP" },
+                              { label: "Sviluppo CMS", value: "Sviluppo CMS" },
+                              { label: "Non sono sicuro", value: "Non sono sicuro" },
+                            ]}
+                          />
+                          <SelectField
+                            label="Orizzonte di Investimento"
+                            name="budget"
+                            value={formData.budget}
+                            onChange={handleChange}
+                            options={[
+                              { label: "Fino a € 2.500", value: "Fino a € 2.500" },
+                              { label: "Tra € 2.500 e € 6.000", value: "Tra € 2.500 e € 6.000" },
+                              { label: "Oltre € 6.000", value: "Oltre € 6.000" },
+                            ]}
+                          />
+                        </div>
                       </div>
 
                       <div className="group">
