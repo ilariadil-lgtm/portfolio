@@ -171,7 +171,33 @@ const Contatti = () => {
 
     setStatus("loading");
     try {
-      await api.sendContactMessage(formData);
+      // Mappatura personalizzata per soddisfare i requisiti del backend Django
+      const payload = {
+        name: formData.name,
+        email: formData.email,
+        // Generiamo il subject unendo Direzione e Budget prescelti
+        subject: `Richiesta Portfolio: ${formData.direction || "Generale"} (${formData.budget || "Budget non specificato"})`,
+        // Raggruppiamo tutte le informazioni dettagliate del form nel corpo del message
+        message: `
+Dettagli del mittente:
+- Nome: ${formData.name}
+- Email: ${formData.email}
+- Azienda / Progetto: ${formData.company || "N/D"}
+- Sito web o social: ${formData.onlinePresence || "N/D"}
+
+Informazioni Progetto:
+- Seleziona un'offerta: ${formData.direction || "N/D"}
+- Budget: ${formData.budget || "N/D"}
+
+Parlami del tuo progetto:
+${formData.objective}
+        `.trim(),
+      };
+
+      // Inviamo a Django il payload formattato correttamente
+      // Riga ~198 nuova
+await api.sendContactMessage(payload as any);
+      
       setStatus("success");
       setFormData({
         name: "",
@@ -192,11 +218,8 @@ const Contatti = () => {
     <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] overflow-hidden selection:bg-primary/30">
       <Navigation />
 
-      {/* ═══════════════════════════════════════════════════════════════════
-           HERO
-           ═══════════════════════════════════════════════════════════════════ */}
+      {/* HERO */}
       <section className="relative pt-52 md:pt-48 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden">
-        {/* Background Grid Pattern */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div
             className="absolute inset-0 opacity-[0.03]"
@@ -268,12 +291,10 @@ const Contatti = () => {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════
-           MAIN SPLIT — canali + form
-           ═══════════════════════════════════════════════════════════════════ */}
+      {/* MAIN SPLIT */}
       <section className="px-6 md:px-12 lg:px-24 pb-32">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-          {/* ── Left: info + canali ── */}
+          {/* Left: info */}
           <motion.div
             className="lg:col-span-4 space-y-12 lg:pt-4"
             initial={{ opacity: 0, y: 20 }}
@@ -281,7 +302,6 @@ const Contatti = () => {
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Canali diretti */}
             <div>
               <span className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-primary font-bold block mb-7">
                 {t("contact.channels")}
@@ -318,7 +338,6 @@ const Contatti = () => {
                   </motion.a>
                 ))}
 
-                {/* Honeypot field (hidden from real users) */}
                 <input
                   type="text"
                   name="website"
@@ -332,7 +351,6 @@ const Contatti = () => {
               </div>
             </div>
 
-            {/* Sede */}
             <div className="p-6 border border-[#3d0f1a]/10 bg-white flex items-start gap-4">
               <MapPin size={16} className="text-primary mt-0.5 shrink-0" />
               <div>
@@ -349,7 +367,7 @@ const Contatti = () => {
             </div>
           </motion.div>
 
-          {/* ── Right: form ── */}
+          {/* Right: form */}
           <motion.div
             className="lg:col-span-8"
             initial={{ opacity: 0, y: 30 }}
@@ -413,7 +431,7 @@ const Contatti = () => {
                       exit={{ opacity: 0 }}
                     >
                       <div className="space-y-10">
-                        {/* Riga 1: Dati Personali */}
+                        {/* Riga 1 */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
                           <InputField
                             label={t("contact.form_name") || "Nome"}
@@ -432,7 +450,7 @@ const Contatti = () => {
                           />
                         </div>
 
-                        {/* Riga 2: Contesto Aziendale */}
+                        {/* Riga 2 */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
                           <InputField
                             label="Azienda / Progetto"
@@ -442,7 +460,7 @@ const Contatti = () => {
                             placeholder="Nome dell'azienda o progetto"
                           />
                           <InputField
-                            label="Presenza online attuale"
+                            label="Sito web o social"
                             name="onlinePresence"
                             type="url"
                             required={false}
@@ -452,10 +470,10 @@ const Contatti = () => {
                           />
                         </div>
 
-                        {/* Riga 3: Select in due colonne */}
+                        {/* Riga 3 */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
                           <SelectField
-                            label="Selezione Direzione"
+                            label="Seleziona un'offerta"
                             name="direction"
                             value={formData.direction}
                             onChange={handleChange}
@@ -467,7 +485,7 @@ const Contatti = () => {
                             ]}
                           />
                           <SelectField
-                            label="Orizzonte di Investimento"
+                            label="Budget"
                             name="budget"
                             value={formData.budget}
                             onChange={handleChange}
@@ -485,7 +503,7 @@ const Contatti = () => {
                           htmlFor="objective"
                           className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/60 block mb-3 font-bold cursor-pointer"
                         >
-                          Obiettivo di Prodotto
+                          Parlami del tuo progetto
                         </label>
                         <textarea
                           id="objective"
@@ -494,7 +512,7 @@ const Contatti = () => {
                           rows={5}
                           value={formData.objective}
                           onChange={handleChange}
-                          placeholder="Descrivi la funzionalità core necessaria..."
+                          placeholder="Descrivi il tuo progetto e i tuoi obiettivi..."
                           className="w-full bg-transparent border-b border-[#3d0f1a]/20 py-3.5 text-[#3d0f1a] placeholder:text-[#3d0f1a]/30 font-body text-base outline-none focus:border-primary transition-colors duration-300 resize-none"
                         />
                       </div>

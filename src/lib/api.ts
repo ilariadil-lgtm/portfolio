@@ -28,7 +28,7 @@ export interface ContactPayload {
 
 export const api = {
   sendContactMessage: (data: ContactPayload) =>
-    axiosInstance.post('/contact/', data),
+    axiosInstance.post('/contacts/', data),
   getProjects: () =>
     axiosInstance.get('/projects/').then(res => res.data),
   getProject: (id: string | number) =>

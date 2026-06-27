@@ -181,7 +181,32 @@ const Contatti = () => {
 
     setStatus("loading");
     try {
-      await api.sendContactMessage(formData);
+      // Mappatura personalizzata per soddisfare i requisiti del backend Django
+      const payload = {
+        name: formData.name,
+        email: formData.email,
+        // Generiamo il subject unendo Direzione e Budget prescelti
+        subject: `Richiesta Nebula: ${formData.direction || "Generale"} (${formData.budget || "Budget non specificato"})`,
+        // Raggruppiamo tutte le informazioni dettagliate del form nel corpo del message
+        message: `
+Dettagli del mittente:
+- Nome: ${formData.name}
+- Email: ${formData.email}
+- Azienda / Progetto: ${formData.company || "N/D"}
+- Sito web o social: ${formData.onlinePresence || "N/D"}
+
+Informazioni Progetto:
+- Seleziona un'offerta: ${formData.direction || "N/D"}
+- Budget: ${formData.budget || "N/D"}
+
+Parlami del tuo progetto:
+${formData.objective}
+        `.trim(),
+      };
+
+      // Passiamo il payload con 'as any' per aggirare i vincoli rigidi di TypeScript
+      await api.sendContactMessage(payload as any);
+
       setStatus("success");
       setFormData({
         name: "",
@@ -205,9 +230,7 @@ const Contatti = () => {
         sections={["scroll.hero", "scroll.contact"].map((k) => t(k))}
       />
 
-      {/* ═════════════════════════════════════════════════════
-          GLOBAL BACKGROUNDS (NEBULA AESTHETIC)
-          ═════════════════════════════════════════════════════ */}
+      {/* GLOBAL BACKGROUNDS (NEBULA AESTHETIC) */}
       <div className="fixed inset-0 pointer-events-none z-[0]">
         <Suspense fallback={<div className="absolute inset-0 bg-[#080808]" />}>
           <HeroCanvas />
@@ -247,9 +270,7 @@ const Contatti = () => {
         />
       </div>
 
-      {/* ═══════════════════════════════════════════════════════════════════
-           HERO
-           ═══════════════════════════════════════════════════════════════════ */}
+      {/* HERO */}
       <section className="relative pt-40 md:pt-56 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden z-10">
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
@@ -302,12 +323,10 @@ const Contatti = () => {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════
-           MAIN SPLIT — canali + form
-           ═══════════════════════════════════════════════════════════════════ */}
+      {/* MAIN SPLIT */}
       <section className="px-6 md:px-12 lg:px-24 pb-32 relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-          {/* ── Left: info + canali ── */}
+          {/* Left: info */}
           <motion.div
             className="lg:col-span-4 space-y-16 lg:pt-4"
             initial={{ opacity: 0, y: 20 }}
@@ -315,7 +334,6 @@ const Contatti = () => {
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Canali diretti */}
             <div>
               <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] block mb-8">
                 {t("contact.channels")}
@@ -351,7 +369,6 @@ const Contatti = () => {
                   </motion.a>
                 ))}
 
-                {/* Honeypot field (hidden from real users) */}
                 <input
                   type="text"
                   name="website"
@@ -365,7 +382,6 @@ const Contatti = () => {
               </div>
             </div>
 
-            {/* Sede */}
             <div className="p-8 border border-white/5 bg-white/[0.02] backdrop-blur-md rounded-2xl flex items-start gap-5">
               <MapPin size={18} className="text-[#d4af37] shrink-0" />
               <div>
@@ -382,7 +398,7 @@ const Contatti = () => {
             </div>
           </motion.div>
 
-          {/* ── Right: form ── */}
+          {/* Right: form */}
           <motion.div
             className="lg:col-span-8"
             initial={{ opacity: 0, y: 30 }}
@@ -403,7 +419,6 @@ const Contatti = () => {
                 </span>
               </div>
 
-              {/* Background grid for the display */}
               <div className="absolute inset-0 bg-[radial-gradient(rgba(212,175,55,0.04)_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none mt-8" />
 
               <div className="relative z-10">
@@ -461,7 +476,7 @@ const Contatti = () => {
                       exit={{ opacity: 0 }}
                     >
                       <div className="space-y-12">
-                        {/* Riga 1: Dati Personali */}
+                        {/* Riga 1 */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
                           <InputField
                             label={t("contact.form_name") || "Nome"}
@@ -480,7 +495,7 @@ const Contatti = () => {
                           />
                         </div>
 
-                        {/* Riga 2: Contesto Aziendale */}
+                        {/* Riga 2 */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
                           <InputField
                             label="Azienda / Progetto"
@@ -490,7 +505,7 @@ const Contatti = () => {
                             placeholder="Nome dell'azienda o progetto"
                           />
                           <InputField
-                            label="Presenza online attuale"
+                            label="Sito web o social"
                             name="onlinePresence"
                             type="url"
                             required={false}
@@ -500,10 +515,10 @@ const Contatti = () => {
                           />
                         </div>
 
-                        {/* Riga 3: Select in due colonne */}
+                        {/* Riga 3 */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
                           <SelectField
-                            label="Selezione Direzione"
+                            label="Seleziona un'offerta"
                             name="direction"
                             value={formData.direction}
                             onChange={handleChange}
@@ -515,7 +530,7 @@ const Contatti = () => {
                             ]}
                           />
                           <SelectField
-                            label="Orizzonte di Investimento"
+                            label="Budget"
                             name="budget"
                             value={formData.budget}
                             onChange={handleChange}
@@ -533,7 +548,7 @@ const Contatti = () => {
                           htmlFor="objective"
                           className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/50 block mb-3 cursor-pointer"
                         >
-                          Obiettivo di Prodotto
+                          Parlami del tuo progetto
                         </label>
                         <textarea
                           id="objective"
@@ -542,7 +557,7 @@ const Contatti = () => {
                           rows={5}
                           value={formData.objective}
                           onChange={handleChange}
-                          placeholder="Descrivi la funzionalità core necessaria..."
+                          placeholder="Descrivi il tuo progetto e i tuoi obiettivi..."
                           className="w-full bg-transparent border-b border-white/10 py-3.5 text-white placeholder:text-white/20 font-outfit font-light text-base outline-none focus:border-[#d4af37] transition-colors duration-300 resize-none"
                         />
                       </div>
