@@ -56,17 +56,17 @@ export const Navigation = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
           scrolled
-            ? "pt-[calc(env(safe-area-inset-top)+1rem)] pb-4"
-            : "pt-[calc(env(safe-area-inset-top)+1.5rem)] pb-6"
+            ? "pt-[calc(env(safe-area-inset-top)+1rem)] pb-4 px-4"
+            : "pt-[calc(env(safe-area-inset-top)+1.5rem)] pb-6 px-6 md:px-12 lg:px-20"
         }`}
       >
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className={`mx-auto flex items-center justify-between transition-all duration-500 ${
+          className={`transition-all duration-500 ${
             scrolled
-              ? "max-w-[1200px] w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] px-6 py-4 bg-[#f5f2ed] border border-primary/10 shadow-[0_20px_40px_-15px_rgba(61,15,26,0.2)] rounded-full"
-              : "max-w-full px-6 py-4 md:px-16 lg:px-24"
+              ? "max-w-[1200px] w-full px-6 py-4 bg-[#f5f2ed] border border-primary/10 shadow-[0_20px_40px_-15px_rgba(61,15,26,0.2)] rounded-full mx-auto flex items-center justify-between"
+              : "max-w-screen-2xl mx-auto flex items-center justify-between w-full"
           }`}
         >
           <Link
@@ -77,11 +77,11 @@ export const Navigation = () => {
             <img
               src={
                 design === "editorial"
-                  ? "/logo-editorial.webp"
-                  : "/logo-editorial-light.svg"
+                  ? "/logo_editorial.svg"
+                  : "/logo_nebula.svg"
               }
               alt="Ilaria Diliberto"
-              className={`w-48 md:w-64 h-auto object-contain shrink-0 ${design === "editorial" ? "" : "brightness-0 invert"}`}
+              className="w-56 md:w-72 lg:w-80 h-auto object-contain object-left shrink-0"
             />
           </Link>
 

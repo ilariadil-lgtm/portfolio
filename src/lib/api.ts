@@ -37,6 +37,10 @@ export const api = {
     axiosInstance.get('/services/').then(res => res.data),
   getAbout: () =>
     axiosInstance.get('/about/').then(res => res.data),
+  getBlogPosts: () =>
+    axiosInstance.get('/blog/').then(res => res.data),
+  getFaqs: () =>
+    axiosInstance.get('/faqs/').then(res => res.data),
 };
 
 export default axiosInstance;

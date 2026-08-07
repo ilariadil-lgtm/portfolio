@@ -85,7 +85,7 @@ export const NebulaProjectLayout = ({
   }
 
   return (
-    <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 flex flex-col relative overflow-hidden md:pl-20">
+    <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 flex flex-col relative overflow-hidden lg:pl-24">
       <NebulaNav />
 
       {/* ═════════════════════════════════════════════════════

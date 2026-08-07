@@ -471,7 +471,7 @@ const Servizi = () => {
   const displayServices = services.length > 0 ? services : fallbackServices;
 
   return (
-    <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
+    <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative lg:pl-24">
       <NebulaNav />
       <ScrollIndicator
         sections={[

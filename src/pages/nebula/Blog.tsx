@@ -7,10 +7,12 @@ import { api } from "@/lib/api";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { ArrowRight } from "lucide-react";
 import { RevealText } from "@/components/RevealText";
+import { useTranslation } from "react-i18next";
 
 const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 const Blog = () => {
+  const { t } = useTranslation();
   usePageMeta({
     title: "Journal",
     description:
@@ -33,7 +35,7 @@ const Blog = () => {
   }, []);
 
   return (
-    <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative md:pl-20">
+    <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative lg:pl-24">
       <NebulaNav />
       <ScrollIndicator
         sections={["scroll.hero", "scroll.contact"].map((k) => t(k))}

@@ -65,22 +65,22 @@ export const NebulaNav = () => {
       {/* 
         DESKTOP HUD (Left Sidebar) 
       */}
-      <nav className="hidden lg:flex flex-col items-start justify-between fixed left-0 top-0 bottom-0 w-20 hover:w-56 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-[100] bg-[#050505] border-r border-white/5 overflow-hidden group/nav py-8">
+      <nav className="hidden lg:flex flex-col items-start justify-between fixed left-0 top-0 bottom-0 w-24 hover:w-80 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-[100] bg-[#050505] border-r border-white/5 overflow-hidden group/nav py-8">
         {/* Top Logo */}
-        <div className="w-full flex justify-center mb-12 h-10 px-4">
+        <div className="w-full flex items-center justify-start mb-8 h-24 px-4">
           <Link
             to="/"
-            className="relative flex items-center justify-center transition-all duration-300 w-full h-full shrink-0"
+            className="relative flex items-center justify-start transition-all duration-300 w-full h-full shrink-0"
           >
             <img
               src="/id_nebula.webp"
               alt="ID"
-              className="absolute w-8 h-8 object-contain group-hover/nav:opacity-0 group-hover/nav:scale-75 transition-all duration-300"
+              className="absolute left-1 w-16 h-16 object-contain group-hover/nav:opacity-0 group-hover/nav:scale-75 transition-all duration-300 drop-shadow-[0_0_12px_rgba(212,175,55,0.3)]"
             />
             <img
-              src="/logo-nebula.webp"
+              src="/logo_nebula.svg"
               alt="Ilaria Diliberto"
-              className="absolute w-36 md:w-44 object-contain opacity-0 scale-90 group-hover/nav:opacity-100 group-hover/nav:scale-100 transition-all duration-500"
+              className="absolute left-4 w-64 lg:w-72 h-auto object-contain object-left opacity-0 scale-90 group-hover/nav:opacity-100 group-hover/nav:scale-100 transition-all duration-500"
             />
           </Link>
         </div>
@@ -97,19 +97,19 @@ export const NebulaNav = () => {
                 to={link.path}
                 onMouseEnter={playHover}
                 onClick={playClick}
-                className={`group relative flex items-center w-full h-12 rounded-xl transition-all duration-300 ${isActive ? "bg-[#d4af37]/5" : "hover:bg-white/[0.02]"}`}
+                className={`group relative flex items-center w-full h-14 rounded-xl transition-all duration-300 ${isActive ? "bg-[#d4af37]/10" : "hover:bg-white/[0.04]"}`}
                 aria-label={link.name}
               >
                 <div
-                  className={`w-16 h-12 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 ${isActive ? "text-[#d4af37] drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]" : "text-white/40 group-hover:text-white"}`}
+                  className={`w-20 h-14 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 ${isActive ? "text-[#d4af37] drop-shadow-[0_0_10px_rgba(212,175,55,0.7)]" : "text-white/50 group-hover:text-white"}`}
                 >
                   {React.cloneElement(link.icon as React.ReactElement, {
                     strokeWidth: isActive ? 2 : 1.5,
-                    size: 20,
+                    size: 22,
                   })}
                 </div>
                 <span
-                  className={`absolute left-16 font-mono text-[10px] uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 ${isActive ? "text-[#d4af37] font-bold opacity-0 group-hover/nav:opacity-100" : "text-white/40 group-hover:text-white opacity-0 group-hover/nav:opacity-100"}`}
+                  className={`absolute left-20 font-mono text-[11px] uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 ${isActive ? "text-[#d4af37] font-bold opacity-0 group-hover/nav:opacity-100" : "text-white/50 group-hover:text-white opacity-0 group-hover/nav:opacity-100"}`}
                 >
                   {link.name}
                 </span>
@@ -119,7 +119,7 @@ export const NebulaNav = () => {
                     <motion.div
                       initial={{ scaleY: 0 }}
                       animate={{ scaleY: 1 }}
-                      className="w-[3px] h-6 bg-[#d4af37] rounded-r-full shadow-[0_0_10px_rgba(212,175,55,0.5)] origin-center"
+                      className="w-[4px] h-7 bg-[#d4af37] rounded-r-full shadow-[0_0_12px_rgba(212,175,55,0.6)] origin-center"
                       transition={{
                         type: "spring",
                         stiffness: 300,
@@ -138,13 +138,13 @@ export const NebulaNav = () => {
           <button
             onClick={toggleLanguage}
             onMouseEnter={playHover}
-            className="flex items-center w-full h-12 group relative rounded-xl hover:bg-white/[0.02] transition-all"
+            className="flex items-center w-full h-14 group relative rounded-xl hover:bg-white/[0.04] transition-all"
             aria-label="Toggle Language"
           >
-            <div className="w-16 h-12 flex items-center justify-center text-white/40 group-hover:text-white transition-colors shrink-0">
-              <Globe size={18} strokeWidth={1.5} />
+            <div className="w-20 h-14 flex items-center justify-center text-white/50 group-hover:text-white transition-colors shrink-0">
+              <Globe size={20} strokeWidth={1.5} />
             </div>
-            <span className="absolute left-16 font-mono text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover/nav:opacity-100 transition-opacity text-white/40 group-hover:text-white whitespace-nowrap">
+            <span className="absolute left-20 font-mono text-[11px] uppercase tracking-[0.2em] opacity-0 group-hover/nav:opacity-100 transition-opacity text-white/50 group-hover:text-white whitespace-nowrap">
               {i18n.language === "en" ? "EN" : "IT"}
             </span>
           </button>
@@ -155,26 +155,26 @@ export const NebulaNav = () => {
               toggleMute();
             }}
             onMouseEnter={playHover}
-            className="flex items-center w-full h-12 group relative rounded-xl hover:bg-white/[0.02] transition-all"
+            className="flex items-center w-full h-14 group relative rounded-xl hover:bg-white/[0.04] transition-all"
             aria-label="Toggle Sound"
           >
-            <div className="w-16 h-12 flex items-center justify-center transition-colors shrink-0">
+            <div className="w-20 h-14 flex items-center justify-center transition-colors shrink-0">
               {isMuted ? (
                 <VolumeX
-                  size={18}
-                  className="text-white/40 group-hover:text-white"
+                  size={20}
+                  className="text-white/50 group-hover:text-white"
                   strokeWidth={1.5}
                 />
               ) : (
                 <Volume2
-                  size={18}
+                  size={20}
                   className="text-[#d4af37]"
                   strokeWidth={1.5}
                 />
               )}
             </div>
             <span
-              className={`absolute left-16 font-mono text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover/nav:opacity-100 transition-opacity whitespace-nowrap ${isMuted ? "text-white/40 group-hover:text-white" : "text-[#d4af37]"}`}
+              className={`absolute left-20 font-mono text-[11px] uppercase tracking-[0.2em] opacity-0 group-hover/nav:opacity-100 transition-opacity whitespace-nowrap ${isMuted ? "text-white/50 group-hover:text-white" : "text-[#d4af37]"}`}
             >
               {isMuted ? "SND: OFF" : "SND: ON"}
             </span>
@@ -197,7 +197,7 @@ export const NebulaNav = () => {
             <img
               src="/id_nebula.webp"
               alt="ID"
-              className="w-6 h-6 object-contain opacity-70"
+              className="w-8 h-8 object-contain opacity-90 hover:opacity-100 transition-opacity"
             />
           </Link>
 
