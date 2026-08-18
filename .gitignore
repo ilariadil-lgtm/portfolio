@@ -43,3 +43,19 @@ Thumbs.db
 .cache/
 .parcel-cache/
 .eslintcache
+
+# ─── Archivi e backup locali — mai versionare ───
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+_archivio-locale/
+_to_delete/
+
+# ─── Build conservati come riferimento ───
+dist_*/
+
+# ─── OS — rinforzo ricorsivo ───
+**/.DS_Store

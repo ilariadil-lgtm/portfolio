@@ -1,0 +1,97 @@
+{
+  "description": "Color Palette Export for Portfolio",
+  "project": "Portfolio - Ilaria Di Liberto",
+  "themes": {
+    "editorial": {
+      "name": "Editorial Theme (Warm / Light)",
+      "colors": {
+        "background": {
+          "hsl": "45 29% 95%",
+          "hex": "#F7F4EC",
+          "rgb": "rgb(247, 244, 236)",
+          "usage": "Main page background, cards, popovers"
+        },
+        "foreground": {
+          "hsl": "0 0% 9%",
+          "hex": "#171717",
+          "rgb": "rgb(23, 23, 23)",
+          "usage": "Primary typography, main titles and body text"
+        },
+        "primary": {
+          "hsl": "345 50% 25%",
+          "hex": "#602030",
+          "rgb": "rgb(96, 32, 48)",
+          "usage": "Primary brand color, buttons, highlights, focus rings"
+        },
+        "primaryForeground": {
+          "hsl": "45 29% 95%",
+          "hex": "#F7F4EC",
+          "rgb": "rgb(247, 244, 236)",
+          "usage": "Text on top of primary background elements"
+        },
+        "secondary": {
+          "hsl": "40 15% 85%",
+          "hex": "#DCD7CE",
+          "rgb": "rgb(220, 215, 206)",
+          "usage": "Secondary background, muted surfaces, chips"
+        },
+        "mutedForeground": {
+          "hsl": "0 0% 40%",
+          "hex": "#666666",
+          "rgb": "rgb(102, 102, 102)",
+          "usage": "Secondary captions, dates, subtitled text"
+        },
+        "border": {
+          "hsl": "0 0% 15%",
+          "hex": "#262626",
+          "rgb": "rgb(38, 38, 38)",
+          "usage": "Component borders, input fields, dividers"
+        },
+        "destructive": {
+          "hsl": "0 84% 60%",
+          "hex": "#F63B3B",
+          "rgb": "rgb(246, 59, 59)",
+          "usage": "Error states, alert badges"
+        },
+        "darkMaroonAccent": {
+          "hex": "#3D0F1A",
+          "rgb": "rgb(61, 15, 26)",
+          "usage": "Deep wine highlights, 404 page background patterns"
+        }
+      }
+    },
+    "nebula": {
+      "name": "Nebula Theme (Dark / Modern)",
+      "colors": {
+        "background": {
+          "hex": "#080808",
+          "rgb": "rgb(8, 8, 8)",
+          "usage": "Main dark mode background"
+        },
+        "goldAccent": {
+          "hex": "#D4AF37",
+          "rgb": "rgb(212, 175, 55)",
+          "usage": "Metallic gold text highlights, active indicators, borders, hover glow"
+        },
+        "crimsonGlow": {
+          "hex": "#3D0F1A",
+          "rgb": "rgb(61, 15, 26)",
+          "usage": "Ambient background gradients, nebula blur glows"
+        },
+        "textPrimary": {
+          "hex": "#F1F5F9",
+          "rgb": "rgb(241, 245, 249)",
+          "usage": "Slate-100 high-contrast text"
+        },
+        "glassSurface": {
+          "rgba": "rgba(255, 255, 255, 0.02)",
+          "usage": "Card glassmorphism background"
+        },
+        "glassBorder": {
+          "rgba": "rgba(255, 255, 255, 0.05)",
+          "usage": "Glass card subtle outline"
+        }
+      }
+    }
+  }
+}

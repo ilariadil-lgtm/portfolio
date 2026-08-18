@@ -1,0 +1,144 @@
+{
+  "description": "Font Hierarchy Export for Portfolio",
+  "project": "Portfolio - Ilaria Di Liberto",
+  "hierarchy_by_theme": {
+    "editorial": {
+      "theme_name": "Tema Editorial (Modalità Chiara / Calda)",
+      "elements": [
+        {
+          "label": "Titolo (H1)",
+          "font": "EB Garamond",
+          "tipo": "Titolo / Bold",
+          "dimensione": "64 px",
+          "bold": true,
+          "italic": false
+        },
+        {
+          "label": "Sottotitolo 1",
+          "font": "Hind Siliguri",
+          "tipo": "Sottotitolo / Medium",
+          "dimensione": "20 px",
+          "bold": false,
+          "italic": false
+        },
+        {
+          "label": "Titolo (H2)",
+          "font": "EB Garamond",
+          "tipo": "Titolo Sezione / Bold",
+          "dimensione": "48 px",
+          "bold": true,
+          "italic": false
+        },
+        {
+          "label": "Sottotitolo 2",
+          "font": "EB Garamond",
+          "tipo": "Sottotitolo Sezione / SemiBold",
+          "dimensione": "32 px",
+          "bold": true,
+          "italic": false
+        },
+        {
+          "label": "Intestazione di sezione",
+          "font": "Courier Prime",
+          "tipo": "Eyebrow / Monospazio Maiuscolo",
+          "dimensione": "11 px",
+          "bold": true,
+          "italic": false
+        },
+        {
+          "label": "Corpo del testo",
+          "font": "Hind Siliguri",
+          "tipo": "Corpo del Testo / Regular",
+          "dimensione": "16 px",
+          "bold": false,
+          "italic": false
+        },
+        {
+          "label": "Citazione",
+          "font": "EB Garamond",
+          "tipo": "Citazione / Italic",
+          "dimensione": "24 px",
+          "bold": false,
+          "italic": true
+        },
+        {
+          "label": "Didascalia",
+          "font": "Courier Prime",
+          "tipo": "Didascalia / Monospazio",
+          "dimensione": "12 px",
+          "bold": false,
+          "italic": false
+        }
+      ]
+    },
+    "nebula": {
+      "theme_name": "Tema Nebula (Modalità Scura / Cosmica)",
+      "elements": [
+        {
+          "label": "Titolo (H1)",
+          "font": "Fraunces",
+          "tipo": "Titolo / Display Italic",
+          "dimensione": "64 px",
+          "bold": false,
+          "italic": true
+        },
+        {
+          "label": "Sottotitolo 1",
+          "font": "Inter",
+          "tipo": "Sottotitolo / Light",
+          "dimensione": "20 px",
+          "bold": false,
+          "italic": false
+        },
+        {
+          "label": "Titolo (H2)",
+          "font": "Bricolage Grotesque",
+          "tipo": "Titolo Sezione / Bold",
+          "dimensione": "42 px",
+          "bold": true,
+          "italic": false
+        },
+        {
+          "label": "Sottotitolo 2",
+          "font": "Fraunces",
+          "tipo": "Sottotitolo Sezione / Italic",
+          "dimensione": "30 px",
+          "bold": false,
+          "italic": true
+        },
+        {
+          "label": "Intestazione di sezione",
+          "font": "JetBrains Mono",
+          "tipo": "Eyebrow / Monospazio Maiuscolo",
+          "dimensione": "11 px",
+          "bold": true,
+          "italic": false
+        },
+        {
+          "label": "Corpo del testo",
+          "font": "Inter",
+          "tipo": "Corpo del Testo / Regular",
+          "dimensione": "16 px",
+          "bold": false,
+          "italic": false
+        },
+        {
+          "label": "Citazione",
+          "font": "Fraunces",
+          "tipo": "Citazione / Italic",
+          "dimensione": "22 px",
+          "bold": false,
+          "italic": true
+        },
+        {
+          "label": "Didascalia",
+          "font": "JetBrains Mono",
+          "tipo": "Didascalia / Monospazio",
+          "dimensione": "10 px",
+          "bold": false,
+          "italic": false
+        }
+      ]
+    }
+  }
+}
