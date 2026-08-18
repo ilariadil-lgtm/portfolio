@@ -50,8 +50,8 @@ export const LenisScroller: React.FC<LenisScrollerProps> = ({ children }) => {
 
       // Debounce: wait 150ms after the last scroll event to snap
       snapTimeout = setTimeout(() => {
-        const sections = document.querySelectorAll(".snap-start");
-        let closestSection: Element | null = null;
+        const sections = document.querySelectorAll<HTMLElement>(".snap-start");
+        let closestSection: HTMLElement | null = null;
         let minDistance = Infinity;
 
         sections.forEach((section) => {

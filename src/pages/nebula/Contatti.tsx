@@ -204,8 +204,7 @@ ${formData.objective}
         `.trim(),
       };
 
-      // Passiamo il payload con 'as any' per aggirare i vincoli rigidi di TypeScript
-      await api.sendContactMessage(payload as any);
+      await api.sendContactMessage(payload);
 
       setStatus("success");
       setFormData({

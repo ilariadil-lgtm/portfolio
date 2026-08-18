@@ -18,12 +18,12 @@ axiosInstance.defaults.xsrfHeaderName = 'X-CSRFToken';
 export interface ContactPayload {
   name: string;
   email: string;
-  company: string;
-  onlinePresence: string;
-  direction: string;
-  objective: string;
-  budget: string;
-  website?: string; // honeypot
+  /** Composto dal form unendo direzione e budget. */
+  subject: string;
+  /** Corpo esteso: azienda, presenza online, direzione, budget, obiettivo. */
+  message: string;
+  /** Honeypot antispam — raccolto dal form ma non ancora trasmesso (voce 6.4). */
+  website?: string;
 }
 
 export const api = {

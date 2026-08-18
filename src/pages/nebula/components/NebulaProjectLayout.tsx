@@ -36,7 +36,7 @@ interface NebulaProjectLayoutProps {
     buttonText: string;
     buttonUrl: string;
   };
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const NebulaProjectLayout = ({
@@ -275,9 +275,11 @@ export const NebulaProjectLayout = ({
 
         {/* Visual Gallery */}
         {/* L'utente ha chiesto di assicurarsi che le immagini siano alla fine della pagina prima della fascia contatti */}
-        <div className="w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-12 md:gap-24 relative z-10">
-          {children}
-        </div>
+        {children && (
+          <div className="w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-12 md:gap-24 relative z-10">
+            {children}
+          </div>
+        )}
 
         {finalCta && (
           <div className="w-full max-w-5xl mx-auto px-6 md:px-12 mt-20 mb-10 relative z-10">

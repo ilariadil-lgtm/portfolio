@@ -194,9 +194,7 @@ ${formData.objective}
         `.trim(),
       };
 
-      // Inviamo a Django il payload formattato correttamente
-      // Riga ~198 nuova
-await api.sendContactMessage(payload as any);
+await api.sendContactMessage(payload);
       
       setStatus("success");
       setFormData({
