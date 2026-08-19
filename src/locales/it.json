@@ -178,7 +178,8 @@
     "stat2_label": "Performance",
     "stat3_label": "Approccio",
     "stat3_val": "Su Misura",
-    "explore": "ESPLORA"
+    "explore": "ESPLORA",
+    "all_projects": "TUTTI I PROGETTI"
   },
   "services": {
     "focus": "FOCUS VISIVO",
@@ -275,7 +276,8 @@
     "pkg_custom_p2": "Sviluppo API proprietarie",
     "pkg_custom_p3": "Integrazione con sistemi aziendali",
     "pkg_custom_p4": "Pannello di amministrazione",
-    "pkg_custom_btn": "Scopri il pacchetto"
+    "pkg_custom_btn": "Scopri il pacchetto",
+    "workflow_description": "Ogni progetto segue lo stesso percorso: prima la struttura, poi la superficie. Nessuna fase si salta, perché ognuna rimuove un vincolo che la successiva darebbe per risolto."
   },
   "contact": {
     "sub_email": "Rispondo entro 24h",
@@ -1052,5 +1054,9 @@
     "process_title": "Un Core Loop che funziona",
     "process_desc_1": "Progetto un'interfaccia focalizzata e sviluppo la logica back-end necessaria per l'acquisizione dei primi utenti. Utilizzo stack agili e infrastrutture cloud flessibili, rilasciando un prodotto stabile che potrai mostrare agli investitori o lanciare sul mercato, mantenendo aperte tutte le porte per lo scale-up futuro.",
     "cta": "Smetti di progettare, inizia a testare sul mercato."
+  },
+  "preloader": {
+    "phrase1": "ogni pixel conta.",
+    "phrase2": "ilaria diliberto."
   }
 }
