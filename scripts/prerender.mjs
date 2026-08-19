@@ -150,8 +150,11 @@ async function main() {
 
   const risultati = [];
   let problemi = 0;
+  let contatore = 0;
 
   for (const percorso of percorsi) {
+    contatore++;
+    process.stdout.write(`  [${String(contatore).padStart(2)}/${percorsi.length}] ${percorso.padEnd(24)} `);
     const pagina = await browser.newPage();
     await pagina.setViewport({ width: 1440, height: 900 });
     // Il preloader dura 5,6 s ed e un elemento di marca, non contenuto:
@@ -171,18 +174,20 @@ async function main() {
       const titolo = await pagina.title();
       const testo = await pagina.evaluate(() => document.getElementById("root").innerText.trim().length);
       risultati.push({ percorso, html, titolo, testo });
+      console.log(`${String(Math.round(html.length / 1024)).padStart(4)} KB  ${String(testo).padStart(5)} caratteri  ${titolo.slice(0, 40)}`);
     } catch (errore) {
       problemi++;
-      console.log(`  ✗ ${percorso.padEnd(24)} ${errore.message.split("\n")[0]}`);
+      console.log(`FALLITA — ${errore.message.split("\n")[0]}`);
     }
     await pagina.close();
   }
 
-  for (const { percorso, html, titolo, testo } of risultati) {
+  console.log("");
+  for (const { percorso, html } of risultati) {
     const cartella = percorso === "/" ? DIST : join(DIST, percorso);
     await mkdir(cartella, { recursive: true });
     await writeFile(join(cartella, "index.html"), html);
-    console.log(`  ✓ ${percorso.padEnd(24)} ${String(Math.round(html.length / 1024)).padStart(4)} KB  ${String(testo).padStart(5)} caratteri  ${titolo.slice(0, 44)}`);
+
   }
 
   const n = await scriviSitemap(risultati.map((r) => r.percorso));
