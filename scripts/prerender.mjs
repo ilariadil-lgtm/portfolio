@@ -16,6 +16,7 @@ import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { join, extname, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { platform, arch } from "node:process";
 import puppeteer from "puppeteer";
 
 const RADICE = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -93,33 +94,48 @@ const CANDIDATI = [
 
 const OPZIONI = {
   headless: true,
-  timeout: 120000,
+  timeout: 45000,
   protocolTimeout: 180000,
   args: ["--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu"],
 };
 
+// Su macOS con Node x64 il Chrome di Puppeteer e x64 e viene tradotto da
+// Rosetta: spesso non risponde entro il timeout, e aspettarlo e tempo perso.
+// In quella combinazione si parte direttamente dai browser di sistema.
+const AMBIENTE_DEGRADATO = platform === "darwin" && arch === "x64";
+
 async function apriBrowser() {
-  try {
-    return await puppeteer.launch(OPZIONI);
-  } catch (primo) {
-    console.log(`  Chrome di Puppeteer non avviato: ${primo.message.split("\n")[0]}`);
-    for (const executablePath of CANDIDATI) {
-      if (!existsSync(executablePath)) continue;
-      console.log(`  Ripiego su: ${executablePath}`);
-      try {
-        return await puppeteer.launch({ ...OPZIONI, executablePath });
-      } catch (secondo) {
-        console.log(`    non avviato: ${secondo.message.split("\n")[0]}`);
-      }
-    }
-    throw new Error(
-      "Nessun browser avviabile.\n" +
-      "  Causa probabile: Node compilato per x64 su Mac Apple Silicon (Rosetta).\n" +
-      "  Verifica con:  node -p \"process.arch\"   — se stampa x64, reinstalla Node arm64.\n" +
-      "  In alternativa indica un browser gia installato:\n" +
-      "  PUPPETEER_EXECUTABLE_PATH='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' npm run prerender",
-    );
+  const installati = CANDIDATI.filter((p) => existsSync(p));
+  if (installati.length) {
+    console.log(`  Browser di sistema trovati: ${installati.length}`);
   }
+
+  const tentativi = AMBIENTE_DEGRADATO
+    ? [...installati.map((executablePath) => ({ executablePath })), {}]
+    : [{}, ...installati.map((executablePath) => ({ executablePath }))];
+
+  if (AMBIENTE_DEGRADATO) {
+    console.log("  Node x64 su macOS: parto dai browser di sistema, non da quello di Puppeteer.");
+  }
+
+  const errori = [];
+  for (const extra of tentativi) {
+    const quale = extra.executablePath ?? "Chrome scaricato da Puppeteer";
+    try {
+      const b = await puppeteer.launch({ ...OPZIONI, ...extra });
+      console.log(`  Browser in uso: ${quale}`);
+      return b;
+    } catch (e) {
+      errori.push(`    ${quale}: ${e.message.split("\n")[0]}`);
+    }
+  }
+  throw new Error(
+    "Nessun browser avviabile.\n" + errori.join("\n") +
+    "\n  Causa probabile: Node compilato per x64 su Mac Apple Silicon (Rosetta).\n" +
+    "  Verifica con:  node -p \"process.arch\"\n" +
+    "  Oppure indica un browser esplicitamente:\n" +
+    "  PUPPETEER_EXECUTABLE_PATH='/percorso/al/browser' npm run prerender",
+  );
 }
 
 async function main() {
