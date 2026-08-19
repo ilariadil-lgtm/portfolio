@@ -24,7 +24,7 @@ export default {
         // pixel, rende solo modificabile in un punto solo cio che prima
         // andava cercato ovunque.
         ink: "#3d0f1a",      // editorial — testo, tratti, bordi
-        cream: "#f5f2ed",    // editorial — superfici
+        cream: "#F7F4EC",    // editorial — superfici (allineato a palette.json)
         crimson: "#c0392b",  // editorial — accento
         gold: "#d4af37",     // nebula — accento
         night: "#080808",    // nebula — fondo

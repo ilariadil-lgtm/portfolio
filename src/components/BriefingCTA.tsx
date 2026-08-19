@@ -29,7 +29,7 @@ export const BriefingCTA: React.FC<BriefingCTAProps> = ({
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(#f5f2ed 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(#F7F4EC 1px, transparent 1px)",
           backgroundSize: "24px 24px",
         }}
       />

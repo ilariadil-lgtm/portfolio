@@ -36,9 +36,7 @@ const CustomDetails = () => {
       title: "Il Problema",
       description: (
         <>
-          <p className="text-white/80 leading-relaxed text-justify mb-4 text-xl">
-            Le soluzioni SaaS e i CMS commerciali funzionano fino al momento in cui il tuo business cresce oltre i loro limiti. A quel punto ogni azienda strutturata affronta lo stesso muro: integrazioni impossibili, canoni che salgono senza controllo, un fornitore terzo che decide cosa puoi e non puoi fare con il tuo stesso prodotto.
-          </p>
+          <p className="text-white/80 leading-relaxed text-justify mb-4 text-xl">{t("custom_details.le_soluzioni_saas_e_i_cms")}</p>
         </>
       ),
     },
@@ -48,13 +46,9 @@ const CustomDetails = () => {
       description: (
         <>
           <div className="py-12 border-l-2 border-gold pl-8">
-            <h2 className="font-fraunces text-4xl md:text-5xl italic text-gold leading-tight">
-              Design e tecnologia proprietari.
-            </h2>
+            <h2 className="font-fraunces text-4xl md:text-5xl italic text-gold leading-tight">{t("custom_details.design_e_tecnologia_proprietari")}</h2>
           </div>
-          <p className="text-white/80 leading-relaxed text-justify mb-4 text-xl">
-            Direzione artistica e UI/UX progettate da zero su Figma. Sotto la superficie, un backend proprietario: database relazionali complessi, query ottimizzate, API REST sicure. L'infrastruttura vive su AWS. Al saldo del progetto, cessione totale dei diritti sul codice sorgente: non un servizio in abbonamento, ma un asset patrimoniale reale che appartiene solo a te.
-          </p>
+          <p className="text-white/80 leading-relaxed text-justify mb-4 text-xl">{t("custom_details.direzione_artistica_e_ui_ux_progettate")}</p>
         </>
       ),
     },
@@ -63,21 +57,15 @@ const CustomDetails = () => {
       title: "Esclusività",
       description: (
         <>
-          <p className="text-white/80 leading-relaxed text-justify mb-8 text-xl">
-            Un progetto alla volta.
-          </p>
+          <p className="text-white/80 leading-relaxed text-justify mb-8 text-xl">{t("custom_details.un_progetto_alla_volta")}</p>
           <div className="space-y-6">
             <div className="border-l border-gold/30 pl-6">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-gold mb-2">1. Focus Assoluto</h3>
-              <p className="text-white/70 text-lg">
-                Ogni Sviluppo Custom viene seguito con un solo cliente in contemporanea. Non per scarsità di mezzi, ma per scelta: questo livello di architettura richiede focus esclusivo sulle logiche di sistema.
-              </p>
+              <h3 className="font-mono text-xs uppercase tracking-widest text-gold mb-2">{t("custom_details.1_focus_assoluto")}</h3>
+              <p className="text-white/70 text-lg">{t("custom_details.ogni_sviluppo_custom_viene_seguito_con")}</p>
             </div>
             <div className="border-l border-gold/30 pl-6">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-gold mb-2">2. Slot Dedicato</h3>
-              <p className="text-white/70 text-lg">
-                Non sto dividendo la mia attenzione tra cinque progetti diversi. Stai prenotando uno slot dedicato al 100% alla tua azienda, non del tempo a ore.
-              </p>
+              <h3 className="font-mono text-xs uppercase tracking-widest text-gold mb-2">{t("custom_details.2_slot_dedicato")}</h3>
+              <p className="text-white/70 text-lg">{t("custom_details.non_sto_dividendo_la_mia_attenzione")}</p>
             </div>
           </div>
         </>
@@ -93,22 +81,22 @@ const CustomDetails = () => {
       title1="Sviluppo Custom"
       role="APPROCCIO_03"
       year="2026"
-      techList={["Architettura Dati & Backend su misura", "Sviluppo API proprietarie", "Integrazione con sistemi aziendali", "Pannello di amministrazione"]}
+      techList={[t("custom_details.architettura_dati_backend_su_misura"), t("custom_details.sviluppo_api_proprietarie"), t("custom_details.integrazione_con_sistemi_aziendali"), t("custom_details.pannello_di_amministrazione")]}
       description={
         <div className="font-outfit font-light text-white/80 text-lg md:text-xl leading-relaxed space-y-6">
-          <p className="font-medium text-white text-2xl mb-4">Nessun limite logico. Nessun vincolo tecnologico.</p>
-          <p>Per i brand e le aziende che hanno già superato la fase delle piattaforme standardizzate. Un'architettura interamente proprietaria, costruita per durare, scalare e restare — letteralmente — tua.</p>
+          <p className="font-medium text-white text-2xl mb-4">{t("custom_details.nessun_limite_logico_nessun_vincolo_tecnolog")}</p>
+          <p>{t("custom_details.per_i_brand_e_le_aziende")}</p>
         </div>
       }
       phases={phasesData}
       prev={prevProject}
       next={nextProject}
-      prevLabel="Servizio Precedente"
-      nextLabel="Servizio Successivo"
+      prevLabel={t("custom_details.servizio_precedente")}
+      nextLabel={t("custom_details.servizio_successivo")}
       finalCta={{
-        title: "IL PROSSIMO PASSO",
-        description: "Se il tuo business ha smesso di stare dentro a un template, è il momento di costruire qualcosa che non ha limiti.",
-        buttonText: "PARLAMI DEL TUO PROGETTO",
+        title: t("custom_details.il_prossimo_passo"),
+        description: t("custom_details.se_il_tuo_business_ha_smesso"),
+        buttonText: t("custom_details.parlami_del_tuo_progetto_2"),
         buttonUrl: "/contatti"
       }}
     />

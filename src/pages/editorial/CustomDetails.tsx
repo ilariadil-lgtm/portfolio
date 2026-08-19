@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { usePageMeta, injectSchema } from "@/hooks/usePageMeta";
 import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
@@ -9,6 +10,7 @@ import { BriefingCTA } from "@/components/BriefingCTA";
 import { ProjectNavigation } from "@/components/ProjectNavigation";
 
 const CustomDetails = () => {
+  const { t } = useTranslation();
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   usePageMeta({
@@ -57,9 +59,7 @@ const CustomDetails = () => {
         <div className="relative z-20 mb-12 md:mb-16 max-w-screen-xl mx-auto w-full">
           <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}>
             <Link to="/servizi" className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-ink/65 hover:text-primary transition-colors font-semibold">
-              <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
-              Torna ai Servizi
-            </Link>
+              <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />{t("custom_details.torna_ai_servizi")}</Link>
           </motion.div>
         </div>
 
@@ -71,35 +71,26 @@ const CustomDetails = () => {
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
                 
                 <div className="overflow-hidden mb-6">
-                  <motion.span initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium block">
-                    INFRASTRUTTURA DEDICATA
-                  </motion.span>
+                  <motion.span initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium block">{t("custom_details.infrastruttura_dedicata")}</motion.span>
                 </div>
 
                 <h1 className="relative font-display leading-[1.1] md:leading-[0.85] tracking-tighter">
                   <div className="overflow-hidden pt-4 pb-8 w-max max-w-full">
-                    <motion.span initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} className="block text-[12vw] lg:text-[clamp(3.5rem,8vw,8rem)] font-bold text-ink pr-4 break-words whitespace-normal leading-none">
-                      Sviluppo<span className="text-primary italic pr-2"> Custom</span>
+                    <motion.span initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} className="block text-[12vw] lg:text-[clamp(3.5rem,8vw,8rem)] font-bold text-ink pr-4 break-words whitespace-normal leading-none">{t("custom_details.sviluppo")}<span className="text-primary italic pr-2"> Custom</span>
                       <span className="text-ink not-italic pr-2">.</span>
                     </motion.span>
                   </div>
                 </h1>
 
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 1 }} className="mt-4 max-w-2xl">
-                  <p className="font-body text-lg md:text-xl text-ink/80 leading-relaxed font-medium">
-                    Nessun limite logico. Nessun vincolo tecnologico.
-                  </p>
+                  <p className="font-body text-lg md:text-xl text-ink/80 leading-relaxed font-medium">{t("custom_details.nessun_limite_logico_nessun_vincolo_tecnolog")}</p>
                 </motion.div>
                 
                 {/* Due Call to Action integrate sotto la descrizione */}
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1, duration: 1 }} className="mt-12 flex flex-col sm:flex-row gap-6">
-                  <a href="mailto:info@ilariadiliberto.com" className="group inline-flex items-center justify-center gap-4 bg-ink text-cream px-8 py-4 font-typewriter text-[10px] uppercase tracking-widest shadow-[6px_6px_0px_#c0392b] hover:shadow-[2px_2px_0px_#c0392b] hover:translate-y-[4px] hover:translate-x-[4px] transition-all">
-                    Prenota una call gratuita
-                    <ArrowUpRight size={14} className="text-primary group-hover:scale-110 transition-transform" />
+                  <a href="mailto:info@ilariadiliberto.com" className="group inline-flex items-center justify-center gap-4 bg-ink text-cream px-8 py-4 font-typewriter text-[10px] uppercase tracking-widest shadow-[6px_6px_0px_#c0392b] hover:shadow-[2px_2px_0px_#c0392b] hover:translate-y-[4px] hover:translate-x-[4px] transition-all">{t("custom_details.prenota_una_call_gratuita")}<ArrowUpRight size={14} className="text-primary group-hover:scale-110 transition-transform" />
                   </a>
-                  <Link to="/contatti" className="group inline-flex items-center justify-center gap-4 border border-ink/20 bg-transparent text-ink px-8 py-4 font-typewriter text-[10px] uppercase tracking-widest hover:border-ink hover:bg-white/50 transition-all">
-                    Parlami del tuo progetto
-                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  <Link to="/contatti" className="group inline-flex items-center justify-center gap-4 border border-ink/20 bg-transparent text-ink px-8 py-4 font-typewriter text-[10px] uppercase tracking-widest hover:border-ink hover:bg-white/50 transition-all">{t("custom_details.parlami_del_tuo_progetto")}<ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </motion.div>
                 
@@ -122,28 +113,26 @@ const CustomDetails = () => {
                   
                   {/* Testo Descrittivo */}
                   <div>
-                      <h2 className="font-display text-3xl font-bold mb-2">Sviluppo Custom</h2>
-                      <span className="font-typewriter text-[9px] uppercase tracking-[0.2em] font-semibold opacity-60 block mb-6">INFRASTRUTTURA DEDICATA</span>
+                      <h2 className="font-display text-3xl font-bold mb-2">{t("custom_details.hero_title")}</h2>
+                      <span className="font-typewriter text-[9px] uppercase tracking-[0.2em] font-semibold opacity-60 block mb-6">{t("custom_details.infrastruttura_dedicata")}</span>
                   </div>
 
-                  <p className="font-body text-[15px] md:text-base text-ink/80 leading-relaxed font-medium mb-10">
-                    Per i brand e le aziende che hanno già superato la fase delle piattaforme standardizzate. Un'architettura interamente proprietaria, costruita per durare, scalare e restare — letteralmente — tua.
-                  </p>
+                  <p className="font-body text-[15px] md:text-base text-ink/80 leading-relaxed font-medium mb-10">{t("custom_details.per_i_brand_e_le_aziende")}</p>
 
                   {/* Timeline with huge number */}
                   <div className="mb-8 flex items-baseline gap-3">
                     <span className="font-display text-5xl font-black tracking-tighter">8-12</span>
-                    <span className="font-body text-base text-ink/70">settimane</span>
+                    <span className="font-body text-base text-ink/70">{t("custom_details.settimane")}</span>
                   </div>
 
                   <div className="w-full h-[1px] bg-ink/10 mb-8" />
 
                   {/* Deliverable Checklist */}
                   <div className="space-y-4 flex-1 mb-10">
-                    <div className="flex items-start gap-3"><CheckCircle2 size={18} className="text-ink mt-0.5 shrink-0 opacity-80" strokeWidth={1.5} /><span className="font-body text-[15px] text-ink/90">Architettura Dati & Backend su misura</span></div>
-<div className="flex items-start gap-3"><CheckCircle2 size={18} className="text-ink mt-0.5 shrink-0 opacity-80" strokeWidth={1.5} /><span className="font-body text-[15px] text-ink/90">Sviluppo API proprietarie</span></div>
-<div className="flex items-start gap-3"><CheckCircle2 size={18} className="text-ink mt-0.5 shrink-0 opacity-80" strokeWidth={1.5} /><span className="font-body text-[15px] text-ink/90">Integrazione con sistemi aziendali</span></div>
-<div className="flex items-start gap-3"><CheckCircle2 size={18} className="text-ink mt-0.5 shrink-0 opacity-80" strokeWidth={1.5} /><span className="font-body text-[15px] text-ink/90">Pannello di amministrazione</span></div>
+                    <div className="flex items-start gap-3"><CheckCircle2 size={18} className="text-ink mt-0.5 shrink-0 opacity-80" strokeWidth={1.5} /><span className="font-body text-[15px] text-ink/90">{t("custom_details.architettura_dati_backend_su_misura")}</span></div>
+<div className="flex items-start gap-3"><CheckCircle2 size={18} className="text-ink mt-0.5 shrink-0 opacity-80" strokeWidth={1.5} /><span className="font-body text-[15px] text-ink/90">{t("custom_details.sviluppo_api_proprietarie")}</span></div>
+<div className="flex items-start gap-3"><CheckCircle2 size={18} className="text-ink mt-0.5 shrink-0 opacity-80" strokeWidth={1.5} /><span className="font-body text-[15px] text-ink/90">{t("custom_details.integrazione_con_sistemi_aziendali")}</span></div>
+<div className="flex items-start gap-3"><CheckCircle2 size={18} className="text-ink mt-0.5 shrink-0 opacity-80" strokeWidth={1.5} /><span className="font-body text-[15px] text-ink/90">{t("custom_details.pannello_di_amministrazione")}</span></div>
                   </div>
 
                 </div>
@@ -161,19 +150,13 @@ const CustomDetails = () => {
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <div className="flex items-center gap-4 mb-8">
-              <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium">
-                01 / IL PROBLEMA
-              </span>
+              <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium">{t("custom_details.01_il_problema")}</span>
               <div className="w-12 h-[1px] bg-primary/20" />
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24">
-              <h2 className="lg:col-span-7 font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tighter text-ink">
-                Il limite delle soluzioni standard.
-              </h2>
+              <h2 className="lg:col-span-7 font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tighter text-ink">{t("custom_details.il_limite_delle_soluzioni_standard")}</h2>
               <div className="lg:col-span-5 flex items-center">
-                <p className="font-body text-lg md:text-xl text-ink/80 leading-relaxed font-medium text-justify">
-                  Sotto una certa soglia di complessità, un CMS configurato a dovere è la scelta più logica. Ma quando il tuo business dipende da flussi di dati specifici, integrazioni con ERP legacy, o regole di business che i plugin standard non possono gestire, forzare un CMS commerciale diventa un debito tecnico insostenibile. Il sistema diventa rigido, l'aggiornamento pericoloso, l'espansione impossibile.
-                </p>
+                <p className="font-body text-lg md:text-xl text-ink/80 leading-relaxed font-medium text-justify">{t("custom_details.sotto_una_certa_soglia_di_complessita")}</p>
               </div>
             </div>
           </motion.div>
@@ -187,19 +170,14 @@ const CustomDetails = () => {
         <div className="max-w-7xl mx-auto flex flex-col items-start text-left">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="w-full">
             <div className="flex items-center justify-start gap-4 mb-8">
-              <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium">
-                02 / L'ARCHITETTURA
-              </span>
+              <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium">{t("custom_details.02_l_architettura")}</span>
               <div className="w-12 h-[1px] bg-primary/20" />
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24">
               <h3 className="lg:col-span-7 font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tighter text-ink">
-                Design <span className="text-primary italic pr-2">e tecnologia</span> proprietari.
-              </h3>
+                Design <span className="text-primary italic pr-2">{t("custom_details.e_tecnologia")}</span>{t("custom_details.proprietari")}</h3>
               <div className="lg:col-span-5 flex items-center">
-                <p className="font-body text-lg md:text-xl text-ink/80 leading-relaxed font-medium text-justify">
-                  Direzione artistica e UI/UX progettate da zero su Figma. Sotto la superficie, un backend proprietario: database relazionali complessi, query ottimizzate, API REST sicure. L'infrastruttura vive su AWS. Al saldo del progetto, cessione totale dei diritti sul codice sorgente: non un servizio in abbonamento, ma un asset patrimoniale reale che appartiene solo a te.
-                </p>
+                <p className="font-body text-lg md:text-xl text-ink/80 leading-relaxed font-medium text-justify">{t("custom_details.direzione_artistica_e_ui_ux_progettate")}</p>
               </div>
             </div>
           </motion.div>
@@ -215,15 +193,11 @@ const CustomDetails = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="mb-16">
             <div className="flex items-center gap-4 mb-6">
-              <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium">
-                03 / ESCLUSIVITÀ
-              </span>
+              <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium">{t("custom_details.03_esclusivita")}</span>
               <div className="w-12 h-[1px] bg-primary/20" />
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24 items-end">
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tighter text-ink">
-                Un progetto alla volta.
-              </h2>
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tighter text-ink">{t("custom_details.un_progetto_alla_volta")}</h2>
             </div>
           </div>
 
@@ -231,23 +205,15 @@ const CustomDetails = () => {
             {/* FASE 01 CARD */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="group relative p-8 md:p-12 border border-ink bg-cream hover:bg-white hover:border-primary transition-all duration-500 shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b]">
                 <div className="absolute top-0 left-0 w-full h-[3px] bg-primary/10 group-hover:bg-primary transition-colors duration-500" />
-                <h3 className="font-display text-3xl font-bold mb-4 text-ink group-hover:text-primary transition-colors duration-300">
-                  Focus Assoluto
-                </h3>
-                <p className="font-body text-base text-ink/80 leading-relaxed mt-4 text-justify">
-                  Ogni Sviluppo Custom viene seguito con un solo cliente in contemporanea. Non per scarsità di mezzi, ma per scelta: questo livello di architettura richiede focus esclusivo sulle logiche di sistema.
-                </p>
+                <h3 className="font-display text-3xl font-bold mb-4 text-ink group-hover:text-primary transition-colors duration-300">{t("custom_details.focus_assoluto")}</h3>
+                <p className="font-body text-base text-ink/80 leading-relaxed mt-4 text-justify">{t("custom_details.ogni_sviluppo_custom_viene_seguito_con")}</p>
             </motion.div>
 
             {/* FASE 02 CARD */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }} className="group relative p-8 md:p-12 border border-ink bg-cream hover:bg-white hover:border-primary transition-all duration-500 shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b]">
                 <div className="absolute top-0 left-0 w-full h-[3px] bg-primary/10 group-hover:bg-primary transition-colors duration-500" />
-                <h3 className="font-display text-3xl font-bold mb-4 text-ink group-hover:text-primary transition-colors duration-300">
-                  Slot Dedicato
-                </h3>
-                <p className="font-body text-base text-ink/80 leading-relaxed mt-4 text-justify">
-                  Non sto dividendo la mia attenzione tra cinque progetti diversi. Stai prenotando uno slot dedicato al 100% alla tua azienda, non del tempo a ore.
-                </p>
+                <h3 className="font-display text-3xl font-bold mb-4 text-ink group-hover:text-primary transition-colors duration-300">{t("custom_details.slot_dedicato")}</h3>
+                <p className="font-body text-base text-ink/80 leading-relaxed mt-4 text-justify">{t("custom_details.non_sto_dividendo_la_mia_attenzione")}</p>
             </motion.div>
           </div>
         </div>
@@ -262,25 +228,15 @@ const CustomDetails = () => {
           <div className="lg:col-span-7">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1 }} className="space-y-6">
               <div className="flex items-center gap-4">
-                <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium">
-                  04 / COSA OTTIENI
-                </span>
+                <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium">{t("custom_details.04_cosa_ottieni")}</span>
                 <div className="w-12 h-[1px] bg-primary/20" />
               </div>
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tighter text-ink">
-                8-12 settimane di sviluppo dedicato
-              </h2>
-              <p className="font-body text-lg text-ink/80 leading-relaxed border-l border-primary/25 pl-8 mt-8 text-justify">
-                Ogni sistema custom viene rilasciato con documentazione tecnica completa, test di carico e architettura pronta per essere estesa. I tempi di sviluppo partono da un minimo di tre mesi, con milestone intermedie di validazione del codice e dell'interfaccia.
-              </p>
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tighter text-ink">{t("custom_details.8_12_settimane_di_sviluppo_dedicato")}</h2>
+              <p className="font-body text-lg text-ink/80 leading-relaxed border-l border-primary/25 pl-8 mt-8 text-justify">{t("custom_details.ogni_sistema_custom_viene_rilasciato_con")}</p>
               
               <div className="pt-10">
-                 <p className="font-body text-base font-medium text-ink mb-6 text-justify">
-                   Se il tuo business ha smesso di stare dentro a un template, è il momento di costruire qualcosa che non ha limiti.
-                 </p>
-                 <Link to="/contatti" className="group inline-flex items-center justify-center gap-4 bg-ink text-cream px-8 py-4 font-typewriter text-[10px] uppercase tracking-widest shadow-[6px_6px_0px_#c0392b] hover:shadow-[2px_2px_0px_#c0392b] hover:translate-y-[4px] hover:translate-x-[4px] transition-all">
-                    Parlami del tuo progetto
-                    <ArrowUpRight size={14} className="text-primary group-hover:scale-110 transition-transform" />
+                 <p className="font-body text-base font-medium text-ink mb-6 text-justify">{t("custom_details.se_il_tuo_business_ha_smesso")}</p>
+                 <Link to="/contatti" className="group inline-flex items-center justify-center gap-4 bg-ink text-cream px-8 py-4 font-typewriter text-[10px] uppercase tracking-widest shadow-[6px_6px_0px_#c0392b] hover:shadow-[2px_2px_0px_#c0392b] hover:translate-y-[4px] hover:translate-x-[4px] transition-all">{t("custom_details.parlami_del_tuo_progetto")}<ArrowUpRight size={14} className="text-primary group-hover:scale-110 transition-transform" />
                  </Link>
               </div>
             </motion.div>
@@ -289,44 +245,36 @@ const CustomDetails = () => {
           <div className="lg:col-span-5">
             {/* Tech Spec Card - Packages style */}
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="border-2 border-primary bg-white p-8 md:p-10 flex flex-col group relative shadow-[8px_8px_0px_#c0392b]">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white font-typewriter text-[9px] uppercase tracking-widest px-4 py-1.5 font-bold whitespace-nowrap">
-                SPECIFICHE TECNICHE
-              </div>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white font-typewriter text-[9px] uppercase tracking-widest px-4 py-1.5 font-bold whitespace-nowrap">{t("custom_details.specifiche_tecniche")}</div>
               
               <div className="mb-8 mt-2 pb-8 border-b border-ink/10 flex justify-between items-end">
                 <div>
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-60 font-semibold block mb-2">
-                    TIMELINE
-                  </span>
-                  <span className="font-display text-3xl font-black text-ink">8-12 Sett.</span>
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-60 font-semibold block mb-2">{t("custom_details.timeline")}</span>
+                  <span className="font-display text-3xl font-black text-ink">{t("custom_details.8_12_sett")}</span>
                 </div>
                 <div className="text-right">
                   <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-60 font-semibold block mb-2">
                     RUOLO
                   </span>
-                  <span className="font-display text-xl font-bold italic">Sviluppo Custom</span>
+                  <span className="font-display text-xl font-bold italic">{t("custom_details.hero_title")}</span>
                 </div>
               </div>
 
               <div className="mb-10">
-                <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-ink/65 block mb-6 font-semibold">
-                  DELIVERABLES
-                </span>
+                <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-ink/65 block mb-6 font-semibold">{t("custom_details.deliverables")}</span>
                 <ul className="space-y-4 flex-grow">
-                  <li className="flex items-start gap-3"><CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" /><span className="font-body text-[14px] text-ink/80">Architettura Dati & Backend su misura</span></li>
-<li className="flex items-start gap-3"><CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" /><span className="font-body text-[14px] text-ink/80">Sviluppo API proprietarie</span></li>
-<li className="flex items-start gap-3"><CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" /><span className="font-body text-[14px] text-ink/80">Integrazione con sistemi aziendali</span></li>
-<li className="flex items-start gap-3"><CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" /><span className="font-body text-[14px] text-ink/80">Pannello di amministrazione</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" /><span className="font-body text-[14px] text-ink/80">{t("custom_details.architettura_dati_backend_su_misura")}</span></li>
+<li className="flex items-start gap-3"><CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" /><span className="font-body text-[14px] text-ink/80">{t("custom_details.sviluppo_api_proprietarie")}</span></li>
+<li className="flex items-start gap-3"><CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" /><span className="font-body text-[14px] text-ink/80">{t("custom_details.integrazione_con_sistemi_aziendali")}</span></li>
+<li className="flex items-start gap-3"><CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" /><span className="font-body text-[14px] text-ink/80">{t("custom_details.pannello_di_amministrazione")}</span></li>
                 </ul>
               </div>
 
               <div className="pt-6 border-t border-ink/10">
-                <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-ink/65 block mb-6 font-semibold">
-                  STACK TECNOLOGICO
-                </span>
+                <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-ink/65 block mb-6 font-semibold">{t("custom_details.stack_tecnologico")}</span>
                 <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1.5 border border-ink/20 font-typewriter text-[9px] uppercase tracking-widest text-ink/80 font-semibold">Node/Django</span>
-<span className="px-3 py-1.5 border border-ink/20 font-typewriter text-[9px] uppercase tracking-widest text-ink/80 font-semibold">PostgreSQL</span>
+                  <span className="px-3 py-1.5 border border-ink/20 font-typewriter text-[9px] uppercase tracking-widest text-ink/80 font-semibold">{t("custom_details.node_django")}</span>
+<span className="px-3 py-1.5 border border-ink/20 font-typewriter text-[9px] uppercase tracking-widest text-ink/80 font-semibold">{t("custom_details.postgresql")}</span>
 <span className="px-3 py-1.5 border border-ink/20 font-typewriter text-[9px] uppercase tracking-widest text-ink/80 font-semibold">AWS</span>
 <span className="px-3 py-1.5 border border-ink/20 font-typewriter text-[9px] uppercase tracking-widest text-ink/80 font-semibold">React</span>
                 </div>
@@ -336,7 +284,7 @@ const CustomDetails = () => {
         </div>
       </section>
 
-      <ProjectNavigation prev={{ url: "/sviluppo-mvp", title: "Sviluppo MVP" }} next={{ url: "/sviluppo-cms", title: "Sviluppo CMS" }} archiveUrl="/servizi" archiveTitle="Servizi" prevLabel="Servizio Precedente" nextLabel="Servizio Successivo" />
+      <ProjectNavigation prev={{ url: "/sviluppo-mvp", title: "Sviluppo MVP" }} next={{ url: "/sviluppo-cms", title: "Sviluppo CMS" }} archiveUrl="/servizi" archiveTitle="Servizi" prevLabel={t("custom_details.servizio_precedente")} nextLabel={t("custom_details.servizio_successivo")} />
       <BriefingCTA
         subtitle="IL PROSSIMO PASSO"
         title1="Costruiamo"

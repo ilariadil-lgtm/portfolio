@@ -36,9 +36,7 @@ const CMSDetails = () => {
       title: "Il Problema",
       description: (
         <>
-          <p className="text-white/80 leading-relaxed text-justify mb-4 text-xl">
-            La maggior parte dei CMS in commercio nasce da un compromesso: per essere 'facili da personalizzare' caricano decine di plugin di terze parti, ognuno un potenziale punto di rottura. Il risultato è quasi sempre lo stesso — siti lenti, vulnerabili, e un'azienda che dopo sei mesi torna a dipendere da uno sviluppatore esterno per ogni minima modifica.
-          </p>
+          <p className="text-white/80 leading-relaxed text-justify mb-4 text-xl">{t("cms_details.la_maggior_parte_dei_cms_in")}</p>
         </>
       ),
     },
@@ -48,13 +46,9 @@ const CMSDetails = () => {
       description: (
         <>
           <div className="py-12 border-l-2 border-gold pl-8">
-            <h2 className="font-fraunces text-4xl md:text-5xl italic text-gold leading-tight">
-              Il tuo sito è un asset aziendale, non un abbonamento infinito.
-            </h2>
+            <h2 className="font-fraunces text-4xl md:text-5xl italic text-gold leading-tight">{t("cms_details.il_tuo_sito_e_un_asset")}</h2>
           </div>
-          <p className="text-white/80 leading-relaxed text-justify mb-4 text-xl">
-            Non parto da un tema pronto da adattare. Scrivo il tema da zero, calibrato sulle esigenze reali del progetto — niente codice superfluo, niente funzionalità che non userai mai. Ogni riga inserita viene controllata per preservare le performance di caricamento e la stabilità SEO. Il pannello di gestione che consegno è pensato per essere usato da chi non scrive codice: testi, immagini, prodotti, tutto modificabile senza toccare una riga di HTML.
-          </p>
+          <p className="text-white/80 leading-relaxed text-justify mb-4 text-xl">{t("cms_details.non_parto_da_un_tema_pronto")}</p>
         </>
       ),
     },
@@ -63,21 +57,15 @@ const CMSDetails = () => {
       title: "Due Configurazioni",
       description: (
         <>
-          <p className="text-white/80 leading-relaxed text-justify mb-8 text-xl">
-            Il percorso si divide in due approcci possibili, a seconda dell'urgenza e del budget:
-          </p>
+          <p className="text-white/80 leading-relaxed text-justify mb-8 text-xl">{t("cms_details.il_percorso_si_divide_in_due")}</p>
           <div className="space-y-6">
             <div className="border-l border-gold/30 pl-6">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-gold mb-2">1. Configurazione Premium Standard</h3>
-              <p className="text-white/70 text-lg">
-                Adattamento tecnico e ottimizzazione di un tema commerciale di fascia alta. Focus su performance, pulizia dei plugin e SEO base — la soluzione giusta quando i tempi sono stretti ma la qualità non è negoziabile.
-              </p>
+              <h3 className="font-mono text-xs uppercase tracking-widest text-gold mb-2">{t("cms_details.1_configurazione_premium_standard")}</h3>
+              <p className="text-white/70 text-lg">{t("cms_details.adattamento_tecnico_e_ottimizzazione_di_un")}</p>
             </div>
             <div className="border-l border-gold/30 pl-6">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-gold mb-2">2. Sviluppo Tema Custom da Zero</h3>
-              <p className="text-white/70 text-lg">
-                Scrittura totale del tema, White Theme proprietario. Zero page builder pesanti, frontend leggerissimo, pannello di gestione disegnato su misura per il tuo flusso di lavoro quotidiano.
-              </p>
+              <h3 className="font-mono text-xs uppercase tracking-widest text-gold mb-2">{t("cms_details.2_sviluppo_tema_custom_da_zero")}</h3>
+              <p className="text-white/70 text-lg">{t("cms_details.scrittura_totale_del_tema_white_theme")}</p>
             </div>
           </div>
         </>
@@ -93,22 +81,22 @@ const CMSDetails = () => {
       title1="Sviluppo CMS"
       role="APPROCCIO_01"
       year="2026"
-      techList={["UI/UX Design personalizzato", "Sviluppo front-end reattivo", "Setup piattaforma headless o ibrida", "Training per gestione contenuti"]}
+      techList={[t("cms_details.ui_ux_design_personalizzato"), t("cms_details.sviluppo_front_end_reattivo"), t("cms_details.setup_piattaforma_headless_o_ibrida"), t("cms_details.training_per_gestione_contenuti")]}
       description={
         <div className="font-outfit font-light text-white/80 text-lg md:text-xl leading-relaxed space-y-6">
-          <p className="font-medium text-white text-2xl mb-4">Un sito che cresce con te, non contro di te.</p>
-          <p>Costruito per chi vuole smettere di chiedere il permesso per cambiare un prezzo, aggiungere un prodotto, aggiornare un testo. Tema scritto da zero, gestione in totale autonomia, performance che un page builder commerciale non può garantire.</p>
+          <p className="font-medium text-white text-2xl mb-4">{t("cms_details.un_sito_che_cresce_con_te")}</p>
+          <p>{t("cms_details.costruito_per_chi_vuole_smettere_di")}</p>
         </div>
       }
       phases={phasesData}
       prev={prevProject}
       next={nextProject}
-      prevLabel="Servizio Precedente"
-      nextLabel="Servizio Successivo"
+      prevLabel={t("cms_details.servizio_precedente")}
+      nextLabel={t("cms_details.servizio_successivo")}
       finalCta={{
-        title: "IL PROSSIMO PASSO",
-        description: "Se il tuo business ha smesso di stare dentro a un template, è il momento di costruire qualcosa che non ha limiti.",
-        buttonText: "PARLAMI DEL TUO PROGETTO",
+        title: t("cms_details.il_prossimo_passo"),
+        description: t("cms_details.se_il_tuo_business_ha_smesso"),
+        buttonText: t("cms_details.parlami_del_tuo_progetto_2"),
         buttonUrl: "/contatti"
       }}
     />

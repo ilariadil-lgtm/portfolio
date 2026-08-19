@@ -36,9 +36,7 @@ const MVPDetails = () => {
       title: "Il Problema",
       description: (
         <>
-          <p className="text-white/80 leading-relaxed text-justify mb-4 text-xl">
-            La maggior parte degli MVP fallisce prima ancora di nascere — non per l'idea, ma per il tempo e il capitale bruciati a costruire funzionalità che nessuno ha ancora chiesto. Over-engineering estetico, feature secondarie, infrastrutture sovradimensionate: il risultato è un lancio in ritardo, su un prodotto che il mercato non ha ancora validato.
-          </p>
+          <p className="text-white/80 leading-relaxed text-justify mb-4 text-xl">{t("mvp_details.la_maggior_parte_degli_mvp_fallisce")}</p>
         </>
       ),
     },
@@ -48,13 +46,9 @@ const MVPDetails = () => {
       description: (
         <>
           <div className="py-12 border-l-2 border-gold pl-8">
-            <h2 className="font-fraunces text-4xl md:text-5xl italic text-gold leading-tight">
-              Costruire ciò che nessuno ha chiesto.
-            </h2>
+            <h2 className="font-fraunces text-4xl md:text-5xl italic text-gold leading-tight">{t("mvp_details.costruire_cio_che_nessuno_ha_chiesto")}</h2>
           </div>
-          <p className="text-white/80 leading-relaxed text-justify mb-4 text-xl">
-            Il focus è un solo punto: il Core Loop. L'unica funzionalità che risolve davvero il problema del tuo utente finale. Tutto il resto — estetica secondaria, feature 'belle da avere', integrazioni non essenziali — viene tagliato senza esitazione, perché ogni giorno risparmiato è un giorno guadagnato sul mercato. Lo stack è scelto per la stessa ragione: frontend reattivo costruito su framework agili, backend serverless che azzera i tempi di configurazione.
-          </p>
+          <p className="text-white/80 leading-relaxed text-justify mb-4 text-xl">{t("mvp_details.il_focus_e_un_solo_punto")}</p>
         </>
       ),
     },
@@ -63,21 +57,15 @@ const MVPDetails = () => {
       title: "Dopo il Lancio",
       description: (
         <>
-          <p className="text-white/80 leading-relaxed text-justify mb-8 text-xl">
-            Scalabilità dal giorno zero.
-          </p>
+          <p className="text-white/80 leading-relaxed text-justify mb-8 text-xl">{t("mvp_details.scalabilita_dal_giorno_zero")}</p>
           <div className="space-y-6">
             <div className="border-l border-gold/30 pl-6">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-gold mb-2">1. Analisi dei Dati Reali</h3>
-              <p className="text-white/70 text-lg">
-                Un MVP non è un punto di arrivo: è il primo dato reale che hai sulla tua idea. Lanciamo per testare il prodotto sul mercato, non in laboratorio.
-              </p>
+              <h3 className="font-mono text-xs uppercase tracking-widest text-gold mb-2">{t("mvp_details.1_analisi_dei_dati_reali")}</h3>
+              <p className="text-white/70 text-lg">{t("mvp_details.un_mvp_non_e_un_punto")}</p>
             </div>
             <div className="border-l border-gold/30 pl-6">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-gold mb-2">2. Infrastruttura Serverless</h3>
-              <p className="text-white/70 text-lg">
-                Se le metriche confermano la direzione, l'architettura serverless costruita in questa fase è pensata per scalare — senza dover ripartire da zero con uno sviluppo Custom quando sarà il momento.
-              </p>
+              <h3 className="font-mono text-xs uppercase tracking-widest text-gold mb-2">{t("mvp_details.2_infrastruttura_serverless")}</h3>
+              <p className="text-white/70 text-lg">{t("mvp_details.se_le_metriche_confermano_la_direzione")}</p>
             </div>
           </div>
         </>
@@ -93,22 +81,22 @@ const MVPDetails = () => {
       title1="Sviluppo MVP"
       role="APPROCCIO_02"
       year="2026"
-      techList={["Interfaccia essenziale (Core Loop)", "Sviluppo Full-Stack Agile", "Integrazione tool di Analytics", "Architettura predisposta allo scale-up"]}
+      techList={[t("mvp_details.interfaccia_essenziale_core_loop"), t("mvp_details.sviluppo_full_stack_agile"), t("mvp_details.integrazione_tool_di_analytics"), t("mvp_details.architettura_predisposta_allo_scale_up")]}
       description={
         <div className="font-outfit font-light text-white/80 text-lg md:text-xl leading-relaxed space-y-6">
-          <p className="font-medium text-white text-2xl mb-4">Il mercato non aspetta — e nemmeno dovresti farlo tu.</p>
-          <p>Quattro settimane per trasformare un'idea in un prodotto che gli utenti possono davvero usare. Non un prototipo da mostrare agli investitori: un MVP funzionante, pronto a raccogliere dati reali sul mercato reale.</p>
+          <p className="font-medium text-white text-2xl mb-4">{t("mvp_details.il_mercato_non_aspetta_e_nemmeno")}</p>
+          <p>{t("mvp_details.quattro_settimane_per_trasformare_un_idea")}</p>
         </div>
       }
       phases={phasesData}
       prev={prevProject}
       next={nextProject}
-      prevLabel="Servizio Precedente"
-      nextLabel="Servizio Successivo"
+      prevLabel={t("mvp_details.servizio_precedente")}
+      nextLabel={t("mvp_details.servizio_successivo")}
       finalCta={{
-        title: "IL PROSSIMO PASSO",
-        description: "Se hai un'idea che deve incontrare il mercato prima che qualcun altro lo faccia per te, hai 28 giorni a disposizione. Iniziamo.",
-        buttonText: "PARLAMI DEL TUO PROGETTO",
+        title: t("mvp_details.il_prossimo_passo"),
+        description: t("mvp_details.se_hai_un_idea_che_deve"),
+        buttonText: t("mvp_details.parlami_del_tuo_progetto_2"),
         buttonUrl: "/contatti"
       }}
     />
