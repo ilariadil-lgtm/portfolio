@@ -1,0 +1,56 @@
+# Ilaria Diliberto — Architettura digitale su misura
+
+> Progetto e sviluppo ecosistemi web costruiti su codice scritto a mano, non su
+> template. Il lavoro unisce cura editoriale e logica di sviluppo: interfacce
+> disegnate su misura, sopra fondamenta che reggono la crescita del business.
+> Con sede in Sicilia, opero da remoto con studi, agenzie e brand.
+
+Principio di lavoro: l'estetica senza una struttura solida è decorazione. Ogni
+progetto parte dall'architettura dei dati e dai colli di bottiglia reali —
+query, scalabilità, tempi di risposta — e solo dopo diventa forma.
+
+## Servizi
+
+- [Sviluppo CMS](https://ilariadiliberto.com/sviluppo-cms): tema scritto da
+  zero, pannello di gestione disegnato sul flusso di lavoro del cliente. Per chi
+  vuole smettere di chiedere il permesso per cambiare un prezzo o un testo.
+- [Sviluppo MVP](https://ilariadiliberto.com/sviluppo-mvp): prodotto minimo per
+  validare un'idea in tempi brevi, con una base tecnica che non va buttata al
+  primo round di crescita.
+- [Sviluppo Custom](https://ilariadiliberto.com/sviluppo-custom): infrastruttura
+  dedicata, per progetti che hanno superato i limiti di una piattaforma pronta.
+- [Tutti i servizi](https://ilariadiliberto.com/servizi): metodo, fasi di
+  lavoro e criteri di scelta fra i tre percorsi.
+
+## Progetti
+
+- [Archivio progetti](https://ilariadiliberto.com/progetti)
+- [Villa Masami](https://ilariadiliberto.com/progetti/villamasami) — struttura ricettiva
+- [Villa Mima](https://ilariadiliberto.com/progetti/villamima) — struttura ricettiva e ristorazione
+- [Baglio Lauria](https://ilariadiliberto.com/progetti/bagliolauria) — ospitalità
+- [Vini Gambino](https://ilariadiliberto.com/progetti/vinigambino) — cantina e commercio elettronico
+- [Sicil Cosmetic](https://ilariadiliberto.com/progetti/sicilcosmetic) — cosmetica
+- [Patti Forniture](https://ilariadiliberto.com/progetti/pattiforniture) — forniture professionali
+- [Newpop](https://ilariadiliberto.com/progetti/newpop) — alimentare
+- [Freelens](https://ilariadiliberto.com/progetti/freelens) — piattaforma
+- [Storage Hub](https://ilariadiliberto.com/progetti/storagehub) — gestionale con integrazione AI
+- [Identità visive](https://ilariadiliberto.com/progetti/loghi) — marchi e sistemi di identità
+- [Questo portfolio](https://ilariadiliberto.com/progetti/portfolio) — il sito come caso di studio
+
+## Informazioni
+
+- [Chi sono](https://ilariadiliberto.com/chisono): percorso, metodo, strumenti.
+- [Domande frequenti](https://ilariadiliberto.com/faq): tempi, costi, proprietà
+  del codice, cosa serve per iniziare.
+- [Diario](https://ilariadiliberto.com/blog): note su architettura web,
+  prestazioni e scelte tecniche.
+- [Contatti](https://ilariadiliberto.com/contatti): modulo di richiesta con
+  qualificazione del progetto.
+
+## Note per gli agenti
+
+- Il sito è disponibile in italiano (predefinito) e inglese.
+- Due temi visivi alternativi, Editorial e Nebula, servono lo stesso contenuto:
+  la scelta è puramente estetica e non cambia le informazioni.
+- Le pagine /privacy e /cookies rimandano alle informative ospitate su Iubenda.
+- Per richieste di collaborazione usare il modulo in /contatti.

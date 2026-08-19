@@ -22,7 +22,6 @@ export const usePageMeta = ({ title, description, ogImage, themeColor, canonical
     // Garantisce sempre URL assoluti per og:image (richiesto dai crawler social)
     const rawImage = ogImage ?? BASE_OG_IMAGE;
     const image = rawImage.startsWith("http") ? rawImage : `${BASE_URL}${rawImage}`;
-    const color = themeColor ?? "#080808";
 
     // Title
     document.title = fullTitle;
@@ -55,8 +54,9 @@ export const usePageMeta = ({ title, description, ogImage, themeColor, canonical
     setMeta("name", "twitter:image", image);
     setMeta("name", "twitter:card", "summary_large_image");
 
-    // Theme Color
-    setMeta("name", "theme-color", color);
+    // Il colore del tema lo governa App.tsx in base al tema attivo:
+    // qui si tocca solo se la pagina ne chiede uno suo.
+    if (themeColor) setMeta("name", "theme-color", themeColor);
 
     // Cleanup: ripristina il titolo base all'unmount
     return () => {

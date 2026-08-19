@@ -98,6 +98,10 @@ const AppContent = () => {
     // I font sono self-hostati e dichiarati staticamente nel CSS.
     // Qui resta solo la classe di tema sul body.
     document.body.className = `theme-${design}`;
+
+    // Colore della barra del browser: segue il tema scelto.
+    const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+    if (meta) meta.content = design === "editorial" ? "#F7F4EC" : "#080808";
   }, [design]);
 
   const concludiPreloader = () => {
