@@ -47,7 +47,7 @@ export const EditorialPackagesSection = () => {
               className="group flex flex-col p-8 md:p-10 border border-[#3d0f1a] bg-white shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b] transition-all duration-500 h-full relative overflow-hidden"
             >
               {/* Dynamic Scrolling Scanning laser beam (da Servizi.tsx) */}
-              <div className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#c0392b]/50 to-transparent top-0 group-hover:top-[100%] transition-all duration-[3s] ease-in-out z-10 pointer-events-none opacity-0 group-hover:opacity-100" />
+              <div className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#c0392b]/50 to-transparent top-0 group-hover:top-[100%] transition-all [transition-duration:3s] ease-in-out z-10 pointer-events-none opacity-0 group-hover:opacity-100" />
               
               <div className="relative z-10 flex-1 flex flex-col">
                 <div className="flex justify-between items-start mb-12">
@@ -95,7 +95,7 @@ export const EditorialPackagesSection = () => {
               className="group flex flex-col p-8 md:p-10 border border-[#3d0f1a] bg-white shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b] transition-all duration-500 h-full relative overflow-hidden"
             >
               {/* Dynamic Scrolling Scanning laser beam */}
-              <div className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#c0392b]/50 to-transparent top-0 group-hover:top-[100%] transition-all duration-[3s] ease-in-out z-10 pointer-events-none opacity-0 group-hover:opacity-100" />
+              <div className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#c0392b]/50 to-transparent top-0 group-hover:top-[100%] transition-all [transition-duration:3s] ease-in-out z-10 pointer-events-none opacity-0 group-hover:opacity-100" />
               
               <div className="relative z-10 flex-1 flex flex-col">
                 <div className="flex justify-between items-start mb-12">
@@ -143,7 +143,7 @@ export const EditorialPackagesSection = () => {
               className="group flex flex-col p-8 md:p-10 border border-[#3d0f1a] bg-white shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b] transition-all duration-500 h-full relative overflow-hidden"
             >
               {/* Dynamic Scrolling Scanning laser beam */}
-              <div className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#c0392b]/50 to-transparent top-0 group-hover:top-[100%] transition-all duration-[3s] ease-in-out z-10 pointer-events-none opacity-0 group-hover:opacity-100" />
+              <div className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#c0392b]/50 to-transparent top-0 group-hover:top-[100%] transition-all [transition-duration:3s] ease-in-out z-10 pointer-events-none opacity-0 group-hover:opacity-100" />
               
               <div className="relative z-10 flex-1 flex flex-col">
                 <div className="flex justify-between items-start mb-12">

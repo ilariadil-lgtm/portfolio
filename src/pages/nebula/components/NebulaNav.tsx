@@ -65,7 +65,7 @@ export const NebulaNav = () => {
       {/* 
         DESKTOP HUD (Left Sidebar) 
       */}
-      <nav className="hidden lg:flex flex-col items-start justify-between fixed left-0 top-0 bottom-0 w-24 hover:w-80 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-[100] bg-[#050505] border-r border-white/5 overflow-hidden group/nav py-8">
+      <nav className="hidden lg:flex flex-col items-start justify-between fixed left-0 top-0 bottom-0 w-24 hover:w-80 transition-all duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] z-[100] bg-[#050505] border-r border-white/5 overflow-hidden group/nav py-8">
         {/* Top Logo */}
         <div className="w-full flex items-center justify-start mb-8 h-24 px-4">
           <Link

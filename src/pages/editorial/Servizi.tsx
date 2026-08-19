@@ -91,7 +91,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
       className="h-full relative border border-[#3d0f1a] p-6 md:p-8 bg-white shadow-[6px_6px_0px_rgba(61,15,26,0.05)] md:shadow-[10px_10px_0px_rgba(61,15,26,0.05)] hover:shadow-[6px_6px_0px_#c0392b] md:hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-500 flex flex-col justify-between group overflow-hidden"
     >
       {/* Dynamic Scrolling Scanning laser beam */}
-      <div className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#c0392b]/50 to-transparent top-0 group-hover:top-[100%] transition-all duration-[3s] ease-in-out z-10 pointer-events-none opacity-0 group-hover:opacity-100" />
+      <div className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#c0392b]/50 to-transparent top-0 group-hover:top-[100%] transition-all [transition-duration:3s] ease-in-out z-10 pointer-events-none opacity-0 group-hover:opacity-100" />
 
       {/* Content wrapper */}
       <div className="relative z-10">
