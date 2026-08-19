@@ -29,9 +29,13 @@ export const usePageMeta = ({ title, description, ogImage, themeColor, canonical
     // Meta description
     setMeta("name", "description", description);
 
-    // Canonical URL
-    const canonicalUrl = canonical ? `${BASE_URL}${canonical}` : null;
-    if (canonicalUrl) {
+    // Canonical URL — se la pagina non ne passa uno, si deriva dal percorso
+    // corrente. Prima nessuna pagina lo passava, quindi il canonical non
+    // esisteva e og:url restava quello della home su tutte le rotte.
+    const percorso = canonical ?? window.location.pathname;
+    const pulito = percorso !== "/" ? percorso.replace(/\/$/, "") : "/";
+    const canonicalUrl = `${BASE_URL}${pulito === "/" ? "/" : pulito}`;
+    {
       let canonicalEl = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
       if (!canonicalEl) {
         canonicalEl = document.createElement("link");
@@ -46,7 +50,7 @@ export const usePageMeta = ({ title, description, ogImage, themeColor, canonical
     setMeta("property", "og:description", description);
     setMeta("property", "og:image", image);
     setMeta("property", "og:type", "website");
-    if (canonicalUrl) setMeta("property", "og:url", canonicalUrl);
+    setMeta("property", "og:url", canonicalUrl);
 
     // Twitter Card
     setMeta("name", "twitter:title", fullTitle);

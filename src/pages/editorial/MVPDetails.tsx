@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { usePageMeta, injectSchema } from "@/hooks/usePageMeta";
 import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -9,6 +10,28 @@ import { ProjectNavigation } from "@/components/ProjectNavigation";
 
 const MVPDetails = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  usePageMeta({
+    title: "Sviluppo MVP",
+    description:
+      "Il prodotto minimo per validare un'idea in tempi brevi, costruito su una base tecnica che non va buttata al primo round di crescita.",
+    canonical: "/sviluppo-mvp",
+  });
+
+  useEffect(
+    () =>
+      injectSchema({
+        "@type": "Service",
+        name: "Sviluppo MVP",
+        serviceType: "Sviluppo MVP",
+        provider: { "@type": "Person", name: "Ilaria Diliberto" },
+        areaServed: "IT",
+        description:
+          "Il prodotto minimo per validare un'idea in tempi brevi, costruito su una base tecnica che non va buttata al primo round di crescita.",
+        url: "https://ilariadiliberto.com/sviluppo-mvp",
+      }),
+    [],
+  );
 
   return (
     <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] selection:bg-primary/30 font-body">

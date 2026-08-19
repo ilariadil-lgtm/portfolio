@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { usePageMeta, injectSchema } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
 import { Phase } from "./components/NebulaProjectPhases";
@@ -6,6 +7,28 @@ import { Phase } from "./components/NebulaProjectPhases";
 const CMSDetails = () => {
   const { t } = useTranslation();
   useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  usePageMeta({
+    title: "Sviluppo CMS",
+    description:
+      "Tema scritto da zero e pannello di gestione disegnato sul tuo flusso di lavoro: aggiorni prezzi, prodotti e testi in autonomia, senza page builder.",
+    canonical: "/sviluppo-cms",
+  });
+
+  useEffect(
+    () =>
+      injectSchema({
+        "@type": "Service",
+        name: "Sviluppo CMS su misura",
+        serviceType: "Sviluppo CMS",
+        provider: { "@type": "Person", name: "Ilaria Diliberto" },
+        areaServed: "IT",
+        description:
+          "Tema scritto da zero e pannello di gestione disegnato sul tuo flusso di lavoro: aggiorni prezzi, prodotti e testi in autonomia, senza page builder.",
+        url: "https://ilariadiliberto.com/sviluppo-cms",
+      }),
+    [],
+  );
 
   const phasesData: Phase[] = [
     {

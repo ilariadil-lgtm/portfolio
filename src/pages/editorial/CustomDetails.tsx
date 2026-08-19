@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { usePageMeta, injectSchema } from "@/hooks/usePageMeta";
 import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -9,6 +10,28 @@ import { ProjectNavigation } from "@/components/ProjectNavigation";
 
 const CustomDetails = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  usePageMeta({
+    title: "Sviluppo Custom",
+    description:
+      "Infrastruttura dedicata per progetti che hanno superato i limiti di una piattaforma pronta: architettura, logica e scalabilita disegnate su misura.",
+    canonical: "/sviluppo-custom",
+  });
+
+  useEffect(
+    () =>
+      injectSchema({
+        "@type": "Service",
+        name: "Sviluppo web custom",
+        serviceType: "Sviluppo Custom",
+        provider: { "@type": "Person", name: "Ilaria Diliberto" },
+        areaServed: "IT",
+        description:
+          "Infrastruttura dedicata per progetti che hanno superato i limiti di una piattaforma pronta: architettura, logica e scalabilita disegnate su misura.",
+        url: "https://ilariadiliberto.com/sviluppo-custom",
+      }),
+    [],
+  );
 
   return (
     <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] selection:bg-primary/30 font-body">

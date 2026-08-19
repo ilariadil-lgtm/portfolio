@@ -105,7 +105,7 @@ const NavPoint: React.FC<NavPointProps> = ({
         onHover(null);
       }}
     >
-      <Link to={to}>
+      <Link to={to} aria-label={label}>
         <div className="relative flex items-center justify-center w-24 h-24 group">
           <motion.div
             className="w-3 h-3 rounded-full bg-[#C0392B]"
@@ -442,6 +442,7 @@ export const CreativeHero: React.FC = () => {
                     <Link
                       to={arc.to}
                       key={i}
+                      aria-label={arc.label}
                       className="group outline-none cursor-pointer pointer-events-auto"
                     >
                       <circle

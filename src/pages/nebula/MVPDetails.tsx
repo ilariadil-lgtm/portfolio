@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { usePageMeta, injectSchema } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
 import { Phase } from "./components/NebulaProjectPhases";
@@ -6,6 +7,28 @@ import { Phase } from "./components/NebulaProjectPhases";
 const MVPDetails = () => {
   const { t } = useTranslation();
   useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  usePageMeta({
+    title: "Sviluppo MVP",
+    description:
+      "Il prodotto minimo per validare un'idea in tempi brevi, costruito su una base tecnica che non va buttata al primo round di crescita.",
+    canonical: "/sviluppo-mvp",
+  });
+
+  useEffect(
+    () =>
+      injectSchema({
+        "@type": "Service",
+        name: "Sviluppo MVP",
+        serviceType: "Sviluppo MVP",
+        provider: { "@type": "Person", name: "Ilaria Diliberto" },
+        areaServed: "IT",
+        description:
+          "Il prodotto minimo per validare un'idea in tempi brevi, costruito su una base tecnica che non va buttata al primo round di crescita.",
+        url: "https://ilariadiliberto.com/sviluppo-mvp",
+      }),
+    [],
+  );
 
   const phasesData: Phase[] = [
     {

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { usePageMeta, injectSchema } from "@/hooks/usePageMeta";
 import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -9,6 +10,28 @@ import { ProjectNavigation } from "@/components/ProjectNavigation";
 
 const CMSDetails = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  usePageMeta({
+    title: "Sviluppo CMS",
+    description:
+      "Tema scritto da zero e pannello di gestione disegnato sul tuo flusso di lavoro: aggiorni prezzi, prodotti e testi in autonomia, senza page builder.",
+    canonical: "/sviluppo-cms",
+  });
+
+  useEffect(
+    () =>
+      injectSchema({
+        "@type": "Service",
+        name: "Sviluppo CMS su misura",
+        serviceType: "Sviluppo CMS",
+        provider: { "@type": "Person", name: "Ilaria Diliberto" },
+        areaServed: "IT",
+        description:
+          "Tema scritto da zero e pannello di gestione disegnato sul tuo flusso di lavoro: aggiorni prezzi, prodotti e testi in autonomia, senza page builder.",
+        url: "https://ilariadiliberto.com/sviluppo-cms",
+      }),
+    [],
+  );
 
   return (
     <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] selection:bg-primary/30 font-body">

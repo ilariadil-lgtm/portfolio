@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { usePageMeta, injectSchema } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
 import { Phase } from "./components/NebulaProjectPhases";
@@ -6,6 +7,28 @@ import { Phase } from "./components/NebulaProjectPhases";
 const CustomDetails = () => {
   const { t } = useTranslation();
   useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  usePageMeta({
+    title: "Sviluppo Custom",
+    description:
+      "Infrastruttura dedicata per progetti che hanno superato i limiti di una piattaforma pronta: architettura, logica e scalabilita disegnate su misura.",
+    canonical: "/sviluppo-custom",
+  });
+
+  useEffect(
+    () =>
+      injectSchema({
+        "@type": "Service",
+        name: "Sviluppo web custom",
+        serviceType: "Sviluppo Custom",
+        provider: { "@type": "Person", name: "Ilaria Diliberto" },
+        areaServed: "IT",
+        description:
+          "Infrastruttura dedicata per progetti che hanno superato i limiti di una piattaforma pronta: architettura, logica e scalabilita disegnate su misura.",
+        url: "https://ilariadiliberto.com/sviluppo-custom",
+      }),
+    [],
+  );
 
   const phasesData: Phase[] = [
     {
