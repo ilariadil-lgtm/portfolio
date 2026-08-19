@@ -78,6 +78,50 @@ const scriviSitemap = async (percorsi) => {
   return percorsi.length;
 };
 
+// ── Avvio del browser ────────────────────────────────────────────────────────
+// Su Mac Apple Silicon con un Node compilato x64, Puppeteer scarica un Chrome
+// x64 che gira tradotto da Rosetta e spesso non risponde entro il timeout.
+// Si prova prima il Chrome scaricato da Puppeteer; se non parte, si ripiega su
+// un browser gia installato nel sistema, che di norma e nativo arm64.
+const CANDIDATI = [
+  process.env.PUPPETEER_EXECUTABLE_PATH,
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "/Applications/Chromium.app/Contents/MacOS/Chromium",
+  "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
+  "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+].filter(Boolean);
+
+const OPZIONI = {
+  headless: true,
+  timeout: 120000,
+  protocolTimeout: 180000,
+  args: ["--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu"],
+};
+
+async function apriBrowser() {
+  try {
+    return await puppeteer.launch(OPZIONI);
+  } catch (primo) {
+    console.log(`  Chrome di Puppeteer non avviato: ${primo.message.split("\n")[0]}`);
+    for (const executablePath of CANDIDATI) {
+      if (!existsSync(executablePath)) continue;
+      console.log(`  Ripiego su: ${executablePath}`);
+      try {
+        return await puppeteer.launch({ ...OPZIONI, executablePath });
+      } catch (secondo) {
+        console.log(`    non avviato: ${secondo.message.split("\n")[0]}`);
+      }
+    }
+    throw new Error(
+      "Nessun browser avviabile.\n" +
+      "  Causa probabile: Node compilato per x64 su Mac Apple Silicon (Rosetta).\n" +
+      "  Verifica con:  node -p \"process.arch\"   — se stampa x64, reinstalla Node arm64.\n" +
+      "  In alternativa indica un browser gia installato:\n" +
+      "  PUPPETEER_EXECUTABLE_PATH='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' npm run prerender",
+    );
+  }
+}
+
 async function main() {
   if (!existsSync(join(DIST, "index.html"))) {
     throw new Error("dist/index.html non esiste: esegui prima `vite build`.");
@@ -86,10 +130,7 @@ async function main() {
   console.log(`\n  Prerendering di ${percorsi.length} rotte\n`);
 
   const server = await avviaServer();
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox", "--disable-dev-shm-usage"],
-  });
+  const browser = await apriBrowser();
 
   const risultati = [];
   let problemi = 0;
