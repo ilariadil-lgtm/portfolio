@@ -60,7 +60,7 @@ export const Footer = () => {
               Ilaria <br />
               <span className="text-primary italic pr-2">Diliberto.</span>
             </h3>
-            <p className="font-body text-sm text-[#3d0f1a]/60 leading-relaxed max-w-sm">
+            <p className="font-body text-sm text-[#3d0f1a]/65 leading-relaxed max-w-sm">
               {t("footer.description")}
             </p>
           </div>

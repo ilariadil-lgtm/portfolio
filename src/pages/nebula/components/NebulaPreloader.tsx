@@ -104,7 +104,7 @@ export const NebulaPreloader: React.FC<PreloaderProps> = ({ onComplete }) => {
 
           {/* Minimal branding */}
           <motion.div
-            className="absolute bottom-10 flex justify-between w-full px-8 md:px-12 font-mono text-[10px] uppercase tracking-[0.3em] text-white/30"
+            className="absolute bottom-10 flex justify-between w-full px-8 md:px-12 font-mono text-[10px] uppercase tracking-[0.3em] text-white/50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}

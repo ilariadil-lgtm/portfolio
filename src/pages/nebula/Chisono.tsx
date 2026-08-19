@@ -245,7 +245,7 @@ const Chisono = () => {
                           {rule.label}
                         </span>
                       </div>
-                      <p className="font-inter font-light text-[12px] text-white/40 leading-relaxed">
+                      <p className="font-inter font-light text-[12px] text-white/50 leading-relaxed">
                         {rule.desc}
                       </p>
                     </div>
@@ -257,7 +257,7 @@ const Chisono = () => {
             {/* META DATI A DESTRA - Simmetria Architetturale */}
             <div className="hidden lg:flex absolute right-6 md:right-12 lg:right-24 top-1/2 -translate-y-1/2 flex-col items-end text-right gap-8 opacity-60 pointer-events-none border-r-2 border-[#d4af37]/20 pr-6">
               <div className="flex flex-col items-end gap-2">
-                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/60">
+                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/70">
                   {t("about.role_label")}
                 </span>
                 <span className="font-inter text-xs tracking-[0.2em] text-white font-light">
@@ -265,7 +265,7 @@ const Chisono = () => {
                 </span>
               </div>
               <div className="flex flex-col items-end gap-2">
-                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/60">
+                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/70">
                   {t("about.loc_label")}
                 </span>
                 <span className="font-inter text-xs tracking-[0.2em] text-white font-light">
@@ -273,7 +273,7 @@ const Chisono = () => {
                 </span>
               </div>
               <div className="flex flex-col items-end gap-2">
-                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/60">
+                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/70">
                   {t("about.exp_label")}
                 </span>
                 <span className="font-inter text-xs tracking-[0.2em] text-[#d4af37] font-light">
@@ -330,7 +330,7 @@ const Chisono = () => {
                           {step.period}
                         </span>
                       </div>
-                      <div className="text-white/20 group-hover:text-[#d4af37] transition-colors duration-500">
+                      <div className="text-white/50 group-hover:text-[#d4af37] transition-colors duration-500">
                         {step.icon}
                       </div>
                     </div>
@@ -340,7 +340,7 @@ const Chisono = () => {
                       <h3 className="font-bricolage text-2xl lg:text-3xl font-bold text-white/90 mb-2 group-hover:text-white transition-colors">
                         {step.title}
                       </h3>
-                      <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-white/30 font-bold block mb-4">
+                      <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-white/50 font-bold block mb-4">
                         {step.subtitle}
                       </span>
                       <p className="font-inter font-light text-[13px] text-white/50 leading-relaxed group-hover:text-white/70 transition-colors">
@@ -350,7 +350,7 @@ const Chisono = () => {
 
                     {/* Footer: Tech Stack Pills */}
                     <div className="mt-auto pt-6 border-t border-white/5 group-hover:border-[#d4af37]/10 transition-colors">
-                      <span className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/30 mb-4 block font-medium group-hover:text-white/50 transition-colors">
+                      <span className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/50 mb-4 block font-medium group-hover:text-white/50 transition-colors">
                         {t("about.phase_inventory")}
                       </span>
                       <div className="flex flex-wrap gap-2">
@@ -404,7 +404,7 @@ const Chisono = () => {
                       className="bg-white/[0.02] border border-white/5 backdrop-blur-md rounded-3xl p-8 flex flex-col justify-between group hover:border-[#d4af37]/30 hover:bg-white/[0.04] transition-all duration-500 relative overflow-hidden gap-6"
                     >
                       <div className="flex items-center gap-4 border-b border-white/10 pb-6 group-hover:border-[#d4af37]/20 transition-colors duration-500">
-                        <span className="font-mono text-[9px] text-[#d4af37]/50 flex items-center gap-2">
+                        <span className="font-mono text-[9px] text-[#d4af37]/70 flex items-center gap-2">
                           <span className="w-1 h-1 rounded-full bg-[#d4af37] animate-pulse" />
                           0{i + 1}
                         </span>
@@ -460,7 +460,7 @@ const Chisono = () => {
                       className="bg-white/[0.02] border border-white/5 backdrop-blur-md rounded-3xl p-8 flex flex-col justify-between group hover:border-[#d4af37]/30 hover:bg-white/[0.04] transition-all duration-500 relative overflow-hidden gap-6"
                     >
                       <div className="flex items-center gap-4 border-b border-white/10 pb-6 group-hover:border-[#d4af37]/20 transition-colors duration-500">
-                        <span className="font-mono text-[9px] text-[#d4af37]/50 group-hover:text-[#d4af37] flex items-center gap-2">
+                        <span className="font-mono text-[9px] text-[#d4af37]/70 group-hover:text-[#d4af37] flex items-center gap-2">
                           <span className="w-1 h-1 rounded-full bg-[#d4af37] animate-pulse" />
                           0{i + 1}
                         </span>
@@ -475,7 +475,7 @@ const Chisono = () => {
                       <div className="flex flex-wrap gap-3 mt-4">
                         {tech.tags.map((tag, j) => (
                           <MagneticWrapper key={j}>
-                            <div className="px-4 py-2 rounded-full border border-white/5 text-white/30 font-mono text-[9px] uppercase tracking-widest hover:border-[#d4af37]/40 hover:bg-[#d4af37]/5 hover:text-[#d4af37] cursor-crosshair transition-all duration-300">
+                            <div className="px-4 py-2 rounded-full border border-white/5 text-white/50 font-mono text-[9px] uppercase tracking-widest hover:border-[#d4af37]/40 hover:bg-[#d4af37]/5 hover:text-[#d4af37] cursor-crosshair transition-all duration-300">
                               {tag}
                             </div>
                           </MagneticWrapper>

@@ -301,7 +301,7 @@ export const NebulaLoghi = () => {
                   }}
                 >
                   <div className="flex items-center gap-4 mb-6">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50">
                       {String(idx + 1).padStart(2, "0")} // {brand.year}
                     </span>
                     <div className="flex-1 h-[1px] bg-white/10" />

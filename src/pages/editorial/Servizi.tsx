@@ -101,11 +101,11 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
             <span className="font-typewriter text-[9px] uppercase tracking-[0.25em] text-primary font-bold">
               {service.subtitle || `SYSTEM_MODULE_0${idx + 1}`}
             </span>
-            <span className="font-typewriter text-[7px] uppercase tracking-[0.2em] text-[#3d0f1a]/40 font-medium mt-1">
+            <span className="font-typewriter text-[7px] uppercase tracking-[0.2em] text-[#3d0f1a]/65 font-medium mt-1">
               {t("services.focus")}
             </span>
           </div>
-          <div className="w-10 h-10 rounded-full border border-primary/15 flex items-center justify-center text-[#3d0f1a]/40 bg-primary/5 group-hover:scale-110 group-hover:text-primary group-hover:border-primary/30 transition-all duration-500">
+          <div className="w-10 h-10 rounded-full border border-primary/15 flex items-center justify-center text-[#3d0f1a]/65 bg-primary/5 group-hover:scale-110 group-hover:text-primary group-hover:border-primary/30 transition-all duration-500">
             {service.icon || <Box size={18} />}
           </div>
         </div>
@@ -139,7 +139,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
 
           <div className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-primary/75 animate-ping" />
-            <span className="font-mono text-[7px] text-[#3d0f1a]/40">
+            <span className="font-mono text-[7px] text-[#3d0f1a]/65">
               {t("services.aligned")}
             </span>
           </div>
@@ -157,7 +157,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
             >
               <div className="font-mono text-[10px] divide-y divide-primary/10 bg-[#f5f2ed] p-5 border border-primary/15 space-y-3 shadow-inner">
                 <div className="flex justify-between pb-2">
-                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">
+                  <span className="text-[#3d0f1a]/65 uppercase tracking-widest text-[8px]">
                     {t("services.tools")}
                   </span>
                   <span className="text-[#3d0f1a] font-semibold text-right">
@@ -165,7 +165,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
                   </span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">
+                  <span className="text-[#3d0f1a]/65 uppercase tracking-widest text-[8px]">
                     {t("services.methodology")}
                   </span>
                   <span className="text-[#3d0f1a] font-semibold text-right">
@@ -173,7 +173,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
                   </span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">
+                  <span className="text-[#3d0f1a]/65 uppercase tracking-widest text-[8px]">
                     {t("services.key_objective")}
                   </span>
                   <span className="text-primary font-bold text-right">
@@ -181,7 +181,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
                   </span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px]">
+                  <span className="text-[#3d0f1a]/65 uppercase tracking-widest text-[8px]">
                     {t("services.approach")}
                   </span>
                   <span className="text-green-700 font-black text-right">
@@ -189,7 +189,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
                   </span>
                 </div>
                 <div className="pt-2">
-                  <span className="text-[#3d0f1a]/50 uppercase tracking-widest text-[8px] block mb-2">
+                  <span className="text-[#3d0f1a]/65 uppercase tracking-widest text-[8px] block mb-2">
                     {t("services.skills")}
                   </span>
                   <div className="flex flex-wrap gap-1.5">
@@ -458,7 +458,7 @@ const Servizi = () => {
           <div className="border border-[#3d0f1a] bg-[#f5f2ed] p-8 flex flex-col group hover:bg-white hover:border-primary transition-all duration-300 shadow-[6px_6px_0px_rgba(61,15,26,0.05)] hover:shadow-[6px_6px_0px_#c0392b]">
             <div className="mb-8">
               <h3 className="font-display text-2xl font-bold text-[#3d0f1a] mb-2">{t("services.pkg_cms_name")}</h3>
-              <p className="font-typewriter text-[9px] uppercase tracking-widest text-[#3d0f1a]/50 font-bold mb-6">{t("services.pkg_cms_tagline")}</p>
+              <p className="font-typewriter text-[9px] uppercase tracking-widest text-[#3d0f1a]/65 font-bold mb-6">{t("services.pkg_cms_tagline")}</p>
               <p className="font-body text-[14px] text-[#3d0f1a]/70 min-h-[60px]">
                 {t("services.pkg_cms_desc")}
               </p>
@@ -466,7 +466,7 @@ const Servizi = () => {
             
             <div className="mb-8 pb-8 border-b border-[#3d0f1a]/10">
               <span className="font-display text-3xl font-black text-[#3d0f1a]">{t("services.pkg_cms_time")}</span>
-              <span className="font-body text-sm text-[#3d0f1a]/60 ml-2">{t("services.pkg_cms_time_unit")}</span>
+              <span className="font-body text-sm text-[#3d0f1a]/65 ml-2">{t("services.pkg_cms_time_unit")}</span>
             </div>
 
             <ul className="space-y-4 mb-10 flex-grow">
@@ -500,7 +500,7 @@ const Servizi = () => {
             </div>
             <div className="mb-8 mt-2">
               <h3 className="font-display text-2xl font-bold text-[#3d0f1a] mb-2">{t("services.pkg_mvp_name")}</h3>
-              <p className="font-typewriter text-[9px] uppercase tracking-widest text-[#3d0f1a]/50 font-bold mb-6">{t("services.pkg_mvp_tagline")}</p>
+              <p className="font-typewriter text-[9px] uppercase tracking-widest text-[#3d0f1a]/65 font-bold mb-6">{t("services.pkg_mvp_tagline")}</p>
               <p className="font-body text-[14px] text-[#3d0f1a]/70 min-h-[60px]">
                 {t("services.pkg_mvp_desc")}
               </p>
@@ -508,7 +508,7 @@ const Servizi = () => {
             
             <div className="mb-8 pb-8 border-b border-[#3d0f1a]/10">
               <span className="font-display text-3xl font-black text-[#3d0f1a]">{t("services.pkg_mvp_time")}</span>
-              <span className="font-body text-sm text-[#3d0f1a]/60 ml-2">{t("services.pkg_mvp_time_unit")}</span>
+              <span className="font-body text-sm text-[#3d0f1a]/65 ml-2">{t("services.pkg_mvp_time_unit")}</span>
             </div>
 
             <ul className="space-y-4 mb-10 flex-grow">
@@ -539,7 +539,7 @@ const Servizi = () => {
           <div className="border border-[#3d0f1a] bg-[#f5f2ed] p-8 flex flex-col group hover:bg-white hover:border-primary transition-all duration-300 shadow-[6px_6px_0px_rgba(61,15,26,0.05)] hover:shadow-[6px_6px_0px_#c0392b]">
             <div className="mb-8">
               <h3 className="font-display text-2xl font-bold text-[#3d0f1a] mb-2">{t("services.pkg_custom_name")}</h3>
-              <p className="font-typewriter text-[9px] uppercase tracking-widest text-[#3d0f1a]/50 font-bold mb-6">{t("services.pkg_custom_tagline")}</p>
+              <p className="font-typewriter text-[9px] uppercase tracking-widest text-[#3d0f1a]/65 font-bold mb-6">{t("services.pkg_custom_tagline")}</p>
               <p className="font-body text-[14px] text-[#3d0f1a]/70 min-h-[60px]">
                 {t("services.pkg_custom_desc")}
               </p>
@@ -547,7 +547,7 @@ const Servizi = () => {
             
             <div className="mb-8 pb-8 border-b border-[#3d0f1a]/10">
               <span className="font-display text-3xl font-black text-[#3d0f1a]">{t("services.pkg_custom_time")}</span>
-              <span className="font-body text-sm text-[#3d0f1a]/60 ml-2">{t("services.pkg_custom_time_unit")}</span>
+              <span className="font-body text-sm text-[#3d0f1a]/65 ml-2">{t("services.pkg_custom_time_unit")}</span>
             </div>
 
             <ul className="space-y-4 mb-10 flex-grow">

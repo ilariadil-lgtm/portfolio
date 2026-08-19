@@ -312,7 +312,7 @@ export const CreativeHero: React.FC = () => {
               transition={{ delay: 1, duration: 1 }}
               className="mt-8 lg:mt-12 max-w-[34rem]"
             >
-              <p className="font-body text-sm md:text-base text-[#3d0f1a]/60 leading-relaxed border-l-2 border-primary/10 pl-6 lg:pl-8 py-2 mb-8">
+              <p className="font-body text-sm md:text-base text-[#3d0f1a]/65 leading-relaxed border-l-2 border-primary/10 pl-6 lg:pl-8 py-2 mb-8">
                 "{t("hero.description")}"
               </p>
               <Link 

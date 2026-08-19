@@ -62,7 +62,7 @@ export const NebulaPackagesSection = () => {
                       <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
                       {t("index.home_pkg1_num")}
                     </span>
-                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/30 bg-white/[0.02] group-hover:text-[#d4af37] group-hover:border-[#d4af37]/30 transition-all duration-500">
+                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 bg-white/[0.02] group-hover:text-[#d4af37] group-hover:border-[#d4af37]/30 transition-all duration-500">
                       <span className="font-bricolage font-black text-xl">1</span>
                     </div>
                   </div>
@@ -108,7 +108,7 @@ export const NebulaPackagesSection = () => {
                       <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
                       {t("index.home_pkg2_num")}
                     </span>
-                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/30 bg-white/[0.02] group-hover:text-[#d4af37] group-hover:border-[#d4af37]/30 transition-all duration-500">
+                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 bg-white/[0.02] group-hover:text-[#d4af37] group-hover:border-[#d4af37]/30 transition-all duration-500">
                       <span className="font-bricolage font-black text-xl">2</span>
                     </div>
                   </div>
@@ -154,7 +154,7 @@ export const NebulaPackagesSection = () => {
                       <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
                       {t("index.home_pkg3_num")}
                     </span>
-                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/30 bg-white/[0.02] group-hover:text-[#d4af37] group-hover:border-[#d4af37]/30 transition-all duration-500">
+                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 bg-white/[0.02] group-hover:text-[#d4af37] group-hover:border-[#d4af37]/30 transition-all duration-500">
                       <span className="font-bricolage font-black text-xl">3</span>
                     </div>
                   </div>
@@ -203,30 +203,30 @@ export const NebulaPackagesSection = () => {
                 key={i}
                 className="inline-flex items-center gap-12 flex-shrink-0"
               >
-                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/20">
+                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/50">
                   UX ARCHITECTURE
                 </span>
-                <span className="text-[#d4af37]/40 text-xs">✦</span>
-                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/20">
+                <span className="text-[#d4af37]/70 text-xs">✦</span>
+                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/50">
                   DIGITAL STRATEGY
                 </span>
-                <span className="text-[#d4af37]/40 text-xs">✦</span>
-                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/20">
+                <span className="text-[#d4af37]/70 text-xs">✦</span>
+                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/50">
                   CLOUD DESIGN
                 </span>
-                <span className="text-[#d4af37]/40 text-xs">✦</span>
-                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/20">
+                <span className="text-[#d4af37]/70 text-xs">✦</span>
+                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/50">
                   IDENTITÀ VISIVA
                 </span>
-                <span className="text-[#d4af37]/40 text-xs">✦</span>
-                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/20">
+                <span className="text-[#d4af37]/70 text-xs">✦</span>
+                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/50">
                   ECOSISTEMI DIGITALI
                 </span>
-                <span className="text-[#d4af37]/40 text-xs">✦</span>
-                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/20">
+                <span className="text-[#d4af37]/70 text-xs">✦</span>
+                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/50">
                   GESTIONE FLUIDA
                 </span>
-                <span className="text-[#d4af37]/40 text-xs">✦</span>
+                <span className="text-[#d4af37]/70 text-xs">✦</span>
               </span>
             ))}
           </motion.div>

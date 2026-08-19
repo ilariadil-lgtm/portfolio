@@ -213,7 +213,7 @@ export const NebulaNav = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all ${isActive ? "text-white bg-white/10" : "text-white/40"}`}
+                  className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all ${isActive ? "text-white bg-white/10" : "text-white/50"}`}
                 >
                   {link.icon}
                 </Link>

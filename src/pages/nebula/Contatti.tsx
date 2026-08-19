@@ -89,7 +89,7 @@ function InputField({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full bg-transparent border-b border-white/10 py-3.5 text-white placeholder:text-white/20 font-outfit font-light text-base outline-none focus:border-[#d4af37] transition-colors duration-300"
+        className="w-full bg-transparent border-b border-white/10 py-3.5 text-white placeholder:text-white/50 font-outfit font-light text-base outline-none focus:border-[#d4af37] transition-colors duration-300"
       />
     </div>
   );
@@ -127,14 +127,14 @@ function SelectField({
           onChange={onChange}
           className="w-full bg-transparent border-b border-white/10 py-3.5 text-white font-outfit font-light text-base outline-none focus:border-[#d4af37] transition-colors duration-300 appearance-none rounded-none pr-8 cursor-pointer"
         >
-          <option value="" disabled className="text-white/20 bg-[#080808]">Seleziona un'opzione</option>
+          <option value="" disabled className="text-white/50 bg-[#080808]">Seleziona un'opzione</option>
           {options.map((opt) => (
             <option key={opt.value} value={opt.value} className="bg-[#080808] text-white">
               {opt.label}
             </option>
           ))}
         </select>
-        <ChevronDown size={16} className="absolute right-2 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none group-hover:text-[#d4af37] transition-colors" />
+        <ChevronDown size={16} className="absolute right-2 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none group-hover:text-[#d4af37] transition-colors" />
       </div>
     </div>
   );
@@ -350,11 +350,11 @@ ${formData.objective}
                     transition={{ delay: i * 0.1, duration: 0.7 }}
                     className="group flex items-center gap-5 p-6 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-md hover:border-[#d4af37]/40 hover:bg-gradient-to-r from-[#d4af37]/10 to-transparent hover:shadow-[inset_0_0_20px_rgba(212,175,55,0.05)] transition-all duration-500 overflow-hidden"
                   >
-                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 group-hover:text-[#d4af37] group-hover:border-[#d4af37]/50 transition-colors shrink-0">
+                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 group-hover:text-[#d4af37] group-hover:border-[#d4af37]/50 transition-colors shrink-0">
                       {c.icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-white/40 block mb-1">
+                      <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-white/50 block mb-1">
                         {c.label}
                       </span>
                       <span className="font-bricolage font-black tracking-tight text-lg text-white group-hover:text-[#d4af37] transition-colors truncate block">
@@ -413,7 +413,7 @@ ${formData.objective}
                   <div className="w-2 h-2 rounded-full bg-white/10" />
                   <div className="w-2 h-2 rounded-full bg-white/10" />
                 </div>
-                <span className="font-mono text-[8px] uppercase tracking-widest text-white/20">
+                <span className="font-mono text-[8px] uppercase tracking-widest text-white/50">
                   SYS.CONTACT_PROTOCOL
                 </span>
               </div>
@@ -460,7 +460,7 @@ ${formData.objective}
                       </div>
                       <button
                         onClick={() => setStatus("idle")}
-                        className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 hover:text-[#d4af37] transition-colors mt-8"
+                        className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/50 hover:text-[#d4af37] transition-colors mt-8"
                       >
                         Invia un altro messaggio
                       </button>
@@ -557,7 +557,7 @@ ${formData.objective}
                           value={formData.objective}
                           onChange={handleChange}
                           placeholder="Descrivi il tuo progetto e i tuoi obiettivi..."
-                          className="w-full bg-transparent border-b border-white/10 py-3.5 text-white placeholder:text-white/20 font-outfit font-light text-base outline-none focus:border-[#d4af37] transition-colors duration-300 resize-none"
+                          className="w-full bg-transparent border-b border-white/10 py-3.5 text-white placeholder:text-white/50 font-outfit font-light text-base outline-none focus:border-[#d4af37] transition-colors duration-300 resize-none"
                         />
                       </div>
 

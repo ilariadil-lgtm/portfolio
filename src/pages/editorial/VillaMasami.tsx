@@ -58,7 +58,7 @@ export const EditorialVillaMasami = () => {
           >
             <Link
               to="/progetti"
-              className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a]/60 hover:text-primary transition-colors font-semibold"
+              className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a]/65 hover:text-primary transition-colors font-semibold"
             >
               <ArrowLeft
                 size={13}
@@ -224,7 +224,7 @@ export const EditorialVillaMasami = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1 }}
           >
-            <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-12">
+            <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/65 block mb-12">
               {t("villamasami.ch2_label")}
             </span>
             <h3
@@ -329,7 +329,7 @@ export const EditorialVillaMasami = () => {
             {/* Tech Spec Card in Brutalist Style */}
             <div className="bg-white border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] p-10 h-full flex flex-col justify-between">
               <div>
-                <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/40 block mb-8">
+                <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/65 block mb-8">
                   {t("chario.tech_stack")}
                 </span>
                 <div className="flex flex-wrap gap-2.5 mb-10">

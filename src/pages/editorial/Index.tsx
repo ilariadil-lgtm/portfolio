@@ -484,7 +484,7 @@ const Index = () => {
                         defaultValue: item.title,
                       })}
                     </h3>
-                    <p className="font-body text-[14px] text-[#3d0f1a]/60 leading-relaxed line-clamp-2 max-w-md">
+                    <p className="font-body text-[14px] text-[#3d0f1a]/65 leading-relaxed line-clamp-2 max-w-md">
                       {t(`index_fallback.${item.id}.description`, {
                         defaultValue: item.description,
                       })}

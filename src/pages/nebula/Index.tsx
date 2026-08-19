@@ -251,7 +251,7 @@ const NebulaIndex = () => {
             {/* META DATI A DESTRA - Simmetria Architetturale */}
             <div className="hidden lg:flex absolute right-6 md:right-12 lg:right-24 top-1/2 -translate-y-1/2 flex-col items-end text-right gap-8 opacity-60 pointer-events-none border-r-2 border-[#d4af37]/20 pr-6">
               <div className="flex flex-col items-end gap-2">
-                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/60">
+                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/70">
                   {t("footer.status_label")}
                 </span>
                 <span className="font-inter text-xs tracking-[0.2em] text-white font-light">
@@ -259,7 +259,7 @@ const NebulaIndex = () => {
                 </span>
               </div>
               <div className="flex flex-col items-end gap-2">
-                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/60">
+                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/70">
                   {t("about.loc_label")}
                 </span>
                 <span className="font-inter text-xs tracking-[0.2em] text-white font-light">
@@ -267,7 +267,7 @@ const NebulaIndex = () => {
                 </span>
               </div>
               <div className="flex flex-col items-end gap-2">
-                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/60">
+                <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#d4af37]/70">
                   {t("about.role_label")}
                 </span>
                 <span className="font-inter text-xs tracking-[0.2em] text-white font-light">
@@ -417,7 +417,7 @@ const NebulaIndex = () => {
 
                   <div className="relative z-10 w-full flex items-center gap-6 md:gap-12 px-6 md:px-12 lg:px-24 py-10 md:py-12">
                     {/* Progressive number */}
-                    <span className="font-mono text-3xl md:text-4xl lg:text-5xl text-white/20 group-hover:text-white/40 transition-colors duration-500 tabular-nums flex-shrink-0 leading-none">
+                    <span className="font-mono text-3xl md:text-4xl lg:text-5xl text-white/50 group-hover:text-white/50 transition-colors duration-500 tabular-nums flex-shrink-0 leading-none">
                       {String(i + 1).padStart(2, "0")}
                     </span>
 

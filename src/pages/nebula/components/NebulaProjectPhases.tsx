@@ -49,7 +49,7 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
                     className={`font-fraunces italic font-light text-2xl md:text-3xl transition-colors duration-300 ${
                       isActive
                         ? "text-[#d4af37]"
-                        : "text-white/20 group-hover:text-[#d4af37]/70"
+                        : "text-white/50 group-hover:text-[#d4af37]/70"
                     }`}
                   >
                     {phase.num || phase.id}
@@ -69,7 +69,7 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
                   className={`transition-all duration-500 ${
                     isActive
                       ? "text-[#d4af37] opacity-100 translate-x-0"
-                      : "text-white/20 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0"
+                      : "text-white/50 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0"
                   }`}
                 />
               </button>
@@ -141,7 +141,7 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
                             <div className="w-2.5 md:w-3 h-2.5 md:h-3 rounded-full bg-[#27c93f]" />
                           </div>
                           <div className="flex-1 ml-4 bg-white/5 rounded-md h-5 md:h-6 flex items-center px-3 max-w-[200px]">
-                            <span className="text-[9px] md:text-[10px] text-white/30 font-mono tracking-wider truncate">
+                            <span className="text-[9px] md:text-[10px] text-white/50 font-mono tracking-wider truncate">
                               {phases[activeIndex].title.toLowerCase()}.design
                             </span>
                           </div>

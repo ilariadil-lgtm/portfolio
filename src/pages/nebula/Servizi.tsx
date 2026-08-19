@@ -151,7 +151,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
           </div>
           <motion.div
             animate={{ rotate: isHovered ? 15 : 0 }}
-            className="text-white/30 group-hover:text-[#d4af37] transition-all duration-500"
+            className="text-white/50 group-hover:text-[#d4af37] transition-all duration-500"
           >
             {service.icon || <Box size={24} />}
           </motion.div>
@@ -196,7 +196,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
             >
               <div className="font-mono text-[9px] divide-y divide-white/5 bg-black/40 backdrop-blur-md p-6 border border-white/5 rounded-2xl space-y-4">
                 <div className="flex justify-between pb-3 items-center">
-                  <span className="text-white/40 uppercase tracking-[0.2em]">
+                  <span className="text-white/50 uppercase tracking-[0.2em]">
                     {t("services.tools")}:
                   </span>
                   <span className="text-[#d4af37] text-right bg-[#d4af37]/10 px-2 py-1">
@@ -204,7 +204,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
                   </span>
                 </div>
                 <div className="flex justify-between py-3">
-                  <span className="text-white/40 uppercase tracking-[0.2em]">
+                  <span className="text-white/50 uppercase tracking-[0.2em]">
                     {t("services.methodology")}:
                   </span>
                   <span className="text-white/80 text-right">
@@ -212,13 +212,13 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
                   </span>
                 </div>
                 <div className="flex justify-between py-3">
-                  <span className="text-white/40 uppercase tracking-[0.2em]">
+                  <span className="text-white/50 uppercase tracking-[0.2em]">
                     {t("services.key_objective")}:
                   </span>
                   <span className="text-[#d4af37] text-right">{specs.kpi}</span>
                 </div>
                 <div className="pt-3">
-                  <span className="text-white/40 uppercase tracking-[0.2em] block mb-3">
+                  <span className="text-white/50 uppercase tracking-[0.2em] block mb-3">
                     {t("services.skills")}:
                   </span>
                   <div className="flex flex-wrap gap-2">
@@ -239,7 +239,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
 
         {/* Deliverables List */}
         <div className="space-y-4 pt-8 border-t border-white/5 relative z-10 mt-auto">
-          <span className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/30 block">
+          <span className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/50 block">
             DELIVERABLES
           </span>
           <ul className="space-y-3">
@@ -299,7 +299,7 @@ const WorkflowDataTerminal = () => {
                     className={`font-fraunces italic font-light text-2xl transition-colors duration-300 ${
                       isActive
                         ? "text-[#d4af37]"
-                        : "text-white/20 group-hover:text-white/50"
+                        : "text-white/50 group-hover:text-white/50"
                     }`}
                   >
                     {step.num}
@@ -338,7 +338,7 @@ const WorkflowDataTerminal = () => {
               <div className="w-2 h-2 rounded-full bg-white/10" />
               <div className="w-2 h-2 rounded-full bg-white/10" />
             </div>
-            <span className="font-mono text-[8px] uppercase tracking-widest text-white/20">
+            <span className="font-mono text-[8px] uppercase tracking-widest text-white/50">
               SYS.PROCESS_VIEWER
             </span>
           </div>
@@ -373,7 +373,7 @@ const WorkflowDataTerminal = () => {
               {/* Fake loading bar / telemetry */}
               <div className="mt-12 w-full pt-6 border-t border-white/10 relative">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="font-mono text-[8px] text-white/30 uppercase tracking-widest">
+                  <span className="font-mono text-[8px] text-white/50 uppercase tracking-widest">
                     {t("services.workflow_label")}
                   </span>
                   <span className="font-mono text-[8px] text-[#d4af37] tracking-widest animate-pulse">
@@ -649,7 +649,7 @@ const Servizi = () => {
                 
                 <div className="mb-8 pb-8 border-b border-white/10">
                   <span className="font-bricolage text-3xl font-black text-white">{t("services.pkg_cms_time")}</span>
-                  <span className="font-outfit font-light text-sm text-white/40 ml-2">{t("services.pkg_cms_time_unit")}</span>
+                  <span className="font-outfit font-light text-sm text-white/50 ml-2">{t("services.pkg_cms_time_unit")}</span>
                 </div>
 
                 <ul className="space-y-4 mb-10 flex-grow">
@@ -694,7 +694,7 @@ const Servizi = () => {
                 
                 <div className="mb-8 pb-8 border-b border-white/10">
                   <span className="font-bricolage text-3xl font-black text-white">{t("services.pkg_mvp_time")}</span>
-                  <span className="font-outfit font-light text-sm text-white/40 ml-2">{t("services.pkg_mvp_time_unit")}</span>
+                  <span className="font-outfit font-light text-sm text-white/50 ml-2">{t("services.pkg_mvp_time_unit")}</span>
                 </div>
 
                 <ul className="space-y-4 mb-10 flex-grow">
@@ -736,7 +736,7 @@ const Servizi = () => {
                 
                 <div className="mb-8 pb-8 border-b border-white/10">
                   <span className="font-bricolage text-3xl font-black text-white">{t("services.pkg_custom_time")}</span>
-                  <span className="font-outfit font-light text-sm text-white/40 ml-2">{t("services.pkg_custom_time_unit")}</span>
+                  <span className="font-outfit font-light text-sm text-white/50 ml-2">{t("services.pkg_custom_time_unit")}</span>
                 </div>
 
                 <ul className="space-y-4 mb-10 flex-grow">

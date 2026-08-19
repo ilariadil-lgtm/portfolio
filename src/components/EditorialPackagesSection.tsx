@@ -54,7 +54,7 @@ export const EditorialPackagesSection = () => {
                   <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium">
                     {t("index.home_pkg1_num")}
                   </span>
-                  <div className="w-10 h-10 rounded-full border border-primary/15 flex items-center justify-center text-[#3d0f1a]/40 bg-primary/5 group-hover:scale-110 group-hover:text-primary group-hover:border-primary/30 transition-all duration-500">
+                  <div className="w-10 h-10 rounded-full border border-primary/15 flex items-center justify-center text-[#3d0f1a]/65 bg-primary/5 group-hover:scale-110 group-hover:text-primary group-hover:border-primary/30 transition-all duration-500">
                     <span className="font-display font-black text-xl">1</span>
                   </div>
                 </div>
@@ -62,7 +62,7 @@ export const EditorialPackagesSection = () => {
                 <h3 className="font-display text-3xl md:text-4xl font-bold text-[#3d0f1a] mb-6 leading-tight">
                   {t("index.home_pkg1_title").split(" ")[0]} <br /><span className="italic text-primary">{t("index.home_pkg1_title").split(" ").slice(1).join(" ")}</span>
                 </h3>
-                <p className="font-typewriter text-[11px] uppercase tracking-[0.2em] text-[#3d0f1a]/50 font-bold leading-relaxed mb-6">
+                <p className="font-typewriter text-[11px] uppercase tracking-[0.2em] text-[#3d0f1a]/65 font-bold leading-relaxed mb-6">
                   {t("index.home_pkg1_tagline")}
                 </p>
                 <p className="font-body text-[15px] text-[#3d0f1a]/70 leading-relaxed flex-1 mb-12">
@@ -102,7 +102,7 @@ export const EditorialPackagesSection = () => {
                   <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium">
                     {t("index.home_pkg2_num")}
                   </span>
-                  <div className="w-10 h-10 rounded-full border border-primary/15 flex items-center justify-center text-[#3d0f1a]/40 bg-primary/5 group-hover:scale-110 group-hover:text-primary group-hover:border-primary/30 transition-all duration-500">
+                  <div className="w-10 h-10 rounded-full border border-primary/15 flex items-center justify-center text-[#3d0f1a]/65 bg-primary/5 group-hover:scale-110 group-hover:text-primary group-hover:border-primary/30 transition-all duration-500">
                     <span className="font-display font-black text-xl">2</span>
                   </div>
                 </div>
@@ -110,7 +110,7 @@ export const EditorialPackagesSection = () => {
                 <h3 className="font-display text-3xl md:text-4xl font-bold text-[#3d0f1a] mb-6 leading-tight">
                   {t("index.home_pkg2_title").split(" ")[0]} <br /><span className="italic text-primary">{t("index.home_pkg2_title").split(" ").slice(1).join(" ")}</span>
                 </h3>
-                <p className="font-typewriter text-[11px] uppercase tracking-[0.2em] text-[#3d0f1a]/50 font-bold leading-relaxed mb-6">
+                <p className="font-typewriter text-[11px] uppercase tracking-[0.2em] text-[#3d0f1a]/65 font-bold leading-relaxed mb-6">
                   {t("index.home_pkg2_tagline")}
                 </p>
                 <p className="font-body text-[15px] text-[#3d0f1a]/70 leading-relaxed flex-1 mb-12">
@@ -150,7 +150,7 @@ export const EditorialPackagesSection = () => {
                   <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium">
                     {t("index.home_pkg3_num")}
                   </span>
-                  <div className="w-10 h-10 rounded-full border border-primary/15 flex items-center justify-center text-[#3d0f1a]/40 bg-primary/5 group-hover:scale-110 group-hover:text-primary group-hover:border-primary/30 transition-all duration-500">
+                  <div className="w-10 h-10 rounded-full border border-primary/15 flex items-center justify-center text-[#3d0f1a]/65 bg-primary/5 group-hover:scale-110 group-hover:text-primary group-hover:border-primary/30 transition-all duration-500">
                     <span className="font-display font-black text-xl">3</span>
                   </div>
                 </div>
@@ -158,7 +158,7 @@ export const EditorialPackagesSection = () => {
                 <h3 className="font-display text-3xl md:text-4xl font-bold text-[#3d0f1a] mb-6 leading-tight">
                   {t("index.home_pkg3_title").split(" ")[0]} <br /><span className="italic text-primary">{t("index.home_pkg3_title").split(" ").slice(1).join(" ")}</span>
                 </h3>
-                <p className="font-typewriter text-[11px] uppercase tracking-[0.2em] text-[#3d0f1a]/50 font-bold leading-relaxed mb-6">
+                <p className="font-typewriter text-[11px] uppercase tracking-[0.2em] text-[#3d0f1a]/65 font-bold leading-relaxed mb-6">
                   {t("index.home_pkg3_tagline")}
                 </p>
                 <p className="font-body text-[15px] text-[#3d0f1a]/70 leading-relaxed flex-1 mb-12">

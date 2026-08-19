@@ -71,7 +71,7 @@ function InputField({
     <div className="group relative">
       <label
         htmlFor={name}
-        className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/60 block mb-3 font-bold cursor-pointer"
+        className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/65 block mb-3 font-bold cursor-pointer"
       >
         {label}
       </label>
@@ -83,7 +83,7 @@ function InputField({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full bg-transparent border-b border-[#3d0f1a]/20 py-3.5 text-[#3d0f1a] placeholder:text-[#3d0f1a]/30 font-body text-base outline-none focus:border-primary transition-colors duration-300"
+        className="w-full bg-transparent border-b border-[#3d0f1a]/20 py-3.5 text-[#3d0f1a] placeholder:text-[#3d0f1a]/65 font-body text-base outline-none focus:border-primary transition-colors duration-300"
       />
     </div>
   );
@@ -108,7 +108,7 @@ function SelectField({
     <div className="group relative">
       <label
         htmlFor={name}
-        className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/60 block mb-3 font-bold cursor-pointer"
+        className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/65 block mb-3 font-bold cursor-pointer"
       >
         {label}
       </label>
@@ -121,14 +121,14 @@ function SelectField({
           onChange={onChange}
           className="w-full bg-transparent border-b border-[#3d0f1a]/20 py-3.5 text-[#3d0f1a] font-body text-base outline-none focus:border-primary transition-colors duration-300 appearance-none rounded-none pr-8"
         >
-          <option value="" disabled className="text-[#3d0f1a]/30">Seleziona un'opzione</option>
+          <option value="" disabled className="text-[#3d0f1a]/65">Seleziona un'opzione</option>
           {options.map((opt) => (
             <option key={opt.value} value={opt.value} className="text-black">
               {opt.label}
             </option>
           ))}
         </select>
-        <ChevronDown size={16} className="absolute right-2 top-1/2 -translate-y-1/2 text-[#3d0f1a]/40 pointer-events-none group-hover:text-primary transition-colors" />
+        <ChevronDown size={16} className="absolute right-2 top-1/2 -translate-y-1/2 text-[#3d0f1a]/65 pointer-events-none group-hover:text-primary transition-colors" />
       </div>
     </div>
   );
@@ -280,7 +280,7 @@ await api.sendContactMessage(payload);
               </p>
               <div className="mt-6 pl-8 flex items-center gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-600 animate-pulse" />
-                <span className="font-typewriter text-[9px] uppercase tracking-[0.35em] text-[#3d0f1a]/50 font-bold">
+                <span className="font-typewriter text-[9px] uppercase tracking-[0.35em] text-[#3d0f1a]/65 font-bold">
                   {t("contact.available")}
                 </span>
               </div>
@@ -318,11 +318,11 @@ await api.sendContactMessage(payload);
                     transition={{ delay: i * 0.1, duration: 0.7 }}
                     className="group flex items-center gap-5 p-5 border border-[#3d0f1a]/10 bg-white shadow-[6px_6px_0px_rgba(61,15,26,0.05)] hover:shadow-[6px_6px_0px_#c0392b] hover:border-primary/20 hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all duration-400"
                   >
-                    <div className="w-10 h-10 border border-[#3d0f1a]/10 flex items-center justify-center text-[#3d0f1a]/40 bg-primary/5 group-hover:text-primary group-hover:border-primary/30 transition-all duration-400 shrink-0">
+                    <div className="w-10 h-10 border border-[#3d0f1a]/10 flex items-center justify-center text-[#3d0f1a]/65 bg-primary/5 group-hover:text-primary group-hover:border-primary/30 transition-all duration-400 shrink-0">
                       {c.icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <span className="font-typewriter text-[8px] uppercase tracking-[0.35em] text-[#3d0f1a]/40 block mb-1 font-bold">
+                      <span className="font-typewriter text-[8px] uppercase tracking-[0.35em] text-[#3d0f1a]/65 block mb-1 font-bold">
                         {c.label}
                       </span>
                       <span className="font-display text-base font-black text-[#3d0f1a] group-hover:text-primary transition-colors truncate block">
@@ -358,7 +358,7 @@ await api.sendContactMessage(payload);
                 <p className="font-body text-[15px] text-[#3d0f1a]/70">
                   {t("contact.hq_val")}
                 </p>
-                <p className="font-body text-[13px] text-[#3d0f1a]/50 mt-1">
+                <p className="font-body text-[13px] text-[#3d0f1a]/65 mt-1">
                   {t("contact.hq_desc")}
                 </p>
               </div>
@@ -414,7 +414,7 @@ await api.sendContactMessage(payload);
                       </div>
                       <button
                         onClick={() => setStatus("idle")}
-                        className="font-typewriter text-[9px] uppercase tracking-[0.4em] text-[#3d0f1a]/40 hover:text-primary transition-colors mt-4 font-bold"
+                        className="font-typewriter text-[9px] uppercase tracking-[0.4em] text-[#3d0f1a]/65 hover:text-primary transition-colors mt-4 font-bold"
                       >
                         {t("contact.send_another")}
                       </button>
@@ -499,7 +499,7 @@ await api.sendContactMessage(payload);
                       <div className="group">
                         <label
                           htmlFor="objective"
-                          className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/60 block mb-3 font-bold cursor-pointer"
+                          className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/65 block mb-3 font-bold cursor-pointer"
                         >
                           Parlami del tuo progetto
                         </label>
@@ -511,7 +511,7 @@ await api.sendContactMessage(payload);
                           value={formData.objective}
                           onChange={handleChange}
                           placeholder="Descrivi il tuo progetto e i tuoi obiettivi..."
-                          className="w-full bg-transparent border-b border-[#3d0f1a]/20 py-3.5 text-[#3d0f1a] placeholder:text-[#3d0f1a]/30 font-body text-base outline-none focus:border-primary transition-colors duration-300 resize-none"
+                          className="w-full bg-transparent border-b border-[#3d0f1a]/20 py-3.5 text-[#3d0f1a] placeholder:text-[#3d0f1a]/65 font-body text-base outline-none focus:border-primary transition-colors duration-300 resize-none"
                         />
                       </div>
 

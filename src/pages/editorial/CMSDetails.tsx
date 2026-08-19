@@ -56,7 +56,7 @@ const CMSDetails = () => {
         {/* Back link */}
         <div className="relative z-20 mb-12 md:mb-16 max-w-screen-xl mx-auto w-full">
           <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}>
-            <Link to="/servizi" className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a]/60 hover:text-primary transition-colors font-semibold">
+            <Link to="/servizi" className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a]/65 hover:text-primary transition-colors font-semibold">
               <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
               Torna ai Servizi
             </Link>
@@ -310,7 +310,7 @@ const CMSDetails = () => {
               </div>
 
               <div className="mb-10">
-                <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-[#3d0f1a]/50 block mb-6 font-semibold">
+                <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-[#3d0f1a]/65 block mb-6 font-semibold">
                   DELIVERABLES
                 </span>
                 <ul className="space-y-4 flex-grow">
@@ -323,7 +323,7 @@ const CMSDetails = () => {
               </div>
 
               <div className="pt-6 border-t border-[#3d0f1a]/10">
-                <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-[#3d0f1a]/50 block mb-6 font-semibold">
+                <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] text-[#3d0f1a]/65 block mb-6 font-semibold">
                   STACK TECNOLOGICO
                 </span>
                 <div className="flex flex-wrap gap-2">

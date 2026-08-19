@@ -226,7 +226,7 @@ export const EditorialLoghi = () => {
           >
             <Link
               to="/progetti"
-              className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a]/60 hover:text-primary transition-colors font-semibold"
+              className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a]/65 hover:text-primary transition-colors font-semibold"
             >
               <ArrowLeft
                 size={13}

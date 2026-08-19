@@ -65,7 +65,7 @@ export const NebulaFooter = () => {
             {t("footer.description")}
           </p>
           <div className="relative p-8 border border-[#d4af37]/20 bg-white/5 rounded-none hover:bg-white/10 transition-all duration-500 overflow-hidden backdrop-blur-sm mt-4">
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 font-bold block mb-4">
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/50 font-bold block mb-4">
               {t("footer.work_together").toUpperCase()}
             </span>
             <p className="font-outfit text-sm text-white/60 mb-6">
@@ -83,7 +83,7 @@ export const NebulaFooter = () => {
 
         {/* Links Column */}
         <div className="md:col-span-3 space-y-6">
-          <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 font-bold">
+          <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/50 font-bold">
             {t("footer.explore").toUpperCase()}
           </span>
           <ul className="space-y-4">
@@ -112,7 +112,7 @@ export const NebulaFooter = () => {
         {/* Contact & Network Column */}
         <div className="md:col-span-4 space-y-8">
           <div>
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 font-bold block mb-4">
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/50 font-bold block mb-4">
               NETWORK
             </span>
             <div className="grid grid-cols-2 gap-4 mb-8">
@@ -178,13 +178,13 @@ export const NebulaFooter = () => {
 
       <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
         <div className="flex flex-wrap items-center gap-4">
-          <p className="font-mono text-[10px] tracking-wider text-white/30">
+          <p className="font-mono text-[10px] tracking-wider text-white/50">
             © {currentYear} ILARIA DILIBERTO
           </p>
-          <span className="hidden md:inline font-mono text-[10px] tracking-wider text-white/30 border-l border-white/10 pl-4">
+          <span className="hidden md:inline font-mono text-[10px] tracking-wider text-white/50 border-l border-white/10 pl-4">
             {t("footer.all_rights").toUpperCase()}
           </span>
-          <span className="hidden md:inline font-mono text-[10px] tracking-wider text-white/30 border-l border-white/10 pl-4">
+          <span className="hidden md:inline font-mono text-[10px] tracking-wider text-white/50 border-l border-white/10 pl-4">
             {t("footer.tailored").toUpperCase()}
           </span>
         </div>
@@ -193,7 +193,7 @@ export const NebulaFooter = () => {
             href="https://www.iubenda.com/privacy-policy/46903805"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[10px] tracking-wider text-white/30 hover:text-white transition-colors uppercase"
+            className="font-mono text-[10px] tracking-wider text-white/50 hover:text-white transition-colors uppercase"
           >
             PRIVACY POLICY
           </a>
@@ -201,11 +201,11 @@ export const NebulaFooter = () => {
             href="https://www.iubenda.com/privacy-policy/46903805/cookie-policy"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[10px] tracking-wider text-white/30 hover:text-white transition-colors uppercase"
+            className="font-mono text-[10px] tracking-wider text-white/50 hover:text-white transition-colors uppercase"
           >
             COOKIE POLICY
           </a>
-          <span className="font-mono text-[10px] tracking-wider text-[#d4af37]/50 uppercase">
+          <span className="font-mono text-[10px] tracking-wider text-[#d4af37]/70 uppercase">
             P.IVA: 03065860847
           </span>
         </div>

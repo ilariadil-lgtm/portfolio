@@ -59,7 +59,7 @@ export const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({
 
           {/* Label */}
           <div
-            className={`absolute right-4 top-1/2 -translate-y-1/2 font-mono text-[8px] tracking-[0.3em] transition-all duration-500 whitespace-nowrap ${activeIndex === i ? "opacity-100 text-[#d4af37] translate-x-0" : "opacity-0 text-white/40 translate-x-2"}`}
+            className={`absolute right-4 top-1/2 -translate-y-1/2 font-mono text-[8px] tracking-[0.3em] transition-all duration-500 whitespace-nowrap ${activeIndex === i ? "opacity-100 text-[#d4af37] translate-x-0" : "opacity-0 text-white/50 translate-x-2"}`}
           >
             {sec}
           </div>

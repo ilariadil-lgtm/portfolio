@@ -73,7 +73,7 @@ const FaqItem = ({ faq, index }: { faq: any; index: number }) => {
       >
         <div className="flex items-start gap-8 md:gap-12 w-full">
           {/* Numero Progressivo */}
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37]/40 font-bold mt-2 shrink-0">
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37]/70 font-bold mt-2 shrink-0">
             {String(index + 1).padStart(2, "0")}
           </span>
 

@@ -239,7 +239,7 @@ export const Navigation = () => {
                   onClick={() => changeLanguage("it")}
                   aria-label="Seleziona lingua italiana"
                   aria-pressed={i18n.language === "it"}
-                  className={`font-body text-[13px] uppercase tracking-[0.2em] transition-all ${i18n.language === "it" ? "text-primary font-bold" : "text-[#3d0f1a]/50 hover:text-primary"}`}
+                  className={`font-body text-[13px] uppercase tracking-[0.2em] transition-all ${i18n.language === "it" ? "text-primary font-bold" : "text-[#3d0f1a]/65 hover:text-primary"}`}
                 >
                   IT
                 </button>
@@ -253,7 +253,7 @@ export const Navigation = () => {
                   onClick={() => changeLanguage("en")}
                   aria-label="Select English language"
                   aria-pressed={i18n.language === "en"}
-                  className={`font-body text-[13px] uppercase tracking-[0.2em] transition-all ${i18n.language === "en" ? "text-primary font-bold" : "text-[#3d0f1a]/50 hover:text-primary"}`}
+                  className={`font-body text-[13px] uppercase tracking-[0.2em] transition-all ${i18n.language === "en" ? "text-primary font-bold" : "text-[#3d0f1a]/65 hover:text-primary"}`}
                 >
                   EN
                 </button>

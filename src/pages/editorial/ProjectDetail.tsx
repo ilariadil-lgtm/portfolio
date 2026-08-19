@@ -267,7 +267,7 @@ export const EditorialProjectDetail = () => {
         <div className="max-w-7xl mx-auto py-6 flex flex-wrap items-center justify-between gap-6">
           <div className="flex flex-wrap items-center gap-8">
             <div className="flex flex-col gap-1">
-              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35">
+              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/65">
                 {t("project_detail.category")}
               </span>
               <span className="font-typewriter text-[11px] uppercase tracking-[0.2em] text-[#3d0f1a] font-bold">
@@ -276,7 +276,7 @@ export const EditorialProjectDetail = () => {
             </div>
             <div className="w-px h-8 bg-primary/10 hidden sm:block" />
             <div className="flex flex-col gap-1">
-              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35">
+              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/65">
                 {t("project_detail.year")}
               </span>
               <span className="font-display text-xl font-black">
@@ -285,7 +285,7 @@ export const EditorialProjectDetail = () => {
             </div>
             <div className="w-px h-8 bg-primary/10 hidden sm:block" />
             <div className="flex flex-col gap-1">
-              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35">
+              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/65">
                 {t("project_detail.status")}
               </span>
               <span className="font-typewriter text-[11px] text-green-700 font-bold tracking-widest">
@@ -320,9 +320,9 @@ export const EditorialProjectDetail = () => {
               >
                 <Github
                   size={13}
-                  className="text-[#3d0f1a]/50 group-hover:text-[#3d0f1a] transition-colors"
+                  className="text-[#3d0f1a]/65 group-hover:text-[#3d0f1a] transition-colors"
                 />
-                <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-[#3d0f1a]/50 group-hover:text-[#3d0f1a] transition-colors font-semibold">
+                <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-[#3d0f1a]/65 group-hover:text-[#3d0f1a] transition-colors font-semibold">
                   {t("project_detail.github")}
                 </span>
               </a>
@@ -358,7 +358,7 @@ export const EditorialProjectDetail = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 pt-10 border-t border-primary/8">
               <div>
-                <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35 block mb-3">
+                <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/65 block mb-3">
                   {t("project_detail.challenge_title")}
                 </span>
                 <p className="font-body text-[15px] text-[#3d0f1a]/65 leading-relaxed italic pr-2">
@@ -366,7 +366,7 @@ export const EditorialProjectDetail = () => {
                 </p>
               </div>
               <div>
-                <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/35 block mb-3">
+                <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/65 block mb-3">
                   {t("project_detail.result_title")}
                 </span>
                 <p className="font-body text-[15px] text-[#3d0f1a]/65 leading-relaxed italic pr-2">

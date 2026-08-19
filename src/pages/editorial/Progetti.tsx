@@ -221,7 +221,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
           <span className="font-typewriter text-[9px] uppercase tracking-[0.35em] text-primary font-bold leading-relaxed">
             {getProjectLabel(project.type, t)}
           </span>
-          <span className="font-typewriter text-[9px] text-[#3d0f1a]/50 shrink-0 font-bold">
+          <span className="font-typewriter text-[9px] text-[#3d0f1a]/65 shrink-0 font-bold">
             {project.year || "2025"}
           </span>
         </div>
@@ -425,7 +425,7 @@ const Progetti = () => {
                   className={`relative px-5 py-2.5 font-typewriter text-[10px] uppercase tracking-[0.3em] transition-all duration-300 whitespace-nowrap ${
                     activeCategory === cat.id
                       ? "text-white bg-[#3d0f1a] font-bold shadow-sm"
-                      : "text-[#3d0f1a]/60 hover:text-[#3d0f1a] hover:bg-[#3d0f1a]/5 font-semibold"
+                      : "text-[#3d0f1a]/65 hover:text-[#3d0f1a] hover:bg-[#3d0f1a]/5 font-semibold"
                   }`}
                 >
                   {cat.label}
@@ -562,7 +562,7 @@ const Progetti = () => {
                     key={i}
                     className="flex items-baseline justify-between border-b border-[#3d0f1a]/5 pb-5"
                   >
-                    <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-[#3d0f1a]/50 font-bold">
+                    <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-[#3d0f1a]/65 font-bold">
                       {stat.label}
                     </span>
                     <span

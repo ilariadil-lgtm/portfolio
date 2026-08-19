@@ -111,7 +111,7 @@ const Blog = () => {
                       />
                     </div>
                   )}
-                  <div className="flex items-center gap-4 mb-4 font-typewriter text-[9px] uppercase tracking-[0.35em] text-[#3d0f1a]/40 font-bold">
+                  <div className="flex items-center gap-4 mb-4 font-typewriter text-[9px] uppercase tracking-[0.35em] text-[#3d0f1a]/65 font-bold">
                     <span>
                       {new Date(post.created_at).toLocaleDateString(
                         i18n.language === "en" ? "en-US" : "it-IT",
@@ -128,7 +128,7 @@ const Blog = () => {
                   <h2 className="font-display text-2xl md:text-3xl font-bold text-[#3d0f1a] mb-4 group-hover:text-primary transition-colors duration-300">
                     {post.title}
                   </h2>
-                  <p className="font-body text-[15px] text-[#3d0f1a]/60 leading-relaxed line-clamp-3 mb-6">
+                  <p className="font-body text-[15px] text-[#3d0f1a]/65 leading-relaxed line-clamp-3 mb-6">
                     {post.content}
                   </p>
                   <span className="group/link inline-flex items-center gap-2 font-typewriter text-[9px] uppercase tracking-[0.35em] text-primary font-bold">
@@ -153,7 +153,7 @@ const Blog = () => {
               <p className="font-display text-3xl md:text-4xl font-bold text-[#3d0f1a] italic pr-2">
                 {t("blog.coming_soon_title")}
               </p>
-              <p className="font-body text-[#3d0f1a]/50 mt-4">
+              <p className="font-body text-[#3d0f1a]/65 mt-4">
                 {t("blog.coming_soon_desc")}
               </p>
             </motion.div>

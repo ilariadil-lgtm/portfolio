@@ -240,7 +240,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
               <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
               {getProjectLabel(project.type || project.project_type, t)}
             </span>
-            <span className="font-mono text-[9px] text-white/30 tracking-[0.2em]">
+            <span className="font-mono text-[9px] text-white/50 tracking-[0.2em]">
               {project.year || "2025"}
             </span>
           </div>
@@ -461,7 +461,7 @@ const NebulaProgetti = () => {
                   className={`relative px-5 py-2.5 rounded-full font-mono text-[10px] uppercase tracking-[0.2em] transition-all duration-300 whitespace-nowrap cursor-pointer ${
                     activeCategory === cat.id
                       ? "text-[#d4af37] bg-[#d4af37]/10 border border-[#d4af37]/40 shadow-[inset_0_0_10px_rgba(212,175,55,0.1)] font-bold"
-                      : "text-white/40 border border-transparent hover:text-white hover:bg-white/5 hover:border-white/10"
+                      : "text-white/50 border border-transparent hover:text-white hover:bg-white/5 hover:border-white/10"
                   }`}
                 >
                   {cat.label}{" "}
@@ -493,7 +493,7 @@ const NebulaProgetti = () => {
                   exit={{ opacity: 0 }}
                   className="py-32 text-center"
                 >
-                  <p className="font-mono text-[11px] uppercase tracking-[0.4em] text-white/40">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.4em] text-white/50">
                     {t("projects.no_projects")}
                   </p>
                 </motion.div>

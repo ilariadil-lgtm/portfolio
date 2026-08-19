@@ -153,7 +153,7 @@ const Chisono = () => {
                 className="bg-white border border-[#3d0f1a] shadow-[10px_10px_0px_#c0392b] max-w-xl"
               >
                 <div className="px-6 py-4 border-b border-[#3d0f1a]/10 flex items-center justify-between">
-                  <span className="font-typewriter text-[10px] uppercase tracking-[0.2em] text-[#3d0f1a]/60 font-medium">
+                  <span className="font-typewriter text-[10px] uppercase tracking-[0.2em] text-[#3d0f1a]/65 font-medium">
                     {t("about.professional_profile")}
                   </span>
                   <div className="flex gap-1.5">
@@ -176,7 +176,7 @@ const Chisono = () => {
                       key={idx}
                       className="flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0 px-6 py-4"
                     >
-                      <span className="font-typewriter text-[11px] uppercase tracking-widest text-[#3d0f1a]/60 font-medium shrink-0">
+                      <span className="font-typewriter text-[11px] uppercase tracking-widest text-[#3d0f1a]/65 font-medium shrink-0">
                         {item.label}
                       </span>
                       <span
@@ -218,7 +218,7 @@ const Chisono = () => {
                       <span className="font-typewriter text-[9px] uppercase tracking-[0.25em] text-[#3d0f1a] font-bold">
                         {t("about.method_label")}
                       </span>
-                      <span className="font-typewriter text-[7px] uppercase tracking-[0.2em] text-[#3d0f1a]/50 font-medium mt-1">
+                      <span className="font-typewriter text-[7px] uppercase tracking-[0.2em] text-[#3d0f1a]/65 font-medium mt-1">
                         {t("about.vision_label")}
                       </span>
                     </div>
@@ -334,7 +334,7 @@ const Chisono = () => {
                   <h3 className="font-display text-4xl font-bold text-[#3d0f1a]">
                     {step.title}
                   </h3>
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.4em] text-[#3d0f1a]/50 font-bold mb-4 block">
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.4em] text-[#3d0f1a]/65 font-bold mb-4 block">
                     {step.subtitle}
                   </span>
                   <p className="font-body text-lg text-[#3d0f1a]/70 leading-relaxed max-w-xl">
@@ -350,7 +350,7 @@ const Chisono = () => {
                   <div className="absolute top-6 right-6 text-[#3d0f1a]/20 group-hover:text-primary transition-all duration-300">
                     {step.icon}
                   </div>
-                  <span className="font-typewriter text-[8px] uppercase tracking-[0.3em] text-[#3d0f1a]/40 mb-6 block font-medium">
+                  <span className="font-typewriter text-[8px] uppercase tracking-[0.3em] text-[#3d0f1a]/65 mb-6 block font-medium">
                     {t("about.phase_inventory")}
                   </span>
                   <ul className="space-y-3.5">
@@ -432,7 +432,7 @@ const Chisono = () => {
                   <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform bg-primary/5">
                     <Box size={20} />
                   </div>
-                  <span className="font-typewriter text-[9px] text-[#3d0f1a]/30 font-medium">
+                  <span className="font-typewriter text-[9px] text-[#3d0f1a]/65 font-medium">
                     0{i + 1}
                   </span>
                 </div>
