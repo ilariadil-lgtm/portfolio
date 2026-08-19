@@ -38,13 +38,13 @@
   }
 
   .theme-editorial {
-    --font-heading: 'EB Garamond', serif;
-    --font-body: 'Hind Siliguri', sans-serif;
+    --font-heading: 'EB Garamond Variable', 'EB Garamond', Georgia, serif;
+    --font-body: 'Hind Siliguri', system-ui, sans-serif;
   }
 
   /* Font diretti per editorial — garantisce applicazione anche senza Tailwind CSS vars */
   body.theme-editorial {
-    font-family: 'Hind Siliguri', sans-serif;
+    font-family: 'Hind Siliguri', system-ui, sans-serif;
   }
   body.theme-editorial h1,
   body.theme-editorial h2,
@@ -52,17 +52,17 @@
   body.theme-editorial h4,
   body.theme-editorial h5,
   body.theme-editorial h6 {
-    font-family: 'EB Garamond', serif;
+    font-family: 'EB Garamond Variable', 'EB Garamond', Georgia, serif;
   }
 
   .theme-nebula {
-    --font-heading: 'Fraunces', serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Fraunces Variable', 'Fraunces', Georgia, serif;
+    --font-body: 'Inter Variable', 'Inter', system-ui, sans-serif;
   }
 
   /* Font diretti per nebula */
   body.theme-nebula {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter Variable', 'Inter', system-ui, sans-serif;
   }
   body.theme-nebula h1,
   body.theme-nebula h2,
@@ -70,7 +70,7 @@
   body.theme-nebula h4,
   body.theme-nebula h5,
   body.theme-nebula h6 {
-    font-family: 'Fraunces', serif;
+    font-family: 'Fraunces Variable', 'Fraunces', Georgia, serif;
   }
 }
 
@@ -134,18 +134,18 @@
 
   /* Override esplicito per tema editorial */
   body.theme-editorial .font-display {
-    font-family: 'EB Garamond', serif;
+    font-family: 'EB Garamond Variable', 'EB Garamond', Georgia, serif;
   }
   body.theme-editorial .font-body {
-    font-family: 'Hind Siliguri', sans-serif;
+    font-family: 'Hind Siliguri', system-ui, sans-serif;
   }
 
   /* Override esplicito per tema nebula */
   body.theme-nebula .font-display {
-    font-family: 'Fraunces', serif;
+    font-family: 'Fraunces Variable', 'Fraunces', Georgia, serif;
   }
   body.theme-nebula .font-body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter Variable', 'Inter', system-ui, sans-serif;
   }
 
   .font-body {
@@ -153,7 +153,7 @@
   }
 
   .font-typewriter {
-    font-family: 'Courier Prime', monospace;
+    font-family: 'Courier Prime', ui-monospace, monospace;
   }
 
   .text-stroke {

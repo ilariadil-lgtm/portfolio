@@ -47,6 +47,10 @@ export default defineConfig(({ mode }) => ({
           if (id.includes("node_modules/lucide-react")) {
             return "lucide-icons";
           }
+          // i18next: cambia raramente, merita una cache separata
+          if (id.includes("node_modules/i18next") || id.includes("node_modules/react-i18next")) {
+            return "i18n-vendor";
+          }
         },
       },
     },

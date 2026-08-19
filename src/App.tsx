@@ -1,5 +1,4 @@
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { useState, useEffect, lazy, Suspense } from "react";
@@ -17,8 +16,6 @@ import { LenisScroller } from "./components/LenisScroller";
 import { DesignSwitcher } from "./components/DesignSwitcher";
 import { SoundProvider } from "./context/SoundContext";
 import { ErrorBoundary } from "./components/ErrorBoundary";
-
-const queryClient = new QueryClient();
 
 const PageFallback = ({ isEditorial }: { isEditorial: boolean }) => (
   <div className={`min-h-[100dvh] ${isEditorial ? 'bg-background' : 'bg-[#0a0a0a]'}`} aria-hidden="true" />
@@ -70,8 +67,25 @@ const AnimatedRoutes = () => {
 // ─────────────────────────────────────────────────────────────────────────────
 // AppContent: gestisce preloader e layout root
 // ─────────────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// Il preloader e un elemento di marca, non un indicatore di caricamento: dura
+// circa 5,6 s a prescindere da quanto ci mette il sito. Va mostrato una volta
+// per sessione, e mai a chi ha chiesto meno animazioni al sistema operativo.
+// ─────────────────────────────────────────────────────────────────────────────
+const CHIAVE_PRELOADER = "preloader-visto";
+
+const devoMostrareIlPreloader = (): boolean => {
+  if (typeof window === "undefined") return false;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
+  try {
+    return window.sessionStorage.getItem(CHIAVE_PRELOADER) !== "1";
+  } catch {
+    return true; // sessionStorage negato: meglio mostrarlo che rompere
+  }
+};
+
 const AppContent = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(devoMostrareIlPreloader);
   const { design } = useDesign();
   const isEditorial = design === "editorial";
 
@@ -81,26 +95,19 @@ const AppContent = () => {
   }, [isLoading]);
 
   useEffect(() => {
-    // Aggiungi la classe del tema al body per gestire i font dinamici
+    // I font sono self-hostati e dichiarati staticamente nel CSS.
+    // Qui resta solo la classe di tema sul body.
     document.body.className = `theme-${design}`;
-
-    // Ottimizzazione Font: carica solo le famiglie del tema corrente
-    const fontLinkId = "google-fonts-dynamic";
-    let fontLink = document.getElementById(fontLinkId) as HTMLLinkElement | null;
-    
-    if (!fontLink) {
-      fontLink = document.createElement("link");
-      fontLink.id = fontLinkId;
-      fontLink.rel = "stylesheet";
-      document.head.appendChild(fontLink);
-    }
-    
-    if (design === "editorial") {
-      fontLink.href = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap";
-    } else {
-      fontLink.href = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300..600&family=JetBrains+Mono:wght@400..800&display=swap";
-    }
   }, [design]);
+
+  const concludiPreloader = () => {
+    try {
+      window.sessionStorage.setItem(CHIAVE_PRELOADER, "1");
+    } catch {
+      /* sessionStorage negato: pazienza, si rivedra alla prossima visita */
+    }
+    setIsLoading(false);
+  };
 
   return (
     <BrowserRouter>
@@ -109,8 +116,8 @@ const AppContent = () => {
         <AnimatePresence>
           {isLoading && (
             isEditorial 
-              ? <Preloader onComplete={() => setIsLoading(false)} />
-              : <NebulaPreloader onComplete={() => setIsLoading(false)} />
+              ? <Preloader onComplete={concludiPreloader} />
+              : <NebulaPreloader onComplete={concludiPreloader} />
           )}
         </AnimatePresence>
         <ErrorBoundary>
@@ -126,15 +133,13 @@ const AppContent = () => {
 // App root
 // ─────────────────────────────────────────────────────────────────────────────
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <DesignProvider>
-      <SoundProvider>
-        <TooltipProvider>
-          <AppContent />
-        </TooltipProvider>
-      </SoundProvider>
-    </DesignProvider>
-  </QueryClientProvider>
+  <DesignProvider>
+    <SoundProvider>
+      <TooltipProvider>
+        <AppContent />
+      </TooltipProvider>
+    </SoundProvider>
+  </DesignProvider>
 );
 
 export default App;

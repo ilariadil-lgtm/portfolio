@@ -65,12 +65,12 @@ export default {
       fontFamily: {
         display: ["var(--font-heading)", "serif"],
         body: ["var(--font-body)", "sans-serif"],
-        bricolage: ["Bricolage Grotesque", "sans-serif"],
-        fraunces: ["Fraunces", "serif"],
-        outfit: ["Bricolage Grotesque", "sans-serif"], // legacy alias → punta su bricolage
-        space: ["Bricolage Grotesque", "sans-serif"],  // legacy alias
-        inter: ["Inter", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        bricolage: ["Bricolage Grotesque Variable", "system-ui", "sans-serif"],
+        fraunces: ["Fraunces Variable", "Georgia", "serif"],
+        outfit: ["Bricolage Grotesque Variable", "system-ui", "sans-serif"], // legacy alias → punta su bricolage
+        space: ["Bricolage Grotesque Variable", "system-ui", "sans-serif"],  // legacy alias
+        inter: ["Inter Variable", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono Variable", "ui-monospace", "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",

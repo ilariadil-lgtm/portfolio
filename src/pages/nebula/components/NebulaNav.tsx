@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { cambiaLingua } from "@/lib/i18n";
 import { Link, useLocation } from "react-router-dom";
 import {
   Home,
@@ -26,7 +27,7 @@ export const NebulaNav = () => {
 
   const toggleLanguage = () => {
     playClick();
-    i18n.changeLanguage(i18n.language === "en" ? "it" : "en");
+    void cambiaLingua(i18n.language === "en" ? "it" : "en");
   };
 
   useEffect(() => {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { cambiaLingua } from "@/lib/i18n";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
@@ -27,7 +28,7 @@ export const Navigation = () => {
   const { design } = useDesign();
 
   const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
+    void cambiaLingua(lng);
     playClick();
   };
 
