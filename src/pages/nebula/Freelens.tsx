@@ -35,7 +35,7 @@ export const NebulaFreelens = () => {
       title: "L'Obiettivo",
       description: (
         <div className="flex flex-col justify-center h-full">
-          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
+          <p className="border-l-2 border-gold/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
             "Riprendere il controllo del proprio tempo. Un ecosistema dove la
             salute finanziaria diventa finalmente chiara, misurabile e assistita
             dall'intelligenza artificiale."

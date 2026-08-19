@@ -40,7 +40,7 @@ export const NebulaVillaMima = () => {
       title: "L'Obiettivo",
       description: (
         <div className="flex flex-col justify-center h-full">
-          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
+          <p className="border-l-2 border-gold/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
             "L'eleganza si nasconde nei dettagli: un'interfaccia progettata per
             far pregustare l'atmosfera magica di un evento indimenticabile,
             ancor prima del primo assaggio."

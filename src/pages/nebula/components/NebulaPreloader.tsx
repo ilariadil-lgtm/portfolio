@@ -72,28 +72,28 @@ export const NebulaPreloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               transition={{ duration: 1, ease: "easeOut" }}
               className="flex flex-col items-center text-center mb-16"
             >
-              <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.4em] text-[#d4af37] mb-6">
+              <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.4em] text-gold mb-6">
                 ogni pixel conta.
               </span>
               <div className="flex items-baseline gap-x-3 md:gap-x-4">
                 <span className="font-bricolage font-bold text-5xl md:text-7xl lg:text-[clamp(2rem,7vw,7rem)] tracking-wider text-white">
                   ilaria
                 </span>
-                <span className="font-fraunces italic font-light text-5xl md:text-7xl lg:text-[clamp(2rem,7vw,7rem)] tracking-wider text-[#d4af37] pr-2">
+                <span className="font-fraunces italic font-light text-5xl md:text-7xl lg:text-[clamp(2rem,7vw,7rem)] tracking-wider text-gold pr-2">
                   diliberto.
                 </span>
               </div>
             </motion.div>
 
             <div className="w-full max-w-xs md:max-w-md flex flex-col gap-4">
-              <div className="flex justify-between items-end font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]/70">
+              <div className="flex justify-between items-end font-mono text-[10px] uppercase tracking-[0.3em] text-gold/70">
                 <span>Loading Assets</span>
                 <span className="text-white font-bold">{progress}%</span>
               </div>
 
               <div className="w-full h-[1px] bg-white/10 relative overflow-hidden">
                 <motion.div
-                  className="absolute top-0 left-0 h-full bg-[#d4af37]"
+                  className="absolute top-0 left-0 h-full bg-gold"
                   initial={{ width: "0%" }}
                   animate={{ width: `${progress}%` }}
                   transition={{ duration: 0.2, ease: "linear" }}

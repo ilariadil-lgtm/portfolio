@@ -35,7 +35,7 @@ const Blog = () => {
   }, []);
 
   return (
-    <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative lg:pl-24">
+    <div className="min-h-[100dvh] w-full bg-night text-slate-100 font-sans selection:bg-gold/30 overflow-hidden flex flex-col relative lg:pl-24">
       <NebulaNav />
       <ScrollIndicator
         sections={["scroll.hero", "scroll.contact"].map((k) => t(k))}
@@ -53,10 +53,10 @@ const Blog = () => {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="flex items-center gap-4 mb-8">
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]">
+              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold">
                 TECHNICAL JOURNAL
               </span>
-              <div className="w-12 h-[1px] bg-[#d4af37]/30" />
+              <div className="w-12 h-[1px] bg-gold/30" />
             </div>
             <h1
               className="font-fraunces italic font-light leading-[0.9] tracking-tight text-white mb-8 pr-2"
@@ -67,10 +67,10 @@ const Blog = () => {
               <RevealText
                 text="riflessioni."
                 delay={0.2}
-                className="text-[#d4af37]"
+                className="text-gold"
               />
             </h1>
-            <p className="font-outfit font-light text-white/50 text-lg leading-relaxed max-w-xl pl-8 border-l border-[#d4af37]/30">
+            <p className="font-outfit font-light text-white/50 text-lg leading-relaxed max-w-xl pl-8 border-l border-gold/30">
               Uno spazio dedicato a riflessioni su design, sviluppo web,
               intelligenza artificiale e strategia digitale.
             </p>
@@ -106,7 +106,7 @@ const Blog = () => {
                       />
                     </div>
                   )}
-                  <div className="flex items-center gap-4 mb-6 font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37]">
+                  <div className="flex items-center gap-4 mb-6 font-mono text-[9px] uppercase tracking-[0.2em] text-gold">
                     <span>
                       {new Date(post.created_at).toLocaleDateString("it-IT", {
                         year: "numeric",
@@ -121,13 +121,13 @@ const Blog = () => {
                       </>
                     )}
                   </div>
-                  <h2 className="font-bricolage font-black tracking-tight text-3xl md:text-4xl text-white mb-6 group-hover:text-[#d4af37] transition-colors duration-500">
+                  <h2 className="font-bricolage font-black tracking-tight text-3xl md:text-4xl text-white mb-6 group-hover:text-gold transition-colors duration-500">
                     {post.title}
                   </h2>
                   <p className="font-outfit font-light text-white/60 text-base leading-relaxed line-clamp-3 mb-8">
                     {post.content}
                   </p>
-                  <span className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37] opacity-60 group-hover:opacity-100 transition-opacity">
+                  <span className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-gold opacity-60 group-hover:opacity-100 transition-opacity">
                     LEGGI ARTICOLO
                     <ArrowRight
                       size={14}
@@ -143,7 +143,7 @@ const Blog = () => {
               animate={{ opacity: 1, y: 0 }}
               className="py-32 text-center"
             >
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37] block mb-8">
+              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold block mb-8">
                 IN ARRIVO
               </span>
               <p className="font-fraunces italic font-light text-5xl text-white mb-6 pr-2">

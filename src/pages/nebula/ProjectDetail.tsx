@@ -31,7 +31,7 @@ const NebulaProjectDetail = () => {
 
   if (loading) {
     return (
-      <div className="min-h-[100dvh] w-full bg-[#080808] flex items-center justify-center font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37] gap-4">
+      <div className="min-h-[100dvh] w-full bg-night flex items-center justify-center font-mono text-[10px] uppercase tracking-[0.2em] text-gold gap-4">
         <Hexagon size={24} className="animate-spin-slow opacity-50" />
         RETRIEVING PROJECT...
       </div>
@@ -40,13 +40,13 @@ const NebulaProjectDetail = () => {
 
   if (!project) {
     return (
-      <div className="min-h-[100dvh] w-full bg-[#080808] flex flex-col items-center justify-center space-y-8 text-white">
+      <div className="min-h-[100dvh] w-full bg-night flex flex-col items-center justify-center space-y-8 text-white">
         <h1 className="font-fraunces italic font-light text-5xl pr-2">
           Project Not Found
         </h1>
         <Link
           to="/progetti"
-          className="px-8 py-4 border border-[#d4af37]/30 text-[#d4af37] font-mono text-[9px] uppercase tracking-[0.2em] hover:bg-[#d4af37]/10 transition-colors"
+          className="px-8 py-4 border border-gold/30 text-gold font-mono text-[9px] uppercase tracking-[0.2em] hover:bg-gold/10 transition-colors"
         >
           RETURN TO SELECTED WORKS
         </Link>

@@ -108,7 +108,7 @@ const NavPoint: React.FC<NavPointProps> = ({
       <Link to={to} aria-label={label}>
         <div className="relative flex items-center justify-center w-24 h-24 group">
           <motion.div
-            className="w-3 h-3 rounded-full bg-[#C0392B]"
+            className="w-3 h-3 rounded-full bg-crimson"
             animate={{
               scale: isLocalHover ? 1.5 : 1,
               boxShadow: isLocalHover
@@ -124,7 +124,7 @@ const NavPoint: React.FC<NavPointProps> = ({
                   {...anim}
                   style={{ rotate: counterRotation }}
                   transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="whitespace-nowrap bg-[#f5f2ed]/98 backdrop-blur-3xl p-4 md:p-6 border border-primary/10 shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
+                  className="whitespace-nowrap bg-cream/98 backdrop-blur-3xl p-4 md:p-6 border border-primary/10 shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
                 >
                   <div className="flex items-center gap-4 mb-3">
                     <span className="w-8 h-[1px] bg-primary/30" />
@@ -132,7 +132,7 @@ const NavPoint: React.FC<NavPointProps> = ({
                       {label}
                     </span>
                   </div>
-                  <span className="block font-display text-lg font-bold text-[#3d0f1a] tracking-tight">
+                  <span className="block font-display text-lg font-bold text-ink tracking-tight">
                     {detail}
                   </span>
                 </motion.div>
@@ -246,7 +246,7 @@ export const CreativeHero: React.FC = () => {
   }, [radius1, radius2, radius3]);
 
   return (
-    <section className="relative lg:min-h-[100svh] flex flex-col justify-start lg:justify-center pt-24 md:pt-28 lg:pt-0 pb-8 md:pb-12 lg:pb-0 px-6 md:px-12 lg:px-20 bg-[#f5f2ed]">
+    <section className="relative lg:min-h-[100svh] flex flex-col justify-start lg:justify-center pt-24 md:pt-28 lg:pt-0 pb-8 md:pb-12 lg:pb-0 px-6 md:px-12 lg:px-20 bg-cream">
       {/* BACKGROUND INFRASTRUCTURE */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div
@@ -285,7 +285,7 @@ export const CreativeHero: React.FC = () => {
                   text="ilaria"
                   delay={0.2}
                   mode="char"
-                  className="inline-block text-[clamp(2.5rem,10vw,6rem)] md:text-[clamp(4rem,8vw,8rem)] font-bold text-[#3d0f1a]"
+                  className="inline-block text-[clamp(2.5rem,10vw,6rem)] md:text-[clamp(4rem,8vw,8rem)] font-bold text-ink"
                 />
               </motion.div>
               <motion.div
@@ -299,7 +299,7 @@ export const CreativeHero: React.FC = () => {
                     mode="char"
                     className="inline-block text-[clamp(2.5rem,10vw,6rem)] md:text-[clamp(4rem,8vw,8rem)] font-bold text-primary italic"
                   />
-                  <span className="inline-block text-[clamp(2.5rem,10vw,6rem)] md:text-[clamp(4rem,8vw,8rem)] font-bold text-[#3d0f1a] not-italic leading-none translate-y-1 md:translate-y-2">
+                  <span className="inline-block text-[clamp(2.5rem,10vw,6rem)] md:text-[clamp(4rem,8vw,8rem)] font-bold text-ink not-italic leading-none translate-y-1 md:translate-y-2">
                     .
                   </span>
                 </div>
@@ -312,7 +312,7 @@ export const CreativeHero: React.FC = () => {
               transition={{ delay: 1, duration: 1 }}
               className="mt-8 lg:mt-12 max-w-[34rem]"
             >
-              <p className="font-body text-sm md:text-base text-[#3d0f1a]/65 leading-relaxed border-l-2 border-primary/10 pl-6 lg:pl-8 py-2 mb-8">
+              <p className="font-body text-sm md:text-base text-ink/65 leading-relaxed border-l-2 border-primary/10 pl-6 lg:pl-8 py-2 mb-8">
                 "{t("hero.description")}"
               </p>
               <Link 

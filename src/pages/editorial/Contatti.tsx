@@ -71,7 +71,7 @@ function InputField({
     <div className="group relative">
       <label
         htmlFor={name}
-        className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/65 block mb-3 font-bold cursor-pointer"
+        className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-ink/65 block mb-3 font-bold cursor-pointer"
       >
         {label}
       </label>
@@ -83,7 +83,7 @@ function InputField({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full bg-transparent border-b border-[#3d0f1a]/20 py-3.5 text-[#3d0f1a] placeholder:text-[#3d0f1a]/65 font-body text-base outline-none focus:border-primary transition-colors duration-300"
+        className="w-full bg-transparent border-b border-ink/20 py-3.5 text-ink placeholder:text-ink/65 font-body text-base outline-none focus:border-primary transition-colors duration-300"
       />
     </div>
   );
@@ -108,7 +108,7 @@ function SelectField({
     <div className="group relative">
       <label
         htmlFor={name}
-        className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/65 block mb-3 font-bold cursor-pointer"
+        className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-ink/65 block mb-3 font-bold cursor-pointer"
       >
         {label}
       </label>
@@ -119,16 +119,16 @@ function SelectField({
           required={required}
           value={value}
           onChange={onChange}
-          className="w-full bg-transparent border-b border-[#3d0f1a]/20 py-3.5 text-[#3d0f1a] font-body text-base outline-none focus:border-primary transition-colors duration-300 appearance-none rounded-none pr-8"
+          className="w-full bg-transparent border-b border-ink/20 py-3.5 text-ink font-body text-base outline-none focus:border-primary transition-colors duration-300 appearance-none rounded-none pr-8"
         >
-          <option value="" disabled className="text-[#3d0f1a]/65">Seleziona un'opzione</option>
+          <option value="" disabled className="text-ink/65">Seleziona un'opzione</option>
           {options.map((opt) => (
             <option key={opt.value} value={opt.value} className="text-black">
               {opt.label}
             </option>
           ))}
         </select>
-        <ChevronDown size={16} className="absolute right-2 top-1/2 -translate-y-1/2 text-[#3d0f1a]/65 pointer-events-none group-hover:text-primary transition-colors" />
+        <ChevronDown size={16} className="absolute right-2 top-1/2 -translate-y-1/2 text-ink/65 pointer-events-none group-hover:text-primary transition-colors" />
       </div>
     </div>
   );
@@ -213,7 +213,7 @@ await api.sendContactMessage(payload);
   };
 
   return (
-    <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] overflow-hidden selection:bg-primary/30">
+    <div className="min-h-[100dvh] bg-cream text-ink overflow-hidden selection:bg-primary/30">
       <Navigation />
 
       {/* HERO */}
@@ -231,7 +231,7 @@ await api.sendContactMessage(payload);
         {/* Watermark */}
         <div className="absolute inset-0 flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
           <span
-            className="font-display font-black text-[#3d0f1a]/[0.025] pr-4"
+            className="font-display font-black text-ink/[0.025] pr-4"
             style={{ fontSize: "clamp(80px, 18vw, 240px)", lineHeight: 1 }}
           >
             {t("contact.watermark")}
@@ -253,7 +253,7 @@ await api.sendContactMessage(payload);
                 <div className="w-10 h-[1px] bg-primary/25" />
               </div>
               <h1
-                className="font-display font-bold leading-[1.1] md:leading-[0.85] tracking-tighter text-[#3d0f1a]"
+                className="font-display font-bold leading-[1.1] md:leading-[0.85] tracking-tighter text-ink"
                 style={{ fontSize: "clamp(3rem, 7vw, 5.8rem)" }}
               >
                 <RevealText text={t("contact.title_1")} delay={0.1} />
@@ -275,12 +275,12 @@ await api.sendContactMessage(payload);
                 ease: [0.16, 1, 0.3, 1],
               }}
             >
-              <p className="font-body text-xl text-[#3d0f1a]/70 leading-relaxed border-l border-primary/25 pl-8">
+              <p className="font-body text-xl text-ink/70 leading-relaxed border-l border-primary/25 pl-8">
                 {t("contact.description")}
               </p>
               <div className="mt-6 pl-8 flex items-center gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-600 animate-pulse" />
-                <span className="font-typewriter text-[9px] uppercase tracking-[0.35em] text-[#3d0f1a]/65 font-bold">
+                <span className="font-typewriter text-[9px] uppercase tracking-[0.35em] text-ink/65 font-bold">
                   {t("contact.available")}
                 </span>
               </div>
@@ -316,16 +316,16 @@ await api.sendContactMessage(payload);
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1, duration: 0.7 }}
-                    className="group flex items-center gap-5 p-5 border border-[#3d0f1a]/10 bg-white shadow-[6px_6px_0px_rgba(61,15,26,0.05)] hover:shadow-[6px_6px_0px_#c0392b] hover:border-primary/20 hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all duration-400"
+                    className="group flex items-center gap-5 p-5 border border-ink/10 bg-white shadow-[6px_6px_0px_rgba(61,15,26,0.05)] hover:shadow-[6px_6px_0px_#c0392b] hover:border-primary/20 hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all duration-400"
                   >
-                    <div className="w-10 h-10 border border-[#3d0f1a]/10 flex items-center justify-center text-[#3d0f1a]/65 bg-primary/5 group-hover:text-primary group-hover:border-primary/30 transition-all duration-400 shrink-0">
+                    <div className="w-10 h-10 border border-ink/10 flex items-center justify-center text-ink/65 bg-primary/5 group-hover:text-primary group-hover:border-primary/30 transition-all duration-400 shrink-0">
                       {c.icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <span className="font-typewriter text-[8px] uppercase tracking-[0.35em] text-[#3d0f1a]/65 block mb-1 font-bold">
+                      <span className="font-typewriter text-[8px] uppercase tracking-[0.35em] text-ink/65 block mb-1 font-bold">
                         {c.label}
                       </span>
-                      <span className="font-display text-base font-black text-[#3d0f1a] group-hover:text-primary transition-colors truncate block">
+                      <span className="font-display text-base font-black text-ink group-hover:text-primary transition-colors truncate block">
                         {c.detail}
                       </span>
                     </div>
@@ -349,16 +349,16 @@ await api.sendContactMessage(payload);
               </div>
             </div>
 
-            <div className="p-6 border border-[#3d0f1a]/10 bg-white flex items-start gap-4">
+            <div className="p-6 border border-ink/10 bg-white flex items-start gap-4">
               <MapPin size={16} className="text-primary mt-0.5 shrink-0" />
               <div>
                 <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-primary font-bold block mb-2">
                   {t("contact.hq_label")}
                 </span>
-                <p className="font-body text-[15px] text-[#3d0f1a]/70">
+                <p className="font-body text-[15px] text-ink/70">
                   {t("contact.hq_val")}
                 </p>
-                <p className="font-body text-[13px] text-[#3d0f1a]/65 mt-1">
+                <p className="font-body text-[13px] text-ink/65 mt-1">
                   {t("contact.hq_desc")}
                 </p>
               </div>
@@ -373,14 +373,14 @@ await api.sendContactMessage(payload);
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="bg-white border border-[#3d0f1a] p-10 md:p-14 relative overflow-hidden shadow-[15px_15px_0px_#c0392b]">
+            <div className="bg-white border border-ink p-10 md:p-14 relative overflow-hidden shadow-[15px_15px_0px_#c0392b]">
               <div className="relative z-10">
                 <div className="mb-10">
                   <span className="font-typewriter text-[10px] uppercase tracking-[0.5em] text-primary block mb-4 font-bold">
                     {t("contact.send_msg_label")}
                   </span>
                   <h2
-                    className="font-display font-black leading-[0.9] tracking-tighter text-[#3d0f1a]"
+                    className="font-display font-black leading-[0.9] tracking-tighter text-ink"
                     style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
                   >
                     {t("contact.form_title_1")} <br />
@@ -405,16 +405,16 @@ await api.sendContactMessage(payload);
                         strokeWidth={1.5}
                       />
                       <div>
-                        <p className="font-display text-3xl font-black mb-3 text-[#3d0f1a]">
+                        <p className="font-display text-3xl font-black mb-3 text-ink">
                           {t("contact.msg_sent_title")}
                         </p>
-                        <p className="font-body text-[#3d0f1a]/70 text-lg leading-relaxed">
+                        <p className="font-body text-ink/70 text-lg leading-relaxed">
                           {t("contact.msg_sent_desc")}
                         </p>
                       </div>
                       <button
                         onClick={() => setStatus("idle")}
-                        className="font-typewriter text-[9px] uppercase tracking-[0.4em] text-[#3d0f1a]/65 hover:text-primary transition-colors mt-4 font-bold"
+                        className="font-typewriter text-[9px] uppercase tracking-[0.4em] text-ink/65 hover:text-primary transition-colors mt-4 font-bold"
                       >
                         {t("contact.send_another")}
                       </button>
@@ -499,7 +499,7 @@ await api.sendContactMessage(payload);
                       <div className="group">
                         <label
                           htmlFor="objective"
-                          className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-[#3d0f1a]/65 block mb-3 font-bold cursor-pointer"
+                          className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-ink/65 block mb-3 font-bold cursor-pointer"
                         >
                           Parlami del tuo progetto
                         </label>
@@ -511,7 +511,7 @@ await api.sendContactMessage(payload);
                           value={formData.objective}
                           onChange={handleChange}
                           placeholder="Descrivi il tuo progetto e i tuoi obiettivi..."
-                          className="w-full bg-transparent border-b border-[#3d0f1a]/20 py-3.5 text-[#3d0f1a] placeholder:text-[#3d0f1a]/65 font-body text-base outline-none focus:border-primary transition-colors duration-300 resize-none"
+                          className="w-full bg-transparent border-b border-ink/20 py-3.5 text-ink placeholder:text-ink/65 font-body text-base outline-none focus:border-primary transition-colors duration-300 resize-none"
                         />
                       </div>
 
@@ -530,16 +530,16 @@ await api.sendContactMessage(payload);
                           type="submit"
                           disabled={status === "loading"}
                           data-cursor="pointer"
-                          className="group relative flex items-center justify-between w-full p-7 border border-[#3d0f1a] bg-[#f5f2ed] hover:bg-primary overflow-hidden transition-all duration-500 disabled:opacity-50 mt-4"
+                          className="group relative flex items-center justify-between w-full p-7 border border-ink bg-cream hover:bg-primary overflow-hidden transition-all duration-500 disabled:opacity-50 mt-4"
                         >
-                          <span className="relative z-10 font-typewriter text-[11px] uppercase tracking-[0.4em] text-[#3d0f1a] group-hover:text-white font-bold transition-colors">
+                          <span className="relative z-10 font-typewriter text-[11px] uppercase tracking-[0.4em] text-ink group-hover:text-white font-bold transition-colors">
                             {status === "loading"
                               ? t("contact.btn_sending")
                               : t("contact.btn_send")}
                           </span>
                           <ArrowRight
                             size={18}
-                            className="relative z-10 text-[#3d0f1a] group-hover:text-white group-hover:translate-x-3 transition-transform duration-500"
+                            className="relative z-10 text-ink group-hover:text-white group-hover:translate-x-3 transition-transform duration-500"
                           />
                         </button>
                       </MagneticWrapper>

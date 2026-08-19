@@ -98,11 +98,11 @@ export const NebulaNav = () => {
                 to={link.path}
                 onMouseEnter={playHover}
                 onClick={playClick}
-                className={`group relative flex items-center w-full h-14 rounded-xl transition-all duration-300 ${isActive ? "bg-[#d4af37]/10" : "hover:bg-white/[0.04]"}`}
+                className={`group relative flex items-center w-full h-14 rounded-xl transition-all duration-300 ${isActive ? "bg-gold/10" : "hover:bg-white/[0.04]"}`}
                 aria-label={link.name}
               >
                 <div
-                  className={`w-20 h-14 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 ${isActive ? "text-[#d4af37] drop-shadow-[0_0_10px_rgba(212,175,55,0.7)]" : "text-white/50 group-hover:text-white"}`}
+                  className={`w-20 h-14 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 ${isActive ? "text-gold drop-shadow-[0_0_10px_rgba(212,175,55,0.7)]" : "text-white/50 group-hover:text-white"}`}
                 >
                   {React.cloneElement(link.icon as React.ReactElement, {
                     strokeWidth: isActive ? 2 : 1.5,
@@ -110,7 +110,7 @@ export const NebulaNav = () => {
                   })}
                 </div>
                 <span
-                  className={`absolute left-20 font-mono text-[11px] uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 ${isActive ? "text-[#d4af37] font-bold opacity-0 group-hover/nav:opacity-100" : "text-white/50 group-hover:text-white opacity-0 group-hover/nav:opacity-100"}`}
+                  className={`absolute left-20 font-mono text-[11px] uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 ${isActive ? "text-gold font-bold opacity-0 group-hover/nav:opacity-100" : "text-white/50 group-hover:text-white opacity-0 group-hover/nav:opacity-100"}`}
                 >
                   {link.name}
                 </span>
@@ -120,7 +120,7 @@ export const NebulaNav = () => {
                     <motion.div
                       initial={{ scaleY: 0 }}
                       animate={{ scaleY: 1 }}
-                      className="w-[4px] h-7 bg-[#d4af37] rounded-r-full shadow-[0_0_12px_rgba(212,175,55,0.6)] origin-center"
+                      className="w-[4px] h-7 bg-gold rounded-r-full shadow-[0_0_12px_rgba(212,175,55,0.6)] origin-center"
                       transition={{
                         type: "spring",
                         stiffness: 300,
@@ -169,13 +169,13 @@ export const NebulaNav = () => {
               ) : (
                 <Volume2
                   size={20}
-                  className="text-[#d4af37]"
+                  className="text-gold"
                   strokeWidth={1.5}
                 />
               )}
             </div>
             <span
-              className={`absolute left-20 font-mono text-[11px] uppercase tracking-[0.2em] opacity-0 group-hover/nav:opacity-100 transition-opacity whitespace-nowrap ${isMuted ? "text-white/50 group-hover:text-white" : "text-[#d4af37]"}`}
+              className={`absolute left-20 font-mono text-[11px] uppercase tracking-[0.2em] opacity-0 group-hover/nav:opacity-100 transition-opacity whitespace-nowrap ${isMuted ? "text-white/50 group-hover:text-white" : "text-gold"}`}
             >
               {isMuted ? "SND: OFF" : "SND: ON"}
             </span>
@@ -267,7 +267,7 @@ export const NebulaNav = () => {
                     playClick();
                     toggleMute();
                   }}
-                  className={`flex-1 flex items-center justify-center gap-2 p-4 rounded-xl bg-white/[0.05] font-mono text-[10px] uppercase tracking-widest ${isMuted ? "text-white/60" : "text-[#d4af37]"}`}
+                  className={`flex-1 flex items-center justify-center gap-2 p-4 rounded-xl bg-white/[0.05] font-mono text-[10px] uppercase tracking-widest ${isMuted ? "text-white/60" : "text-gold"}`}
                 >
                   {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
                   {isMuted ? "OFF" : "ON"}

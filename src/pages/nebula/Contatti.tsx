@@ -89,7 +89,7 @@ function InputField({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full bg-transparent border-b border-white/10 py-3.5 text-white placeholder:text-white/50 font-outfit font-light text-base outline-none focus:border-[#d4af37] transition-colors duration-300"
+        className="w-full bg-transparent border-b border-white/10 py-3.5 text-white placeholder:text-white/50 font-outfit font-light text-base outline-none focus:border-gold transition-colors duration-300"
       />
     </div>
   );
@@ -125,16 +125,16 @@ function SelectField({
           required={required}
           value={value}
           onChange={onChange}
-          className="w-full bg-transparent border-b border-white/10 py-3.5 text-white font-outfit font-light text-base outline-none focus:border-[#d4af37] transition-colors duration-300 appearance-none rounded-none pr-8 cursor-pointer"
+          className="w-full bg-transparent border-b border-white/10 py-3.5 text-white font-outfit font-light text-base outline-none focus:border-gold transition-colors duration-300 appearance-none rounded-none pr-8 cursor-pointer"
         >
-          <option value="" disabled className="text-white/50 bg-[#080808]">Seleziona un'opzione</option>
+          <option value="" disabled className="text-white/50 bg-night">Seleziona un'opzione</option>
           {options.map((opt) => (
-            <option key={opt.value} value={opt.value} className="bg-[#080808] text-white">
+            <option key={opt.value} value={opt.value} className="bg-night text-white">
               {opt.label}
             </option>
           ))}
         </select>
-        <ChevronDown size={16} className="absolute right-2 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none group-hover:text-[#d4af37] transition-colors" />
+        <ChevronDown size={16} className="absolute right-2 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none group-hover:text-gold transition-colors" />
       </div>
     </div>
   );
@@ -223,7 +223,7 @@ ${formData.objective}
   };
 
   return (
-    <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative lg:pl-24">
+    <div className="min-h-[100dvh] w-full bg-night text-slate-100 font-sans selection:bg-gold/30 overflow-hidden flex flex-col relative lg:pl-24">
       <NebulaNav />
       <ScrollIndicator
         sections={["scroll.hero", "scroll.contact"].map((k) => t(k))}
@@ -231,7 +231,7 @@ ${formData.objective}
 
       {/* GLOBAL BACKGROUNDS (NEBULA AESTHETIC) */}
       <div className="fixed inset-0 pointer-events-none z-[0]">
-        <Suspense fallback={<div className="absolute inset-0 bg-[#080808]" />}>
+        <Suspense fallback={<div className="absolute inset-0 bg-night" />}>
           <HeroCanvas />
         </Suspense>
       </div>
@@ -244,7 +244,7 @@ ${formData.objective}
             scale: [1, 1.15, 1],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-[#d4af37]/10 to-[#3d0f1a]/10 blur-[130px]"
+          className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-gold/10 to-ink/10 blur-[130px]"
         />
         <motion.div
           animate={{
@@ -253,7 +253,7 @@ ${formData.objective}
             scale: [1, 1.1, 1],
           }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-tl from-indigo-900/10 to-[#3d0f1a]/5 blur-[140px]"
+          className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-tl from-indigo-900/10 to-ink/5 blur-[140px]"
         />
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
@@ -280,7 +280,7 @@ ${formData.objective}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center gap-4 mb-6">
-                <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.3em] text-[#d4af37] flex items-center gap-2">
+                <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.3em] text-gold flex items-center gap-2">
                   <span className="text-[10px]">✦</span> {t("contact.subtitle")}
                 </span>
               </div>
@@ -293,7 +293,7 @@ ${formData.objective}
                 <RevealText
                   text={t("contact.title_2")}
                   delay={0.2}
-                  className="font-fraunces italic font-light tracking-wider text-fluid-h1 leading-[1.1] text-[#d4af37] whitespace-nowrap pr-2"
+                  className="font-fraunces italic font-light tracking-wider text-fluid-h1 leading-[1.1] text-gold whitespace-nowrap pr-2"
                 />
               </div>
             </motion.div>
@@ -308,12 +308,12 @@ ${formData.objective}
                 ease: [0.16, 1, 0.3, 1],
               }}
             >
-              <p className="font-outfit font-light text-white/60 text-lg leading-relaxed border-l border-[#d4af37]/30 pl-8">
+              <p className="font-outfit font-light text-white/60 text-lg leading-relaxed border-l border-gold/30 pl-8">
                 {t("contact.description")}
               </p>
               <div className="mt-8 pl-8 flex items-center gap-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
-                <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37]">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+                <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-gold">
                   {t("contact.available")}
                 </span>
               </div>
@@ -334,7 +334,7 @@ ${formData.objective}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             <div>
-              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] block mb-8">
+              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-gold block mb-8">
                 {t("contact.channels")}
               </span>
               <div className="space-y-4">
@@ -348,22 +348,22 @@ ${formData.objective}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1, duration: 0.7 }}
-                    className="group flex items-center gap-5 p-6 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-md hover:border-[#d4af37]/40 hover:bg-gradient-to-r from-[#d4af37]/10 to-transparent hover:shadow-[inset_0_0_20px_rgba(212,175,55,0.05)] transition-all duration-500 overflow-hidden"
+                    className="group flex items-center gap-5 p-6 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-md hover:border-gold/40 hover:bg-gradient-to-r from-gold/10 to-transparent hover:shadow-[inset_0_0_20px_rgba(212,175,55,0.05)] transition-all duration-500 overflow-hidden"
                   >
-                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 group-hover:text-[#d4af37] group-hover:border-[#d4af37]/50 transition-colors shrink-0">
+                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 group-hover:text-gold group-hover:border-gold/50 transition-colors shrink-0">
                       {c.icon}
                     </div>
                     <div className="flex-1 min-w-0">
                       <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-white/50 block mb-1">
                         {c.label}
                       </span>
-                      <span className="font-bricolage font-black tracking-tight text-lg text-white group-hover:text-[#d4af37] transition-colors truncate block">
+                      <span className="font-bricolage font-black tracking-tight text-lg text-white group-hover:text-gold transition-colors truncate block">
                         {c.detail}
                       </span>
                     </div>
                     <ArrowRight
                       size={14}
-                      className="text-[#d4af37] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-500 shrink-0"
+                      className="text-gold opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-500 shrink-0"
                     />
                   </motion.a>
                 ))}
@@ -382,9 +382,9 @@ ${formData.objective}
             </div>
 
             <div className="p-8 border border-white/5 bg-white/[0.02] backdrop-blur-md rounded-2xl flex items-start gap-5">
-              <MapPin size={18} className="text-[#d4af37] shrink-0" />
+              <MapPin size={18} className="text-gold shrink-0" />
               <div>
-                <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] block mb-3">
+                <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-gold block mb-3">
                   {t("contact.hq_label")}
                 </span>
                 <p className="font-outfit font-light text-[15px] text-white">
@@ -422,7 +422,7 @@ ${formData.objective}
 
               <div className="relative z-10">
                 <div className="mb-12">
-                  <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] block mb-4">
+                  <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-gold block mb-4">
                     {t("contact.send_msg_label")}
                   </span>
                   <h2
@@ -430,7 +430,7 @@ ${formData.objective}
                     style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}
                   >
                     {t("contact.form_title_1")} <br />
-                    <span className="text-[#d4af37]">
+                    <span className="text-gold">
                       {t("contact.form_title_2")}
                     </span>
                   </h2>
@@ -447,7 +447,7 @@ ${formData.objective}
                     >
                       <CheckCircle
                         size={48}
-                        className="text-[#d4af37]"
+                        className="text-gold"
                         strokeWidth={1}
                       />
                       <div>
@@ -460,7 +460,7 @@ ${formData.objective}
                       </div>
                       <button
                         onClick={() => setStatus("idle")}
-                        className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/50 hover:text-[#d4af37] transition-colors mt-8"
+                        className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/50 hover:text-gold transition-colors mt-8"
                       >
                         Invia un altro messaggio
                       </button>
@@ -557,7 +557,7 @@ ${formData.objective}
                           value={formData.objective}
                           onChange={handleChange}
                           placeholder="Descrivi il tuo progetto e i tuoi obiettivi..."
-                          className="w-full bg-transparent border-b border-white/10 py-3.5 text-white placeholder:text-white/50 font-outfit font-light text-base outline-none focus:border-[#d4af37] transition-colors duration-300 resize-none"
+                          className="w-full bg-transparent border-b border-white/10 py-3.5 text-white placeholder:text-white/50 font-outfit font-light text-base outline-none focus:border-gold transition-colors duration-300 resize-none"
                         />
                       </div>
 
@@ -576,16 +576,16 @@ ${formData.objective}
                         <button
                           type="submit"
                           disabled={status === "loading"}
-                          className="group relative flex items-center justify-between w-full p-8 rounded-2xl border border-[#d4af37]/30 bg-transparent hover:bg-[#d4af37]/10 hover:shadow-[inset_0_0_20px_rgba(212,175,55,0.2)] transition-all duration-500 disabled:opacity-50 mt-8 overflow-hidden"
+                          className="group relative flex items-center justify-between w-full p-8 rounded-2xl border border-gold/30 bg-transparent hover:bg-gold/10 hover:shadow-[inset_0_0_20px_rgba(212,175,55,0.2)] transition-all duration-500 disabled:opacity-50 mt-8 overflow-hidden"
                         >
-                          <span className="relative z-10 font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37] font-bold">
+                          <span className="relative z-10 font-mono text-[10px] uppercase tracking-[0.2em] text-gold font-bold">
                             {status === "loading"
                               ? t("contact.btn_sending")
                               : t("contact.btn_send")}
                           </span>
                           <ArrowRight
                             size={16}
-                            className="relative z-10 text-[#d4af37] group-hover:translate-x-3 transition-transform duration-500"
+                            className="relative z-10 text-gold group-hover:translate-x-3 transition-transform duration-500"
                           />
                         </button>
                       </MagneticWrapper>

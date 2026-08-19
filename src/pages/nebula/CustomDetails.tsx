@@ -47,8 +47,8 @@ const CustomDetails = () => {
       title: "La Filosofia",
       description: (
         <>
-          <div className="py-12 border-l-2 border-[#d4af37] pl-8">
-            <h2 className="font-fraunces text-4xl md:text-5xl italic text-[#d4af37] leading-tight">
+          <div className="py-12 border-l-2 border-gold pl-8">
+            <h2 className="font-fraunces text-4xl md:text-5xl italic text-gold leading-tight">
               Design e tecnologia proprietari.
             </h2>
           </div>
@@ -67,14 +67,14 @@ const CustomDetails = () => {
             Un progetto alla volta.
           </p>
           <div className="space-y-6">
-            <div className="border-l border-[#d4af37]/30 pl-6">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-[#d4af37] mb-2">1. Focus Assoluto</h3>
+            <div className="border-l border-gold/30 pl-6">
+              <h3 className="font-mono text-xs uppercase tracking-widest text-gold mb-2">1. Focus Assoluto</h3>
               <p className="text-white/70 text-lg">
                 Ogni Sviluppo Custom viene seguito con un solo cliente in contemporanea. Non per scarsità di mezzi, ma per scelta: questo livello di architettura richiede focus esclusivo sulle logiche di sistema.
               </p>
             </div>
-            <div className="border-l border-[#d4af37]/30 pl-6">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-[#d4af37] mb-2">2. Slot Dedicato</h3>
+            <div className="border-l border-gold/30 pl-6">
+              <h3 className="font-mono text-xs uppercase tracking-widest text-gold mb-2">2. Slot Dedicato</h3>
               <p className="text-white/70 text-lg">
                 Non sto dividendo la mia attenzione tra cinque progetti diversi. Stai prenotando uno slot dedicato al 100% alla tua azienda, non del tempo a ore.
               </p>

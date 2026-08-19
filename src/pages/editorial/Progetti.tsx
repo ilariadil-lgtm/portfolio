@@ -178,7 +178,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
         delay: (idx % 3) * 0.1,
         ease: [0.16, 1, 0.3, 1],
       }}
-      className="group relative flex flex-col h-full bg-white border border-[#3d0f1a] shadow-[10px_10px_0px_rgba(61,15,26,0.05)] hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-500"
+      className="group relative flex flex-col h-full bg-white border border-ink shadow-[10px_10px_0px_rgba(61,15,26,0.05)] hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-500"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -187,11 +187,11 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
         to={
           project.id === "loghi" ? "/progetti/loghi" : `/progetti/${project.id}`
         }
-        className="block relative overflow-hidden bg-[#f5f2ed] aspect-[4/3] border-b border-[#3d0f1a]/10"
+        className="block relative overflow-hidden bg-cream aspect-[4/3] border-b border-ink/10"
         data-cursor="view"
       >
         {/* Numero indice sovrapposto */}
-        <span className="absolute top-6 left-6 z-20 font-typewriter text-[9px] uppercase tracking-[0.4em] text-[#3d0f1a]/80 select-none bg-white/80 px-2 py-1 border border-[#3d0f1a]/20">
+        <span className="absolute top-6 left-6 z-20 font-typewriter text-[9px] uppercase tracking-[0.4em] text-ink/80 select-none bg-white/80 px-2 py-1 border border-ink/20">
           {String(idx + 1).padStart(2, "0")}
         </span>
 
@@ -211,8 +211,8 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
         />
 
         {/* Corner brackets */}
-        <div className="absolute top-5 right-5 w-8 h-8 border-t border-r border-[#3d0f1a]/20 pointer-events-none transition-all duration-500 group-hover:border-primary" />
-        <div className="absolute bottom-5 left-5 w-8 h-8 border-b border-l border-[#3d0f1a]/20 pointer-events-none transition-all duration-500 group-hover:border-primary" />
+        <div className="absolute top-5 right-5 w-8 h-8 border-t border-r border-ink/20 pointer-events-none transition-all duration-500 group-hover:border-primary" />
+        <div className="absolute bottom-5 left-5 w-8 h-8 border-b border-l border-ink/20 pointer-events-none transition-all duration-500 group-hover:border-primary" />
       </Link>
 
       {/* ── Text block ── */}
@@ -221,13 +221,13 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
           <span className="font-typewriter text-[9px] uppercase tracking-[0.35em] text-primary font-bold leading-relaxed">
             {getProjectLabel(project.type, t)}
           </span>
-          <span className="font-typewriter text-[9px] text-[#3d0f1a]/65 shrink-0 font-bold">
+          <span className="font-typewriter text-[9px] text-ink/65 shrink-0 font-bold">
             {project.year || "2025"}
           </span>
         </div>
 
         <h2
-          className="font-display font-black text-[#3d0f1a] tracking-tight leading-[0.9] mb-4"
+          className="font-display font-black text-ink tracking-tight leading-[0.9] mb-4"
           style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)" }}
         >
           {t(`projects_data.${project.id}.title`, {
@@ -235,7 +235,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
           })}
         </h2>
 
-        <p className="font-body text-[14px] text-[#3d0f1a]/70 leading-relaxed line-clamp-2 mb-8 flex-1">
+        <p className="font-body text-[14px] text-ink/70 leading-relaxed line-clamp-2 mb-8 flex-1">
           {t(`projects_data.${project.id}.description`, {
             defaultValue: project.description,
           })}
@@ -248,7 +248,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
               : `/progetti/${project.id}`
           }
           data-cursor="pointer"
-          className="inline-flex items-center justify-between font-typewriter text-[9px] uppercase tracking-[0.35em] text-[#3d0f1a] font-bold group/link border-t border-[#3d0f1a]/10 pt-4"
+          className="inline-flex items-center justify-between font-typewriter text-[9px] uppercase tracking-[0.35em] text-ink font-bold group/link border-t border-ink/10 pt-4"
         >
           <span className="relative overflow-hidden group-hover/link:text-primary transition-colors">
             {t("projects.explore")}
@@ -320,7 +320,7 @@ const Progetti = () => {
 
   if (loading) {
     return (
-      <div className="min-h-[100dvh] bg-[#f5f2ed] flex items-center justify-center">
+      <div className="min-h-[100dvh] bg-cream flex items-center justify-center">
         <motion.div
           animate={{ opacity: [0.3, 0.8, 0.3] }}
           transition={{ duration: 1.5, repeat: Infinity }}
@@ -333,7 +333,7 @@ const Progetti = () => {
   }
 
   return (
-    <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] overflow-hidden selection:bg-primary/30">
+    <div className="min-h-[100dvh] bg-cream text-ink overflow-hidden selection:bg-primary/30">
       <Navigation />
 
       {/* ═══════════════════════════════════════════════════════════════════
@@ -354,7 +354,7 @@ const Progetti = () => {
         {/* Watermark */}
         <div className="absolute inset-0 flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
           <span
-            className="font-display font-black text-[#3d0f1a]/[0.025] pr-4"
+            className="font-display font-black text-ink/[0.025] pr-4"
             style={{ fontSize: "clamp(80px, 18vw, 240px)", lineHeight: 1 }}
           >
             {t("projects.watermark")}
@@ -376,7 +376,7 @@ const Progetti = () => {
                 <div className="w-10 h-[1px] bg-primary/25" />
               </div>
               <h1
-                className="font-display font-black leading-[1.1] md:leading-[0.85] tracking-tighter text-[#3d0f1a]"
+                className="font-display font-black leading-[1.1] md:leading-[0.85] tracking-tighter text-ink"
                 style={{ fontSize: "clamp(3.5rem, 9vw, 8rem)" }}
               >
                 <RevealText text={t("projects.title_1")} delay={0.1} />
@@ -398,7 +398,7 @@ const Progetti = () => {
                 ease: [0.16, 1, 0.3, 1],
               }}
             >
-              <p className="font-body text-xl text-[#3d0f1a]/70 leading-relaxed border-l border-primary/25 pl-8">
+              <p className="font-body text-xl text-ink/70 leading-relaxed border-l border-primary/25 pl-8">
                 {t("projects.description")}
               </p>
             </motion.div>
@@ -409,7 +409,7 @@ const Progetti = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            CATEGORY FILTER BAR
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="sticky top-0 z-40 bg-[#f5f2ed]/95 backdrop-blur-md border-y border-[#3d0f1a]/10 px-6 md:px-12 lg:px-24">
+      <section className="sticky top-0 z-40 bg-cream/95 backdrop-blur-md border-y border-ink/10 px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between py-5 gap-4">
             {/* Category buttons */}
@@ -424,8 +424,8 @@ const Progetti = () => {
                   data-cursor="pointer"
                   className={`relative px-5 py-2.5 font-typewriter text-[10px] uppercase tracking-[0.3em] transition-all duration-300 whitespace-nowrap ${
                     activeCategory === cat.id
-                      ? "text-white bg-[#3d0f1a] font-bold shadow-sm"
-                      : "text-[#3d0f1a]/65 hover:text-[#3d0f1a] hover:bg-[#3d0f1a]/5 font-semibold"
+                      ? "text-white bg-ink font-bold shadow-sm"
+                      : "text-ink/65 hover:text-ink hover:bg-ink/5 font-semibold"
                   }`}
                 >
                   {cat.label}
@@ -489,9 +489,9 @@ const Progetti = () => {
               <button
                 onClick={() => setVisibleCount((prev) => prev + 6)}
                 data-cursor="pointer"
-                className="group relative flex items-center justify-center px-12 py-5 border border-[#3d0f1a] bg-white hover:shadow-[8px_8px_0px_#c0392b] overflow-hidden transition-all duration-300"
+                className="group relative flex items-center justify-center px-12 py-5 border border-ink bg-white hover:shadow-[8px_8px_0px_#c0392b] overflow-hidden transition-all duration-300"
               >
-                <span className="relative z-10 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a] transition-colors font-bold group-hover:text-primary">
+                <span className="relative z-10 font-typewriter text-[10px] uppercase tracking-[0.4em] text-ink transition-colors font-bold group-hover:text-primary">
                   {t("projects.load_more")}
                 </span>
               </button>
@@ -503,7 +503,7 @@ const Progetti = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            MANIFESTO — PHILOSOPHY BREAK (Refactored Light Mode)
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-36 px-6 md:px-12 lg:px-24 bg-white border-y border-[#3d0f1a]/5 relative overflow-hidden">
+      <section className="py-24 md:py-36 px-6 md:px-12 lg:px-24 bg-white border-y border-ink/5 relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.015] pointer-events-none"
           style={{
@@ -525,7 +525,7 @@ const Progetti = () => {
                 {t("projects.manifesto_label")}
               </span>
               <blockquote
-                className="font-display font-black leading-[0.9] tracking-tighter text-[#3d0f1a]"
+                className="font-display font-black leading-[0.9] tracking-tighter text-ink"
                 style={{ fontSize: "clamp(2rem, 4.5vw, 4rem)" }}
               >
                 "{t("projects.manifesto_title_1")} <br />
@@ -533,13 +533,13 @@ const Progetti = () => {
                   {t("projects.manifesto_title_2")}"
                 </span>
               </blockquote>
-              <p className="font-body text-lg text-[#3d0f1a]/70 leading-relaxed mt-8 max-w-xl">
+              <p className="font-body text-lg text-ink/70 leading-relaxed mt-8 max-w-xl">
                 {t("projects.manifesto_desc")}
               </p>
             </motion.div>
 
             <motion.div
-              className="lg:col-span-5 lg:pl-12 lg:border-l border-[#3d0f1a]/10"
+              className="lg:col-span-5 lg:pl-12 lg:border-l border-ink/10"
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -560,13 +560,13 @@ const Progetti = () => {
                 ].map((stat, i) => (
                   <div
                     key={i}
-                    className="flex items-baseline justify-between border-b border-[#3d0f1a]/5 pb-5"
+                    className="flex items-baseline justify-between border-b border-ink/5 pb-5"
                   >
-                    <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-[#3d0f1a]/65 font-bold">
+                    <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-ink/65 font-bold">
                       {stat.label}
                     </span>
                     <span
-                      className={`font-display text-2xl font-black ${i === 2 ? "text-primary italic" : "text-[#3d0f1a]"}`}
+                      className={`font-display text-2xl font-black ${i === 2 ? "text-primary italic" : "text-ink"}`}
                     >
                       {stat.value}
                     </span>

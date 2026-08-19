@@ -70,7 +70,7 @@ const Chisono = () => {
   ];
 
   return (
-    <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] overflow-hidden selection:bg-primary/30">
+    <div className="min-h-[100dvh] bg-cream text-ink overflow-hidden selection:bg-primary/30">
       <Navigation />
 
       {/* ═══════════════════════════════════════════════════════════════════
@@ -110,7 +110,7 @@ const Chisono = () => {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, margin: "-50px" }}
-                  className="font-display text-[12vw] lg:text-[clamp(2rem,6.5vw,6.5rem)] font-bold leading-[1.1] md:leading-[0.85] tracking-tighter text-[#3d0f1a] mb-8"
+                  className="font-display text-[12vw] lg:text-[clamp(2rem,6.5vw,6.5rem)] font-bold leading-[1.1] md:leading-[0.85] tracking-tighter text-ink mb-8"
                 >
                   <span className="overflow-hidden inline-block py-3 -my-3">
                     <motion.span
@@ -135,7 +135,7 @@ const Chisono = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.6 }}
-                  className="font-body text-l text-[#3d0f1a]/80 leading-relaxed pl-8 border-l border-primary/25 max-w-xl"
+                  className="font-body text-l text-ink/80 leading-relaxed pl-8 border-l border-primary/25 max-w-xl"
                 >
                   {t("about.bio_default")}
                 </motion.p>
@@ -150,18 +150,18 @@ const Chisono = () => {
                   delay: 0.8,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="bg-white border border-[#3d0f1a] shadow-[10px_10px_0px_#c0392b] max-w-xl"
+                className="bg-white border border-ink shadow-[10px_10px_0px_#c0392b] max-w-xl"
               >
-                <div className="px-6 py-4 border-b border-[#3d0f1a]/10 flex items-center justify-between">
-                  <span className="font-typewriter text-[10px] uppercase tracking-[0.2em] text-[#3d0f1a]/65 font-medium">
+                <div className="px-6 py-4 border-b border-ink/10 flex items-center justify-between">
+                  <span className="font-typewriter text-[10px] uppercase tracking-[0.2em] text-ink/65 font-medium">
                     {t("about.professional_profile")}
                   </span>
                   <div className="flex gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#3d0f1a]/10" />
-                    <span className="w-2 h-2 rounded-full bg-[#3d0f1a]/10" />
+                    <span className="w-2 h-2 rounded-full bg-ink/10" />
+                    <span className="w-2 h-2 rounded-full bg-ink/10" />
                   </div>
                 </div>
-                <div className="divide-y divide-[#3d0f1a]/5">
+                <div className="divide-y divide-ink/5">
                   {[
                     { label: t("about.role_label"), val: t("about.role_val") },
                     { label: t("about.spec_label"), val: t("about.spec_val") },
@@ -176,11 +176,11 @@ const Chisono = () => {
                       key={idx}
                       className="flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0 px-6 py-4"
                     >
-                      <span className="font-typewriter text-[11px] uppercase tracking-widest text-[#3d0f1a]/65 font-medium shrink-0">
+                      <span className="font-typewriter text-[11px] uppercase tracking-widest text-ink/65 font-medium shrink-0">
                         {item.label}
                       </span>
                       <span
-                        className={`font-mono text-[12px] md:text-right ${item.highlight ? "text-primary font-semibold" : "text-[#3d0f1a] font-medium"}`}
+                        className={`font-mono text-[12px] md:text-right ${item.highlight ? "text-primary font-semibold" : "text-ink font-medium"}`}
                       >
                         {item.val}
                       </span>
@@ -196,11 +196,11 @@ const Chisono = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                className="relative w-full max-w-[400px] aspect-[4/5] border border-[#3d0f1a]/10 bg-white p-3 shadow-[15px_15px_0px_rgba(61,15,26,0.05)] group hover:shadow-[15px_15px_0px_rgba(192,57,43,0.1)] transition-shadow duration-500"
+                className="relative w-full max-w-[400px] aspect-[4/5] border border-ink/10 bg-white p-3 shadow-[15px_15px_0px_rgba(61,15,26,0.05)] group hover:shadow-[15px_15px_0px_rgba(192,57,43,0.1)] transition-shadow duration-500"
                 data-cursor="view"
               >
                 {/* Content Container with scanner animation */}
-                <div className="relative w-full h-full p-8 flex flex-col justify-between overflow-hidden border border-[#3d0f1a]/5 select-none bg-[#f5f2ed]">
+                <div className="relative w-full h-full p-8 flex flex-col justify-between overflow-hidden border border-ink/5 select-none bg-cream">
                   {/* Animated Scanline Laser Beam */}
                   <motion.div
                     animate={{ top: ["0%", "100%", "0%"] }}
@@ -209,22 +209,22 @@ const Chisono = () => {
                       repeat: Infinity,
                       ease: "easeInOut",
                     }}
-                    className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#c0392b]/30 to-transparent z-10 pointer-events-none"
+                    className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-crimson/30 to-transparent z-10 pointer-events-none"
                   />
 
                   {/* Top Ledger Telemetry */}
-                  <div className="flex justify-between items-start border-b border-[#3d0f1a]/10 pb-4 relative z-10">
+                  <div className="flex justify-between items-start border-b border-ink/10 pb-4 relative z-10">
                     <div className="flex flex-col">
-                      <span className="font-typewriter text-[9px] uppercase tracking-[0.25em] text-[#3d0f1a] font-bold">
+                      <span className="font-typewriter text-[9px] uppercase tracking-[0.25em] text-ink font-bold">
                         {t("about.method_label")}
                       </span>
-                      <span className="font-typewriter text-[7px] uppercase tracking-[0.2em] text-[#3d0f1a]/65 font-medium mt-1">
+                      <span className="font-typewriter text-[7px] uppercase tracking-[0.2em] text-ink/65 font-medium mt-1">
                         {t("about.vision_label")}
                       </span>
                     </div>
                     <div className="flex gap-1.5 items-center">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#c0392b] animate-pulse" />
-                      <span className="font-mono text-[8px] text-[#c0392b]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse" />
+                      <span className="font-mono text-[8px] text-crimson">
                         {t("about.name_label")}
                       </span>
                     </div>
@@ -251,14 +251,14 @@ const Chisono = () => {
                     ].map((rule, idx) => (
                       <div key={idx} className="space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className="font-display text-sm italic font-bold text-[#c0392b] pr-2">
+                          <span className="font-display text-sm italic font-bold text-crimson pr-2">
                             {rule.num}
                           </span>
-                          <span className="font-typewriter text-[10px] uppercase tracking-widest text-[#3d0f1a] font-bold">
+                          <span className="font-typewriter text-[10px] uppercase tracking-widest text-ink font-bold">
                             {rule.label}
                           </span>
                         </div>
-                        <p className="font-body text-[13px] text-[#3d0f1a]/70 leading-relaxed pl-4">
+                        <p className="font-body text-[13px] text-ink/70 leading-relaxed pl-4">
                           {rule.desc}
                         </p>
                       </div>
@@ -274,7 +274,7 @@ const Chisono = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            TIMELINE — ARCHITECTURAL PHASES
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-24 bg-white border-y border-[#3d0f1a]/5">
+      <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-24 bg-white border-y border-ink/5">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
             <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">
@@ -321,7 +321,7 @@ const Chisono = () => {
 
                 {/* Display Number */}
                 <div className="lg:col-span-2 flex lg:flex-col items-baseline lg:items-start gap-4">
-                  <div className="font-display text-6xl md:text-8xl font-black text-[#3d0f1a]/10 select-none leading-none">
+                  <div className="font-display text-6xl md:text-8xl font-black text-ink/10 select-none leading-none">
                     {step.num}
                   </div>
                   <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-primary/60 font-medium whitespace-nowrap">
@@ -331,33 +331,33 @@ const Chisono = () => {
 
                 {/* Title & Narrative Description */}
                 <div className="lg:col-span-6 space-y-4 pt-2">
-                  <h3 className="font-display text-4xl font-bold text-[#3d0f1a]">
+                  <h3 className="font-display text-4xl font-bold text-ink">
                     {step.title}
                   </h3>
-                  <span className="font-typewriter text-[9px] uppercase tracking-[0.4em] text-[#3d0f1a]/65 font-bold mb-4 block">
+                  <span className="font-typewriter text-[9px] uppercase tracking-[0.4em] text-ink/65 font-bold mb-4 block">
                     {step.subtitle}
                   </span>
-                  <p className="font-body text-lg text-[#3d0f1a]/70 leading-relaxed max-w-xl">
+                  <p className="font-body text-lg text-ink/70 leading-relaxed max-w-xl">
                     {step.description}
                   </p>
                 </div>
 
                 {/* Technical Spec HUD Card */}
                 <div
-                  className="lg:col-span-4 bg-[#f5f2ed] border border-[#3d0f1a]/10 p-8 shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b] hover:border-[#3d0f1a]/30 transition-all duration-300 relative group cursor-pointer"
+                  className="lg:col-span-4 bg-cream border border-ink/10 p-8 shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b] hover:border-ink/30 transition-all duration-300 relative group cursor-pointer"
                   data-cursor="pointer"
                 >
-                  <div className="absolute top-6 right-6 text-[#3d0f1a]/20 group-hover:text-primary transition-all duration-300">
+                  <div className="absolute top-6 right-6 text-ink/20 group-hover:text-primary transition-all duration-300">
                     {step.icon}
                   </div>
-                  <span className="font-typewriter text-[8px] uppercase tracking-[0.3em] text-[#3d0f1a]/65 mb-6 block font-medium">
+                  <span className="font-typewriter text-[8px] uppercase tracking-[0.3em] text-ink/65 mb-6 block font-medium">
                     {t("about.phase_inventory")}
                   </span>
                   <ul className="space-y-3.5">
                     {step.tech.map((t, idx) => (
                       <li key={idx} className="flex items-center gap-3">
                         <div className="w-1 h-1 rounded-full bg-primary/70" />
-                        <span className="font-typewriter text-[10px] uppercase tracking-widest text-[#3d0f1a] font-medium">
+                        <span className="font-typewriter text-[10px] uppercase tracking-widest text-ink font-medium">
                           {t}
                         </span>
                       </li>
@@ -373,7 +373,7 @@ const Chisono = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            CAPABILITIES MATRIX — TECHNICAL GRID (Rivisitata)
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-36 px-6 md:px-12 lg:px-24 bg-[#f5f2ed] text-[#3d0f1a] relative overflow-hidden">
+      <section className="py-24 md:py-36 px-6 md:px-12 lg:px-24 bg-cream text-ink relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
             <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">
@@ -426,20 +426,20 @@ const Chisono = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group p-8 border border-[#3d0f1a] bg-white shadow-[10px_10px_0px_rgba(61,15,26,0.1)] hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-300 min-h-[320px]"
+                className="group p-8 border border-ink bg-white shadow-[10px_10px_0px_rgba(61,15,26,0.1)] hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-300 min-h-[320px]"
               >
                 <div className="flex justify-between items-start mb-12">
                   <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform bg-primary/5">
                     <Box size={20} />
                   </div>
-                  <span className="font-typewriter text-[9px] text-[#3d0f1a]/65 font-medium">
+                  <span className="font-typewriter text-[9px] text-ink/65 font-medium">
                     0{i + 1}
                   </span>
                 </div>
                 <h3 className="font-display text-3xl font-bold mb-4">
                   {tech.title}
                 </h3>
-                <p className="font-body text-[14px] text-[#3d0f1a]/70 leading-relaxed">
+                <p className="font-body text-[14px] text-ink/70 leading-relaxed">
                   {tech.desc}
                 </p>
               </motion.div>

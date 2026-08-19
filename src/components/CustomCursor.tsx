@@ -182,7 +182,7 @@ export const CustomCursor = () => {
       {/* Inner Dot Cursor (Solo per Editorial, in Nebula il dot è l'outer stesso che fa difference) */}
       {isEditorial && (
         <div
-          className="fixed top-0 left-0 w-2 h-2 rounded-full bg-[#c0392b] pointer-events-none z-[10000] transition-opacity duration-200"
+          className="fixed top-0 left-0 w-2 h-2 rounded-full bg-crimson pointer-events-none z-[10000] transition-opacity duration-200"
           style={{
             transform: `translate3d(${position.x - 4}px, ${position.y - 4}px, 0)`,
             opacity: hidden || cursorType !== "default" ? 0 : 1,

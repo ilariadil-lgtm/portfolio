@@ -47,8 +47,8 @@ const MVPDetails = () => {
       title: "La Filosofia",
       description: (
         <>
-          <div className="py-12 border-l-2 border-[#d4af37] pl-8">
-            <h2 className="font-fraunces text-4xl md:text-5xl italic text-[#d4af37] leading-tight">
+          <div className="py-12 border-l-2 border-gold pl-8">
+            <h2 className="font-fraunces text-4xl md:text-5xl italic text-gold leading-tight">
               Costruire ciò che nessuno ha chiesto.
             </h2>
           </div>
@@ -67,14 +67,14 @@ const MVPDetails = () => {
             Scalabilità dal giorno zero.
           </p>
           <div className="space-y-6">
-            <div className="border-l border-[#d4af37]/30 pl-6">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-[#d4af37] mb-2">1. Analisi dei Dati Reali</h3>
+            <div className="border-l border-gold/30 pl-6">
+              <h3 className="font-mono text-xs uppercase tracking-widest text-gold mb-2">1. Analisi dei Dati Reali</h3>
               <p className="text-white/70 text-lg">
                 Un MVP non è un punto di arrivo: è il primo dato reale che hai sulla tua idea. Lanciamo per testare il prodotto sul mercato, non in laboratorio.
               </p>
             </div>
-            <div className="border-l border-[#d4af37]/30 pl-6">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-[#d4af37] mb-2">2. Infrastruttura Serverless</h3>
+            <div className="border-l border-gold/30 pl-6">
+              <h3 className="font-mono text-xs uppercase tracking-widest text-gold mb-2">2. Infrastruttura Serverless</h3>
               <p className="text-white/70 text-lg">
                 Se le metriche confermano la direzione, l'architettura serverless costruita in questa fase è pensata per scalare — senza dover ripartire da zero con uno sviluppo Custom quando sarà il momento.
               </p>

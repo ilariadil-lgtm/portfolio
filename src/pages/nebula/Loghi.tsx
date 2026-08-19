@@ -129,8 +129,8 @@ const HolographicCarousel = ({
       <div className="absolute inset-0 z-10 pointer-events-none mix-blend-overlay opacity-30 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
       {/* Cornici Olografiche */}
-      <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#d4af37]/30 pointer-events-none group-hover:border-[#d4af37]/80 transition-colors duration-500 m-4" />
-      <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#d4af37]/30 pointer-events-none group-hover:border-[#d4af37]/80 transition-colors duration-500 m-4" />
+      <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold/30 pointer-events-none group-hover:border-gold/80 transition-colors duration-500 m-4" />
+      <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-gold/30 pointer-events-none group-hover:border-gold/80 transition-colors duration-500 m-4" />
 
       {/* Navigazione */}
       {images.length > 1 && (
@@ -141,7 +141,7 @@ const HolographicCarousel = ({
           >
             <button
               onClick={handlePrev}
-              className="w-12 h-12 rounded-full border border-white/20 bg-black/30 backdrop-blur-md flex items-center justify-center text-white/60 hover:text-[#d4af37] hover:border-[#d4af37]/50 transition-all duration-300"
+              className="w-12 h-12 rounded-full border border-white/20 bg-black/30 backdrop-blur-md flex items-center justify-center text-white/60 hover:text-gold hover:border-gold/50 transition-all duration-300"
               aria-label="Precedente"
             >
               <ChevronLeft size={20} />
@@ -154,7 +154,7 @@ const HolographicCarousel = ({
           >
             <button
               onClick={handleNext}
-              className="w-12 h-12 rounded-full border border-white/20 bg-black/30 backdrop-blur-md flex items-center justify-center text-white/60 hover:text-[#d4af37] hover:border-[#d4af37]/50 transition-all duration-300"
+              className="w-12 h-12 rounded-full border border-white/20 bg-black/30 backdrop-blur-md flex items-center justify-center text-white/60 hover:text-gold hover:border-gold/50 transition-all duration-300"
               aria-label="Successiva"
             >
               <ChevronRight size={20} />
@@ -173,7 +173,7 @@ const HolographicCarousel = ({
                 }}
                 className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${
                   idx === currentIdx
-                    ? "bg-[#d4af37] w-4"
+                    ? "bg-gold w-4"
                     : "bg-white/30 hover:bg-white/60"
                 }`}
                 aria-label={`Vai a ${idx + 1}`}
@@ -207,7 +207,7 @@ export const NebulaLoghi = () => {
   });
 
   return (
-    <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative lg:pl-24">
+    <div className="min-h-[100dvh] w-full bg-night text-slate-100 font-sans selection:bg-gold/30 overflow-hidden flex flex-col relative lg:pl-24">
       <NebulaNav />
       <ScrollIndicator
         sections={["scroll.hero", "scroll.contact"].map((k) => t(k))}
@@ -221,7 +221,7 @@ export const NebulaLoghi = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <Link
             to="/progetti"
-            className="group inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-white/50 hover:text-[#d4af37] transition-colors mb-12"
+            className="group inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-white/50 hover:text-gold transition-colors mb-12"
           >
             <ArrowLeft
               size={14}
@@ -236,10 +236,10 @@ export const NebulaLoghi = () => {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="flex items-center gap-4 mb-8">
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]">
+              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold">
                 ARCHIVIO BRANDING
               </span>
-              <div className="w-12 h-[1px] bg-[#d4af37]/30" />
+              <div className="w-12 h-[1px] bg-gold/30" />
             </div>
 
             <div className="flex flex-wrap items-baseline gap-x-6 pb-4 mb-4">
@@ -251,11 +251,11 @@ export const NebulaLoghi = () => {
               <RevealText
                 text="Loghi."
                 delay={0.2}
-                className="font-fraunces italic font-light tracking-tight text-6xl md:text-8xl lg:text-[clamp(2rem,7vw,7rem)] leading-[0.9] text-[#d4af37] pr-2"
+                className="font-fraunces italic font-light tracking-tight text-6xl md:text-8xl lg:text-[clamp(2rem,7vw,7rem)] leading-[0.9] text-gold pr-2"
               />
             </div>
 
-            <p className="font-outfit font-light text-white/50 text-lg md:text-xl leading-relaxed max-w-2xl pl-8 border-l border-[#d4af37]/30">
+            <p className="font-outfit font-light text-white/50 text-lg md:text-xl leading-relaxed max-w-2xl pl-8 border-l border-gold/30">
               Esplora i brand che ho contribuito a creare e consolidare.
               Dall'ideazione del marchio fino alle applicazioni pratiche.
             </p>
@@ -307,11 +307,11 @@ export const NebulaLoghi = () => {
                     <div className="flex-1 h-[1px] bg-white/10" />
                   </div>
 
-                  <h2 className="font-bricolage font-black text-4xl md:text-5xl lg:text-6xl text-white mb-4 tracking-tight group-hover:text-[#d4af37] transition-colors duration-500">
+                  <h2 className="font-bricolage font-black text-4xl md:text-5xl lg:text-6xl text-white mb-4 tracking-tight group-hover:text-gold transition-colors duration-500">
                     {brand.title}
                   </h2>
 
-                  <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] block mb-6">
+                  <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-gold block mb-6">
                     {t(
                       `loghi.brands.${brand.id}.role`,
                       "Visual Identity & Logo Design",
@@ -330,14 +330,14 @@ export const NebulaLoghi = () => {
                     {brand.portfolioUrl && (
                       <Link
                         to={brand.portfolioUrl}
-                        className="group flex items-center gap-3 px-8 py-4 border border-white/10 bg-white/[0.02] hover:border-[#d4af37]/50 hover:bg-[#d4af37]/10 transition-all duration-300"
+                        className="group flex items-center gap-3 px-8 py-4 border border-white/10 bg-white/[0.02] hover:border-gold/50 hover:bg-gold/10 transition-all duration-300"
                       >
-                        <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white group-hover:text-[#d4af37] transition-colors font-bold">
+                        <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white group-hover:text-gold transition-colors font-bold">
                           VAI AL PROGETTO
                         </span>
                         <ArrowRight
                           size={14}
-                          className="text-[#d4af37] group-hover:translate-x-1 transition-transform"
+                          className="text-gold group-hover:translate-x-1 transition-transform"
                         />
                       </Link>
                     )}
@@ -347,14 +347,14 @@ export const NebulaLoghi = () => {
                         href={brand.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex items-center gap-3 px-8 py-4 bg-[#d4af37] hover:bg-white transition-colors duration-300"
+                        className="group flex items-center gap-3 px-8 py-4 bg-gold hover:bg-white transition-colors duration-300"
                       >
-                        <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#080808] font-bold">
+                        <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-night font-bold">
                           VISITA IL SITO
                         </span>
                         <ArrowUpRight
                           size={14}
-                          className="text-[#080808] group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform"
+                          className="text-night group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform"
                         />
                       </a>
                     )}

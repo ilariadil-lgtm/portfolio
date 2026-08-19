@@ -23,7 +23,7 @@ export const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
   const { t } = useTranslation();
 
   return (
-    <section className="border-t border-primary/10 px-8 md:px-16 lg:px-24 py-16 bg-[#f5f2ed]">
+    <section className="border-t border-primary/10 px-8 md:px-16 lg:px-24 py-16 bg-cream">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
         {/* Prev */}
         <div className="flex-1 flex justify-start">
@@ -35,7 +35,7 @@ export const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
               <span className="font-typewriter text-[9px] uppercase tracking-[0.4em] text-primary/60 mb-2">
                 {prevLabel || t("project_nav.prev")}
               </span>
-              <span className="font-display text-2xl md:text-3xl text-[#3d0f1a] group-hover:text-primary transition-colors flex items-center justify-start gap-3">
+              <span className="font-display text-2xl md:text-3xl text-ink group-hover:text-primary transition-colors flex items-center justify-start gap-3">
                 <ArrowLeft
                   size={20}
                   className="group-hover:-translate-x-2 transition-transform"
@@ -56,7 +56,7 @@ export const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
             <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             <Grid
               size={18}
-              className="text-[#3d0f1a] group-hover:text-white relative z-10 transition-colors"
+              className="text-ink group-hover:text-white relative z-10 transition-colors"
             />
           </Link>
         </div>
@@ -68,7 +68,7 @@ export const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
               <span className="font-typewriter text-[9px] uppercase tracking-[0.4em] text-primary/60 mb-2">
                 {nextLabel || t("project_nav.next")}
               </span>
-              <span className="font-display text-2xl md:text-3xl text-[#3d0f1a] group-hover:text-primary transition-colors flex items-center justify-end gap-3">
+              <span className="font-display text-2xl md:text-3xl text-ink group-hover:text-primary transition-colors flex items-center justify-end gap-3">
                 {next.title}
                 <ArrowRight
                   size={20}
@@ -86,7 +86,7 @@ export const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
             className="group relative flex items-center justify-center px-12 py-4 border border-primary/20 hover:border-primary overflow-hidden transition-all duration-500"
           >
             <div className="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-            <span className="relative z-10 flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.3em] text-[#3d0f1a] group-hover:text-white transition-colors font-semibold">
+            <span className="relative z-10 flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.3em] text-ink group-hover:text-white transition-colors font-semibold">
               <Grid size={14} />
               {archiveTitle || t("project_detail.archive")}
             </span>

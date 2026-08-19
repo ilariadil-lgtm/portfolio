@@ -24,7 +24,7 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
   return (
     <div className="w-full relative z-10 pt-16 pb-8">
       <div className="mb-12">
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]">
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold">
           IL PROCESSO
         </span>
       </div>
@@ -40,7 +40,7 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
                 onClick={() => setActiveIndex(idx)}
                 className={`w-full text-left py-6 transition-all duration-500 relative flex items-center justify-between group border-b border-white/10 ${
                   isActive
-                    ? "bg-gradient-to-r from-[#d4af37]/5 to-transparent px-4"
+                    ? "bg-gradient-to-r from-gold/5 to-transparent px-4"
                     : "hover:px-4 hover:bg-white/[0.02]"
                 }`}
               >
@@ -48,8 +48,8 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
                   <span
                     className={`font-fraunces italic font-light text-2xl md:text-3xl transition-colors duration-300 ${
                       isActive
-                        ? "text-[#d4af37]"
-                        : "text-white/50 group-hover:text-[#d4af37]/70"
+                        ? "text-gold"
+                        : "text-white/50 group-hover:text-gold/70"
                     }`}
                   >
                     {phase.num || phase.id}
@@ -68,7 +68,7 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
                   size={16}
                   className={`transition-all duration-500 ${
                     isActive
-                      ? "text-[#d4af37] opacity-100 translate-x-0"
+                      ? "text-gold opacity-100 translate-x-0"
                       : "text-white/50 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0"
                   }`}
                 />
@@ -90,7 +90,7 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
                 className="relative z-10 w-full h-full flex flex-col"
               >
                 {phases[activeIndex].subtitle && (
-                  <h3 className="font-fraunces italic font-light text-3xl md:text-4xl text-[#d4af37] mb-8 leading-tight pr-2">
+                  <h3 className="font-fraunces italic font-light text-3xl md:text-4xl text-gold mb-8 leading-tight pr-2">
                     {phases[activeIndex].subtitle}
                   </h3>
                 )}
@@ -122,7 +122,7 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
                           </div>
                           {/* Screen */}
                           <div className="flex-1 relative overflow-hidden bg-black">
-                            <div className="absolute inset-0 bg-[#d4af37]/5 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
+                            <div className="absolute inset-0 bg-gold/5 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
                             <img loading="lazy" decoding="async"
                               src={img}
                               alt={`${phases[activeIndex].title} ${i + 1}`}
@@ -148,7 +148,7 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
                         </div>
                         {/* Screen */}
                         <div className="flex-1 relative overflow-hidden bg-black">
-                          <div className="absolute inset-0 bg-[#d4af37]/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
+                          <div className="absolute inset-0 bg-gold/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
                           <img loading="lazy" decoding="async"
                             src={phases[activeIndex].image as string}
                             alt={phases[activeIndex].title}

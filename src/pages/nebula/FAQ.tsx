@@ -73,13 +73,13 @@ const FaqItem = ({ faq, index }: { faq: any; index: number }) => {
       >
         <div className="flex items-start gap-8 md:gap-12 w-full">
           {/* Numero Progressivo */}
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37]/70 font-bold mt-2 shrink-0">
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold/70 font-bold mt-2 shrink-0">
             {String(index + 1).padStart(2, "0")}
           </span>
 
           {/* Contenuto principale: Domanda & Risposta espandibile */}
           <div className="flex-1">
-            <h3 className="font-bricolage font-black tracking-tight text-xl md:text-3xl text-white group-hover:text-[#d4af37] transition-colors duration-500 mb-2">
+            <h3 className="font-bricolage font-black tracking-tight text-xl md:text-3xl text-white group-hover:text-gold transition-colors duration-500 mb-2">
               {faq.question}
             </h3>
 
@@ -102,7 +102,7 @@ const FaqItem = ({ faq, index }: { faq: any; index: number }) => {
         </div>
 
         {/* Icona Espandi/Comprimi */}
-        <div className="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center text-[#d4af37] shrink-0 mt-1 group-hover:border-[#d4af37]/50 group-hover:bg-[#d4af37]/10 transition-all duration-500">
+        <div className="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center text-gold shrink-0 mt-1 group-hover:border-gold/50 group-hover:bg-gold/10 transition-all duration-500">
           {isOpen ? <Minus size={16} /> : <Plus size={16} />}
         </div>
       </button>
@@ -135,7 +135,7 @@ const NebulaFAQ = () => {
   }, []);
 
   return (
-    <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative lg:pl-24">
+    <div className="min-h-[100dvh] w-full bg-night text-slate-100 font-sans selection:bg-gold/30 overflow-hidden flex flex-col relative lg:pl-24">
       <NebulaNav />
       <ScrollIndicator
         sections={["scroll.hero", "scroll.contact"].map((k) => t(k))}
@@ -153,10 +153,10 @@ const NebulaFAQ = () => {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="flex items-center justify-center gap-4 mb-8">
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]">
+              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold">
                 KNOWLEDGE BASE
               </span>
-              <div className="w-12 h-[1px] bg-[#d4af37]/30" />
+              <div className="w-12 h-[1px] bg-gold/30" />
             </div>
 
             <h1 className="font-fraunces italic font-light text-[12vw] md:text-[8vw] lg:text-[clamp(2rem,7vw,7rem)] leading-[0.9] tracking-tight text-white mb-8 pr-2">
@@ -169,7 +169,7 @@ const NebulaFAQ = () => {
               <RevealText
                 text="& Info."
                 delay={0.2}
-                className="text-[#d4af37]"
+                className="text-gold"
               />
             </h1>
 

@@ -31,13 +31,13 @@ export const EditorialVillaMasami = () => {
   ];
 
   return (
-    <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] selection:bg-primary/30 font-body">
+    <div className="min-h-[100dvh] bg-cream text-ink selection:bg-primary/30 font-body">
       <Navigation />
 
       {/* ═══════════════════════════════════════════════════════════════════
            HERO — Stile Portfolio Ilaria
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative lg:min-h-[100svh] flex items-start lg:items-center pt-52 md:pt-48 lg:pt-0 pb-20 md:pb-32 lg:pb-0 px-6 md:px-12 lg:px-24 overflow-hidden bg-[#f5f2ed]">
+      <section className="relative lg:min-h-[100svh] flex items-start lg:items-center pt-52 md:pt-48 lg:pt-0 pb-20 md:pb-32 lg:pb-0 px-6 md:px-12 lg:px-24 overflow-hidden bg-cream">
         {/* Background Grid Pattern */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div
@@ -58,7 +58,7 @@ export const EditorialVillaMasami = () => {
           >
             <Link
               to="/progetti"
-              className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-[#3d0f1a]/65 hover:text-primary transition-colors font-semibold"
+              className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-ink/65 hover:text-primary transition-colors font-semibold"
             >
               <ArrowLeft
                 size={13}
@@ -98,12 +98,12 @@ export const EditorialVillaMasami = () => {
                       delay: 0.2,
                       ease: [0.16, 1, 0.3, 1],
                     }}
-                    className="block text-[10vw] lg:text-[clamp(2rem,6vw,6rem)] font-bold text-[#3d0f1a] whitespace-nowrap pr-4"
+                    className="block text-[10vw] lg:text-[clamp(2rem,6vw,6rem)] font-bold text-ink whitespace-nowrap pr-4"
                     style={{ y: y1 }}
                   >
                     Villa
                     <span className="text-primary italic pr-2"> Masami</span>
-                    <span className="text-[#3d0f1a] not-italic pr-2">.</span>
+                    <span className="text-ink not-italic pr-2">.</span>
                   </motion.span>
                 </div>
               </h1>
@@ -114,7 +114,7 @@ export const EditorialVillaMasami = () => {
                 transition={{ delay: 1, duration: 1 }}
                 className="mt-8 lg:mt-12 max-w-[34rem]"
               >
-                <p className="font-body text-sm md:text-base text-[#3d0f1a]/70 leading-relaxed border-l-2 border-primary/20 pl-6 lg:pl-8 py-2">
+                <p className="font-body text-sm md:text-base text-ink/70 leading-relaxed border-l-2 border-primary/20 pl-6 lg:pl-8 py-2">
                   {t("villamasami.hero_desc")}
                 </p>
               </motion.div>
@@ -146,7 +146,7 @@ export const EditorialVillaMasami = () => {
                   delay: 0.6,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="relative z-10 w-full h-full bg-[#f5f2ed] border border-[#3d0f1a] shadow-[15px_15px_0px_#c0392b] flex flex-col overflow-hidden p-0 group"
+                className="relative z-10 w-full h-full bg-cream border border-ink shadow-[15px_15px_0px_#c0392b] flex flex-col overflow-hidden p-0 group"
               >
                 {/* Image */}
                 <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
@@ -186,10 +186,10 @@ export const EditorialVillaMasami = () => {
             transition={{ delay: 0.2 }}
           >
             <h2
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]"
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter text-ink"
               dangerouslySetInnerHTML={{ __html: t("villamasami.ch1_title1") }}
             />
-            <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed max-w-2xl">
+            <div className="space-y-6 text-ink/70 font-body text-lg leading-relaxed max-w-2xl">
               <p>{t("villamasami.ch1_p1")}</p>
               <p>{t("villamasami.ch1_p2")}</p>
             </div>
@@ -215,7 +215,7 @@ export const EditorialVillaMasami = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            CH. 02 — THE MISSION
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="bg-[#f5f2ed] py-24 md:py-32 px-6 md:px-12 lg:px-24">
+      <section className="bg-cream py-24 md:py-32 px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto flex justify-center">
           <motion.div
             className="max-w-4xl text-center"
@@ -224,11 +224,11 @@ export const EditorialVillaMasami = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1 }}
           >
-            <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/65 block mb-12">
+            <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-ink/65 block mb-12">
               {t("villamasami.ch2_label")}
             </span>
             <h3
-              className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-[#3d0f1a]"
+              className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-ink"
               dangerouslySetInnerHTML={{ __html: t("villamasami.ch2_title1") }}
             />
           </motion.div>
@@ -250,7 +250,7 @@ export const EditorialVillaMasami = () => {
             {/* Process Image con Anteprima Brutalista (Senza Padding, Più Rettangolare e Grande) */}
             <div className="relative w-full min-h-[400px] lg:h-full max-w-[720px] lg:max-w-none flex flex-col gap-8">
               {/* Box Frame Brutalista 1: Logo/Insegna */}
-              <div className="relative z-10 w-full flex-1 min-h-[300px] bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] overflow-hidden group">
+              <div className="relative z-10 w-full flex-1 min-h-[300px] bg-cream border border-ink shadow-[10px_10px_0px_#3d0f1a] overflow-hidden group">
                 <div className="w-full h-full relative overflow-hidden bg-white">
                   <img loading="lazy" decoding="async"
                     src="/assets/projects/villa-masami/insegna.webp"
@@ -261,7 +261,7 @@ export const EditorialVillaMasami = () => {
               </div>
 
               {/* Box Frame Brutalista 2: Homepage */}
-              <div className="relative z-10 w-full flex-1 min-h-[300px] md:min-h-[400px] bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] overflow-hidden group">
+              <div className="relative z-10 w-full flex-1 min-h-[300px] md:min-h-[400px] bg-cream border border-ink shadow-[10px_10px_0px_#3d0f1a] overflow-hidden group">
                 <div className="w-full h-full relative overflow-hidden bg-white">
                   <img loading="lazy" decoding="async"
                     src="/assets/projects/villa-masami/homepage.webp"
@@ -284,10 +284,10 @@ export const EditorialVillaMasami = () => {
               <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-8">
                 {t("villamasami.ch3_label")}
               </span>
-              <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter mb-8 text-[#3d0f1a]">
+              <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter mb-8 text-ink">
                 {t("villamasami.ch3_title")}
               </h2>
-              <div className="space-y-6 text-[#3d0f1a]/70 font-body text-lg leading-relaxed">
+              <div className="space-y-6 text-ink/70 font-body text-lg leading-relaxed">
                 <p>{t("villamasami.ch3_p1")}</p>
                 <p>{t("villamasami.ch3_p2")}</p>
               </div>
@@ -299,7 +299,7 @@ export const EditorialVillaMasami = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            CH. 04 — THE DEVELOPMENT
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="px-6 md:px-12 lg:px-24 py-24 bg-[#f5f2ed] border-y border-[#3d0f1a]/5">
+      <section className="px-6 md:px-12 lg:px-24 py-24 bg-cream border-y border-ink/5">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
           <motion.div
             className="lg:col-span-7 space-y-8"
@@ -310,10 +310,10 @@ export const EditorialVillaMasami = () => {
             <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-primary font-semibold block mb-2">
               {t("villamasami.ch4_label")}
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter text-[#3d0f1a]">
+            <h2 className="font-display text-4xl md:text-5xl font-black leading-[0.9] tracking-tighter text-ink">
               {t("villamasami.ch4_title")}
             </h2>
-            <div className="font-body text-[#3d0f1a]/70 text-lg leading-relaxed space-y-6">
+            <div className="font-body text-ink/70 text-lg leading-relaxed space-y-6">
               <p>{t("villamasami.ch4_p1")}</p>
               <p>{t("villamasami.ch4_p2")}</p>
             </div>
@@ -327,16 +327,16 @@ export const EditorialVillaMasami = () => {
             transition={{ delay: 0.2 }}
           >
             {/* Tech Spec Card in Brutalist Style */}
-            <div className="bg-white border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] p-10 h-full flex flex-col justify-between">
+            <div className="bg-white border border-ink shadow-[10px_10px_0px_#3d0f1a] p-10 h-full flex flex-col justify-between">
               <div>
-                <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-[#3d0f1a]/65 block mb-8">
+                <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-ink/65 block mb-8">
                   {t("chario.tech_stack")}
                 </span>
                 <div className="flex flex-wrap gap-2.5 mb-10">
                   {techList.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1.5 border border-[#3d0f1a]/20 font-typewriter text-[9px] uppercase tracking-widest text-[#3d0f1a]/80 hover:border-[#3d0f1a] transition-colors"
+                      className="px-3 py-1.5 border border-ink/20 font-typewriter text-[9px] uppercase tracking-widest text-ink/80 hover:border-ink transition-colors"
                     >
                       {tech}
                     </span>
@@ -344,7 +344,7 @@ export const EditorialVillaMasami = () => {
                 </div>
               </div>
 
-              <div className="border-t border-[#3d0f1a]/10 pt-6 mt-12 space-y-4 text-[#3d0f1a]">
+              <div className="border-t border-ink/10 pt-6 mt-12 space-y-4 text-ink">
                 <div className="flex items-center justify-between">
                   <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] opacity-50">
                     {t("chario.role_label")}
@@ -384,17 +384,17 @@ export const EditorialVillaMasami = () => {
           </div>
 
           <div className="mb-12 max-w-2xl">
-            <h2 className="font-display text-3xl md:text-5xl font-black tracking-tighter mb-6 text-[#3d0f1a]">
+            <h2 className="font-display text-3xl md:text-5xl font-black tracking-tighter mb-6 text-ink">
               {t("villamasami.ch5_title")}
             </h2>
-            <p className="font-body text-lg text-[#3d0f1a]/70">
+            <p className="font-body text-lg text-ink/70">
               {t("villamasami.ch5_p1")}
             </p>
           </div>
         </motion.div>
 
         {/* Autoplay Horizontal Slider / Marquee */}
-        <div className="mt-16 overflow-hidden relative w-full h-[50vh] min-h-[400px] bg-white border-y border-[#3d0f1a]/5">
+        <div className="mt-16 overflow-hidden relative w-full h-[50vh] min-h-[400px] bg-white border-y border-ink/5">
           <div className="absolute inset-y-0 left-0 w-16 md:w-48 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
           <div className="absolute inset-y-0 right-0 w-16 md:w-48 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
@@ -417,7 +417,7 @@ export const EditorialVillaMasami = () => {
                 ].map((src, j) => (
                   <div
                     key={j}
-                    className="h-full shrink-0 border border-[#3d0f1a] shadow-[10px_10px_0px_#c0392b] bg-[#f5f2ed] p-0 group overflow-hidden"
+                    className="h-full shrink-0 border border-ink shadow-[10px_10px_0px_#c0392b] bg-cream p-0 group overflow-hidden"
                   >
                     <img loading="lazy" decoding="async"
                       src={src}

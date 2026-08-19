@@ -35,7 +35,7 @@ export const NebulaNewpop = () => {
       title: "L'Obiettivo",
       description: (
         <div className="flex flex-col justify-center h-full">
-          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
+          <p className="border-l-2 border-gold/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
             "Mettersi al servizio del design d'autore: un'interfaccia invisibile
             che lascia la scena alla bellezza dei prodotti, guidando l'utente
             verso una conversione naturale."

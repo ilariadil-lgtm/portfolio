@@ -34,7 +34,7 @@ export const NebulaSicilCosmetic = () => {
       title: "L'Obiettivo",
       description: (
         <div className="flex flex-col justify-center h-full">
-          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
+          <p className="border-l-2 border-gold/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
             "Organizzare la bellezza: trasformare un catalogo complesso in
             un'esperienza d'acquisto fluida, intuitiva e orientata alla
             conversione."

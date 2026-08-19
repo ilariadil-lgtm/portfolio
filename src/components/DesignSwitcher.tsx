@@ -61,7 +61,7 @@ export const DesignSwitcher = () => {
         onClick={handleClick}
         className={`flex items-center gap-0 group-hover:gap-3 px-4 py-2 rounded-full border transition-all duration-500 shadow-2xl group ${
           design === "editorial"
-            ? "bg-primary text-background border-primary/20 hover:bg-[#080808] hover:text-[#d4af37] hover:scale-105"
+            ? "bg-primary text-background border-primary/20 hover:bg-night hover:text-gold hover:scale-105"
             : "bg-white/10 text-white border-white/20 backdrop-blur-xl hover:bg-white hover:text-black hover:scale-105"
         }`}
       >
@@ -69,7 +69,7 @@ export const DesignSwitcher = () => {
           {design === "editorial" ? (
             <Sparkles
               size={18}
-              className="animate-in fade-in zoom-in duration-500 group-hover:text-[#d4af37] transition-colors"
+              className="animate-in fade-in zoom-in duration-500 group-hover:text-gold transition-colors"
             />
           ) : (
             <BookOpen
@@ -81,7 +81,7 @@ export const DesignSwitcher = () => {
         <span
           className={`font-mono text-[10px] font-bold uppercase tracking-[0.2em] overflow-hidden max-w-0 group-hover:max-w-[180px] transition-all duration-500 whitespace-nowrap px-0 group-hover:px-1 ${
             design === "editorial"
-              ? "group-hover:text-[#d4af37]"
+              ? "group-hover:text-gold"
               : "text-white/80 group-hover:text-black"
           }`}
         >

@@ -32,7 +32,7 @@ const Blog = () => {
   }, []);
 
   return (
-    <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] overflow-hidden selection:bg-primary/30">
+    <div className="min-h-[100dvh] bg-cream text-ink overflow-hidden selection:bg-primary/30">
       <Navigation />
 
       {/* HERO */}
@@ -50,7 +50,7 @@ const Blog = () => {
         {/* Watermark */}
         <div className="absolute inset-0 flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
           <span
-            className="font-display font-black text-[#3d0f1a]/[0.025] pr-4"
+            className="font-display font-black text-ink/[0.025] pr-4"
             style={{ fontSize: "clamp(80px, 18vw, 240px)", lineHeight: 1 }}
           >
             {t("blog.watermark")}
@@ -70,7 +70,7 @@ const Blog = () => {
               <div className="w-10 h-[1px] bg-primary/25" />
             </div>
             <h1
-              className="font-display font-bold leading-[1.1] md:leading-[0.85] tracking-tighter text-[#3d0f1a]"
+              className="font-display font-bold leading-[1.1] md:leading-[0.85] tracking-tighter text-ink"
               style={{ fontSize: "clamp(3rem, 7vw, 5.8rem)" }}
             >
               {t("blog.title_1")}
@@ -95,7 +95,7 @@ const Blog = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: i * 0.1 }}
-                  className="group border-t border-[#3d0f1a]/15 pt-10"
+                  className="group border-t border-ink/15 pt-10"
                 >
                   {post.image && (
                     <div className="overflow-hidden mb-6 aspect-video">
@@ -111,7 +111,7 @@ const Blog = () => {
                       />
                     </div>
                   )}
-                  <div className="flex items-center gap-4 mb-4 font-typewriter text-[9px] uppercase tracking-[0.35em] text-[#3d0f1a]/65 font-bold">
+                  <div className="flex items-center gap-4 mb-4 font-typewriter text-[9px] uppercase tracking-[0.35em] text-ink/65 font-bold">
                     <span>
                       {new Date(post.created_at).toLocaleDateString(
                         i18n.language === "en" ? "en-US" : "it-IT",
@@ -125,10 +125,10 @@ const Blog = () => {
                       </>
                     )}
                   </div>
-                  <h2 className="font-display text-2xl md:text-3xl font-bold text-[#3d0f1a] mb-4 group-hover:text-primary transition-colors duration-300">
+                  <h2 className="font-display text-2xl md:text-3xl font-bold text-ink mb-4 group-hover:text-primary transition-colors duration-300">
                     {post.title}
                   </h2>
-                  <p className="font-body text-[15px] text-[#3d0f1a]/65 leading-relaxed line-clamp-3 mb-6">
+                  <p className="font-body text-[15px] text-ink/65 leading-relaxed line-clamp-3 mb-6">
                     {post.content}
                   </p>
                   <span className="group/link inline-flex items-center gap-2 font-typewriter text-[9px] uppercase tracking-[0.35em] text-primary font-bold">
@@ -145,15 +145,15 @@ const Blog = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="py-24 text-center border-t border-[#3d0f1a]/10"
+              className="py-24 text-center border-t border-ink/10"
             >
               <span className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-primary font-bold block mb-6">
                 {t("blog.coming_soon_label")}
               </span>
-              <p className="font-display text-3xl md:text-4xl font-bold text-[#3d0f1a] italic pr-2">
+              <p className="font-display text-3xl md:text-4xl font-bold text-ink italic pr-2">
                 {t("blog.coming_soon_title")}
               </p>
-              <p className="font-body text-[#3d0f1a]/65 mt-4">
+              <p className="font-body text-ink/65 mt-4">
                 {t("blog.coming_soon_desc")}
               </p>
             </motion.div>

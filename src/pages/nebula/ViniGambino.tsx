@@ -35,7 +35,7 @@ export const NebulaViniGambino = () => {
       title: "L'Obiettivo",
       description: (
         <div className="flex flex-col justify-center h-full">
-          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
+          <p className="border-l-2 border-gold/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
             "Tradurre la potenza del vulcano e l'eleganza del vino in un
             percorso visivo che invita all'assaggio, prima ancora di stappare la
             bottiglia."

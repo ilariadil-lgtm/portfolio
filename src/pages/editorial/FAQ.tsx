@@ -44,7 +44,7 @@ const FaqItem = ({ faq, index }: { faq: any; index: number }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.08 }}
-      className="border-b border-[#3d0f1a]/10"
+      className="border-b border-ink/10"
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
@@ -55,7 +55,7 @@ const FaqItem = ({ faq, index }: { faq: any; index: number }) => {
           <span className="font-typewriter text-[10px] text-primary/40 font-bold mt-1 shrink-0">
             {String(index + 1).padStart(2, "0")}
           </span>
-          <h2 className="font-display text-xl md:text-2xl font-bold text-[#3d0f1a] group-hover:text-primary transition-colors duration-300 leading-snug">
+          <h2 className="font-display text-xl md:text-2xl font-bold text-ink group-hover:text-primary transition-colors duration-300 leading-snug">
             {faq.question}
           </h2>
         </div>
@@ -73,7 +73,7 @@ const FaqItem = ({ faq, index }: { faq: any; index: number }) => {
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <p className="font-body text-[16px] text-[#3d0f1a]/70 leading-relaxed pb-8 pl-10 max-w-2xl">
+            <p className="font-body text-[16px] text-ink/70 leading-relaxed pb-8 pl-10 max-w-2xl">
               {faq.answer}
             </p>
           </motion.div>
@@ -107,14 +107,14 @@ const FAQ = () => {
   }, []);
 
   return (
-    <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] overflow-hidden selection:bg-primary/30">
+    <div className="min-h-[100dvh] bg-cream text-ink overflow-hidden selection:bg-primary/30">
       <Navigation />
 
       {/* HERO */}
       <section className="relative pt-52 md:pt-48 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
           <span
-            className="font-display font-black text-[#3d0f1a]/[0.025] pr-4"
+            className="font-display font-black text-ink/[0.025] pr-4"
             style={{ fontSize: "clamp(80px, 18vw, 240px)", lineHeight: 1 }}
           >
             {t("faq.watermark")}
@@ -134,7 +134,7 @@ const FAQ = () => {
               <div className="w-10 h-[1px] bg-primary/25" />
             </div>
             <h1
-              className="font-display font-bold leading-[1.1] md:leading-[0.85] tracking-tighter text-[#3d0f1a]"
+              className="font-display font-bold leading-[1.1] md:leading-[0.85] tracking-tighter text-ink"
               style={{ fontSize: "clamp(3rem, 7vw, 5.8rem)" }}
             >
               {t("faq.title_1")}

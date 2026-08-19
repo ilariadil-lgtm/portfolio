@@ -34,12 +34,12 @@ export const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({
 
   return (
     <div className="fixed right-6 md:right-12 lg:right-24 top-1/2 -translate-y-1/2 w-[1px] h-[40vh] min-h-[300px] bg-white/[0.05] z-50 pointer-events-none hidden md:block">
-      <div className="absolute top-0 -translate-y-8 left-1/2 -translate-x-1/2 font-mono text-[8px] text-[#d4af37] uppercase tracking-[0.4em] font-medium whitespace-nowrap opacity-60">
+      <div className="absolute top-0 -translate-y-8 left-1/2 -translate-x-1/2 font-mono text-[8px] text-gold uppercase tracking-[0.4em] font-medium whitespace-nowrap opacity-60">
         {t("scroll.start", "START")}
       </div>
 
       <motion.div
-        className="absolute top-0 left-0 w-[1px] bg-[#d4af37] origin-top shadow-[0_0_8px_rgba(212,175,55,0.4)]"
+        className="absolute top-0 left-0 w-[1px] bg-gold origin-top shadow-[0_0_8px_rgba(212,175,55,0.4)]"
         style={{ scaleY, height: "100%" }}
       />
 
@@ -54,19 +54,19 @@ export const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({
           }}
         >
           <div
-            className={`w-full h-full rounded-full transition-all duration-300 ${activeIndex >= i ? "bg-[#d4af37] shadow-[0_0_10px_rgba(212,175,55,0.8)] scale-100" : "bg-[#d4af37]/20 scale-50"}`}
+            className={`w-full h-full rounded-full transition-all duration-300 ${activeIndex >= i ? "bg-gold shadow-[0_0_10px_rgba(212,175,55,0.8)] scale-100" : "bg-gold/20 scale-50"}`}
           />
 
           {/* Label */}
           <div
-            className={`absolute right-4 top-1/2 -translate-y-1/2 font-mono text-[8px] tracking-[0.3em] transition-all duration-500 whitespace-nowrap ${activeIndex === i ? "opacity-100 text-[#d4af37] translate-x-0" : "opacity-0 text-white/50 translate-x-2"}`}
+            className={`absolute right-4 top-1/2 -translate-y-1/2 font-mono text-[8px] tracking-[0.3em] transition-all duration-500 whitespace-nowrap ${activeIndex === i ? "opacity-100 text-gold translate-x-0" : "opacity-0 text-white/50 translate-x-2"}`}
           >
             {sec}
           </div>
         </div>
       ))}
 
-      <div className="absolute bottom-0 translate-y-8 left-1/2 -translate-x-1/2 font-mono text-[8px] text-[#d4af37] uppercase tracking-[0.4em] font-medium whitespace-nowrap opacity-60">
+      <div className="absolute bottom-0 translate-y-8 left-1/2 -translate-x-1/2 font-mono text-[8px] text-gold uppercase tracking-[0.4em] font-medium whitespace-nowrap opacity-60">
         {t("scroll.end", "END")}
       </div>
     </div>

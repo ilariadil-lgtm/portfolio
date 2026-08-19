@@ -43,7 +43,7 @@ export const NebulaFooter = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="relative bg-black text-white/50 pt-16 md:pt-24 pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-[calc(6rem+env(safe-area-inset-bottom))] px-6 md:px-12 lg:px-24 overflow-hidden border-t border-[#d4af37]/20 snap-start"
+      className="relative bg-black text-white/50 pt-16 md:pt-24 pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-[calc(6rem+env(safe-area-inset-bottom))] px-6 md:px-12 lg:px-24 overflow-hidden border-t border-gold/20 snap-start"
     >
       {/* Background glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] max-w-[100vw] h-[300px] bg-white/5 blur-[150px] rounded-t-full pointer-events-none" />
@@ -53,18 +53,18 @@ export const NebulaFooter = () => {
         <div className="md:col-span-5 space-y-8">
           <Link to="/" className="inline-block group">
             <div className="flex items-center gap-3 mb-2">
-              <span className="font-outfit text-xl tracking-tighter font-black text-white group-hover:text-[#d4af37] transition-colors">
+              <span className="font-outfit text-xl tracking-tighter font-black text-white group-hover:text-gold transition-colors">
                 ILARIA DILIBERTO.
               </span>
             </div>
-            <p className="font-mono text-xs tracking-[0.2em] text-[#d4af37] uppercase font-bold">
+            <p className="font-mono text-xs tracking-[0.2em] text-gold uppercase font-bold">
               {t("footer.subtitle").toUpperCase()}
             </p>
           </Link>
           <p className="font-outfit font-light text-sm text-white/50 leading-relaxed max-w-sm whitespace-pre-wrap">
             {t("footer.description")}
           </p>
-          <div className="relative p-8 border border-[#d4af37]/20 bg-white/5 rounded-none hover:bg-white/10 transition-all duration-500 overflow-hidden backdrop-blur-sm mt-4">
+          <div className="relative p-8 border border-gold/20 bg-white/5 rounded-none hover:bg-white/10 transition-all duration-500 overflow-hidden backdrop-blur-sm mt-4">
             <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/50 font-bold block mb-4">
               {t("footer.work_together").toUpperCase()}
             </span>
@@ -73,7 +73,7 @@ export const NebulaFooter = () => {
             </p>
             <Link
               to="/contatti"
-              className="flex items-center gap-3 text-white hover:text-[#d4af37] transition-colors font-mono tracking-widest font-bold text-xs"
+              className="flex items-center gap-3 text-white hover:text-gold transition-colors font-mono tracking-widest font-bold text-xs"
             >
               {t("footer.contact_me").toUpperCase()}
               <ArrowRight size={14} />
@@ -97,9 +97,9 @@ export const NebulaFooter = () => {
               <li key={link.path}>
                 <Link
                   to={link.path}
-                  className="font-outfit text-sm tracking-wide hover:text-[#d4af37] transition-colors relative inline-block group text-white/60"
+                  className="font-outfit text-sm tracking-wide hover:text-gold transition-colors relative inline-block group text-white/60"
                 >
-                  <span className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-[1px] bg-[#d4af37] opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                  <span className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-[1px] bg-gold opacity-0 group-hover:opacity-100 transition-all duration-300" />
                   <span className="inline-block transform group-hover:translate-x-4 transition-transform duration-300">
                     {link.label}
                   </span>
@@ -143,7 +143,7 @@ export const NebulaFooter = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-4 border border-white/10 bg-white/5 hover:bg-[#d4af37]/10 hover:border-[#d4af37]/30 text-white/50 hover:text-[#d4af37] transition-all"
+                  className="flex items-center gap-3 p-4 border border-white/10 bg-white/5 hover:bg-gold/10 hover:border-gold/30 text-white/50 hover:text-gold transition-all"
                 >
                   <social.icon size={14} />
                   <span className="font-mono text-[10px] tracking-wider">
@@ -205,7 +205,7 @@ export const NebulaFooter = () => {
           >
             COOKIE POLICY
           </a>
-          <span className="font-mono text-[10px] tracking-wider text-[#d4af37]/70 uppercase">
+          <span className="font-mono text-[10px] tracking-wider text-gold/70 uppercase">
             P.IVA: 03065860847
           </span>
         </div>

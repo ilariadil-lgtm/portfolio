@@ -32,7 +32,7 @@ export class ErrorBoundary extends Component<Props, State> {
       }
       
       return (
-        <div className="min-h-[100dvh] w-full bg-[#080808] text-white flex flex-col items-center justify-center p-6 font-outfit">
+        <div className="min-h-[100dvh] w-full bg-night text-white flex flex-col items-center justify-center p-6 font-outfit">
           <div className="max-w-md w-full bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-md shadow-2xl text-center">
             <h1 className="font-bricolage text-3xl font-bold text-red-400 mb-4">
               Ops! Qualcosa è andato storto.
@@ -42,7 +42,7 @@ export class ErrorBoundary extends Component<Props, State> {
             </p>
             <button
               onClick={() => window.location.reload()}
-              className="bg-[#d4af37] text-black font-mono text-[10px] uppercase tracking-widest font-bold px-6 py-3 rounded-full hover:bg-white transition-colors duration-300 w-full mb-4"
+              className="bg-gold text-black font-mono text-[10px] uppercase tracking-widest font-bold px-6 py-3 rounded-full hover:bg-white transition-colors duration-300 w-full mb-4"
             >
               Ricarica la pagina
             </button>

@@ -47,8 +47,8 @@ const CMSDetails = () => {
       title: "La Filosofia",
       description: (
         <>
-          <div className="py-12 border-l-2 border-[#d4af37] pl-8">
-            <h2 className="font-fraunces text-4xl md:text-5xl italic text-[#d4af37] leading-tight">
+          <div className="py-12 border-l-2 border-gold pl-8">
+            <h2 className="font-fraunces text-4xl md:text-5xl italic text-gold leading-tight">
               Il tuo sito è un asset aziendale, non un abbonamento infinito.
             </h2>
           </div>
@@ -67,14 +67,14 @@ const CMSDetails = () => {
             Il percorso si divide in due approcci possibili, a seconda dell'urgenza e del budget:
           </p>
           <div className="space-y-6">
-            <div className="border-l border-[#d4af37]/30 pl-6">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-[#d4af37] mb-2">1. Configurazione Premium Standard</h3>
+            <div className="border-l border-gold/30 pl-6">
+              <h3 className="font-mono text-xs uppercase tracking-widest text-gold mb-2">1. Configurazione Premium Standard</h3>
               <p className="text-white/70 text-lg">
                 Adattamento tecnico e ottimizzazione di un tema commerciale di fascia alta. Focus su performance, pulizia dei plugin e SEO base — la soluzione giusta quando i tempi sono stretti ma la qualità non è negoziabile.
               </p>
             </div>
-            <div className="border-l border-[#d4af37]/30 pl-6">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-[#d4af37] mb-2">2. Sviluppo Tema Custom da Zero</h3>
+            <div className="border-l border-gold/30 pl-6">
+              <h3 className="font-mono text-xs uppercase tracking-widest text-gold mb-2">2. Sviluppo Tema Custom da Zero</h3>
               <p className="text-white/70 text-lg">
                 Scrittura totale del tema, White Theme proprietario. Zero page builder pesanti, frontend leggerissimo, pannello di gestione disegnato su misura per il tuo flusso di lavoro quotidiano.
               </p>

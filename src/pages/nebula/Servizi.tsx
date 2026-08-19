@@ -122,7 +122,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
         setOpacity(0);
         setShowSpecs(false);
       }}
-      className="h-full relative border border-white/5 p-8 md:p-12 bg-white/[0.02] backdrop-blur-md hover:border-[#d4af37]/30 hover:bg-white/[0.04] transition-all duration-700 flex flex-col justify-between group overflow-hidden rounded-3xl"
+      className="h-full relative border border-white/5 p-8 md:p-12 bg-white/[0.02] backdrop-blur-md hover:border-gold/30 hover:bg-white/[0.04] transition-all duration-700 flex flex-col justify-between group overflow-hidden rounded-3xl"
     >
       {/* Spotlight Effect overlay */}
       <div
@@ -132,26 +132,26 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
           background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(212, 175, 55, 0.08), transparent 40%)`,
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
 
       {/* Numero in background (Watermark) */}
-      <div className="absolute -bottom-4 -right-2 font-bricolage text-[140px] leading-none font-black text-white/[0.04] group-hover:text-[#d4af37]/[0.08] transition-colors duration-500 select-none pointer-events-none z-0">
+      <div className="absolute -bottom-4 -right-2 font-bricolage text-[140px] leading-none font-black text-white/[0.04] group-hover:text-gold/[0.08] transition-colors duration-500 select-none pointer-events-none z-0">
         0{idx + 1}
       </div>
 
       {/* Content wrapper */}
       <div className="relative z-10 flex-1 flex flex-col">
         {/* Card Header telemetry */}
-        <div className="flex justify-between items-start border-b border-white/10 pb-6 mb-8 relative group-hover:border-[#d4af37]/20 transition-colors duration-500">
+        <div className="flex justify-between items-start border-b border-white/10 pb-6 mb-8 relative group-hover:border-gold/20 transition-colors duration-500">
           <div className="flex flex-col">
-            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
+            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-gold flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
               {service.subtitle || `SERVICE_0${idx + 1}`}
             </span>
           </div>
           <motion.div
             animate={{ rotate: isHovered ? 15 : 0 }}
-            className="text-white/50 group-hover:text-[#d4af37] transition-all duration-500"
+            className="text-white/50 group-hover:text-gold transition-all duration-500"
           >
             {service.icon || <Box size={24} />}
           </motion.div>
@@ -160,7 +160,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
         {/* Central Title & Description */}
         <div className="space-y-6 mb-8 flex-1">
           <div className="flex items-baseline gap-4 min-h-[80px] lg:min-h-[120px]">
-            <span className="font-fraunces italic font-light text-5xl md:text-6xl text-white/5 group-hover:text-[#d4af37]/10 transition-colors duration-700 select-none pr-2">
+            <span className="font-fraunces italic font-light text-5xl md:text-6xl text-white/5 group-hover:text-gold/10 transition-colors duration-700 select-none pr-2">
               0{idx + 1}
             </span>
             <h3 className="font-bricolage font-black tracking-tight text-3xl text-white">
@@ -176,7 +176,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
         <div className="mb-8 flex justify-between items-center relative z-10 mt-6">
           <button
             onClick={() => setShowSpecs(!showSpecs)}
-            className="px-4 py-2 rounded-full border border-white/10 bg-white/[0.02] text-white/60 font-mono text-[9px] uppercase tracking-[0.2em] hover:text-[#d4af37] hover:border-[#d4af37]/40 hover:bg-[#d4af37]/5 transition-all cursor-pointer flex items-center gap-2"
+            className="px-4 py-2 rounded-full border border-white/10 bg-white/[0.02] text-white/60 font-mono text-[9px] uppercase tracking-[0.2em] hover:text-gold hover:border-gold/40 hover:bg-gold/5 transition-all cursor-pointer flex items-center gap-2"
           >
             {showSpecs
               ? `- ${t("services.close_details")}`
@@ -199,7 +199,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
                   <span className="text-white/50 uppercase tracking-[0.2em]">
                     {t("services.tools")}:
                   </span>
-                  <span className="text-[#d4af37] text-right bg-[#d4af37]/10 px-2 py-1">
+                  <span className="text-gold text-right bg-gold/10 px-2 py-1">
                     {specs.core}
                   </span>
                 </div>
@@ -215,7 +215,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
                   <span className="text-white/50 uppercase tracking-[0.2em]">
                     {t("services.key_objective")}:
                   </span>
-                  <span className="text-[#d4af37] text-right">{specs.kpi}</span>
+                  <span className="text-gold text-right">{specs.kpi}</span>
                 </div>
                 <div className="pt-3">
                   <span className="text-white/50 uppercase tracking-[0.2em] block mb-3">
@@ -251,7 +251,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
               ]
             ).map((del: string, dIdx: number) => (
               <li key={dIdx} className="flex items-center gap-3">
-                <div className="w-1 h-1 rounded-full bg-[#d4af37]/50" />
+                <div className="w-1 h-1 rounded-full bg-gold/50" />
                 <span className="font-mono text-[9px] uppercase tracking-[0.1em] text-white/70 group-hover:text-white transition-colors duration-300">
                   {del}
                 </span>
@@ -273,10 +273,10 @@ const WorkflowDataTerminal = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start w-full bg-white/[0.02] border border-white/5 p-8 md:p-16 rounded-3xl backdrop-blur-md relative overflow-hidden group hover:border-[#d4af37]/20 hover:bg-white/[0.03] transition-all duration-700">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start w-full bg-white/[0.02] border border-white/5 p-8 md:p-16 rounded-3xl backdrop-blur-md relative overflow-hidden group hover:border-gold/20 hover:bg-white/[0.03] transition-all duration-700">
       {/* Navigation Column */}
       <div className="lg:col-span-5 flex flex-col justify-center relative z-10">
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37] mb-6 block border-b border-white/10 pb-4">
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold mb-6 block border-b border-white/10 pb-4">
           {t("services.workflow_label")}
         </span>
 
@@ -290,7 +290,7 @@ const WorkflowDataTerminal = () => {
                 onClick={() => setActiveIndex(idx)}
                 className={`w-full text-left py-4 px-5 rounded-2xl transition-all duration-500 relative flex items-center justify-between overflow-hidden ${
                   isActive
-                    ? "border border-[#d4af37]/40 bg-gradient-to-r from-[#d4af37]/10 to-transparent shadow-[inset_0_0_20px_rgba(212,175,55,0.05)]"
+                    ? "border border-gold/40 bg-gradient-to-r from-gold/10 to-transparent shadow-[inset_0_0_20px_rgba(212,175,55,0.05)]"
                     : "border border-transparent hover:border-white/10 hover:bg-white/[0.02]"
                 }`}
               >
@@ -298,7 +298,7 @@ const WorkflowDataTerminal = () => {
                   <span
                     className={`font-fraunces italic font-light text-2xl transition-colors duration-300 ${
                       isActive
-                        ? "text-[#d4af37]"
+                        ? "text-gold"
                         : "text-white/50 group-hover:text-white/50"
                     }`}
                   >
@@ -318,7 +318,7 @@ const WorkflowDataTerminal = () => {
                   size={18}
                   className={`transition-all duration-500 ${
                     isActive
-                      ? "text-[#d4af37] opacity-100 translate-x-0"
+                      ? "text-gold opacity-100 translate-x-0"
                       : "text-white/10 opacity-0 -translate-x-4"
                   }`}
                 />
@@ -356,8 +356,8 @@ const WorkflowDataTerminal = () => {
               className="relative z-10"
             >
               <div className="flex items-center gap-4 mb-8">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37]">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold">
                   {steps[activeIndex].subtitle}
                 </span>
               </div>
@@ -376,7 +376,7 @@ const WorkflowDataTerminal = () => {
                   <span className="font-mono text-[8px] text-white/50 uppercase tracking-widest">
                     {t("services.workflow_label")}
                   </span>
-                  <span className="font-mono text-[8px] text-[#d4af37] tracking-widest animate-pulse">
+                  <span className="font-mono text-[8px] text-gold tracking-widest animate-pulse">
                     100%
                   </span>
                 </div>
@@ -385,7 +385,7 @@ const WorkflowDataTerminal = () => {
                     initial={{ x: "-100%" }}
                     animate={{ x: "0%" }}
                     transition={{ duration: 1, ease: "easeOut" }}
-                    className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-transparent via-[#d4af37] to-transparent"
+                    className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-transparent via-gold to-transparent"
                   />
                 </div>
               </div>
@@ -471,7 +471,7 @@ const Servizi = () => {
   const displayServices = services.length > 0 ? services : fallbackServices;
 
   return (
-    <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative lg:pl-24">
+    <div className="min-h-[100dvh] w-full bg-night text-slate-100 font-sans selection:bg-gold/30 overflow-hidden flex flex-col relative lg:pl-24">
       <NebulaNav />
       <ScrollIndicator
         sections={[
@@ -486,7 +486,7 @@ const Servizi = () => {
           GLOBAL BACKGROUNDS (NEBULA AESTHETIC)
           ═════════════════════════════════════════════════════ */}
       <div className="fixed inset-0 pointer-events-none z-[0]">
-        <Suspense fallback={<div className="absolute inset-0 bg-[#080808]" />}>
+        <Suspense fallback={<div className="absolute inset-0 bg-night" />}>
           <HeroCanvas />
         </Suspense>
       </div>
@@ -499,7 +499,7 @@ const Servizi = () => {
             scale: [1, 1.15, 1],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-[#d4af37]/10 to-[#3d0f1a]/10 blur-[130px]"
+          className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-gold/10 to-ink/10 blur-[130px]"
         />
         <motion.div
           animate={{
@@ -508,7 +508,7 @@ const Servizi = () => {
             scale: [1, 1.1, 1],
           }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-tl from-indigo-900/10 to-[#3d0f1a]/5 blur-[140px]"
+          className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-tl from-indigo-900/10 to-ink/5 blur-[140px]"
         />
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
@@ -536,7 +536,7 @@ const Servizi = () => {
                 className="space-y-6"
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.3em] text-[#d4af37] flex items-center gap-2">
+                  <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.3em] text-gold flex items-center gap-2">
                     <span className="text-[10px]">✦</span>{" "}
                     {t("services.what_i_offer")}
                   </span>
@@ -550,7 +550,7 @@ const Servizi = () => {
                   <RevealText
                     text={t("services.title_2", "servizi.")}
                     delay={0.2}
-                    className="font-fraunces italic font-light tracking-wider text-fluid-h1 leading-[1.1] text-[#d4af37] whitespace-nowrap pr-2"
+                    className="font-fraunces italic font-light tracking-wider text-fluid-h1 leading-[1.1] text-gold whitespace-nowrap pr-2"
                   />
                 </div>
               </motion.div>
@@ -564,7 +564,7 @@ const Servizi = () => {
                   delay: 0.2,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="font-outfit font-light text-white/60 text-lg leading-relaxed pl-8 border-l border-[#d4af37]/30 backdrop-blur-sm"
+                className="font-outfit font-light text-white/60 text-lg leading-relaxed pl-8 border-l border-gold/30 backdrop-blur-sm"
               >
                 Un buon prodotto digitale non nasce separando il design dallo
                 sviluppo. Creo soluzioni partendo da una forte sensibilità
@@ -581,13 +581,13 @@ const Servizi = () => {
       <section className="py-32 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto w-full z-10 relative">
         <div className="mb-16">
            <div className="flex items-center gap-4 mb-6">
-              <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4af37] font-medium flex items-center gap-2">
+              <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-gold font-medium flex items-center gap-2">
                  <span className="text-[10px]">✦</span> Le mie aree di competenza
               </span>
-              <div className="w-12 h-[1px] bg-[#d4af37]/20" />
+              <div className="w-12 h-[1px] bg-gold/20" />
            </div>
            <h2 className="font-bricolage text-3xl md:text-5xl font-bold text-white mt-2">
-              Il motore dei <span className="font-fraunces italic font-light text-[#d4af37]">tuoi progetti</span>
+              Il motore dei <span className="font-fraunces italic font-light text-gold">tuoi progetti</span>
            </h2>
            <p className="mt-6 font-outfit font-light text-lg text-white/60 max-w-2xl">
               Le skill verticali che metto in campo per trasformare la tua visione in ecosistemi stabili, belli da vedere e performanti.
@@ -620,13 +620,13 @@ const Servizi = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 text-left">
             <div className="flex items-center gap-4 justify-start mb-6">
-              <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4af37] font-medium flex items-center gap-2">
+              <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-gold font-medium flex items-center gap-2">
                 <span className="text-[10px]">✦</span> {t("services.packages_label")}
               </span>
-              <div className="w-12 h-[1px] bg-[#d4af37]/20" />
+              <div className="w-12 h-[1px] bg-gold/20" />
             </div>
             <h2 className="font-bricolage text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight max-w-3xl mx-0">
-              {t("services.packages_title")} <span className="font-fraunces italic font-light text-[#d4af37]">{t("services.packages_title_highlight")}</span>
+              {t("services.packages_title")} <span className="font-fraunces italic font-light text-gold">{t("services.packages_title_highlight")}</span>
             </h2>
             <p className="mt-6 font-outfit text-lg text-white/60 max-w-2xl font-light">
               {t("services.packages_subtitle")}
@@ -636,12 +636,12 @@ const Servizi = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             {/* TIER 1: CMS */}
-            <div className="border border-white/5 bg-white/[0.02] backdrop-blur-md p-8 flex flex-col group hover:bg-white/[0.04] hover:border-[#d4af37]/30 transition-all duration-500 rounded-3xl relative overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
+            <div className="border border-white/5 bg-white/[0.02] backdrop-blur-md p-8 flex flex-col group hover:bg-white/[0.04] hover:border-gold/30 transition-all duration-500 rounded-3xl relative overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+              <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
               <div className="relative z-10 flex flex-col h-full">
                 <div className="mb-8">
                   <h3 className="font-bricolage text-2xl font-bold text-white mb-2">{t("services.pkg_cms_name")}</h3>
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#d4af37] font-bold mb-6">{t("services.pkg_cms_tagline")}</p>
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-gold font-bold mb-6">{t("services.pkg_cms_tagline")}</p>
                   <p className="font-outfit font-light text-[14px] text-white/60 min-h-[60px]">
                     {t("services.pkg_cms_desc")}
                   </p>
@@ -654,39 +654,39 @@ const Servizi = () => {
 
                 <ul className="space-y-4 mb-10 flex-grow">
                   <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
                     <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_cms_p1")}</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
                     <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_cms_p2")}</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
                     <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_cms_p3")}</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
                     <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_cms_p4")}</span>
                   </li>
                 </ul>
 
-                <Link to="/sviluppo-cms" className="w-full py-4 border border-white/10 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-white/60 group-hover:text-[#d4af37] group-hover:border-[#d4af37]/40 group-hover:bg-[#d4af37]/5 rounded-full transition-all duration-300 inline-block">
+                <Link to="/sviluppo-cms" className="w-full py-4 border border-white/10 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-white/60 group-hover:text-gold group-hover:border-gold/40 group-hover:bg-gold/5 rounded-full transition-all duration-300 inline-block">
                   {t("services.pkg_cms_btn")}
                 </Link>
               </div>
             </div>
 
             {/* TIER 2: MVP */}
-            <div className="border border-[#d4af37]/40 bg-gradient-to-b from-[#d4af37]/10 to-white/[0.02] backdrop-blur-md p-8 flex flex-col group relative shadow-[0_0_40px_rgba(212,175,55,0.15)] md:-mt-4 md:mb-4 rounded-3xl overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#d4af37] text-black font-mono text-[9px] uppercase tracking-widest px-4 py-1.5 font-bold whitespace-nowrap rounded-b-lg z-20">
+            <div className="border border-gold/40 bg-gradient-to-b from-gold/10 to-white/[0.02] backdrop-blur-md p-8 flex flex-col group relative shadow-[0_0_40px_rgba(212,175,55,0.15)] md:-mt-4 md:mb-4 rounded-3xl overflow-hidden">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-gold text-black font-mono text-[9px] uppercase tracking-widest px-4 py-1.5 font-bold whitespace-nowrap rounded-b-lg z-20">
                 {t("services.pkg_mvp_badge")}
               </div>
-              <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
               <div className="relative z-10 flex flex-col h-full mt-4">
                 <div className="mb-8">
                   <h3 className="font-bricolage text-2xl font-bold text-white mb-2">{t("services.pkg_mvp_name")}</h3>
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#d4af37] font-bold mb-6">{t("services.pkg_mvp_tagline")}</p>
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-gold font-bold mb-6">{t("services.pkg_mvp_tagline")}</p>
                   <p className="font-outfit font-light text-[14px] text-white/60 min-h-[60px]">
                     {t("services.pkg_mvp_desc")}
                   </p>
@@ -699,36 +699,36 @@ const Servizi = () => {
 
                 <ul className="space-y-4 mb-10 flex-grow">
                   <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
                     <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_mvp_p1")}</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
                     <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_mvp_p2")}</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
                     <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_mvp_p3")}</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
                     <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_mvp_p4")}</span>
                   </li>
                 </ul>
 
-                <Link to="/sviluppo-mvp" className="w-full py-4 bg-[#d4af37] text-black text-center font-mono text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-white rounded-full transition-colors duration-300 inline-block">
+                <Link to="/sviluppo-mvp" className="w-full py-4 bg-gold text-black text-center font-mono text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-white rounded-full transition-colors duration-300 inline-block">
                   {t("services.pkg_mvp_btn")}
                 </Link>
               </div>
             </div>
 
             {/* TIER 3: Custom */}
-            <div className="border border-white/5 bg-white/[0.02] backdrop-blur-md p-8 flex flex-col group hover:bg-white/[0.04] hover:border-[#d4af37]/30 transition-all duration-500 rounded-3xl relative overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
+            <div className="border border-white/5 bg-white/[0.02] backdrop-blur-md p-8 flex flex-col group hover:bg-white/[0.04] hover:border-gold/30 transition-all duration-500 rounded-3xl relative overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+              <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
               <div className="relative z-10 flex flex-col h-full">
                 <div className="mb-8">
                   <h3 className="font-bricolage text-2xl font-bold text-white mb-2">{t("services.pkg_custom_name")}</h3>
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-[#d4af37] font-bold mb-6">{t("services.pkg_custom_tagline")}</p>
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-gold font-bold mb-6">{t("services.pkg_custom_tagline")}</p>
                   <p className="font-outfit font-light text-[14px] text-white/60 min-h-[60px]">
                     {t("services.pkg_custom_desc")}
                   </p>
@@ -741,24 +741,24 @@ const Servizi = () => {
 
                 <ul className="space-y-4 mb-10 flex-grow">
                   <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
                     <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_custom_p1")}</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
                     <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_custom_p2")}</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
                     <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_custom_p3")}</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-[#d4af37] shrink-0 mt-0.5" />
+                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
                     <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_custom_p4")}</span>
                   </li>
                 </ul>
 
-                <Link to="/sviluppo-custom" className="w-full py-4 border border-white/10 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-white/60 group-hover:text-[#d4af37] group-hover:border-[#d4af37]/40 group-hover:bg-[#d4af37]/5 rounded-full transition-all duration-300 inline-block">
+                <Link to="/sviluppo-custom" className="w-full py-4 border border-white/10 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-white/60 group-hover:text-gold group-hover:border-gold/40 group-hover:bg-gold/5 rounded-full transition-all duration-300 inline-block">
                   {t("services.pkg_custom_btn")}
                 </Link>
               </div>
@@ -771,7 +771,7 @@ const Servizi = () => {
       <section className="relative z-10 w-full px-6 md:px-12 lg:px-24 pb-48 pt-12">
         <div className="max-w-7xl mx-auto flex flex-col items-start w-full">
           <div className="mb-16 text-left w-full">
-            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-[#d4af37] font-medium mb-4 block">
+            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-gold font-medium mb-4 block">
               02 — {t("services.workflow_label")}
             </span>
             <div className="flex flex-wrap items-baseline gap-x-4 mb-6">
@@ -783,7 +783,7 @@ const Servizi = () => {
               <RevealText
                 text={t("services.workflow_title_2")}
                 delay={0.3}
-                className="font-fraunces italic font-light text-4xl md:text-5xl lg:text-6xl text-[#d4af37] pr-2"
+                className="font-fraunces italic font-light text-4xl md:text-5xl lg:text-6xl text-gold pr-2"
               />
             </div>
             <p className="font-outfit font-light text-white/50 text-lg max-w-2xl">

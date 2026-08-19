@@ -90,7 +90,7 @@ export const EditorialProjectDetail = () => {
   /* ── Loading ── */
   if (loading) {
     return (
-      <div className="min-h-[100dvh] bg-[#f5f2ed] flex items-center justify-center">
+      <div className="min-h-[100dvh] bg-cream flex items-center justify-center">
         <motion.span
           animate={{ opacity: [0.3, 0.9, 0.3] }}
           transition={{ duration: 1.4, repeat: Infinity }}
@@ -105,7 +105,7 @@ export const EditorialProjectDetail = () => {
   /* ── Not found ── */
   if (!project) {
     return (
-      <div className="min-h-[100dvh] bg-[#f5f2ed] flex flex-col items-center justify-center gap-8 text-[#3d0f1a]">
+      <div className="min-h-[100dvh] bg-cream flex flex-col items-center justify-center gap-8 text-ink">
         <h1 className="font-display text-5xl font-black">
           {t("project_detail.not_found")}
         </h1>
@@ -168,13 +168,13 @@ export const EditorialProjectDetail = () => {
   }, [project, id]);
 
   return (
-    <div className="min-h-[100dvh] bg-[#f5f2ed] text-[#3d0f1a] selection:bg-primary/30 overflow-hidden">
+    <div className="min-h-[100dvh] bg-cream text-ink selection:bg-primary/30 overflow-hidden">
       <Navigation />
 
       {/* ═══════════════════════════════════════════════════════════════════
            HERO — full-viewport image + title overlay
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative h-[92vh] min-h-[400px] lg:min-h-[600px] overflow-hidden bg-[#3d0f1a]">
+      <section className="relative h-[92vh] min-h-[400px] lg:min-h-[600px] overflow-hidden bg-ink">
         {/* Background image */}
         <motion.img
           src={
@@ -193,7 +193,7 @@ export const EditorialProjectDetail = () => {
         />
 
         {/* Bottom gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#3d0f1a] via-[#3d0f1a]/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent" />
 
         {/* Corner brackets */}
         <div className="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-white/20" />
@@ -263,20 +263,20 @@ export const EditorialProjectDetail = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            META BAR — categoria, anno, link
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="border-b border-primary/10 px-8 md:px-16 lg:px-24 bg-[#f5f2ed]">
+      <section className="border-b border-primary/10 px-8 md:px-16 lg:px-24 bg-cream">
         <div className="max-w-7xl mx-auto py-6 flex flex-wrap items-center justify-between gap-6">
           <div className="flex flex-wrap items-center gap-8">
             <div className="flex flex-col gap-1">
-              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/65">
+              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-ink/65">
                 {t("project_detail.category")}
               </span>
-              <span className="font-typewriter text-[11px] uppercase tracking-[0.2em] text-[#3d0f1a] font-bold">
+              <span className="font-typewriter text-[11px] uppercase tracking-[0.2em] text-ink font-bold">
                 {project.type || "—"}
               </span>
             </div>
             <div className="w-px h-8 bg-primary/10 hidden sm:block" />
             <div className="flex flex-col gap-1">
-              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/65">
+              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-ink/65">
                 {t("project_detail.year")}
               </span>
               <span className="font-display text-xl font-black">
@@ -285,7 +285,7 @@ export const EditorialProjectDetail = () => {
             </div>
             <div className="w-px h-8 bg-primary/10 hidden sm:block" />
             <div className="flex flex-col gap-1">
-              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/65">
+              <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-ink/65">
                 {t("project_detail.status")}
               </span>
               <span className="font-typewriter text-[11px] text-green-700 font-bold tracking-widest">
@@ -320,9 +320,9 @@ export const EditorialProjectDetail = () => {
               >
                 <Github
                   size={13}
-                  className="text-[#3d0f1a]/65 group-hover:text-[#3d0f1a] transition-colors"
+                  className="text-ink/65 group-hover:text-ink transition-colors"
                 />
-                <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-[#3d0f1a]/65 group-hover:text-[#3d0f1a] transition-colors font-semibold">
+                <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-ink/65 group-hover:text-ink transition-colors font-semibold">
                   {t("project_detail.github")}
                 </span>
               </a>
@@ -349,7 +349,7 @@ export const EditorialProjectDetail = () => {
                 {t("project_detail.the_project")}
               </span>
               <p
-                className="font-body text-[#3d0f1a]/80 leading-relaxed"
+                className="font-body text-ink/80 leading-relaxed"
                 style={{ fontSize: "clamp(1.1rem, 2vw, 1.4rem)" }}
               >
                 {project.description}
@@ -358,18 +358,18 @@ export const EditorialProjectDetail = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 pt-10 border-t border-primary/8">
               <div>
-                <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/65 block mb-3">
+                <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-ink/65 block mb-3">
                   {t("project_detail.challenge_title")}
                 </span>
-                <p className="font-body text-[15px] text-[#3d0f1a]/65 leading-relaxed italic pr-2">
+                <p className="font-body text-[15px] text-ink/65 leading-relaxed italic pr-2">
                   {t("project_detail.challenge_desc")}
                 </p>
               </div>
               <div>
-                <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-[#3d0f1a]/65 block mb-3">
+                <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-ink/65 block mb-3">
                   {t("project_detail.result_title")}
                 </span>
-                <p className="font-body text-[15px] text-[#3d0f1a]/65 leading-relaxed italic pr-2">
+                <p className="font-body text-[15px] text-ink/65 leading-relaxed italic pr-2">
                   {t("project_detail.result_desc")}
                 </p>
               </div>
@@ -384,7 +384,7 @@ export const EditorialProjectDetail = () => {
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="bg-[#3d0f1a] text-white p-10 relative overflow-hidden">
+            <div className="bg-ink text-white p-10 relative overflow-hidden">
               {/* top accent line */}
               <div className="absolute top-0 left-0 w-full h-[3px] bg-primary" />
 
@@ -478,7 +478,7 @@ export const EditorialProjectDetail = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            CTA — dark strip
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-36 px-8 md:px-16 lg:px-24 bg-[#3d0f1a] text-white relative overflow-hidden">
+      <section className="py-24 md:py-36 px-8 md:px-16 lg:px-24 bg-ink text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#c0392b_1px,transparent_1px)] [background-size:40px_40px]" />
 
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">

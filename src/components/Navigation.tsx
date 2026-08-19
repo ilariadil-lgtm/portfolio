@@ -66,7 +66,7 @@ export const Navigation = () => {
           animate={{ y: 0, opacity: 1 }}
           className={`transition-all duration-500 ${
             scrolled
-              ? "max-w-[1200px] w-full px-6 py-4 bg-[#f5f2ed] border border-primary/10 shadow-[0_20px_40px_-15px_rgba(61,15,26,0.2)] rounded-full mx-auto flex items-center justify-between"
+              ? "max-w-[1200px] w-full px-6 py-4 bg-cream border border-primary/10 shadow-[0_20px_40px_-15px_rgba(61,15,26,0.2)] rounded-full mx-auto flex items-center justify-between"
               : "max-w-screen-2xl mx-auto flex items-center justify-between w-full"
           }`}
         >
@@ -204,7 +204,7 @@ export const Navigation = () => {
                     className={`font-display text-3xl font-bold tracking-tighter hover:opacity-80 transition-opacity ${
                       location.pathname === item.path
                         ? "text-primary"
-                        : "text-[#3d0f1a]"
+                        : "text-ink"
                     }`}
                   >
                     {t(`nav.${item.key}`)}
@@ -239,7 +239,7 @@ export const Navigation = () => {
                   onClick={() => changeLanguage("it")}
                   aria-label="Seleziona lingua italiana"
                   aria-pressed={i18n.language === "it"}
-                  className={`font-body text-[13px] uppercase tracking-[0.2em] transition-all ${i18n.language === "it" ? "text-primary font-bold" : "text-[#3d0f1a]/65 hover:text-primary"}`}
+                  className={`font-body text-[13px] uppercase tracking-[0.2em] transition-all ${i18n.language === "it" ? "text-primary font-bold" : "text-ink/65 hover:text-primary"}`}
                 >
                   IT
                 </button>
@@ -253,7 +253,7 @@ export const Navigation = () => {
                   onClick={() => changeLanguage("en")}
                   aria-label="Select English language"
                   aria-pressed={i18n.language === "en"}
-                  className={`font-body text-[13px] uppercase tracking-[0.2em] transition-all ${i18n.language === "en" ? "text-primary font-bold" : "text-[#3d0f1a]/65 hover:text-primary"}`}
+                  className={`font-body text-[13px] uppercase tracking-[0.2em] transition-all ${i18n.language === "en" ? "text-primary font-bold" : "text-ink/65 hover:text-primary"}`}
                 >
                   EN
                 </button>

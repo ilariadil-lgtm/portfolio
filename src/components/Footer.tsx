@@ -38,10 +38,10 @@ export const Footer = () => {
   }, []);
 
   return (
-    <footer className="bg-[#f5f2ed] border-t border-editorial px-6 md:px-12 lg:px-24 pt-20 pb-[calc(5rem+env(safe-area-inset-bottom))] relative overflow-hidden">
+    <footer className="bg-cream border-t border-editorial px-6 md:px-12 lg:px-24 pt-20 pb-[calc(5rem+env(safe-area-inset-bottom))] relative overflow-hidden">
       {/* Background Monumental Text */}
       <div className="absolute top-0 left-0 w-full flex justify-center opacity-[0.03] select-none pointer-events-none translate-y-[-20%]">
-        <span className="font-display text-[25vw] font-black uppercase tracking-tighter text-[#3d0f1a]">
+        <span className="font-display text-[25vw] font-black uppercase tracking-tighter text-ink">
           ilaria
         </span>
       </div>
@@ -56,11 +56,11 @@ export const Footer = () => {
                 {t("footer.subtitle")}
               </span>
             </div>
-            <h3 className="font-display text-4xl md:text-5xl font-black text-[#3d0f1a] leading-none mb-8">
+            <h3 className="font-display text-4xl md:text-5xl font-black text-ink leading-none mb-8">
               Ilaria <br />
               <span className="text-primary italic pr-2">Diliberto.</span>
             </h3>
-            <p className="font-body text-sm text-[#3d0f1a]/65 leading-relaxed max-w-sm">
+            <p className="font-body text-sm text-ink/65 leading-relaxed max-w-sm">
               {t("footer.description")}
             </p>
           </div>
@@ -103,7 +103,7 @@ export const Footer = () => {
               <li key={i}>
                 <Link
                   to={link.to}
-                  className="group flex items-center justify-between font-display text-xl md:text-2xl text-[#3d0f1a] hover:text-primary transition-colors duration-300"
+                  className="group flex items-center justify-between font-display text-xl md:text-2xl text-ink hover:text-primary transition-colors duration-300"
                 >
                   <span>{link.label}</span>
                   <ArrowUpRight

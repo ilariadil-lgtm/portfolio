@@ -24,7 +24,7 @@ export const BriefingCTA: React.FC<BriefingCTAProps> = ({
   const { t } = useTranslation();
 
   return (
-    <section className="pt-24 md:pt-36 pb-32 md:pb-40 px-6 md:px-12 lg:px-24 bg-[#3d0f1a] text-[#f5f2ed] relative overflow-hidden border-t border-[#f5f2ed]/5">
+    <section className="pt-24 md:pt-36 pb-32 md:pb-40 px-6 md:px-12 lg:px-24 bg-ink text-cream relative overflow-hidden border-t border-cream/5">
       {/* Background Subtle Grid/Dots or Radials */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -41,10 +41,10 @@ export const BriefingCTA: React.FC<BriefingCTAProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
           {/* Left Column: Text block containing title & narrative */}
           <div className="lg:col-span-7 space-y-6 text-left">
-            <span className="font-typewriter text-[11px] uppercase tracking-[0.3em] md:tracking-[0.5em] text-[#f5f2ed]/50 font-bold block">
+            <span className="font-typewriter text-[11px] uppercase tracking-[0.3em] md:tracking-[0.5em] text-cream/50 font-bold block">
               {subtitle || t("cta.subtitle")}
             </span>
-            <h2 className="font-display text-5xl md:text-7xl font-black leading-none tracking-tighter text-[#f5f2ed]">
+            <h2 className="font-display text-5xl md:text-7xl font-black leading-none tracking-tighter text-cream">
               <RevealText text={title1 || t("cta.title_1")} delay={0.1} />
               <RevealText
                 text={title2 || t("cta.title_2")}
@@ -52,7 +52,7 @@ export const BriefingCTA: React.FC<BriefingCTAProps> = ({
                 className="text-primary italic pr-2"
               />
             </h2>
-            <p className="font-body text-lg text-[#f5f2ed]/70 leading-relaxed max-w-xl">
+            <p className="font-body text-lg text-cream/70 leading-relaxed max-w-xl">
               {description || t("cta.description")}
             </p>
           </div>
@@ -63,9 +63,9 @@ export const BriefingCTA: React.FC<BriefingCTAProps> = ({
               <Link
                 to="/contatti"
                 data-cursor="pointer"
-                className="group inline-flex items-center gap-8 p-8 border border-white/10 bg-[#f5f2ed] shadow-[6px_6px_0px_#c0392b] md:shadow-[10px_10px_0px_#c0392b] hover:translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0px_#c0392b] md:hover:shadow-[15px_15px_0px_#c0392b] transition-all duration-300 w-full justify-between"
+                className="group inline-flex items-center gap-8 p-8 border border-white/10 bg-cream shadow-[6px_6px_0px_#c0392b] md:shadow-[10px_10px_0px_#c0392b] hover:translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0px_#c0392b] md:hover:shadow-[15px_15px_0px_#c0392b] transition-all duration-300 w-full justify-between"
               >
-                <span className="relative z-10 flex items-center gap-4 text-[10px] sm:text-[11px] tracking-widest uppercase font-bold text-[#3d0f1a]">
+                <span className="relative z-10 flex items-center gap-4 text-[10px] sm:text-[11px] tracking-widest uppercase font-bold text-ink">
                   {buttonText || t("cta.button")}
                   <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform duration-300" />
                 </span>

@@ -23,9 +23,9 @@ export const NebulaStorageHub = () => {
       title: t("storagehub.ch2_label").replace(/^\d+\s*—\s*/, ""),
       subtitle: t("storagehub.ch2_title1"),
       description: (
-        <p className="border-l-2 border-[#d4af37]/30 pl-4 py-2 italic text-white/80 pr-2">
+        <p className="border-l-2 border-gold/30 pl-4 py-2 italic text-white/80 pr-2">
           {t("storagehub.ch2_title1")}
-          <span className="text-[#d4af37] italic pr-2">
+          <span className="text-gold italic pr-2">
             {t("storagehub.ch2_title2")}
           </span>
           {t("storagehub.ch2_title3")}

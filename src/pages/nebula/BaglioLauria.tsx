@@ -35,7 +35,7 @@ export const NebulaBaglioLauria = () => {
       title: "L'Obiettivo",
       description: (
         <div className="flex flex-col justify-center h-full">
-          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
+          <p className="border-l-2 border-gold/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
             "Trasmettere il calore del sole siciliano e l'eleganza della pietra
             antica attraverso un'interfaccia capace di far sognare l'utente dal
             primo click."

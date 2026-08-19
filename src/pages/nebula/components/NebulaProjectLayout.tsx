@@ -85,14 +85,14 @@ export const NebulaProjectLayout = ({
   }
 
   return (
-    <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 flex flex-col relative overflow-hidden lg:pl-24">
+    <div className="min-h-[100dvh] w-full bg-night text-slate-100 font-sans selection:bg-gold/30 flex flex-col relative overflow-hidden lg:pl-24">
       <NebulaNav />
 
       {/* ═════════════════════════════════════════════════════
           GLOBAL BACKGROUNDS (NEBULA AESTHETIC)
           ═════════════════════════════════════════════════════ */}
       <div className="fixed inset-0 pointer-events-none z-[0]">
-        <Suspense fallback={<div className="absolute inset-0 bg-[#080808]" />}>
+        <Suspense fallback={<div className="absolute inset-0 bg-night" />}>
           <HeroCanvas />
         </Suspense>
       </div>
@@ -105,7 +105,7 @@ export const NebulaProjectLayout = ({
             scale: [1, 1.15, 1],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-[#d4af37]/10 to-[#3d0f1a]/10 blur-[130px]"
+          className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-gold/10 to-ink/10 blur-[130px]"
         />
         <motion.div
           animate={{
@@ -114,7 +114,7 @@ export const NebulaProjectLayout = ({
             scale: [1, 1.1, 1],
           }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-tl from-indigo-900/10 to-[#3d0f1a]/5 blur-[140px]"
+          className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-tl from-indigo-900/10 to-ink/5 blur-[140px]"
         />
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
@@ -134,7 +134,7 @@ export const NebulaProjectLayout = ({
         <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col items-start">
           <Link
             to="/progetti"
-            className="group flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37] hover:text-white transition-colors mb-12 bg-[#d4af37]/5 px-4 py-2 border border-[#d4af37]/20 rounded-full backdrop-blur-md"
+            className="group flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-gold hover:text-white transition-colors mb-12 bg-gold/5 px-4 py-2 border border-gold/20 rounded-full backdrop-blur-md"
           >
             <ArrowLeft
               size={14}
@@ -149,7 +149,7 @@ export const NebulaProjectLayout = ({
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="flex items-center gap-4 mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
               <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/50 block">
                 {type}
               </span>
@@ -167,7 +167,7 @@ export const NebulaProjectLayout = ({
                 <RevealText
                   text={finalTitleEnd}
                   delay={0.2}
-                  className="font-fraunces italic font-light tracking-tight text-5xl md:text-8xl lg:text-[clamp(2rem,7vw,7rem)] leading-[0.9] text-[#d4af37] pr-2"
+                  className="font-fraunces italic font-light tracking-tight text-5xl md:text-8xl lg:text-[clamp(2rem,7vw,7rem)] leading-[0.9] text-gold pr-2"
                 />
               )}
             </div>
@@ -180,31 +180,31 @@ export const NebulaProjectLayout = ({
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="w-full grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 pt-12 mt-12 border-t border-white/5"
           >
-            <div className="bg-black/40 border border-white/5 backdrop-blur-xl p-6 rounded-2xl flex flex-col justify-between group hover:border-[#d4af37]/30 hover:bg-black/60 transition-all duration-500 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
-              <span className="block font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] mb-4">
+            <div className="bg-black/40 border border-white/5 backdrop-blur-xl p-6 rounded-2xl flex flex-col justify-between group hover:border-gold/30 hover:bg-black/60 transition-all duration-500 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+              <span className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gold mb-4">
                 RUOLO
               </span>
               <span className="font-outfit font-light text-lg text-white group-hover:text-white">
                 {role}
               </span>
             </div>
-            <div className="bg-black/40 border border-white/5 backdrop-blur-xl p-6 rounded-2xl flex flex-col justify-between group hover:border-[#d4af37]/30 hover:bg-black/60 transition-all duration-500 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
-              <span className="block font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] mb-4">
+            <div className="bg-black/40 border border-white/5 backdrop-blur-xl p-6 rounded-2xl flex flex-col justify-between group hover:border-gold/30 hover:bg-black/60 transition-all duration-500 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+              <span className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gold mb-4">
                 ANNO
               </span>
               <span className="font-mono text-lg text-white group-hover:text-white">
                 {year}
               </span>
             </div>
-            <div className="md:col-span-2 bg-black/40 border border-white/5 backdrop-blur-xl p-6 rounded-2xl flex flex-col justify-between group hover:border-[#d4af37]/30 hover:bg-black/60 transition-all duration-500 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
-              <span className="block font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] mb-4">
+            <div className="md:col-span-2 bg-black/40 border border-white/5 backdrop-blur-xl p-6 rounded-2xl flex flex-col justify-between group hover:border-gold/30 hover:bg-black/60 transition-all duration-500 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+              <span className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gold mb-4">
                 TECNOLOGIE
               </span>
               <div className="flex flex-wrap gap-2">
                 {techList.map((t) => (
                   <span
                     key={t}
-                    className="px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] text-white/90 font-mono text-[9px] uppercase tracking-[0.1em] group-hover:border-[#d4af37]/40 group-hover:text-[#d4af37] transition-colors"
+                    className="px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] text-white/90 font-mono text-[9px] uppercase tracking-[0.1em] group-hover:border-gold/40 group-hover:text-gold transition-colors"
                   >
                     {t}
                   </span>
@@ -226,8 +226,8 @@ export const NebulaProjectLayout = ({
             className="w-full flex flex-col lg:flex-row gap-12 lg:gap-24 mb-32 items-start"
           >
             <div className="lg:w-1/4 pt-2">
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37] flex items-center gap-4">
-                <span className="w-8 h-[1px] bg-[#d4af37]/30 block" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold flex items-center gap-4">
+                <span className="w-8 h-[1px] bg-gold/30 block" />
                 PANORAMICA PROGETTO
               </span>
             </div>
@@ -235,7 +235,7 @@ export const NebulaProjectLayout = ({
               {description}
               
               <div className="mt-16 flex flex-col sm:flex-row gap-6">
-                <a href="mailto:info@ilariadiliberto.com" className="group inline-flex items-center justify-center gap-4 bg-[#d4af37] text-black px-8 py-4 font-mono text-[10px] uppercase tracking-widest hover:bg-white hover:scale-105 transition-all duration-300">
+                <a href="mailto:info@ilariadiliberto.com" className="group inline-flex items-center justify-center gap-4 bg-gold text-black px-8 py-4 font-mono text-[10px] uppercase tracking-widest hover:bg-white hover:scale-105 transition-all duration-300">
                   Prenota una call gratuita
                   <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </a>
@@ -259,14 +259,14 @@ export const NebulaProjectLayout = ({
                 href={liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 px-10 py-5 rounded-full border border-[#d4af37]/30 hover:border-[#d4af37] bg-[#d4af37]/5 hover:bg-[#d4af37]/20 backdrop-blur-md shadow-[0_0_20px_rgba(212,175,55,0.05)] hover:shadow-[0_0_40px_rgba(212,175,55,0.2)] transition-all duration-500"
+                className="group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 px-10 py-5 rounded-full border border-gold/30 hover:border-gold bg-gold/5 hover:bg-gold/20 backdrop-blur-md shadow-[0_0_20px_rgba(212,175,55,0.05)] hover:shadow-[0_0_40px_rgba(212,175,55,0.2)] transition-all duration-500"
               >
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-[#d4af37] group-hover:text-white transition-colors">
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-gold group-hover:text-white transition-colors">
                   VISITA IL SITO
                 </span>
                 <ArrowUpRight
                   size={16}
-                  className="text-[#d4af37] group-hover:scale-125 transition-transform"
+                  className="text-gold group-hover:scale-125 transition-transform"
                 />
               </a>
             </div>
@@ -283,16 +283,16 @@ export const NebulaProjectLayout = ({
 
         {finalCta && (
           <div className="w-full max-w-5xl mx-auto px-6 md:px-12 mt-20 mb-10 relative z-10">
-            <div className="border border-[#d4af37]/20 bg-[#d4af37]/5 backdrop-blur-md p-10 md:p-16 text-left flex flex-col items-start shadow-[0_0_50px_rgba(212,175,55,0.05)]">
+            <div className="border border-gold/20 bg-gold/5 backdrop-blur-md p-10 md:p-16 text-left flex flex-col items-start shadow-[0_0_50px_rgba(212,175,55,0.05)]">
               {finalCta.title && (
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#d4af37] mb-6">
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold mb-6">
                   {finalCta.title}
                 </span>
               )}
               <h2 className="font-fraunces italic font-light text-3xl md:text-5xl text-white mb-10 leading-tight max-w-2xl">
                 {finalCta.description}
               </h2>
-              <Link to={finalCta.buttonUrl} className="group inline-flex items-center justify-center gap-4 bg-[#d4af37] text-black px-10 py-5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-white hover:scale-105 transition-all duration-300">
+              <Link to={finalCta.buttonUrl} className="group inline-flex items-center justify-center gap-4 bg-gold text-black px-10 py-5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-white hover:scale-105 transition-all duration-300">
                 {finalCta.buttonText}
                 <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </Link>

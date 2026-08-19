@@ -120,7 +120,7 @@ const Index = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            TRI-LAYER CINEMATIC MARQUEE — CREATIVE PRO
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative pb-40 md:pb-32 border-b border-editorial overflow-hidden bg-[#f5f2ed]">
+      <section className="relative pb-40 md:pb-32 border-b border-editorial overflow-hidden bg-cream">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -186,7 +186,7 @@ const Index = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            ABOUT PREVIEW — PREMIUM ANIMATIONS
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="grid grid-cols-1 lg:grid-cols-[5%_55%_40%] border-b border-editorial bg-[#f5f2ed] overflow-hidden">
+      <section className="grid grid-cols-1 lg:grid-cols-[5%_55%_40%] border-b border-editorial bg-cream overflow-hidden">
         <div className="hidden lg:flex border-r border-editorial flex-col items-center py-12 justify-between opacity-30 select-none">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
@@ -235,7 +235,7 @@ const Index = () => {
                     delay: i * 0.15,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className={`font-display text-4xl md:text-6xl lg:text-[clamp(2rem,4vw,4rem)] font-bold leading-[0.95] tracking-tight ${i === 2 ? "text-primary italic" : "text-[#3d0f1a]"}`}
+                  className={`font-display text-4xl md:text-6xl lg:text-[clamp(2rem,4vw,4rem)] font-bold leading-[0.95] tracking-tight ${i === 2 ? "text-primary italic" : "text-ink"}`}
                 >
                   {line}
                 </motion.h2>
@@ -246,7 +246,7 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.6 }}
-              className="font-body text-xl text-[#3d0f1a]/70 leading-relaxed max-w-xl mb-16"
+              className="font-body text-xl text-ink/70 leading-relaxed max-w-xl mb-16"
             >
               {t("index.approach_desc")}
             </motion.p>
@@ -274,7 +274,7 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="relative overflow-hidden bg-[#3d0f1a] group">
+        <div className="relative overflow-hidden bg-ink group">
           <motion.img
             initial={{ scale: 1.2, opacity: 0, filter: "blur(10px)" }}
             whileInView={{ scale: 1, opacity: 0.4, filter: "blur(0px)" }}
@@ -362,7 +362,7 @@ const Index = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            HORIZONTAL BLUEPRINT SLIDER — PROJECTS
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="py-20 md:py-24 bg-[#f5f2ed] relative overflow-hidden border-b border-editorial">
+      <section className="py-20 md:py-24 bg-cream relative overflow-hidden border-b border-editorial">
         <div className="px-6 md:px-12 flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
           <div className="relative">
             <div className="flex items-center gap-4 mb-6">
@@ -479,12 +479,12 @@ const Index = () => {
                     <span className="font-typewriter text-[12px] uppercase tracking-[0.3em] text-primary font-medium block mb-3">
                       {t("index.project")}_0{i + 1}
                     </span>
-                    <h3 className="font-display text-2xl md:text-3xl font-black text-[#3d0f1a] mb-4">
+                    <h3 className="font-display text-2xl md:text-3xl font-black text-ink mb-4">
                       {t(`index_fallback.${item.id}.title`, {
                         defaultValue: item.title,
                       })}
                     </h3>
-                    <p className="font-body text-[14px] text-[#3d0f1a]/65 leading-relaxed line-clamp-2 max-w-md">
+                    <p className="font-body text-[14px] text-ink/65 leading-relaxed line-clamp-2 max-w-md">
                       {t(`index_fallback.${item.id}.description`, {
                         defaultValue: item.description,
                       })}

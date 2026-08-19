@@ -37,7 +37,7 @@ export const NebulaPattiForniture = () => {
       title: "L'Obiettivo",
       description: (
         <div className="flex flex-col justify-center h-full">
-          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
+          <p className="border-l-2 border-gold/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
             "Trasferire la solidità e l'assortimento del punto vendita fisico in
             un'infrastruttura digitale orientata alla chiarezza e alla
             conversione."

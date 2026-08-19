@@ -33,7 +33,7 @@ export const NebulaPortfolio = () => {
       title: "L'Obiettivo",
       description: (
         <div className="flex flex-col justify-center h-full">
-          <p className="border-l-2 border-[#d4af37]/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
+          <p className="border-l-2 border-gold/50 pl-6 py-4 italic text-white/90 text-xl font-outfit pr-2">
             "Sfidare tecnicamente se stesse, senza perdere il calore.
             L'obiettivo non era stupire con gli effetti — era dimostrare
             controllo. Il tema Editorial — tipografia, burgundy, calore —

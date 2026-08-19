@@ -191,7 +191,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
         delay: (idx % 3) * 0.1,
         ease: [0.16, 1, 0.3, 1],
       }}
-      className={`group relative flex flex-col bg-white/[0.02] border border-white/5 hover:border-[#d4af37]/30 backdrop-blur-md rounded-3xl overflow-hidden transition-all duration-700 ${isLarge ? "md:col-span-2" : "md:col-span-1"}`}
+      className={`group relative flex flex-col bg-white/[0.02] border border-white/5 hover:border-gold/30 backdrop-blur-md rounded-3xl overflow-hidden transition-all duration-700 ${isLarge ? "md:col-span-2" : "md:col-span-1"}`}
     >
       <Link
         to={
@@ -202,7 +202,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
         className="flex flex-col h-full"
       >
         {/* Spotlight Effect overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
 
         {/* ── Image Header ── */}
         <div className="relative overflow-hidden aspect-[16/9] w-full border-b border-white/10 z-10">
@@ -228,7 +228,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
             className="absolute inset-0 w-full h-full object-cover object-top opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
           />
 
-          <div className="absolute bottom-4 right-4 z-20 text-[#d4af37] bg-black/40 backdrop-blur-md p-2 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-50 transition-all duration-500 border border-white/10">
+          <div className="absolute bottom-4 right-4 z-20 text-gold bg-black/40 backdrop-blur-md p-2 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-50 transition-all duration-500 border border-white/10">
             <Maximize2 size={16} />
           </div>
         </div>
@@ -236,8 +236,8 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
         {/* ── Data Panel (Body) ── */}
         <div className="flex flex-col flex-1 p-8 relative z-10">
           <div className="flex items-start justify-between gap-4 mb-4">
-            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#d4af37] flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
+            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-gold flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
               {getProjectLabel(project.type || project.project_type, t)}
             </span>
             <span className="font-mono text-[9px] text-white/50 tracking-[0.2em]">
@@ -245,7 +245,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
             </span>
           </div>
 
-          <h2 className="font-bricolage font-black tracking-tight text-3xl md:text-4xl text-white group-hover:text-[#d4af37] transition-colors duration-500 mb-4">
+          <h2 className="font-bricolage font-black tracking-tight text-3xl md:text-4xl text-white group-hover:text-gold transition-colors duration-500 mb-4">
             {t(`projects_data.${project.id}.title`, {
               defaultValue: project.title,
             })}
@@ -344,7 +344,7 @@ const NebulaProgetti = () => {
   );
 
   return (
-    <div className="min-h-[100dvh] w-full bg-[#080808] text-slate-100 font-sans selection:bg-[#d4af37]/30 overflow-hidden flex flex-col relative lg:pl-24">
+    <div className="min-h-[100dvh] w-full bg-night text-slate-100 font-sans selection:bg-gold/30 overflow-hidden flex flex-col relative lg:pl-24">
       <NebulaNav />
       <ScrollIndicator
         sections={["scroll.hero", "scroll.archive", "scroll.contact"].map((k) =>
@@ -356,7 +356,7 @@ const NebulaProgetti = () => {
           GLOBAL BACKGROUNDS (NEBULA AESTHETIC)
           ═════════════════════════════════════════════════════ */}
       <div className="fixed inset-0 pointer-events-none z-[0]">
-        <Suspense fallback={<div className="absolute inset-0 bg-[#080808]" />}>
+        <Suspense fallback={<div className="absolute inset-0 bg-night" />}>
           <HeroCanvas />
         </Suspense>
       </div>
@@ -369,7 +369,7 @@ const NebulaProgetti = () => {
             scale: [1, 1.15, 1],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-[#d4af37]/10 to-[#3d0f1a]/10 blur-[130px]"
+          className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-gold/10 to-ink/10 blur-[130px]"
         />
         <motion.div
           animate={{
@@ -378,7 +378,7 @@ const NebulaProgetti = () => {
             scale: [1, 1.1, 1],
           }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-tl from-indigo-900/10 to-[#3d0f1a]/5 blur-[140px]"
+          className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-tl from-indigo-900/10 to-ink/5 blur-[140px]"
         />
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
@@ -407,7 +407,7 @@ const NebulaProgetti = () => {
               className="space-y-6"
             >
               <div className="flex items-center gap-4 mb-6">
-                <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.3em] text-[#d4af37] flex items-center gap-2">
+                <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.3em] text-gold flex items-center gap-2">
                   <span className="text-[10px]">✦</span>{" "}
                   {t("projects.subtitle")}
                 </span>
@@ -421,7 +421,7 @@ const NebulaProgetti = () => {
                 <RevealText
                   text={t("projects.title_2")}
                   delay={0.2}
-                  className="font-fraunces italic font-light tracking-wider text-fluid-h1 leading-[1.1] text-[#d4af37] whitespace-nowrap pr-2"
+                  className="font-fraunces italic font-light tracking-wider text-fluid-h1 leading-[1.1] text-gold whitespace-nowrap pr-2"
                 />
               </div>
             </motion.div>
@@ -435,7 +435,7 @@ const NebulaProgetti = () => {
                 delay: 0.2,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="font-outfit font-light text-white/60 text-lg leading-relaxed border-l border-[#d4af37]/30 pl-8 backdrop-blur-sm"
+              className="font-outfit font-light text-white/60 text-lg leading-relaxed border-l border-gold/30 pl-8 backdrop-blur-sm"
             >
               {t("projects.description")}
             </motion.p>
@@ -446,7 +446,7 @@ const NebulaProgetti = () => {
       {/* ───────────────────────────────────────────────────────────────────
           CATEGORY FILTER BAR (Glassmorphism)
           ─────────────────────────────────────────────────────────────────── */}
-      <section className="sticky top-0 z-40 bg-[#080808]/80 backdrop-blur-xl border-y border-white/5 px-6 md:px-12 lg:px-24 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+      <section className="sticky top-0 z-40 bg-night/80 backdrop-blur-xl border-y border-white/5 px-6 md:px-12 lg:px-24 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-center py-5">
             {/* Category buttons */}
@@ -460,7 +460,7 @@ const NebulaProgetti = () => {
                   }}
                   className={`relative px-5 py-2.5 rounded-full font-mono text-[10px] uppercase tracking-[0.2em] transition-all duration-300 whitespace-nowrap cursor-pointer ${
                     activeCategory === cat.id
-                      ? "text-[#d4af37] bg-[#d4af37]/10 border border-[#d4af37]/40 shadow-[inset_0_0_10px_rgba(212,175,55,0.1)] font-bold"
+                      ? "text-gold bg-gold/10 border border-gold/40 shadow-[inset_0_0_10px_rgba(212,175,55,0.1)] font-bold"
                       : "text-white/50 border border-transparent hover:text-white hover:bg-white/5 hover:border-white/10"
                   }`}
                 >
@@ -479,7 +479,7 @@ const NebulaProgetti = () => {
       <main className="relative z-10 w-full flex-1 flex flex-col items-center py-20 md:py-32">
         <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
           {loading ? (
-            <div className="w-full py-32 flex flex-col items-center justify-center font-mono text-[10px] text-[#d4af37] animate-pulse uppercase tracking-[0.2em] gap-4">
+            <div className="w-full py-32 flex flex-col items-center justify-center font-mono text-[10px] text-gold animate-pulse uppercase tracking-[0.2em] gap-4">
               <Hexagon size={24} className="animate-spin-slow opacity-50" />
               {t("projects.loading")}
             </div>
@@ -523,9 +523,9 @@ const NebulaProgetti = () => {
             >
               <button
                 onClick={() => setVisibleCount((prev) => prev + 6)}
-                className="group relative flex items-center justify-center px-10 py-4 rounded-full border border-white/10 bg-white/[0.02] hover:bg-[#d4af37]/10 hover:border-[#d4af37]/40 overflow-hidden transition-all duration-300 cursor-pointer"
+                className="group relative flex items-center justify-center px-10 py-4 rounded-full border border-white/10 bg-white/[0.02] hover:bg-gold/10 hover:border-gold/40 overflow-hidden transition-all duration-300 cursor-pointer"
               >
-                <span className="relative z-10 font-mono text-[10px] uppercase tracking-[0.3em] text-white/70 group-hover:text-[#d4af37] font-bold transition-colors">
+                <span className="relative z-10 font-mono text-[10px] uppercase tracking-[0.3em] text-white/70 group-hover:text-gold font-bold transition-colors">
                   {t("projects.load_more")}
                 </span>
               </button>
