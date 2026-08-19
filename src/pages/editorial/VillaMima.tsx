@@ -149,7 +149,7 @@ export const EditorialVillaMima = () => {
               >
                 {/* Image */}
                 <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="/assets/projects/villa-mima/home.webp"
                     alt="Villa Mima Homepage Screenshot"
                     onError={(e) => {
@@ -200,14 +200,14 @@ export const EditorialVillaMima = () => {
             {/* Storytelling Images */}
             <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl relative">
               <div className="relative aspect-[4/5] bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] overflow-hidden group">
-                <img
+                <img loading="lazy" decoding="async"
                   src="/assets/projects/villa-mima/paesaggio.webp"
                   alt="Villa Mima Paesaggio"
                   className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000"
                 />
               </div>
               <div className="relative aspect-[4/5] bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] overflow-hidden group md:translate-y-12">
-                <img
+                <img loading="lazy" decoding="async"
                   src="/assets/projects/villa-mima/piastrelle.webp"
                   alt="Villa Mima Piastrelle"
                   className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000"
@@ -257,7 +257,7 @@ export const EditorialVillaMima = () => {
               {/* Box Frame Brutalista 1: Ristorante */}
               <div className="relative z-10 w-full flex-1 min-h-[300px] bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] overflow-hidden group">
                 <div className="w-full h-full relative overflow-hidden bg-white">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="/assets/projects/villa-mima/ristorante.webp"
                     alt="Villa Mima Ristorante"
                     className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000"
@@ -268,7 +268,7 @@ export const EditorialVillaMima = () => {
               {/* Box Frame Brutalista 2: Wedding */}
               <div className="relative z-10 w-full flex-1 min-h-[300px] md:min-h-[400px] bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] overflow-hidden group">
                 <div className="w-full h-full relative overflow-hidden bg-white">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="/assets/projects/villa-mima/wedding.webp"
                     alt="Villa Mima Wedding"
                     className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000"
@@ -425,7 +425,7 @@ export const EditorialVillaMima = () => {
                     key={j}
                     className="h-full shrink-0 border border-[#3d0f1a] shadow-[10px_10px_0px_#c0392b] bg-[#f5f2ed] p-0 group overflow-hidden"
                   >
-                    <img
+                    <img loading="lazy" decoding="async"
                       src={src}
                       alt={`Villa Mima Slide ${j}`}
                       onError={(e) => {

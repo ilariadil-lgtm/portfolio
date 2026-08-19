@@ -94,7 +94,7 @@ const Blog = () => {
                 >
                   {post.image && (
                     <div className="overflow-hidden mb-8 aspect-[16/10] bg-white/5">
-                      <img
+                      <img loading="lazy" decoding="async"
                         src={
                           post.image.startsWith("http") ||
                           post.image.startsWith("/")
@@ -103,7 +103,6 @@ const Blog = () => {
                         }
                         alt={post.title}
                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700"
-                        loading="lazy"
                       />
                     </div>
                   )}

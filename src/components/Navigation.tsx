@@ -74,7 +74,7 @@ export const Navigation = () => {
             className="hover:opacity-80 transition-opacity"
             aria-label="Torna alla Home"
           >
-            <img
+            <img decoding="async" fetchPriority="high"
               src={
                 design === "editorial"
                   ? "/logo_editorial.svg"

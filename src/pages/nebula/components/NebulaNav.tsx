@@ -72,12 +72,12 @@ export const NebulaNav = () => {
             to="/"
             className="relative flex items-center justify-start transition-all duration-300 w-full h-full shrink-0"
           >
-            <img
+            <img decoding="async" fetchPriority="high"
               src="/id_nebula.webp"
               alt="ID"
               className="absolute left-1 w-16 h-16 object-contain group-hover/nav:opacity-0 group-hover/nav:scale-75 transition-all duration-300 drop-shadow-[0_0_12px_rgba(212,175,55,0.3)]"
             />
-            <img
+            <img decoding="async" fetchPriority="high"
               src="/logo_nebula.svg"
               alt="Ilaria Diliberto"
               className="absolute left-4 w-64 lg:w-72 h-auto object-contain object-left opacity-0 scale-90 group-hover/nav:opacity-100 group-hover/nav:scale-100 transition-all duration-500"
@@ -194,7 +194,7 @@ export const NebulaNav = () => {
             to="/"
             className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white"
           >
-            <img
+            <img decoding="async" fetchPriority="high"
               src="/id_nebula.webp"
               alt="ID"
               className="w-8 h-8 object-contain opacity-90 hover:opacity-100 transition-opacity"

@@ -391,7 +391,7 @@ const NebulaIndex = () => {
                 }}
               >
                 {displayProjects.map((p: any) => (
-                  <img
+                  <img loading="lazy" decoding="async"
                     key={p.id}
                     src={
                       p.image?.startsWith("http") || p.image?.startsWith("/")

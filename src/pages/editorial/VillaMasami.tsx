@@ -150,7 +150,7 @@ export const EditorialVillaMasami = () => {
               >
                 {/* Image */}
                 <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="/assets/projects/villa-masami/struttura.webp"
                     alt="Villa Masami Homepage Screenshot"
                     className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
@@ -252,7 +252,7 @@ export const EditorialVillaMasami = () => {
               {/* Box Frame Brutalista 1: Logo/Insegna */}
               <div className="relative z-10 w-full flex-1 min-h-[300px] bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] overflow-hidden group">
                 <div className="w-full h-full relative overflow-hidden bg-white">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="/assets/projects/villa-masami/insegna.webp"
                     alt="Villa Masami Logo"
                     className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000"
@@ -263,7 +263,7 @@ export const EditorialVillaMasami = () => {
               {/* Box Frame Brutalista 2: Homepage */}
               <div className="relative z-10 w-full flex-1 min-h-[300px] md:min-h-[400px] bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] overflow-hidden group">
                 <div className="w-full h-full relative overflow-hidden bg-white">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="/assets/projects/villa-masami/homepage.webp"
                     alt="Villa Masami Homepage"
                     className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
@@ -419,7 +419,7 @@ export const EditorialVillaMasami = () => {
                     key={j}
                     className="h-full shrink-0 border border-[#3d0f1a] shadow-[10px_10px_0px_#c0392b] bg-[#f5f2ed] p-0 group overflow-hidden"
                   >
-                    <img
+                    <img loading="lazy" decoding="async"
                       src={src}
                       alt={`Villa Masami Slide ${j}`}
                       className="h-full w-auto object-contain max-w-[80vw] lg:max-w-[40vw] group-hover:opacity-90 transition-opacity"

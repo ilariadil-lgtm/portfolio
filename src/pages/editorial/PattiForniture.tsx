@@ -150,7 +150,7 @@ export const EditorialPattiForniture = () => {
               >
                 {/* Image */}
                 <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="/assets/projects/patti-forniture/homepage.webp"
                     alt="Patti Forniture Homepage Screenshot"
                     className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
@@ -245,7 +245,7 @@ export const EditorialPattiForniture = () => {
               <div className="relative z-10 w-full h-full bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] flex flex-col overflow-hidden p-0 group">
                 {/* Image */}
                 <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="/assets/projects/patti-forniture/settori.webp"
                     alt="Patti Forniture Content Architecture"
                     className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
@@ -400,7 +400,7 @@ export const EditorialPattiForniture = () => {
                     key={j}
                     className="h-full shrink-0 border border-[#3d0f1a] shadow-[10px_10px_0px_#c0392b] bg-[#f5f2ed] p-0 group overflow-hidden"
                   >
-                    <img
+                    <img loading="lazy" decoding="async"
                       src={src}
                       alt={`Patti Forniture Slide ${j}`}
                       className="h-full w-auto object-contain max-w-[80vw] lg:max-w-[40vw] group-hover:opacity-90 transition-opacity"

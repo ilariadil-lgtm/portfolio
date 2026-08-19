@@ -150,7 +150,7 @@ export const EditorialSicilCosmetic = () => {
               >
                 {/* Image */}
                 <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="/assets/projects/sicil-cosmetic/account.webp"
                     alt="SicilCosmetic Account"
                     className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
@@ -244,7 +244,7 @@ export const EditorialSicilCosmetic = () => {
               <div className="relative z-10 w-full h-full bg-[#f5f2ed] border border-[#3d0f1a] shadow-[10px_10px_0px_#3d0f1a] flex flex-col overflow-hidden p-0 group">
                 {/* Image */}
                 <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="/assets/projects/sicil-cosmetic/homepage.webp"
                     alt="SicilCosmetic Categories and Hair Types"
                     className="absolute inset-0 w-full h-full object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-1000"
@@ -402,7 +402,7 @@ export const EditorialSicilCosmetic = () => {
                     key={j}
                     className="shrink-0 border border-[#3d0f1a] shadow-[6px_6px_0px_#c0392b] md:shadow-[10px_10px_0px_#c0392b] bg-[#f5f2ed] p-0 group overflow-hidden"
                   >
-                    <img
+                    <img loading="lazy" decoding="async"
                       src={src}
                       alt={`SicilCosmetic Slide ${j}`}
                       className="w-[80vw] md:w-auto md:h-[400px] object-cover md:object-contain block group-hover:opacity-90 transition-opacity"
