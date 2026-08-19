@@ -6,6 +6,11 @@
  * Con react-dom/server si romperebbe all'import. Qui il sito viene aperto in
  * Chromium headless, si aspetta che React abbia finito, e si fotografa il DOM.
  *
+ * NON e agganciato a `npm run build`, che resta veloce per il lavoro
+ * quotidiano. Il comando completo, quello che produce cio che va online, e
+ * `npm run build:prod`. La fase 5 lo cablera nel deploy automatizzato, cosi
+ * non dipende dal ricordarselo.
+ *
  * Risultato: ogni rotta ha il suo index.html con contenuto, titolo, meta
  * description, canonical, Open Graph e JSON-LD gia dentro il sorgente.
  * Chi apre la pagina vede il testo prima che il JavaScript venga eseguito;

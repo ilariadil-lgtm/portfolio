@@ -6,14 +6,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/prerender.mjs",
-    "build:dev": "vite build --mode development",
-    "lint": "eslint .",
+    "build": "vite build",
+    "build:prod": "vite build && node scripts/prerender.mjs",
+    "prerender": "node scripts/prerender.mjs",
     "preview": "vite preview",
+    "lint": "eslint .",
     "test": "vitest run",
-    "test:watch": "vitest",
-    "build:spa": "vite build",
-    "prerender": "node scripts/prerender.mjs"
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@radix-ui/react-tooltip": "^1.2.7",
