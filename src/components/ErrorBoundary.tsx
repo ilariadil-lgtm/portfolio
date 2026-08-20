@@ -48,8 +48,17 @@ export class ErrorBoundary extends Component<Props, State> {
             </button>
             <button
               onClick={() => {
-                localStorage.removeItem("portfolio-design");
-                window.location.href = "/";
+                // Il tema vive in sessionStorage, non in localStorage: prima
+                // questo pulsante cancellava una chiave che non esisteva.
+                try {
+                  sessionStorage.removeItem("portfolio-design");
+                  sessionStorage.removeItem("preloader-visto");
+                } catch {
+                  /* archiviazione negata: si prosegue comunque */
+                }
+                // Torna alla home della lingua in cui si stava navigando.
+                const inglese = window.location.pathname.startsWith("/en");
+                window.location.href = inglese ? "/en" : "/";
               }}
               className="bg-transparent border border-white/20 text-white font-mono text-[10px] uppercase tracking-widest font-bold px-6 py-3 rounded-full hover:bg-white/10 transition-colors duration-300 w-full"
             >
