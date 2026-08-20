@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/Link";
 import { NebulaNav } from "./components/NebulaNav";
 import { ScrollIndicator } from "./components/ScrollIndicator";
 import { NebulaFooter } from "./components/NebulaFooter";

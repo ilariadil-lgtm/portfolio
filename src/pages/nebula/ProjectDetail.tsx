@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Link } from "@/components/Link";
 import { api } from "@/lib/api";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
 import { NebulaImageSlider } from "./components/NebulaImageSlider";

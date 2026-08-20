@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { usePageMeta, injectSchema } from "@/hooks/usePageMeta";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/Link";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";

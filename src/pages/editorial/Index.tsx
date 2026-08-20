@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/Link";
 import { EditorialPackagesSection } from "@/components/EditorialPackagesSection";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";

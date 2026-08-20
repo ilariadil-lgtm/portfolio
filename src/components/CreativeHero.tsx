@@ -10,7 +10,7 @@ import {
   useSpring,
   AnimationPlaybackControls,
 } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/Link";
 import { useTranslation } from "react-i18next";
 import { KineticText } from "./KineticText";
 import { ArrowRight } from "lucide-react";

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/Link";
 import { api } from "@/lib/api";
 import { ArrowRight, Hexagon, Maximize2 } from "lucide-react";
 import { NebulaNav } from "./components/NebulaNav";

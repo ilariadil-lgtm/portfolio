@@ -10,7 +10,7 @@ const HeroCanvas = React.lazy(() =>
 );
 import { api } from "@/lib/api";
 import { Box, Cpu, Globe, Layout, ChevronRight, Hexagon } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/Link";
 import { NebulaPackagesSection } from "./components/NebulaPackagesSection";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { percorsoIn, linguaDi } from "@/lib/lingua";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Link } from "@/components/Link";
 import {
   Home,
   User,

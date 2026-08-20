@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/Link";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { RevealText } from "@/components/RevealText";
 import { MagneticWrapper } from "@/components/MagneticWrapper";

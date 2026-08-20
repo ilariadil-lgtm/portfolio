@@ -73,8 +73,15 @@ const AnimatedRoutes = () => {
               />,
             ];
           })}
-          {/* Redirect to avoid duplicate SEO content */}
-          <Route path="/progetti/brand-identity" element={<Navigate to="/progetti/loghi" replace />} />
+          {/* Rotta storica: evita contenuto duplicato. Vale in entrambe le lingue. */}
+          <Route
+            path="/progetti/brand-identity"
+            element={<Navigate to="/progetti/loghi" replace />}
+          />
+          <Route
+            path="/en/progetti/brand-identity"
+            element={<Navigate to="/en/progetti/loghi" replace />}
+          />
           
           <Route path="*" element={<PageTransition><NotFoundComponent /></PageTransition>} />
         </Routes>

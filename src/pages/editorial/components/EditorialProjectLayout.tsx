@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Img } from "@/components/Img";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/Link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";

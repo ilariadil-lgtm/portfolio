@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { percorsoIn, type Lingua } from "@/lib/lingua";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Link } from "@/components/Link";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { useTranslation } from "react-i18next";

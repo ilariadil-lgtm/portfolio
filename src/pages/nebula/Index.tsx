@@ -3,7 +3,7 @@ import { Img } from "@/components/Img";
 import { useTranslation } from "react-i18next";
 import { api } from "@/lib/api";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/Link";
 import { NebulaPackagesSection } from "./components/NebulaPackagesSection";
 import { NebulaNav } from "./components/NebulaNav";
 import { NebulaFooter } from "./components/NebulaFooter";

@@ -3,7 +3,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { ArrowRight, Box, Cpu, Globe, Layers } from "lucide-react";
 import { RevealText } from "@/components/RevealText";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/Link";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
 

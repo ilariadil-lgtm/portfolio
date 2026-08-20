@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/components/Link";
 import { motion } from "framer-motion";
 import { Mail, Linkedin, Github, Instagram, ArrowUpRight } from "lucide-react";
 import { useEffect, useState } from "react";

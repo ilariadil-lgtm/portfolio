@@ -17,7 +17,7 @@ import {
   CheckCircle2,
   Target,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/Link";
 import { EditorialPackagesSection } from "@/components/EditorialPackagesSection";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { RevealText } from "@/components/RevealText";
