@@ -17,7 +17,6 @@ const CMSDetails = () => {
     title: "Sviluppo CMS",
     description:
       "Tema scritto da zero e pannello di gestione disegnato sul tuo flusso di lavoro: aggiorni prezzi, prodotti e testi in autonomia, senza page builder.",
-    canonical: "/sviluppo-cms",
   });
 
   useEffect(

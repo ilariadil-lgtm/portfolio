@@ -143,7 +143,6 @@ export const EditorialProjectDetail = () => {
     description: project.description
       ? `${project.description.slice(0, 150)}…`
       : `Scopri il progetto ${project.title} — realizzato da Ilaria Diliberto.`,
-    canonical: `/progetti/${id}`,
   });
 
   // Schema.org CreativeWork per il progetto

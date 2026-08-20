@@ -7,6 +7,8 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import { Navigate } from "react-router-dom";
 import { editorialRoutes, nebulaRoutes, NotFoundComponent } from "./routes";
 import { useDesign, DesignProvider } from "./context/DesignContext";
+import { conPrefisso, linguaDi } from "./lib/lingua";
+import i18n, { cambiaLingua } from "./lib/i18n";
 import { useThemeFavicon } from "./hooks/useThemeFavicon";
 import { PageTransition } from "./components/PageTransition";
 import { Preloader } from "./components/Preloader";
@@ -27,8 +29,22 @@ const PageFallback = ({ isEditorial }: { isEditorial: boolean }) => (
 // AnimatePresence traccia Routes: quando key cambia, il vecchio unmonta (exit)
 // e il nuovo monta (enter). PageTransition fornisce le animazioni motion.div.
 // ─────────────────────────────────────────────────────────────────────────────
+/**
+ * Tiene allineati indirizzo, lingua attiva e attributo lang del documento.
+ * L'indirizzo comanda: e lui che i motori di ricerca leggono.
+ */
+const useLinguaDaIndirizzo = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    const voluta = linguaDi(pathname);
+    document.documentElement.lang = voluta;
+    if (i18n.language !== voluta) void cambiaLingua(voluta);
+  }, [pathname]);
+};
+
 const AnimatedRoutes = () => {
   const location = useLocation();
+  useLinguaDaIndirizzo();
   const { design } = useDesign();
   const isEditorial = design === "editorial";
   const activeRoutes = isEditorial ? editorialRoutes : nebulaRoutes;
@@ -39,19 +55,23 @@ const AnimatedRoutes = () => {
     <Suspense fallback={<PageFallback isEditorial={isEditorial} />}>
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
-          {activeRoutes.map((route) => {
+          {activeRoutes.flatMap((route) => {
             const Component = route.component;
-            return (
-              <Route
-                key={route.path}
-                path={route.path}
-                element={
-                  <PageTransition>
-                    <Component />
-                  </PageTransition>
-                }
-              />
+            const pagina = (
+              <PageTransition>
+                <Component />
+              </PageTransition>
             );
+            // La stessa pagina risponde a /servizi e a /en/servizi: e la lingua
+            // a cambiare, non il componente.
+            return [
+              <Route key={route.path} path={route.path} element={pagina} />,
+              <Route
+                key={conPrefisso(route.path)}
+                path={conPrefisso(route.path)}
+                element={pagina}
+              />,
+            ];
           })}
           {/* Redirect to avoid duplicate SEO content */}
           <Route path="/progetti/brand-identity" element={<Navigate to="/progetti/loghi" replace />} />

@@ -4,7 +4,6 @@ export const EditorialStorageHub = () => (
   <EditorialProjectLayout
     id="storagehub"
     titolo="StorageHub"
-    rotta="/progetti/storagehub"
     titoloHero={
       <>
         Storage<span className="text-primary italic pr-2">Hub</span>

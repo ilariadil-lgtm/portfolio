@@ -320,7 +320,7 @@ const NebulaIndex = () => {
                 </p>
                 <MagneticWrapper>
                   <Link
-                    to="/chisono"
+                    to="/servizi"
                     className="group inline-flex items-center gap-4 font-mono text-[10px] uppercase tracking-[0.3em] text-white hover:text-gold transition-colors duration-300"
                   >
                     <span className="relative">

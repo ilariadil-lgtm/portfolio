@@ -17,7 +17,6 @@ const CustomDetails = () => {
     title: "Sviluppo Custom",
     description:
       "Infrastruttura dedicata per progetti che hanno superato i limiti di una piattaforma pronta: architettura, logica e scalabilita disegnate su misura.",
-    canonical: "/sviluppo-custom",
   });
 
   useEffect(

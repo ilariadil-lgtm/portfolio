@@ -30,10 +30,8 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 export interface ProgettoEditoriale {
   /** Prefisso delle chiavi di traduzione, es. "newpop". */
   id: string;
-  /** Titolo per il tag <title> e il canonical. */
+  /** Titolo per il tag <title>. */
   titolo: string;
-  /** Percorso della pagina, per canonical e og:url. */
-  rotta: string;
   /** Il nome come compare nell'hero: varia nella composizione tipografica. */
   titoloHero: React.ReactNode;
   anno: string;
@@ -57,7 +55,6 @@ const GRIGLIA_SFONDO =
 export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
   id,
   titolo,
-  rotta,
   titoloHero,
   anno,
   tech,
@@ -77,7 +74,6 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
   usePageMeta({
     title: titolo,
     description: t(`${id}.meta_desc`),
-    canonical: rotta,
   });
 
   const { scrollY } = useScroll();

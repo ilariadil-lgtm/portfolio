@@ -17,7 +17,6 @@ const MVPDetails = () => {
     title: "Sviluppo MVP",
     description:
       "Il prodotto minimo per validare un'idea in tempi brevi, costruito su una base tecnica che non va buttata al primo round di crescita.",
-    canonical: "/sviluppo-mvp",
   });
 
   useEffect(

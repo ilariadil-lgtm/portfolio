@@ -4,7 +4,6 @@ export const EditorialFreelens = () => (
   <EditorialProjectLayout
     id="freelens"
     titolo="Freelens"
-    rotta="/progetti/freelens"
     titoloHero={
       <>
         Free<span className="text-primary italic pr-2">lens</span>

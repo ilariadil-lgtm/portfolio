@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { cambiaLingua } from "@/lib/i18n";
-import { Link, useLocation } from "react-router-dom";
+import { percorsoIn, type Lingua } from "@/lib/lingua";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { useTranslation } from "react-i18next";
@@ -27,9 +27,13 @@ export const Navigation = () => {
   const { isMuted, toggleMute, playHover, playClick } = useSound();
   const { design } = useDesign();
 
+  const navigate = useNavigate();
+
+  // Cambiare lingua significa cambiare indirizzo: /servizi ↔ /en/servizi.
+  // Cosi la pagina inglese e condivisibile e indicizzabile.
   const changeLanguage = (lng: string) => {
-    void cambiaLingua(lng);
     playClick();
+    navigate(percorsoIn(location.pathname, lng as Lingua));
   };
 
   const { scrollY } = useScroll();

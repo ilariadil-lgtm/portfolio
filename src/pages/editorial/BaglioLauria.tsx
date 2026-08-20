@@ -4,7 +4,6 @@ export const EditorialBaglioLauria = () => (
   <EditorialProjectLayout
     id="bagliolauria"
     titolo="Baglio Lauria"
-    rotta="/progetti/bagliolauria"
     titoloHero={
       <>
         Baglio{" "}

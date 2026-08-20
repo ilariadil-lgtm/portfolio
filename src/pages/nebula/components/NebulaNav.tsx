@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { cambiaLingua } from "@/lib/i18n";
-import { Link, useLocation } from "react-router-dom";
+import { percorsoIn, linguaDi } from "@/lib/lingua";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   Home,
   User,
@@ -19,6 +19,7 @@ import { useTranslation } from "react-i18next";
 import { useSound } from "../../../context/SoundContext";
 
 export const NebulaNav = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const [time, setTime] = useState(new Date().toLocaleTimeString());
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +28,8 @@ export const NebulaNav = () => {
 
   const toggleLanguage = () => {
     playClick();
-    void cambiaLingua(i18n.language === "en" ? "it" : "en");
+    const altra = linguaDi(location.pathname) === "en" ? "it" : "en";
+    navigate(percorsoIn(location.pathname, altra));
   };
 
   useEffect(() => {

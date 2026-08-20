@@ -4,7 +4,6 @@ export const EditorialNewpop = () => (
   <EditorialProjectLayout
     id="newpop"
     titolo="Newpop"
-    rotta="/progetti/newpop"
     titoloHero={
       <>
         Newpop<span className="text-primary italic pr-2">.</span>

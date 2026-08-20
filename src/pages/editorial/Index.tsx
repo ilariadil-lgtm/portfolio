@@ -19,7 +19,6 @@ const Index = () => {
     title: "Home",
     description:
       "Ilaria Diliberto — UX Designer e Web Developer. Progetto e costruisco ecosistemi digitali su misura: siti web, e-commerce e web app con estrema cura e precisione.",
-    canonical: "/",
   });
 
   // Schema.org Person — migliora il knowledge panel Google
@@ -256,7 +255,7 @@ const Index = () => {
               transition={{ delay: 1 }}
             >
               <Link
-                to="/chisono"
+                to="/servizi"
                 className="group inline-flex items-center gap-6 font-typewriter text-[13px] uppercase tracking-[0.25em] text-primary font-medium"
               >
                 <span className="relative overflow-hidden">

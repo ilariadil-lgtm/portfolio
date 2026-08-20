@@ -59,3 +59,6 @@ dist_*/
 
 # ─── OS — rinforzo ricorsivo ───
 **/.DS_Store
+
+# File di revisione temporaneo
+_revisione-traduzioni.md

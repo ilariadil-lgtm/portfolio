@@ -4,7 +4,6 @@ export const EditorialVillaMima = () => (
   <EditorialProjectLayout
     id="villamima"
     titolo="Villa Mima"
-    rotta="/progetti/villamima"
     titoloHero={
       <>
         Villa<span className="text-primary italic pr-2"> Mima</span>

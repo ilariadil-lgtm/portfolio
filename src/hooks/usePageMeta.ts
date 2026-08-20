@@ -1,11 +1,12 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { percorsoIn, senzaPrefisso, conPrefisso, linguaDi } from "@/lib/lingua";
 
 interface PageMetaProps {
   title: string;
   description: string;
   ogImage?: string;
   themeColor?: string;
-  canonical?: string;
 }
 
 const BASE_TITLE = "Ilaria Diliberto";
@@ -16,7 +17,9 @@ const BASE_OG_IMAGE = `${BASE_URL}/og-image.jpg`;
  * Hook che aggiorna dinamicamente title, meta description, og tags e canonical
  * per ogni pagina senza dipendenze esterne (no react-helmet).
  */
-export const usePageMeta = ({ title, description, ogImage, themeColor, canonical }: PageMetaProps) => {
+export const usePageMeta = ({ title, description, ogImage, themeColor }: PageMetaProps) => {
+  const { pathname } = useLocation();
+
   useEffect(() => {
     const fullTitle = `${title} — ${BASE_TITLE}`;
     // Garantisce sempre URL assoluti per og:image (richiesto dai crawler social)
@@ -29,21 +32,19 @@ export const usePageMeta = ({ title, description, ogImage, themeColor, canonical
     // Meta description
     setMeta("name", "description", description);
 
-    // Canonical URL — se la pagina non ne passa uno, si deriva dal percorso
-    // corrente. Prima nessuna pagina lo passava, quindi il canonical non
-    // esisteva e og:url restava quello della home su tutte le rotte.
-    const percorso = canonical ?? window.location.pathname;
-    const pulito = percorso !== "/" ? percorso.replace(/\/$/, "") : "/";
-    const canonicalUrl = `${BASE_URL}${pulito === "/" ? "/" : pulito}`;
-    {
-      let canonicalEl = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-      if (!canonicalEl) {
-        canonicalEl = document.createElement("link");
-        canonicalEl.setAttribute("rel", "canonical");
-        document.head.appendChild(canonicalEl);
-      }
-      canonicalEl.setAttribute("href", canonicalUrl);
-    }
+    // Canonical e versioni alternative.
+    // L'indirizzo corrente e l'unica fonte: /servizi in italiano,
+    // /en/servizi in inglese. Prima nessuna pagina dichiarava un canonical e
+    // og:url restava quello della home su tutte le rotte.
+    const base = senzaPrefisso(pathname).replace(/\/$/, "") || "/";
+    const canonicalUrl = `${BASE_URL}${linguaDi(pathname) === "en" ? conPrefisso(base) : base}`;
+    setLink("canonical", canonicalUrl);
+
+    // hreflang: dice ai motori che le due pagine sono la stessa cosa in due
+    // lingue, non due contenuti in concorrenza fra loro.
+    setLink("alternate", `${BASE_URL}${percorsoIn(base, "it")}`, "it");
+    setLink("alternate", `${BASE_URL}${percorsoIn(base, "en")}`, "en");
+    setLink("alternate", `${BASE_URL}${percorsoIn(base, "it")}`, "x-default");
 
     // Open Graph
     setMeta("property", "og:title", fullTitle);
@@ -66,8 +67,23 @@ export const usePageMeta = ({ title, description, ogImage, themeColor, canonical
     return () => {
       document.title = `${BASE_TITLE} — UX Design & Sviluppo Web`;
     };
-  }, [title, description, ogImage, themeColor, canonical]);
+  }, [title, description, ogImage, themeColor, pathname]);
 };
+
+// Helper: trova o crea un <link>, distinguendo per rel e hreflang
+function setLink(rel: string, href: string, hreflang?: string) {
+  const selettore = hreflang
+    ? `link[rel="${rel}"][hreflang="${hreflang}"]`
+    : `link[rel="${rel}"]:not([hreflang])`;
+  let el = document.querySelector<HTMLLinkElement>(selettore);
+  if (!el) {
+    el = document.createElement("link");
+    el.setAttribute("rel", rel);
+    if (hreflang) el.setAttribute("hreflang", hreflang);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("href", href);
+}
 
 // Helper: trova o crea un tag <meta> e ne imposta il content
 function setMeta(attr: "name" | "property", key: string, value: string) {
