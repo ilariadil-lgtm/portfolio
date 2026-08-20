@@ -63,7 +63,7 @@ export const BriefingCTA: React.FC<BriefingCTAProps> = ({
               <Link
                 to="/contatti"
                 data-cursor="pointer"
-                className="group inline-flex items-center gap-8 p-8 border border-white/10 bg-cream shadow-[6px_6px_0px_#c0392b] md:shadow-[10px_10px_0px_#c0392b] hover:translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0px_#c0392b] md:hover:shadow-[15px_15px_0px_#c0392b] transition-all duration-300 w-full justify-between"
+                className="group inline-flex items-center gap-8 p-8 border border-white/10 bg-cream shadow-brutal-6 md:shadow-brutal-10 hover:translate-x-1 hover:-translate-y-1 hover:shadow-brutal-10 md:hover:shadow-brutal-15 transition-all duration-300 w-full justify-between"
               >
                 <span className="relative z-10 flex items-center gap-4 text-[10px] sm:text-[11px] tracking-widest uppercase font-bold text-ink">
                   {buttonText || t("cta.button")}

@@ -17,6 +17,22 @@ export default {
       },
     },
     extend: {
+      boxShadow: {
+        // ─── Ombre nette del tema editorial ───────────────────────────────
+        // Erano 67 valori arbitrari sparsi: dentro un valore arbitrario un
+        // token di colore non si puo usare, quindi diventano voci di tema.
+        "brutal-2": "2px 2px 0px #c0392b",
+        "brutal-4": "4px 4px 0px #3d0f1a",
+        "brutal-6": "6px 6px 0px #c0392b",
+        "brutal-8": "8px 8px 0px #c0392b",
+        "brutal-10": "10px 10px 0px #c0392b",
+        "brutal-10-ink": "10px 10px 0px #3d0f1a",
+        "brutal-15": "15px 15px 0px #c0392b",
+        "soft-6": "6px 6px 0px rgba(61,15,26,0.05)",
+        "soft-8": "8px 8px 0px rgba(61,15,26,0.05)",
+        "soft-10": "10px 10px 0px rgba(61,15,26,0.05)",
+        "soft-15": "15px 15px 0px rgba(61,15,26,0.05)",
+      },
       colors: {
         // ─── Token di marca ────────────────────────────────────────────────
         // Erano 1.313 valori scritti a mano in 68 file. I valori qui sotto

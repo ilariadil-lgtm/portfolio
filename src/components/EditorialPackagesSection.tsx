@@ -44,7 +44,7 @@ export const EditorialPackagesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="group flex flex-col p-8 md:p-10 border border-ink bg-white shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b] transition-all duration-500 h-full relative overflow-hidden"
+              className="group flex flex-col p-8 md:p-10 border border-ink bg-white shadow-soft-8 hover:shadow-brutal-8 transition-all duration-500 h-full relative overflow-hidden"
             >
               {/* Dynamic Scrolling Scanning laser beam (da Servizi.tsx) */}
               <div className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-crimson/50 to-transparent top-0 group-hover:top-[100%] transition-all [transition-duration:3s] ease-in-out z-10 pointer-events-none opacity-0 group-hover:opacity-100" />
@@ -92,7 +92,7 @@ export const EditorialPackagesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="group flex flex-col p-8 md:p-10 border border-ink bg-white shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b] transition-all duration-500 h-full relative overflow-hidden"
+              className="group flex flex-col p-8 md:p-10 border border-ink bg-white shadow-soft-8 hover:shadow-brutal-8 transition-all duration-500 h-full relative overflow-hidden"
             >
               {/* Dynamic Scrolling Scanning laser beam */}
               <div className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-crimson/50 to-transparent top-0 group-hover:top-[100%] transition-all [transition-duration:3s] ease-in-out z-10 pointer-events-none opacity-0 group-hover:opacity-100" />
@@ -140,7 +140,7 @@ export const EditorialPackagesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="group flex flex-col p-8 md:p-10 border border-ink bg-white shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b] transition-all duration-500 h-full relative overflow-hidden"
+              className="group flex flex-col p-8 md:p-10 border border-ink bg-white shadow-soft-8 hover:shadow-brutal-8 transition-all duration-500 h-full relative overflow-hidden"
             >
               {/* Dynamic Scrolling Scanning laser beam */}
               <div className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-crimson/50 to-transparent top-0 group-hover:top-[100%] transition-all [transition-duration:3s] ease-in-out z-10 pointer-events-none opacity-0 group-hover:opacity-100" />

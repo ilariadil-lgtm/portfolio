@@ -177,7 +177,7 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative z-10 w-full h-full bg-cream border border-ink shadow-[15px_15px_0px_#c0392b] flex flex-col overflow-hidden p-0 group"
+                className="relative z-10 w-full h-full bg-cream border border-ink shadow-brutal-15 flex flex-col overflow-hidden p-0 group"
               >
                 <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
                   <img
@@ -271,7 +271,7 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
                   {immagineProcesso.map((src, idx) => (
                     <div
                       key={idx}
-                      className="shrink-0 w-[85%] md:w-[70%] h-[300px] md:h-[400px] lg:h-full snap-center bg-cream border border-ink shadow-[10px_10px_0px_#3d0f1a] overflow-hidden group"
+                      className="shrink-0 w-[85%] md:w-[70%] h-[300px] md:h-[400px] lg:h-full snap-center bg-cream border border-ink shadow-brutal-10-ink overflow-hidden group"
                     >
                       <img
                         loading="lazy"
@@ -284,7 +284,7 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
                   ))}
                 </div>
               ) : (
-                <div className="relative z-10 w-full h-full bg-cream border border-ink shadow-[10px_10px_0px_#3d0f1a] flex flex-col overflow-hidden p-0 group">
+                <div className="relative z-10 w-full h-full bg-cream border border-ink shadow-brutal-10-ink flex flex-col overflow-hidden p-0 group">
                   <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
                     <img
                       loading="lazy"
@@ -350,7 +350,7 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <div className="bg-white border border-ink shadow-[10px_10px_0px_#3d0f1a] p-10 h-full flex flex-col justify-between">
+            <div className="bg-white border border-ink shadow-brutal-10-ink p-10 h-full flex flex-col justify-between">
               <div>
                 <span className="font-typewriter text-[9px] uppercase tracking-[0.5em] text-ink/65 block mb-8">
                   {t("chario.tech_stack")}
@@ -430,7 +430,7 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
                 {galleria.map((src, j) => (
                   <div
                     key={j}
-                    className="h-full shrink-0 border border-ink shadow-[10px_10px_0px_#c0392b] bg-cream p-0 group overflow-hidden"
+                    className="h-full shrink-0 border border-ink shadow-brutal-10 bg-cream p-0 group overflow-hidden"
                   >
                     <img
                       loading="lazy"

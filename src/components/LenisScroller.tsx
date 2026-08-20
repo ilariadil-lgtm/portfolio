@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import Lenis from "@studio-freight/lenis";
+import Lenis from "lenis";
 import { useLocation } from "react-router-dom";
 
 interface LenisScrollerProps {

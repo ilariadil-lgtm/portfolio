@@ -36,7 +36,7 @@ export default defineConfig(({ mode }) => ({
             return "react-router";
           }
           // Lenis smooth scroll
-          if (id.includes("node_modules/@studio-freight")) {
+          if (id.includes("node_modules/lenis")) {
             return "lenis";
           }
           // Radix UI components (shadcn/ui base)

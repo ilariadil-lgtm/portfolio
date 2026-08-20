@@ -316,7 +316,7 @@ await api.sendContactMessage(payload);
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1, duration: 0.7 }}
-                    className="group flex items-center gap-5 p-5 border border-ink/10 bg-white shadow-[6px_6px_0px_rgba(61,15,26,0.05)] hover:shadow-[6px_6px_0px_#c0392b] hover:border-primary/20 hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all duration-400"
+                    className="group flex items-center gap-5 p-5 border border-ink/10 bg-white shadow-soft-6 hover:shadow-brutal-6 hover:border-primary/20 hover:-translate-y-0.5 hover:-translate-x-0.5 transition-all duration-400"
                   >
                     <div className="w-10 h-10 border border-ink/10 flex items-center justify-center text-ink/65 bg-primary/5 group-hover:text-primary group-hover:border-primary/30 transition-all duration-400 shrink-0">
                       {c.icon}
@@ -373,7 +373,7 @@ await api.sendContactMessage(payload);
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="bg-white border border-ink p-10 md:p-14 relative overflow-hidden shadow-[15px_15px_0px_#c0392b]">
+            <div className="bg-white border border-ink p-10 md:p-14 relative overflow-hidden shadow-brutal-15">
               <div className="relative z-10">
                 <div className="mb-10">
                   <span className="font-typewriter text-[10px] uppercase tracking-[0.5em] text-primary block mb-4 font-bold">

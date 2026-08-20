@@ -88,7 +88,7 @@ const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
         setShowSpecs(false);
       }}
       data-cursor="view"
-      className="h-full relative border border-ink p-6 md:p-8 bg-white shadow-[6px_6px_0px_rgba(61,15,26,0.05)] md:shadow-[10px_10px_0px_rgba(61,15,26,0.05)] hover:shadow-[6px_6px_0px_#c0392b] md:hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-500 flex flex-col justify-between group overflow-hidden"
+      className="h-full relative border border-ink p-6 md:p-8 bg-white shadow-soft-6 md:shadow-soft-10 hover:shadow-brutal-6 md:hover:shadow-brutal-10 transition-all duration-500 flex flex-col justify-between group overflow-hidden"
     >
       {/* Dynamic Scrolling Scanning laser beam */}
       <div className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-crimson/50 to-transparent top-0 group-hover:top-[100%] transition-all [transition-duration:3s] ease-in-out z-10 pointer-events-none opacity-0 group-hover:opacity-100" />
@@ -455,7 +455,7 @@ const Servizi = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
           {/* TIER 1: CMS */}
-          <div className="border border-ink bg-cream p-8 flex flex-col group hover:bg-white hover:border-primary transition-all duration-300 shadow-[6px_6px_0px_rgba(61,15,26,0.05)] hover:shadow-[6px_6px_0px_#c0392b]">
+          <div className="border border-ink bg-cream p-8 flex flex-col group hover:bg-white hover:border-primary transition-all duration-300 shadow-soft-6 hover:shadow-brutal-6">
             <div className="mb-8">
               <h3 className="font-display text-2xl font-bold text-ink mb-2">{t("services.pkg_cms_name")}</h3>
               <p className="font-typewriter text-[9px] uppercase tracking-widest text-ink/65 font-bold mb-6">{t("services.pkg_cms_tagline")}</p>
@@ -494,7 +494,7 @@ const Servizi = () => {
           </div>
 
           {/* TIER 2: MVP */}
-          <div className="border-2 border-primary bg-white p-8 flex flex-col group relative shadow-[8px_8px_0px_#c0392b] md:-mt-4 md:mb-4">
+          <div className="border-2 border-primary bg-white p-8 flex flex-col group relative shadow-brutal-8 md:-mt-4 md:mb-4">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white font-typewriter text-[9px] uppercase tracking-widest px-4 py-1.5 font-bold whitespace-nowrap">
               {t("services.pkg_mvp_badge")}
             </div>
@@ -536,7 +536,7 @@ const Servizi = () => {
           </div>
 
           {/* TIER 3: Custom */}
-          <div className="border border-ink bg-cream p-8 flex flex-col group hover:bg-white hover:border-primary transition-all duration-300 shadow-[6px_6px_0px_rgba(61,15,26,0.05)] hover:shadow-[6px_6px_0px_#c0392b]">
+          <div className="border border-ink bg-cream p-8 flex flex-col group hover:bg-white hover:border-primary transition-all duration-300 shadow-soft-6 hover:shadow-brutal-6">
             <div className="mb-8">
               <h3 className="font-display text-2xl font-bold text-ink mb-2">{t("services.pkg_custom_name")}</h3>
               <p className="font-typewriter text-[9px] uppercase tracking-widest text-ink/65 font-bold mb-6">{t("services.pkg_custom_tagline")}</p>
@@ -615,7 +615,7 @@ const Servizi = () => {
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 data-cursor="pointer"
-                className="group relative p-8 border border-ink bg-cream hover:bg-white hover:border-primary transition-all duration-500 shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b]"
+                className="group relative p-8 border border-ink bg-cream hover:bg-white hover:border-primary transition-all duration-500 shadow-soft-8 hover:shadow-brutal-8"
               >
                 {/* Visual Blueprint Step Line */}
                 <div className="absolute top-0 left-0 w-full h-[3px] bg-primary/10 group-hover:bg-primary transition-colors duration-500" />

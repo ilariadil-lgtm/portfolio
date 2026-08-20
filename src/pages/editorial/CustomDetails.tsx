@@ -88,7 +88,7 @@ const CustomDetails = () => {
                 
                 {/* Due Call to Action integrate sotto la descrizione */}
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1, duration: 1 }} className="mt-12 flex flex-col sm:flex-row gap-6">
-                  <a href="mailto:info@ilariadiliberto.com" className="group inline-flex items-center justify-center gap-4 bg-ink text-cream px-8 py-4 font-typewriter text-[10px] uppercase tracking-widest shadow-[6px_6px_0px_#c0392b] hover:shadow-[2px_2px_0px_#c0392b] hover:translate-y-[4px] hover:translate-x-[4px] transition-all">{t("custom_details.prenota_una_call_gratuita")}<ArrowUpRight size={14} className="text-primary group-hover:scale-110 transition-transform" />
+                  <a href="mailto:info@ilariadiliberto.com" className="group inline-flex items-center justify-center gap-4 bg-ink text-cream px-8 py-4 font-typewriter text-[10px] uppercase tracking-widest shadow-brutal-6 hover:shadow-brutal-2 hover:translate-y-[4px] hover:translate-x-[4px] transition-all">{t("custom_details.prenota_una_call_gratuita")}<ArrowUpRight size={14} className="text-primary group-hover:scale-110 transition-transform" />
                   </a>
                   <Link to="/contatti" className="group inline-flex items-center justify-center gap-4 border border-ink/20 bg-transparent text-ink px-8 py-4 font-typewriter text-[10px] uppercase tracking-widest hover:border-ink hover:bg-white/50 transition-all">{t("custom_details.parlami_del_tuo_progetto")}<ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
@@ -203,14 +203,14 @@ const CustomDetails = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* FASE 01 CARD */}
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="group relative p-8 md:p-12 border border-ink bg-cream hover:bg-white hover:border-primary transition-all duration-500 shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b]">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="group relative p-8 md:p-12 border border-ink bg-cream hover:bg-white hover:border-primary transition-all duration-500 shadow-soft-8 hover:shadow-brutal-8">
                 <div className="absolute top-0 left-0 w-full h-[3px] bg-primary/10 group-hover:bg-primary transition-colors duration-500" />
                 <h3 className="font-display text-3xl font-bold mb-4 text-ink group-hover:text-primary transition-colors duration-300">{t("custom_details.focus_assoluto")}</h3>
                 <p className="font-body text-base text-ink/80 leading-relaxed mt-4 text-justify">{t("custom_details.ogni_sviluppo_custom_viene_seguito_con")}</p>
             </motion.div>
 
             {/* FASE 02 CARD */}
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }} className="group relative p-8 md:p-12 border border-ink bg-cream hover:bg-white hover:border-primary transition-all duration-500 shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b]">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }} className="group relative p-8 md:p-12 border border-ink bg-cream hover:bg-white hover:border-primary transition-all duration-500 shadow-soft-8 hover:shadow-brutal-8">
                 <div className="absolute top-0 left-0 w-full h-[3px] bg-primary/10 group-hover:bg-primary transition-colors duration-500" />
                 <h3 className="font-display text-3xl font-bold mb-4 text-ink group-hover:text-primary transition-colors duration-300">{t("custom_details.slot_dedicato")}</h3>
                 <p className="font-body text-base text-ink/80 leading-relaxed mt-4 text-justify">{t("custom_details.non_sto_dividendo_la_mia_attenzione")}</p>
@@ -236,7 +236,7 @@ const CustomDetails = () => {
               
               <div className="pt-10">
                  <p className="font-body text-base font-medium text-ink mb-6 text-justify">{t("custom_details.se_il_tuo_business_ha_smesso")}</p>
-                 <Link to="/contatti" className="group inline-flex items-center justify-center gap-4 bg-ink text-cream px-8 py-4 font-typewriter text-[10px] uppercase tracking-widest shadow-[6px_6px_0px_#c0392b] hover:shadow-[2px_2px_0px_#c0392b] hover:translate-y-[4px] hover:translate-x-[4px] transition-all">{t("custom_details.parlami_del_tuo_progetto")}<ArrowUpRight size={14} className="text-primary group-hover:scale-110 transition-transform" />
+                 <Link to="/contatti" className="group inline-flex items-center justify-center gap-4 bg-ink text-cream px-8 py-4 font-typewriter text-[10px] uppercase tracking-widest shadow-brutal-6 hover:shadow-brutal-2 hover:translate-y-[4px] hover:translate-x-[4px] transition-all">{t("custom_details.parlami_del_tuo_progetto")}<ArrowUpRight size={14} className="text-primary group-hover:scale-110 transition-transform" />
                  </Link>
               </div>
             </motion.div>
@@ -244,7 +244,7 @@ const CustomDetails = () => {
 
           <div className="lg:col-span-5">
             {/* Tech Spec Card - Packages style */}
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="border-2 border-primary bg-white p-8 md:p-10 flex flex-col group relative shadow-[8px_8px_0px_#c0392b]">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="border-2 border-primary bg-white p-8 md:p-10 flex flex-col group relative shadow-brutal-8">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white font-typewriter text-[9px] uppercase tracking-widest px-4 py-1.5 font-bold whitespace-nowrap">{t("custom_details.specifiche_tecniche")}</div>
               
               <div className="mb-8 mt-2 pb-8 border-b border-ink/10 flex justify-between items-end">

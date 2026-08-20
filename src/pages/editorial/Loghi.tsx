@@ -96,7 +96,7 @@ const BrandMockupCarousel = ({
   };
 
   return (
-    <div className="relative w-full aspect-[3/2] bg-cream border border-ink shadow-[10px_10px_0px_#3d0f1a] overflow-hidden group">
+    <div className="relative w-full aspect-[3/2] bg-cream border border-ink shadow-brutal-10-ink overflow-hidden group">
       {/* Immagine con AnimatePresence per cambio fluido */}
       <div className="absolute inset-0 z-0 bg-black flex items-center justify-center">
         <AnimatePresence mode="wait">
@@ -143,14 +143,14 @@ const BrandMockupCarousel = ({
         <>
           <button
             onClick={handlePrev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 border border-ink bg-cream hover:bg-ink hover:text-cream flex items-center justify-center transition-all duration-300 shadow-[4px_4px_0px_#3d0f1a] active:translate-x-1 active:translate-y-1 active:shadow-none"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 border border-ink bg-cream hover:bg-ink hover:text-cream flex items-center justify-center transition-all duration-300 shadow-brutal-4 active:translate-x-1 active:translate-y-1 active:shadow-none"
             aria-label="Immagine precedente"
           >
             <ChevronLeft size={18} />
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 border border-ink bg-cream hover:bg-ink hover:text-cream flex items-center justify-center transition-all duration-300 shadow-[4px_4px_0px_#3d0f1a] active:-translate-x-1 active:translate-y-1 active:shadow-none"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 border border-ink bg-cream hover:bg-ink hover:text-cream flex items-center justify-center transition-all duration-300 shadow-brutal-4 active:-translate-x-1 active:translate-y-1 active:shadow-none"
             aria-label="Immagine successiva"
           >
             <ChevronRight size={18} />

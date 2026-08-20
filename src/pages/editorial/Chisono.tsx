@@ -150,7 +150,7 @@ const Chisono = () => {
                   delay: 0.8,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="bg-white border border-ink shadow-[10px_10px_0px_#c0392b] max-w-xl"
+                className="bg-white border border-ink shadow-brutal-10 max-w-xl"
               >
                 <div className="px-6 py-4 border-b border-ink/10 flex items-center justify-between">
                   <span className="font-typewriter text-[10px] uppercase tracking-[0.2em] text-ink/65 font-medium">
@@ -196,7 +196,7 @@ const Chisono = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                className="relative w-full max-w-[400px] aspect-[4/5] border border-ink/10 bg-white p-3 shadow-[15px_15px_0px_rgba(61,15,26,0.05)] group hover:shadow-[15px_15px_0px_rgba(192,57,43,0.1)] transition-shadow duration-500"
+                className="relative w-full max-w-[400px] aspect-[4/5] border border-ink/10 bg-white p-3 shadow-soft-15 group hover:shadow-[15px_15px_0px_rgba(192,57,43,0.1)] transition-shadow duration-500"
                 data-cursor="view"
               >
                 {/* Content Container with scanner animation */}
@@ -344,7 +344,7 @@ const Chisono = () => {
 
                 {/* Technical Spec HUD Card */}
                 <div
-                  className="lg:col-span-4 bg-cream border border-ink/10 p-8 shadow-[8px_8px_0px_rgba(61,15,26,0.05)] hover:shadow-[8px_8px_0px_#c0392b] hover:border-ink/30 transition-all duration-300 relative group cursor-pointer"
+                  className="lg:col-span-4 bg-cream border border-ink/10 p-8 shadow-soft-8 hover:shadow-brutal-8 hover:border-ink/30 transition-all duration-300 relative group cursor-pointer"
                   data-cursor="pointer"
                 >
                   <div className="absolute top-6 right-6 text-ink/20 group-hover:text-primary transition-all duration-300">
@@ -426,7 +426,7 @@ const Chisono = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group p-8 border border-ink bg-white shadow-[10px_10px_0px_rgba(61,15,26,0.1)] hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-300 min-h-[320px]"
+                className="group p-8 border border-ink bg-white shadow-[10px_10px_0px_rgba(61,15,26,0.1)] hover:shadow-brutal-10 transition-all duration-300 min-h-[320px]"
               >
                 <div className="flex justify-between items-start mb-12">
                   <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform bg-primary/5">

@@ -178,7 +178,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
         delay: (idx % 3) * 0.1,
         ease: [0.16, 1, 0.3, 1],
       }}
-      className="group relative flex flex-col h-full bg-white border border-ink shadow-[10px_10px_0px_rgba(61,15,26,0.05)] hover:shadow-[10px_10px_0px_#c0392b] transition-all duration-500"
+      className="group relative flex flex-col h-full bg-white border border-ink shadow-soft-10 hover:shadow-brutal-10 transition-all duration-500"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -489,7 +489,7 @@ const Progetti = () => {
               <button
                 onClick={() => setVisibleCount((prev) => prev + 6)}
                 data-cursor="pointer"
-                className="group relative flex items-center justify-center px-12 py-5 border border-ink bg-white hover:shadow-[8px_8px_0px_#c0392b] overflow-hidden transition-all duration-300"
+                className="group relative flex items-center justify-center px-12 py-5 border border-ink bg-white hover:shadow-brutal-8 overflow-hidden transition-all duration-300"
               >
                 <span className="relative z-10 font-typewriter text-[10px] uppercase tracking-[0.4em] text-ink transition-colors font-bold group-hover:text-primary">
                   {t("projects.load_more")}
