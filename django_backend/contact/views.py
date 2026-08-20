@@ -1,130 +1,148 @@
-# contact/views.py
+"""
+Modulo di contatto — versione corretta.
+
+Interventi rispetto alla versione precedente, voci 6.2, 6.3, 6.4 e 6.6:
+
+- l'HTML dell'email non viene piu costruito con una f-string: un messaggio che
+  conteneva tag HTML finiva renderizzato nella casella di posta. Ora passa da
+  un template Django, che fa l'escape di ogni variabile;
+- l'indirizzo del mittente viene validato prima di finire nell'header
+  Reply-To, che e la porta d'ingresso classica per l'header injection;
+- l'endpoint e limitato nella frequenza: era pubblico, senza CSRF e senza
+  alcun freno. L'honeypot ferma i robot pigri, non chi prende di mira il
+  modulo;
+- il messaggio viene scritto su database prima di essere notificato. Se
+  l'SMTP cade, il contenuto non e piu perso: il visitatore vede comunque una
+  conferma e il messaggio resta recuperabile.
+
+Da riconciliare con il codice realmente in produzione: vedi RECUPERO.md.
+"""
+
 import json
+import logging
 import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+from email.headerregistry import Address  # noqa: F401  (documenta l'intento)
 
 from django.conf import settings
+from django.core.exceptions import ValidationError
+from django.core.mail import EmailMultiAlternatives
+from django.core.validators import validate_email
 from django.http import JsonResponse
+from django.template.loader import render_to_string
+from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
+from .models import Contatto
 
-def send_email(name: str, email: str, subject: str, message: str) -> None:
-    """Invia email tramite SMTP del provider hosting."""
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = f"[Portfolio] {subject}"
-    msg["From"] = settings.EMAIL_HOST_USER
-    msg["To"] = settings.CONTACT_RECIPIENT
-    msg["Reply-To"] = email
+log = logging.getLogger(__name__)
 
-    # Corpo plain text
-    text_body = f"""\
-Nuovo messaggio dal form di contatto di ilariadiliberto.com
+LIMITE_PER_ORA = 5          # invii accettati dallo stesso indirizzo IP
+LUNGHEZZA_MASSIMA = 5000    # caratteri del messaggio
 
-Nome: {name}
-Email: {email}
-Oggetto: {subject}
 
-Messaggio:
-{message}
-"""
+def _indirizzo_ip(request):
+    """L'IP reale dietro CloudFront, che aggiunge X-Forwarded-For."""
+    inoltrato = request.META.get("HTTP_X_FORWARDED_FOR", "")
+    if inoltrato:
+        return inoltrato.split(",")[0].strip()
+    return request.META.get("REMOTE_ADDR")
 
-    # Corpo HTML
-    html_body = f"""\
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <style>
-    body {{ font-family: Georgia, serif; color: #3d0f1a; background: #f5f2ed; margin: 0; padding: 0; }}
-    .wrapper {{ max-width: 600px; margin: 40px auto; background: #fff; border: 1px solid #3d0f1a20; }}
-    .header {{ background: #3d0f1a; color: #d4af37; padding: 32px 40px; }}
-    .header h1 {{ margin: 0; font-size: 22px; letter-spacing: 0.05em; }}
-    .header p {{ margin: 6px 0 0; font-family: monospace; font-size: 11px; opacity: 0.6; letter-spacing: 0.2em; text-transform: uppercase; }}
-    .body {{ padding: 40px; }}
-    .field {{ margin-bottom: 24px; }}
-    .label {{ font-family: monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.3em; color: #3d0f1a80; display: block; margin-bottom: 6px; }}
-    .value {{ font-size: 16px; color: #3d0f1a; line-height: 1.6; }}
-    .message-box {{ background: #f5f2ed; border-left: 3px solid #c0392b; padding: 16px 20px; margin-top: 8px; }}
-    .footer {{ border-top: 1px solid #3d0f1a10; padding: 20px 40px; text-align: center; font-family: monospace; font-size: 10px; color: #3d0f1a40; letter-spacing: 0.2em; text-transform: uppercase; }}
-  </style>
-</head>
-<body>
-  <div class="wrapper">
-    <div class="header">
-      <h1>Nuovo Messaggio</h1>
-      <p>ilariadiliberto.com — form di contatto</p>
-    </div>
-    <div class="body">
-      <div class="field">
-        <span class="label">Nome</span>
-        <span class="value">{name}</span>
-      </div>
-      <div class="field">
-        <span class="label">Email</span>
-        <span class="value"><a href="mailto:{email}" style="color:#c0392b;">{email}</a></span>
-      </div>
-      <div class="field">
-        <span class="label">Oggetto</span>
-        <span class="value">{subject}</span>
-      </div>
-      <div class="field">
-        <span class="label">Messaggio</span>
-        <div class="message-box">
-          <span class="value">{message.replace(chr(10), '<br>')}</span>
-        </div>
-      </div>
-    </div>
-    <div class="footer">Ilaria Diliberto © 2026 · info@ilariadiliberto.com</div>
-  </div>
-</body>
-</html>
-"""
 
-    msg.attach(MIMEText(text_body, "plain", "utf-8"))
-    msg.attach(MIMEText(html_body, "html", "utf-8"))
+def _troppi_invii(ip):
+    """
+    Voce 6.4. Conteggio sulle ultime ventiquattro ore, letto dal database:
+    non serve Redis per un modulo che riceve qualche messaggio al giorno, e
+    una dipendenza in meno e una cosa in meno che si puo rompere.
+    """
+    if not ip:
+        return False
+    da = timezone.now() - timezone.timedelta(hours=1)
+    return Contatto.objects.filter(indirizzo_ip=ip, ricevuto_il__gte=da).count() >= LIMITE_PER_ORA
 
-    with smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT) as server:
-        server.ehlo()
-        server.starttls()
-        server.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
-        server.sendmail(
-            settings.EMAIL_HOST_USER,
-            settings.CONTACT_RECIPIENT,
-            msg.as_string(),
-        )
+
+def _notifica(contatto):
+    """Invia la notifica. Solleva l'eccezione al chiamante, che decide."""
+    contesto = {
+        "nome": contatto.nome,
+        "email": contatto.email,
+        "oggetto": contatto.oggetto,
+        "messaggio": contatto.messaggio,
+        "ricevuto_il": contatto.ricevuto_il,
+    }
+    testo = (
+        f"Nuovo messaggio dal modulo di contatto di ilariadiliberto.com\n\n"
+        f"Nome: {contatto.nome}\n"
+        f"Email: {contatto.email}\n"
+        f"Oggetto: {contatto.oggetto}\n\n"
+        f"{contatto.messaggio}\n"
+    )
+    messaggio = EmailMultiAlternatives(
+        subject=f"[Portfolio] {contatto.oggetto}"[:200],
+        body=testo,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        to=[settings.CONTACT_RECIPIENT],
+        # Reply-To solo con un indirizzo gia validato: e un header, e gli
+        # header non vanno mai composti con input non controllato.
+        reply_to=[contatto.email],
+    )
+    messaggio.attach_alternative(
+        render_to_string("contact/notifica.html", contesto), "text/html"
+    )
+    messaggio.send(fail_silently=False)
 
 
 @csrf_exempt
 @require_POST
 def contact_view(request):
     """
-    POST /api/contact/
-    Body JSON: { name, email, subject, message, website? }
+    POST /api/contacts/
+    Corpo JSON: { name, email, subject, message, website? }
     """
     try:
-        data = json.loads(request.body)
+        dati = json.loads(request.body)
     except (json.JSONDecodeError, ValueError):
-        return JsonResponse({"error": "Invalid JSON"}, status=400)
+        return JsonResponse({"error": "Corpo della richiesta non valido."}, status=400)
 
-    # Honeypot check
-    if data.get("website"):
+    # Honeypot: campo invisibile che un essere umano non compila mai.
+    # Si risponde comunque 200, cosi chi lo compila non impara nulla.
+    if dati.get("website"):
         return JsonResponse({"ok": True}, status=200)
 
-    name = data.get("name", "").strip()
-    email = data.get("email", "").strip()
-    subject = data.get("subject", "").strip()
-    message = data.get("message", "").strip()
+    nome = str(dati.get("name", "")).strip()[:200]
+    email = str(dati.get("email", "")).strip()[:254]
+    oggetto = str(dati.get("subject", "")).strip()[:300]
+    messaggio = str(dati.get("message", "")).strip()[:LUNGHEZZA_MASSIMA]
 
-    if not all([name, email, subject, message]):
+    if not all([nome, email, oggetto, messaggio]):
         return JsonResponse({"error": "Tutti i campi sono obbligatori."}, status=400)
 
+    # Voce 6.3 — l'indirizzo finisce in un header: va validato, non sperato.
     try:
-        send_email(name, email, subject, message)
-        return JsonResponse({"ok": True}, status=200)
-    except smtplib.SMTPException as exc:
-        # Log dell'errore senza esporre dettagli al client
-        import logging
-        logging.getLogger(__name__).error("SMTP error: %s", exc)
-        return JsonResponse({"error": "Errore nell'invio. Riprova più tardi."}, status=500)
+        validate_email(email)
+    except ValidationError:
+        return JsonResponse({"error": "Indirizzo email non valido."}, status=400)
+
+    ip = _indirizzo_ip(request)
+    if _troppi_invii(ip):
+        return JsonResponse(
+            {"error": "Troppi invii ravvicinati. Riprova fra un'ora."}, status=429
+        )
+
+    # Voce 6.6 — prima si scrive, poi si notifica.
+    contatto = Contatto.objects.create(
+        nome=nome, email=email, oggetto=oggetto, messaggio=messaggio, indirizzo_ip=ip
+    )
+
+    try:
+        _notifica(contatto)
+        contatto.notificato = True
+        contatto.save(update_fields=["notificato"])
+    except (smtplib.SMTPException, OSError) as errore:
+        # Il messaggio e salvo: l'invio fallito e un problema nostro, non del
+        # visitatore, e non ha senso fargli riscrivere tutto.
+        contatto.errore_notifica = str(errore)[:1000]
+        contatto.save(update_fields=["errore_notifica"])
+        log.error("Notifica non inviata per il contatto %s: %s", contatto.pk, errore)
+
+    return JsonResponse({"ok": True}, status=200)

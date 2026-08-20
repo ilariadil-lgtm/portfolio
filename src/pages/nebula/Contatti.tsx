@@ -202,6 +202,10 @@ Informazioni Progetto:
 Parlami del tuo progetto:
 ${formData.objective}
         `.trim(),
+        // Honeypot: raccolto dal modulo ma finora mai trasmesso. Il controllo
+        // lato client ferma i robot che compilano un modulo renderizzato; il
+        // server, che quel modulo non lo vede, aveva bisogno del valore.
+        website: formData.website,
       };
 
       await api.sendContactMessage(payload);

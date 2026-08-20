@@ -1,0 +1,39 @@
+{# Voce 6.2 — L'escape lo fa Django. #}
+{# La versione precedente costruiva l'HTML con una f-string: un messaggio che #}
+{# conteneva tag HTML veniva renderizzato nella casella di posta. Qui ogni #}
+{# variabile passa dall'autoescape del motore di template. #}
+<!DOCTYPE html>
+<html lang="it">
+<head><meta charset="utf-8"></head>
+<body style="font-family: Georgia, serif; color: #3d0f1a; background: #F7F4EC; margin: 0; padding: 0;">
+  <div style="max-width: 600px; margin: 40px auto; background: #fff; border: 1px solid #3d0f1a20;">
+    <div style="background: #3d0f1a; color: #d4af37; padding: 32px 40px;">
+      <h1 style="margin: 0; font-size: 22px; letter-spacing: 0.05em;">Nuovo messaggio</h1>
+      <p style="margin: 6px 0 0; font-family: monospace; font-size: 11px; opacity: 0.6; letter-spacing: 0.2em; text-transform: uppercase;">
+        ilariadiliberto.com — modulo di contatto
+      </p>
+    </div>
+    <div style="padding: 40px;">
+      <div style="margin-bottom: 24px;">
+        <span style="font-family: monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.3em; color: #3d0f1a80; display: block; margin-bottom: 6px;">Nome</span>
+        <span style="font-size: 16px; line-height: 1.6;">{{ nome }}</span>
+      </div>
+      <div style="margin-bottom: 24px;">
+        <span style="font-family: monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.3em; color: #3d0f1a80; display: block; margin-bottom: 6px;">Email</span>
+        <span style="font-size: 16px;"><a href="mailto:{{ email }}" style="color: #c0392b;">{{ email }}</a></span>
+      </div>
+      <div style="margin-bottom: 24px;">
+        <span style="font-family: monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.3em; color: #3d0f1a80; display: block; margin-bottom: 6px;">Oggetto</span>
+        <span style="font-size: 16px;">{{ oggetto }}</span>
+      </div>
+      <div>
+        <span style="font-family: monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.3em; color: #3d0f1a80; display: block; margin-bottom: 6px;">Messaggio</span>
+        <div style="background: #F7F4EC; border-left: 3px solid #c0392b; padding: 16px 20px; margin-top: 8px; font-size: 16px; line-height: 1.6;">{{ messaggio|linebreaksbr }}</div>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #3d0f1a10; padding: 20px 40px; text-align: center; font-family: monospace; font-size: 10px; color: #3d0f1a40; letter-spacing: 0.2em; text-transform: uppercase;">
+      Ricevuto il {{ ricevuto_il|date:"d/m/Y H:i" }}
+    </div>
+  </div>
+</body>
+</html>
