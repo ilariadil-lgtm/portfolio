@@ -79,8 +79,8 @@ const AnimatedRoutes = () => {
             element={<Navigate to="/progetti/loghi" replace />}
           />
           <Route
-            path="/en/progetti/brand-identity"
-            element={<Navigate to="/en/progetti/loghi" replace />}
+            path={conPrefisso("/progetti/brand-identity")}
+            element={<Navigate to={conPrefisso("/progetti/loghi")} replace />}
           />
           
           <Route path="*" element={<PageTransition><NotFoundComponent /></PageTransition>} />

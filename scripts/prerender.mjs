@@ -52,9 +52,21 @@ async function rotte() {
   if (italiane.length < 20) {
     throw new Error(`Solo ${italiane.length} rotte estratte da src/routes.ts: il formato del file e cambiato, controlla l'espressione regolare.`);
   }
-  // Ogni pagina esiste in due lingue e a due indirizzi distinti.
-  const inglesi = italiane.map((p) => (p === "/" ? "/en" : `/en${p}`));
-  return { italiane, tutte: [...italiane, ...inglesi] };
+  // Ogni pagina esiste in due lingue e a due indirizzi distinti, con lo slug
+  // tradotto. La tabella e la stessa che usa l'applicazione: se qui manca una
+  // voce, il build si ferma invece di generare un indirizzo sbagliato.
+  const tabella = JSON.parse(
+    await readFile(join(RADICE, "src/lib/rotte-lingua.json"), "utf8"),
+  ).rotte;
+  const senzaTraduzione = italiane.filter((p) => !(p in tabella));
+  if (senzaTraduzione.length) {
+    throw new Error(
+      `Rotte senza corrispondenza inglese in src/lib/rotte-lingua.json:\n  ${senzaTraduzione.join("\n  ")}`,
+    );
+  }
+  const inglese = (p) => (tabella[p] === "/" ? "/en" : `/en${tabella[p]}`);
+  const inglesi = italiane.map(inglese);
+  return { italiane, inglese, tutte: [...italiane, ...inglesi] };
 }
 
 // ── Server statico con ripiego su index.html, come nginx in produzione ───────
@@ -74,26 +86,25 @@ function avviaServer() {
   return new Promise((ok) => server.listen(PORTA, "127.0.0.1", () => ok(server)));
 }
 
-const scriviSitemap = async (italiane) => {
+const scriviSitemap = async (italiane, inglese) => {
   const priorita = (p) => (p === "/" ? "1.0" : p.split("/").length > 2 ? "0.7" : "0.9");
   const frequenza = (p) => (p === "/blog" ? "weekly" : p.split("/").length > 2 ? "yearly" : "monthly");
-  const inglese = (p) => (p === "/" ? "/en" : `/en${p}`);
-
   // Ogni pagina compare due volte, una per lingua, e ciascuna dichiara
   // l'altra: e cosi che un motore capisce che sono lo stesso contenuto
   // tradotto e non due pagine in concorrenza.
-  const voce = (percorso, alternativa, lingua) =>
+  // riferimento: lo slug italiano, che determina priorita e frequenza
+  const voce = (percorso, alternativa, lingua, riferimento) =>
     `  <url>\n    <loc>${DOMINIO}${percorso}</loc>\n` +
     `    <xhtml:link rel="alternate" hreflang="it" href="${DOMINIO}${lingua === "it" ? percorso : alternativa}"/>\n` +
     `    <xhtml:link rel="alternate" hreflang="en" href="${DOMINIO}${lingua === "en" ? percorso : alternativa}"/>\n` +
     `    <xhtml:link rel="alternate" hreflang="x-default" href="${DOMINIO}${lingua === "it" ? percorso : alternativa}"/>\n` +
-    `    <changefreq>${frequenza(percorso.replace(/^\/en/, "") || "/")}</changefreq>\n` +
-    `    <priority>${priorita(percorso.replace(/^\/en/, "") || "/")}</priority>\n  </url>`;
+    `    <changefreq>${frequenza(riferimento)}</changefreq>\n` +
+    `    <priority>${priorita(riferimento)}</priority>\n  </url>`;
 
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
-    ...italiane.flatMap((p) => [voce(p, inglese(p), "it"), voce(inglese(p), p, "en")]),
+    ...italiane.flatMap((p) => [voce(p, inglese(p), "it", p), voce(inglese(p), p, "en", p)]),
     "</urlset>", "",
   ].join("\n");
   await writeFile(join(DIST, "sitemap.xml"), xml);
@@ -189,7 +200,7 @@ async function main() {
   if (!existsSync(join(DIST, "index.html"))) {
     throw new Error("dist/index.html non esiste: esegui prima `vite build`.");
   }
-  const { italiane, tutte: percorsi } = await rotte();
+  const { italiane, inglese, tutte: percorsi } = await rotte();
   console.log(`\n  Prerendering di ${percorsi.length} rotte — ${italiane.length} in italiano, altrettante in inglese\n`);
 
   const server = await avviaServer();
@@ -241,7 +252,7 @@ async function main() {
 
   }
 
-  const n = await scriviSitemap(italiane);
+  const n = await scriviSitemap(italiane, inglese);
   console.log(`\n  sitemap.xml rigenerata: ${n} URL`);
 
   await browser.close();

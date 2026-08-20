@@ -1,0 +1,30 @@
+{
+  "_nota": "Corrispondenza fra gli indirizzi italiani e quelli inglesi. L'italiano e la lingua sorgente: i percorsi si scrivono sempre in italiano nel codice, questa tabella li traduce. I nomi dei progetti sono nomi propri e restano invariati; cambia solo il segmento che li contiene. Letta sia da src/lib/lingua.ts sia da scripts/prerender.mjs, cosi non puo esistere in due versioni diverse.",
+  "rotte": {
+    "/": "/",
+    "/servizi": "/services",
+    "/chisono": "/about",
+    "/contatti": "/contact",
+    "/blog": "/journal",
+    "/faq": "/faq",
+    "/privacy": "/privacy",
+    "/cookies": "/cookies",
+    "/sviluppo-cms": "/cms-development",
+    "/sviluppo-mvp": "/mvp-development",
+    "/sviluppo-custom": "/custom-development",
+    "/progetti": "/projects",
+    "/progetti/loghi": "/projects/branding",
+    "/progetti/storagehub": "/projects/storagehub",
+    "/progetti/freelens": "/projects/freelens",
+    "/progetti/portfolio": "/projects/portfolio",
+    "/progetti/villamasami": "/projects/villamasami",
+    "/progetti/villamima": "/projects/villamima",
+    "/progetti/bagliolauria": "/projects/bagliolauria",
+    "/progetti/pattiforniture": "/projects/pattiforniture",
+    "/progetti/sicilcosmetic": "/projects/sicilcosmetic",
+    "/progetti/newpop": "/projects/newpop",
+    "/progetti/vinigambino": "/projects/vinigambino",
+    "/progetti/:id": "/projects/:id",
+    "/progetti/brand-identity": "/projects/brand-identity"
+  }
+}
