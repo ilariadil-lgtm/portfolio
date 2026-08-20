@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Img } from "@/components/Img";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 
@@ -123,7 +124,7 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
                           {/* Screen */}
                           <div className="flex-1 relative overflow-hidden bg-black">
                             <div className="absolute inset-0 bg-gold/5 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
-                            <img loading="lazy" decoding="async"
+                            <Img
                               src={img}
                               alt={`${phases[activeIndex].title} ${i + 1}`}
                               className={`absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105 ${phases[activeIndex].objectPosition || "object-top"}`}
@@ -149,7 +150,7 @@ export const NebulaProjectPhases = ({ phases }: NebulaProjectPhasesProps) => {
                         {/* Screen */}
                         <div className="flex-1 relative overflow-hidden bg-black">
                           <div className="absolute inset-0 bg-gold/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
-                          <img loading="lazy" decoding="async"
+                          <Img
                             src={phases[activeIndex].image as string}
                             alt={phases[activeIndex].title}
                             className={`absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105 ${phases[activeIndex].objectPosition || "object-top"}`}

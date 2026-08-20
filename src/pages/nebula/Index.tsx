@@ -1,4 +1,5 @@
 import React, { useEffect, useState, Suspense } from "react";
+import { Img } from "@/components/Img";
 import { useTranslation } from "react-i18next";
 import { api } from "@/lib/api";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
@@ -391,7 +392,7 @@ const NebulaIndex = () => {
                 }}
               >
                 {displayProjects.map((p: any) => (
-                  <img loading="lazy" decoding="async"
+                  <Img
                     key={p.id}
                     src={
                       p.image?.startsWith("http") || p.image?.startsWith("/")

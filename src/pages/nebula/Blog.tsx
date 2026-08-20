@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Img } from "@/components/Img";
 import { NebulaNav } from "./components/NebulaNav";
 import { ScrollIndicator } from "./components/ScrollIndicator";
 import { NebulaFooter } from "./components/NebulaFooter";
@@ -94,7 +95,7 @@ const Blog = () => {
                 >
                   {post.image && (
                     <div className="overflow-hidden mb-8 aspect-[16/10] bg-white/5">
-                      <img loading="lazy" decoding="async"
+                      <Img
                         src={
                           post.image.startsWith("http") ||
                           post.image.startsWith("/")

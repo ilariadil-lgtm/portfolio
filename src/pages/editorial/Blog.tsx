@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Img } from "@/components/Img";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { useEffect, useState } from "react";
@@ -99,7 +100,7 @@ const Blog = () => {
                 >
                   {post.image && (
                     <div className="overflow-hidden mb-6 aspect-video">
-                      <img loading="lazy" decoding="async"
+                      <Img
                         src={
                           post.image.startsWith("http") ||
                           post.image.startsWith("/")

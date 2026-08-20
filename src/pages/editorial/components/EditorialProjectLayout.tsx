@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Img } from "@/components/Img";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
@@ -180,11 +181,11 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
                 className="relative z-10 w-full h-full bg-cream border border-ink shadow-brutal-15 flex flex-col overflow-hidden p-0 group"
               >
                 <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
-                  <img
-                    loading="lazy"
-                    decoding="async"
+                  <Img
                     src={immagineHero}
                     alt={`${titolo} Homepage Screenshot`}
+                    primaria
+                    sizes="(max-width: 1024px) 100vw, 58vw"
                     className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                   />
                 </div>
@@ -273,9 +274,7 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
                       key={idx}
                       className="shrink-0 w-[85%] md:w-[70%] h-[300px] md:h-[400px] lg:h-full snap-center bg-cream border border-ink shadow-brutal-10-ink overflow-hidden group"
                     >
-                      <img
-                        loading="lazy"
-                        decoding="async"
+                      <Img
                         src={src}
                         alt={`${titolo} — processo ${idx + 1}`}
                         className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000"
@@ -286,9 +285,7 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
               ) : (
                 <div className="relative z-10 w-full h-full bg-cream border border-ink shadow-brutal-10-ink flex flex-col overflow-hidden p-0 group">
                   <div className="flex-1 relative overflow-hidden bg-black w-full h-full">
-                    <img
-                      loading="lazy"
-                      decoding="async"
+                    <Img
                       src={immagineProcesso}
                       alt={`${titolo} Homepage Section`}
                       className="absolute inset-0 w-full h-full object-cover object-[center_45%] group-hover:scale-105 transition-transform duration-1000"
@@ -432,9 +429,7 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
                     key={j}
                     className="h-full shrink-0 border border-ink shadow-brutal-10 bg-cream p-0 group overflow-hidden"
                   >
-                    <img
-                      loading="lazy"
-                      decoding="async"
+                    <Img
                       src={src}
                       alt={`${titolo} — immagine ${j + 1}`}
                       className="h-full w-auto object-contain max-w-[80vw] lg:max-w-[40vw] group-hover:opacity-90 transition-opacity"

@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { Img } from "@/components/Img";
 import { motion, useAnimation, useMotionValue } from "framer-motion";
 
 interface NebulaImageSliderProps {
@@ -57,7 +58,7 @@ export const NebulaImageSlider = ({ images }: NebulaImageSliderProps) => {
             </div>
             <div className="flex-1 relative overflow-hidden bg-black">
               <div className="absolute inset-0 bg-white/5 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-              <img loading="lazy" decoding="async"
+              <Img
                 src={src}
                 alt={`Project Gallery Image ${idx}`}
                 className="w-full aspect-[4/3] md:aspect-video object-cover object-top transform transition-transform duration-700 group-hover:scale-[1.02]"

@@ -23,6 +23,7 @@ import { join, extname, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { platform, arch } from "node:process";
 import puppeteer from "puppeteer";
+import Beasties from "beasties";
 
 const RADICE = join(dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = join(RADICE, "dist");
@@ -143,6 +144,32 @@ async function apriBrowser() {
   );
 }
 
+// ── CSS critico ──────────────────────────────────────────────────────────────
+// Ora che l'HTML di ogni rotta esiste, il CSS necessario alla prima schermata
+// si puo estrarre invece di indovinarlo: viene messo in linea nel <head> e il
+// foglio completo passa a caricamento differito. Il file resta intatto
+// (pruneSource: false), cosi il resto della pagina lo trova al suo posto.
+async function inserisciCssCritico(pagine) {
+  const beasties = new Beasties({
+    path: DIST,
+    publicPath: "/",
+    preload: "swap",
+    pruneSource: false,
+    logLevel: "silent",
+  });
+  let prima = 0, dopo = 0;
+  for (const p of pagine) {
+    prima += p.html.length;
+    try {
+      p.html = await beasties.process(p.html);
+    } catch (e) {
+      console.log(`  css critico non applicato a ${p.percorso}: ${e.message.split("\n")[0]}`);
+    }
+    dopo += p.html.length;
+  }
+  return { prima, dopo };
+}
+
 async function main() {
   if (!existsSync(join(DIST, "index.html"))) {
     throw new Error("dist/index.html non esiste: esegui prima `vite build`.");
@@ -187,7 +214,11 @@ async function main() {
     await pagina.close();
   }
 
-  console.log("");
+  const peso = await inserisciCssCritico(risultati);
+  console.log(
+    `\n  CSS critico inserito in linea: HTML da ${Math.round(peso.prima / 1024)} a ${Math.round(peso.dopo / 1024)} KB complessivi`,
+  );
+
   for (const { percorso, html } of risultati) {
     const cartella = percorso === "/" ? DIST : join(DIST, percorso);
     await mkdir(cartella, { recursive: true });
