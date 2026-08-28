@@ -154,6 +154,28 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
                   {t(`${id}.hero_desc`)}
                 </p>
               </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.1, duration: 1 }}
+                className="mt-6 max-w-[34rem] bg-white/70 border border-ink/10 p-5"
+              >
+                <span className="font-typewriter text-[9px] uppercase tracking-[0.4em] text-primary font-semibold block mb-3">
+                  {t("project_detail.tldr_label")}
+                </span>
+                <ul className="space-y-2">
+                  {[1, 2, 3].map((n) => (
+                    <li
+                      key={n}
+                      className="flex items-start gap-3 font-body text-sm text-ink/80 leading-relaxed"
+                    >
+                      <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                      <span>{t(`${id}.tldr${n}`)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
             </motion.div>
           </div>
 

@@ -84,7 +84,7 @@ export const NebulaNav = () => {
             <img decoding="async" fetchPriority="high"
               src="/logo_nebula.svg"
               alt="Ilaria Diliberto"
-              className="absolute left-4 w-64 lg:w-72 h-auto object-contain object-left opacity-0 scale-90 group-hover/nav:opacity-100 group-hover/nav:scale-100 transition-all duration-500"
+              className="absolute left-4 w-44 lg:w-52 h-auto object-contain object-left opacity-0 scale-90 group-hover/nav:opacity-100 group-hover/nav:scale-100 transition-all duration-500"
             />
           </Link>
         </div>

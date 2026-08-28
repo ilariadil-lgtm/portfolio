@@ -18,7 +18,7 @@ export const EditorialBaglioLauria = () => (
       "WordPress Layout",
       "Hospitality Design",
     ]}
-    immagineHero="/assets/projects/baglio-lauria/homepage.webp"
+    immagineHero="/assets/projects/baglio-lauria/homepage-hero.webp"
     immagineProcesso={[
       "/assets/projects/baglio-lauria/contatti.webp",
       "/assets/projects/baglio-lauria/dintorni.webp",
@@ -27,7 +27,7 @@ export const EditorialBaglioLauria = () => (
       "/assets/projects/baglio-lauria/servizi.webp",
     ]}
     galleria={[
-      "/assets/projects/baglio-lauria/homepage.webp",
+      "/assets/projects/baglio-lauria/homepage-hero.webp",
       "/assets/projects/baglio-lauria/il-baglio.webp",
       "/assets/projects/baglio-lauria/lecamere.webp",
       "/assets/projects/baglio-lauria/servizi.webp",

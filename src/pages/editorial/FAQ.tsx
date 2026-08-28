@@ -1,8 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { useEffect, useState } from "react";
-import { api } from "@/lib/api";
+import { useState } from "react";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { Plus, Minus } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -33,6 +32,21 @@ const getStaticFaqs = (t: any) => [
     question: t("faq.q5"),
     answer: t("faq.a5"),
   },
+  {
+    id: 6,
+    question: t("faq.q6"),
+    answer: t("faq.a6"),
+  },
+  {
+    id: 7,
+    question: t("faq.q7"),
+    answer: t("faq.a7"),
+  },
+  {
+    id: 8,
+    question: t("faq.q8"),
+    answer: t("faq.a8"),
+  },
 ];
 
 const FaqItem = ({ faq, index }: { faq: any; index: number }) => {
@@ -52,7 +66,7 @@ const FaqItem = ({ faq, index }: { faq: any; index: number }) => {
         aria-expanded={isOpen}
       >
         <div className="flex items-start gap-5">
-          <span className="font-typewriter text-[10px] text-primary/40 font-bold mt-1 shrink-0">
+          <span className="font-typewriter text-[10px] text-primary/70 font-bold mt-1 shrink-0">
             {String(index + 1).padStart(2, "0")}
           </span>
           <h2 className="font-display text-xl md:text-2xl font-bold text-ink group-hover:text-primary transition-colors duration-300 leading-snug">
@@ -91,20 +105,7 @@ const FAQ = () => {
       "Domande frequenti su come lavoro, i miei processi, tempi e costi. Tutto quello che devi sapere prima di iniziare un progetto insieme.",
   });
 
-  const [faqs, setFaqs] = useState<any[]>([]);
-
-  useEffect(() => {
-    const fetchFaqs = async () => {
-      try {
-        const data = await api.getFaqs();
-        const fetched = data.results || data;
-        setFaqs(fetched.length > 0 ? fetched : getStaticFaqs(t));
-      } catch (error) {
-        setFaqs(getStaticFaqs(t));
-      }
-    };
-    fetchFaqs();
-  }, []);
+  const faqs = getStaticFaqs(t);
 
   return (
     <div className="min-h-[100dvh] bg-cream text-ink overflow-hidden selection:bg-primary/30">
@@ -112,7 +113,7 @@ const FAQ = () => {
 
       {/* HERO */}
       <section className="relative pt-52 md:pt-48 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
+        <div aria-hidden="true" className="absolute inset-0 flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
           <span
             className="font-display font-black text-ink/[0.025] pr-4"
             style={{ fontSize: "clamp(80px, 18vw, 240px)", lineHeight: 1 }}

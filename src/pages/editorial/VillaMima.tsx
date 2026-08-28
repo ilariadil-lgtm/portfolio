@@ -17,7 +17,7 @@ export const EditorialVillaMima = () => (
       "Copywriting & Storytelling",
       "Wedding & Event Industry",
     ]}
-    immagineHero="/assets/projects/villa-mima/home.webp"
+    immagineHero="/assets/projects/villa-mima/home-hero.webp"
     immagineProcesso={[
       "/assets/projects/villa-mima/contatti.webp",
       "/assets/projects/villa-mima/la-villa.webp",
@@ -25,7 +25,7 @@ export const EditorialVillaMima = () => (
       "/assets/projects/villa-mima/paesaggio.webp",
     ]}
     galleria={[
-      "/assets/projects/villa-mima/home.webp",
+      "/assets/projects/villa-mima/home-hero.webp",
       "/assets/projects/villa-mima/la-villa.webp",
       "/assets/projects/villa-mima/paesaggio.webp",
       "/assets/projects/villa-mima/menu.webp",

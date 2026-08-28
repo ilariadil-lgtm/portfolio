@@ -154,9 +154,7 @@ const Contatti = () => {
     email: "",
     company: "",
     onlinePresence: "",
-    direction: "",
     objective: "",
-    budget: "",
     website: "", // Honeypot
   });
   const [status, setStatus] = useState<
@@ -185,21 +183,13 @@ const Contatti = () => {
       const payload = {
         name: formData.name,
         email: formData.email,
-        // Generiamo il subject unendo Direzione e Budget prescelti
-        subject: `Richiesta Nebula: ${formData.direction || "Generale"} (${formData.budget || "Budget non specificato"})`,
-        // Raggruppiamo tutte le informazioni dettagliate del form nel corpo del message
+        subject: `Richiesta dal sito — ${formData.company || "N/D"}`,
+        // Raggruppiamo tutte le informazioni del form nel corpo del message
         message: `
-Dettagli del mittente:
-- Nome: ${formData.name}
-- Email: ${formData.email}
-- Azienda / Progetto: ${formData.company || "N/D"}
-- Sito web o social: ${formData.onlinePresence || "N/D"}
+Azienda: ${formData.company || "N/D"}
+Sito: ${formData.onlinePresence || "N/D"}
 
-Informazioni Progetto:
-- Seleziona un'offerta: ${formData.direction || "N/D"}
-- Budget: ${formData.budget || "N/D"}
-
-Parlami del tuo progetto:
+Messaggio:
 ${formData.objective}
         `.trim(),
         // Honeypot: raccolto dal modulo ma finora mai trasmesso. Il controllo
@@ -216,9 +206,7 @@ ${formData.objective}
         email: "",
         company: "",
         onlinePresence: "",
-        direction: "",
         objective: "",
-        budget: "",
         website: "",
       });
     } catch {
@@ -501,47 +489,20 @@ ${formData.objective}
                         {/* Riga 2 */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
                           <InputField
-                            label="Azienda / Progetto"
+                            label={t("contact.form_company")}
                             name="company"
                             value={formData.company}
                             onChange={handleChange}
-                            placeholder="Nome dell'azienda o progetto"
+                            placeholder={t("contact.form_company_ph")}
                           />
                           <InputField
-                            label="Sito web o social"
+                            label={t("contact.form_website")}
                             name="onlinePresence"
                             type="url"
                             required={false}
                             value={formData.onlinePresence}
                             onChange={handleChange}
-                            placeholder="Sito web o link social (opzionale)"
-                          />
-                        </div>
-
-                        {/* Riga 3 */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
-                          <SelectField
-                            label="Seleziona un'offerta"
-                            name="direction"
-                            value={formData.direction}
-                            onChange={handleChange}
-                            options={[
-                              { label: "Sviluppo Custom", value: "Sviluppo Custom" },
-                              { label: "Sviluppo MVP", value: "Sviluppo MVP" },
-                              { label: "Sviluppo CMS", value: "Sviluppo CMS" },
-                              { label: "Non sono sicuro", value: "Non sono sicuro" },
-                            ]}
-                          />
-                          <SelectField
-                            label="Budget"
-                            name="budget"
-                            value={formData.budget}
-                            onChange={handleChange}
-                            options={[
-                              { label: "Fino a € 2.500", value: "Fino a € 2.500" },
-                              { label: "Tra € 2.500 e € 6.000", value: "Tra € 2.500 e € 6.000" },
-                              { label: "Oltre € 6.000", value: "Oltre € 6.000" },
-                            ]}
+                            placeholder={t("contact.form_website_ph")}
                           />
                         </div>
                       </div>
@@ -551,7 +512,7 @@ ${formData.objective}
                           htmlFor="objective"
                           className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/50 block mb-3 cursor-pointer"
                         >
-                          Parlami del tuo progetto
+                          {t("contact.form_objective")}
                         </label>
                         <textarea
                           id="objective"
@@ -560,7 +521,7 @@ ${formData.objective}
                           rows={5}
                           value={formData.objective}
                           onChange={handleChange}
-                          placeholder="Descrivi il tuo progetto e i tuoi obiettivi..."
+                          placeholder={t("contact.form_message_ph")}
                           className="w-full bg-transparent border-b border-white/10 py-3.5 text-white placeholder:text-white/50 font-outfit font-light text-base outline-none focus:border-gold transition-colors duration-300 resize-none"
                         />
                       </div>

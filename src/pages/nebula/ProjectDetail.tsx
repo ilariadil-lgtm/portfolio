@@ -1,43 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { Link } from "@/components/Link";
-import { api } from "@/lib/api";
 import { NebulaProjectLayout } from "./components/NebulaProjectLayout";
 import { NebulaImageSlider } from "./components/NebulaImageSlider";
-import { Hexagon } from "lucide-react";
 
 const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 const NebulaProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const [project, setProject] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchProject = async () => {
-      try {
-        if (id) {
-          const data = await api.getProject(id);
-          setProject(data);
-        }
-      } catch (error) {
-        console.error("Errore nel caricamento del progetto:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProject();
-  }, [id]);
-
-  if (loading) {
-    return (
-      <div className="min-h-[100dvh] w-full bg-night flex items-center justify-center font-mono text-[10px] uppercase tracking-[0.2em] text-gold gap-4">
-        <Hexagon size={24} className="animate-spin-slow opacity-50" />
-        RETRIEVING PROJECT...
-      </div>
-    );
-  }
+  // Ogni progetto reale ha una rotta e una pagina dedicate (vedi src/routes.ts):
+  // questa rotta generica /progetti/:id resta come rete di sicurezza per un
+  // indirizzo che non corrisponde a nessun progetto esistente.
+  const project: any = null;
 
   if (!project) {
     return (

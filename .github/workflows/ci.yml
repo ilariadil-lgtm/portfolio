@@ -1,0 +1,36 @@
+name: CI
+
+# Gira su ogni push, su ogni branch — a differenza di deploy.yml, che si
+# attiva solo su main. Qui non si pubblica nulla, si verifica solo che il
+# build passi e che le 42 rotte prerenderizzate esistano davvero.
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Installa dipendenze
+        run: npm ci
+
+      - name: Controllo dei tipi
+        run: npx tsc --noEmit
+
+      - name: Test unitari
+        run: npm run test
+
+      - name: Build di produzione (con prerendering)
+        run: npm run build:prod
+
+      - name: Smoke test sulle rotte prerenderizzate
+        run: npm run test:smoke

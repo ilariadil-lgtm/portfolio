@@ -2,8 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { useEffect, useState } from "react";
-import { api } from "@/lib/api";
+import { useState } from "react";
 import { Link } from "@/components/Link";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { RevealText } from "@/components/RevealText";
@@ -13,18 +12,6 @@ import { useTranslation } from "react-i18next";
 const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 const fallbackProjects = [
-  {
-    id: "storagehub",
-    title: "StorageHub",
-    type: "WEBAPP_SAAS",
-    technologies:
-      "React.js, Node.js (Express), AWS S3 / CloudFront, PostgreSQL, REST API, UX Strategy",
-    year: "2026",
-    image: "/assets/projects/storage-hub/dashboard.webp",
-    project_url: "https://storagehub.com",
-    description:
-      "Una web app intelligente di storage e inventory management che semplifica e automatizza la gestione dell'inventario su scala enterprise.",
-  },
   {
     id: "villamasami",
     title: "Villa Masami",
@@ -44,7 +31,7 @@ const fallbackProjects = [
     technologies:
       "UI/UX Design, Information Architecture, Copywriting, WordPress Corporate",
     year: "2024",
-    image: "/assets/projects/patti-forniture/homepage.webp",
+    image: "/assets/projects/patti-forniture/homepage-hero.webp",
     project_url: "",
     description:
       "Un restyling web corporate realizzato in collaborazione con l'agenzia Carnova per una storica azienda leader nel Sud Italia di forniture industriali.",
@@ -56,7 +43,7 @@ const fallbackProjects = [
     technologies:
       "PrestaShop Configuration, E-commerce UI/UX, Catalog Management, Copywriting & Layout",
     year: "2025",
-    image: "/assets/projects/sicil-cosmetic/homepage.webp",
+    image: "/assets/projects/sicil-cosmetic/homepage-hero.webp",
     project_url: "",
     description:
       "Un progetto e-commerce end-to-end realizzato su piattaforma PrestaShop per l'agenzia Carnova. Gestione ed organizzazione dell'intero catalogo beauty.",
@@ -68,7 +55,7 @@ const fallbackProjects = [
     technologies:
       "PrestaShop Integration, UI/UX Design, Visual Merchandising, Information Architecture",
     year: "2024",
-    image: "/assets/projects/newpop/homepage.webp",
+    image: "/assets/projects/newpop/homepage-hero.webp",
     project_url: "",
     description:
       "Boutique digitale per il design e l'arredamento d'interni, realizzata per l'agenzia Carnova. UI/UX curata e configurazione PrestaShop.",
@@ -80,7 +67,7 @@ const fallbackProjects = [
     technologies:
       "UI/UX & Graphic Layout, WordPress Environment, Hospitality & E-commerce, Visual Storytelling",
     year: "2024",
-    image: "/assets/projects/vini-gambino/homepage.webp",
+    image: "/assets/projects/vini-gambino/homepage-hero.webp",
     project_url: "",
     description:
       "L'essenza del terroir vulcanico tradotta in un'esperienza digitale immersiva. Progetto realizzato in collaborazione con l'agenzia Carnova.",
@@ -92,7 +79,7 @@ const fallbackProjects = [
     technologies:
       "UI/UX Design, Copywriting & Content, WordPress Layout, Hospitality Design",
     year: "2023",
-    image: "/assets/projects/baglio-lauria/homepage.webp",
+    image: "/assets/projects/baglio-lauria/homepage-hero.webp",
     project_url: "",
     description:
       "Un progetto digitale realizzato in collaborazione con l'agenzia Carnova, dedicato a un incantevole agriturismo e location per eventi in Sicilia.",
@@ -104,10 +91,22 @@ const fallbackProjects = [
     technologies:
       "UI/UX Design, WordPress Environment, Copywriting & Storytelling, Wedding & Event Industry",
     year: "2023",
-    image: "/assets/projects/villa-mima/home.webp",
+    image: "/assets/projects/villa-mima/home-hero.webp",
     project_url: "",
     description:
       "Un progetto digitale raffinato realizzato in collaborazione con l'agenzia Carnova. Cura dell'interfaccia utente, della narrazione visiva e dello sviluppo su WordPress per una location d'eccellenza dedicata a matrimoni e ricevimenti in Sicilia.",
+  },
+  {
+    id: "storagehub",
+    title: "StorageHub",
+    type: "WEBAPP_SAAS",
+    technologies:
+      "React.js, Node.js (Express), AWS S3 / CloudFront, PostgreSQL, REST API, UX Strategy",
+    year: "2026",
+    image: "/assets/projects/storage-hub/dashboard.webp",
+    project_url: "https://storagehub.com",
+    description:
+      "Una web app intelligente di storage e inventory management che semplifica e automatizza la gestione dell'inventario su scala enterprise.",
   },
   {
     id: "loghi",
@@ -274,36 +273,9 @@ const Progetti = () => {
       "Archivio dei progetti di Ilaria Diliberto: siti web, e-commerce, web app e design system realizzati con estrema precisione e attenzione al dettaglio.",
   });
 
-  const [projects, setProjects] = useState<any[]>([]);
+  const [projects] = useState(fallbackProjects);
   const [activeCategory, setActiveCategory] = useState("ALL");
-  const [loading, setLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(6);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const data = await api.getProjects();
-        const results = data.results || data;
-        const filtered = results.filter(
-          (p: any) =>
-            p.id !== "SOPHIA_THEME" &&
-            p.id !== "sophiatheme" &&
-            p.id !== "CHARIO_HIFI" &&
-            p.id !== "chariohifi" &&
-            p.id !== "portfolio" &&
-            p.id !== "freelens",
-        );
-        setProjects(
-          filtered && filtered.length > 0 ? filtered : fallbackProjects,
-        );
-      } catch {
-        setProjects(fallbackProjects);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProjects();
-  }, []);
 
   const categoriesWithCount = CATEGORIES.map((cat) => ({
     ...cat,
@@ -317,20 +289,6 @@ const Progetti = () => {
   const filtered = projects.filter((p) =>
     projectMatchesCategory(p, activeCategory),
   );
-
-  if (loading) {
-    return (
-      <div className="min-h-[100dvh] bg-cream flex items-center justify-center">
-        <motion.div
-          animate={{ opacity: [0.3, 0.8, 0.3] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="font-typewriter text-[10px] uppercase tracking-[0.5em] text-primary"
-        >
-          {t("projects.loading")}
-        </motion.div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-[100dvh] bg-cream text-ink overflow-hidden selection:bg-primary/30">
@@ -352,7 +310,7 @@ const Progetti = () => {
         </div>
 
         {/* Watermark */}
-        <div className="absolute inset-0 flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
+        <div aria-hidden="true" className="absolute inset-0 flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
           <span
             className="font-display font-black text-ink/[0.025] pr-4"
             style={{ fontSize: "clamp(80px, 18vw, 240px)", lineHeight: 1 }}
@@ -362,7 +320,7 @@ const Progetti = () => {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 items-end">
             <motion.div
               className="lg:col-span-7"
               initial={{ opacity: 0, x: -30 }}
@@ -434,7 +392,7 @@ const Progetti = () => {
             </div>
 
             {/* Count */}
-            <div className="shrink-0 flex items-center gap-2 opacity-50">
+            <div className="shrink-0 flex items-center gap-2 opacity-65">
               <span className="font-typewriter text-[9px] uppercase tracking-[0.3em] font-bold">
                 {filtered.length}{" "}
                 {filtered.length === 1
@@ -460,7 +418,7 @@ const Progetti = () => {
                 exit={{ opacity: 0 }}
                 className="py-32 text-center"
               >
-                <p className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-primary/40 font-bold">
+                <p className="font-typewriter text-[11px] uppercase tracking-[0.4em] text-primary/70 font-bold">
                   {t("projects.no_projects")}
                 </p>
               </motion.div>
@@ -513,7 +471,7 @@ const Progetti = () => {
         />
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 items-start">
             <motion.div
               className="lg:col-span-7"
               initial={{ opacity: 0, y: 30 }}
@@ -552,7 +510,7 @@ const Progetti = () => {
               <div className="space-y-8">
                 {[
                   { label: t("projects.stat1_label"), value: "12+" },
-                  { label: t("projects.stat2_label"), value: "100%" },
+                  { label: t("projects.stat2_label"), value: "92+" },
                   {
                     label: t("projects.stat3_label"),
                     value: t("projects.stat3_val"),

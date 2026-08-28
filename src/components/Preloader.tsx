@@ -150,13 +150,13 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
 
           {/* Institutional labels */}
           <motion.span
-            className="absolute top-10 left-12 font-sans text-[10px] font-medium uppercase tracking-[0.2em] text-[#c8bfb5]"
+            className="absolute top-10 left-12 font-sans text-[10px] font-medium uppercase tracking-[0.2em] text-[#5c554c]"
             animate={{ opacity: phase === "stain" ? 0 : 1 }}
           >
-            portfolio — 2026
+            siti web — 2026
           </motion.span>
           <motion.span
-            className="absolute bottom-9 right-12 font-sans text-[10px] tracking-[0.14em] text-[#c8bfb5]"
+            className="absolute bottom-9 right-12 font-sans text-[10px] tracking-[0.14em] text-[#5c554c]"
             animate={{ opacity: phase === "stain" ? 0 : 1 }}
           >
             ilaria diliberto

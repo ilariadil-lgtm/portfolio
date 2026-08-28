@@ -28,7 +28,7 @@ export const NebulaViniGambino = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/vini-gambino/homepage.webp",
+      image: "/assets/projects/vini-gambino/homepage-hero.webp",
     },
     {
       id: "02",
@@ -141,7 +141,7 @@ export const NebulaViniGambino = () => {
     >
       <NebulaImageSlider
         images={[
-          "/assets/projects/vini-gambino/homepage.webp",
+          "/assets/projects/vini-gambino/homepage-hero.webp",
           "/assets/projects/vini-gambino/chisiamo.webp",
           "/assets/projects/vini-gambino/e-shop.webp",
           "/assets/projects/vini-gambino/ivini.webp",

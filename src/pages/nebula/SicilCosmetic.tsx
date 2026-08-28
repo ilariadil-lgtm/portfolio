@@ -67,7 +67,7 @@ export const NebulaSicilCosmetic = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/sicil-cosmetic/homepage.webp",
+      image: "/assets/projects/sicil-cosmetic/homepage-hero.webp",
     },
     {
       id: "04",
@@ -135,7 +135,7 @@ export const NebulaSicilCosmetic = () => {
       <NebulaImageSlider
         images={[
           "/assets/projects/sicil-cosmetic/account.webp",
-          "/assets/projects/sicil-cosmetic/homepage.webp",
+          "/assets/projects/sicil-cosmetic/homepage-hero.webp",
           "/assets/projects/sicil-cosmetic/categoria.webp",
           "/assets/projects/sicil-cosmetic/paginaprodotto.webp",
           "/assets/projects/sicil-cosmetic/prodottimarca.webp",

@@ -4,21 +4,27 @@ import { Link } from "@/components/Link";
 import { EditorialPackagesSection } from "@/components/EditorialPackagesSection";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { BriefingCTA } from "@/components/BriefingCTA";
 import { CreativeHero } from "@/components/CreativeHero";
 import { KineticText } from "@/components/KineticText";
-import { useEffect, useState } from "react";
-import { api } from "@/lib/api";
+import { useEffect } from "react";
 import { usePageMeta, injectSchema } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
 
 const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
+// Ogni immagine in /assets ha una variante -700 accanto: il browser sceglie
+// da solo quale scaricare in base allo spazio reale disponibile.
+const srcSet700 = (src: string) =>
+  src.endsWith(".svg") ? undefined : `${src.replace(/(\.[a-zA-Z0-9]+)$/, "-700$1")} 700w, ${src} 1400w`;
+
 const Index = () => {
   const { t } = useTranslation();
   usePageMeta({
     title: "Home",
+    fullTitle: "Siti web ed e-commerce ad Agrigento | Ilaria Diliberto",
     description:
-      "Ilaria Diliberto — UX Designer e Web Developer. Progetto e costruisco ecosistemi digitali su misura: siti web, e-commerce e web app con estrema cura e precisione.",
+      "Progetto e sviluppo siti ed e-commerce per aziende che vendono un prodotto. Design e sviluppo, una persona sola. Agrigento, Palermo e in tutta Italia.",
   });
 
   // Schema.org Person — migliora il knowledge panel Google
@@ -43,35 +49,6 @@ const Index = () => {
     });
     return cleanup;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const [projects, setProjects] = useState<any[]>([]);
-  const [services, setServices] = useState<any[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [projData, servData] = await Promise.all([
-          api.getProjects(),
-          api.getServices(),
-        ]);
-        const results = projData.results || projData;
-        const filtered = results.filter(
-          (p: any) =>
-            p.id !== "SOPHIA_THEME" &&
-            p.id !== "sophiatheme" &&
-            p.id !== "CHARIO_HIFI" &&
-            p.id !== "chariohifi" &&
-            p.id !== "portfolio" &&
-            p.id !== "freelens",
-        );
-        setProjects(filtered);
-        setServices(servData.results || servData);
-      } catch (error) {
-        console.error("Errore nel caricamento dei dati:", error);
-      }
-    };
-    fetchData();
   }, []);
 
   const fallbackProjects = [
@@ -104,8 +81,7 @@ const Index = () => {
     },
   ];
 
-  const displayProjects =
-    projects.length > 0 ? projects.slice(0, 3) : fallbackProjects;
+  const displayProjects = fallbackProjects;
 
   return (
     <div className="min-h-[100dvh] bg-background text-foreground overflow-hidden selection:bg-primary/30">
@@ -117,9 +93,9 @@ const Index = () => {
       <CreativeHero />
 
       {/* ═══════════════════════════════════════════════════════════════════
-           TRI-LAYER CINEMATIC MARQUEE — CREATIVE PRO
+           IL PROBLEMA + MARQUEE — UNITA' UNICA
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative pb-40 md:pb-32 border-b border-editorial overflow-hidden bg-cream">
+      <section className="relative pt-16 md:pt-20 pb-10 md:pb-14 border-b border-editorial bg-cream overflow-hidden">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -135,58 +111,61 @@ const Index = () => {
           />
         </motion.div>
 
-        <div className="flex whitespace-nowrap -rotate-2 opacity-5 pointer-events-none py-8">
-          <motion.div
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{
-              duration: 25,
-              repeat: Infinity,
-              ease: "linear",
-              repeatType: "loop",
-            }}
-            className="flex gap-16 font-display text-[12vw] font-black text-stroke-primary text-transparent whitespace-nowrap leading-normal"
-          >
-            <span className="pb-4">{t("index.marquee_1")}</span>
-            <span className="pb-4">{t("index.marquee_1")}</span>
-          </motion.div>
+        <div className="relative z-10 px-6 md:px-12 lg:px-20 mb-10 md:mb-14">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-16 lg:items-center">
+            <div className="lg:col-span-7">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="flex items-center gap-4 mb-8"
+              >
+                <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">
+                  {t("index.problem_label")}
+                </span>
+                <div className="w-12 h-[1px] bg-primary/20" />
+              </motion.div>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.15 }}
+                className="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-snug text-ink"
+              >
+                {t("index.problem_line1")}
+              </motion.p>
+            </div>
+            <div className="lg:col-span-5">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="font-body text-lg md:text-xl lg:text-2xl font-medium leading-relaxed text-ink/80 border-l-2 border-primary/20 pl-6 lg:pl-8"
+              >
+                {t("index.problem_line2")}
+              </motion.p>
+            </div>
+          </div>
         </div>
-        <div className="relative z-10 flex whitespace-nowrap rotate-1 scale-110 -mt-32 md:-mt-40 py-8">
-          <motion.div
-            animate={{ x: ["-50%", "0%"] }}
-            transition={{
-              duration: 18,
-              repeat: Infinity,
-              ease: "linear",
-              repeatType: "loop",
-            }}
-            className="flex gap-12 font-display text-[6vw] font-bold text-primary mix-blend-multiply opacity-90 whitespace-nowrap leading-normal"
-          >
-            <span className="pb-4">{t("index.marquee_2")}</span>
-            <span className="pb-4">{t("index.marquee_2")}</span>
-          </motion.div>
-        </div>
-        <div className="relative z-20 flex whitespace-nowrap -rotate-1 scale-105 mt-2 md:mt-4 py-8">
-          <motion.div
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{
-              duration: 12,
-              repeat: Infinity,
-              ease: "linear",
-              repeatType: "loop",
-            }}
-            className="flex gap-20 font-typewriter text-[13px] uppercase tracking-[0.5em] text-primary font-medium whitespace-nowrap leading-normal"
-          >
-            <span className="pb-4">{t("index.marquee_3")}</span>
-            <span className="pb-4">{t("index.marquee_3")}</span>
-          </motion.div>
+
+        <div className="relative z-10 border-y border-editorial py-6 md:py-8 overflow-hidden">
+          <div className="absolute inset-y-0 left-0 w-16 md:w-24 z-10 bg-gradient-to-r from-cream to-transparent pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-16 md:w-24 z-10 bg-gradient-to-l from-cream to-transparent pointer-events-none" />
+          <div className="flex whitespace-nowrap px-6 md:px-12 lg:px-20">
+            <div className="flex gap-10 marquee-scroll font-typewriter uppercase tracking-[0.25em] text-[13px] md:text-base font-semibold text-primary/80 whitespace-nowrap leading-normal">
+              <span>{t("index.marquee_2")}</span>
+              <span>{t("index.marquee_2")}</span>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
            ABOUT PREVIEW — PREMIUM ANIMATIONS
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="grid grid-cols-1 lg:grid-cols-[5%_55%_40%] border-b border-editorial bg-cream overflow-hidden">
-        <div className="hidden lg:flex border-r border-editorial flex-col items-center py-12 justify-between opacity-30 select-none">
+      <section className="grid grid-cols-1 md:grid-cols-[58%_42%] lg:grid-cols-[5%_55%_40%] border-b border-editorial bg-cream overflow-hidden">
+        <div aria-hidden="true" className="hidden lg:flex border-r border-editorial flex-col items-center py-12 justify-between opacity-30 select-none">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -200,7 +179,7 @@ const Index = () => {
           </span>
         </div>
 
-        <div className="p-8 md:p-12 lg:p-20 border-b lg:border-b-0 lg:border-r border-editorial flex flex-col justify-center relative overflow-hidden">
+        <div className="p-8 md:p-12 lg:p-20 border-b lg:border-b-0 lg:border-r border-editorial flex flex-col justify-start relative overflow-hidden">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -279,6 +258,8 @@ const Index = () => {
             whileInView={{ scale: 1, opacity: 0.4, filter: "blur(0px)" }}
             transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
             src="/assets/about-portrait.webp"
+            srcSet={srcSet700("/assets/about-portrait.webp")}
+            sizes="(max-width: 1024px) 100vw, 40vw"
             alt="Portrait"
             fetchPriority="high"
             loading="eager"
@@ -303,43 +284,24 @@ const Index = () => {
                 </span>
               </div>
               <ul className="font-mono text-[13px] text-background space-y-6 leading-relaxed font-medium">
-                {services.length > 0 ? (
-                  services.map((s: any, idx: number) => (
-                    <motion.li
-                      key={s.id}
-                      initial={{ opacity: 0, x: 10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.6 + idx * 0.1 }}
-                      className="group/item flex items-center gap-4 transition-all duration-300"
-                    >
-                      <span className="w-4 h-[1px] bg-background/30 group-hover/item:bg-white group-hover/item:w-8 transition-all" />
-                      <span className="group-hover/item:text-white transition-colors cursor-default">
-                        {s.title}
-                      </span>
-                    </motion.li>
-                  ))
-                ) : (
-                  <>
-                    {[
-                      "UI & UX Design",
-                      "WordPress / Prestashop",
-                      "Gestione Progetti (Tech PM)",
-                    ].map((tech, idx) => (
-                      <motion.li
-                        key={idx}
-                        initial={{ opacity: 0, x: 10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.6 + idx * 0.1 }}
-                        className="group/item flex items-center gap-4 transition-all duration-300"
-                      >
-                        <span className="w-4 h-[1px] bg-background/30 group-hover/item:bg-white group-hover/item:w-8 transition-all" />
-                        <span className="group-hover/item:text-white transition-colors cursor-default">
-                          {tech}
-                        </span>
-                      </motion.li>
-                    ))}
-                  </>
-                )}
+                {[
+                  "Design del sito",
+                  "Sviluppo e programmazione",
+                  "Manutenzione e assistenza",
+                ].map((tech, idx) => (
+                  <motion.li
+                    key={idx}
+                    initial={{ opacity: 0, x: 10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 + idx * 0.1 }}
+                    className="group/item flex items-center gap-4 transition-all duration-300"
+                  >
+                    <span className="w-4 h-[1px] bg-background/30 group-hover/item:bg-white group-hover/item:w-8 transition-all" />
+                    <span className="group-hover/item:text-white transition-colors cursor-default">
+                      {tech}
+                    </span>
+                  </motion.li>
+                ))}
               </ul>
             </motion.div>
             <motion.div
@@ -370,8 +332,8 @@ const Index = () => {
               </span>
               <div className="w-12 h-[1px] bg-primary/20" />
             </div>
-            <h2 className="font-display text-5xl md:text-8xl lg:text-[clamp(2rem,7vw,7rem)] font-bold leading-none tracking-tighter">
-              {t("index.projects_title_1")} <br />
+            <h2 className="font-display text-4xl md:text-6xl lg:text-[clamp(2rem,4.5vw,4.5rem)] font-bold leading-none tracking-tighter">
+              {t("index.projects_title_1")}{" "}
               <span className="text-primary italic pr-2">
                 {t("index.projects_title_2")}
               </span>
@@ -397,11 +359,11 @@ const Index = () => {
         </div>
 
         <div className="relative z-10 w-full overflow-x-auto no-scrollbar snap-x snap-mandatory">
-          <div className="flex gap-20 md:gap-32 px-6 md:px-12 pb-12 w-max">
+          <div className="flex gap-10 md:gap-14 px-6 md:px-12 pb-12 w-max">
             {displayProjects.map((item, i) => (
               <div
                 key={item.id}
-                className="relative group/proj snap-center w-[85vw] md:w-[65vw] lg:w-[50vw]"
+                className="relative group/proj snap-center w-[80vw] md:w-[42vw] lg:w-[32vw]"
               >
                 <div className="relative">
                   <div className="absolute -inset-6 pointer-events-none">
@@ -436,6 +398,13 @@ const Index = () => {
                             ? item.image
                             : `${BASE_URL}${item.image}`
                         }
+                        srcSet={srcSet700(
+                          item.image?.startsWith("http") ||
+                            item.image?.startsWith("/")
+                            ? item.image
+                            : `${BASE_URL}${item.image}`,
+                        )}
+                        sizes="(max-width: 1024px) 90vw, 45vw"
                         alt={item.title}
                         loading="lazy"
                         decoding="async"
@@ -501,6 +470,60 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+           COME LAVORIAMO — QUATTRO PASSI
+           ═══════════════════════════════════════════════════════════════════ */}
+      <section className="pt-20 md:pt-28 pb-12 md:pb-16 px-6 md:px-12 lg:px-20 border-b border-editorial bg-cream">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center gap-4 mb-6">
+            <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">
+              {t("index.process_label")}
+            </span>
+            <div className="w-12 h-[1px] bg-primary/20" />
+          </div>
+          <h2 className="font-display text-4xl md:text-6xl font-bold leading-none tracking-tight text-ink mb-10 md:mb-12">
+            {t("index.process_title_1")}{" "}
+            <span className="text-primary italic pr-2">
+              {t("index.process_title_2")}
+            </span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[1, 2, 3, 4].map((n) => (
+              <motion.div
+                key={n}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: n * 0.1 }}
+                className="group h-full flex flex-col p-8 border border-ink bg-white shadow-soft-8 hover:shadow-brutal-8 transition-all duration-500 relative overflow-hidden"
+              >
+                <div className="absolute left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-crimson/50 to-transparent top-0 group-hover:top-[100%] transition-all [transition-duration:3s] ease-in-out z-10 pointer-events-none opacity-0 group-hover:opacity-100" />
+                <div className="flex items-center justify-between mb-8">
+                  <span className="font-display text-4xl font-black text-ink/15">
+                    {t(`index.process_${n}_num`)}
+                  </span>
+                  <div className="w-10 h-10 rounded-full border border-primary/15 flex items-center justify-center text-ink/65 bg-primary/5 group-hover:scale-110 group-hover:text-primary group-hover:border-primary/30 transition-all duration-500">
+                    <span className="font-display font-black text-base">{n}</span>
+                  </div>
+                </div>
+                <h3 className="font-display text-2xl font-bold text-ink mb-4">
+                  {t(`index.process_${n}_title`)}
+                </h3>
+                <p className="font-body text-[15px] text-ink/65 leading-relaxed">
+                  {t(`index.process_${n}_desc`)}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+           CHIUSURA — ANALISI GRATUITA
+           ═══════════════════════════════════════════════════════════════════ */}
+      <BriefingCTA />
+
       <Footer />
     </div>
   );

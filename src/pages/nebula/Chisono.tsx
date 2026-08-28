@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { NebulaNav } from "./components/NebulaNav";
 import { NebulaFooter } from "./components/NebulaFooter";
-import { api } from "@/lib/api";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { ArrowUpRight, Box, Cpu, Globe, Layers } from "lucide-react";
 import { MagneticWrapper } from "@/components/MagneticWrapper";
@@ -32,15 +31,13 @@ const wordVariants: Variants = {
 const Chisono = () => {
   const { t } = useTranslation();
   usePageMeta({
-    title: t("about.title_1", "Chi Sono"),
+    title: `${t("about.title_1")} ${t("about.title_2")}`,
     description: t(
       "about.bio_default",
       "Ilaria Diliberto — Designer e sviluppatrice full-stack.",
     ),
   });
 
-  const [about, setAbout] = useState<any>(null);
-  const [services, setServices] = useState<any[]>([]);
   const containerRef = useRef(null);
 
   const { scrollY } = useScroll();
@@ -49,19 +46,6 @@ const Chisono = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const fetchData = async () => {
-      try {
-        const [aboutData, servData] = await Promise.all([
-          api.getAbout(),
-          api.getServices(),
-        ]);
-        setAbout(aboutData);
-        setServices(servData.results || servData);
-      } catch (error) {
-        console.error("Errore nel caricamento dati:", error);
-      }
-    };
-    fetchData();
 
     // Abilita lo scroll snapping nativo
     document.documentElement.classList.add("snap-y", "snap-mandatory");
@@ -100,7 +84,7 @@ const Chisono = () => {
     },
     {
       num: "03",
-      period: "2025 — oggi",
+      period: t("about.evo3_period"),
       title: t("about.evo3_title"),
       subtitle: t("about.evo3_sub"),
       description: t("about.evo3_desc"),
@@ -213,9 +197,10 @@ const Chisono = () => {
                 transition={{ duration: 1, delay: 0.6 }}
                 className="mt-6 border-l-2 border-gold/20 pl-6 pointer-events-auto max-w-2xl"
               >
-                <p className="text-neutral-400 font-inter font-light text-base md:text-lg leading-relaxed mb-12">
-                  {about?.bio || t("about.bio_default")}
-                </p>
+                <div className="text-neutral-400 font-inter font-light text-base md:text-lg leading-relaxed mb-12 space-y-4">
+                  <p>{t("about.bio_default")}</p>
+                  <p>{t("about.bio_p2")}</p>
+                </div>
 
                 {/* Il Manifesto - Restore texts from Editorial */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-white/10 pt-8">
@@ -314,7 +299,7 @@ const Chisono = () => {
                   className="bg-white/[0.02] border border-white/5 backdrop-blur-md rounded-3xl p-8 flex flex-col justify-between group hover:border-gold/30 hover:bg-white/[0.04] transition-all duration-500 relative overflow-hidden"
                 >
                   {/* Numero in background (Watermark) */}
-                  <div className="absolute -bottom-4 -right-2 font-bricolage text-[140px] leading-none font-black text-white/[0.04] group-hover:text-gold/[0.08] transition-colors duration-500 select-none pointer-events-none">
+                  <div aria-hidden="true" className="absolute -bottom-4 -right-2 font-bricolage text-[140px] leading-none font-black text-white/[0.04] group-hover:text-gold/[0.08] transition-colors duration-500 select-none pointer-events-none">
                     {step.num}
                   </div>
 
@@ -324,7 +309,7 @@ const Chisono = () => {
                       <div className="flex flex-col gap-1">
                         <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-gold font-medium flex items-center gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-                          FASE {step.num}
+                          {t("about.phase_label")} {step.num}
                         </span>
                         <span className="font-mono text-xs uppercase tracking-widest text-white/50 group-hover:text-white/80 transition-colors">
                           {step.period}
@@ -389,48 +374,7 @@ const Chisono = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {services.length > 0
-                ? services.slice(0, 3).map((tech, i) => (
-                    <motion.div
-                      key={tech.id}
-                      initial={{ opacity: 0, y: 50 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{
-                        duration: 1,
-                        delay: i * 0.15,
-                        ease: [0.16, 1, 0.3, 1],
-                      }}
-                      className="bg-white/[0.02] border border-white/5 backdrop-blur-md rounded-3xl p-8 flex flex-col justify-between group hover:border-gold/30 hover:bg-white/[0.04] transition-all duration-500 relative overflow-hidden gap-6"
-                    >
-                      <div className="flex items-center gap-4 border-b border-white/10 pb-6 group-hover:border-gold/20 transition-colors duration-500">
-                        <span className="font-mono text-[9px] text-gold/70 flex items-center gap-2">
-                          <span className="w-1 h-1 rounded-full bg-gold animate-pulse" />
-                          0{i + 1}
-                        </span>
-                        <h3 className="font-fraunces italic text-3xl text-white/90 pr-2">
-                          {tech.title}
-                        </h3>
-                      </div>
-                      <p className="font-inter font-light text-[14px] text-white/50 leading-relaxed">
-                        {tech.description || t("about.tech_default")}
-                      </p>
-
-                      {/* Semantic Cluster of Magnetic Pills */}
-                      <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-white/5 group-hover:border-gold/10 transition-colors">
-                        {["Design System", "Prototyping", "UI/UX"].map(
-                          (tag, j) => (
-                            <MagneticWrapper key={j}>
-                              <div className="px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] text-white/60 font-mono text-[8px] uppercase tracking-widest group-hover:border-gold/30 group-hover:bg-gold/5 group-hover:text-gold cursor-crosshair transition-all duration-300">
-                                {tag}
-                              </div>
-                            </MagneticWrapper>
-                          ),
-                        )}
-                      </div>
-                    </motion.div>
-                  ))
-                : [
+              {[
                     {
                       title: t("about.fallback1_title"),
                       desc: t("about.fallback1_desc"),

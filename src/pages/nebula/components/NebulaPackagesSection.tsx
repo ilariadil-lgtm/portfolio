@@ -24,7 +24,7 @@ export const NebulaPackagesSection = () => {
               <div className="md:w-[60%]">
                 <div className="flex items-center gap-4 mb-6">
                   <span className="font-mono text-xs uppercase tracking-[0.3em] text-gold block">
-                    03 — I MIEI SERVIZI
+                    {t("index.home_pkg_label")}
                   </span>
                 </div>
                 <div className="flex flex-col">
@@ -80,7 +80,7 @@ export const NebulaPackagesSection = () => {
                   
                   <div className="pt-8 border-t border-white/5 mt-auto">
                     <Link
-                      to="/sviluppo-cms"
+                      to="/sito-aziendale"
                       className="group/btn inline-flex items-center justify-between w-full font-mono text-[11px] uppercase tracking-[0.25em] text-white/60 hover:text-gold transition-colors"
                     >
                       <span className="relative overflow-hidden">
@@ -126,7 +126,7 @@ export const NebulaPackagesSection = () => {
                   
                   <div className="pt-8 border-t border-white/5 mt-auto">
                     <Link
-                      to="/sviluppo-mvp"
+                      to="/e-commerce"
                       className="group/btn inline-flex items-center justify-between w-full font-mono text-[11px] uppercase tracking-[0.25em] text-white/60 hover:text-gold transition-colors"
                     >
                       <span className="relative overflow-hidden">
@@ -172,7 +172,7 @@ export const NebulaPackagesSection = () => {
                   
                   <div className="pt-8 border-t border-white/5 mt-auto">
                     <Link
-                      to="/sviluppo-custom"
+                      to="/manutenzione"
                       className="group/btn inline-flex items-center justify-between w-full font-mono text-[11px] uppercase tracking-[0.25em] text-white/60 hover:text-gold transition-colors"
                     >
                       <span className="relative overflow-hidden">
@@ -204,27 +204,11 @@ export const NebulaPackagesSection = () => {
                 className="inline-flex items-center gap-12 flex-shrink-0"
               >
                 <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/50">
-                  UX ARCHITECTURE
+                  {t("index.marquee_1")}
                 </span>
                 <span className="text-gold/70 text-xs">✦</span>
                 <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/50">
-                  DIGITAL STRATEGY
-                </span>
-                <span className="text-gold/70 text-xs">✦</span>
-                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/50">
-                  CLOUD DESIGN
-                </span>
-                <span className="text-gold/70 text-xs">✦</span>
-                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/50">
-                  IDENTITÀ VISIVA
-                </span>
-                <span className="text-gold/70 text-xs">✦</span>
-                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/50">
-                  ECOSISTEMI DIGITALI
-                </span>
-                <span className="text-gold/70 text-xs">✦</span>
-                <span className="font-bricolage font-bold text-sm uppercase tracking-[0.2em] text-white/50">
-                  GESTIONE FLUIDA
+                  {t("index.marquee_2")}
                 </span>
                 <span className="text-gold/70 text-xs">✦</span>
               </span>

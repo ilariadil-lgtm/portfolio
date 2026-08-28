@@ -148,9 +148,7 @@ const Contatti = () => {
     email: "",
     company: "",
     onlinePresence: "",
-    direction: "",
     objective: "",
-    budget: "",
     website: "", // Honeypot
   });
   const [status, setStatus] = useState<
@@ -175,21 +173,13 @@ const Contatti = () => {
       const payload = {
         name: formData.name,
         email: formData.email,
-        // Generiamo il subject unendo Direzione e Budget prescelti
-        subject: `Richiesta Portfolio: ${formData.direction || "Generale"} (${formData.budget || "Budget non specificato"})`,
-        // Raggruppiamo tutte le informazioni dettagliate del form nel corpo del message
+        subject: `Richiesta dal sito — ${formData.company || "N/D"}`,
+        // Raggruppiamo tutte le informazioni del form nel corpo del message
         message: `
-Dettagli del mittente:
-- Nome: ${formData.name}
-- Email: ${formData.email}
-- Azienda / Progetto: ${formData.company || "N/D"}
-- Sito web o social: ${formData.onlinePresence || "N/D"}
+Azienda: ${formData.company || "N/D"}
+Sito: ${formData.onlinePresence || "N/D"}
 
-Informazioni Progetto:
-- Seleziona un'offerta: ${formData.direction || "N/D"}
-- Budget: ${formData.budget || "N/D"}
-
-Parlami del tuo progetto:
+Messaggio:
 ${formData.objective}
         `.trim(),
         // Honeypot: raccolto dal modulo ma finora mai trasmesso. Il controllo
@@ -206,9 +196,7 @@ await api.sendContactMessage(payload);
         email: "",
         company: "",
         onlinePresence: "",
-        direction: "",
         objective: "",
-        budget: "",
         website: "",
       });
     } catch {
@@ -233,7 +221,7 @@ await api.sendContactMessage(payload);
         </div>
 
         {/* Watermark */}
-        <div className="absolute inset-0 flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
+        <div aria-hidden="true" className="absolute inset-0 flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
           <span
             className="font-display font-black text-ink/[0.025] pr-4"
             style={{ fontSize: "clamp(80px, 18vw, 240px)", lineHeight: 1 }}
@@ -243,7 +231,7 @@ await api.sendContactMessage(payload);
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 items-end">
             <motion.div
               className="lg:col-span-7"
               initial={{ opacity: 0, x: -30 }}
@@ -295,7 +283,7 @@ await api.sendContactMessage(payload);
 
       {/* MAIN SPLIT */}
       <section className="px-6 md:px-12 lg:px-24 pb-32">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           {/* Left: info */}
           <motion.div
             className="lg:col-span-4 space-y-12 lg:pt-4"
@@ -455,47 +443,20 @@ await api.sendContactMessage(payload);
                         {/* Riga 2 */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
                           <InputField
-                            label="Azienda / Progetto"
+                            label={t("contact.form_company")}
                             name="company"
                             value={formData.company}
                             onChange={handleChange}
-                            placeholder="Nome dell'azienda o progetto"
+                            placeholder={t("contact.form_company_ph")}
                           />
                           <InputField
-                            label="Sito web o social"
+                            label={t("contact.form_website")}
                             name="onlinePresence"
                             type="url"
                             required={false}
                             value={formData.onlinePresence}
                             onChange={handleChange}
-                            placeholder="Sito web o link social (opzionale)"
-                          />
-                        </div>
-
-                        {/* Riga 3 */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-                          <SelectField
-                            label="Seleziona un'offerta"
-                            name="direction"
-                            value={formData.direction}
-                            onChange={handleChange}
-                            options={[
-                              { label: "Sviluppo Custom", value: "Sviluppo Custom" },
-                              { label: "Sviluppo MVP", value: "Sviluppo MVP" },
-                              { label: "Sviluppo CMS", value: "Sviluppo CMS" },
-                              { label: "Non sono sicuro", value: "Non sono sicuro" },
-                            ]}
-                          />
-                          <SelectField
-                            label="Budget"
-                            name="budget"
-                            value={formData.budget}
-                            onChange={handleChange}
-                            options={[
-                              { label: "Fino a € 2.500", value: "Fino a € 2.500" },
-                              { label: "Tra € 2.500 e € 6.000", value: "Tra € 2.500 e € 6.000" },
-                              { label: "Oltre € 6.000", value: "Oltre € 6.000" },
-                            ]}
+                            placeholder={t("contact.form_website_ph")}
                           />
                         </div>
                       </div>
@@ -505,7 +466,7 @@ await api.sendContactMessage(payload);
                           htmlFor="objective"
                           className="font-typewriter text-[9px] uppercase tracking-[0.45em] text-ink/65 block mb-3 font-bold cursor-pointer"
                         >
-                          Parlami del tuo progetto
+                          {t("contact.form_objective")}
                         </label>
                         <textarea
                           id="objective"
@@ -514,7 +475,7 @@ await api.sendContactMessage(payload);
                           rows={5}
                           value={formData.objective}
                           onChange={handleChange}
-                          placeholder="Descrivi il tuo progetto e i tuoi obiettivi..."
+                          placeholder={t("contact.form_message_ph")}
                           className="w-full bg-transparent border-b border-ink/20 py-3.5 text-ink placeholder:text-ink/65 font-body text-base outline-none focus:border-primary transition-colors duration-300 resize-none"
                         />
                       </div>

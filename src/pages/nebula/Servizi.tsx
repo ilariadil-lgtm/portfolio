@@ -1,485 +1,43 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { NebulaNav } from "./components/NebulaNav";
 import { ScrollIndicator } from "./components/ScrollIndicator";
 import { NebulaFooter } from "./components/NebulaFooter";
-import React, { useEffect, useState, useRef, Suspense } from "react";
+import React, { useEffect, Suspense } from "react";
 const HeroCanvas = React.lazy(() =>
   import("./components/HeroCanvas").then((module) => ({
     default: module.HeroCanvas,
   })),
 );
-import { api } from "@/lib/api";
-import { Box, Cpu, Globe, Layout, ChevronRight, Hexagon } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Layout, ShoppingBag, Sparkles, Wrench } from "lucide-react";
 import { Link } from "@/components/Link";
-import { NebulaPackagesSection } from "./components/NebulaPackagesSection";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useTranslation } from "react-i18next";
 import { RevealText } from "@/components/RevealText";
-import { MagneticWrapper } from "@/components/MagneticWrapper";
+import { NebulaProcessSection } from "./components/NebulaProcessSection";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// DATA
-// ─────────────────────────────────────────────────────────────────────────────
-const getServiceSpecs = (t: any): Record<number, any> => ({
-  1: {
-    core: "Figma & Creative Suite",
-    workflow: t("services.spec1_workflow"),
-    kpi: t("services.spec1_kpi"),
-    load: t("services.spec_user_centric"),
-    tools: ["Figma", "Adobe CC", "Responsive design", "Branding"],
-  },
-  2: {
-    core: "React, Vite, Tailwind, Python, Django, PHP, Javascript",
-    workflow: t("services.spec2_workflow"),
-    kpi: t("services.spec2_kpi"),
-    load: t("services.spec_logic"),
-    tools: [
-      "React",
-      "TypeScript",
-      "TailwindCSS",
-      "Next.js",
-      "WordPress",
-      "Prestashop",
-      "PYTHON / DJANGO",
-    ],
-  },
-  3: {
-    core: "Git, Supabase, AI Tools (Gemini / GPT)",
-    workflow: t("services.spec3_workflow"),
-    kpi: t("services.spec3_kpi"),
-    load: t("services.spec_strategy"),
-    tools: ["PRODUCT MNGMT", "VIBE CODING", "AI WORKFLOWS", "STRATEGIA"],
-  },
-});
-
-const getSteps = (t: any) => [
-  {
-    num: "01",
-    title: t("services.step1_title"),
-    subtitle: t("services.step1_sub"),
-    description: t("services.step1_desc"),
-  },
-  {
-    num: "02",
-    title: t("services.step2_title"),
-    subtitle: t("services.step2_sub"),
-    description: t("services.step2_desc"),
-  },
-  {
-    num: "03",
-    title: t("services.step3_title"),
-    subtitle: t("services.step3_sub"),
-    description: t("services.step3_desc"),
-  },
-  {
-    num: "04",
-    title: t("services.step4_title"),
-    subtitle: t("services.step4_sub"),
-    description: t("services.step4_desc"),
-  },
-];
-
-// ─────────────────────────────────────────────────────────────────────────────
-// SPOTLIGHT CARD COMPONENT
-// ─────────────────────────────────────────────────────────────────────────────
-const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
-  const { t } = useTranslation();
-  const [isHovered, setIsHovered] = useState(false);
-  const [showSpecs, setShowSpecs] = useState(false);
-
-  // Spotlight state
-  const divRef = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [opacity, setOpacity] = useState(0);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!divRef.current) return;
-    const rect = divRef.current.getBoundingClientRect();
-    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  };
-
-  const serviceSpecs = getServiceSpecs(t);
-  const specs = serviceSpecs[service.id] || serviceSpecs[(idx % 3) + 1];
-
-  return (
-    <motion.div
-      ref={divRef}
-      variants={{
-        hidden: { opacity: 0, y: 40 },
-        show: {
-          opacity: 1,
-          y: 0,
-          transition: { type: "spring", stiffness: 80, damping: 18 },
-        },
-      }}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => {
-        setIsHovered(true);
-        setOpacity(1);
-      }}
-      onMouseLeave={() => {
-        setIsHovered(false);
-        setOpacity(0);
-        setShowSpecs(false);
-      }}
-      className="h-full relative border border-white/5 p-8 md:p-12 bg-white/[0.02] backdrop-blur-md hover:border-gold/30 hover:bg-white/[0.04] transition-all duration-700 flex flex-col justify-between group overflow-hidden rounded-3xl"
-    >
-      {/* Spotlight Effect overlay */}
-      <div
-        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 z-0"
-        style={{
-          opacity,
-          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(212, 175, 55, 0.08), transparent 40%)`,
-        }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
-
-      {/* Numero in background (Watermark) */}
-      <div className="absolute -bottom-4 -right-2 font-bricolage text-[140px] leading-none font-black text-white/[0.04] group-hover:text-gold/[0.08] transition-colors duration-500 select-none pointer-events-none z-0">
-        0{idx + 1}
-      </div>
-
-      {/* Content wrapper */}
-      <div className="relative z-10 flex-1 flex flex-col">
-        {/* Card Header telemetry */}
-        <div className="flex justify-between items-start border-b border-white/10 pb-6 mb-8 relative group-hover:border-gold/20 transition-colors duration-500">
-          <div className="flex flex-col">
-            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-gold flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-              {service.subtitle || `SERVICE_0${idx + 1}`}
-            </span>
-          </div>
-          <motion.div
-            animate={{ rotate: isHovered ? 15 : 0 }}
-            className="text-white/50 group-hover:text-gold transition-all duration-500"
-          >
-            {service.icon || <Box size={24} />}
-          </motion.div>
-        </div>
-
-        {/* Central Title & Description */}
-        <div className="space-y-6 mb-8 flex-1">
-          <div className="flex items-baseline gap-4 min-h-[80px] lg:min-h-[120px]">
-            <span className="font-fraunces italic font-light text-5xl md:text-6xl text-white/5 group-hover:text-gold/10 transition-colors duration-700 select-none pr-2">
-              0{idx + 1}
-            </span>
-            <h3 className="font-bricolage font-black tracking-tight text-3xl text-white">
-              {service.title}
-            </h3>
-          </div>
-          <p className="font-outfit font-light text-white/60 text-[15px] leading-relaxed relative z-10">
-            {service.description}
-          </p>
-        </div>
-
-        {/* Action button specs expander */}
-        <div className="mb-8 flex justify-between items-center relative z-10 mt-6">
-          <button
-            onClick={() => setShowSpecs(!showSpecs)}
-            className="px-4 py-2 rounded-full border border-white/10 bg-white/[0.02] text-white/60 font-mono text-[9px] uppercase tracking-[0.2em] hover:text-gold hover:border-gold/40 hover:bg-gold/5 transition-all cursor-pointer flex items-center gap-2"
-          >
-            {showSpecs
-              ? `- ${t("services.close_details")}`
-              : `+ ${t("services.open_details")}`}
-          </button>
-        </div>
-
-        {/* Accordion Specification Drawer */}
-        <AnimatePresence>
-          {showSpecs && (
-            <motion.div
-              initial={{ height: 0, opacity: 0, filter: "blur(10px)" }}
-              animate={{ height: "auto", opacity: 1, filter: "blur(0px)" }}
-              exit={{ height: 0, opacity: 0, filter: "blur(10px)" }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="overflow-hidden mb-8 relative z-10"
-            >
-              <div className="font-mono text-[9px] divide-y divide-white/5 bg-black/40 backdrop-blur-md p-6 border border-white/5 rounded-2xl space-y-4">
-                <div className="flex justify-between pb-3 items-center">
-                  <span className="text-white/50 uppercase tracking-[0.2em]">
-                    {t("services.tools")}:
-                  </span>
-                  <span className="text-gold text-right bg-gold/10 px-2 py-1">
-                    {specs.core}
-                  </span>
-                </div>
-                <div className="flex justify-between py-3">
-                  <span className="text-white/50 uppercase tracking-[0.2em]">
-                    {t("services.methodology")}:
-                  </span>
-                  <span className="text-white/80 text-right">
-                    {specs.workflow}
-                  </span>
-                </div>
-                <div className="flex justify-between py-3">
-                  <span className="text-white/50 uppercase tracking-[0.2em]">
-                    {t("services.key_objective")}:
-                  </span>
-                  <span className="text-gold text-right">{specs.kpi}</span>
-                </div>
-                <div className="pt-3">
-                  <span className="text-white/50 uppercase tracking-[0.2em] block mb-3">
-                    {t("services.skills")}:
-                  </span>
-                  <div className="flex flex-wrap gap-2">
-                    {specs.tools.map((t: string, i: number) => (
-                      <span
-                        key={i}
-                        className="border border-white/10 bg-white/[0.02] text-white/70 px-2 py-1 rounded-full text-[8px] uppercase tracking-[0.1em]"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Deliverables List */}
-        <div className="space-y-4 pt-8 border-t border-white/5 relative z-10 mt-auto">
-          <span className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/50 block">
-            DELIVERABLES
-          </span>
-          <ul className="space-y-3">
-            {(
-              service.deliverables || [
-                "Strategia Digitale",
-                "Deployment",
-                "Ottimizzazioni",
-              ]
-            ).map((del: string, dIdx: number) => (
-              <li key={dIdx} className="flex items-center gap-3">
-                <div className="w-1 h-1 rounded-full bg-gold/50" />
-                <span className="font-mono text-[9px] uppercase tracking-[0.1em] text-white/70 group-hover:text-white transition-colors duration-300">
-                  {del}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
-// ─────────────────────────────────────────────────────────────────────────────
-// COMPACT DATA TERMINAL (WORKFLOW)
-// ─────────────────────────────────────────────────────────────────────────────
-const WorkflowDataTerminal = () => {
-  const { t } = useTranslation();
-  const steps = getSteps(t);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start w-full bg-white/[0.02] border border-white/5 p-8 md:p-16 rounded-3xl backdrop-blur-md relative overflow-hidden group hover:border-gold/20 hover:bg-white/[0.03] transition-all duration-700">
-      {/* Navigation Column */}
-      <div className="lg:col-span-5 flex flex-col justify-center relative z-10">
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold mb-6 block border-b border-white/10 pb-4">
-          {t("services.workflow_label")}
-        </span>
-
-        <div className="flex flex-col space-y-1">
-          {steps.map((step, idx) => {
-            const isActive = activeIndex === idx;
-            return (
-              <button
-                key={idx}
-                onMouseEnter={() => setActiveIndex(idx)}
-                onClick={() => setActiveIndex(idx)}
-                className={`w-full text-left py-4 px-5 rounded-2xl transition-all duration-500 relative flex items-center justify-between overflow-hidden ${
-                  isActive
-                    ? "border border-gold/40 bg-gradient-to-r from-gold/10 to-transparent shadow-[inset_0_0_20px_rgba(212,175,55,0.05)]"
-                    : "border border-transparent hover:border-white/10 hover:bg-white/[0.02]"
-                }`}
-              >
-                <div className="flex items-center gap-6">
-                  <span
-                    className={`font-fraunces italic font-light text-2xl transition-colors duration-300 ${
-                      isActive
-                        ? "text-gold"
-                        : "text-white/50 group-hover:text-white/50"
-                    }`}
-                  >
-                    {step.num}
-                  </span>
-                  <span
-                    className={`font-bricolage font-bold tracking-tight text-xl md:text-2xl transition-colors duration-300 ${
-                      isActive
-                        ? "text-white"
-                        : "text-white/50 group-hover:text-white"
-                    }`}
-                  >
-                    {step.title}
-                  </span>
-                </div>
-                <ChevronRight
-                  size={18}
-                  className={`transition-all duration-500 ${
-                    isActive
-                      ? "text-gold opacity-100 translate-x-0"
-                      : "text-white/10 opacity-0 -translate-x-4"
-                  }`}
-                />
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Display Panel */}
-      <div className="lg:col-span-7 flex items-center relative z-10 min-h-[400px]">
-        <div className="w-full h-full p-8 md:p-14 border border-white/5 bg-black/40 backdrop-blur-xl relative overflow-hidden flex flex-col justify-center rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.5)]">
-          {/* Terminal Top Bar */}
-          <div className="absolute top-0 left-0 w-full h-8 border-b border-white/5 flex items-center px-4 justify-between bg-white/[0.01]">
-            <div className="flex gap-1.5">
-              <div className="w-2 h-2 rounded-full bg-white/10" />
-              <div className="w-2 h-2 rounded-full bg-white/10" />
-              <div className="w-2 h-2 rounded-full bg-white/10" />
-            </div>
-            <span className="font-mono text-[8px] uppercase tracking-widest text-white/50">
-              SYS.PROCESS_VIEWER
-            </span>
-          </div>
-
-          {/* Background grid for the display */}
-          <div className="absolute inset-0 bg-[radial-gradient(rgba(212,175,55,0.04)_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none mt-8" />
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, filter: "blur(15px)", x: 20 }}
-              animate={{ opacity: 1, filter: "blur(0px)", x: 0 }}
-              exit={{ opacity: 0, filter: "blur(15px)", x: -20 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-10"
-            >
-              <div className="flex items-center gap-4 mb-8">
-                <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold">
-                  {steps[activeIndex].subtitle}
-                </span>
-              </div>
-
-              <h3 className="font-bricolage font-bold tracking-tight text-3xl md:text-5xl text-white mb-6 leading-tight">
-                {steps[activeIndex].title}
-              </h3>
-
-              <p className="font-outfit font-light text-white/70 text-lg md:text-xl leading-relaxed max-w-lg">
-                {steps[activeIndex].description}
-              </p>
-
-              {/* Fake loading bar / telemetry */}
-              <div className="mt-12 w-full pt-6 border-t border-white/10 relative">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="font-mono text-[8px] text-white/50 uppercase tracking-widest">
-                    {t("services.workflow_label")}
-                  </span>
-                  <span className="font-mono text-[8px] text-gold tracking-widest animate-pulse">
-                    100%
-                  </span>
-                </div>
-                <div className="w-full h-[1px] bg-white/5 relative overflow-hidden">
-                  <motion.div
-                    initial={{ x: "-100%" }}
-                    animate={{ x: "0%" }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                    className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-transparent via-gold to-transparent"
-                  />
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// ─────────────────────────────────────────────────────────────────────────────
-// MAIN PAGE
-// ─────────────────────────────────────────────────────────────────────────────
 const Servizi = () => {
   const { t } = useTranslation();
   usePageMeta({
-    title: "Servizi",
-    description:
-      "UI/UX Design, sviluppo web su misura e tech product management.",
+    title: t("services.title_1") + " " + t("services.title_2"),
+    description: t("services.description"),
   });
-
-  const [services, setServices] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const fetchServices = async () => {
-      try {
-        const data = await api.getServices();
-        setServices(data.results || data);
-      } catch (error) {
-        console.error("Errore nel recupero dei servizi:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchServices();
   }, []);
 
-  const fallbackServices = [
-    {
-      id: 1,
-      title: t("services.fallback_service1_title"),
-      subtitle: t("services.fallback_service1_sub"),
-      description: t("services.fallback_service1_desc"),
-      deliverables: [
-        t("services.fallback_service1_del1"),
-        t("services.fallback_service1_del2"),
-        t("services.fallback_service1_del3"),
-        t("services.fallback_service1_del4"),
-      ],
-      icon: <Layout size={24} />,
-    },
-    {
-      id: 2,
-      title: t("services.fallback_service2_title"),
-      subtitle: t("services.fallback_service2_sub"),
-      description: t("services.fallback_service2_desc"),
-      deliverables: [
-        t("services.fallback_service2_del1"),
-        t("services.fallback_service2_del2"),
-        t("services.fallback_service2_del3"),
-        t("services.fallback_service2_del4"),
-      ],
-      icon: <Cpu size={24} />,
-    },
-    {
-      id: 3,
-      title: t("services.fallback_service3_title"),
-      subtitle: t("services.fallback_service3_sub"),
-      description: t("services.fallback_service3_desc"),
-      deliverables: [
-        t("services.fallback_service3_del1"),
-        t("services.fallback_service3_del2"),
-        t("services.fallback_service3_del3"),
-        t("services.fallback_service3_del4"),
-      ],
-      icon: <Globe size={24} />,
-    },
+  const cards = [
+    { ns: "service_sito", url: "/sito-aziendale", icon: <Layout size={22} />, num: "01" },
+    { ns: "service_ecommerce", url: "/e-commerce", icon: <ShoppingBag size={22} />, num: "02" },
+    { ns: "service_restyling", url: "/restyling", icon: <Sparkles size={22} />, num: "03" },
+    { ns: "service_manutenzione", url: "/manutenzione", icon: <Wrench size={22} />, num: "04" },
   ];
-
-  const displayServices = services.length > 0 ? services : fallbackServices;
 
   return (
     <div className="min-h-[100dvh] w-full bg-night text-slate-100 font-sans selection:bg-gold/30 overflow-hidden flex flex-col relative lg:pl-24">
       <NebulaNav />
       <ScrollIndicator
-        sections={[
-          "scroll.hero",
-          "scroll.services",
-          "scroll.process",
-          "scroll.contact",
-        ].map((k) => t(k))}
+        sections={["scroll.hero", "scroll.services", "scroll.contact"].map((k) => t(k))}
       />
 
       {/* ═════════════════════════════════════════════════════
@@ -510,16 +68,10 @@ const Servizi = () => {
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
           className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-tl from-indigo-900/10 to-ink/5 blur-[140px]"
         />
-        <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[30%] left-[40%] w-[30vw] h-[30vw] rounded-full bg-rose-900/5 blur-[120px] mix-blend-screen"
-        />
         <div
           className="absolute inset-0 opacity-[0.25] mix-blend-overlay"
           style={{
-            backgroundImage:
-              "url('https://grainy-gradients.vercel.app/noise.svg')",
+            backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')",
           }}
         />
       </div>
@@ -537,18 +89,17 @@ const Servizi = () => {
               >
                 <div className="flex items-center gap-4 mb-6">
                   <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.3em] text-gold flex items-center gap-2">
-                    <span className="text-[10px]">✦</span>{" "}
-                    {t("services.what_i_offer")}
+                    <span className="text-[10px]">✦</span> {t("services.what_i_offer")}
                   </span>
                 </div>
                 <div className="flex flex-wrap items-baseline gap-x-6 pb-4">
                   <RevealText
-                    text={t("services.title_1", "I MIEI")}
+                    text={t("services.title_1")}
                     delay={0.1}
                     className="font-bricolage font-bold tracking-wider text-fluid-h1 leading-[1.1] text-white whitespace-nowrap uppercase"
                   />
                   <RevealText
-                    text={t("services.title_2", "servizi.")}
+                    text={t("services.title_2")}
                     delay={0.2}
                     className="font-fraunces italic font-light tracking-wider text-fluid-h1 leading-[1.1] text-gold whitespace-nowrap pr-2"
                   />
@@ -559,18 +110,10 @@ const Servizi = () => {
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 1.2,
-                  delay: 0.2,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
+                transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                 className="font-outfit font-light text-white/60 text-lg leading-relaxed pl-8 border-l border-gold/30 backdrop-blur-sm"
               >
-                Un buon prodotto digitale non nasce separando il design dallo
-                sviluppo. Creo soluzioni partendo da una forte sensibilità
-                visiva, traducendole in codice solido e guidando l'intero
-                percorso con una strategia chiara. Questa mappa delinea come
-                posso affiancarti in ogni fase.
+                {t("services.description")}
               </motion.p>
             </div>
           </div>
@@ -580,228 +123,107 @@ const Servizi = () => {
       {/* Cards */}
       <section className="py-32 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto w-full z-10 relative">
         <div className="mb-16">
-           <div className="flex items-center gap-4 mb-6">
-              <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-gold font-medium flex items-center gap-2">
-                 <span className="text-[10px]">✦</span> Le mie aree di competenza
-              </span>
-              <div className="w-12 h-[1px] bg-gold/20" />
-           </div>
-           <h2 className="font-bricolage text-3xl md:text-5xl font-bold text-white mt-2">
-              Il motore dei <span className="font-fraunces italic font-light text-gold">tuoi progetti</span>
-           </h2>
-           <p className="mt-6 font-outfit font-light text-lg text-white/60 max-w-2xl">
-              Le skill verticali che metto in campo per trasformare la tua visione in ecosistemi stabili, belli da vedere e performanti.
-           </p>
+          <div className="flex items-center gap-4 mb-6">
+            <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-gold font-medium flex items-center gap-2">
+              <span className="text-[10px]">✦</span> {t("services.cards_label")}
+            </span>
+            <div className="w-12 h-[1px] bg-gold/20" />
+          </div>
+          <h2 className="font-bricolage text-3xl md:text-5xl font-bold text-white mt-2">
+            {t("services.cards_title_1")}{" "}
+            <span className="font-fraunces italic font-light text-gold">
+              {t("services.cards_title_2")}
+            </span>
+          </h2>
         </div>
+
         <motion.div
           variants={{
             hidden: { opacity: 0 },
-            show: {
-              opacity: 1,
-              transition: { staggerChildren: 0.15 },
-            },
+            show: { opacity: 1, transition: { staggerChildren: 0.15 } },
           }}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
-          {displayServices.map((service, idx) => (
-            <ServiceCard key={service.id || idx} service={service} idx={idx} />
+          {cards.map((card) => (
+            <motion.div
+              key={card.ns}
+              variants={{
+                hidden: { opacity: 0, y: 40 },
+                show: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { type: "spring", stiffness: 80, damping: 18 },
+                },
+              }}
+              className="h-full relative border border-white/5 p-8 bg-white/[0.02] backdrop-blur-md hover:border-gold/30 hover:bg-white/[0.04] transition-all duration-700 flex flex-col group overflow-hidden rounded-3xl"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
+
+              <div className="relative z-10 flex-1 flex flex-col">
+                <div className="flex justify-between items-start mb-10">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+                    {card.num}
+                  </span>
+                  <div className="text-white/50 group-hover:text-gold transition-all duration-500">
+                    {card.icon}
+                  </div>
+                </div>
+
+                <h3 className="font-bricolage font-black tracking-tight text-2xl text-white mb-4">
+                  {t(`${card.ns}.title`)}
+                </h3>
+                <p className="font-outfit font-light text-white/60 text-[15px] leading-relaxed flex-1 mb-10">
+                  {t(`${card.ns}.meta_desc`)}
+                </p>
+
+                <div className="pt-6 border-t border-white/10">
+                  <Link
+                    to={card.url}
+                    className="group/btn inline-flex items-center justify-between w-full font-mono text-[11px] uppercase tracking-[0.2em] text-white/60 hover:text-gold transition-colors"
+                  >
+                    <span className="relative overflow-hidden">
+                      {t("services.discover_btn")}
+                      <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold transform origin-left scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500" />
+                    </span>
+                    <div className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center group-hover/btn:border-gold transition-colors">
+                      <ArrowRight size={13} className="group-hover/btn:translate-x-1 transition-transform" />
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
           ))}
         </motion.div>
       </section>
 
-
-      {/* ───────────────────────────────────────────────────────────────────
-           ECOSISTEMI SU MISURA — LE TRE OFFERTE (SUBSCRIPTION STYLE NEBULA)
-           ─────────────────────────────────────────────────────────────────── */}
-      <section className="relative z-10 w-full px-6 md:px-12 lg:px-24 pb-32 pt-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-16 text-left">
-            <div className="flex items-center gap-4 justify-start mb-6">
-              <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-gold font-medium flex items-center gap-2">
-                <span className="text-[10px]">✦</span> {t("services.packages_label")}
-              </span>
-              <div className="w-12 h-[1px] bg-gold/20" />
-            </div>
-            <h2 className="font-bricolage text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight max-w-3xl mx-0">
-              {t("services.packages_title")} <span className="font-fraunces italic font-light text-gold">{t("services.packages_title_highlight")}</span>
-            </h2>
-            <p className="mt-6 font-outfit text-lg text-white/60 max-w-2xl font-light">
-              {t("services.packages_subtitle")}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            {/* TIER 1: CMS */}
-            <div className="border border-white/5 bg-white/[0.02] backdrop-blur-md p-8 flex flex-col group hover:bg-white/[0.04] hover:border-gold/30 transition-all duration-500 rounded-3xl relative overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
-              <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
-              <div className="relative z-10 flex flex-col h-full">
-                <div className="mb-8">
-                  <h3 className="font-bricolage text-2xl font-bold text-white mb-2">{t("services.pkg_cms_name")}</h3>
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-gold font-bold mb-6">{t("services.pkg_cms_tagline")}</p>
-                  <p className="font-outfit font-light text-[14px] text-white/60 min-h-[60px]">
-                    {t("services.pkg_cms_desc")}
-                  </p>
-                </div>
-                
-                <div className="mb-8 pb-8 border-b border-white/10">
-                  <span className="font-bricolage text-3xl font-black text-white">{t("services.pkg_cms_time")}</span>
-                  <span className="font-outfit font-light text-sm text-white/50 ml-2">{t("services.pkg_cms_time_unit")}</span>
-                </div>
-
-                <ul className="space-y-4 mb-10 flex-grow">
-                  <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_cms_p1")}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_cms_p2")}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_cms_p3")}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_cms_p4")}</span>
-                  </li>
-                </ul>
-
-                <Link to="/sviluppo-cms" className="w-full py-4 border border-white/10 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-white/60 group-hover:text-gold group-hover:border-gold/40 group-hover:bg-gold/5 rounded-full transition-all duration-300 inline-block">
-                  {t("services.pkg_cms_btn")}
-                </Link>
-              </div>
-            </div>
-
-            {/* TIER 2: MVP */}
-            <div className="border border-gold/40 bg-gradient-to-b from-gold/10 to-white/[0.02] backdrop-blur-md p-8 flex flex-col group relative shadow-[0_0_40px_rgba(212,175,55,0.15)] md:-mt-4 md:mb-4 rounded-3xl overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-gold text-black font-mono text-[9px] uppercase tracking-widest px-4 py-1.5 font-bold whitespace-nowrap rounded-b-lg z-20">
-                {t("services.pkg_mvp_badge")}
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
-              <div className="relative z-10 flex flex-col h-full mt-4">
-                <div className="mb-8">
-                  <h3 className="font-bricolage text-2xl font-bold text-white mb-2">{t("services.pkg_mvp_name")}</h3>
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-gold font-bold mb-6">{t("services.pkg_mvp_tagline")}</p>
-                  <p className="font-outfit font-light text-[14px] text-white/60 min-h-[60px]">
-                    {t("services.pkg_mvp_desc")}
-                  </p>
-                </div>
-                
-                <div className="mb-8 pb-8 border-b border-white/10">
-                  <span className="font-bricolage text-3xl font-black text-white">{t("services.pkg_mvp_time")}</span>
-                  <span className="font-outfit font-light text-sm text-white/50 ml-2">{t("services.pkg_mvp_time_unit")}</span>
-                </div>
-
-                <ul className="space-y-4 mb-10 flex-grow">
-                  <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_mvp_p1")}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_mvp_p2")}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_mvp_p3")}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_mvp_p4")}</span>
-                  </li>
-                </ul>
-
-                <Link to="/sviluppo-mvp" className="w-full py-4 bg-gold text-black text-center font-mono text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-white rounded-full transition-colors duration-300 inline-block">
-                  {t("services.pkg_mvp_btn")}
-                </Link>
-              </div>
-            </div>
-
-            {/* TIER 3: Custom */}
-            <div className="border border-white/5 bg-white/[0.02] backdrop-blur-md p-8 flex flex-col group hover:bg-white/[0.04] hover:border-gold/30 transition-all duration-500 rounded-3xl relative overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
-              <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none" />
-              <div className="relative z-10 flex flex-col h-full">
-                <div className="mb-8">
-                  <h3 className="font-bricolage text-2xl font-bold text-white mb-2">{t("services.pkg_custom_name")}</h3>
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-gold font-bold mb-6">{t("services.pkg_custom_tagline")}</p>
-                  <p className="font-outfit font-light text-[14px] text-white/60 min-h-[60px]">
-                    {t("services.pkg_custom_desc")}
-                  </p>
-                </div>
-                
-                <div className="mb-8 pb-8 border-b border-white/10">
-                  <span className="font-bricolage text-3xl font-black text-white">{t("services.pkg_custom_time")}</span>
-                  <span className="font-outfit font-light text-sm text-white/50 ml-2">{t("services.pkg_custom_time_unit")}</span>
-                </div>
-
-                <ul className="space-y-4 mb-10 flex-grow">
-                  <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_custom_p1")}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_custom_p2")}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_custom_p3")}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Hexagon size={14} className="text-gold shrink-0 mt-0.5" />
-                    <span className="font-outfit font-light text-[14px] text-white/80">{t("services.pkg_custom_p4")}</span>
-                  </li>
-                </ul>
-
-                <Link to="/sviluppo-custom" className="w-full py-4 border border-white/10 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-white/60 group-hover:text-gold group-hover:border-gold/40 group-hover:bg-gold/5 rounded-full transition-all duration-300 inline-block">
-                  {t("services.pkg_custom_btn")}
-                </Link>
-              </div>
-            </div>
-
-          </div>
-        </div>
+      {/* Come lavoriamo */}
+      <section className="py-20 md:py-28 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto w-full z-10 relative border-t border-white/5">
+        <NebulaProcessSection />
       </section>
-      {/* Compact Data Terminal Workflow */}
-      <section className="relative z-10 w-full px-6 md:px-12 lg:px-24 pb-48 pt-12">
-        <div className="max-w-7xl mx-auto flex flex-col items-start w-full">
-          <div className="mb-16 text-left w-full">
-            <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-gold font-medium mb-4 block">
-              02 — {t("services.workflow_label")}
-            </span>
-            <div className="flex flex-wrap items-baseline gap-x-4 mb-6">
-              <RevealText
-                text={t("services.workflow_title_1")}
-                delay={0.1}
-                className="font-bricolage font-bold tracking-tight text-4xl md:text-5xl lg:text-6xl text-white uppercase"
-              />
-              <RevealText
-                text={t("services.workflow_title_2")}
-                delay={0.3}
-                className="font-fraunces italic font-light text-4xl md:text-5xl lg:text-6xl text-gold pr-2"
-              />
-            </div>
-            <p className="font-outfit font-light text-white/50 text-lg max-w-2xl">
-              {t("services.workflow_description")}
-            </p>
-          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full"
+      {/* Closing CTA */}
+      <section className="relative z-10 w-full px-6 md:px-12 lg:px-24 pb-32">
+        <div className="w-full max-w-5xl mx-auto border border-gold/20 bg-gold/5 backdrop-blur-md p-10 md:p-16 text-left flex flex-col items-start shadow-[0_0_50px_rgba(212,175,55,0.05)]">
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold mb-6">
+            {t("cta.subtitle")}
+          </span>
+          <h2 className="font-fraunces italic font-light text-3xl md:text-5xl text-white mb-10 leading-tight max-w-2xl">
+            {t("cta.description")}
+          </h2>
+          <Link
+            to="/contatti"
+            className="group inline-flex items-center justify-center gap-4 bg-gold text-black px-10 py-5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-white hover:scale-105 transition-all duration-300"
           >
-            <WorkflowDataTerminal />
-          </motion.div>
+            {t("cta.button")}
+            <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          </Link>
         </div>
       </section>
+
       <NebulaFooter />
     </div>
   );

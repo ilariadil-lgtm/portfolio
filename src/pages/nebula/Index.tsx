@@ -1,7 +1,6 @@
 import React, { useEffect, useState, Suspense } from "react";
 import { Img } from "@/components/Img";
 import { useTranslation } from "react-i18next";
-import { api } from "@/lib/api";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "@/components/Link";
 import { NebulaPackagesSection } from "./components/NebulaPackagesSection";
@@ -30,8 +29,6 @@ const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 const NebulaIndex = () => {
   const { t } = useTranslation();
-  const [projects, setProjects] = useState<any[]>([]);
-  const [services, setServices] = useState<any[]>([]);
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   const { scrollY } = useScroll();
@@ -47,31 +44,6 @@ const NebulaIndex = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const fetchData = async () => {
-      try {
-        const [projData, servData] = await Promise.all([
-          api.getProjects(),
-          api.getServices(),
-        ]);
-        const results = projData.results || projData;
-        const filtered = results.filter(
-          (p: any) =>
-            p.id !== "SOPHIA_THEME" &&
-            p.id !== "sophiatheme" &&
-            p.id !== "CHARIO_HIFI" &&
-            p.id !== "chariohifi" &&
-            p.id !== "portfolio",
-        );
-        setProjects(filtered);
-        setServices(servData.results || servData);
-      } catch (error) {
-        console.error("Errore nel caricamento dei dati:", error);
-        console.warn(
-          "Utilizzo dati di fallback hardcoded per progetti e servizi. Rimuovere in produzione.",
-        );
-      }
-    };
-    fetchData();
 
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
@@ -119,8 +91,7 @@ const NebulaIndex = () => {
     },
   ];
 
-  const displayProjects =
-    projects.length > 0 ? projects.slice(0, 3) : fallbackProjects;
+  const displayProjects = fallbackProjects;
 
   return (
     <div className="min-h-[100dvh] w-full bg-night text-slate-100 font-sans selection:bg-gold/30 overflow-hidden flex flex-col relative lg:pl-24">
@@ -202,22 +173,22 @@ const NebulaIndex = () => {
                   </span>
                 </div>
 
-                <div className="flex flex-row flex-nowrap items-baseline gap-x-2 md:gap-x-4 pb-4 w-full overflow-hidden">
+                <div className="flex flex-col items-start gap-y-1 pb-4 w-full">
                   <RevealText
                     text={t("index.hero_title_1")}
                     delay={0.1}
-                    className="font-bricolage font-bold tracking-wider text-[clamp(1.75rem,6.5vw,5rem)] md:text-fluid-h1 leading-[1.1] text-white whitespace-nowrap"
+                    className="font-bricolage font-bold tracking-wider text-[clamp(1.75rem,5.5vw,4rem)] leading-[1.1] text-white"
                   />
                   <RevealText
                     text={t("index.hero_title_2")}
                     delay={0.2}
-                    className="font-fraunces italic font-light tracking-wider text-[clamp(1.75rem,6.5vw,5rem)] md:text-fluid-h1 leading-[1.1] text-gold whitespace-nowrap pr-2"
+                    className="font-fraunces italic font-light tracking-wider text-[clamp(1.75rem,5.5vw,4rem)] leading-[1.1] text-gold pr-2"
                   />
                 </div>
               </div>
 
               <motion.p
-                className="text-neutral-400 font-inter font-light text-base md:text-lg max-w-xl leading-relaxed mt-6 border-l-2 border-gold/20 pl-6"
+                className="text-neutral-400 font-inter font-light text-base md:text-lg max-w-2xl leading-relaxed mt-6 border-l-2 border-gold/20 pl-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.6 }}
@@ -237,7 +208,7 @@ const NebulaIndex = () => {
                     className="group inline-flex items-center gap-4 font-mono text-[10px] uppercase tracking-[0.3em] text-white hover:text-gold transition-colors duration-300 pointer-events-auto"
                   >
                     <span className="relative">
-                      {t("cta.button")}
+                      {t("hero.cta")}
                       <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold group-hover:w-full transition-all duration-700 ease-out" />
                     </span>
                     <ArrowRight
@@ -287,7 +258,7 @@ const NebulaIndex = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative z-20 py-32 md:py-48 overflow-hidden snap-start"
+          className="relative z-20 py-20 md:py-28 overflow-hidden snap-start"
         >
           <div className="px-6 md:px-12 lg:px-24 relative z-10">
             <span className="font-mono text-xs uppercase tracking-[0.3em] text-gold mb-12 block">
@@ -313,8 +284,7 @@ const NebulaIndex = () => {
             </motion.h2>
 
             <div className="flex flex-col md:flex-row md:items-start gap-12 max-w-5xl">
-              <div className="md:w-1/2 h-[1px] bg-white/10 mt-4 hidden md:block" />
-              <div className="md:w-1/2 border-l-2 border-gold/20 pl-8">
+              <div className="md:max-w-xl border-l-2 border-gold/20 pl-8">
                 <p className="font-inter text-base text-white/60 leading-[1.9] font-light mb-8 whitespace-pre-wrap">
                   {t("index.approach_desc")}
                 </p>

@@ -56,7 +56,7 @@ const Chisono = () => {
     },
     {
       num: "03",
-      period: "2025 — oggi",
+      period: t("about.evo3_period"),
       title: t("about.evo3_title"),
       subtitle: t("about.evo3_sub"),
       description: t("about.evo3_desc"),
@@ -89,7 +89,7 @@ const Chisono = () => {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
             {/* Left Column: Typography & Bio Info */}
             <div className="lg:col-span-7 space-y-12">
               <motion.div
@@ -131,14 +131,15 @@ const Chisono = () => {
                   </span>
                 </motion.h1>
 
-                <motion.p
+                <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.6 }}
-                  className="font-body text-l text-ink/80 leading-relaxed pl-8 border-l border-primary/25 max-w-xl"
+                  className="font-body text-l text-ink/80 leading-relaxed pl-8 border-l border-primary/25 max-w-xl space-y-4"
                 >
-                  {t("about.bio_default")}
-                </motion.p>
+                  <p>{t("about.bio_default")}</p>
+                  <p>{t("about.bio_p2")}</p>
+                </motion.div>
               </motion.div>
 
               {/* Technical Specifications Ledger */}
@@ -166,6 +167,7 @@ const Chisono = () => {
                     { label: t("about.role_label"), val: t("about.role_val") },
                     { label: t("about.spec_label"), val: t("about.spec_val") },
                     { label: t("about.loc_label"), val: t("about.loc_val") },
+                    { label: t("about.collab_label"), val: t("about.collab_val") },
                     {
                       label: t("about.exp_label"),
                       val: t("about.exp_val"),
@@ -191,7 +193,7 @@ const Chisono = () => {
             </div>
 
             {/* Right Column: Premium Blueprint Manifesto */}
-            <div className="lg:col-span-5 flex flex-col justify-center items-center">
+            <div className="lg:col-span-5 flex flex-col items-center self-start lg:sticky lg:top-32">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -314,17 +316,17 @@ const Chisono = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 1, delay: 0.1 }}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start relative pl-12 lg:pl-24"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-16 items-start relative pl-12 lg:pl-24"
               >
                 {/* Timeline dot inside connector */}
                 <div className="absolute left-4 lg:left-12 -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-white z-10 shadow-sm" />
 
                 {/* Display Number */}
                 <div className="lg:col-span-2 flex lg:flex-col items-baseline lg:items-start gap-4">
-                  <div className="font-display text-6xl md:text-8xl font-black text-ink/10 select-none leading-none">
+                  <div aria-hidden="true" className="font-display text-6xl md:text-8xl font-black text-ink/10 select-none leading-none">
                     {step.num}
                   </div>
-                  <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-primary/60 font-medium whitespace-nowrap">
+                  <span className="font-typewriter text-[10px] uppercase tracking-[0.3em] text-primary/70 font-medium whitespace-nowrap">
                     {step.period}
                   </span>
                 </div>

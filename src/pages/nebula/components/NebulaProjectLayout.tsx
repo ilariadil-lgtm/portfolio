@@ -25,6 +25,12 @@ interface NebulaProjectLayoutProps {
   techList: string[];
   role: string;
   year: string;
+  roleLabel?: string;
+  yearLabel?: string;
+  backUrl?: string;
+  backLabel?: string;
+  archiveUrl?: string;
+  archiveTitle?: string;
   liveUrl?: string;
   prev?: { url: string; title: string };
   prevLabel?: string;
@@ -49,6 +55,12 @@ export const NebulaProjectLayout = ({
   techList,
   role,
   year,
+  roleLabel = "RUOLO",
+  yearLabel = "ANNO",
+  backUrl = "/progetti",
+  backLabel,
+  archiveUrl,
+  archiveTitle,
   liveUrl,
   prev,
   next,
@@ -133,14 +145,14 @@ export const NebulaProjectLayout = ({
       <section className="relative pt-40 md:pt-56 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden min-h-[60vh] flex flex-col justify-start md:justify-end border-b border-white/5 z-10">
         <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col items-start">
           <Link
-            to="/progetti"
+            to={backUrl}
             className="group flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-gold hover:text-white transition-colors mb-12 bg-gold/5 px-4 py-2 border border-gold/20 rounded-full backdrop-blur-md"
           >
             <ArrowLeft
               size={14}
               className="group-hover:-translate-x-1 transition-transform"
             />
-            {t("all_projects", "ALL PROJECTS")}
+            {backLabel || t("all_projects", "ALL PROJECTS")}
           </Link>
 
           <motion.div
@@ -182,7 +194,7 @@ export const NebulaProjectLayout = ({
           >
             <div className="bg-black/40 border border-white/5 backdrop-blur-xl p-6 rounded-2xl flex flex-col justify-between group hover:border-gold/30 hover:bg-black/60 transition-all duration-500 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
               <span className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gold mb-4">
-                RUOLO
+                {roleLabel}
               </span>
               <span className="font-outfit font-light text-lg text-white group-hover:text-white">
                 {role}
@@ -190,7 +202,7 @@ export const NebulaProjectLayout = ({
             </div>
             <div className="bg-black/40 border border-white/5 backdrop-blur-xl p-6 rounded-2xl flex flex-col justify-between group hover:border-gold/30 hover:bg-black/60 transition-all duration-500 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
               <span className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gold mb-4">
-                ANNO
+                {yearLabel}
               </span>
               <span className="font-mono text-lg text-white group-hover:text-white">
                 {year}
@@ -198,7 +210,7 @@ export const NebulaProjectLayout = ({
             </div>
             <div className="md:col-span-2 bg-black/40 border border-white/5 backdrop-blur-xl p-6 rounded-2xl flex flex-col justify-between group hover:border-gold/30 hover:bg-black/60 transition-all duration-500 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
               <span className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gold mb-4">
-                TECNOLOGIE
+                {t("project_nav.technologies_label")}
               </span>
               <div className="flex flex-wrap gap-2">
                 {techList.map((t) => (
@@ -228,7 +240,7 @@ export const NebulaProjectLayout = ({
             <div className="lg:w-1/4 pt-2">
               <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold flex items-center gap-4">
                 <span className="w-8 h-[1px] bg-gold/30 block" />
-                PANORAMICA PROGETTO
+                {t("project_nav.overview_label")}
               </span>
             </div>
             <div className="lg:w-3/4 font-outfit font-light text-white/80 text-lg md:text-xl leading-relaxed [&>p]:mb-8 [&>p:last-child]:mb-0 [&>div>p]:text-justify">
@@ -236,11 +248,11 @@ export const NebulaProjectLayout = ({
               
               <div className="mt-16 flex flex-col sm:flex-row gap-6">
                 <a href="mailto:info@ilariadiliberto.com" className="group inline-flex items-center justify-center gap-4 bg-gold text-black px-8 py-4 font-mono text-[10px] uppercase tracking-widest hover:bg-white hover:scale-105 transition-all duration-300">
-                  Prenota una call gratuita
+                  {t("project_nav.book_call")}
                   <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </a>
                 <Link to="/contatti" className="group inline-flex items-center justify-center gap-4 border border-white/20 bg-transparent text-white px-8 py-4 font-mono text-[10px] uppercase tracking-widest hover:border-white hover:bg-white/5 transition-all duration-300">
-                  Parlami del tuo progetto
+                  {t("project_nav.talk_project")}
                   <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
@@ -262,7 +274,7 @@ export const NebulaProjectLayout = ({
                 className="group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 px-10 py-5 rounded-full border border-gold/30 hover:border-gold bg-gold/5 hover:bg-gold/20 backdrop-blur-md shadow-[0_0_20px_rgba(212,175,55,0.05)] hover:shadow-[0_0_40px_rgba(212,175,55,0.2)] transition-all duration-500"
               >
                 <span className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-gold group-hover:text-white transition-colors">
-                  VISITA IL SITO
+                  {t("project_nav.visit_site")}
                 </span>
                 <ArrowUpRight
                   size={16}
@@ -302,7 +314,7 @@ export const NebulaProjectLayout = ({
 
         {prev && next && (
           <div className="w-full max-w-7xl mx-auto px-6 md:px-12 mt-12">
-            <NebulaProjectNavigation prev={prev} next={next} prevLabel={prevLabel} nextLabel={nextLabel} archiveUrl="/servizi" archiveTitle="Servizi" />
+            <NebulaProjectNavigation prev={prev} next={next} prevLabel={prevLabel} nextLabel={nextLabel} archiveUrl={archiveUrl || backUrl} archiveTitle={archiveTitle || t("all_projects", "ALL PROJECTS")} />
           </div>
         )}
       </main>

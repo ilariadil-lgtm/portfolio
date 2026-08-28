@@ -1,8 +1,7 @@
 import React, { useEffect, useState, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@/components/Link";
-import { api } from "@/lib/api";
-import { ArrowRight, Hexagon, Maximize2 } from "lucide-react";
+import { ArrowRight, Maximize2 } from "lucide-react";
 import { NebulaNav } from "./components/NebulaNav";
 import { ScrollIndicator } from "./components/ScrollIndicator";
 import { NebulaFooter } from "./components/NebulaFooter";
@@ -54,7 +53,7 @@ const getFallbackProjects = (t: any) => [
       "UI/UX Design, Information Architecture, Copywriting, WordPress Corporate",
     ),
     year: "2024",
-    image: "/assets/projects/patti-forniture/homepage.webp",
+    image: "/assets/projects/patti-forniture/homepage-hero.webp",
     project_url: "",
     description: t("projects_data.pattiforniture.description"),
   },
@@ -67,7 +66,7 @@ const getFallbackProjects = (t: any) => [
       "PrestaShop Configuration, E-commerce UI/UX, Catalog Management, Copywriting & Layout",
     ),
     year: "2025",
-    image: "/assets/projects/sicil-cosmetic/homepage.webp",
+    image: "/assets/projects/sicil-cosmetic/homepage-hero.webp",
     project_url: "",
     description: t("projects_data.sicilcosmetic.description"),
   },
@@ -80,7 +79,7 @@ const getFallbackProjects = (t: any) => [
       "PrestaShop Integration, UI/UX Design, Visual Merchandising, Information Architecture",
     ),
     year: "2024",
-    image: "/assets/projects/newpop/homepage.webp",
+    image: "/assets/projects/newpop/homepage-hero.webp",
     project_url: "",
     description: t("projects_data.newpop.description"),
   },
@@ -93,7 +92,7 @@ const getFallbackProjects = (t: any) => [
       "UI/UX & Graphic Layout, WordPress Environment, Hospitality & E-commerce, Visual Storytelling",
     ),
     year: "2024",
-    image: "/assets/projects/vini-gambino/homepage.webp",
+    image: "/assets/projects/vini-gambino/homepage-hero.webp",
     project_url: "",
     description: t("projects_data.vinigambino.description"),
   },
@@ -106,7 +105,7 @@ const getFallbackProjects = (t: any) => [
       "UI/UX Design, Copywriting & Content, WordPress Layout, Hospitality Design",
     ),
     year: "2023",
-    image: "/assets/projects/baglio-lauria/homepage.webp",
+    image: "/assets/projects/baglio-lauria/homepage-hero.webp",
     project_url: "",
     description: t("projects_data.bagliolauria.description"),
   },
@@ -119,7 +118,7 @@ const getFallbackProjects = (t: any) => [
       "UI/UX Design, WordPress Environment, Copywriting & Storytelling, Wedding & Event Industry",
     ),
     year: "2023",
-    image: "/assets/projects/villa-mima/homepage.webp",
+    image: "/assets/projects/villa-mima/home-hero.webp",
     project_url: "",
     description: t("projects_data.villamima.description"),
   },
@@ -295,41 +294,16 @@ const NebulaProgetti = () => {
     description: t("projects.description"),
   });
 
-  const [projects, setProjects] = useState<any[]>([]);
   const [activeCategory, setActiveCategory] = useState("ALL");
-  const [loading, setLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(8);
 
   const fallbackProjects = getFallbackProjects(t);
   const CATEGORIES = getCategories(t);
+  const projects = fallbackProjects;
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const fetchProjects = async () => {
-      try {
-        const data = await api.getProjects();
-        const results = data.results || data;
-        const filtered = results.filter(
-          (p: any) =>
-            p.id !== "SOPHIA_THEME" &&
-            p.id !== "sophiatheme" &&
-            p.id !== "CHARIO_HIFI" &&
-            p.id !== "chariohifi" &&
-            p.id !== "portfolio" &&
-            p.id !== "freelens",
-        );
-        setProjects(
-          filtered && filtered.length > 0 ? filtered : fallbackProjects,
-        );
-      } catch (error) {
-        console.error("Errore nel caricamento dei progetti:", error);
-        setProjects(fallbackProjects);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProjects();
-  }, [t]); // Added t dependency to re-fetch fallback if language changes
+  }, []);
 
   const categoriesWithCount = CATEGORIES.map((cat) => ({
     ...cat,
@@ -478,44 +452,37 @@ const NebulaProgetti = () => {
           ─────────────────────────────────────────────────────────────────── */}
       <main className="relative z-10 w-full flex-1 flex flex-col items-center py-20 md:py-32">
         <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
-          {loading ? (
-            <div className="w-full py-32 flex flex-col items-center justify-center font-mono text-[10px] text-gold animate-pulse uppercase tracking-[0.2em] gap-4">
-              <Hexagon size={24} className="animate-spin-slow opacity-50" />
-              {t("projects.loading")}
-            </div>
-          ) : (
-            <AnimatePresence mode="wait">
-              {filtered.length === 0 ? (
-                <motion.div
-                  key="empty"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="py-32 text-center"
-                >
-                  <p className="font-mono text-[11px] uppercase tracking-[0.4em] text-white/50">
-                    {t("projects.no_projects")}
-                  </p>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key={activeCategory}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-                >
-                  {filtered.slice(0, visibleCount).map((project, idx) => (
-                    <ProjectCard key={project.id} project={project} idx={idx} />
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          )}
+          <AnimatePresence mode="wait">
+            {filtered.length === 0 ? (
+              <motion.div
+                key="empty"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="py-32 text-center"
+              >
+                <p className="font-mono text-[11px] uppercase tracking-[0.4em] text-white/50">
+                  {t("projects.no_projects")}
+                </p>
+              </motion.div>
+            ) : (
+              <motion.div
+                key={activeCategory}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+              >
+                {filtered.slice(0, visibleCount).map((project, idx) => (
+                  <ProjectCard key={project.id} project={project} idx={idx} />
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Load More Button */}
-          {!loading && filtered.length > visibleCount && (
+          {filtered.length > visibleCount && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

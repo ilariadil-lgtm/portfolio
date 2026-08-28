@@ -16,10 +16,10 @@ export const EditorialNewpop = () => (
       "Visual Merchandising",
       "Information Architecture",
     ]}
-    immagineHero="/assets/projects/newpop/homepage.webp"
-    immagineProcesso="/assets/projects/newpop/homepage.webp"
+    immagineHero="/assets/projects/newpop/homepage-hero.webp"
+    immagineProcesso="/assets/projects/newpop/homepage-hero.webp"
     galleria={[
-      "/assets/projects/newpop/homepage.webp",
+      "/assets/projects/newpop/homepage-hero.webp",
       "/assets/projects/newpop/categoria.webp",
       "/assets/projects/newpop/prodotto.webp",
       "/assets/projects/newpop/marchi.webp",

@@ -11,8 +11,6 @@ import { conPrefisso, linguaDi } from "./lib/lingua";
 import i18n, { cambiaLingua } from "./lib/i18n";
 import { useThemeFavicon } from "./hooks/useThemeFavicon";
 import { PageTransition } from "./components/PageTransition";
-import { Preloader } from "./components/Preloader";
-import { NebulaPreloader } from "./pages/nebula/components/NebulaPreloader";
 import { CustomCursor } from "./components/CustomCursor";
 import { LenisScroller } from "./components/LenisScroller";
 import { DesignSwitcher } from "./components/DesignSwitcher";
@@ -21,6 +19,18 @@ import { ErrorBoundary } from "./components/ErrorBoundary";
 
 const PageFallback = ({ isEditorial }: { isEditorial: boolean }) => (
   <div className={`min-h-[100dvh] ${isEditorial ? 'bg-background' : 'bg-[#0a0a0a]'}`} aria-hidden="true" />
+);
+
+// Caricati solo quando servono davvero: NebulaPreloader si porta dietro
+// @react-three/drei, che altrimenti finirebbe nel bundle iniziale anche
+// per chi apre il sito in Editorial e non vedrà mai quel preloader.
+const Preloader = lazy(() =>
+  import("./components/Preloader").then((m) => ({ default: m.Preloader })),
+);
+const NebulaPreloader = lazy(() =>
+  import("./pages/nebula/components/NebulaPreloader").then((m) => ({
+    default: m.NebulaPreloader,
+  })),
 );
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -146,9 +156,11 @@ const AppContent = () => {
         <CustomCursor />
         <AnimatePresence>
           {isLoading && (
-            isEditorial 
-              ? <Preloader onComplete={concludiPreloader} />
-              : <NebulaPreloader onComplete={concludiPreloader} />
+            <Suspense fallback={null}>
+              {isEditorial
+                ? <Preloader onComplete={concludiPreloader} />
+                : <NebulaPreloader onComplete={concludiPreloader} />}
+            </Suspense>
           )}
         </AnimatePresence>
         <ErrorBoundary>

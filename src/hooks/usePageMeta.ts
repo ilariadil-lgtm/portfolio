@@ -7,6 +7,8 @@ interface PageMetaProps {
   description: string;
   ogImage?: string;
   themeColor?: string;
+  /** Bypassa il modello "{title} — Ilaria Diliberto" per un title tag SEO su misura (es. la home). */
+  fullTitle?: string;
 }
 
 const BASE_TITLE = "Ilaria Diliberto";
@@ -17,11 +19,11 @@ const BASE_OG_IMAGE = `${BASE_URL}/og-image.jpg`;
  * Hook che aggiorna dinamicamente title, meta description, og tags e canonical
  * per ogni pagina senza dipendenze esterne (no react-helmet).
  */
-export const usePageMeta = ({ title, description, ogImage, themeColor }: PageMetaProps) => {
+export const usePageMeta = ({ title, description, ogImage, themeColor, fullTitle: fullTitleOverride }: PageMetaProps) => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const fullTitle = `${title} — ${BASE_TITLE}`;
+    const fullTitle = fullTitleOverride ?? `${title} — ${BASE_TITLE}`;
     // Garantisce sempre URL assoluti per og:image (richiesto dai crawler social)
     const rawImage = ogImage ?? BASE_OG_IMAGE;
     const image = rawImage.startsWith("http") ? rawImage : `${BASE_URL}${rawImage}`;

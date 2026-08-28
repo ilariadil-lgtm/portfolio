@@ -236,3 +236,14 @@
     font-size: clamp(1.75rem, 4vw, 3.5rem); /* 28px min, ~56px max su 1600px */
   }
 }
+
+/* Fascia scorrevole (marquee) — CSS puro, fuori da @layer per non dipendere
+   dalla rigenerazione JIT di Tailwind quando si modifica tailwind.config. */
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-scroll {
+  animation: marquee-scroll 22s linear infinite;
+}

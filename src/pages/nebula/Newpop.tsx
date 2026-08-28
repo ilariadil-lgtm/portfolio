@@ -28,7 +28,7 @@ export const NebulaNewpop = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/newpop/homepage.webp",
+      image: "/assets/projects/newpop/homepage-hero.webp",
     },
     {
       id: "02",
@@ -67,7 +67,7 @@ export const NebulaNewpop = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/newpop/homepage.webp",
+      image: "/assets/projects/newpop/homepage-hero.webp",
       objectPosition: "object-[center_45%]",
     },
     {
@@ -131,7 +131,7 @@ export const NebulaNewpop = () => {
     >
       <NebulaImageSlider
         images={[
-          "/assets/projects/newpop/homepage.webp",
+          "/assets/projects/newpop/homepage-hero.webp",
           "/assets/projects/newpop/categoria.webp",
           "/assets/projects/newpop/prodotto.webp",
           "/assets/projects/newpop/marchi.webp",

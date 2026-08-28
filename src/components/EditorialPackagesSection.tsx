@@ -17,12 +17,12 @@ export const EditorialPackagesSection = () => {
             <div className="relative inline-block">
               <div className="flex items-center gap-4 mb-8">
                 <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">
-                  03 — I MIEI SERVIZI
+                  {t("index.home_pkg_label")}
                 </span>
                 <div className="w-12 h-[1px] bg-primary/20" />
               </div>
-              <h2 className="font-display text-4xl md:text-6xl lg:text-[clamp(2.5rem,5vw,5rem)] font-bold leading-[1.05] tracking-tight text-ink relative pr-12">
-                {t("index.home_pkg_title").split(" ")[0]} <br />
+              <h2 className="font-display text-4xl md:text-6xl lg:text-[clamp(2.5rem,5vw,5rem)] font-bold leading-[1.05] tracking-tight text-ink relative pr-12 whitespace-nowrap">
+                {t("index.home_pkg_title").split(" ")[0]}{" "}
                 <span className="text-primary italic pr-2">
                   {t("index.home_pkg_title").split(" ").slice(1).join(" ")}
                 </span>
@@ -71,7 +71,7 @@ export const EditorialPackagesSection = () => {
                 
                 <div className="pt-8 border-t border-ink/10">
                   <Link
-                    to="/sviluppo-cms"
+                    to="/sito-aziendale"
                     className="group/btn inline-flex items-center justify-between w-full font-typewriter text-[13px] uppercase tracking-[0.25em] text-ink group-hover:text-primary font-medium transition-colors"
                   >
                     <span className="relative overflow-hidden">
@@ -119,7 +119,7 @@ export const EditorialPackagesSection = () => {
                 
                 <div className="pt-8 border-t border-ink/10">
                   <Link
-                    to="/sviluppo-mvp"
+                    to="/e-commerce"
                     className="group/btn inline-flex items-center justify-between w-full font-typewriter text-[13px] uppercase tracking-[0.25em] text-ink group-hover:text-primary font-medium transition-colors"
                   >
                     <span className="relative overflow-hidden">
@@ -167,7 +167,7 @@ export const EditorialPackagesSection = () => {
                 
                 <div className="pt-8 border-t border-ink/10">
                   <Link
-                    to="/sviluppo-custom"
+                    to="/manutenzione"
                     className="group/btn inline-flex items-center justify-between w-full font-typewriter text-[13px] uppercase tracking-[0.25em] text-ink group-hover:text-primary font-medium transition-colors"
                   >
                     <span className="relative overflow-hidden">

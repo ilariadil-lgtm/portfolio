@@ -40,13 +40,13 @@ export const Footer = () => {
   return (
     <footer className="bg-cream border-t border-editorial px-6 md:px-12 lg:px-24 pt-20 pb-[calc(5rem+env(safe-area-inset-bottom))] relative overflow-hidden">
       {/* Background Monumental Text */}
-      <div className="absolute top-0 left-0 w-full flex justify-center opacity-[0.03] select-none pointer-events-none translate-y-[-20%]">
+      <div aria-hidden="true" className="absolute top-0 left-0 w-full flex justify-center opacity-[0.03] select-none pointer-events-none translate-y-[-20%]">
         <span className="font-display text-[25vw] font-black uppercase tracking-tighter text-ink">
           ilaria
         </span>
       </div>
 
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 mb-20">
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-24 mb-20">
         {/* BRAND & VISION SECTION */}
         <div className="lg:col-span-5 flex flex-col justify-between">
           <div>
@@ -56,10 +56,10 @@ export const Footer = () => {
                 {t("footer.subtitle")}
               </span>
             </div>
-            <h3 className="font-display text-4xl md:text-5xl font-black text-ink leading-none mb-8">
+            <h2 className="font-display text-4xl md:text-5xl font-black text-ink leading-none mb-8">
               Ilaria <br />
               <span className="text-primary italic pr-2">Diliberto.</span>
-            </h3>
+            </h2>
             <p className="font-body text-sm text-ink/65 leading-relaxed max-w-sm">
               {t("footer.description")}
             </p>
@@ -80,7 +80,7 @@ export const Footer = () => {
               <span className="font-typewriter text-[11px] uppercase tracking-[0.25em] text-primary font-medium">
                 {t("footer.status_label")}
               </span>
-              <span className="font-typewriter text-[13px] font-medium text-green-600 tracking-widest">
+              <span className="font-typewriter text-[13px] font-medium text-green-800 tracking-widest">
                 {t("footer.available")}
               </span>
             </div>

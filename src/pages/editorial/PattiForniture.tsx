@@ -18,7 +18,7 @@ export const EditorialPattiForniture = () => (
       "Copywriting",
       "WordPress Corporate",
     ]}
-    immagineHero="/assets/projects/patti-forniture/homepage.webp"
+    immagineHero="/assets/projects/patti-forniture/homepage-hero.webp"
     immagineProcesso={[
       "/assets/projects/patti-forniture/chi-siamo.webp",
       "/assets/projects/patti-forniture/contatti.webp",
@@ -27,7 +27,7 @@ export const EditorialPattiForniture = () => (
       "/assets/projects/patti-forniture/settore3.webp",
     ]}
     galleria={[
-      "/assets/projects/patti-forniture/homepage.webp",
+      "/assets/projects/patti-forniture/homepage-hero.webp",
       "/assets/projects/patti-forniture/settori.webp",
       "/assets/projects/patti-forniture/chi-siamo.webp",
       "/assets/projects/patti-forniture/settore1.webp",

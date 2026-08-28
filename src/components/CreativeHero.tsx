@@ -258,8 +258,8 @@ export const CreativeHero: React.FC = () => {
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-16 md:gap-24 lg:gap-12 items-center relative z-10 max-w-screen-2xl mx-auto">
-        <div className="lg:col-span-5 flex flex-col justify-center relative z-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 w-full gap-16 md:gap-24 lg:gap-12 items-center relative z-10 max-w-screen-2xl mx-auto">
+        <div className="lg:col-span-6 flex flex-col justify-center relative z-20">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -276,51 +276,46 @@ export const CreativeHero: React.FC = () => {
               </motion.span>
             </div>
 
-            <h1 className="relative font-display leading-[0.95] tracking-tighter flex flex-wrap items-baseline gap-x-2 md:gap-x-4 lg:gap-x-6 w-full">
+            <h1 className="relative font-display leading-[1.02] tracking-tight flex flex-col w-full">
               <motion.div
                 style={{ y: y1 }}
-                className="overflow-hidden pb-2 md:pb-4"
+                className="overflow-hidden pb-2 md:pb-3"
               >
                 <KineticText
-                  text="ilaria"
-                  delay={0.2}
+                  text={t("index.hero_title_1")}
+                  delay={0.05}
                   mode="char"
-                  className="inline-block text-[clamp(2.5rem,10vw,6rem)] md:text-[clamp(4rem,8vw,8rem)] font-bold text-ink"
+                  className="inline-block text-[clamp(2rem,6.5vw,4.25rem)] font-bold text-ink"
                 />
               </motion.div>
               <motion.div
                 style={{ y: y1 }}
-                className="overflow-hidden mt-0 md:-mt-2 lg:-mt-4 pb-4 md:pb-8 flex-shrink-0"
+                className="overflow-hidden pb-4 md:pb-6"
               >
-                <div className="flex items-baseline">
-                  <KineticText
-                    text="diliberto"
-                    delay={0.6}
-                    mode="char"
-                    className="inline-block text-[clamp(2.5rem,10vw,6rem)] md:text-[clamp(4rem,8vw,8rem)] font-bold text-primary italic"
-                  />
-                  <span className="inline-block text-[clamp(2.5rem,10vw,6rem)] md:text-[clamp(4rem,8vw,8rem)] font-bold text-ink not-italic leading-none translate-y-1 md:translate-y-2">
-                    .
-                  </span>
-                </div>
+                <KineticText
+                  text={t("index.hero_title_2")}
+                  delay={0.15}
+                  mode="char"
+                  className="inline-block text-[clamp(2rem,6.5vw,4.25rem)] font-bold text-primary italic"
+                />
               </motion.div>
             </h1>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 1 }}
-              className="mt-8 lg:mt-12 max-w-[34rem]"
+              transition={{ delay: 0.25, duration: 0.5 }}
+              className="mt-8 lg:mt-12 max-w-[34rem] lg:max-w-none"
             >
               <p className="font-body text-sm md:text-base text-ink/65 leading-relaxed border-l-2 border-primary/10 pl-6 lg:pl-8 py-2 mb-8">
-                "{t("hero.description")}"
+                {t("hero.description")}
               </p>
-              <Link 
-                to="/contatti" 
+              <Link
+                to="/contatti"
                 className="group inline-flex items-center gap-6 font-typewriter text-[11px] md:text-[13px] uppercase tracking-[0.25em] text-primary font-medium ml-6 lg:ml-8 mt-2"
               >
                 <span className="relative overflow-hidden">
-                  Raccontami il tuo progetto
+                  {t("hero.cta")}
                   <span className="absolute bottom-0 left-0 w-full h-[1px] bg-primary transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                 </span>
                 <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-500 transform group-hover:scale-110 shrink-0">
@@ -331,13 +326,35 @@ export const CreativeHero: React.FC = () => {
                 </div>
               </Link>
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="mt-10 lg:mt-12 flex flex-wrap items-center gap-x-8 gap-y-3"
+            >
+              {[
+                { value: t("hero.stat1_val"), label: t("hero.stat1_label") },
+                { value: t("hero.stat2_val"), label: t("hero.stat2_label") },
+                { value: t("hero.stat3_val"), label: t("hero.stat3_label") },
+              ].map((stat, i) => (
+                <div key={i} className="flex items-baseline gap-2">
+                  <span className="font-display text-xl md:text-2xl font-black text-ink">
+                    {stat.value}
+                  </span>
+                  <span className="font-typewriter text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-ink/60">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
 
         {/* ── SVG Graphic column ── */}
-        <div className="lg:col-span-7 relative z-50 flex justify-center items-center h-[350px] sm:h-[450px] lg:h-[700px] perspective-1000">
+        <div className="lg:col-span-6 relative z-50 flex justify-center items-center h-[350px] sm:h-[450px] lg:h-[700px] 2xl:h-[820px] perspective-1000">
           <motion.div
-            className="relative aspect-square w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[580px]"
+            className="relative aspect-square w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[580px] 2xl:max-w-[680px]"
             onMouseEnter={() => setIsGraphicHovered(true)}
             onMouseLeave={() => setIsGraphicHovered(false)}
             style={{

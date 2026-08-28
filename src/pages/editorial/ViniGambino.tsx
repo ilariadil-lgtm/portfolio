@@ -18,7 +18,7 @@ export const EditorialViniGambino = () => (
       "Hospitality & E-commerce",
       "Visual Storytelling",
     ]}
-    immagineHero="/assets/projects/vini-gambino/homepage.webp"
+    immagineHero="/assets/projects/vini-gambino/homepage-hero.webp"
     immagineProcesso={[
       "/assets/projects/vini-gambino/e-shop.webp",
       "/assets/projects/vini-gambino/vino.webp",
@@ -27,7 +27,7 @@ export const EditorialViniGambino = () => (
       "/assets/projects/vini-gambino/raggiungici.webp",
     ]}
     galleria={[
-      "/assets/projects/vini-gambino/homepage.webp",
+      "/assets/projects/vini-gambino/homepage-hero.webp",
       "/assets/projects/vini-gambino/chisiamo.webp",
       "/assets/projects/vini-gambino/e-shop.webp",
       "/assets/projects/vini-gambino/ivini.webp",

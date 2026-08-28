@@ -3,7 +3,6 @@ import { NebulaNav } from "./components/NebulaNav";
 import { ScrollIndicator } from "./components/ScrollIndicator";
 import { NebulaFooter } from "./components/NebulaFooter";
 import { useEffect, useState } from "react";
-import { api } from "@/lib/api";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { Plus, Minus } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -47,11 +46,23 @@ const getStaticFaqs = (t: any) => [
   },
   {
     id: 5,
-    question: t("faq.q5", "Lavori solo con clienti in Italia?"),
-    answer: t(
-      "faq.a5",
-      "No, opero a livello internazionale. Molti dei miei clienti si trovano all'estero. Il flusso di lavoro asincrono e i meeting strategici permettono di collaborare perfettamente a distanza.",
-    ),
+    question: t("faq.q5"),
+    answer: t("faq.a5"),
+  },
+  {
+    id: 6,
+    question: t("faq.q6"),
+    answer: t("faq.a6"),
+  },
+  {
+    id: 7,
+    question: t("faq.q7"),
+    answer: t("faq.a7"),
+  },
+  {
+    id: 8,
+    question: t("faq.q8"),
+    answer: t("faq.a8"),
   },
 ];
 
@@ -118,20 +129,10 @@ const NebulaFAQ = () => {
       "Domande frequenti su come lavoro, i miei processi, tempi e costi. Tutto quello che devi sapere prima di iniziare un progetto insieme.",
   });
 
-  const [faqs, setFaqs] = useState<any[]>([]);
+  const faqs = getStaticFaqs(t);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const fetchFaqs = async () => {
-      try {
-        const data = await api.getFaqs();
-        const fetched = data.results || data;
-        setFaqs(fetched.length > 0 ? fetched : getStaticFaqs(t));
-      } catch (error) {
-        setFaqs(getStaticFaqs(t));
-      }
-    };
-    fetchFaqs();
   }, []);
 
   return (
@@ -179,9 +180,7 @@ const NebulaFAQ = () => {
               transition={{ delay: 0.6, duration: 1 }}
               className="font-outfit font-light text-white/50 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto"
             >
-              Domande frequenti su come lavoro, i miei processi, metodologie e
-              tempistiche. Tutto ciò che ti serve sapere prima di iniziare la
-              nostra collaborazione.
+              {t("faq.intro")}
             </motion.p>
           </motion.div>
         </div>

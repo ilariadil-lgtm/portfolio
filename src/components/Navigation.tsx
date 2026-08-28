@@ -78,7 +78,7 @@ export const Navigation = () => {
           <Link
             to="/"
             className="hover:opacity-80 transition-opacity"
-            aria-label="Torna alla Home"
+            aria-label={t("nav.back_home")}
           >
             <img decoding="async" fetchPriority="high"
               src={
@@ -87,7 +87,7 @@ export const Navigation = () => {
                   : "/logo_nebula.svg"
               }
               alt="Ilaria Diliberto"
-              className="w-56 md:w-72 lg:w-80 h-auto object-contain object-left shrink-0"
+              className="w-40 md:w-48 lg:w-52 h-auto object-contain object-left shrink-0"
             />
           </Link>
 
@@ -124,18 +124,18 @@ export const Navigation = () => {
             <div className="flex items-center gap-4 border-l border-primary/20 pl-4">
               <button
                 onClick={toggleMute}
-                aria-label={isMuted ? "Attiva audio" : "Disattiva audio"}
+                aria-label={isMuted ? "SND: OFF, attiva audio" : "SND: ON, disattiva audio"}
                 aria-pressed={!isMuted}
-                className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${isMuted ? "text-foreground/40 hover:text-primary" : "text-primary font-bold"}`}
+                className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${isMuted ? "text-foreground/65 hover:text-primary" : "text-primary font-bold"}`}
               >
                 {isMuted ? "SND: OFF" : "SND: ON"}
               </button>
               <span className="text-primary/20 text-[11px]">|</span>
               <button
                 onClick={() => changeLanguage("it")}
-                aria-label="Seleziona lingua italiana"
+                aria-label="IT, seleziona lingua italiana"
                 aria-pressed={i18n.language === "it"}
-                className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${i18n.language === "it" ? "text-primary font-bold" : "text-foreground/40 hover:text-primary"}`}
+                className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${i18n.language === "it" ? "text-primary font-bold" : "text-foreground/65 hover:text-primary"}`}
               >
                 IT
               </button>
@@ -144,9 +144,9 @@ export const Navigation = () => {
               </span>
               <button
                 onClick={() => changeLanguage("en")}
-                aria-label="Select English language"
+                aria-label="EN, select English language"
                 aria-pressed={i18n.language === "en"}
-                className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${i18n.language === "en" ? "text-primary font-bold" : "text-foreground/40 hover:text-primary"}`}
+                className={`font-body text-[11px] uppercase tracking-[0.2em] transition-all ${i18n.language === "en" ? "text-primary font-bold" : "text-foreground/65 hover:text-primary"}`}
               >
                 EN
               </button>
@@ -242,7 +242,7 @@ export const Navigation = () => {
               >
                 <button
                   onClick={() => changeLanguage("it")}
-                  aria-label="Seleziona lingua italiana"
+                  aria-label="IT, seleziona lingua italiana"
                   aria-pressed={i18n.language === "it"}
                   className={`font-body text-[13px] uppercase tracking-[0.2em] transition-all ${i18n.language === "it" ? "text-primary font-bold" : "text-ink/65 hover:text-primary"}`}
                 >
@@ -256,7 +256,7 @@ export const Navigation = () => {
                 </span>
                 <button
                   onClick={() => changeLanguage("en")}
-                  aria-label="Select English language"
+                  aria-label="EN, select English language"
                   aria-pressed={i18n.language === "en"}
                   className={`font-body text-[13px] uppercase tracking-[0.2em] transition-all ${i18n.language === "en" ? "text-primary font-bold" : "text-ink/65 hover:text-primary"}`}
                 >

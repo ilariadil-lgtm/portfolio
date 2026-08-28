@@ -9,6 +9,7 @@
     "build": "vite build",
     "build:prod": "vite build && node scripts/prerender.mjs",
     "prerender": "node scripts/prerender.mjs",
+    "test:smoke": "node scripts/smoke-test.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
     "test": "vitest run",

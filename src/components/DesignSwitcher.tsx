@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useDesign } from "../context/DesignContext";
 import { Sparkles, BookOpen } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export const DesignSwitcher = () => {
+  const { t } = useTranslation();
   const { design, toggleDesign } = useDesign();
   const [showTooltip, setShowTooltip] = useState(false);
 
@@ -52,7 +54,7 @@ export const DesignSwitcher = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-current opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-current"></span>
               </span>
-              Cambia tema
+              {t("nav.change_theme")}
             </div>
           </motion.div>
         )}
@@ -85,7 +87,7 @@ export const DesignSwitcher = () => {
               : "text-white/80 group-hover:text-black"
           }`}
         >
-          {design === "editorial" ? "PASSA A NEBULA" : "PASSA A EDITORIAL"}
+          {design === "editorial" ? t("nav.switch_to_nebula") : t("nav.switch_to_editorial")}
         </span>
       </button>
     </div>

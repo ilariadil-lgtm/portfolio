@@ -291,7 +291,7 @@ export const EditorialLoghi = () => {
             return (
               <div
                 key={brand.id}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-24 items-start"
               >
                 {/* Visual Showcase Block */}
                 <motion.div

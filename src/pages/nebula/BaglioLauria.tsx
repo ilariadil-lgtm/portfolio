@@ -28,7 +28,7 @@ export const NebulaBaglioLauria = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/baglio-lauria/homepage.webp",
+      image: "/assets/projects/baglio-lauria/homepage-hero.webp",
     },
     {
       id: "02",
@@ -131,7 +131,7 @@ export const NebulaBaglioLauria = () => {
     >
       <NebulaImageSlider
         images={[
-          "/assets/projects/baglio-lauria/homepage.webp",
+          "/assets/projects/baglio-lauria/homepage-hero.webp",
           "/assets/projects/baglio-lauria/il-baglio.webp",
           "/assets/projects/baglio-lauria/lecamere.webp",
           "/assets/projects/baglio-lauria/servizi.webp",

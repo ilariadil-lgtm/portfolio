@@ -30,7 +30,7 @@ export const NebulaPattiForniture = () => {
           </p>
         </>
       ),
-      image: "/assets/projects/patti-forniture/homepage.webp",
+      image: "/assets/projects/patti-forniture/homepage-hero.webp",
     },
     {
       id: "02",
@@ -138,7 +138,7 @@ export const NebulaPattiForniture = () => {
     >
       <NebulaImageSlider
         images={[
-          "/assets/projects/patti-forniture/homepage.webp",
+          "/assets/projects/patti-forniture/homepage-hero.webp",
           "/assets/projects/patti-forniture/settori.webp",
           "/assets/projects/patti-forniture/chi-siamo.webp",
           "/assets/projects/patti-forniture/settore1.webp",
