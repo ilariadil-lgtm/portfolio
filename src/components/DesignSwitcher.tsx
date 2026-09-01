@@ -8,6 +8,17 @@ export const DesignSwitcher = () => {
   const { t } = useTranslation();
   const { design, toggleDesign } = useDesign();
   const [showTooltip, setShowTooltip] = useState(false);
+  // Sotto md l'hero riempie quasi tutto lo schermo: qualunque angolo fisso
+  // finisce prima o poi sotto un titolo o una CTA. Si mostra solo dopo un
+  // minimo di scroll, così non copre mai il primo contenuto della pagina.
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 120);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const hasSeenTooltip = localStorage.getItem("hasSeenSwitcherTooltip");
@@ -35,7 +46,11 @@ export const DesignSwitcher = () => {
 
   return (
     <div
-      className={`fixed z-[100] ${design === "editorial" ? "bottom-6 left-6 md:bottom-8 md:left-8" : "top-6 right-6 lg:top-auto lg:bottom-8 lg:right-8"}`}
+      className={`fixed z-[100] transition-opacity duration-300 ${
+        design === "editorial"
+          ? `bottom-6 left-6 md:bottom-8 md:left-8 md:opacity-100 md:pointer-events-auto ${scrolled ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`
+          : "top-6 right-6 lg:top-auto lg:bottom-8 lg:right-8"
+      }`}
     >
       <AnimatePresence>
         {showTooltip && (

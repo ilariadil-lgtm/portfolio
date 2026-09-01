@@ -240,7 +240,7 @@ const Chisono = () => {
             </div>
 
             {/* META DATI A DESTRA - Simmetria Architetturale */}
-            <div className="hidden lg:flex absolute right-6 md:right-12 lg:right-24 top-1/2 -translate-y-1/2 flex-col items-end text-right gap-8 opacity-60 pointer-events-none border-r-2 border-gold/20 pr-6">
+            <div className="hidden xl:flex absolute right-6 md:right-12 lg:right-24 top-1/2 -translate-y-1/2 flex-col items-end text-right gap-8 opacity-60 pointer-events-none border-r-2 border-gold/20 pr-6">
               <div className="flex flex-col items-end gap-2">
                 <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-gold/70">
                   {t("about.role_label")}
@@ -273,7 +273,7 @@ const Chisono = () => {
              2. L'EVOLUZIONE (Skew-on-Scroll Timeline)
              ═══════════════════════════════════════════════════════════════════ */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-24 snap-start">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto">
             <div className="mb-24 text-center md:text-left">
               <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-gold font-medium mb-4 block">
                 01 — {t("about.evo_label")}
@@ -360,7 +360,7 @@ const Chisono = () => {
              3. COMPETENZE (Cluster Magnetici Organici)
              ═══════════════════════════════════════════════════════════════════ */}
         <section className="py-24 md:py-36 px-6 md:px-12 lg:px-24 border-t border-white/5 relative z-20 snap-start">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto">
             <div className="mb-24 text-center md:text-left">
               <span className="font-mono text-[11px] uppercase tracking-[0.5em] text-gold font-medium mb-4 block">
                 02 — {t("about.skills_label")}

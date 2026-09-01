@@ -475,7 +475,7 @@ const Index = () => {
            COME LAVORIAMO — QUATTRO PASSI
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="pt-20 md:pt-28 pb-12 md:pb-16 px-6 md:px-12 lg:px-20 border-b border-editorial bg-cream">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto">
           <div className="flex items-center gap-4 mb-6">
             <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">
               {t("index.process_label")}

@@ -218,7 +218,7 @@ export const NebulaLoghi = () => {
 
       {/* HERO SECTION */}
       <section className="relative pt-40 md:pt-56 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden z-10 border-b border-white/5">
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto relative z-10">
           <Link
             to="/progetti"
             className="group inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-white/50 hover:text-gold transition-colors mb-12"
@@ -265,7 +265,7 @@ export const NebulaLoghi = () => {
 
       {/* GALLERIA BRAND */}
       <section className="px-6 md:px-12 lg:px-24 py-32 z-10 relative">
-        <div className="max-w-7xl mx-auto space-y-32 md:space-y-48">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto space-y-32 md:space-y-48">
           {BRAND_DATA.map((brand, idx) => {
             const isEven = idx % 2 === 0;
 

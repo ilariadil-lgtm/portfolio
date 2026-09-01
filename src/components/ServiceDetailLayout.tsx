@@ -159,7 +159,7 @@ export const ServiceDetailLayout = ({ ns, url, comprende, tempi, prev, next }: S
            COME LAVORIAMO
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="py-20 md:py-28 px-6 md:px-12 lg:px-24 border-t border-editorial bg-white">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto">
           <div className="flex items-center gap-4 mb-6">
             <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">
               {t("index.process_label")}

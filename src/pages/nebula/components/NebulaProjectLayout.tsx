@@ -143,7 +143,7 @@ export const NebulaProjectLayout = ({
       </div>
 
       <section className="relative pt-40 md:pt-56 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden min-h-[60vh] flex flex-col justify-start md:justify-end border-b border-white/5 z-10">
-        <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col items-start">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto w-full relative z-10 flex flex-col items-start">
           <Link
             to={backUrl}
             className="group flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-gold hover:text-white transition-colors mb-12 bg-gold/5 px-4 py-2 border border-gold/20 rounded-full backdrop-blur-md"
@@ -229,7 +229,7 @@ export const NebulaProjectLayout = ({
 
       {/* Main Content Section */}
       <main className="relative z-10 w-full flex-1 flex flex-col items-center pb-32">
-        <div className="max-w-7xl mx-auto w-full px-6 md:px-12 py-24">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto w-full px-6 md:px-12 py-24">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -288,7 +288,7 @@ export const NebulaProjectLayout = ({
         {/* Visual Gallery */}
         {/* L'utente ha chiesto di assicurarsi che le immagini siano alla fine della pagina prima della fascia contatti */}
         {children && (
-          <div className="w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-12 md:gap-24 relative z-10">
+          <div className="w-full max-w-7xl 3xl:max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col gap-12 md:gap-24 relative z-10">
             {children}
           </div>
         )}
@@ -313,7 +313,7 @@ export const NebulaProjectLayout = ({
         )}
 
         {prev && next && (
-          <div className="w-full max-w-7xl mx-auto px-6 md:px-12 mt-12">
+          <div className="w-full max-w-7xl 3xl:max-w-[1600px] mx-auto px-6 md:px-12 mt-12">
             <NebulaProjectNavigation prev={prev} next={next} prevLabel={prevLabel} nextLabel={nextLabel} archiveUrl={archiveUrl || backUrl} archiveTitle={archiveTitle || t("all_projects", "ALL PROJECTS")} />
           </div>
         )}

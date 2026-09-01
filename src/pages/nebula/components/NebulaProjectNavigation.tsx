@@ -18,7 +18,7 @@ export const NebulaProjectNavigation = ({ prev, next, prevLabel, nextLabel, arch
 
   return (
     <div className="w-full border-t border-white/5 py-8 md:py-16 mt-10 md:mt-20 relative z-20">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 md:gap-16 relative">
+      <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8 md:gap-16 relative">
 
         {archiveUrl && (
           <Link

@@ -48,7 +48,7 @@ export const NebulaFooter = () => {
       {/* Background glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] max-w-[100vw] h-[300px] bg-white/5 blur-[150px] rounded-t-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24 relative z-10">
+      <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24 relative z-10">
         {/* Left Column */}
         <div className="md:col-span-5 space-y-8">
           <Link to="/" className="inline-block group">
@@ -176,7 +176,7 @@ export const NebulaFooter = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+      <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
         <div className="flex flex-wrap items-center gap-4">
           <p className="font-mono text-[10px] tracking-wider text-white/50">
             © {currentYear} ILARIA DILIBERTO

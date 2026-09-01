@@ -72,7 +72,7 @@ export const Navigation = () => {
           className={`transition-all duration-500 ${
             scrolled
               ? "max-w-[1200px] w-full px-6 py-4 bg-cream border border-primary/10 shadow-[0_20px_40px_-15px_rgba(61,15,26,0.2)] rounded-full mx-auto flex items-center justify-between"
-              : "max-w-screen-2xl mx-auto flex items-center justify-between w-full"
+              : "max-w-screen-2xl 3xl:max-w-[1760px] mx-auto flex items-center justify-between w-full"
           }`}
         >
           <Link

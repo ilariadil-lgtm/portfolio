@@ -246,7 +246,7 @@ export const CreativeHero: React.FC = () => {
   }, [radius1, radius2, radius3]);
 
   return (
-    <section className="relative lg:min-h-[100svh] flex flex-col justify-start lg:justify-center pt-24 md:pt-28 lg:pt-0 pb-8 md:pb-12 lg:pb-0 px-6 md:px-12 lg:px-20 bg-cream">
+    <section className="relative lg:min-h-[100svh] flex flex-col justify-start lg:justify-center pt-24 md:pt-28 lg:pt-36 pb-8 md:pb-12 lg:pb-12 px-6 md:px-12 lg:px-20 bg-cream">
       {/* BACKGROUND INFRASTRUCTURE */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div
@@ -258,7 +258,7 @@ export const CreativeHero: React.FC = () => {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 w-full gap-16 md:gap-24 lg:gap-12 items-center relative z-10 max-w-screen-2xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 w-full gap-16 md:gap-24 lg:gap-12 items-center relative z-10 max-w-screen-2xl 3xl:max-w-[1760px] mx-auto">
         <div className="lg:col-span-6 flex flex-col justify-center relative z-20">
           <motion.div
             initial={{ opacity: 0 }}
@@ -352,9 +352,9 @@ export const CreativeHero: React.FC = () => {
         </div>
 
         {/* ── SVG Graphic column ── */}
-        <div className="lg:col-span-6 relative z-50 flex justify-center items-center h-[350px] sm:h-[450px] lg:h-[700px] 2xl:h-[820px] perspective-1000">
+        <div className="lg:col-span-6 relative z-50 flex justify-center items-center h-[350px] sm:h-[450px] lg:h-[700px] 2xl:h-[820px] 3xl:h-[900px] perspective-1000">
           <motion.div
-            className="relative aspect-square w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[580px] 2xl:max-w-[680px]"
+            className="relative aspect-square w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[580px] 2xl:max-w-[680px] 3xl:max-w-[760px]"
             onMouseEnter={() => setIsGraphicHovered(true)}
             onMouseLeave={() => setIsGraphicHovered(false)}
             style={{

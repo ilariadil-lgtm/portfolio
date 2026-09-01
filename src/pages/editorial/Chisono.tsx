@@ -88,7 +88,7 @@ const Chisono = () => {
           />
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
             {/* Left Column: Typography & Bio Info */}
             <div className="lg:col-span-7 space-y-12">
@@ -277,7 +277,7 @@ const Chisono = () => {
            TIMELINE — ARCHITECTURAL PHASES
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-24 bg-white border-y border-ink/5">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto">
           <div className="mb-20">
             <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">
               {t("about.evo_label")}
@@ -376,7 +376,7 @@ const Chisono = () => {
            CAPABILITIES MATRIX — TECHNICAL GRID (Rivisitata)
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="py-24 md:py-36 px-6 md:px-12 lg:px-24 bg-cream text-ink relative overflow-hidden">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto">
           <div className="mb-20">
             <span className="font-typewriter text-[11px] uppercase tracking-[0.5em] text-primary font-medium mb-4 block">
               {t("about.skills_label")}

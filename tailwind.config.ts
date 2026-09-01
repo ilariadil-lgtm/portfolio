@@ -17,6 +17,12 @@ export default {
       },
     },
     extend: {
+      screens: {
+        // Oltre i 1536px di default il contenuto restava fermo alla stessa
+        // larghezza mentre lo schermo cresceva: da qui i margini vuoti enormi
+        // sui monitor grandi. Usato per allargare i contenitori, non il testo.
+        "3xl": "1800px",
+      },
       boxShadow: {
         // ─── Ombre nette del tema editorial ───────────────────────────────
         // Erano 67 valori arbitrari sparsi: dentro un valore arbitrario un

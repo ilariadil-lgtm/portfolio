@@ -230,7 +230,7 @@ await api.sendContactMessage(payload);
           </span>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 items-end">
             <motion.div
               className="lg:col-span-7"
@@ -283,7 +283,7 @@ await api.sendContactMessage(payload);
 
       {/* MAIN SPLIT */}
       <section className="px-6 md:px-12 lg:px-24 pb-32">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           {/* Left: info */}
           <motion.div
             className="lg:col-span-4 space-y-12 lg:pt-4"

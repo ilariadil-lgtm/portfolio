@@ -237,7 +237,7 @@ export const EditorialLoghi = () => {
           </motion.div>
         </div>
 
-        <div className="max-w-7xl mx-auto w-full relative z-10 mt-10">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto w-full relative z-10 mt-10">
           <div className="max-w-4xl">
             <div className="overflow-hidden mb-6">
               <motion.span
@@ -284,7 +284,7 @@ export const EditorialLoghi = () => {
            BRANDS GRID SHOWCASE
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="px-6 md:px-12 lg:px-24 py-24 md:py-32 bg-white relative">
-        <div className="max-w-7xl mx-auto space-y-32 md:space-y-48">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto space-y-32 md:space-y-48">
           {BRAND_DATA.map((brand, idx) => {
             const isEven = idx % 2 === 0;
 

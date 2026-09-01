@@ -249,7 +249,7 @@ export const EditorialProjectDetail = () => {
            META BAR — categoria, anno, link
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="border-b border-primary/10 px-8 md:px-16 lg:px-24 bg-cream">
-        <div className="max-w-7xl mx-auto py-6 flex flex-wrap items-center justify-between gap-6">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto py-6 flex flex-wrap items-center justify-between gap-6">
           <div className="flex flex-wrap items-center gap-8">
             <div className="flex flex-col gap-1">
               <span className="font-typewriter text-[8px] uppercase tracking-[0.4em] text-ink/65">
@@ -320,7 +320,7 @@ export const EditorialProjectDetail = () => {
            BODY — descrizione + stack
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="px-8 md:px-16 lg:px-24 py-20 md:py-32">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-24">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-24">
           {/* Left — narrazione */}
           <motion.div
             className="lg:col-span-7 space-y-16"
@@ -466,7 +466,7 @@ export const EditorialProjectDetail = () => {
       <section className="py-24 md:py-36 px-8 md:px-16 lg:px-24 bg-ink text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#c0392b_1px,transparent_1px)] [background-size:40px_40px]" />
 
-        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
           <div className="lg:col-span-7 space-y-6">
             <span className="font-typewriter text-[12px] uppercase tracking-[0.4em] text-white font-bold block">
               {t("project_detail.cta_label")}

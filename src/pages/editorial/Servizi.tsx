@@ -56,7 +56,7 @@ const Servizi = () => {
           </span>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:items-center items-start">
             <div className="lg:col-span-7 space-y-8">
               <motion.div
@@ -105,7 +105,7 @@ const Servizi = () => {
       {/* ═══════════════════════════════════════════════════════════════════
            SERVICE CARDS — I 4 SERVIZI
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto border-t border-ink/10">
+      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-24 max-w-7xl 3xl:max-w-[1600px] mx-auto border-t border-ink/10">
         <div className="mb-16">
           <div className="flex items-center gap-4 mb-6">
             <span className="font-typewriter text-[11px] uppercase tracking-[0.3em] text-primary font-medium">
@@ -184,7 +184,7 @@ const Servizi = () => {
            COME LAVORIAMO
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="pt-20 md:pt-28 pb-12 md:pb-16 px-6 md:px-12 lg:px-24 border-t border-editorial bg-white">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto">
           <div className="flex items-center gap-4 mb-6">
             <span className="font-typewriter text-[13px] uppercase tracking-[0.3em] text-primary font-medium">
               {t("index.process_label")}

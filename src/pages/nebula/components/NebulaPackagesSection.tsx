@@ -18,7 +18,7 @@ export const NebulaPackagesSection = () => {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="px-6 md:px-12 lg:px-24 py-32 relative z-20"
         >
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto">
             {/* Header */}
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8 border-b border-white/10 pb-10">
               <div className="md:w-[60%]">

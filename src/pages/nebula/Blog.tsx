@@ -31,7 +31,7 @@ const Blog = () => {
 
       {/* HERO */}
       <section className="pt-40 md:pt-56 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden z-10 border-b border-white/5">
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -65,7 +65,7 @@ const Blog = () => {
 
       {/* CONTENT */}
       <section className="px-6 md:px-12 lg:px-24 py-32 z-10 relative">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

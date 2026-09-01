@@ -147,7 +147,7 @@ const NebulaFAQ = () => {
 
       {/* HERO SECTION */}
       <section className="relative pt-40 md:pt-56 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden z-10">
-        <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center text-center">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto relative z-10 flex flex-col items-center text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

@@ -372,7 +372,7 @@ const NebulaProgetti = () => {
           HERO SECTION
           ─────────────────────────────────────────────────────────────────── */}
       <section className="pt-40 md:pt-56 pb-20 px-6 md:px-12 lg:px-24 relative overflow-hidden z-10 border-b border-white/5">
-        <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-12">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-12">
           <div className="lg:col-span-7 space-y-8">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -421,7 +421,7 @@ const NebulaProgetti = () => {
           CATEGORY FILTER BAR (Glassmorphism)
           ─────────────────────────────────────────────────────────────────── */}
       <section className="sticky top-0 z-40 bg-night/80 backdrop-blur-xl border-y border-white/5 px-6 md:px-12 lg:px-24 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto">
           <div className="flex items-center justify-center py-5">
             {/* Category buttons */}
             <div className="flex flex-wrap items-center justify-center gap-2">
@@ -451,7 +451,7 @@ const NebulaProgetti = () => {
           PROJECT GRID (Bento Style)
           ─────────────────────────────────────────────────────────────────── */}
       <main className="relative z-10 w-full flex-1 flex flex-col items-center py-20 md:py-32">
-        <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
+        <div className="w-full max-w-7xl 3xl:max-w-[1600px] mx-auto px-6 md:px-12">
           <AnimatePresence mode="wait">
             {filtered.length === 0 ? (
               <motion.div

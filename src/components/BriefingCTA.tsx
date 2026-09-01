@@ -37,7 +37,7 @@ export const BriefingCTA: React.FC<BriefingCTAProps> = ({
       {/* Glow Effect */}
       <div className="absolute -bottom-48 -right-48 w-[500px] h-[500px] bg-primary/[0.08] rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-24 items-end">
           {/* Left Column: Text block containing title & narrative */}
           <div className="lg:col-span-7 space-y-6 text-left">

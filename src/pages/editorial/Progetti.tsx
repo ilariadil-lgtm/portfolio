@@ -319,7 +319,7 @@ const Progetti = () => {
           </span>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 items-end">
             <motion.div
               className="lg:col-span-7"
@@ -368,7 +368,7 @@ const Progetti = () => {
            CATEGORY FILTER BAR
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="sticky top-0 z-40 bg-cream/95 backdrop-blur-md border-y border-ink/10 px-6 md:px-12 lg:px-24">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between py-5 gap-4">
             {/* Category buttons */}
             <div className="flex overflow-x-auto no-scrollbar md:flex-wrap items-center justify-start gap-2 pb-2 md:pb-0 max-w-[100vw] -mx-6 px-6 md:mx-0 md:px-0">
@@ -408,7 +408,7 @@ const Progetti = () => {
            PROJECT GRID
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="px-6 md:px-12 lg:px-24 py-16 md:py-24 min-h-[50vh]">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto">
           <AnimatePresence mode="wait">
             {filtered.length === 0 ? (
               <motion.div
@@ -470,7 +470,7 @@ const Progetti = () => {
           }}
         />
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 items-start">
             <motion.div
               className="lg:col-span-7"

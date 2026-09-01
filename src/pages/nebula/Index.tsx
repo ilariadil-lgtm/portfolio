@@ -221,7 +221,7 @@ const NebulaIndex = () => {
             </div>
 
             {/* META DATI A DESTRA - Simmetria Architetturale */}
-            <div className="hidden lg:flex absolute right-6 md:right-12 lg:right-24 top-1/2 -translate-y-1/2 flex-col items-end text-right gap-8 opacity-60 pointer-events-none border-r-2 border-gold/20 pr-6">
+            <div className="hidden xl:flex absolute right-6 md:right-12 lg:right-24 top-1/2 -translate-y-1/2 flex-col items-end text-right gap-8 opacity-60 pointer-events-none border-r-2 border-gold/20 pr-6">
               <div className="flex flex-col items-end gap-2">
                 <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-gold/70">
                   {t("footer.status_label")}

@@ -263,10 +263,10 @@ ${formData.objective}
 
       {/* HERO */}
       <section className="relative pt-40 md:pt-56 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden z-10">
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
             <motion.div
-              className="lg:col-span-7"
+              className="lg:col-span-8 xl:col-span-7"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
@@ -291,7 +291,7 @@ ${formData.objective}
             </motion.div>
 
             <motion.div
-              className="lg:col-span-5"
+              className="lg:col-span-4 xl:col-span-5"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -316,7 +316,7 @@ ${formData.objective}
 
       {/* MAIN SPLIT */}
       <section className="px-6 md:px-12 lg:px-24 pb-32 relative z-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           {/* Left: info */}
           <motion.div
             className="lg:col-span-4 space-y-16 lg:pt-4"

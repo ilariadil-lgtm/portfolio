@@ -92,7 +92,7 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
       {/* ═══════════════════════════════════════════════════════════════════
            HERO
            ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative lg:min-h-[100svh] flex items-start lg:items-center pt-52 md:pt-48 lg:pt-0 pb-20 md:pb-32 lg:pb-0 px-6 md:px-12 lg:px-24 overflow-hidden bg-cream">
+      <section className="relative lg:min-h-[100svh] flex items-start lg:items-center pt-52 md:pt-48 lg:pt-36 pb-20 md:pb-32 lg:pb-12 px-6 md:px-12 lg:px-24 overflow-hidden bg-cream">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div
             className="absolute inset-0 opacity-[0.03]"
@@ -116,7 +116,7 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-12 lg:gap-16 items-center relative z-10 max-w-screen-2xl mx-auto pt-24 lg:pt-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-12 lg:gap-16 items-center relative z-10 max-w-screen-2xl 3xl:max-w-[1760px] mx-auto pt-24 lg:pt-0">
           <div className="lg:col-span-5 flex flex-col justify-center">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
               <div className="overflow-hidden mb-6">
@@ -218,7 +218,7 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="px-6 md:px-12 lg:px-24 py-24 md:py-32 bg-white relative">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
           <motion.div
             className="lg:col-span-4"
             initial={{ opacity: 0, y: 20 }}
@@ -251,7 +251,7 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
            CAP. 02 — LA MISSIONE
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="bg-cream py-24 md:py-32 px-6 md:px-12 lg:px-24">
-        <div className="max-w-7xl mx-auto flex justify-center">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto flex justify-center">
           <motion.div
             className="max-w-4xl text-center"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -274,7 +274,7 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
            CAP. 03 — IL PROCESSO
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="px-6 md:px-12 lg:px-24 py-24 md:py-40 bg-white">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-stretch">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-stretch">
           <motion.div
             className="lg:col-span-6 order-2 lg:order-1 h-full"
             initial={{ opacity: 0 }}
@@ -340,7 +340,7 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
            CAP. 04 — LO SVILUPPO
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="px-6 md:px-12 lg:px-24 py-24 bg-cream border-y border-ink/5">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+        <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
           <motion.div
             className="lg:col-span-7 space-y-8"
             initial={{ opacity: 0, y: 20 }}
@@ -408,7 +408,7 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
            ═══════════════════════════════════════════════════════════════════ */}
       <section className="px-6 md:px-12 lg:px-24 py-24 md:py-40 bg-white">
         <motion.div
-          className="max-w-7xl mx-auto"
+          className="max-w-7xl 3xl:max-w-[1600px] mx-auto"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
