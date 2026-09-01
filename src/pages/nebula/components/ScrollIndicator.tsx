@@ -33,7 +33,7 @@ export const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({
   }, [scrollYProgress, sections.length]);
 
   return (
-    <div className="fixed right-6 md:right-12 lg:right-24 top-1/2 -translate-y-1/2 w-[1px] h-[40vh] min-h-[300px] bg-white/[0.05] z-50 pointer-events-none hidden md:block">
+    <div className="fixed right-3 md:right-4 lg:right-6 top-1/2 -translate-y-1/2 w-[1px] h-[40vh] min-h-[300px] bg-white/[0.05] z-50 pointer-events-none hidden md:block">
       <div className="absolute top-0 -translate-y-8 left-1/2 -translate-x-1/2 font-mono text-[8px] text-gold uppercase tracking-[0.4em] font-medium whitespace-nowrap opacity-60">
         {t("scroll.start", "START")}
       </div>
