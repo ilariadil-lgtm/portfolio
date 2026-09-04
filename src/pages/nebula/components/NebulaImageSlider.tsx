@@ -47,7 +47,7 @@ export const NebulaImageSlider = ({ images }: NebulaImageSliderProps) => {
         {images.map((src, idx) => (
           <div
             key={idx}
-            className="w-[85vw] md:w-[60vw] lg:w-[50vw] flex-shrink-0 rounded-2xl overflow-hidden bg-[#050505] border border-white/5 shadow-[0_0_40px_rgba(0,0,0,0.3)] relative group pointer-events-none"
+            className="w-[85vw] md:w-[60vw] lg:w-[min(50vw,720px)] flex-shrink-0 rounded-2xl overflow-hidden bg-[#050505] border border-white/5 shadow-[0_0_40px_rgba(0,0,0,0.3)] relative group pointer-events-none"
           >
             <div className="h-6 md:h-8 bg-[#151515] border-b border-white/5 flex items-center px-3 md:px-4 shrink-0 z-20">
               <div className="flex gap-1.5 md:gap-2">

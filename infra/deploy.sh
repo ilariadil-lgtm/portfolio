@@ -78,6 +78,16 @@ aws s3 sync dist "s3://$BUCKET" $PROVA \
   --include "llms.txt" --include "site.webmanifest" \
   --cache-control "public, max-age=3600"
 
+# 7. Altri file statici nella radice (loghi, immagine social, ecc.): una settimana.
+# "*/*" esclude tutto cio che sta in una sottocartella (assets, fonts,
+# favicon-*), che sono gia gestiti sopra con la loro cache dedicata.
+aws s3 sync dist "s3://$BUCKET" $PROVA \
+  --region "$REGIONE" \
+  --exclude "*/*" \
+  --exclude "*.html" --exclude "sitemap.xml" --exclude "robots.txt" \
+  --exclude "llms.txt" --exclude "site.webmanifest" \
+  --cache-control "public, max-age=604800"
+
 echo
 echo "── Invalidazione ───────────────────────────────────────────"
 # Solo HTML e file di indicizzazione. Gli asset con hash hanno un nome nuovo

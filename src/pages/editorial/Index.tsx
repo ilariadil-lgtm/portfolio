@@ -363,7 +363,7 @@ const Index = () => {
             {displayProjects.map((item, i) => (
               <div
                 key={item.id}
-                className="relative group/proj snap-center w-[80vw] md:w-[42vw] lg:w-[32vw]"
+                className="relative group/proj snap-center w-[80vw] md:w-[42vw] lg:w-[min(32vw,480px)]"
               >
                 <div className="relative">
                   <div className="absolute -inset-6 pointer-events-none">
