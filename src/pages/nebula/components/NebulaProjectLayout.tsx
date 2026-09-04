@@ -142,7 +142,7 @@ export const NebulaProjectLayout = ({
         />
       </div>
 
-      <section className="relative pt-40 md:pt-56 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden min-h-[60vh] flex flex-col justify-start md:justify-end border-b border-white/5 z-10">
+      <section className="relative pt-40 md:pt-36 lg:pt-56 pb-20 px-6 md:px-12 lg:px-24 overflow-hidden min-h-[60vh] flex flex-col justify-start md:justify-end border-b border-white/5 z-10">
         <div className="max-w-7xl 3xl:max-w-[1600px] mx-auto w-full relative z-10 flex flex-col items-start">
           <Link
             to={backUrl}

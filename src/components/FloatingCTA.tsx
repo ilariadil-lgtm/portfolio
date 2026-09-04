@@ -7,9 +7,9 @@ interface FloatingCTAProps {
 }
 
 export const FloatingCTA = ({ url }: FloatingCTAProps) => {
-  // Sotto md l'hero della case study riempie quasi tutto lo schermo: il
-  // pulsante fisso finirebbe sopra il testo. Si mostra solo dopo un minimo
-  // di scroll, stesso criterio usato per il cambio tema (DesignSwitcher).
+  // Anche su iPad l'hero e le sezioni della case study arrivano fino al
+  // bordo: il pulsante fisso finirebbe sopra il testo. Si mostra solo dopo
+  // un minimo di scroll, stesso criterio usato per il cambio tema (DesignSwitcher).
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export const FloatingCTA = ({ url }: FloatingCTAProps) => {
 
   return (
     <div
-      className={`fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 transition-opacity duration-300 md:opacity-100 md:pointer-events-auto ${scrolled ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+      className={`fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 transition-opacity duration-300 ${scrolled ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
     >
       <motion.div
         initial={{ y: 30, scale: 0.9 }}
