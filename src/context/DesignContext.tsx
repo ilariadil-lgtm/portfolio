@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext } from "react";
 
 type DesignType = "editorial" | "nebula";
 
@@ -10,24 +10,16 @@ interface DesignContextType {
 
 const DesignContext = createContext<DesignContextType | undefined>(undefined);
 
+// Rivoluzione del sito (PIANO-RIVOLUZIONE-SITO.md, Fase 2): un'unica
+// identita visiva, niente piu selettore Editorial/Nebula. Il contesto
+// resta com'e strutturalmente — tutto il codice che legge useDesign()
+// continua a funzionare — ma e bloccato su "editorial": setDesign e
+// toggleDesign non cambiano piu nulla. Nebula resta solo come stile
+// della sezione White Label, non piu un tema scelto dal visitatore.
 export const DesignProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [design, setDesignInternal] = useState<DesignType>(() => {
-    const saved = sessionStorage.getItem("portfolio-design");
-    if (saved === "editorial" || saved === "nebula") {
-      return saved;
-    }
-    return "editorial"; // Default se non è salvato nulla
-  });
-
-  const setDesign = (newDesign: DesignType) => {
-    setDesignInternal(newDesign);
-    sessionStorage.setItem("portfolio-design", newDesign);
-  };
-
-  const toggleDesign = () => {
-    const next = design === "editorial" ? "nebula" : "editorial";
-    setDesign(next);
-  };
+  const design: DesignType = "editorial";
+  const setDesign = () => {};
+  const toggleDesign = () => {};
 
   return (
     <DesignContext.Provider value={{ design, setDesign, toggleDesign }}>
