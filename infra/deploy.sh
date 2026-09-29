@@ -37,6 +37,15 @@ if (( PAGINE < 40 )); then
 fi
 echo "  $PAGINE pagine prerenderizzate"
 
+# Su questo Mac public/ accumula copie di conflitto tipo "nome 2.ext" (probabile
+# sync iCloud), che Vite copia pari pari in dist/. Non devono mai arrivare online.
+DUPLICATI=$(find dist -regex '.* [0-9]\.[a-zA-Z0-9]+$')
+if [[ -n "$DUPLICATI" ]]; then
+  N=$(echo "$DUPLICATI" | wc -l | tr -d ' ')
+  echo "  Tolti $N file duplicati (\"nome 2.ext\") da dist/ prima di pubblicare"
+  find dist -regex '.* [0-9]\.[a-zA-Z0-9]+$' -delete
+fi
+
 echo
 echo "── Caricamento ─────────────────────────────────────────────"
 

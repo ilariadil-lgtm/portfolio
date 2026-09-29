@@ -228,6 +228,29 @@ async function main() {
         () => (document.getElementById("root")?.innerText ?? "").trim().length > 200,
         { timeout: 20000 },
       );
+      // Le animazioni di comparsa (KineticText, RevealText) partono a
+      // opacity:0 e salgono a 1: fotografare troppo presto lascia il testo
+      // sopra la piega invisibile nell'HTML statico — quello che vede chi
+      // non esegue JavaScript, crawler basilari compresi. Si aspetta che si
+      // stabilizzi, ma solo quanto serve: le sezioni sotto la piega restano
+      // a opacity:0 finche non si scrolla, ed e corretto cosi.
+      try {
+        await pagina.waitForFunction(
+          () => {
+            const vh = window.innerHeight, vw = window.innerWidth;
+            return Array.from(document.querySelectorAll('[style*="opacity"]')).every((el) => {
+              if (parseFloat(getComputedStyle(el).opacity) >= 0.98) return true;
+              const r = el.getBoundingClientRect();
+              const nelloSchermo = r.top < vh && r.bottom > 0 && r.left < vw && r.right > 0 && r.width > 0 && r.height > 0;
+              return !nelloSchermo;
+            });
+          },
+          { timeout: 3000 },
+        );
+      } catch {
+        /* non blocca il prerender: meglio una pagina con qualche animazione
+           a meta corsa che nessuna pagina */
+      }
       const html = "<!doctype html>\n" + (await pagina.evaluate(() => document.documentElement.outerHTML));
       const titolo = await pagina.title();
       const testo = await pagina.evaluate(() => document.getElementById("root").innerText.trim().length);
