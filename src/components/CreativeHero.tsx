@@ -310,21 +310,25 @@ export const CreativeHero: React.FC = () => {
               <p className="font-body text-sm md:text-base text-ink/65 leading-relaxed border-l-2 border-primary/10 pl-6 lg:pl-8 py-2 mb-8">
                 {t("hero.description")}
               </p>
-              <Link
-                to="/contatti"
-                className="group inline-flex items-center gap-6 font-typewriter text-[11px] md:text-[13px] uppercase tracking-[0.25em] text-primary font-medium ml-6 lg:ml-8 mt-2"
-              >
-                <span className="relative overflow-hidden">
-                  {t("hero.cta")}
-                  <span className="absolute bottom-0 left-0 w-full h-[1px] bg-primary transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-                </span>
-                <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-500 transform group-hover:scale-110 shrink-0">
-                  <ArrowRight
-                    size={14}
-                    className="group-hover:translate-x-1 transition-transform"
-                  />
-                </div>
-              </Link>
+              {/* Smistamento cliente diretto / agenzia, deciso in Fase 0
+                  (PIANO-RIVOLUZIONE-SITO.md): la home indirizza prima di
+                  vendere, invece di un unico CTA generico per chiunque. */}
+              <div className="ml-6 lg:ml-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <Link
+                  to="/servizi"
+                  className="group inline-flex items-center justify-between gap-4 px-6 py-3.5 border border-ink/15 hover:border-primary hover:bg-primary hover:text-white transition-all duration-500 font-typewriter text-[11px] uppercase tracking-[0.2em] text-ink font-medium"
+                >
+                  {t("hero.cta_client")}
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform shrink-0" />
+                </Link>
+                <Link
+                  to="/white-label"
+                  className="group inline-flex items-center justify-between gap-4 px-6 py-3.5 border border-ink/15 hover:border-primary hover:bg-primary hover:text-white transition-all duration-500 font-typewriter text-[11px] uppercase tracking-[0.2em] text-ink font-medium"
+                >
+                  {t("hero.cta_agency")}
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform shrink-0" />
+                </Link>
+              </div>
             </motion.div>
 
             <motion.div

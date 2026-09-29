@@ -167,7 +167,7 @@ export const EditorialPackagesSection = () => {
                 
                 <div className="pt-8 border-t border-ink/10">
                   <Link
-                    to="/servizi/wordpress"
+                    to="/servizi/brand-identity"
                     className="group/btn inline-flex items-center justify-between w-full font-typewriter text-[13px] uppercase tracking-[0.25em] text-ink group-hover:text-primary font-medium transition-colors"
                   >
                     <span className="relative overflow-hidden">
