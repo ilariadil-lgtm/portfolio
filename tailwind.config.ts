@@ -41,15 +41,16 @@ export default {
       },
       colors: {
         // ─── Token di marca ────────────────────────────────────────────────
-        // Erano 1.313 valori scritti a mano in 68 file. I valori qui sotto
-        // sono identici a quelli precedenti: questo passaggio non cambia un
-        // pixel, rende solo modificabile in un punto solo cio che prima
-        // andava cercato ovunque.
-        ink: "#3d0f1a",      // editorial — testo, tratti, bordi
-        cream: "#F7F4EC",    // editorial — superfici (allineato a palette.json)
-        crimson: "#c0392b",  // editorial — accento
-        gold: "#d4af37",     // nebula — accento
-        night: "#080808",    // nebula — fondo
+        // Rivoluzione del sito (PIANO-RIVOLUZIONE-SITO.md, Fase 2): un'unica
+        // identita, niente piu due temi. ink/cream/crimson sono la base del
+        // sito intero; gold/night restano ma solo come accento della sezione
+        // White Label (pubblico diverso: agenzie, non clienti diretti) — non
+        // sono piu un tema alternativo che il visitatore sceglie.
+        ink: "#3d0f1a",      // base del sito — testo, tratti, bordi
+        cream: "#F7F4EC",    // base del sito — superfici
+        crimson: "#c0392b",  // base del sito — accento
+        gold: "#d4af37",     // accento della sola sezione White Label
+        night: "#080808",    // fondo della sola sezione White Label
 
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

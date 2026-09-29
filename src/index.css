@@ -54,24 +54,11 @@
   body.theme-editorial h6 {
     font-family: 'EB Garamond Variable', 'EB Garamond', Georgia, serif;
   }
-
-  .theme-nebula {
-    --font-heading: 'Fraunces Variable', 'Fraunces', Georgia, serif;
-    --font-body: 'Inter Variable', 'Inter', system-ui, sans-serif;
-  }
-
-  /* Font diretti per nebula */
-  body.theme-nebula {
-    font-family: 'Inter Variable', 'Inter', system-ui, sans-serif;
-  }
-  body.theme-nebula h1,
-  body.theme-nebula h2,
-  body.theme-nebula h3,
-  body.theme-nebula h4,
-  body.theme-nebula h5,
-  body.theme-nebula h6 {
-    font-family: 'Fraunces Variable', 'Fraunces', Georgia, serif;
-  }
+  /* .theme-nebula rimosso (PIANO-RIVOLUZIONE-SITO.md, Fase 2): il sito ha
+     un'unica identita, .theme-editorial e l'unica classe che body puo
+     avere. Fraunces resta disponibile come font di accento (font-fraunces)
+     per i titoli, incluso nella sezione White Label — non e piu legato a
+     un tema alternativo. */
 }
 
 @layer base {
