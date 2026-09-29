@@ -69,7 +69,7 @@ const NebulaIndex = () => {
       title: t("index_fallback.1.title", "Villa Masami"),
       type: t("index_fallback.1.type", "Brand Identity • UI/UX Design • Web"),
       image: "/assets/projects/villa-masami/struttura.webp",
-      url: "/progetti/villamasami",
+      url: "/portfolio/villamasami",
       description: t(
         "index_fallback.1.description",
         "Un progetto digitale completo. Cura integrale dell'identità della struttura, dal logo allo sviluppo WordPress.",
@@ -83,7 +83,7 @@ const NebulaIndex = () => {
         "Sviluppo Web Full-Stack • Cloud Management",
       ),
       image: "/assets/projects/storage-hub/dashboard.webp",
-      url: "/progetti/storagehub",
+      url: "/portfolio/storagehub",
       description: t(
         "index_fallback.3.description",
         "Una web app intelligente di storage e inventory management su scala enterprise.",
@@ -425,7 +425,7 @@ const NebulaIndex = () => {
           <div className="flex justify-center mt-20 px-6">
             <MagneticWrapper>
               <Link
-                to="/progetti"
+                to="/portfolio"
                 className="group inline-flex items-center gap-4 font-mono text-[10px] uppercase tracking-[0.3em] text-white hover:text-gold transition-colors duration-300"
               >
                 <span className="relative overflow-hidden">

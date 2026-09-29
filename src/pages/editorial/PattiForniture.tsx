@@ -36,8 +36,8 @@ export const EditorialPattiForniture = () => (
       "/assets/projects/patti-forniture/contatti.webp",
     ]}
     paragrafi={{ ch1: 2,  ch3: 2,  ch4: 2,  ch5: 1 }}
-    prev={{ url: "/progetti/villamasami", title: "Villa Masami" }}
-    next={{ url: "/progetti/sicilcosmetic", title: "SicilCosmetic" }}
+    prev={{ url: "/portfolio/villamasami", title: "Villa Masami" }}
+    next={{ url: "/portfolio/sicilcosmetic", title: "SicilCosmetic" }}
     liveUrl="https://www.pattiforniture.com/"
   />
 );

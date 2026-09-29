@@ -87,7 +87,7 @@ const NotFound = () => {
               />
             </Link>
             <Link
-              to="/progetti"
+              to="/portfolio"
               className="inline-flex items-center gap-4 px-8 py-4 border border-primary/25 text-primary font-typewriter text-[10px] uppercase tracking-[0.4em] font-bold hover:border-primary/60 transition-colors duration-300"
             >
               Vedi i Progetti

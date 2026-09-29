@@ -96,7 +96,7 @@ export const EditorialProjectDetail = () => {
           {t("project_detail.not_found")}
         </h1>
         <Link
-          to="/progetti"
+          to="/portfolio"
           className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-primary font-semibold"
         >
           <ArrowLeft
@@ -139,7 +139,7 @@ export const EditorialProjectDetail = () => {
       "@type": "CreativeWork",
       name: project.title,
       description: project.description,
-      url: `https://ilariadiliberto.com/progetti/${id}`,
+      url: `https://ilariadiliberto.com/portfolio/${id}`,
       image: project.image?.startsWith("http")
         ? project.image
         : `${BASE_URL}${project.image}`,
@@ -192,7 +192,7 @@ export const EditorialProjectDetail = () => {
             transition={{ delay: 0.3 }}
           >
             <Link
-              to="/progetti"
+              to="/portfolio"
               className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-white/60 hover:text-white transition-colors font-semibold"
             >
               <ArrowLeft

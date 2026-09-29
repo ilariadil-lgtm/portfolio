@@ -21,7 +21,7 @@ const SitoAziendale = () => {
         provider: { "@type": "Person", name: "Ilaria Diliberto" },
         areaServed: "IT",
         description: t("service_sito.meta_desc"),
-        url: "https://ilariadiliberto.com/sito-aziendale",
+        url: "https://ilariadiliberto.com/servizi/wordpress",
       }),
     [t],
   );
@@ -48,8 +48,8 @@ const SitoAziendale = () => {
           <p>{t("service_sito.text")}</p>
         </div>
       }
-      prev={{ url: "/manutenzione", title: t("service_manutenzione.title") }}
-      next={{ url: "/e-commerce", title: t("service_ecommerce.title") }}
+      prev={{ url: "/servizi/brand-identity", title: t("service_brandidentity.title") }}
+      next={{ url: "/servizi/e-commerce", title: t("service_ecommerce.title") }}
       prevLabel={t("service_detail.prev_service")}
       nextLabel={t("service_detail.next_service")}
       finalCta={{

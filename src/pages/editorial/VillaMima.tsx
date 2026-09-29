@@ -36,8 +36,8 @@ export const EditorialVillaMima = () => (
       "/assets/projects/villa-mima/contatti.webp",
     ]}
     paragrafi={{ ch1: 2,  ch3: 2,  ch4: 2,  ch5: 1 }}
-    prev={{ url: "/progetti/bagliolauria", title: "Baglio Lauria" }}
-    next={{ url: "/progetti/loghi", title: "Branding & Loghi" }}
+    prev={{ url: "/portfolio/bagliolauria", title: "Baglio Lauria" }}
+    next={{ url: "/servizi/brand-identity", title: "Brand Identity" }}
     liveUrl="https://www.villamima.it/"
   />
 );

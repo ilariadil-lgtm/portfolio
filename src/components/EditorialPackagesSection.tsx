@@ -71,7 +71,7 @@ export const EditorialPackagesSection = () => {
                 
                 <div className="pt-8 border-t border-ink/10">
                   <Link
-                    to="/sito-aziendale"
+                    to="/servizi/wordpress"
                     className="group/btn inline-flex items-center justify-between w-full font-typewriter text-[13px] uppercase tracking-[0.25em] text-ink group-hover:text-primary font-medium transition-colors"
                   >
                     <span className="relative overflow-hidden">
@@ -119,7 +119,7 @@ export const EditorialPackagesSection = () => {
                 
                 <div className="pt-8 border-t border-ink/10">
                   <Link
-                    to="/e-commerce"
+                    to="/servizi/e-commerce"
                     className="group/btn inline-flex items-center justify-between w-full font-typewriter text-[13px] uppercase tracking-[0.25em] text-ink group-hover:text-primary font-medium transition-colors"
                   >
                     <span className="relative overflow-hidden">
@@ -167,7 +167,7 @@ export const EditorialPackagesSection = () => {
                 
                 <div className="pt-8 border-t border-ink/10">
                   <Link
-                    to="/manutenzione"
+                    to="/servizi/wordpress"
                     className="group/btn inline-flex items-center justify-between w-full font-typewriter text-[13px] uppercase tracking-[0.25em] text-ink group-hover:text-primary font-medium transition-colors"
                   >
                     <span className="relative overflow-hidden">

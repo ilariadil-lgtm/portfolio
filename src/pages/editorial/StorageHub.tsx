@@ -38,8 +38,8 @@ export const EditorialStorageHub = () => (
       "/assets/projects/storage-hub/magazziniere.webp",
     ]}
     paragrafi={{ ch1: 1,  ch3: 2,  ch4: 2,  ch5: 1 }}
-    prev={{ url: "/progetti/loghi", title: "Branding & Loghi" }}
-    next={{ url: "/progetti/freelens", title: "Freelens" }}
+    prev={{ url: "/servizi/brand-identity", title: "Brand Identity" }}
+    next={{ url: "/portfolio/freelens", title: "Freelens" }}
   />
 );
 

@@ -57,7 +57,7 @@ const Index = () => {
       title: "Villa Masami",
       type: "Brand Identity • UI/UX Design • Web",
       image: "/assets/projects/villa-masami/struttura.webp",
-      url: "/progetti/villamasami",
+      url: "/portfolio/villamasami",
       description:
         "Un progetto digitale completo. Cura integrale dell'identità della struttura, dal logo allo sviluppo WordPress.",
     },
@@ -66,7 +66,7 @@ const Index = () => {
       title: "Freelens",
       type: "SaaS Management • UI/UX Design",
       image: "/assets/projects/freelens/home.webp",
-      url: "/progetti/freelens",
+      url: "/portfolio/freelens",
       description:
         "Spazio digitale di project management per gestire progetti e task, riprendendo il controllo del proprio tempo con un'interfaccia focalizzata.",
     },
@@ -75,7 +75,7 @@ const Index = () => {
       title: "StorageHub",
       type: "Sviluppo Web Full-Stack • Cloud Management",
       image: "/assets/projects/storage-hub/dashboard.webp",
-      url: "/progetti/storagehub",
+      url: "/portfolio/storagehub",
       description:
         "Una web app intelligente di storage e inventory management su scala enterprise.",
     },
@@ -341,7 +341,7 @@ const Index = () => {
           </div>
           <div className="flex flex-col items-start md:items-end gap-4 w-full md:w-auto mt-8 md:mt-0">
             <Link
-              to="/progetti"
+              to="/portfolio"
               className="group flex items-center justify-between md:justify-end w-full md:w-auto gap-6 font-typewriter text-[13px] uppercase tracking-[0.25em] text-primary font-medium"
             >
               <span className="text-left max-w-[150px] md:max-w-none leading-relaxed">{t("index.all_projects")}</span>

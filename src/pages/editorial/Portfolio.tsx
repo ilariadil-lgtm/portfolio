@@ -32,8 +32,8 @@ export const EditorialPortfolio = () => (
       "/assets/projects/portfolio/nebula.png",
     ]}
     paragrafi={{ ch1: 1,  ch3: 1,  ch4: 1,  ch5: 1 }}
-    prev={{ url: "/progetti/storagehub", title: "StorageHub" }}
-    next={{ url: "/progetti/villamasami", title: "Villa Masami" }}
+    prev={{ url: "/portfolio/storagehub", title: "StorageHub" }}
+    next={{ url: "/portfolio/villamasami", title: "Villa Masami" }}
   />
 );
 

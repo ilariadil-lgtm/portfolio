@@ -43,6 +43,19 @@ const NebulaPreloader = lazy(() =>
  * Tiene allineati indirizzo, lingua attiva e attributo lang del documento.
  * L'indirizzo comanda: e lui che i motori di ricerca leggono.
  */
+// Rivoluzione del sito (PIANO-RIVOLUZIONE-SITO.md, Fase 1): la vecchia
+// struttura confluisce nella nuova. /progetti/:id e un caso a parte,
+// dinamico: vedi RedirectProgettiId in routes.ts.
+const LEGACY_REDIRECTS: [string, string][] = [
+  ["/sito-aziendale", "/servizi/wordpress"],
+  ["/e-commerce", "/servizi/e-commerce"],
+  ["/restyling", "/servizi/wordpress"],
+  ["/manutenzione", "/servizi/wordpress"],
+  ["/progetti", "/portfolio"],
+  ["/progetti/loghi", "/servizi/brand-identity"],
+  ["/progetti/brand-identity", "/servizi/brand-identity"],
+];
+
 const useLinguaDaIndirizzo = () => {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -83,16 +96,20 @@ const AnimatedRoutes = () => {
               />,
             ];
           })}
-          {/* Rotta storica: evita contenuto duplicato. Vale in entrambe le lingue. */}
-          <Route
-            path="/progetti/brand-identity"
-            element={<Navigate to="/progetti/loghi" replace />}
-          />
-          <Route
-            path={conPrefisso("/progetti/brand-identity")}
-            element={<Navigate to={conPrefisso("/progetti/loghi")} replace />}
-          />
-          
+          {/* Rotte storiche della rivoluzione del sito (vedi PIANO-RIVOLUZIONE-SITO.md):
+              la vecchia struttura confluisce nella nuova, mai un 404 su un
+              indirizzo che era indicizzato. Valgono in entrambe le lingue. */}
+          {LEGACY_REDIRECTS.map(([da, a]) => (
+            <Route key={da} path={da} element={<Navigate to={a} replace />} />
+          ))}
+          {LEGACY_REDIRECTS.map(([da, a]) => (
+            <Route
+              key={conPrefisso(da)}
+              path={conPrefisso(da)}
+              element={<Navigate to={conPrefisso(a)} replace />}
+            />
+          ))}
+
           <Route path="*" element={<PageTransition><NotFoundComponent /></PageTransition>} />
         </Routes>
       </AnimatePresence>

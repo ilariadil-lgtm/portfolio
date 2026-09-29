@@ -35,8 +35,8 @@ export const EditorialBaglioLauria = () => (
       "/assets/projects/baglio-lauria/contatti.webp",
     ]}
     paragrafi={{ ch1: 1,  ch3: 2,  ch4: 2,  ch5: 1 }}
-    prev={{ url: "/progetti/vinigambino", title: "Vini Gambino" }}
-    next={{ url: "/progetti/villamima", title: "Villa Mima" }}
+    prev={{ url: "/portfolio/vinigambino", title: "Vini Gambino" }}
+    next={{ url: "/portfolio/villamima", title: "Villa Mima" }}
     liveUrl="https://www.bagliolauria.com/"
   />
 );

@@ -76,8 +76,8 @@ export const NebulaStorageHub = () => {
       title2="Hub"
       type={t("storagehub.hero_label")}
       description={<p>{t("storagehub.hero_desc")}</p>}
-      prev={{ url: "/progetti/loghi", title: "Branding & Loghi" }}
-      next={{ url: "/progetti/freelens", title: "Freelens" }}
+      prev={{ url: "/servizi/brand-identity", title: "Brand Identity" }}
+      next={{ url: "/portfolio/freelens", title: "Freelens" }}
       phases={phasesData}
       techList={[
         "React 18",

@@ -122,19 +122,6 @@ const getFallbackProjects = (t: any) => [
     project_url: "",
     description: t("projects_data.villamima.description"),
   },
-  {
-    id: "loghi",
-    title: t("projects_data.loghi.title", "Branding & Loghi"),
-    type: "BRAND_IDENTITY",
-    technologies: t(
-      "projects_data.loghi.technologies",
-      "Logo Design, Brand Identity, Visual Guidelines, Art Direction",
-    ),
-    year: "2022-2025",
-    image: "/assets/projects/loghi/1.webp",
-    project_url: "",
-    description: t("projects_data.loghi.description"),
-  },
 ];
 
 const getCategories = (t: any) => [
@@ -193,11 +180,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
       className={`group relative flex flex-col bg-white/[0.02] border border-white/5 hover:border-gold/30 backdrop-blur-md rounded-3xl overflow-hidden transition-all duration-700 ${isLarge ? "md:col-span-2" : "md:col-span-1"}`}
     >
       <Link
-        to={
-          project.id === "loghi"
-            ? "/progetti/loghi"
-            : `/progetti/${project.slug || project.id}`
-        }
+        to={`/portfolio/${project.slug || project.id}`}
         className="flex flex-col h-full"
       >
         {/* Spotlight Effect overlay */}

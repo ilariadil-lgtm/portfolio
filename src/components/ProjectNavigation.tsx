@@ -15,7 +15,7 @@ interface ProjectNavigationProps {
 export const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
   prev,
   next,
-  archiveUrl = "/progetti",
+  archiveUrl = "/portfolio",
   archiveTitle,
   prevLabel,
   nextLabel,

@@ -14,6 +14,7 @@ import {
   Volume2,
   VolumeX,
   Globe,
+  Handshake,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
@@ -43,19 +44,24 @@ export const NebulaNav = () => {
   const links = [
     { name: t("nav.home", "Home"), path: "/", icon: <Home size={18} /> },
     {
-      name: t("nav.projects", "Progetti"),
-      path: "/progetti",
+      name: t("nav.services", "Servizi"),
+      path: "/servizi",
+      icon: <Briefcase size={18} />,
+    },
+    {
+      name: t("nav.white_label", "White Label"),
+      path: "/white-label",
+      icon: <Handshake size={18} />,
+    },
+    {
+      name: t("nav.projects", "Portfolio"),
+      path: "/portfolio",
       icon: <Folder size={18} />,
     },
     {
       name: t("nav.about", "Chi sono"),
       path: "/chisono",
       icon: <User size={18} />,
-    },
-    {
-      name: t("nav.services", "Servizi"),
-      path: "/servizi",
-      icon: <Briefcase size={18} />,
     },
     {
       name: t("nav.contact", "Parliamo"),

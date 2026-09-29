@@ -3,8 +3,10 @@
     "home": "Home",
     "about": "About",
     "services": "Services",
-    "projects": "Projects",
+    "white_label": "White Label",
+    "projects": "Portfolio",
     "contact": "Let's Talk",
+    "free_consultation": "Free consultation",
     "switch_to_nebula": "SWITCH TO NEBULA",
     "switch_to_editorial": "SWITCH TO EDITORIAL",
     "change_theme": "Change theme",
@@ -300,6 +302,10 @@
     "tag2": "Payments and shipping",
     "tag3": "Order management",
     "tag4": "Two hours of training"
+  },
+  "service_brandidentity": {
+    "title": "Brand Identity",
+    "meta_desc": "Logos, palette, tone of voice: the visual identity designed together with the site, not bolted on after."
   },
   "service_restyling": {
     "title": "Restyling",

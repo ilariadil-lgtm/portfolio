@@ -6,7 +6,7 @@ const Ecommerce = () => {
   return (
     <ServiceDetailLayout
       ns="service_ecommerce"
-      url="/e-commerce"
+      url="/servizi/e-commerce"
       comprende={[
         t("service_ecommerce.item1"),
         t("service_ecommerce.item2"),
@@ -14,8 +14,8 @@ const Ecommerce = () => {
         t("service_ecommerce.item4"),
       ]}
       tempi={t("service_ecommerce.tempi")}
-      prev={{ url: "/sito-aziendale", title: t("service_sito.title") }}
-      next={{ url: "/restyling", title: t("service_restyling.title") }}
+      prev={{ url: "/servizi/wordpress", title: t("service_sito.title") }}
+      next={{ url: "/servizi/brand-identity", title: t("service_brandidentity.title") }}
     />
   );
 };

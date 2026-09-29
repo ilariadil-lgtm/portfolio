@@ -108,18 +108,6 @@ const fallbackProjects = [
     description:
       "Una web app intelligente di storage e inventory management che semplifica e automatizza la gestione dell'inventario su scala enterprise.",
   },
-  {
-    id: "loghi",
-    title: "Branding & Loghi",
-    type: "BRAND_IDENTITY",
-    technologies:
-      "Logo Design, Brand Identity, Visual Guidelines, Art Direction",
-    year: "2022-2025",
-    image: "/assets/loghi/sicef/logo_1.webp",
-    project_url: "",
-    description:
-      "Una selezione curata di identità visive, marchi e loghi d'autore disegnati per dare forma, coerenza e valore a storie ed aziende leader.",
-  },
 ];
 
 // Categories mapping — values must match what comes from the API or fallback type field
@@ -183,9 +171,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
     >
       {/* ── Image block ── */}
       <Link
-        to={
-          project.id === "loghi" ? "/progetti/loghi" : `/progetti/${project.id}`
-        }
+        to={`/portfolio/${project.id}`}
         className="block relative overflow-hidden bg-cream aspect-[4/3] border-b border-ink/10"
         data-cursor="view"
       >
@@ -241,11 +227,7 @@ const ProjectCard = ({ project, idx }: { project: any; idx: number }) => {
         </p>
 
         <Link
-          to={
-            project.id === "loghi"
-              ? "/progetti/loghi"
-              : `/progetti/${project.id}`
-          }
+          to={`/portfolio/${project.id}`}
           data-cursor="pointer"
           className="inline-flex items-center justify-between font-typewriter text-[9px] uppercase tracking-[0.35em] text-ink font-bold group/link border-t border-ink/10 pt-4"
         >

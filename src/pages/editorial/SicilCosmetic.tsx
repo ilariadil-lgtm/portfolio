@@ -39,8 +39,8 @@ export const EditorialSicilCosmetic = () => (
       "/assets/projects/sicil-cosmetic/contatti.webp",
     ]}
     paragrafi={{ ch1: 1,  ch3: 2,  ch4: 2,  ch5: 1 }}
-    prev={{ url: "/progetti/pattiforniture", title: "Patti Forniture" }}
-    next={{ url: "/progetti/newpop", title: "Newpop" }}
+    prev={{ url: "/portfolio/pattiforniture", title: "Patti Forniture" }}
+    next={{ url: "/portfolio/newpop", title: "Newpop" }}
     liveUrl="https://www.sicilcosmetic.com/"
   />
 );

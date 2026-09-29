@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { ArrowRight, Layout, ShoppingBag, Sparkles, Wrench } from "lucide-react";
+import { ArrowRight, Layout, ShoppingBag, Palette } from "lucide-react";
 import { Link } from "@/components/Link";
 import { BriefingCTA } from "@/components/BriefingCTA";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -15,30 +15,28 @@ const Servizi = () => {
     description: t("services.description"),
   });
 
+  // Rivoluzione del sito (PIANO-RIVOLUZIONE-SITO.md, Fase 1): 3 servizi
+  // diretti — WordPress, E-commerce, Brand Identity. Restyling e
+  // Manutenzione non sono più voci a sé: confluiscono come contenuto
+  // dentro WordPress in Fase 3.
   const cards = [
     {
       ns: "service_sito",
-      url: "/sito-aziendale",
+      url: "/servizi/wordpress",
       icon: <Layout size={22} />,
       num: "01",
     },
     {
       ns: "service_ecommerce",
-      url: "/e-commerce",
+      url: "/servizi/e-commerce",
       icon: <ShoppingBag size={22} />,
       num: "02",
     },
     {
-      ns: "service_restyling",
-      url: "/restyling",
-      icon: <Sparkles size={22} />,
+      ns: "service_brandidentity",
+      url: "/servizi/brand-identity",
+      icon: <Palette size={22} />,
       num: "03",
-    },
-    {
-      ns: "service_manutenzione",
-      url: "/manutenzione",
-      icon: <Wrench size={22} />,
-      num: "04",
     },
   ];
 

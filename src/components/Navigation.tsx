@@ -12,7 +12,8 @@ const navItems = [
   { key: "home", path: "/" },
   { key: "about", path: "/chisono" },
   { key: "services", path: "/servizi" },
-  { key: "projects", path: "/progetti" },
+  { key: "white_label", path: "/white-label" },
+  { key: "projects", path: "/portfolio" },
 ];
 
 // ═══════════════════════════════════════════════════════════════════
@@ -153,14 +154,14 @@ export const Navigation = () => {
             </div>
 
             <Link
-              to="/contatti"
+              to="/consulenza-gratuita"
               onMouseEnter={playHover}
               onClick={playClick}
               className={`px-7 py-3 font-body text-[11px] uppercase tracking-[0.3em] transition-all duration-500 rounded-full border border-primary/20 hover:bg-primary hover:text-white ${
                 scrolled ? "bg-primary/5" : "bg-transparent"
               }`}
             >
-              {t("nav.contact")}
+              {t("nav.free_consultation")}
             </Link>
           </div>
 
@@ -225,10 +226,10 @@ export const Navigation = () => {
                 }}
               >
                 <Link
-                  to="/contatti"
+                  to="/consulenza-gratuita"
                   className="mt-6 px-10 py-4 bg-primary text-white font-body text-[11px] uppercase tracking-[0.3em] rounded-full inline-block"
                 >
-                  {t("nav.contact")}
+                  {t("nav.free_consultation")}
                 </Link>
               </motion.div>
               <motion.div

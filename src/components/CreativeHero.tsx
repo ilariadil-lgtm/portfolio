@@ -450,7 +450,7 @@ export const CreativeHero: React.FC = () => {
                     },
                     {
                       label: t("nav.projects"),
-                      to: "/progetti",
+                      to: "/portfolio",
                       rot: 100,
                       tx: 28,
                       ty: 142,
@@ -524,7 +524,7 @@ export const CreativeHero: React.FC = () => {
                     t("hero.point2_desc"),
                     t("hero.point3_desc"),
                   ];
-                  const links = ["/chisono", "/servizi", "/progetti"];
+                  const links = ["/chisono", "/servizi", "/portfolio"];
                   return (
                     <NavPoint
                       key={i}

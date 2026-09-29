@@ -21,7 +21,7 @@ const NebulaProjectDetail = () => {
           Project Not Found
         </h1>
         <Link
-          to="/progetti"
+          to="/portfolio"
           className="px-8 py-4 border border-gold/30 text-gold font-mono text-[9px] uppercase tracking-[0.2em] hover:bg-gold/10 transition-colors"
         >
           RETURN TO SELECTED WORKS

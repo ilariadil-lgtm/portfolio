@@ -80,7 +80,7 @@ export const NebulaPackagesSection = () => {
                   
                   <div className="pt-8 border-t border-white/5 mt-auto">
                     <Link
-                      to="/sito-aziendale"
+                      to="/servizi/wordpress"
                       className="group/btn inline-flex items-center justify-between w-full font-mono text-[11px] uppercase tracking-[0.25em] text-white/60 hover:text-gold transition-colors"
                     >
                       <span className="relative overflow-hidden">
@@ -126,7 +126,7 @@ export const NebulaPackagesSection = () => {
                   
                   <div className="pt-8 border-t border-white/5 mt-auto">
                     <Link
-                      to="/e-commerce"
+                      to="/servizi/e-commerce"
                       className="group/btn inline-flex items-center justify-between w-full font-mono text-[11px] uppercase tracking-[0.25em] text-white/60 hover:text-gold transition-colors"
                     >
                       <span className="relative overflow-hidden">
@@ -172,7 +172,7 @@ export const NebulaPackagesSection = () => {
                   
                   <div className="pt-8 border-t border-white/5 mt-auto">
                     <Link
-                      to="/manutenzione"
+                      to="/servizi/wordpress"
                       className="group/btn inline-flex items-center justify-between w-full font-mono text-[11px] uppercase tracking-[0.25em] text-white/60 hover:text-gold transition-colors"
                     >
                       <span className="relative overflow-hidden">

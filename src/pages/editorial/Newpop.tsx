@@ -26,8 +26,8 @@ export const EditorialNewpop = () => (
       "/assets/projects/newpop/accedi.webp",
     ]}
     paragrafi={{ ch1: 1, ch3: 2, ch4: 2, ch5: 1 }}
-    prev={{ url: "/progetti/sicilcosmetic", title: "SicilCosmetic" }}
-    next={{ url: "/progetti/vinigambino", title: "Vini Gambino" }}
+    prev={{ url: "/portfolio/sicilcosmetic", title: "SicilCosmetic" }}
+    next={{ url: "/portfolio/vinigambino", title: "Vini Gambino" }}
     liveUrl="https://www.newpop.it/"
   />
 );

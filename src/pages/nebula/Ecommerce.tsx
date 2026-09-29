@@ -21,7 +21,7 @@ const Ecommerce = () => {
         provider: { "@type": "Person", name: "Ilaria Diliberto" },
         areaServed: "IT",
         description: t("service_ecommerce.meta_desc"),
-        url: "https://ilariadiliberto.com/e-commerce",
+        url: "https://ilariadiliberto.com/servizi/e-commerce",
       }),
     [t],
   );
@@ -48,8 +48,8 @@ const Ecommerce = () => {
           <p>{t("service_ecommerce.text")}</p>
         </div>
       }
-      prev={{ url: "/sito-aziendale", title: t("service_sito.title") }}
-      next={{ url: "/restyling", title: t("service_restyling.title") }}
+      prev={{ url: "/servizi/wordpress", title: t("service_sito.title") }}
+      next={{ url: "/servizi/brand-identity", title: t("service_brandidentity.title") }}
       prevLabel={t("service_detail.prev_service")}
       nextLabel={t("service_detail.next_service")}
       finalCta={{

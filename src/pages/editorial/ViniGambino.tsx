@@ -39,8 +39,8 @@ export const EditorialViniGambino = () => (
       "/assets/projects/vini-gambino/contatti.webp",
     ]}
     paragrafi={{ ch1: 1,  ch3: 2,  ch4: 2,  ch5: 1 }}
-    prev={{ url: "/progetti/newpop", title: "Newpop" }}
-    next={{ url: "/progetti/bagliolauria", title: "Baglio Lauria" }}
+    prev={{ url: "/portfolio/newpop", title: "Newpop" }}
+    next={{ url: "/portfolio/bagliolauria", title: "Baglio Lauria" }}
     liveUrl="https://www.vinigambino.it/"
   />
 );

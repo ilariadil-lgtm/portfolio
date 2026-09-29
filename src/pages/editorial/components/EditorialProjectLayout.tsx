@@ -107,7 +107,7 @@ export const EditorialProjectLayout: React.FC<ProgettoEditoriale> = ({
             transition={{ delay: 0.3 }}
           >
             <Link
-              to="/progetti"
+              to="/portfolio"
               className="group inline-flex items-center gap-3 font-typewriter text-[10px] uppercase tracking-[0.4em] text-ink/65 hover:text-primary transition-colors font-semibold"
             >
               <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />

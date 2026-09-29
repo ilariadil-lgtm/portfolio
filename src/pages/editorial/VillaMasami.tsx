@@ -37,8 +37,8 @@ export const EditorialVillaMasami = () => (
       "/assets/projects/villa-masami/struttura.webp",
     ]}
     paragrafi={{ ch1: 2,  ch3: 2,  ch4: 2,  ch5: 1 }}
-    prev={{ url: "/progetti/freelens", title: "Freelens" }}
-    next={{ url: "/progetti/bagliolauria", title: "Baglio Lauria" }}
+    prev={{ url: "/portfolio/freelens", title: "Freelens" }}
+    next={{ url: "/portfolio/bagliolauria", title: "Baglio Lauria" }}
     liveUrl="https://villamasami.it"
   />
 );

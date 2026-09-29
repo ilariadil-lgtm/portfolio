@@ -95,9 +95,10 @@ export const Footer = () => {
           <ul className="space-y-3 md:space-y-4">
             {[
               { label: t("nav.home"), to: "/" },
-              { label: t("nav.projects"), to: "/progetti" },
-              { label: t("nav.about"), to: "/chisono" },
               { label: t("nav.services"), to: "/servizi" },
+              { label: t("nav.white_label"), to: "/white-label" },
+              { label: t("nav.projects"), to: "/portfolio" },
+              { label: t("nav.about"), to: "/chisono" },
               { label: t("nav.contact"), to: "/contatti" },
             ].map((link, i) => (
               <li key={i}>

@@ -57,7 +57,7 @@ export const NebulaProjectLayout = ({
   year,
   roleLabel = "RUOLO",
   yearLabel = "ANNO",
-  backUrl = "/progetti",
+  backUrl = "/portfolio",
   backLabel,
   archiveUrl,
   archiveTitle,

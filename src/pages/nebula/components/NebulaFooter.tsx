@@ -89,9 +89,10 @@ export const NebulaFooter = () => {
           <ul className="space-y-4">
             {[
               { path: "/", label: t("nav.home") },
-              { path: "/progetti", label: t("nav.projects") },
-              { path: "/chisono", label: t("nav.about") },
               { path: "/servizi", label: t("nav.services") },
+              { path: "/white-label", label: t("nav.white_label") },
+              { path: "/portfolio", label: t("nav.projects") },
+              { path: "/chisono", label: t("nav.about") },
               { path: "/contatti", label: t("nav.contact") },
             ].map((link) => (
               <li key={link.path}>
